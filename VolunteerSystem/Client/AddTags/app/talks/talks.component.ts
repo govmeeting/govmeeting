@@ -37,7 +37,7 @@ export class TalksComponent implements OnInit {
     
     ngOnInit() {
         this.getTalks();
-        this.getTopics();
+        //this.getTopics();
     }
     
     getTalks() {
@@ -47,12 +47,14 @@ export class TalksComponent implements OnInit {
         error => this.errorMessage = <any>error);
     }  
     
+/*
     getTopics() {
         this._topicsService.getTopicsFromFile()
         .subscribe(
         topics => this.topics = topics,
         error => this.errorMessage = <any>error);
     }
+*/
 
 ///////////////////////////////////////////////////////////////
 //  Handle user entry of new topic

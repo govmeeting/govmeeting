@@ -1,0 +1,6 @@
+{"data": [
+    {"name": "topic1", "speakers": [{"name": "Joe", "text": "Hi all."}, {"name": "Pat", "text": "Hi all."}]},
+    {"name": "topic2", "speakers": [{"name": "Pat", "text": "Hi Joe."}, {"name": "Mac", "text": "Hi all."}]},
+    {"name": "topic3", "speakers": [{"name": "Mac", "text": "Hi Mac."}, {"name": "Liz", "text": "Hi all."}]},
+    {"name": "topic4", "speakers": [{"name": "Liz", "text": "Hi Liz."}, {"name": "Joe", "text": "Hi all."}]}
+]}
