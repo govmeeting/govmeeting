@@ -1,6 +1,6 @@
 import {bootstrap}    from 'angular2/platform/browser'
 import {AppComponent} from './app.component'
 import 'rxjs/Rx';
-import {TopicsService} from './topics/topics.service'
+import {BackendService} from './utilities/backend.service'
 
-bootstrap(AppComponent, [TopicsService]);
+bootstrap(AppComponent, [BackendService]);

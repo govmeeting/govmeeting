@@ -8,6 +8,9 @@ import {BackendService} from './../utilities/backend.service'
 @Component({
     selector: 'browsemeeting',
     templateUrl: './app/singlemeeting/browsemeeting.component.html',
+//    template: `
+//        {{topicDiscussions}}
+//    `,
     directives: [],
     providers: [
         HTTP_PROVIDERS,
@@ -17,8 +20,9 @@ import {BackendService} from './../utilities/backend.service'
 })
 export class BrowsemeetingComponent {
     
-    topicDiscussions: {}[];
+    topicDiscussions: any;
     topics: string[];
+    errorMessage: string;
     
         /**
          * <summary>
@@ -27,14 +31,21 @@ export class BrowsemeetingComponent {
          * <param name="backEnd">       The back end service. </param>
          * <param name="userChoiceSrv"> The user choice service. </param>
         **/
-    constructor(private _userChoice: UserchoiceService, private _backend: BackendService) {
+    constructor(private _userChoice: UserchoiceService,
+        private _backendService: BackendService) {
             this._userChoice.setSpeaker("SHOW ALL");
             this._userChoice.setTopic("SHOW ALL");
     }
     
-//    ngOnInit() {this.topicDiscussions = this._backend.getTopicDiscussionsFromFile();}
-    ngOnInit() {this.topics = this._backend.getTopics();}
+    ngOnInit() {this.getTopicDiscussions();}
         
+
+    getTopicDiscussions() {
+        this._backendService.getTopicDiscussions()
+        .subscribe(
+        t => {this.topicDiscussions = t.data; console.log(this.topicDiscussions);},
+        error => this.errorMessage = <any>error);
+    }
 
     /**
      * <summary>

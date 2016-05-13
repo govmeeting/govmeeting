@@ -7,11 +7,10 @@ import { HTTP_PROVIDERS } from 'angular2/http';
     templateUrl: 'app/topics/topics.component.html'
 })
 export class TopicsComponent implements OnInit {
-    //topics: string[] = ["abc", "def"];
+    // topics: string[] = ["abc", "def"]; // DEBUG
     topics: string[];
     
-    xtopics: string[];
-    customer: string;
+    xtopics: string[];  // DEBUG
     
     errorMessage: string;
     @Input() newTopicName: string;
@@ -24,9 +23,6 @@ export class TopicsComponent implements OnInit {
         this.topicEnter = new EventEmitter<string>();
         this.newTopicName = null;
     }
-    
-    // TODO - We should only get the topics once. This code causes us to 
-    // get them every time we create a TopicsComponent, which is for every TalkComponent.
     
     // Call getTopics after Angular is done creating the component. 
     ngOnInit() {this.getTopics();}
@@ -59,12 +55,8 @@ export class TopicsComponent implements OnInit {
         console.log("topic.component--topicSelect " + this.newTopicName)
     }    
 
+    // DEBUG
     GetTopicsBtn(){
-        /*
-        this._topicsService.getCustomer()
-        .subscribe(
-        c => {this.customer = c.data; console.log(c.data);},
-        */
         this._topicsService.getTopics()
         .subscribe(
         t => {this.xtopics = t.data; console.log(t.data);},
