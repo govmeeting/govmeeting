@@ -1,11 +1,11 @@
 <!-- Display all the topics. Within each topic, we will display what was said. -->
 <div id="browseMeeting">
     <div *ngFor="#topic of topicDiscussions; #i = index">
-        <div ng-show=CheckShowTopic(topic.name);>
+        <div [hidden]="!CheckShowTopic(topic.name)">
             <h2>{{topic.name}}</h2>
             <!-- Display all the speakers and their statements on this topic. -->
             <div *ngFor="#speaker of topic.speakers; #j = index">
-                <div ng-show=CheckShowSpeaker(speaker.name);>
+                <div [hidden]="!CheckShowSpeaker(speaker.name)">
                     <p><strong>{{speaker.name}}:</strong> {{speaker.text}} </p>
                 </div>
            </div>   

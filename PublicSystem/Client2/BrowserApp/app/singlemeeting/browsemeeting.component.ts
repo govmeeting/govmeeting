@@ -1,8 +1,8 @@
 import {Component, OnInit} from 'angular2/core';
 import {Injectable} from 'angular2/core';
 import {HTTP_PROVIDERS} from 'angular2/http';
-import {UserchoiceService, IUserChoiceSrv} from './../utilities/userchoice.service'
 import {BackendService} from './../utilities/backend.service'
+import {UserchoiceService, IUserChoiceSrv} from './../utilities/userchoice.service'
 
 @Injectable()
 @Component({
@@ -14,8 +14,8 @@ import {BackendService} from './../utilities/backend.service'
     directives: [],
     providers: [
         HTTP_PROVIDERS,
-        UserchoiceService,
         BackendService
+        //UserchoiceService
     ]
 })
 export class BrowsemeetingComponent {
@@ -31,19 +31,19 @@ export class BrowsemeetingComponent {
          * <param name="backEnd">       The back end service. </param>
          * <param name="userChoiceSrv"> The user choice service. </param>
         **/
-    constructor(private _userChoice: UserchoiceService,
-        private _backendService: BackendService) {
-            this._userChoice.setSpeaker("SHOW ALL");
-            this._userChoice.setTopic("SHOW ALL");
+    constructor(private _backendService: BackendService,
+        private _userChoice: UserchoiceService) {
     }
     
     ngOnInit() {this.getTopicDiscussions();}
         
 
     getTopicDiscussions() {
-        this._backendService.getTopicDiscussions()
+        this._backendService.getMeeting()
         .subscribe(
-        t => {this.topicDiscussions = t.data; console.log(this.topicDiscussions);},
+        t => {this.topicDiscussions = t.data.topicDiscussions;
+             // console.log(this.topicDiscussions);
+            },
         error => this.errorMessage = <any>error);
     }
 
@@ -58,6 +58,7 @@ export class BrowsemeetingComponent {
     **/
     CheckShowTopic(topicName: string) {
         var _topic = this._userChoice.getTopic();
+        // console.log("CheckShowTopic " + topicName + " " + _topic);
         return ((_topic == "SHOW ALL") || (_topic == topicName));
     }
 
@@ -72,6 +73,7 @@ export class BrowsemeetingComponent {
     **/
     CheckShowSpeaker(speakerName: string) {
         var _speaker = this._userChoice.getSpeaker();
+        // console.log("CheckShowSpeaker " + speakerName + " " + _speaker);
         return ((_speaker == "SHOW ALL") || (_speaker == speakerName))
     }
 }

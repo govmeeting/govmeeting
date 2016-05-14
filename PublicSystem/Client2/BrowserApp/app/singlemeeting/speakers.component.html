@@ -1,0 +1,6 @@
+<speakers><div myhighlight (click)="FilterBySpeaker(0)">== All Speakers  <span [hidden]="selectedSpeaker!=0"> ## </span></div>
+<!-- Display the speaker names as radio buttons. -->
+<div *ngFor="#speaker of speakerNames; #i = index">
+    <!-- <input type="radio" ng-model="mySpeaker" ng-model-options="{ getterSetter: true }" value={{speaker}}> -->
+    <div myhighlight [hidden]="i==0" (click)="FilterBySpeaker(i)">{{speaker}} <span [hidden]="i!=selectedSpeaker"> ## </span></div>
+</div><br></speakers>

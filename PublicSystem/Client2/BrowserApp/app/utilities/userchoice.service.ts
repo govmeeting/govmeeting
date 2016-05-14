@@ -31,6 +31,7 @@ export class UserchoiceService implements IUserChoiceSrv {
      * </returns>
     **/
     getSpeaker() : string {
+        // console.log("getSpeaker=" + this._speaker)
         return this._speaker;
     }
 
@@ -44,6 +45,7 @@ export class UserchoiceService implements IUserChoiceSrv {
      * </returns>
     **/
     setSpeaker(speaker : string) {
+        console.log("setSpeaker=" + speaker)
         this._speaker = speaker;
     }
 
@@ -56,6 +58,7 @@ export class UserchoiceService implements IUserChoiceSrv {
      * </returns>
     **/
     getTopic() : string {
+        // console.log("getTopic=" + this._topic)
         return this._topic;
     }
 
@@ -69,6 +72,7 @@ export class UserchoiceService implements IUserChoiceSrv {
      * </returns>
     **/
     setTopic(topic: string) {
+        console.log("setTopic=" + topic)
         this._topic = topic;
     }
 }

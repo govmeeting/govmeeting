@@ -9,7 +9,7 @@ export class BackendService {
     private _meetingUrl = 'app/testdata/BBH-2014-09-08.json';
     private _topicDiscussionsUrl = 'app/testdata/topicDiscussions.json';
     
-    private _meetingData: any = {};
+    // private _meetingData: any = {};
     private data: any;
     private observable: Observable<any>;
     
@@ -22,8 +22,8 @@ export class BackendService {
     }
 */
        
-    getTopicDiscussions(): Observable<any> {
-        return this.getData(this._topicDiscussionsUrl);
+    getMeeting(): Observable<any> {
+        return this.getData(this._meetingUrl);
     }
        
     getData(url): Observable<any> {
