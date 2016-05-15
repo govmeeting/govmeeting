@@ -6,6 +6,8 @@ The app is written in Angular 2. Angular is a HUGE improvement over the last 1.x
 
 It was also written using "Visual Studio Code". This is a free, very lightweight development tool that is available for Windows, OSX and Linux. It is more like an intelligent text editor similar to Sublime and very easy to learn.
 
+The folder contains a .gitignore file for use by VS Code. This allows you to open the folder in VS Code and use a repo in the folder for keeping track of changes. But this repo would just be temporary. It is not part of the govmeeting repo on Github.
+
 
 
 

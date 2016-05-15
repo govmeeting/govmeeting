@@ -1,7 +1,4 @@
 /// <binding AfterBuild='less' ProjectOpened='watch' />
-
-// TODO: This file was created before the conversion to Angular2. Is it still valid?
-
 var gulp = require("gulp"),
     less = require("gulp-less");
 
