@@ -1,0 +1,12 @@
+<div>
+    <speakers>
+    <div *ngFor="#speaker of speakerNames; #i = index">
+        <div>
+            <span myhighlight [hidden]="i==0" (click)="FilterBySpeaker(i)"> {{speaker}} </span>
+            <span myhighlight [hidden]="i!=0"  (click)="FilterBySpeaker(i)"> All Speakers </span>
+            <!-- <span [hidden]="i!=selectedSpeaker"> ## </span> -->
+            <span [hidden]="!IsSelectedSpeaker(i)"> ## </span>
+        </div>
+    </div>
+    </speakers><br>
+</div>

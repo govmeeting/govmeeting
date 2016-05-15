@@ -28,9 +28,14 @@ export class SpeakersComponent {
     getSpeakerNames() {
         this._backendService.getMeeting()
         .subscribe(
-        t => {this.speakerNames = t.data.speakerNames;
+        t => {this.speakerNames = t.data.speakerNames;},
             // console.log(this.speakerNames);},
         error => this.errorMessage = <any>error);
+    }
+    
+    IsSelectedSpeaker(i: number) : boolean
+    {
+        return(this._userChoice.getSpeaker() == this.speakerNames[i]);
     }
 
     FilterBySpeaker(i: number)

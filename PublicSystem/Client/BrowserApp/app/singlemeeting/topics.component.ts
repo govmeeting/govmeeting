@@ -33,6 +33,11 @@ export class TopicsComponent {
         error => this.errorMessage = <any>error);
     }
     
+    IsSelectedTopic(i: number) : boolean
+    {
+        return(this._userChoice.getTopic() == this.topicNames[i]);
+    }
+    
     FilterByTopic(i: number)
     {
         this.selectedTopic = i;
