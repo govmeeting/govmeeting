@@ -16,7 +16,7 @@ namespace Govmeeting.Backend.LoadTranscriptIntoDb.Tests
     {
         string temporaryFilename = ".\\LoadTranscriptIntoDb_Test.txt";
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
          public void PerFixtureSetup()
          {
              // Drop and recreate database
@@ -26,7 +26,7 @@ namespace Govmeeting.Backend.LoadTranscriptIntoDb.Tests
              }
          }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public void PerFixtureTeardown()
         {
             File.Delete(temporaryFilename);
