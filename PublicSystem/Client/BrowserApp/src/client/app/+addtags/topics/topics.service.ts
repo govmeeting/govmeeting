@@ -1,12 +1,12 @@
-import {Injectable} from 'angular2/core';
-import {Http, Response} from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import {Headers, RequestOptions} from 'angular2/http';
+import {Headers, RequestOptions} from '@angular/http';
 
 @Injectable()
 export class TopicsService {
     
-    private _topicsUrl = 'app/topics/topics.json';
+    private _topicsUrl = 'assets/topics.json';
     // private _topics: string[] = null;
     // private _topicsTest: string[] = ["topic1", "topic2", "topic3"];
     // private _topics$: Observable<string[]> = null;

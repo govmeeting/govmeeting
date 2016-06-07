@@ -1,16 +1,15 @@
-import {Component, Input, Output, EventEmitter, OnInit} from 'angular2/core'
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core'
 import {TopicsService} from './topics.service'
-import { HTTP_PROVIDERS } from 'angular2/http';
+import { HTTP_PROVIDERS } from '@angular/http';
 
 @Component({
+    moduleId: module.id,
     selector: 'topics',
-    templateUrl: 'app/topics/topics.component.html'
+    templateUrl: 'topics.component.html'
 })
 export class TopicsComponent implements OnInit {
     // topics: string[] = ["abc", "def"]; // DEBUG
     topics: string[];
-    
-    xtopics: string[];  // DEBUG
     
     errorMessage: string;
     @Input() newTopicName: string;
@@ -45,7 +44,7 @@ export class TopicsComponent implements OnInit {
     // The parent component (TalksComponent) can then capture this event.
     OnChange(newValue: string){
         this.topicSelect.emit(newValue);
-        console.log("topic.component--topicSelect" + newValue)
+        console.log("topic.component--topicSelect " + newValue)
     }
     
     // When the user enters a new topic, we again raise the "topicSelect" event.
@@ -55,11 +54,11 @@ export class TopicsComponent implements OnInit {
         console.log("topic.component--topicSelect " + this.newTopicName)
     }    
 
-    // DEBUG
+    /* For debugging
     GetTopicsBtn(){
         this._topicsService.getTopics()
         .subscribe(
         t => {this.xtopics = t.data; console.log(t.data);},
         error => this.errorMessage = <any>error);
-    }    
+    }*/   
 }

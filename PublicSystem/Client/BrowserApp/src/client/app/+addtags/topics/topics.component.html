@@ -1,8 +1,10 @@
 <span>
     <select class="form‐control" (change)="OnChange($event.target.value)">
-    <option *ngFor="#s of topics" [value]="s">{{s}}</option>
+    <option *ngFor="let s of topics" [value]="s">{{s}}</option>
     </select>
 </span>
 <input size="80" [(ngModel)]="newTopicName">
 <button (click)="OnEnter()">SET</button>
+<!-- for debugging
 <button (click)="GetTopicsBtn()">Get Topics</button> {{customer}}
+-->

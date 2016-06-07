@@ -1,18 +1,18 @@
 <ul style="list-style: none;">
-    <li *ngFor="#talk of talks; #i = index">
+    <li *ngFor="let talk of talks; let i = index">
     
     <!-- Display the section name and up/down arrows if start of new section -->
     <div [hidden]="talk.section==null"><br>
         <button (click)="moveSectionUp(talk, i)"> ^ </button>
         <button (click)="moveSectionDown(talk, i)"> v </button>
-        ########## SECTION: {{talk.section}} ##########<br><br>
+        <span  class="gmsection"> SECTION: {{talk.section}} </span><br><br>
     </div>
     
     <!-- Display the topic name and up/down arrows if start of new topic -->
     <div [hidden]="talk.topic==null"><br>
         <button (click)="moveTopicUp(talk, i)"> ^ </button>
         <button (click)="moveTopicDown(talk, i)"> v </button>
-        ---------- TOPIC: {{talk.topic}} ----------<br><br>
+        <span  class="gmtopic"> TOPIC: {{talk.topic}} </span><br><br>
     </div>
     
     <!-- Display the topic input line.
@@ -30,8 +30,10 @@
     <!-- Display the speaker and spoken text. -->
     <div >
         <div [hidden]="talk.showSetTopic"><br></div>
-        <!-- {{i}} --> {{ talk.speaker }}:
-        <div (click)="showTopicSelection(talk,i)" myhighlight (textSelected)="handleTextSelected($event)"> {{talk.said}}</div>
+        <!-- {{i}} --> <div class="gmspeaker"> {{ talk.speaker }}: </div>
+        <div (click)="showTopicSelection(talk,i)" myhighlight (textSelected)="handleTextSelected($event)">
+             <div class="gmsaid"> {{talk.said}} </div>
+        </div>
         
     </div>
     <br>

@@ -1,13 +1,14 @@
-import {Injectable} from 'angular2/core';
-import {Http, Response} from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {Http, Response} from '@angular/http';
 import {Talk} from "./talk.ts"
 import {Observable} from 'rxjs/Observable';
-import {Headers, RequestOptions} from 'angular2/http';
+import 'rxjs/add/operator/catch';
+import {Headers, RequestOptions} from '@angular/http';
 
 @Injectable()
 export class TalksService {
-    //private _talksUrl = 'app/talks/talks.json'; // URL to web api
-    private _talksUrl = 'app/talks/Philadelphia_CityCouncil_09-25-2014.json';
+    //private _talksUrl = 'assets/talks.json'; // URL to web api
+    private _talksUrl = 'assets/Philadelphia_CityCouncil_09-25-2014.json';
     
     constructor (private http: Http) {}
     

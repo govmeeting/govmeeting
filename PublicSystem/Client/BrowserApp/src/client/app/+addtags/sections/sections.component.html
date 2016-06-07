@@ -1,3 +1,3 @@
 <select class="form‐control" (change)="onChange($event.target.value)">
-<option *ngFor="#s of sections" [value]="s">{{s}}</option>
+<option *ngFor="let s of sections" [value]="s">{{s}}</option>
 </select>

@@ -1,0 +1,30 @@
+.gmspeaker {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 12px;
+}
+
+.gmsaid {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 12px;
+}
+
+.gmtopic {
+  color: purple;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.gmsection {
+  color: red;
+  font-weight: bold;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+}
+
+button {
+  font-size: 12px;
+  padding: 0px 30px 0px;
+  height: 16px;
+}
+

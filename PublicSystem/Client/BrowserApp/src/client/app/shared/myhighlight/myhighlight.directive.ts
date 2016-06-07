@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input} from '@angular/core';
+import {Directive, ElementRef, Input, Output, EventEmitter} from '@angular/core';
 import {HostListener} from '@angular/core';
 
 @Directive({
@@ -13,11 +13,17 @@ export class MyHighlightDirective {
 
     //@Input('myHighlight') highlightColor: string;
     @Input() highlightColor: string;
+    
+    @Output() textSelected: EventEmitter<string>;
 
     private _el:HTMLElement;
     private _defaultColor = 'yellow';
+    fullText: string;
+    selection: Selection;
+    selectedText: string;
 
     constructor(el: ElementRef) {
+        this.textSelected = new EventEmitter<string>();
         this._el = el.nativeElement;
     }
 
@@ -36,6 +42,28 @@ export class MyHighlightDirective {
         //console.log('onMouseLeave');
         this._highlight('transparent');
     }
+
+    @HostListener('mouseup')
+    onMouseUp() {
+        console.log(window.getSelection());
+        
+        this.selection = window.getSelection();
+        
+        if ((this.selection.anchorNode == null) || 
+        (!this.selection.anchorNode.textContent)) {
+            return;
+        }
+        
+        this.fullText = this.selection.anchorNode.textContent;
+        console.log("FULL TEXT: " + this.fullText);           
+        
+        this.selectedText = this.fullText.substring(this.selection.anchorOffset,
+          this.selection.focusOffset);
+
+        console.log("SELECTED TEXT: " + this.selectedText);
+        this.textSelected.emit(this.selectedText);
+    }
+
 
     private _highlight(color: string) {
         //console.log('color is ' + color);

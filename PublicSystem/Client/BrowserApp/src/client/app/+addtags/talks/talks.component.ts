@@ -1,16 +1,18 @@
-import {Component, OnInit} from 'angular2/core'
-import {Directive, Output, EventEmitter} from 'angular2/core';
+import {Component, OnInit} from '@angular/core'
+import {Directive, Output, EventEmitter} from '@angular/core';
 import {TalksService} from './talks.service'
 import {TopicsService} from '../topics/topics.service'
-import { HTTP_PROVIDERS } from 'angular2/http';
+import { HTTP_PROVIDERS } from '@angular/http';
 import {Talk} from './talk'
 import {SectionsComponent} from '../sections/sections.component'
 import {TopicsComponent} from '../topics/topics.component'
-import {MyHighlightDirective} from '../myhighlight.directive'
+import {MyHighlightDirective} from '../../shared/index'
 
 @Component({
+    moduleId: module.id,
     selector: 'talks',
-    templateUrl: 'app/talks/talks.component.html',
+    templateUrl: 'talks.component.html',
+    styleUrls: ['talks.component.css'],
     directives: [SectionsComponent, TopicsComponent, MyHighlightDirective],
     providers: [
         HTTP_PROVIDERS,
@@ -63,8 +65,12 @@ export class TalksComponent implements OnInit {
    // Capture the "topicSelect" event and set the new topic.
     onTopicSelect(newTopic: string, talk: Talk) {
         console.log("talks.component--OnTopicSelect " + newTopic)
-        talk.topic = newTopic;
-        talk.showSetTopic = false;
+        if (newTopic == "") {
+            talk.topic = null;
+        } else {
+            talk.topic = newTopic;
+            talk.showSetTopic = false;
+        }
     }
     
    // Capture the "textSelected" event and set the input box to the new data.

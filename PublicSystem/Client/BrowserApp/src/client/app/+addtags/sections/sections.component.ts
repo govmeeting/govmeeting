@@ -1,13 +1,14 @@
-import {Component} from 'angular2/core'
+import {Component} from '@angular/core'
 import {SectionsService} from './sections.service'
 
 @Component({
+    moduleId: module.id,
     selector: 'sections',
-    templateUrl: 'app/sections/sections.component.html',
+    templateUrl: 'sections.component.html',
     providers: [SectionsService]
 })
 export class SectionsComponent {
-    sections;
+    sections : string[];
     constructor(sectionsService: SectionsService) {
         this.sections = sectionsService.getSections();
     }

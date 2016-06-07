@@ -4,6 +4,7 @@ import { HTTP_PROVIDERS} from '@angular/http';
 import { AboutComponent } from './+about/index';
 import { HomeComponent } from './+home/index';
 import { MeetingComponent } from './+meeting/index';
+import { AddtagsComponent } from './+addtags/index';
 
 import { NameListService, NavbarComponent, ToolbarComponent} from './shared/index';
 
@@ -30,6 +31,10 @@ import { NameListService, NavbarComponent, ToolbarComponent} from './shared/inde
   {
     path: '/meeting',
     component: MeetingComponent
+  },
+  {
+    path: '/addtags',
+    component: AddtagsComponent
   }
 ])
 export class AppComponent {}
