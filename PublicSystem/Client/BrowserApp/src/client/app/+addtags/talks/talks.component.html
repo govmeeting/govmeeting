@@ -22,9 +22,9 @@
          and this is used to set "newTopicName" in TopicsComponent. Thus the input box gets populated.-->
     <div [hidden]="!talk.showSetTopic">
         TOPIC: 
-        <topics
+        <gm-topicset
             (topicSelect)="onTopicSelect($event, talk)" 
-            [newTopicName]="highlightedTopic"></topics>
+            [newTopicName]="highlightedTopic"></gm-topicset>
     </div>
           
     <!-- Display the speaker and spoken text. -->

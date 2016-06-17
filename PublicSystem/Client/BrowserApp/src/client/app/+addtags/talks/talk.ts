@@ -1,5 +1,4 @@
-export class Talk
-{
+export class Talk {
     speaker: string;
     said: string;
     section: string;

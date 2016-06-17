@@ -1,22 +1,21 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import {Headers, RequestOptions} from '@angular/http';
 
 @Injectable()
 export class TopicsService {
-    
+
     private _topicsUrl = 'assets/topics.json';
     // private _topics: string[] = null;
     // private _topicsTest: string[] = ["topic1", "topic2", "topic3"];
     // private _topics$: Observable<string[]> = null;
-    
+
     private data: any;
     private observable: Observable<any>;
-    
-    
+
+
     constructor (private http: Http) {}
-    
+
     getTopics(): Observable<any> {
     if(this.data) {
       // if `data` is available just return it as `Observable`
@@ -38,8 +37,8 @@ export class TopicsService {
           .share();
       return this.observable;
     }
-}  
-    
+}
+
 /*      
     xgetTopics(): Observable<string[]> {
         // if topics are in memory, return them.
@@ -52,7 +51,7 @@ export class TopicsService {
             return this.getTopicsFromFile();
         }
     }
-   
+
     // return topics from memory. Actually return an observable which will return them.
     getTopicsTFromMem(): Observable<string[]> {
         let topics$ = new Observable(observer => {
@@ -60,7 +59,7 @@ export class TopicsService {
         });
         return topics$;
     }
-    
+
     // return topics from file. Actually return an observable which will return them.
     getTopicsFromFile(): Observable<string[]> {
         
@@ -69,7 +68,7 @@ export class TopicsService {
             console.log("return observable");
             return this._topics$;
         }
-        
+
         // otherwise start the GET
         console.log("HTTP GET");
         let topics$ = this.http.get(this._topicsUrl)
@@ -79,7 +78,7 @@ export class TopicsService {
         this._topics$ = topics$;       
         return topics$;              
     }
-    
+
       getTopicsForTest(): Observable<string[]> {
         let topics$ = new Observable(observer => {
             observer.next(this._topicsTest);
@@ -89,7 +88,7 @@ export class TopicsService {
 */
 
 // The new approach does not handle errors. These are unused. I need to add error handling.
-
+/*
     private extractData(res: Response) {
         if (res.status < 200 || res.status >= 300) {
         throw new Error('Bad response status: ' + res.status);
@@ -97,11 +96,12 @@ export class TopicsService {
         let body = res.json();
         return body.data || { };
     }
-    
+
     private handleError (error: any) {
         // In a real world app, we might send the error to remote logging infrastructure
         let errMsg = error.message || 'Server error';
         console.error(errMsg); // log to console instead
         return Observable.throw(errMsg);
     }
+*/
 }

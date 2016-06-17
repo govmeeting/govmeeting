@@ -1,5 +1,5 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {TalksComponent} from './talks/talks.component'
+import {TalksComponent} from './talks/talks.component';
 
 @Component({
     moduleId: module.id,
