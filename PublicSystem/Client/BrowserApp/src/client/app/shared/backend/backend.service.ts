@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import { Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/do';
@@ -46,6 +47,20 @@ export class BackendService {
         }
     }
 
+  postData (url: string, data: any): Observable<any> {
+    let body = JSON.stringify(data);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    // This is the code from https://angular.io/docs/ts/latest/guide/server-communication.html
+    //return this.http.post(url, body, options)
+    //                .map(this.extractData)
+    //                .catch(this.handleError);
+
+    // This is what I wrote -- not tested.
+    return this.http.post(url, body, options)
+        .map((res: any) => res.json());
+  }
 
 /*       
     getMeetingFromFile(): Observable<{}[]> {

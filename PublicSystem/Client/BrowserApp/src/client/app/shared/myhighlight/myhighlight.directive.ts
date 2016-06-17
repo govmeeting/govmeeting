@@ -93,6 +93,8 @@ export class MyHighlightDirective {
         // If start = end, then they just clicked and didn't select.
         if (start === end) return;
 
+        end = end -1; // last character selected is one less.
+
         var startNode = selection.range.startContainer;
         console.log('startNode=' + startNode);
 

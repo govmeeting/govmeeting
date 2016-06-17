@@ -97,6 +97,19 @@ namespace WebApp
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                /* This is for Angular SPA routes. When someone does a browser refresh or uses a 
+                 * bookmark that's a deep link into the SPA, a request is sent to the server, instead
+                 * of being handled by the SPA. The server does not find a controller for this route
+                 * and returns a 404, Not Found. This map route redirects the request immediately to
+                 * the index page of the Home controller. This returns the page containing the SPA. Once
+                 * the SPA is running, it sees the URL that is being requested and handles it properly.
+                 */
+                routes.MapRoute(
+                    name: "spa-fallback",
+                    template: "{*url}",
+                    defaults: new { controller = "Home", action = "index" });
+
             });
         }
 

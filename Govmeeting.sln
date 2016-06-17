@@ -108,26 +108,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BrowserApp", "PublicSystem\
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WebApp", "PublicSystem\Server\WebApp\WebApp.xproj", "{143C463E-3022-4D08-94C2-AD23C19AD4C3}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AddTags", "VolunteerSystem\Client\AddTags\", "{D91C7B13-3AC1-4DF3-A07F-84988EC21203}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_57948"
-		Debug.AspNetCompiler.PhysicalPath = "VolunteerSystem\Client\AddTags\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57948\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_57948"
-		Release.AspNetCompiler.PhysicalPath = "VolunteerSystem\Client\AddTags\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_57948\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "57948"
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -186,10 +166,6 @@ Global
 		{143C463E-3022-4D08-94C2-AD23C19AD4C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{143C463E-3022-4D08-94C2-AD23C19AD4C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{143C463E-3022-4D08-94C2-AD23C19AD4C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D91C7B13-3AC1-4DF3-A07F-84988EC21203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D91C7B13-3AC1-4DF3-A07F-84988EC21203}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D91C7B13-3AC1-4DF3-A07F-84988EC21203}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{D91C7B13-3AC1-4DF3-A07F-84988EC21203}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -216,6 +192,5 @@ Global
 		{A2D2E3AB-4CF9-4C72-B1AD-21BEB7EA51D7} = {D5775C0E-970A-4DD1-B7D5-7B947F6BE7D7}
 		{5A7A0A4D-DA39-4153-966B-8892173E4265} = {116FC8D2-6465-4929-B3E7-23E443E82ECA}
 		{143C463E-3022-4D08-94C2-AD23C19AD4C3} = {D5775C0E-970A-4DD1-B7D5-7B947F6BE7D7}
-		{D91C7B13-3AC1-4DF3-A07F-84988EC21203} = {CCB27C7A-5A6B-443B-9430-477D4A271768}
 	EndGlobalSection
 EndGlobal

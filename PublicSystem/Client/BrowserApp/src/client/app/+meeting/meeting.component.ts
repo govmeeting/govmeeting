@@ -29,6 +29,6 @@ import {UserchoiceService} from '../shared/index';
         UserchoiceService
     ],
 
-  styleUrls: ['meeting.component.css']
+   styleUrls: ['meeting.component.css']
 })
 export class MeetingComponent {}
