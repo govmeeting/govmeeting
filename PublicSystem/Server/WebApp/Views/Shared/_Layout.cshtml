@@ -4,11 +4,13 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>@ViewData["Title"] - WebApp</title>
-
+        <!--
+        "ba" is defined in startup.cs as a new PhysicalFileProvider and points to the Client/BrowserApp folder
+        -->
         <environment names="Development">
             <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
             <link rel="stylesheet" href="~/css/site.css" />
-            <link rel="stylesheet" href="~/prod/css/main.css?1466603800031">
+            <link rel="stylesheet" href="ba/dist/prod/css/main.css?1466603800031">
         </environment>
         <environment names="Staging,Production">
             <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
@@ -61,8 +63,8 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/prod/js/shims.js?1463764236153"></script>
-        <script src="~/prod/js/app.js?1463764236155"></script>
+        <script src="ba/dist/prod/js/shims.js?1463764236153"></script>
+        <script src="ba/dist/prod/js/app.js?1463764236155"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"

@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WebApp.Models;
 using WebApp.Services;
+using Microsoft.AspNet.StaticFiles;
+using Microsoft.AspNet.FileProviders;
+using Microsoft.AspNet.Http;
 
 namespace WebApp
 {
@@ -87,6 +90,12 @@ namespace WebApp
             app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
             app.UseStaticFiles();
+            
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(@"F:\GOVMEETING\CODE\SOURCE\Govmeeting\PublicSystem\Client\BrowserApp"),
+                RequestPath = new PathString("/ba")
+            });
 
             app.UseIdentity();
 

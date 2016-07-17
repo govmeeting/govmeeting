@@ -7,6 +7,9 @@ final files are only a single index.html, a main.js, a shim.js and a single main
 The configuration for the tools is in tools/config/seed.config.ts. And project specific configuration
 goes into tools/config/project.config.ts.
 
+==============================
+Updating angular2-seed
+==============================
 Updating to a newer version of angular2-seed normally means three steps:
  (1) downloading the latest Github release
  (2) substituting the src folder with our own.
@@ -45,13 +48,11 @@ Step 2 - Declare the bootstrap.min.css and bootstrap.min.js file as injectable i
 	  {src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs'},
 	  {src: 'bootstrap/dist/css/bootstrap.min.css', inject: true}, // inject into css section
 
-========================================
-Replaced bootrap with bootrap-grid-only
-========================================
+However later I replaced bootrap with bootrap-grid-only
 
-* Run the following:
+* I ran the following:
 	npm install bootstrap-grid-only --save
-* Replace the two lines above for bootstrap in project.config.ts with:
+* I replaced the two lines above for bootstrap in project.config.ts with:
 	{src: 'bootstrap-grid-only/bootstrap.css', inject: true} // inject into css section
 
 ==============================
@@ -62,7 +63,6 @@ I downloaded the latest angular2seed on 2016-07-08. I got errors after the insta
 because the latest angular2seed uses the newer routing method in angular 2. The new way is to
 bootstrap our app with an array of routes using the provideRouter function. 
 Angular2seed also added a config service in app\shared\config.
-This is a report of the changed files in the sample app (from june to July):
 
 Each routable component folder now has a "<name>.routes.ts" file. And there is a "app.routes.ts"
 file in /app.
