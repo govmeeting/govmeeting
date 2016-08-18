@@ -52,7 +52,13 @@ namespace WebApp
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            // Add framework services.
             services.AddMvc();
+
+            // Add our repository type
+            services.AddSingleton<IMeetingRepository, MeetingRepository>();
+            services.AddSingleton<ITranscriptRepository, TranscriptRepository>();
+            services.AddSingleton<IAddtagsRepository, AddtagsRepository>();
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();

@@ -5,13 +5,16 @@ import { Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 //import {Headers, RequestOptions} from '@angular/http';
 
 @Injectable()
 export class BackendService {
 
-    private _meetingUrl = 'assets/BBH-2014-09-08.json';
-    //private _meetingUrl = 'http://birdw8.com:57233/api/transcript';
+    //private _meetingUrl = 'assets/BBH-2014-09-08.json';
+    //private _meetingUrl = 'http://birdw8.com:60366/api/transcript';
+    private _meetingUrl = 'http://localhost:60366/api/transcript';
 
     // private _meetingData: any = {};
     private data: any;
@@ -24,7 +27,12 @@ export class BackendService {
         return this.getData(this._meetingUrl);
     }
 
-    getData(url: string): Observable<any> {
+    postMeeting(): Observable<any> {
+        console.log("postMeeting in backend.service");
+        return this.postData(this._meetingUrl, "my meeting data");
+    }
+
+    private getData(url: string): Observable<any> {
         if(this.data) {
         // if `data` is available just return it as `Observable`
         return Observable.of(this.data);
@@ -47,7 +55,8 @@ export class BackendService {
         }
     }
 
-  postData (url: string, data: any): Observable<any> {
+    postData(url: string, data: any): Observable<any> {
+    //private postData (url: string, data: any) {
     let body = JSON.stringify(data);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
@@ -58,8 +67,17 @@ export class BackendService {
     //                .catch(this.handleError);
 
     // This is what I wrote -- not tested.
-    return this.http.post(url, body, options)
-        .map((res: any) => res.json());
+    //return this.http.post(url, body, options)
+    //    .map((res: any) => res.json());
+
+    // From "asp.net core and angular2 - Part2"
+
+    console.log("postData in backend.service");
+    return this.http.post(url, body, options);
+        //.map(res => console.info(res))
+        //.catch(this.handleError);
+
+
   }
 
 /*       
@@ -77,13 +95,14 @@ export class BackendService {
         let body = res.json();
         return body.data || { };
     }
-    
+*/
+
     private handleError (error: any) {
         // In a real world app, we might send the error to remote logging infrastructure
         let errMsg = error.message || 'Server error';
         console.error(errMsg); // log to console instead
         return Observable.throw(errMsg);
     }
-*/
+
 }
 

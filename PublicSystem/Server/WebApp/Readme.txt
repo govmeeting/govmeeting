@@ -145,3 +145,51 @@ https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-
 Go to Tools –> Options –> Projects and Solutions –> External Web Tools.
 I moved $(PATH) to be above $(DevEnvDir)\Extensions\Microsoft\Web Tools\External.
 This ensures that the global PATH is used before the path to VS's internal tools.
+
+###########################################################
+Fix Intellisense error for RxJs
+###########################################################
+
+There were many Intellisense errors for all methods from RxJs. For example:
+	Error	TS2339	Property 'of' does not exist on type 'typeof Observable'.
+There was a red squiggly under node_modules/rxjs. Hovering over it, showed many errors saying:
+	Invalid module name in  Augmentation ...
+Here are links about this problem:
+    https://github.com/ReactiveX/rxjs/issues/1696
+	
+It appears thatthat VS uses a different version of node/npm than that installed globally and
+the version that is being used by the angular2-seed tools and used when developing in VS Code.
+To change this we need to 
+	* go to the project's Options -> Project and Solutions -> External Tools
+	* Add a new entry and move it to the top "C:\Program Files\nodejs".
+I tried this and it did not solve the problem.
+
+Other onlne suggestions in were to upgrade node and npm to the latest version.
+http://josharepoint.com/2016/05/04/how-to-configure-visual-studio-2015-integration-with-latest-version-of-node-js-and-npm/
+I installed the latest versions: npm 3.10.3 and node v6.3.0.
+This also did not solve the problem.
+
+The Typescript intellisense must depend on the version of the Typescript compiler that VS is using.
+This link has the typescript downloads for VS2015:
+    https://www.microsoft.com/en-us/download/details.aspx?id=48593
+I downloaded Typescript 1.8.6 and installed it.
+This link shows how to see which version is being used:
+    http://stackoverflow.com/questions/35715015/where-is-the-typescript-tools-version-set-in-an-asp-net-5-project
+It is in C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio\v14.0\TypeScript\Microsoft.TypeScript.targets
+Mine now shows: <TypeScriptToolsVersion Condition="'$(TypeScriptToolsVersion)'==''">1.8</TypeScriptToolsVersion>
+This change also did not solve the problem.
+
+I drilled down into squiggly lines under node_modules/rsjs/
+It took me to node_modules/rsjs/add/observable/of.d.ts and other files with the red lines.
+I opened a few files to look inside and then !MAGIC!, the red squiggly lines disappeared.
+If I reopened a certain file they came back. At a moment when they were gone, I closed the node_modules
+folder. They seem to be staying away for now.
+The problem returned.
+
+I found this solution:
+	https://github.com/Microsoft/TypeScript/issues/8518#issuecomment-229506507
+The solution is: "For VS 2015 (Update 3):
+    Install VS 2015 Update 3
+    Replace C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TypeScript\typescriptServices.js
+	with the file in https://raw.githubusercontent.com/Microsoft/TypeScript/Fix8518-U3/lib/typescriptServices.js.
+	First take a local backup though."

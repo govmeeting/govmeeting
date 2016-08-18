@@ -31,4 +31,18 @@ import {UserchoiceService} from '../shared/index';
 
    styleUrls: ['meeting.component.css']
 })
-export class MeetingComponent {}
+export class MeetingComponent {
+
+    constructor(private _backendService: BackendService) { };
+
+    postMeeting() {
+        console.log('postMeeting');
+        this._backendService.postMeeting()
+        .subscribe(
+            t => {
+                
+                t
+            })
+            //error => this.errorMessage = <any>error);
+    }
+}

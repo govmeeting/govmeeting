@@ -6,7 +6,7 @@
 }
 
 .tinypadding {
-   padding: 1;
+   padding: 1px;
    /* margin: 1; */
 }
 </style>
@@ -15,7 +15,7 @@
 	<div class="col-sm-12">
 
 		<div class="row">
-			<div class="col-sm-12" style="padding:1">
+			<div class="col-sm-12" style="padding:1px">
 				<div id="header" style="background:#ddd">
 					<gm-heading></gm-heading>
 				</div>
@@ -24,14 +24,15 @@
 
 		<div class="row gutter-0.row">
 			<div class="col-md-10 col-sm-9 col-xs-6">
-				<div id="main" style="background:#fff;padding:1">
+				<div id="main" style="background:#fff;padding:1px">
+                    <button (click)="postMeeting()">Post Meeting</button>
 					<gm-browse-meeting></gm-browse-meeting>
 				</div>
 			</div>
 
 			<!-- The sidebar contains the options for choosing a topic or a speaker.  Only what is chosen
 			will be displayed in the main content. -->
-			<div class="col-md-2 col-sm-3 col-xs-6" style="padding:1">
+			<div class="col-md-2 col-sm-3 col-xs-6" style="padding:1px">
 				<div id="sidebar">
 				[Select topic/speaker] <br><br>
 					<gm-topics></gm-topics>
@@ -48,5 +49,5 @@
 			</div>
 		</div>
 
-	<div>
+	</div>
 </div>

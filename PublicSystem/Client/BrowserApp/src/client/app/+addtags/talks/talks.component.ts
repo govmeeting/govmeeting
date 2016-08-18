@@ -33,19 +33,31 @@ export class TalksComponent implements OnInit {
 //  Get the data that we need.
 ///////////////////////////////////////////////////////////////
 
-    // The following would bypass reading from a file and get the list in memory.
-    //ngOnInit() {this.talks = this._talkService.getTalks();}
-
     ngOnInit() {
         this.getTalks();
+
+        // The following would get the list in memory.
+        // this.talks = this._talkService.getTalksFromMemory();
+
         //this.getTopics();
     }
 
     getTalks() {
-        this._talkService.getTalksFromFile()
+        this._talkService.getTalks()
         .subscribe(
         talks => this.talks = talks,
         error => this.errorMessage = <any>error);
+    }
+
+    saveChanges() {
+        console.log('saveTranscript');
+        //this._talkService.postChanges(this.talks)
+        this._talkService.postChanges()
+            .subscribe(
+            t => {
+                t
+            })
+        //error => this.errorMessage = <any>error);
     }
 
 /*
