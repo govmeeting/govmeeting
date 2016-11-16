@@ -15,6 +15,7 @@ using Microsoft.AspNet.StaticFiles;
 using Microsoft.AspNet.FileProviders;
 using Microsoft.AspNet.Http;
 using System.IO;
+using Microsoft.AspNet.Authentication.Google;
 
 namespace WebApp
 {
@@ -48,13 +49,35 @@ namespace WebApp
                 .AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                // Govmeeting: Set options for cookie expiration.
+                options.Cookies.ApplicationCookie.SlidingExpiration = true;
+                options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromHours(1);
+                // Govmeeting: Set option for password lehgth.
+                options.Password.RequiredLength = 10;
+                // Govmeeting: Set lockout options.
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // amount of time they are locked out
+                options.Lockout.AllowedForNewUsers = true;
+                // TODO: We should send the admin an email if someone is locked out.
+                // Govmeeting: Require email confirmation
+                options.SignIn.RequireConfirmedEmail = true;
+            })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            // Govmeeting: Brock Allen suggest stronger hashing instead of the default.
+            //services.Configure<PasswordHasherOptions>(options =>
+            //{
+            //    options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV2;
+            //    options.IterationCount = 20000;
+            //}
+           
+
             // This is code in progress. I just copied this code from Dominick Baier's sample.
             // See StatusRequirement.cs
-            services.AddAuthorization(options =>
+                       services.AddAuthorization(options =>
             {
                 options.AddPolicy("DevInterns", policy =>
                 {
@@ -139,6 +162,17 @@ namespace WebApp
             app.UseIdentity();
 
             // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
+
+            // Govmeeting: Add Google middleware authentication. We also added 
+            // "Microsoft.AspNet.Authentication.Google" dependency in project.json and using statement above.
+            // http://localhost:60366/signin-google
+            app.UseGoogleAuthentication(new GoogleOptions
+            {
+                ClientId = Configuration["ExternalAuth:Google:ClientId"],
+                ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"],
+                AuthenticationScheme = "Google",
+                SignInScheme = new Microsoft.AspNet.Identity.IdentityCookieOptions().ExternalCookieAuthenticationScheme
+            });
 
             app.UseMvc(routes =>
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,13 +13,15 @@ namespace WebApp.Services
     {
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            // Plug in your email service here to send an email.
+            // Govmeeting: We put the stub code that Brock Allen used in his video to write the code to a file.
+            File.AppendAllText(@"c:\tmp\WebbApp_email.txt", email + ", " + subject + ", " + message + "\r\n");
             return Task.FromResult(0);
         }
 
         public Task SendSmsAsync(string number, string message)
         {
-            // Plug in your SMS service here to send a text message.
+            // Govmeeting: Brock Allen's stub code
+            File.AppendAllText(@"c:\tmp\WebbApp_sms.txt", number + ", " + message + "\r\n");
             return Task.FromResult(0);
         }
     }
