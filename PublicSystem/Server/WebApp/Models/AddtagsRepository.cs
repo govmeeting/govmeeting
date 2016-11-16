@@ -35,6 +35,21 @@ namespace WebApp.Models
             return item;
         }
 
+        // Example: Get("johnpank", "Philadelphia", "CityCouncil", "2016-03-17")
+        public Addtags Get(string username, string city, string govEntity, string meetingDate)
+        {
+            // TODO - check permissions
+
+            // Todo - change to get a default entity
+            if (govEntity == null) govEntity = "CityCouncil";
+
+            // Todo - change to get the latest meeting
+            if (meetingDate == null) meetingDate = "2016-03-17";
+
+            string path = city + "_" + govEntity + "_" + meetingDate + ".json";
+            return GetByPath("assets/" + path);
+        }
+
         public Addtags GetByPath(string path)
         {
             string addtagsString = Readfile(path);
@@ -65,15 +80,17 @@ namespace WebApp.Models
         public void PutByPath(string path, Addtags value)
         {
             string stringValue = JsonConvert.SerializeObject(value, Formatting.Indented);
+            //File.WriteAllText(outfile, stringValue);
+
         }
 
-       /*public Addtags Remove(string key)
-          {
-              Addtags item;
-              _addtags.TryGetValue(key, out item);
-              _addtags.TryRemove(key, out item);
-              return item;
-          }*/
+        /*public Addtags Remove(string key)
+           {
+               Addtags item;
+               _addtags.TryGetValue(key, out item);
+               _addtags.TryRemove(key, out item);
+               return item;
+           }*/
 
         public void Update(Addtags item)
         {

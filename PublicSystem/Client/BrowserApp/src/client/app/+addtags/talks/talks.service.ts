@@ -8,9 +8,10 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class TalksService {
-    //private _talksUrl = 'assets/talks.json'; // URL to web api
-    private _talksFileUrl = 'assets/Philadelphia_CityCouncil_09-25-2014.json';
-    private _talksUrl = 'http://localhost:60366/api/addtags';
+    //private _talksFileUrl = 'assets/talks.json'; // URL to web api
+    private _talksFileUrl = 'assets/Philadelphia_CityCouncil_2014-09-25.json';
+    //private _talksUrl = 'http://localhost:60366/api/addtags';
+    private _talksUrl = 'http://localhost:60366/api/addtags/Philadelphia/CityCouncil/2014-09-25';
 
     constructor (private http: Http) {}
 
@@ -55,9 +56,6 @@ export class TalksService {
         //.map(res => console.info(res))
         //.catch(this.handleError);
     }
-
-
-
 
     private extractData(res: Response) {
         if (res.status < 200 || res.status >= 300) {

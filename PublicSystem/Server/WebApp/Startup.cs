@@ -52,6 +52,32 @@ namespace WebApp
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            // This is code in progress. I just copied this code from Dominick Baier's sample.
+            // See StatusRequirement.cs
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("DevInterns", policy =>
+                {
+                    policy.AddRequirements(new StatusRequirement("development", "intern"));
+
+                    // ..or using an extension method
+                    //policy.RequireStatus("development", "intern");
+                });
+
+                /* Other way of doing the above without an external class:
+                // inline policies
+                options.AddPolicy("SalesOnly", policy =>
+                {
+                    policy.RequireClaim("department", "sales");
+                });
+                options.AddPolicy("SalesSenior", policy =>
+                {
+                    policy.RequireClaim("department", "sales");
+                    policy.RequireClaim("status", "senior");
+                });
+                */
+            });
+            
             // Add framework services.
             services.AddMvc();
 
@@ -120,7 +146,11 @@ namespace WebApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
 
-                /* This is for Angular SPA routes. When someone does a browser refresh or uses a 
+                routes.MapRoute(
+                    name: "API Addtags+Transcripts",
+                    template: "{controller=Addtags}/{city}/{govEntity?}/{meetingDate?}");
+
+                /* The following is for Angular SPA routes. When someone does a browser refresh or uses a 
                  * bookmark that's a deep link into the SPA, a request is sent to the server, instead
                  * of being handled by the SPA. The server does not find a controller for this route
                  * and returns a 404, Not Found. This map route redirects the request immediately to

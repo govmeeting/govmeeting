@@ -19,7 +19,13 @@ namespace Webapp.Controllers
         [HttpGet]
         public Transcript Get()
         {
-            return transcripts.GetByPath("assets/BBH-2014-09-08 - Copy.json");
+            return transcripts.GetByPath("assets/BoothbayHarbor_Selectmen_2014-09-08.json");
+        }
+
+        [HttpGet("{city}/{govEntity?}/{meetingDate?}")]
+        public Transcript Get(string city, string govEntity = null, string meetingDate = null)
+        {
+            return transcripts.Get(city, govEntity, meetingDate);
         }
 
         /*
@@ -30,7 +36,7 @@ namespace Webapp.Controllers
             //return "value";
             switch (id) {
                 case 1: 
-                    return transcripts.GetByPath("assets/BBH-2014-09-08.json");
+                    return transcripts.GetByPath("assets/BoothbayHarbor_Selectmen_2014-09-08.json");
                 case 2:
                     return transcripts.GetByPath("assets/Philadelphia_CityCouncil_03_17_2016.json");
             }

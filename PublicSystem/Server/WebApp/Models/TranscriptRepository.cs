@@ -35,6 +35,19 @@ namespace WebApp.Models
             return item;
         }
 
+        // Example: Get("BoothbayHarbor", "Selectmen", "2014-09-08")
+        public Transcript Get(string city, string govEntity, string meetingDate)
+        {
+            // Todo - change to get a default entity
+            if (govEntity == null) govEntity = "Selectmen";
+
+            // Todo - change to get the latest meeting
+            if (meetingDate == null) meetingDate = "2014-09-08";
+
+            string path = city + "_" + govEntity + "_" + meetingDate + ".json";
+            return GetByPath("assets/" + path);
+        }
+
         public Transcript GetByPath(string path)
         {
             string transcriptString = Readfile(path);

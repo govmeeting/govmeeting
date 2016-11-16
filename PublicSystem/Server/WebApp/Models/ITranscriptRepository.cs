@@ -10,6 +10,7 @@ namespace WebApp.Models
         //void Add(Transcript item);
         //IEnumerable<Transcript> GetAll();
 
+        Transcript Get(string city, string govEntity, string meetingDate);
         Transcript GetByPath(string path);
         Transcript Find(string key);
         //Transcript Remove(string key);

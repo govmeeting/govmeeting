@@ -20,7 +20,7 @@ namespace WebApp.Models
                 municipality = "Boothbay Harbor",
                 meetingInfo = new Meetinginfo
                 { name = "Boothbay Harbor Selectmen meeting", date = "Sept. 8, 2014" },
-                path = "../testdata/BBH-2014-09-08.json"
+                path = "assets/BoothbayHarbor_Selectmen_2014-09-08.json"
             });
             Add(new Meeting
             {
@@ -30,7 +30,7 @@ namespace WebApp.Models
                 municipality = "Philadelphia",
                 meetingInfo = new Meetinginfo
                 { name = "Philadelphia City Council meeting", date = "March 17, 2016" },
-                path = "../testdata/Philadelphia_CityCouncil_03_17_2016.json"
+                path = "assets/Philadelphia_CityCouncil_2016-03-17.json"
             });
             Add(new Meeting
             {
@@ -40,7 +40,7 @@ namespace WebApp.Models
                 municipality = "Philadelphia",
                 meetingInfo = new Meetinginfo
                 { name = "Philadelphia City Council meeting", date = "Sept. 25, 2014" },
-                path = "../testdata/Philadelphia_CityCouncil_09-25-2014.json"
+                path = "assets/Philadelphia_CityCouncil_2014-09-25.json"
             });
         }
 
