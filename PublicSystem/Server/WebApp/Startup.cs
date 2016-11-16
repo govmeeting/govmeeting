@@ -55,7 +55,7 @@ namespace WebApp
                 options.Cookies.ApplicationCookie.SlidingExpiration = true;
                 options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromHours(1);
                 // Govmeeting: Set option for password lehgth.
-                options.Password.RequiredLength = 10;
+                options.Password.RequiredLength = 8;
                 // Govmeeting: Set lockout options.
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // amount of time they are locked out
@@ -75,18 +75,32 @@ namespace WebApp
             //});
 
 
-
-            // This is code in progress. I just copied this code from Dominick Baier's sample.
-            // See StatusRequirement.cs
+            // https://docs.asp.net/en/latest/security/authorization/claims.html
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("DevInterns", policy =>
+                options.AddPolicy("SysAdmin", policy =>
                 {
-                    policy.AddRequirements(new StatusRequirement("development", "intern"));
-
-                    // ..or using an extension method
-                    //policy.RequireStatus("development", "intern");
+                    policy.RequireClaim("Administrator", "System");
                 });
+
+                // TODO We need policies that are more dynamic and flexible.
+                // These will work temporarily.
+                options.AddPolicy("PhillyEditor", policy =>
+                {
+                    policy.RequireClaim("Editor", "Philadelphia");
+                });
+                options.AddPolicy("BbhEditor", policy =>
+                {
+                    policy.RequireClaim("Editor", "Boothbay Harbor");
+                });
+
+                //options.AddPolicy("DevInterns", policy =>
+                //{
+                //    policy.AddRequirements(new StatusRequirement("development", "intern"));
+
+                //    // ..or using an extension method
+                //    //policy.RequireStatus("development", "intern");
+                //});
 
                 /* Other way of doing the above without an external class:
                 // inline policies

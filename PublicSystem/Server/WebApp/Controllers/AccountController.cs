@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using WebApp.Models;
 using WebApp.Services;
 using WebApp.ViewModels.Account;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace WebApp.Controllers
 {
@@ -105,6 +107,14 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                Debug.WriteLine("Register: Validating Email Address");
+                if (!IsValidEmail(model.Email))
+                {
+                    Debug.WriteLine(string.Format("Register: Email Address {0} is not valid"));
+                    ModelState.AddModelError("", "Invalid email address");
+                    return View(model);
+                }
+                Debug.WriteLine("Register: Creating new ApplicationUser");
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -112,8 +122,13 @@ namespace WebApp.Controllers
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
 
-                    // Govmeeting: We uncommented these lines which ask the user to confirm their email.
+                    Debug.WriteLine("Register: Sending Email Code");
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    Debug.WriteLine(string.Format("Register: Email for code {0} is {1}", model.Email, code));
+
+                    // TODO Check why Adrian Hall uses "Context" and not HttpContext.
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Context.Request.Scheme);
+
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                         "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
@@ -122,7 +137,9 @@ namespace WebApp.Controllers
                     // await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
                     //return RedirectToAction(nameof(HomeController.Index), "Home");
-                    return Redirect("~/");
+
+                    ViewBag.Link = callbackUrl;
+                    return View("RegisterEmail");
                 }
                 AddErrors(result);
             }
@@ -236,16 +253,20 @@ namespace WebApp.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
+            Debug.WriteLine("ConfirmEmail: Checking for userId = " + userId);
             if (userId == null || code == null)
             {
-                return View("Error");
+                Debug.WriteLine("ConfirmEmail: Invalid Parameters");
+                return View("ConfirmEmailError");
             }
+            Debug.WriteLine("ConfirmEmail: Looking for userId");
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return View("Error");
+                Debug.WriteLine("ConfirmEmail: Could not find user");
+                return View("ConfirmEmailError");
             }
-            // Govmeeting: When user returns here to confirm email, we want to prompt for password.
+            Debug.WriteLine("ConfirmEmail: Found user - Send to ConfirmEmailPrompt view to check password");
             ViewData["userId"] = userId;
             ViewData["code"] = code;
             return View("ConfirmEmailPrompt");
@@ -259,31 +280,34 @@ namespace WebApp.Controllers
         {
             if (userId == null || code == null)
             {
-                return View("Error");
+                Debug.WriteLine("ConfirmEmail: Invalid Parameters");
+                return View("ConfirmEmailError");
             }
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return View("Error");
+                Debug.WriteLine("ConfirmEmail: Could not find user");
+                return View("ConfirmEmailError");
             }
 
+            Debug.WriteLine("ConfirmEmail: Checking Password");
             if (false == await _userManager.CheckPasswordAsync(user, password))
             {
-                return View("Error");
+                Debug.WriteLine("ConfirmEmail: Password check failed");
+                return View("ConfirmEmailError");
             }
 
+            Debug.WriteLine("ConfirmEmail: Checking email code");
             var result = await _userManager.ConfirmEmailAsync(user, code);
+            if (!result.Succeeded)
+            {
+                Debug.WriteLine("ConfirmEmail: Password check failed");
+                return View("ConfirmEmailError");
+            }
 
-            // Govmeeting: Signin automatically if succcessful.
-            if (result.Succeeded)
-            {
-                await _signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction(nameof(HomeController.Index), "Home");
-            }
-            else
-            {
-                return View("Error");
-            }
+            Debug.WriteLine("ConfirmEmail: Signin automatically if succcessful");
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
         //
@@ -484,6 +508,7 @@ namespace WebApp.Controllers
         {
             foreach (var error in result.Errors)
             {
+                Debug.WriteLine(string.Format("Register: Adding Error: {0}:{1}", error.Code, error.Description));
                 ModelState.AddModelError(string.Empty, error.Description);
             }
         }
@@ -502,6 +527,22 @@ namespace WebApp.Controllers
             else
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+        }
+        public bool IsValidEmail(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return false;
+
+            // Return true if strIn is in valid e-mail format.
+            try
+            {
+                return Regex.IsMatch(s, @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                      RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
             }
         }
 

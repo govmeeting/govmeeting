@@ -15,6 +15,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WebApp.Controllers
 {
+    [Authorize("SysAdmin")]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _dbContext;

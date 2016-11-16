@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using WebApp.Models;
+using Microsoft.AspNet.Authorization;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -45,11 +46,13 @@ namespace Webapp.Controllers
 
         // POST api/transcript
         [HttpPost]
+        [Authorize("PhillyEditor")]
         public void Post([FromBody]string value)
         {
         }
 
         // PUT api/transcript/5
+        [Authorize("PhillyEditor")]
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
@@ -57,6 +60,7 @@ namespace Webapp.Controllers
         }
 
         // DELETE api/transcript/5
+        [Authorize("PhillyEditor")]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
