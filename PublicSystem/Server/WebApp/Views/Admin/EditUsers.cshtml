@@ -1,0 +1,58 @@
+﻿@model IList<UserInfo>
+@{
+    ViewBag.Title = "Users";
+}
+<h2>Users Listing </h2>
+<hr />
+    @foreach (var user in Model)
+    {
+        <strong> @user.userName @user.email @user.phoneNumber </strong>
+
+        @using (Html.BeginForm("DeleteUser", "Admin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            @Html.Hidden("userId", @user.id)
+
+            <input onclick="return confirm('Are you sure to delete?')" type="submit" value="Delete User" style="color:red;"/>
+        }
+
+        @foreach (var claim in user.claims)
+        {
+            <ul>
+                <strong> @claim.type of @claim.value </strong>
+                @using (Html.BeginForm("DeleteUserClaim", "Admin", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    @Html.Hidden("userId", @user.id)
+                    @Html.Hidden("type", @claim.type)
+                    @Html.Hidden("value", @claim.value)
+
+                    <input onclick="return confirm('Are you sure to delete?')" type="submit" value="Delete Role" style="color:red;"/>
+                }
+
+            </ul>
+        }
+        <ul>
+            @using (Html.BeginForm("AddUserClaim", "Admin", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="editor-label">
+                    @Html.Hidden("userId", @user.id)
+                </div>
+
+
+                <strong>Add Role</strong>
+                @Html.DropDownList("type", new SelectList(new[] { "Editor", "Manager", "Administrator" }))
+                @Html.DropDownList("value", new SelectList(new[] { "Philadelphia", "Boothbay Harbor", "System" }))
+
+                <input type="submit" value="Save" />
+            }
+        </ul>
+    }
+

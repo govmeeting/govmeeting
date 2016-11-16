@@ -72,12 +72,13 @@ namespace WebApp
             //{
             //    options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV2;
             //    options.IterationCount = 20000;
-            //}
-           
+            //});
+
+
 
             // This is code in progress. I just copied this code from Dominick Baier's sample.
             // See StatusRequirement.cs
-                       services.AddAuthorization(options =>
+            services.AddAuthorization(options =>
             {
                 options.AddPolicy("DevInterns", policy =>
                 {
@@ -177,12 +178,12 @@ namespace WebApp
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-
-                routes.MapRoute(
                     name: "API Addtags+Transcripts",
                     template: "{controller=Addtags}/{city}/{govEntity?}/{meetingDate?}");
+
+                routes.MapRoute(
+                   name: "default",
+                   template: "{controller=Home}/{action=Index}/{id?}");
 
                 /* The following is for Angular SPA routes. When someone does a browser refresh or uses a 
                  * bookmark that's a deep link into the SPA, a request is sent to the server, instead

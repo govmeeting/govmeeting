@@ -18,5 +18,6 @@ namespace WebApp.Models
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<GovmeetingClaim> GovmeetingClaim { get; set; }
     }
 }
