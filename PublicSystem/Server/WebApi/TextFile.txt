@@ -1,2 +1,0 @@
-﻿I used the following tutorial as a starting point for coding the web api:
-http://docs.asp.net/en/latest/tutorials/first-web-api.html
