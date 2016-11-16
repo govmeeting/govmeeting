@@ -73,13 +73,13 @@ this provider at the BrowserApp source file folder.
 
 === Modify startup.cs and define the "ba" PhysicalFileProvider path. === 
 
-    // Add a PhysicalFileProvider for the BrowserApp folder.
+	// Add a PhysicalFileProvider for the BrowserApp folder.
 	... set "browserAppPath" to location of BrowserApp source files ...
-    app.UseStaticFiles(new StaticFileOptions()
-    {
-        FileProvider = new PhysicalFileProvider(browserAppPath),
-            RequestPath = new PathString("/ba")
-    });
+	app.UseStaticFiles(new StaticFileOptions()
+	{
+		FileProvider = new PhysicalFileProvider(browserAppPath),
+			RequestPath = new PathString("/ba")
+	});
 
 === Modify views/shared/_Layout.cshtml ===
 
@@ -94,7 +94,7 @@ this provider at the BrowserApp source file folder.
 
 === Modify .vs/config/applicationhost.config ==
 	The following changes was made to the requestFiltering tag.
-      <requestFiltering allowDoubleEscaping="true">
+	  <requestFiltering allowDoubleEscaping="true">
 	Otherwise all the URLs in the app which contain a "+" character (+about, +addtags, etc) are rejected with a 404 error.
 
 Later I combined _LayoutDev.cshtml with _Layout.cshtml and used the Production/Development environment setting.
@@ -154,13 +154,13 @@ are added by WebApp.
 +                    template: "{*url}",
 +                    defaults: new { controller = "Home", action = "index" });
 
-                /* This is for Angular SPA routes. When someone does a browser refresh or uses a 
-                 * bookmark that's a deep link into the SPA, a request is sent to the server, instead
-                 * of being handled by the SPA. The server does not find a controller for this route
-                 * and returns a 404, Not Found. This map route redirects the request immediately to
-                 * the index page of the Home controller. This returns the page containing the SPA. Once
-                 * the SPA is running, it sees the URL that is being requested and handles it properly.
-                 */
+				/* This is for Angular SPA routes. When someone does a browser refresh or uses a 
+				 * bookmark that's a deep link into the SPA, a request is sent to the server, instead
+				 * of being handled by the SPA. The server does not find a controller for this route
+				 * and returns a 404, Not Found. This map route redirects the request immediately to
+				 * the index page of the Home controller. This returns the page containing the SPA. Once
+				 * the SPA is running, it sees the URL that is being requested and handles it properly.
+				 */
 
 
 
@@ -194,7 +194,7 @@ There were many Intellisense errors for all methods from RxJs. For example:
 There was a red squiggly under node_modules/rxjs. Hovering over it, showed many errors saying:
 	Invalid module name in  Augmentation ...
 Here are links about this problem:
-    https://github.com/ReactiveX/rxjs/issues/1696
+	https://github.com/ReactiveX/rxjs/issues/1696
 	
 It appears thatthat VS uses a different version of node/npm than that installed globally and
 the version that is being used by the angular2-seed tools and used when developing in VS Code.
@@ -210,10 +210,10 @@ This also did not solve the problem.
 
 The Typescript intellisense must depend on the version of the Typescript compiler that VS is using.
 This link has the typescript downloads for VS2015:
-    https://www.microsoft.com/en-us/download/details.aspx?id=48593
+	https://www.microsoft.com/en-us/download/details.aspx?id=48593
 I downloaded Typescript 1.8.6 and installed it.
 This link shows how to see which version is being used:
-    http://stackoverflow.com/questions/35715015/where-is-the-typescript-tools-version-set-in-an-asp-net-5-project
+	http://stackoverflow.com/questions/35715015/where-is-the-typescript-tools-version-set-in-an-asp-net-5-project
 It is in C:\Program Files (x86)\MSBuild\Microsoft\VisualStudio\v14.0\TypeScript\Microsoft.TypeScript.targets
 Mine now shows: <TypeScriptToolsVersion Condition="'$(TypeScriptToolsVersion)'==''">1.8</TypeScriptToolsVersion>
 This change also did not solve the problem.
@@ -228,7 +228,7 @@ The problem returned.
 I found this solution:
 	https://github.com/Microsoft/TypeScript/issues/8518#issuecomment-229506507
 The solution is: "For VS 2015 (Update 3):
-    Install VS 2015 Update 3
-    Replace C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TypeScript\typescriptServices.js
+	Install VS 2015 Update 3
+	Replace C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\CommonExtensions\Microsoft\TypeScript\typescriptServices.js
 	with the file in https://raw.githubusercontent.com/Microsoft/TypeScript/Fix8518-U3/lib/typescriptServices.js.
 	First take a local backup though."

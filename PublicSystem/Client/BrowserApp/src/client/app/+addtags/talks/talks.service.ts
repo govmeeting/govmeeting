@@ -1,13 +1,16 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
-import {Talk} from './talk.ts';
+import {Talk} from './talk';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class TalksService {
+
+// The code outlined in main.ts for checking the Name argument need to be used here.
+
     //private _talksFileUrl = 'assets/talks.json'; // URL to web api
     private _talksFileUrl = 'assets/Philadelphia_CityCouncil_2014-09-25.json';
     //private _talksUrl = 'http://localhost:60366/api/addtags';
@@ -16,7 +19,11 @@ export class TalksService {
     constructor (private http: Http) {}
 
     getTalks(): Observable<Talk[]> {
-        return this.http.get(this._talksUrl)
+
+// The code outlined in main.ts for checking the Name argument need to be used here.
+//        return this.http.get(this._talksUrl)
+
+        return this.http.get(this._talksFileUrl)
         .map(this.extractData)
         .catch(this.handleError);
     }

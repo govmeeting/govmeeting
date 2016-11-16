@@ -12,10 +12,11 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class BackendService {
 
-    //private _meetingUrl = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
+// The code outlined in main.ts for checking the Name argument need to be used here.
+    private _meetingUrl = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
     //private _meetingUrl = 'http://birdw8.com:60366/api/transcript';
     //private _meetingUrl = 'http://localhost:60366/api/transcript';
-    private _meetingUrl = 'http://localhost:60366/api/transcript/BoothbayHarbor/Selectmen/2014-09-08';
+    //private _meetingUrl = 'http://localhost:60366/api/transcript/BoothbayHarbor/Selectmen/2014-09-08';
 
     // private _meetingData: any = {};
     private data: any;

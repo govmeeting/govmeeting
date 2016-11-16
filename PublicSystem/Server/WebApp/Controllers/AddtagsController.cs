@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
 using WebApp.Models;
-using Microsoft.AspNet.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,9 +15,15 @@ namespace WebApp.Controllers
     {
         private readonly IAuthorizationService _authz;
 
-        public AddtagsController(IAuthorizationService authz)
+        // JP: ### Conversion to ASP.NET Core ###
+        // JP: FromServices attribute is no longer valid on a property. I moved this DI service to constructor
+        // [FromServices]
+        public IAddtagsRepository addtags { get; set; }
+
+        public AddtagsController(IAuthorizationService authz, IAddtagsRepository addtags)
         {
             _authz = authz;
+            this.addtags = addtags;
         }
 
         /*
@@ -27,9 +33,6 @@ namespace WebApp.Controllers
             return View();
         }
         */
-
-        [FromServices]
-        public IAddtagsRepository addtags { get; set; }
 
         // GET: api/addtags
         [HttpGet]

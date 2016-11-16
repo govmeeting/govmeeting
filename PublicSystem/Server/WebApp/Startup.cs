@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Data.Entity;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WebApp.Data;
 using WebApp.Models;
 using WebApp.Services;
-using Microsoft.AspNet.StaticFiles;
-using Microsoft.AspNet.FileProviders;
-using Microsoft.AspNet.Http;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Http;
 using System.IO;
-using Microsoft.AspNet.Authentication.Google;
+using WebApp.StartupCustomizations;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace WebApp
 {
@@ -25,7 +27,13 @@ namespace WebApp
         {
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
+
+                // JP: ### Conversion to ASP.NET Core ###
+                // These changes were made to new template.
+                .SetBasePath(env.ContentRootPath)
+                //.AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             if (env.IsDevelopment())
@@ -44,10 +52,15 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddEntityFramework()
-                .AddSqlServer()
-                .AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+
+            // JP: ### Conversion to ASP.NET Core ###
+            // JP: The latest template for ASP.NET Core remove the calls to AddEntityFramework and AddSqlServer
+            //services.AddEntityFramework()
+            //    .AddSqlServer()
+            services.AddDbContext<ApplicationDbContext>(options =>
+                // options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+                // We use User Secrets to store this. We left the development string in appsettings.json, but it is not used.
+                options.UseSqlServer(Configuration["Data_DefaultConnection_ConnectionString"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
@@ -119,6 +132,12 @@ namespace WebApp
             // Add framework services.
             services.AddMvc();
 
+            //services.Configure<RazorViewEngineOptions>(options =>
+            //{
+            //    options.ViewLocationExpanders.Add(new FeatureLocationExpander());
+            //});
+
+
             // Add our repository type
             services.AddSingleton<IMeetingRepository, MeetingRepository>();
             services.AddSingleton<ITranscriptRepository, TranscriptRepository>();
@@ -158,7 +177,10 @@ namespace WebApp
                 catch { }
             }
 
-            app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
+            // JP: ### Conversion to ASP.NET Core ###
+            // Remove call to app.UseIISPlatformHandler(); This is handled by UseIIS in Main.
+            // See: https://github.com/aspnet/Announcements/issues/164
+            // app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
             app.UseStaticFiles();
 
@@ -166,7 +188,12 @@ namespace WebApp
             string s = Directory.GetCurrentDirectory();     // directory of ...PublicSystem\Server\WebApp\wwwroot
             int i = s.LastIndexOf("\\");        // go back 1st of three backslashes
             i = s.LastIndexOf("\\", i - 1);     // second backslash
-            i = s.LastIndexOf("\\", i - 1);     // third backslash
+
+            // JP: ### Conversion to ASP.NET Core ###
+            // JP: GetCurrentDIrectory no longer gets ...PublicSystem\Server\WebApp\wwwroot but it gets ...PublicSystem\Server\WebApp
+            // JP: Why is this?
+            // i = s.LastIndexOf("\\", i - 1);     // third backslash
+
             string browserAppPath = s.Substring(0, i) + @"\Client\BrowserApp";  // ...PublicSystem\Client\BrowserApp 
             app.UseStaticFiles(new StaticFileOptions()
             {
@@ -183,10 +210,16 @@ namespace WebApp
             // http://localhost:60366/signin-google
             app.UseGoogleAuthentication(new GoogleOptions
             {
-                ClientId = Configuration["ExternalAuth:Google:ClientId"],
-                ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"],
+                //ClientId = Configuration["ExternalAuth:Google:ClientId"],
+                //ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"],
+                // We use the User Secrets store for this info.
+                ClientId = Configuration["ExternalAuth_Google_ClientId"],
+                ClientSecret = Configuration["ExternalAuth_Google_ClientSecret"],
                 AuthenticationScheme = "Google",
-                SignInScheme = new Microsoft.AspNet.Identity.IdentityCookieOptions().ExternalCookieAuthenticationScheme
+
+                // JP: ### Conversion to ASP.NET Core ###
+                //SignInScheme = new Microsoft.AspNet.Identity.IdentityCookieOptions().ExternalCookieAuthenticationScheme
+                SignInScheme = new Microsoft.AspNetCore.Identity.IdentityCookieOptions().ExternalCookieAuthenticationScheme
             });
 
             app.UseMvc(routes =>
@@ -215,6 +248,8 @@ namespace WebApp
         }
 
         // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
+        // JP: ### Conversion to ASP.NET Core ###
+        // JP: It appears that the latest template created a "Main" entry point in "program.cs"
+        //public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

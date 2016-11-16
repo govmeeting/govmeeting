@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Security.Claims;
-using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApp.Models;
+using WebApp.Models.ManageViewModels;
 using WebApp.Services;
-using WebApp.ViewModels.Manage;
+
+// Instructions for upgrading from ASP.NET 5 RC1 to ASP.NET Core 1.0
+// https://docs.microsoft.com/en-us/aspnet/core/migration/rc1-to-rtm
 
 namespace WebApp.Controllers
 {
@@ -51,6 +53,10 @@ namespace WebApp.Controllers
                 : "";
 
             var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return View("Error");
+            }
             var model = new IndexViewModel
             {
                 HasPassword = await _userManager.HasPasswordAsync(user),
@@ -101,6 +107,10 @@ namespace WebApp.Controllers
             }
             // Generate the token and send it
             var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return View("Error");
+            }
             var code = await _userManager.GenerateChangePhoneNumberTokenAsync(user, model.PhoneNumber);
             await _smsSender.SendSmsAsync(model.PhoneNumber, "Your security code is: " + code);
             return RedirectToAction(nameof(VerifyPhoneNumber), new { PhoneNumber = model.PhoneNumber });
@@ -143,7 +153,12 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> VerifyPhoneNumber(string phoneNumber)
         {
-            var code = await _userManager.GenerateChangePhoneNumberTokenAsync(await GetCurrentUserAsync(), phoneNumber);
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return View("Error");
+            }
+            var code = await _userManager.GenerateChangePhoneNumberTokenAsync(user, phoneNumber);
             // Send an SMS to verify the phone number
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
         }
@@ -292,8 +307,8 @@ namespace WebApp.Controllers
         {
             // Request a redirect to the external login provider to link a login for the current user
             var redirectUrl = Url.Action("LinkLoginCallback", "Manage");
-            var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl, User.GetUserId());
-            return new ChallengeResult(provider, properties);
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl, _userManager.GetUserId(User));
+            return Challenge(properties, provider);
         }
 
         //
@@ -306,7 +321,7 @@ namespace WebApp.Controllers
             {
                 return View("Error");
             }
-            var info = await _signInManager.GetExternalLoginInfoAsync(User.GetUserId());
+            var info = await _signInManager.GetExternalLoginInfoAsync(await _userManager.GetUserIdAsync(user));
             if (info == null)
             {
                 return RedirectToAction(nameof(ManageLogins), new { Message = ManageMessageId.Error });
@@ -338,9 +353,9 @@ namespace WebApp.Controllers
             Error
         }
 
-        private async Task<ApplicationUser> GetCurrentUserAsync()
+        private Task<ApplicationUser> GetCurrentUserAsync()
         {
-            return await _userManager.FindByIdAsync(HttpContext.User.GetUserId());
+            return _userManager.GetUserAsync(HttpContext.User);
         }
 
         #endregion

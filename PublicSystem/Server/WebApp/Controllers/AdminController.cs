@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
-using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApp.Models;
 using WebApp.Services;
-using WebApp.ViewModels.Manage;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Identity.EntityFramework;
+using WebApp.Data;
 
 namespace WebApp.Controllers
 {
@@ -26,12 +24,12 @@ namespace WebApp.Controllers
         private readonly ILogger _logger;
 
         public AdminController(
-        ApplicationDbContext dbContext,
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
-        IEmailSender emailSender,
-        ISmsSender smsSender,
-        ILoggerFactory loggerFactory)
+            ApplicationDbContext dbContext,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            IEmailSender emailSender,
+            ISmsSender smsSender,
+            ILoggerFactory loggerFactory)
         {
             _dbContext = dbContext;
             _userManager = userManager;
@@ -142,13 +140,13 @@ namespace WebApp.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteClaim(string type, string value)
-        // This is old code for deleting roles.
-        {
-            return View("EditClaims");
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteClaim(string type, string value)
+        //// This is old code for deleting roles.
+        //{
+        //    return View("EditClaims");
+        //}
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
         // The routine below are for editing other user information besides claims. -- NOT FINISHED CODING

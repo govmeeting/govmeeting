@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Net.Mail;
+//using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
@@ -159,33 +159,33 @@ namespace AspNetIdentity.Services
         }
         #endregion
 
-        public Task SendEmailAsync(string email, string subject, string message)
-        {
-            if (!this.IsConfigured)
-            {
-                Debug.WriteLine("EmailService is not configured");
-                Debug.WriteLine("SendEmailAsync: " + message);
-                return Task.FromResult(0);
-            }
+        //public Task SendEmailAsync(string email, string subject, string message)
+        //{
+        //    if (!this.IsConfigured)
+        //    {
+        //        Debug.WriteLine("EmailService is not configured");
+        //        Debug.WriteLine("SendEmailAsync: " + message);
+        //        return Task.FromResult(0);
+        //    }
 
-            SmtpClient client = new SmtpClient(this.Hostname, this.Port);
-            client.EnableSsl = this.Encryption.Equals("TLS");
-            if (this.Authenticated) {
-                client.Credentials = new System.Net.NetworkCredential(this.Username, this.Password);
-            }
+            //SmtpClient client = new SmtpClient(this.Hostname, this.Port);
+            //client.EnableSsl = this.Encryption.Equals("TLS");
+            //if (this.Authenticated) {
+            //    client.Credentials = new System.Net.NetworkCredential(this.Username, this.Password);
+            //}
 
-            MailAddress fromAddr = new MailAddress(this.FromAddress);
-            MailAddress toAddr = new MailAddress(email);
-            MailMessage mailmsg = new MailMessage(fromAddr, toAddr);
-            mailmsg.Body = message + "\r\n";
-            mailmsg.BodyEncoding = System.Text.Encoding.UTF8;
-            mailmsg.Subject = subject;
-            mailmsg.SubjectEncoding = System.Text.Encoding.UTF8;
+            //MailAddress fromAddr = new MailAddress(this.FromAddress);
+            //MailAddress toAddr = new MailAddress(email);
+            //MailMessage mailmsg = new MailMessage(fromAddr, toAddr);
+            //mailmsg.Body = message + "\r\n";
+            //mailmsg.BodyEncoding = System.Text.Encoding.UTF8;
+            //mailmsg.Subject = subject;
+            //mailmsg.SubjectEncoding = System.Text.Encoding.UTF8;
 
-            Debug.WriteLine("SendEmailAsync: Sending email to " + email);
-            Debug.WriteLine("SendEmailAsync: " + message);
-            return client.SendMailAsync(mailmsg);
-        }
+            //Debug.WriteLine("SendEmailAsync: Sending email to " + email);
+            //Debug.WriteLine("SendEmailAsync: " + message);
+            //return client.SendMailAsync(mailmsg);
+        //}
 
         #region Singleton Design Pattern
         private static EmailService instance;
