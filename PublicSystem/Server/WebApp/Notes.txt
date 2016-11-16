@@ -1,0 +1,25 @@
+I created the original WebApp project by choosing the template for: C# Web App -> ASP.NET 5 -> authentication = "Individual User Accounts"
+
+I then started making changes both to the generated code and by adding my own features.
+I changed the generated registration and login code to incorporate the improved features outlined in the  video:
+	"ASP.NET Identity 3 for ASP.NET CORE - by Brock Allen", who is the creator of Identity Manager
+
+ASP.NET 5 is now renamed ASP.NET Core. There were also many changes made in the new version. The majority of the referenced Microsoft DLL are new.
+This includes not only those changed from "Microsoft.ASPNET.xxxxxx" to "Microsoft.Asp.NetCore.xxxxx but most of the others.
+I could go through a step by step guide for upgrading my code to the new release. But it may be much easier to do it this way:
+(1) Re-generate the project with the new Asp.Net Core template
+(2) Replace code that shouldn't be effected by the upgrade (models, views, controllers) with my own.
+
+I created WebAppCore project as: C# Web App -> ASP.NET Core Web Application (.NET Core).
+ In the combo box above ".NET Framework 4.5.2" was selected. Is this selection applicable to my choice? In the dropdown, only .NET Frameworks 2.0 to 4.6.1 show.
+ There is a choice "More Frameworks". This takes us to a web page where we can download other frameworks.
+ For Visual Studio 2013, the only choices are those in the drop down combo boax list.
+ For VS 2015, there are many more choices, including some for .NET Core 1.0 and ASP.NET Core 1.0.
+
+I selected authentication = Individual User Accounts
+
+I replaced the generated "startup.cs" with that from the WebApp project.
+
+I added the following reference:
+	Microsoft.AspNetCore.Authentication.Google
+

@@ -1,10 +1,11 @@
 ﻿{
-  "userSecretsId": "aspnet5-WebApp-70f77d41-8df6-4a91-a7ff-747ae8b44119",
-  "version": "1.0.0-*",
+  "commands": {
+    "web": "Microsoft.AspNet.Server.Kestrel",
+    "ef": "EntityFramework.Commands"
+  },
   "compilationOptions": {
     "emitEntryPoint": true
   },
-
   "dependencies": {
     "EntityFramework.Commands": "7.0.0-rc1-final",
     "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
@@ -25,28 +26,23 @@
     "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
-    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final" 
+    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final"
   },
-
-  "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel",
-    "ef": "EntityFramework.Commands"
-  },
-
-  "frameworks": {
-    "dnx451": { },
-    "dnxcore50": { }
-  },
-
   "exclude": [
     "wwwroot",
     "node_modules"
   ],
+  "frameworks": {
+    "dnx451": {},
+    "dnxcore50": {}
+  },
   "publishExclude": [
     "**.user",
     "**.vspscc"
   ],
   "scripts": {
     "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ]
-  }
+  },
+  "userSecretsId": "aspnet5-WebApp-70f77d41-8df6-4a91-a7ff-747ae8b44119",
+  "version": "1.0.0-*"
 }
