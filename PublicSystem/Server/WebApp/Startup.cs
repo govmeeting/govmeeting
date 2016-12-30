@@ -132,10 +132,10 @@ namespace WebApp
             // Add framework services.
             services.AddMvc();
 
-            //services.Configure<RazorViewEngineOptions>(options =>
-            //{
-            //    options.ViewLocationExpanders.Add(new FeatureLocationExpander());
-            //});
+            services.Configure<RazorViewEngineOptions>(options =>
+            {
+                options.ViewLocationExpanders.Add(new FeatureLocationExpander());
+            });
 
 
             // Add our repository type

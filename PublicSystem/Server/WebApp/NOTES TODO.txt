@@ -20,7 +20,7 @@
 
 * Use a folder per feature under which each will have a folder for Models, Controllers, Views, etc
 
-* Get BrowserApp dev output to be included.
+* [done] Get BrowserApp dev output to be included.
 
 * Solve build problems in Services\EmailService.cs and StatusRequirement.cs. 
 

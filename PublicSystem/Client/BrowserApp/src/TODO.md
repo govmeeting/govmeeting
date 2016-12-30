@@ -1,18 +1,35 @@
-import { APP_BASE_HREF } from '@angular/common';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
-import { enableProdMode } from '@angular/core';
-import { bootstrap } from '@angular/platform-browser-dynamic';
+## Get debugging working
 
-import { APP_ROUTER_PROVIDERS } from './app.routes';
-import { AppComponent } from './app.component';
+Currently I am trying to get debugging working. I could not do so in the full BrowserApp project so I am
+trying with some smaller projects in F:\GOVMEETING\CODE\EXPERIMENTS\VsCode Debugging
+	angular2-tour-of-heroes-master is a copy from F:\GOVMEETING\CODE\SAMPLES\angular2-tour-of-heroes-master.
+	
+The lastest version of angular-seed had fixes to get debugging working in VSCode. I downloaded this and now I
+am moving my code over to the new version.
 
-// This was giving an error in VSCode. The newer angular-seed uses String('<%= BUILD_TYPE %>') instead of '<%= ENV %>'
-//if ('<%= ENV %>' === 'prod') { enableProdMode(); }
 
-/**
- * Bootstraps the application and makes the ROUTER_PROVIDERS and the APP_BASE_HREF available to it.
- * @see https://angular.io/docs/ts/latest/api/platform-browser-dynamic/index/bootstrap-function.html
- */
+
+## Pass a value into the angular app that indicates whether we are running standalone or with the WebApp
+
+### changes to index.html 	
+
+// Modify system.import call
+
+//System.import('<%= BOOTSTRAP_MODULE %>').then(
+//  module =>
+//    module.main(
+//      {
+//        name: "notasp"
+//      }
+//  ).catch(function (e) {
+//    console.error(e,
+//      'Report this error at https://github.com/mgechev/angular2-seed/issues');
+//  });
+  
+  
+### changes to app/main.ts
+
+// Modify bootstrap call
 
 // export function main(params) {
 bootstrap(AppComponent, [

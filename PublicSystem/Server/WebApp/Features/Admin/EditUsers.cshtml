@@ -31,7 +31,7 @@
                     @Html.Hidden("type", @claim.type)
                     @Html.Hidden("value", @claim.value)
 
-                    <input onclick="return confirm('Are you sure to delete?')" type="submit" value="Delete Role" style="color:red;"/>
+                    <input onclick="return confirm('Are you sure to delete?')" type="submit" value="Delete Claim" style="color:red;"/>
                 }
 
             </ul>
@@ -47,7 +47,7 @@
                 </div>
 
 
-                <strong>Add Role</strong>
+                <strong>Add Claim</strong>
                 @Html.DropDownList("type", new SelectList(new[] { "Editor", "Manager", "Administrator" }))
                 @Html.DropDownList("value", new SelectList(new[] { "Philadelphia", "Boothbay Harbor", "System" }))
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <base href="<%= APP_BASE %>">
@@ -24,6 +24,7 @@
 
   <% if (ENV === 'dev') { %>
   <script>
+    // The following gets expanded by the angular2-seed tooling.
     System.config(<%=
       JSON.stringify(SYSTEM_CONFIG, null, 2)
     %>)
@@ -61,3 +62,4 @@
 
 </body>
 </html>
+

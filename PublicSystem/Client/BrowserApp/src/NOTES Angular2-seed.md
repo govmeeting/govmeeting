@@ -1,11 +1,50 @@
-This folder "src" contains the user application. All of the other files and folders are part of the
-angular2-seed Github project: https://github.com/mgechev/angular2-seed. angular2-seed contains the
-tooling that allows us to develop in a very modular fashion. The tasks in the tools folder processes
-all of the individual folders and generates a very compact production set of files. Normally the
-final files are only a single index.html, a main.js, a shim.js and a single main.css file.
+Angular2-seed is hosted at https://github.com/mgechev/angular2-seed
+
+The tasks in the tools folder processes all of the individual folders and generates a very compact production 
+set of files. Normally the final files are only a single index.html, a main.js, a shim.js and a single main.css file.
 
 The configuration for the tools is in tools/config/seed.config.ts. And project specific configuration
 goes into tools/config/project.config.ts.
+
+
+# Producing the output - dev & prod versions
+
+The angular-seed tooling processes the source files and puts the output in the "dist" folder. dist/dev has the development version. dist/prod has the production version.
+
+The prod output bundles all of the JS, CSS and component HTML templates into a single "app.js" files.
+
+The dev output moves all of the individual compiled JS, CSS & HTML files into the dist folder. 
+
+The tooling also does some processing that depends on the configuration specified in the tools/config files. For example, src/client/index.html will be processed to produce a dev and a prod version.  
+
+A summary of what the prod output of index.html includes is:
+    In <head>
+	    main.css
+    In <body>
+	    <sd-app>
+	    shim.js
+	    app.js
+app.js is the 
+
+A summary of what the dev output of index.html includes is:
+    In <head>
+	    bootstrap.css
+	    main.css
+    In <body>
+	    shim.min.js
+	    system.src.js
+	    System.config({
+	        packageConfigPaths ....
+	        paths ...
+	        packages
+		        rxjs
+	    })
+	    zone.js
+	    Rx.js
+	    System.import('app/main')
+
+
+
 
 # Updating angular2-seed
 
@@ -29,7 +68,7 @@ Therefore we have these additional steps.
 	  with VS, the navbar in the WebApp's _layout.cshtml is used. ]
  (5) Combine our links and that of Angular2-seed in src/shared/navbar/navbar.component.html.
  (6) Modify src\client\app\+home\home.routes.ts and change "path" to '/sample'. This prevents the sample app from
-     being the actual home page. We can still get to the sample by typing "sample" in the address bar.
+	 being the actual home page. We can still get to the sample by typing "sample" in the address bar.
 
 
 # Adding our own external dependencies
@@ -42,7 +81,7 @@ Step 1 - Install bootstrap.
 	npm install bootstrap --save
 
 Step 2 - Declare the bootstrap.min.css and bootstrap.min.js file as injectable in ./tools/config/project.config.ts.
-    Add these lines to the this.NPM_DEPENDENCIES array:
+	Add these lines to the this.NPM_DEPENDENCIES array:
 	  {src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs'},
 	  {src: 'bootstrap/dist/css/bootstrap.min.css', inject: true}, // inject into css section
 
@@ -65,24 +104,24 @@ file in /app.
 
 I modified app\app.routes.ts and added this:
   at top:
-	import { AddtagsRoutes } from './+addtags/index';
-	import { MeetingRoutes } from './+meeting/index';
+	import { AddtagsRoutes } from './addtags/index';
+	import { MeetingRoutes } from './meeting/index';
   in RouterConfig array: 
 	...AddtagsRoutes,
 	...MeetingRoutes
 
 To add routing for AddtagsComponent, I did the following:
-(1) I created a new file src/client/app/+addtags/addtags.routes.ts
+(1) I created a new file src/client/app/addtags/addtags.routes.ts
  with the following:
 	import { RouterConfig } from '@angular/router';
 	import { AddtagsComponent } from './index';
 	export const AddtagsRoutes: RouterConfig = [
 	  {
-	    path: 'addtags',
-	    component: AddtagsComponent
+		path: 'addtags',
+		component: AddtagsComponent
 	  }
 	];
-(2) I added the following to src/client/app/+addtags/index.ts:
+(2) I added the following to src/client/app/addtags/index.ts:
 	export * from './addtags.routes';
 
 I did the same thing for MeetingComponent.

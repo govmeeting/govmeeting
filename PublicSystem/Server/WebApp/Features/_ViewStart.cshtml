@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@* http://stackoverflow.com/questions/9300410/where-and-how-is-the-viewstart-cshtml-layout-file-linked
+
+    Starting with the ASP.NET MVC 3 Beta release, you can now add a file called _ViewStart.cshtml (or _ViewStart.vbhtml for VB) underneath the \Views folder of your project:
+
+    The _ViewStart file can be used to define common view code that you want to execute at the start of each View’s rendering.
+         For example, we could write code within our _ViewStart.cshtml file to programmatically set the Layout property for each View to be the SiteLayout.cshtml file by default:
+
+    Because this code executes at the start of each View, we no longer need to explicitly set the Layout in any of our individual view files (except if we wanted to override the default value above).
+
+    Important: Because the _ViewStart.cshtml allows us to write code, we can optionally make our Layout selection logic richer than just a basic property set.
+         For example: we could vary the Layout template that we use depending on what type of device is accessing the site
+         – and have a phone or tablet optimized layout for those devices, and a desktop optimized layout for PCs/Laptops.
+         Or if we were building a CMS system or common shared app that is used across multiple customers
+         we could select different layouts to use depending on the customer (or their role) when accessing the site.
+
+    This enables a lot of UI flexibility. It also allows you to more easily write view logic once, and avoid repeating it in multiple places.
+
+    ALSO NOTE: The Razor engine finds and runs the code in _ViewStart.cshtml before any other code which is in the same directory or subdirectory where the _ViewStart.cshtml is found.
+*@

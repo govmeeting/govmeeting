@@ -132,7 +132,7 @@ namespace WebApp.Controllers
 
         //////////////////////////////////////////////////////////////////////////////////////////
         // The following are stubs of routines for adding/removing claims from the "GovmeetingClaim" DBSet
-        // which will eventually store the names of possible claims that can be assigned to a user.
+        // which will store in the database the names of possible claims that can be assigned to a user.
         //////////////////////////////////////////////////////////////////////////////////////////
 
         public IActionResult EditClaims()
@@ -149,7 +149,7 @@ namespace WebApp.Controllers
         //}
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // The routine below are for editing other user information besides claims. -- NOT FINISHED CODING
+        // The routines below are for editing other user information besides claims. -- NOT FINISHED CODING
         /// ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         [HttpGet]
@@ -208,8 +208,8 @@ namespace WebApp.Controllers
 
         }
 
-        // then this is the action to confirm the email on the user
-        // link in the email should be pointing here
+        // Then this is the action to confirm the email of the user.
+        // The link in the email should be pointing here
         public async Task<ActionResult> ConfirmEmail(ApplicationUser user, string code)
         {
             var confirmResult = await _userManager.ConfirmEmailAsync(user, code);
