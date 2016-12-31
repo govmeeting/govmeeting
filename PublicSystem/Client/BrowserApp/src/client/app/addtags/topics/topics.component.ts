@@ -1,5 +1,5 @@
-import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
-import {TopicsService} from './topics.service';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { TopicsService } from './topics.service';
 
 @Component({
     moduleId: module.id,

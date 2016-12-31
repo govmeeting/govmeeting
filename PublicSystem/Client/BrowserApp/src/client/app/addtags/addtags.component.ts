@@ -1,11 +1,11 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {TalksComponent} from './talks/talks.component';
+import { Component, ViewEncapsulation } from '@angular/core';
+// import { TalksComponent } from './talks/talks.component';
 
 @Component({
     moduleId: module.id,
     selector: 'gm-addtags',
     templateUrl: 'addtags.component.html',
-    styleUrls: ['addtags.component.css'],
+    styleUrls: ['addtags.component.css']   //,
     /*
     styles: [`
         h1, h2, h3 {
@@ -24,9 +24,7 @@ import {TalksComponent} from './talks/talks.component';
         }
     `],
     */
-    encapsulation: ViewEncapsulation.Emulated,
-    // directives: [TalksComponent, MyHighlightDirective]
-    directives: [TalksComponent]
+    // encapsulation: ViewEncapsulation.Emulated
 })
 export class AddtagsComponent {
 }

@@ -1,8 +1,8 @@
-import {Directive, ElementRef, Input, Output, EventEmitter} from '@angular/core';
-import {HostListener} from '@angular/core';
+import { Directive, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { HostListener } from '@angular/core';
 
 @Directive({
-    selector:'[myhighlight]'
+    selector:'[myhighlight]',
 //    host: {
 //        '(mouseenter)':'onMouseEnter()',
 //        '(mouseleave)':'onMouseLeave()'
@@ -23,13 +23,14 @@ export class MyHighlightDirective {
     private selection: Selection;
 
     constructor(el: ElementRef) {
+        console.log('MyHighlightDirective constructor');
         this.textSelected = new EventEmitter<string>();
         this._el = el.nativeElement;
     }
 
     @HostListener('mouseenter')
     onMouseEnter() {
-        //console.log('onMouseEnter');
+        // console.log('onMouseEnter');
         this._highlight(this.highlightColor || this._defaultColor);
     }
 
@@ -39,14 +40,13 @@ export class MyHighlightDirective {
 
     @HostListener('mouseleave')
     onMouseLeave() {
-        //console.log('onMouseLeave');
+        // console.log('onMouseLeave');
         this._highlight('transparent');
     }
 
     @HostListener('mouseup')
     onMouseUp() {
-        console.log(window.getSelection());
-
+        // console.log(window.getSelection());
         this.selection = window.getSelection();
 
         var sel = {
@@ -69,13 +69,13 @@ export class MyHighlightDirective {
 */
         this.selectedText = sel.text;
 
-        console.log('SELECTED TEXT: ' + this.selectedText);
+        // console.log('SELECTED TEXT: ' + this.selectedText);
         this.textSelected.emit(this.selectedText);
     }
 
 
     private _highlight(color: string) {
-        //console.log('color is ' + color);
+        // console.log('color is ' + color);
         this._el.style.backgroundColor = color;
     }
 
@@ -88,15 +88,15 @@ export class MyHighlightDirective {
 
         var start = selection.range.startOffset;
         var end = selection.range.endOffset;
-        console.log('start=' + start);
-        console.log('end=' + end);
+        // console.log('start=' + start);
+        // console.log('end=' + end);
         // If start = end, then they just clicked and didn't select.
         if (start === end) return;
 
         end = end -1; // last character selected is one less.
 
         var startNode = selection.range.startContainer;
-        console.log('startNode=' + startNode);
+        // console.log('startNode=' + startNode);
 
         //while (startNode.textContent.charAt(start) != ' ' && start > 0) {
         while (this.IsAlphaNum(startNode.textContent.charAt(start)) && start > 0) {

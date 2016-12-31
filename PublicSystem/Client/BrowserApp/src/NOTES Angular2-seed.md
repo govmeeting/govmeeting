@@ -85,7 +85,7 @@ Step 2 - Declare the bootstrap.min.css and bootstrap.min.js file as injectable i
 	  {src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs'},
 	  {src: 'bootstrap/dist/css/bootstrap.min.css', inject: true}, // inject into css section
 
-However later I replaced bootrap with bootrap-grid-only
+However later I replaced bootstrap with bootstrap-grid-only
 
 * I ran the following:
 	npm install bootstrap-grid-only --save
@@ -125,3 +125,5 @@ To add routing for AddtagsComponent, I did the following:
 	export * from './addtags.routes';
 
 I did the same thing for MeetingComponent.
+
+

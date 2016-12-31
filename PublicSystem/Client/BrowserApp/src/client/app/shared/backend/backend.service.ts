@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 import { Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/share';
@@ -30,8 +30,8 @@ export class BackendService {
     }
 
     postMeeting(): Observable<any> {
-        console.log("postMeeting in backend.service");
-        return this.postData(this._meetingUrl, "my meeting data");
+        console.log('postMeeting in backend.service');
+        return this.postData(this._meetingUrl, 'my meeting data');
     }
 
     private getData(url: string): Observable<any> {
@@ -57,7 +57,7 @@ export class BackendService {
         }
     }
 
-    postData(url: string, data: any): Observable<any> {
+    private postData(url: string, data: any): Observable<any> {
     //private postData (url: string, data: any) {
     let body = JSON.stringify(data);
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -74,7 +74,7 @@ export class BackendService {
 
     // From "asp.net core and angular2 - Part2"
 
-    console.log("postData in backend.service");
+    console.log('postData in backend.service');
     return this.http.post(url, body, options);
         //.map(res => console.info(res))
         //.catch(this.handleError);

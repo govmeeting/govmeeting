@@ -5,11 +5,11 @@ import { BackendService } from '../../shared/index';
 @Component({
     moduleId: module.id,
     selector: 'gm-heading',
-    templateUrl: 'heading.component.html',
-    directives: [],
+    templateUrl: 'heading.component.html'
+    // directives: [],
     // The providers that we need are declared in meeting.component.ts
-    providers: [
-    ]
+    // providers: [
+    // ]
 })
 export class HeadingComponent implements OnInit {
 

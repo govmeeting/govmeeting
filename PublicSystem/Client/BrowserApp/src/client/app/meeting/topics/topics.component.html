@@ -1,11 +1,11 @@
 <div>
-    <topics>
-    <div *ngFor="let topic of topicNames; let i = index">
-        <div>
-            <span myhighlight [hidden]="i==0" (click)="FilterByTopic(i)"> {{topic}} </span>
-            <span myhighlight [hidden]="i!=0"  (click)="FilterByTopic(i)">  All Topics </span>
-            <span [hidden]="!IsSelectedTopic(i)"> ## </span>
-        </div>
-    </div>
-    </topics><br>
+    <!-- <topics> -->
+    <span> <strong> Select Topic: </strong> </span>
+    <span *ngFor="let topic of topicNames; let i = index">
+        <span myhighlight [hidden]="i==0" (click)="FilterByTopic(i)"> [{{topic}} </span>
+        <span myhighlight [hidden]="i!=0"  (click)="FilterByTopic(i)">  [All </span>
+        <span [hidden]="!IsSelectedTopic(i)"> ##] </span>
+        <span [hidden]="IsSelectedTopic(i)"> ] </span>
+    </span>
+    <!-- </topics> --> <br>
 </div>

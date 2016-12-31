@@ -2,16 +2,16 @@ import {Component, OnInit} from '@angular/core';
 //import {HTTP_PROVIDERS} from '@angular/http';
 import { BackendService } from '../../shared/index';
 import {UserchoiceService} from '../../shared/index';
-import {MyHighlightDirective} from '../../shared/index';
+// import {MyHighlightDirective} from '../../shared/index';
 
 @Component({
     moduleId: module.id,
     selector: 'gm-topics',
-    templateUrl: 'topics.component.html',
-    directives: [MyHighlightDirective],
+    templateUrl: 'topics.component.html'
+    // directives: [MyHighlightDirective],
     // The providers that we need are declared in meeting.component.ts
-    providers: [
-    ]
+    // providers: [
+    // ]
 })
 export class TopicsComponent implements OnInit {
 

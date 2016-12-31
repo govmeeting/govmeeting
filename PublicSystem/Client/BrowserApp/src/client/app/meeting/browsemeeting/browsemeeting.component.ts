@@ -4,15 +4,10 @@ import {Injectable} from '@angular/core';
 import { BackendService } from '../../shared/index';
 import {UserchoiceService} from '../../shared/index';
 
-@Injectable()
 @Component({
     moduleId: module.id,
     selector: 'gm-browse-meeting',
-    templateUrl: 'browsemeeting.component.html',
-    directives: [],
-    // The providers that we need are declared in meeting.component.ts
-    providers: [
-    ]
+    templateUrl: 'browsemeeting.component.html'
 })
 export class BrowsemeetingComponent implements OnInit {
 
@@ -20,19 +15,18 @@ export class BrowsemeetingComponent implements OnInit {
     topics: string[];
     errorMessage: string;
 
-        /**
-         * <summary>
-         *  BrowseMeetingCtrl Constructor.
-         * </summary>
-         * <param name="backEnd">       The back end service. </param>
-         * <param name="userChoiceSrv"> The user choice service. </param>
-        **/
+    /**
+     * <summary>
+     *  BrowseMeetingCtrl Constructor.
+     * </summary>
+     * <param name="backEnd">       The back end service. </param>
+     * <param name="userChoiceSrv"> The user choice service. </param>
+    **/
     constructor(private _backendService: BackendService,
         private _userChoice: UserchoiceService) {
     }
 
     ngOnInit() {this.getTopicDiscussions();}
-
 
     getTopicDiscussions() {
         this._backendService.getMeeting()
@@ -53,7 +47,7 @@ export class BrowsemeetingComponent implements OnInit {
      *  Returns true if this topic should be displayed
      * </returns>
     **/
-    CheckShowTopic(topicName: string) {
+   CheckShowTopic(topicName: string) {
         var _topic = this._userChoice.getTopic();
         //console.log("CheckShowTopic " + topicName + " " + _topic);
         return ((_topic === 'SHOW ALL') || (_topic === topicName));

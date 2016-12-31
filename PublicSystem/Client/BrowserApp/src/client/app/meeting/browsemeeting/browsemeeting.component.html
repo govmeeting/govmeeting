@@ -4,11 +4,13 @@
         <div [hidden]="!CheckShowTopic(topic.name)">
             <h2>{{topic.name}}</h2>
             <!-- Display all the speakers and their statements on this topic. -->
-            <div *ngFor="let speaker of topic.speakers; let j = index">
-                <div [hidden]="!CheckShowSpeaker(speaker.name)">
-                    <p><strong>{{speaker.name}}:</strong> {{speaker.text}} </p>
-                </div>
-           </div>   
+            <div style="padding:10px">
+                <div *ngFor="let speaker of topic.speakers; let j = index">
+                    <div [hidden]="!CheckShowSpeaker(speaker.name)">
+                        <p><strong>{{speaker.name}}:</strong> {{speaker.text}} </p>
+                    </div>
+                </div>  
+            </div> 
         </div>
     </div>
 </div>

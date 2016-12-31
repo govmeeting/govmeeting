@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {SectionsService} from './sections.service';
+import { Component } from '@angular/core';
+import { SectionsService } from './sections.service';
 
 /* This component is not now being used. We don't currently allow
  * a choice of a section. We can only move the sections that are

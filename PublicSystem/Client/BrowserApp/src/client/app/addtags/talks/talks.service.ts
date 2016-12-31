@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
-import {Talk} from './talk';
-import {Observable} from 'rxjs/Observable';
+import { Talk } from './talk';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -48,8 +48,8 @@ export class TalksService {
     }
 
     postChanges(): Observable<any> {
-        console.log("postChanges in talks.service");
-        //return this.postData(this._talksUrl, "my addtags data");
+        console.log('postChanges in talks.service');
+        //return this.postData(this._talksUrl, 'my addtags data');
         return this.postData(this._talksUrl, this.getTalksFromMemory());
     }
 
@@ -58,7 +58,7 @@ export class TalksService {
         let body = JSON.stringify(data);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        console.log("postData in talks.service");
+        console.log('postData in talks.service');
         return this.http.post(url, body, options);
         //.map(res => console.info(res))
         //.catch(this.handleError);

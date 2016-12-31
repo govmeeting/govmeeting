@@ -1,5 +1,4 @@
 /**
- * This barrel file provides the export for the lazy loaded AboutComponent.
+ * This barrel file provides the export for the lazy loaded MeetingComponent.
  */
 export * from './meeting.component';
-export * from './meeting.routes';

@@ -1,20 +1,20 @@
-import {Component, OnInit} from '@angular/core';
-import {TalksService} from './talks.service';
-import {TopicsService} from '../topics/topics.service';
-import { HTTP_PROVIDERS } from '@angular/http';
-import {Talk} from './talk';
-import {SectionsComponent} from '../sections/sections.component';
-import {TopicsComponent} from '../topics/topics.component';
-import {MyHighlightDirective} from '../../shared/index';
+import { Component, OnInit } from '@angular/core';
+import { TalksService } from './talks.service';
+import { TopicsService } from '../topics/topics.service';
+// import { HTTP_PROVIDERS } from '@angular/http';
+import { Talk } from './talk';
+// import { SectionsComponent } from '../sections/sections.component';
+// import { TopicsComponent } from '../topics/topics.component';
+// import { MyHighlightDirective } from '../../shared/index';
 
 @Component({
     moduleId: module.id,
     selector: 'gm-talks',
     templateUrl: 'talks.component.html',
     styleUrls: ['talks.component.css'],
-    directives: [SectionsComponent, TopicsComponent, MyHighlightDirective],
+    // directives: [SectionsComponent, TopicsComponent, MyHighlightDirective],
     providers: [
-        HTTP_PROVIDERS,
+        // HTTP_PROVIDERS,
         TalksService,
         TopicsService
     ]
@@ -55,8 +55,8 @@ export class TalksComponent implements OnInit {
         this._talkService.postChanges()
             .subscribe(
             t => {
-                t
-            })
+                t;
+            });
         //error => this.errorMessage = <any>error);
     }
 
