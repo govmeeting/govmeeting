@@ -38,11 +38,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTranscriptIntoDb", "Pub
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTranscriptIntoDb_Tests", "PublicSystem\Backend\LoadTranscriptIntoDb_Tests\LoadTranscriptIntoDb_Tests.csproj", "{433C928C-A2C5-43B3-8CC2-580109C2F124}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VolunteerSystem", "VolunteerSystem", "{407F9109-AF3B-49CE-BBFE-57FF72E2F2B2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PreProcessTranscripts", "PreProcessTranscripts", "{1A11AE01-0F7E-4FF8-97A4-22E92A67D698}"
 	ProjectSection(SolutionItems) = preProject
-		VolunteerSystem\Backend\PreProcessTranscripts\Readme.txt = VolunteerSystem\Backend\PreProcessTranscripts\Readme.txt
+		Backend\PreProcessTranscripts\Readme.txt = Backend\PreProcessTranscripts\Readme.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C3C94076-0FE6-4B11-9132-7FBBB80CC278}"
@@ -55,14 +53,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "testdata", "testdata", "{A28B572E-3B96-4BFD-ABE3-3030B811A728}"
 	ProjectSection(SolutionItems) = preProject
-		VolunteerSystem\Backend\PreProcessTranscripts\testdata\Readme.txt = VolunteerSystem\Backend\PreProcessTranscripts\testdata\Readme.txt
+		VBackend\PreProcessTranscripts\testdata\Readme.txt = Backend\PreProcessTranscripts\testdata\Readme.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{A97B2C5A-FD21-46B0-8914-86156BE54EE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessAllTranscripts", "VolunteerSystem\Backend\PreProcessTranscripts\ProcessAllTranscripts\ProcessAllTranscripts.csproj", "{3495C197-D9BF-4CA9-9A19-B60B274C4760}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessAllTranscripts", "Backend\PreProcessTranscripts\ProcessAllTranscripts\ProcessAllTranscripts.csproj", "{3495C197-D9BF-4CA9-9A19-B60B274C4760}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessTranscript", "VolunteerSystem\Backend\PreProcessTranscripts\ProcessTranscript\ProcessTranscript.csproj", "{6B3A920B-38A0-4D1D-9B3F-8B0DD0C1E148}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessTranscript", "Backend\PreProcessTranscripts\ProcessTranscript\ProcessTranscript.csproj", "{6B3A920B-38A0-4D1D-9B3F-8B0DD0C1E148}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{69C777D6-6710-42B1-A795-1FDFE2DB6DF1}"
 	ProjectSection(SolutionItems) = preProject
