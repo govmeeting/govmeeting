@@ -3,40 +3,40 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublicSystem", "PublicSystem", "{7A7C0DE4-8F51-4FB3-BD90-798B925739B3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7A7C0DE4-8F51-4FB3-BD90-798B925739B3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{8D7CD392-A78D-4BB3-9CB7-F348787E0F8B}"
 	ProjectSection(SolutionItems) = preProject
 		Data\Readme.txt = Data\Readme.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{2A1E9469-111C-43A6-9294-B505A32AFB4A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{2A1E9469-111C-43A6-9294-B505A32AFB4A}"
 	ProjectSection(SolutionItems) = preProject
-		PublicSystem\Backend\README.txt = PublicSystem\Backend\README.txt
+		src\Database\README.txt = src\Database\README.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{116FC8D2-6465-4929-B3E7-23E443E82ECA}"
 	ProjectSection(SolutionItems) = preProject
-		PublicSystem\Client\Readme.txt = PublicSystem\Client\Readme.txt
+		src\Client\Readme.txt = src\Client\Readme.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{D5775C0E-970A-4DD1-B7D5-7B947F6BE7D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbAccess", "PublicSystem\Backend\DbAccess\DbAccess.csproj", "{E107EACA-31D0-41FA-BB6A-AF1BC66C907D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbAccess", "src\Database\DbAccess\DbAccess.csproj", "{E107EACA-31D0-41FA-BB6A-AF1BC66C907D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbAccess_Tests", "PublicSystem\Backend\DbAccess_Tests\DbAccess_Tests.csproj", "{8F828C54-D08C-4086-833D-6794115C24AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbAccess_Tests", "src\Database\DbAccess_Tests\DbAccess_Tests.csproj", "{8F828C54-D08C-4086-833D-6794115C24AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTranscript", "PublicSystem\Backend\ReadTranscript\ReadTranscript.csproj", "{3A7C42EF-1985-4E5B-99A5-0B1DE5CE146F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTranscript", "src\Database\ReadTranscript\ReadTranscript.csproj", "{3A7C42EF-1985-4E5B-99A5-0B1DE5CE146F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTranscript_Tests", "PublicSystem\Backend\ReadTranscript_Tests\ReadTranscript_Tests.csproj", "{D1C0CCDD-73A2-4FAF-A176-A8A4C180C0F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTranscript_Tests", "src\Database\ReadTranscript_Tests\ReadTranscript_Tests.csproj", "{D1C0CCDD-73A2-4FAF-A176-A8A4C180C0F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowserApp_Tests", "PublicSystem\Client\BrowserApp_Tests\BrowserApp_Tests.csproj", "{95E42BFF-6DE2-472E-8C23-823EAA864FD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowserApp_Tests", "src\Client\BrowserApp_Tests\BrowserApp_Tests.csproj", "{95E42BFF-6DE2-472E-8C23-823EAA864FD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "PublicSystem\Backend\Model\Model.csproj", "{13C4BE35-0179-4152-AD99-3F136AEB7E0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "src\Database\Model\Model.csproj", "{13C4BE35-0179-4152-AD99-3F136AEB7E0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTranscriptIntoDb", "PublicSystem\Backend\LoadTranscriptIntoDb\LoadTranscriptIntoDb.csproj", "{57F83092-01E7-4C2B-86E8-1789F093F8E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTranscriptIntoDb", "src\Database\LoadTranscriptIntoDb\LoadTranscriptIntoDb.csproj", "{57F83092-01E7-4C2B-86E8-1789F093F8E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTranscriptIntoDb_Tests", "PublicSystem\Backend\LoadTranscriptIntoDb_Tests\LoadTranscriptIntoDb_Tests.csproj", "{433C928C-A2C5-43B3-8CC2-580109C2F124}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTranscriptIntoDb_Tests", "src\Database\LoadTranscriptIntoDb_Tests\LoadTranscriptIntoDb_Tests.csproj", "{433C928C-A2C5-43B3-8CC2-580109C2F124}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PreProcessTranscripts", "PreProcessTranscripts", "{1A11AE01-0F7E-4FF8-97A4-22E92A67D698}"
 	ProjectSection(SolutionItems) = preProject
@@ -68,28 +68,28 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{69C777
 		images\Mr-T-mrt-36834265-320-254.png = images\Mr-T-mrt-36834265-320-254.png
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BrowserApp", "PublicSystem\Client\BrowserApp\", "{5A7A0A4D-DA39-4153-966B-8892173E4265}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BrowserApp", "src\Client\BrowserApp\", "{5A7A0A4D-DA39-4153-966B-8892173E4265}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_50792"
-		Debug.AspNetCompiler.PhysicalPath = "PublicSystem\Client\BrowserApp\"
+		Debug.AspNetCompiler.PhysicalPath = "src\Client\BrowserApp\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50792\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_50792"
-		Release.AspNetCompiler.PhysicalPath = "PublicSystem\Client\BrowserApp\"
+		Release.AspNetCompiler.PhysicalPath = "src\Client\BrowserApp\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50792\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "50792"
-		SlnRelativePath = "PublicSystem\Client\BrowserApp\"
+		SlnRelativePath = "src\Client\BrowserApp\"
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WebApp", "PublicSystem\Server\WebApp\WebApp.xproj", "{2FF8D2C3-421F-4DE9-B5E8-81D67A4AFAEC}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WebApp", "src\Server\WebApp\WebApp.xproj", "{2FF8D2C3-421F-4DE9-B5E8-81D67A4AFAEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
