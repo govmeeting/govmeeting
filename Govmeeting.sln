@@ -21,9 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{116FC8
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{D5775C0E-970A-4DD1-B7D5-7B947F6BE7D7}"
-	ProjectSection(SolutionItems) = preProject
-		PublicSystem\Server\Readme.txt = PublicSystem\Server\Readme.txt
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbAccess", "PublicSystem\Backend\DbAccess\DbAccess.csproj", "{E107EACA-31D0-41FA-BB6A-AF1BC66C907D}"
 EndProject
@@ -44,6 +41,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VolunteerSystem", "VolunteerSystem", "{407F9109-AF3B-49CE-BBFE-57FF72E2F2B2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PreProcessTranscripts", "PreProcessTranscripts", "{1A11AE01-0F7E-4FF8-97A4-22E92A67D698}"
+	ProjectSection(SolutionItems) = preProject
+		VolunteerSystem\Backend\PreProcessTranscripts\Readme.txt = VolunteerSystem\Backend\PreProcessTranscripts\Readme.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C3C94076-0FE6-4B11-9132-7FBBB80CC278}"
 	ProjectSection(SolutionItems) = preProject
@@ -55,23 +55,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "testdata", "testdata", "{A28B572E-3B96-4BFD-ABE3-3030B811A728}"
 	ProjectSection(SolutionItems) = preProject
-		VolunteerSystem\PreProcessTranscripts\testdata\Readme.txt = VolunteerSystem\PreProcessTranscripts\testdata\Readme.txt
+		VolunteerSystem\Backend\PreProcessTranscripts\testdata\Readme.txt = VolunteerSystem\Backend\PreProcessTranscripts\testdata\Readme.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{A97B2C5A-FD21-46B0-8914-86156BE54EE0}"
-	ProjectSection(SolutionItems) = preProject
-		VolunteerSystem\Backend\PreProcessTranscripts\Readme.txt = VolunteerSystem\Backend\PreProcessTranscripts\Readme.txt
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{CCB27C7A-5A6B-443B-9430-477D4A271768}"
-	ProjectSection(SolutionItems) = preProject
-		VolunteerSystem\Client\Readme.txt = VolunteerSystem\Client\Readme.txt
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{B37C694E-FE40-4A7C-AD9E-97E833841C53}"
-	ProjectSection(SolutionItems) = preProject
-		VolunteerSystem\Server\Readme.txt = VolunteerSystem\Server\Readme.txt
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessAllTranscripts", "VolunteerSystem\Backend\PreProcessTranscripts\ProcessAllTranscripts\ProcessAllTranscripts.csproj", "{3495C197-D9BF-4CA9-9A19-B60B274C4760}"
 EndProject
@@ -82,8 +69,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{69C777
 		images\mr-t-mrt-36834265-320-254-24kb.png = images\mr-t-mrt-36834265-320-254-24kb.png
 		images\Mr-T-mrt-36834265-320-254.png = images\Mr-T-mrt-36834265-320-254.png
 	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WebApi", "PublicSystem\Server\WebApi\WebApi.xproj", "{A2D2E3AB-4CF9-4C72-B1AD-21BEB7EA51D7}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BrowserApp", "PublicSystem\Client\BrowserApp\", "{5A7A0A4D-DA39-4153-966B-8892173E4265}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -154,10 +139,6 @@ Global
 		{6B3A920B-38A0-4D1D-9B3F-8B0DD0C1E148}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B3A920B-38A0-4D1D-9B3F-8B0DD0C1E148}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B3A920B-38A0-4D1D-9B3F-8B0DD0C1E148}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2D2E3AB-4CF9-4C72-B1AD-21BEB7EA51D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2D2E3AB-4CF9-4C72-B1AD-21BEB7EA51D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2D2E3AB-4CF9-4C72-B1AD-21BEB7EA51D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2D2E3AB-4CF9-4C72-B1AD-21BEB7EA51D7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5A7A0A4D-DA39-4153-966B-8892173E4265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5A7A0A4D-DA39-4153-966B-8892173E4265}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A7A0A4D-DA39-4153-966B-8892173E4265}.Release|Any CPU.ActiveCfg = Debug|Any CPU
@@ -185,11 +166,8 @@ Global
 		{1A11AE01-0F7E-4FF8-97A4-22E92A67D698} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
 		{A28B572E-3B96-4BFD-ABE3-3030B811A728} = {1A11AE01-0F7E-4FF8-97A4-22E92A67D698}
 		{A97B2C5A-FD21-46B0-8914-86156BE54EE0} = {407F9109-AF3B-49CE-BBFE-57FF72E2F2B2}
-		{CCB27C7A-5A6B-443B-9430-477D4A271768} = {407F9109-AF3B-49CE-BBFE-57FF72E2F2B2}
-		{B37C694E-FE40-4A7C-AD9E-97E833841C53} = {407F9109-AF3B-49CE-BBFE-57FF72E2F2B2}
 		{3495C197-D9BF-4CA9-9A19-B60B274C4760} = {1A11AE01-0F7E-4FF8-97A4-22E92A67D698}
 		{6B3A920B-38A0-4D1D-9B3F-8B0DD0C1E148} = {1A11AE01-0F7E-4FF8-97A4-22E92A67D698}
-		{A2D2E3AB-4CF9-4C72-B1AD-21BEB7EA51D7} = {D5775C0E-970A-4DD1-B7D5-7B947F6BE7D7}
 		{5A7A0A4D-DA39-4153-966B-8892173E4265} = {116FC8D2-6465-4929-B3E7-23E443E82ECA}
 		{2FF8D2C3-421F-4DE9-B5E8-81D67A4AFAEC} = {D5775C0E-970A-4DD1-B7D5-7B947F6BE7D7}
 	EndGlobalSection
