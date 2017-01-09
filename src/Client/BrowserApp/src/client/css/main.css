@@ -61,3 +61,7 @@ button {
 button:hover {
   background-color: #28739e;
 }
+
+.chosen {
+  color: red;
+}

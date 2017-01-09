@@ -72,6 +72,10 @@
 
     <environment names="Development">
         <script src="ba/node_modules/core-js/client/shim.min.js?1468288678438"></script>
+
+        <!-- The latest angular-seed on 2016-12-12 added this: -->
+        <script src="ba/node_modules/intl/dist/Intl.min.js?1483976882851"></script>
+
         <script src="ba/node_modules/systemjs/dist/system.src.js?1468288678438"></script>
 
         <script>
@@ -80,13 +84,18 @@
             // https://github.com/systemjs/systemjs/blob/master/docs/config-api.md
             // https://github.com/ModuleLoader/es6-module-loader/blob/master/docs/loader-config.md
             // https://github.com/systemjs/systemjs/pull/1049/files?short_path=762c0f6
+
+
+            // The commented-out lines are what was there before we started using the latest angular-seed on 2016-12-12
             System.config({
                 "defaultJSExtensions": true,
-                "packageConfigPaths": [
-                  "ba/node_modules/*/package.json",
-                  "ba/node_modules/**/package.json",
-                  "ba/node_modules/@@angular/*/package.json"
-                ],
+
+                //"packageConfigPaths": [
+                //  "ba/node_modules/*/package.json",
+                //  "ba/node_modules/**/package.json",
+                //  "ba/node_modules/@@angular/*/package.json"
+                //],
+
                 "paths": {
                     "dev/app/main": "ba/dist/dev/app/main",
                     "@@angular/common": "ba/node_modules/@@angular/common/bundles/common.umd.js",
@@ -96,15 +105,21 @@
                     "@@angular/http": "ba/node_modules/@@angular/http/bundles/http.umd.js",
                     "@@angular/platform-browser": "ba/node_modules/@@angular/platform-browser/bundles/platform-browser.umd.js",
                     "@@angular/platform-browser-dynamic": "ba/node_modules/@@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
-                    "@@angular/router": "ba/node_modules/@@angular/router/index.js",
-                    "rxjs/*": "ba/node_modules/rxjs/*",
-                    "dev/app/*": "ba/dist/dev/app/*"
+
+                    //"@@angular/router": "ba/node_modules/@@angular/router/index.js",
+                    '@@angular/router': 'ba/node_modules/@@angular/router/bundles/router.umd.js',
+
+                    //"rxjs/*": "ba/node_modules/rxjs/*",
+
+                    "dev/app/*": "ba/dist/dev/app/*",
+
+                    ////"*": "ba/node_modules/*"
                     //"*": "ba/node_modules/*"
                 },
                 "packages": {
-                    "rxjs": {
-                        "defaultExtension": "js"
-                    }
+                    //"rxjs": {
+                    //    "defaultExtension": "js"
+                    //}
                 }
             })
         </script>
@@ -114,8 +129,12 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="ba/node_modules/zone.js/dist/zone.js?1468288678454"></script>
-        <script src="ba/node_modules/rxjs/bundles/Rx.js?1468288678454"></script>
+        <script src="ba/node_modules/zone.js/dist/zone.js?1483976882869"></script>
+
+        <!-- The latest angular-seed on 2016-12-12 changed the RxJs include: -->
+        <script src="ba/node_modules/.tmp/Rx.min.js?1483976882871"></script>
+        @*<script src="ba/node_modules/rxjs/bundles/Rx.js?1468288678454"></script>*@
+
     </environment>
     <environment names="Staging,Production">
         .
