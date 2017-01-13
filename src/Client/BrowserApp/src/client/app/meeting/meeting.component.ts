@@ -40,9 +40,8 @@ export class MeetingComponent {
         this._backendService.postMeeting()
         .subscribe(
             t => {
-                
-                t
-            })
+                t;
+            });
             //error => this.errorMessage = <any>error);
     }
 }

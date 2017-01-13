@@ -17,16 +17,16 @@ This software will obtain or produces transcripts of government meetings. It wil
 Shortly after a government meeting takes place, you will be able to:
 * Go online and see what issues were discussed and exactly what was said and by whom.
 * Receive a summary of issues discussed via text or email.
-* Receive notices whenever a specific issues is discussed.
+* Receive notices whenever specific issues are discussed.
 
-At any time, you can go online:
+At any time, you can go online to:
 * See all issues discussed in past meetings.
 * See all that was said in the past on any specific issue.
 * See exactly what any specific official said in the past on any specific issue.
 
 The goal is to first get the software working for towns and small cities. The lessons learned can then be used to implement it for larger city, state or national government entities. People throughout the world deal with the same problems. The software will be designed to be used anywhere, wherever there is democracy and public access to government meetings. 
 
-More detailed functional design can be found here: [Functional Design](https://github.com/govmeeting/govmeeting/wiki/functional-design)
+For more detailed functional design, see: [Functional Design](https://github.com/govmeeting/govmeeting/wiki/functional-design)
 
 ## Technical overview
 
@@ -34,7 +34,8 @@ The Front-end is in Typescript using Angular 2.
 The Back-end is in C# using ASP.NET Core and Entity Framework.
 
 
-More detailed system design can be found here: [System Design](https://github.com/govmeeting/govmeeting/wiki/system-design)
+For more detailed system design, see: [System Design](https://github.com/govmeeting/govmeeting/wiki/system-design)  
+To get up and running quickly, see: [Quick Start](https://github.com/govmeeting/govmeeting/wiki/system-design#quick-start) 
 
 ## Contacts
 [![Join the chat at https://gitter.im/govmeeting/govmeeting](https://badges.gitter.im/govmeeting/govmeeting.svg)](https://gitter.im/govmeeting/govmeeting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)

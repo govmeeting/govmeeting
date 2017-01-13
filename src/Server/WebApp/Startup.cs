@@ -73,7 +73,7 @@ namespace WebApp
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // amount of time they are locked out
                 options.Lockout.AllowedForNewUsers = true;
-                // TODO: We should send the admin an email if someone is locked out.
+                // Todo: We should send the admin an email if someone is locked out.
                 // Govmeeting: Require email confirmation
                 options.SignIn.RequireConfirmedEmail = true;
             })
@@ -96,7 +96,7 @@ namespace WebApp
                     policy.RequireClaim("Administrator", "System");
                 });
 
-                // TODO We need policies that are more dynamic and flexible.
+                // Todo We need policies that are more dynamic and flexible.
                 // These will work temporarily.
                 options.AddPolicy("PhillyEditor", policy =>
                 {

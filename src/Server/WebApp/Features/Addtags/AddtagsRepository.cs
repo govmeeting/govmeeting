@@ -38,12 +38,12 @@ namespace WebApp.Models
         // Example: Get("johnpank", "Philadelphia", "CityCouncil", "2016-03-17")
         public Addtags Get(string username, string city, string govEntity, string meetingDate)
         {
-            // TODO - check permissions
+            // Todo - check permissions
+            //      - change to get a default govEntity
+            //      - change to get the latest meeting
 
-            // Todo - change to get a default entity
             if (govEntity == null) govEntity = "CityCouncil";
 
-            // Todo - change to get the latest meeting
             if (meetingDate == null) meetingDate = "2016-03-17";
 
             string path = city + "_" + govEntity + "_" + meetingDate + ".json";

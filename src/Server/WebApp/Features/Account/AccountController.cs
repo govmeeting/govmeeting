@@ -125,7 +125,7 @@ namespace WebApp.Controllers
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     Debug.WriteLine(string.Format("Register: Email for code {0} is {1}", model.Email, code));
 
-                    // TODO Check why Adrian Hall uses "Context" and not HttpContext.
+                    // Todo Check why Adrian Hall uses "Context" and not HttpContext.
                     //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Context.Request.Scheme);
 
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);

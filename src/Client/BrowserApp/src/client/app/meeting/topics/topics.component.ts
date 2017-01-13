@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-//import {HTTP_PROVIDERS} from '@angular/http';
+import { Component, OnInit } from '@angular/core';
+//import { HTTP_PROVIDERS } from '@angular/http';
 import { BackendService } from '../../shared/index';
-import {UserchoiceService} from '../../shared/index';
-// import {MyHighlightDirective} from '../../shared/index';
+import { UserchoiceService } from '../../shared/index';
+// import { MyHighlightDirective}  from '../../shared/index';
 
 @Component({
     moduleId: module.id,

@@ -141,4 +141,5 @@
     "systemjs": "0.19.40",
     "zone.js": "^0.7.2"
   }
+, "-vs-binding":{"ProjectOpened":["build.dev.watch"]}
 }

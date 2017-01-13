@@ -112,7 +112,7 @@ namespace Govmeeting.Backend.ReadTranscript
                     {
                         StringBuilder text = new StringBuilder(line.Trim());
                         ReadTextLines(ref text);
-                        // TODO: output warning message if we find text lines where there should be a field.
+                        // Todo: output warning message if we find text lines where there should be a field.
                         // Right now we drop the text.
                     }
                 }
