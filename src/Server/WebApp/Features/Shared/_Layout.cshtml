@@ -20,7 +20,8 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        <link rel="stylesheet" href="ba/dist/prod/css/main.css?1466603800031">
+        @*<link rel="stylesheet" href="ba/dist/prod/css/main.css?1466603800031">*@
+        <link rel="stylesheet" href="~/css/main.css?1466603800031">
     </environment>
 </head>
 <body>
@@ -46,9 +47,9 @@
 
                 <ul class="nav navbar-nav">
                     <li><a href="/">HOME</a></li>
-                    <li><a href="/about">ABOUT</a></li>
+                    <!--<li><a href="/about">ABOUT</a></li>
                     <li><a href="/meeting">MEETING</a></li>
-                    <li><a href="/addtags">ADD TAGS</a></li>
+                    <li><a href="/addtags">ADD TAGS</a></li>-->
                 </ul>
 
                 @await Html.PartialAsync("_LoginPartial")
@@ -147,8 +148,10 @@
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
-        <script src="ba/dist/prod/js/shims.js?1463764236153"></script>
-        <script src="ba/dist/prod/js/app.js?1463764236155"></script>
+        @*<script src="ba/dist/prod/js/shims.js?1463764236153"></script>
+        <script src="ba/dist/prod/js/app.js?1463764236155"></script>*@
+        <script src="~/js/shims.js?1463764236153"></script>
+        <script src="~/js/app.js?1463764236155"></script>
     </environment>
 
     <environment names="Development">

@@ -25,6 +25,8 @@ namespace WebApp
     {
         public Startup(IHostingEnvironment env)
         {
+            //Console.WriteLine("Environment = " + env.EnvironmentName);
+
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
 
@@ -44,6 +46,10 @@ namespace WebApp
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            //System.Console.WriteLine("ConnectionStrng = " + Configuration["Data_DefaultConnection_ConnectionString"]);
+            //System.Console.WriteLine("ClientId = " + Configuration["ExternalAuth_Google_ClientId"]);
+            //System.Console.WriteLine("TestSettings = " + Configuration["TestSettings"]);
         }
 
         public IConfigurationRoot Configuration { get; set; }
@@ -54,7 +60,8 @@ namespace WebApp
             // Add framework services.
 
             // JP: ### Conversion to ASP.NET Core ###
-            // JP: The latest template for ASP.NET Core remove the calls to AddEntityFramework and AddSqlServer
+            // JP: The latest template for ASP.NET Core removes the calls to AddEntityFramework and AddSqlServer.
+            // Asp.Net Core documentatin: https://docs.microsoft.com/en-us/aspnet/core/
             //services.AddEntityFramework()
             //    .AddSqlServer()
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -165,8 +172,13 @@ namespace WebApp
                 app.UseExceptionHandler("/Home/Error");
 
                 // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
+                // Using migrations with asp.net core: https://dzone.com/articles/how-to-use-migration-with-entity-framework-core 
                 try
                 {
+                    //TODO - We should be able to replace all the code below with:
+                    //          db.Database.Migrate();
+                    // if we add another argument to the Configure() argument list:
+                    //          public void Configure( ...... , ApplicationDbContext db)
                     using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
                         .CreateScope())
                     {
@@ -184,22 +196,25 @@ namespace WebApp
 
             app.UseStaticFiles();
 
-            // Add a PhysicalFileProvider for the BrowserApp folder.
-            string s = Directory.GetCurrentDirectory();     // directory of ...PublicSystem\Server\WebApp\wwwroot
-            int i = s.LastIndexOf("\\");        // go back 1st of three backslashes
-            i = s.LastIndexOf("\\", i - 1);     // second backslash
-
-            // JP: ### Conversion to ASP.NET Core ###
-            // JP: GetCurrentDIrectory no longer gets ...PublicSystem\Server\WebApp\wwwroot but it gets ...PublicSystem\Server\WebApp
-            // JP: Why is this?
-            // i = s.LastIndexOf("\\", i - 1);     // third backslash
-
-            string browserAppPath = s.Substring(0, i) + @"\Client\BrowserApp";  // ...PublicSystem\Client\BrowserApp 
-            app.UseStaticFiles(new StaticFileOptions()
+            if (env.IsDevelopment())
             {
-                FileProvider = new PhysicalFileProvider(browserAppPath),
+                // Add a PhysicalFileProvider for the BrowserApp folder.
+                string s = Directory.GetCurrentDirectory();     // directory of ...PublicSystem\Server\WebApp\wwwroot
+                int i = s.LastIndexOf("\\");        // go back 1st of three backslashes
+                i = s.LastIndexOf("\\", i - 1);     // second backslash
+
+                // JP: ### Conversion to ASP.NET Core ###
+                // JP: GetCurrentDIrectory no longer gets ...PublicSystem\Server\WebApp\wwwroot but it gets ...PublicSystem\Server\WebApp
+                // JP: Why is this?
+                // i = s.LastIndexOf("\\", i - 1);     // third backslash
+
+                string browserAppPath = s.Substring(0, i) + @"\Client\BrowserApp";  // ...PublicSystem\Client\BrowserApp 
+                app.UseStaticFiles(new StaticFileOptions()
+                {
+                    FileProvider = new PhysicalFileProvider(browserAppPath),
                     RequestPath = new PathString("/ba")
-            });
+                });
+            }
 
             app.UseIdentity();
 

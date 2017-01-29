@@ -23,7 +23,7 @@ export class MyHighlightDirective {
     private selection: Selection;
 
     constructor(el: ElementRef) {
-        console.log('MyHighlightDirective constructor');
+        // console.log('MyHighlightDirective constructor');
         this.textSelected = new EventEmitter<string>();
         this._el = el.nativeElement;
     }

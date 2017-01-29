@@ -26,6 +26,12 @@ We added the following to the secret store:
  * ExternalAuth_Google_ClientId = ClientId for Google+ external authorization
  * ExternalAuth_Google_ClientSecret = CLientSecret for Google+
  
- Now this info does not get checked into source control. I startup.cs, we can, for example, access the connection string as:
+ Now this info does not get checked into source control. In startup.cs, we can, for example, access the connection string as:
  * Configuration["Data_DefaultConnection_ConnectionString"]
+
+
+ ### Deploying to production
+When we publish the WebApp using the "Publish" dialog in Visual Studio, we will add the secret keys to the published appsettings.json file.
+See the notes for "Deployment".
+
   

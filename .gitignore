@@ -33,6 +33,7 @@ bld/
 /PublicSystem/Client/BrowserApp/app/**/*.js
 /PublicSystem/Client/BrowserApp/app/**/*.map
 .synkron.syncdb
+**/desktop.ini
 
 # Visual Studio 2015 cache/options directory
 .vs/

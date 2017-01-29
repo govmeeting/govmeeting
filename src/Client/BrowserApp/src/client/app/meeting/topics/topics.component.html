@@ -2,8 +2,8 @@
     <!-- <topics> -->
     <span> <strong> Select a Topic: </strong> </span>
     <span *ngFor="let topic of topicNames; let i = index">
-        <span [class.chosen]="IsSelectedTopic(i)" myhighlight [hidden]="i==0" (click)="FilterByTopic(i)"> {{topic}} | </span>
-        <span [class.chosen]="IsSelectedTopic(i)" myhighlight [hidden]="i!=0"  (click)="FilterByTopic(i)">  All | </span>
+        <span [class.chosen]="IsSelectedTopic(i)" myhighlight [hidden]="i==0" (click)="FilterByTopic(i)"> {{topic}} &#x2022; </span>
+        <span [class.chosen]="IsSelectedTopic(i)" myhighlight [hidden]="i!=0"  (click)="FilterByTopic(i)">  All Topics &#x2022; </span>
     </span>
     <!-- </topics> --> <br>
 </div>

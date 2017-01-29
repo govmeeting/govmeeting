@@ -18,8 +18,6 @@
 
 * How does the first admin user get created? Where is the code for displaying the Admin button? Who sees it?
 
-* Use a folder per feature under which each will have a folder for Models, Controllers, Views, etc
-
 * [done] Get BrowserApp dev output to be included.
 
 * Solve build problems in Services\EmailService.cs and StatusRequirement.cs. 

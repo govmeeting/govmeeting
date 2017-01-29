@@ -120,7 +120,7 @@
     "traceur": "^0.0.111",
     "ts-node": "^1.4.3",
     "tslint": "~4.0.0",
-    "typescript": "~2.0.9",
+    "typescript": "~2.0.10",
     "walk": "^2.3.9",
     "yargs": "^6.0.0"
   },
@@ -141,5 +141,5 @@
     "systemjs": "0.19.40",
     "zone.js": "^0.7.2"
   }
-, "-vs-binding":{"ProjectOpened":["build.dev.watch"]}
+, "-vs-binding":{"AfterBuild":["build.dev"]}
 }
