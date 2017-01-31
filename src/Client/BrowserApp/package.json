@@ -130,6 +130,7 @@
     "@angular/core": "~2.4.0",
     "@angular/forms": "~2.4.0",
     "@angular/http": "~2.4.0",
+    "@angular/material": "^2.0.0-beta.1",
     "@angular/platform-browser": "~2.4.0",
     "@angular/platform-browser-dynamic": "~2.4.0",
     "@angular/router": "~3.4.1",
@@ -139,7 +140,12 @@
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.2",
     "systemjs": "0.19.40",
+    "videogular2": "^4.0.0",
     "zone.js": "^0.7.2"
+  },
+  "-vs-binding": {
+    "AfterBuild": [
+      "build.dev"
+    ]
   }
-, "-vs-binding":{"AfterBuild":["build.dev"]}
 }

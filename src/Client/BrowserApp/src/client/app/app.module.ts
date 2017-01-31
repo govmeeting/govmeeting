@@ -9,12 +9,15 @@ import { AboutModule } from './about/about.module';
 import { HomepageModule } from './homepage/homepage.module';
 import { AddtagsModule } from './addtags/addtags.module';
 import { MeetingModule } from './meeting/meeting.module';
+import { FixasrModule } from './fixasr/fixasr.module';
+import { MatsampModule } from './matsamp/matsamp.module';
+import { VideoModule } from './video/video.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [BrowserModule, HttpModule, AppRoutingModule,
-     AboutModule, HomepageModule, AddtagsModule, MeetingModule, SharedModule.forRoot()],
-     // AboutModule, HomepageModule, AddtagsModule, SharedModule.forRoot()],
+     AboutModule, HomepageModule, AddtagsModule, MeetingModule, FixasrModule, MatsampModule,
+      VideoModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
