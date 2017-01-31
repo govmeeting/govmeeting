@@ -23,7 +23,9 @@ export class ProjectConfig extends SeedConfig {
       ...this.NPM_DEPENDENCIES,
       // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
-      {src: 'bootstrap-grid-only/bootstrap.css', inject: true} // inject into css section
+      {src: 'bootstrap-grid-only/bootstrap.css', inject: true}, // inject into css section
+      /* Select a pre-built Material theme */
+      {src: '@angular/material/core/theming/prebuilt/indigo-pink.css', inject: true}
     ];
 
     // Add `local` third-party libraries to be injected/bundled.
@@ -32,6 +34,16 @@ export class ProjectConfig extends SeedConfig {
       // {src: `${this.APP_SRC}/your-path-to-lib/libs/jquery-ui.js`, inject: true, vendor: false}
       // {src: `${this.CSS_SRC}/path-to-lib/test-lib.css`, inject: true, vendor: false},
     ];
+
+    // Add Material configuration to SystemJS
+    this.addPackageBundles({
+      name:'@angular/material',
+      path:'node_modules/@angular/material/bundles/material.umd.js',
+      packageMeta:{
+        main: 'index.js',
+        defaultExtension: 'js'
+      }
+    });
 
     // Add packages (e.g. ng2-translate)
     // let additionalPackages: ExtendPackages[] = [{

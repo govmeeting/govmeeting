@@ -1,0 +1,46 @@
+<h1>
+ <!-- {{title}} -->
+</h1>
+
+<md-sidenav-layout [class.m2app-dark]="isDarkTheme">
+  <md-sidenav #sidenav mode="side" class="app-sidenav">
+    Sidenav
+  </md-sidenav>
+  
+  <md-toolbar color="primary">
+    <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+    Angular 2 Material2 Example App
+    <span class="app-toolbar-filler"></span>
+    <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
+  </md-toolbar>
+  
+  <div layout="row">
+  <md-card class="app-input-section">
+    <div class="app-content">
+      <form>
+      <button (click)="saveChanges()">Save Changes</button>
+      <ul style="list-style: none;">
+        <li *ngFor="let a of asr; let i = index">
+          <md-input type="text" [value]="a.said"></md-input>
+        </li>
+      </ul>
+      </form>
+    </div>
+  </md-card>
+
+  <md-card class="app-input-section">
+    <div class="app-content">
+      <form>
+          <button (click)="saveChanges()">Save Changes</button>
+            <ul style="list-style: none;">
+            <li *ngFor="let a of asr; let i = index">
+              <input type="text" [value]="a.said"/>
+            </li>
+          </ul>
+      </form>
+    </div>
+  </md-card>
+  </div>
+</md-sidenav-layout>
