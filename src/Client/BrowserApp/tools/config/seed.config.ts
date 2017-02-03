@@ -371,7 +371,14 @@ export class SeedConfig {
       'dist/dev/*': '/base/dist/dev/*',
       '*': 'node_modules/*'
     },
+    map:{
+    'videogular2': 'videogular2',
+    },
     packages: {
+      'videogular2':{
+            main: 'core.js',
+            defaultExtension:'js'
+      }
     }
   };
 
