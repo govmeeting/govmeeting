@@ -95,7 +95,7 @@ This example will write all messages about conversions between paths and urls an
         }
     }
 ...
-However, this appears to be just for the Firefox debugginh extension.
+However, this appears to be just for the Firefox debugging extension.
 
 For Chrome, at https://github.com/Microsoft/vscode-chrome-debug, it says to add:
    "diagnosticLogging" :true 
@@ -151,6 +151,33 @@ I removed the initial breakpoint and set one within app.component.ts (on console
 This time, it ran ok and hit my breakpoint. 
 
 
+# Useless console errors in Chrome F12 tools
+
+I changed the name of a property on an array to make it invalid:
+   let startTime  = this.asr[i].startTime;
+to:
+   let startTime  = this.asr[i].startTimex;
+
+When the code was executed in Chrome, the F12 console displayed:
+    EXCEPTION: Cannot set property stack of [object Object] which has only a getter
+    ErrorHandler.handleError	@	core.umd.js:3472
+    next	@	core.umd.js:8434
+    schedulerFn	@	core.umd.js:4104
+    SafeSubscriber.__tryOrUnsub	@	Subscriber.ts:238
+    SafeSubscriber.next	@	Subscriber.ts:190
+    Subscriber._next	@	Subscriber.ts:135
+    Subscriber.next	@	Subscriber.ts:95
+    Subject.next	@	Subject.ts:61
+    EventEmitter.emit	@	core.umd.js:4090
+    NgZone.triggerError	@	core.umd.js:4451
+    onHandleError	@	core.umd.js:4412
+    ZoneDelegate.handleError	@	zone.js?1486238497044:246
+    Zone.runTask	@	zone.js?1486238497044:154
+    ZoneTask.invoke	@	zone.js?1486238497044:345
+
+I noticed many other simple errors which display totally uselss (to me) error messages.
+Perhaps it is possible to create a dictionary of these messages and match them up to what
+kind of error triggers each of them.
 
 
 
@@ -165,7 +192,4 @@ This time, it ran ok and hit my breakpoint.
 
 
 
-
-
-
-** Using Visual Studio 2015 ** 
+ 

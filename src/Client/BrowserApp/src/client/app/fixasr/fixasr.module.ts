@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -7,12 +8,16 @@ import { FixasrRoutingModule } from './fixasr-routing.module';
 import { FixasrComponent } from './fixasr.component';
 import { VideoModule } from '../video/video.module';
 
+//import {CommonModule} from "@angular/common";  // Add this
+
+
 @NgModule({
   declarations: [
     FixasrComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
+    // BrowserModule,
     FormsModule,
     HttpModule,
     VideoModule,

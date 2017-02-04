@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -14,7 +15,8 @@ import { MatsampComponent } from './matsamp.component';
     MatsampComponent
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
+    CommonModule,
     FormsModule,
     HttpModule,
     MatsampRoutingModule,

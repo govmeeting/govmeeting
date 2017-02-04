@@ -20,7 +20,6 @@ export class FixasrComponent  implements OnInit, AfterViewInit{
     errorMessage: string;
     title = 'fixasr works!';
     asr : AsrSegment[];
-    s : string;
 
     constructor(private _asrService: AsrService) {
     }
@@ -31,14 +30,9 @@ export class FixasrComponent  implements OnInit, AfterViewInit{
     private videoComponent : VideoComponent;
 
     ngOnInit() {
-        // this.getAsr();
+        let isTest : boolean = false;
+        this.getAsr(isTest);
 
-        // The following would get the list in memory.
-        this.asr = this._asrService.getAsrFromMemory().data;
-        console.log('return from getAsrFromMemory');
-        this.s = this.asr[0].said;
-
-        //this.getTopics();
     }
 
     ngAfterViewInit() {
@@ -62,7 +56,7 @@ export class FixasrComponent  implements OnInit, AfterViewInit{
         let duration = maxPhraseTime;
         if (this.asr.length > i+1) {
             let endTime : string  = this.asr[i+1].startTime;
-            duration = this.convertToSeconds(endTime) - start + contextTime * 2);
+            duration = this.convertToSeconds(endTime) - start + (contextTime * 2);
         } 
 
         this.videoComponent.playPhrase(start, duration);
@@ -79,17 +73,23 @@ export class FixasrComponent  implements OnInit, AfterViewInit{
         return seconds;
     }
 
-    getAsr() {
-        this._asrService.getAsr()
-        .subscribe(
-        talks => this.asr = talks,
-        error => this.errorMessage = <any>error);
+    getAsr(isTest : boolean) {
+        if (isTest)
+        {
+            this.asr = this._asrService.getAsrFromMemory().data;
+            console.log('return from getAsrFromMemory');
+        } else {
+            this._asrService.getAsr()
+            .subscribe(
+            talks => this.asr = talks,
+            error => this.errorMessage = <any>error);
+        }
     }
 
     saveChanges() {
         console.log('saveTranscript');
         //this._talkService.postChanges(this.talks)
-        this._asrService.postChanges()
+        this._asrService.postChanges(this.asr)
             .subscribe(
             t => {
                 t;

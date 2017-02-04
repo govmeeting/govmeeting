@@ -65,7 +65,7 @@ and in tsconfig.json
  about 30 errors "Duplicate identifier", All declarations of xxxx must hae identical modifiers", etc.
  I needed to remove @types/core-js from package.json and delete its directory in node_modules. ]
 
- # Video file types
+ # Splitting a video
 
 A downloaded mp4 file of a selectmen's meeting from YouTube worked fine with Videogular.
 I tried to create a shortened version for a demo. "Any Video Converter" has a "clip" feature,
@@ -85,6 +85,13 @@ This did a much better job. It kept the data much closer:
     bit rate    269             277
     aspect      16:9 (1.777)    1.739
 
-"MKV Extractor" is a preferred tool for this. Is there a Windows version?
+"MKV Extractor" is a recommended tool for splitting.
+
+# Converting a video
+
+There are three main video formats for HTML5 video on the web: mp4, ogg & webm.
+I was able to use VLC to convert the mp4 to ogg. But VLC crashed every time that
+I tried to convert to WEBM.
+I used: http://www.online-convert.com
 
 

@@ -9,19 +9,24 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class AsrService {
 
-// The code outlined in main.ts for checking the Name argument need to be used here.
+// We need to pass an argument into the program from src/index.html that tells us
+// we are running standalone without a server. It will be checked here and
+// if true, we will return the data either from a local file or from memory.
+    private standalone : boolean = true;
 
     //private _talksFileUrl = 'assets/talks.json'; // URL to web api
-    private _asrFileUrl = 'assets/Philadelphia_CityCouncil_2014-09-25.json';
+    //private _asrFileUrl = 'assets/Philadelphia_CityCouncil_2014-09-25.json';
     //private _talksUrl = 'http://localhost:60366/api/addtags';
-    private _asrUrl = 'http://localhost:60366/api/addtags/Philadelphia/CityCouncil/2014-09-25';
+
+    // private _asrFileUrl = 'assets/2016-10-11 Boothbay Harbor Selectmen.json';
+    private _asrFileUrl = 'assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).json';
+
+    private _asrUrl = 'http://localhost:60366/api/asr/BoothbayHarbor/Selectmen/2016-10-11';
 
     constructor (private http: Http) {}
 
     getAsr(): Observable<AsrSegment[]> {
 
-// The code outlined in main.ts for checking the Name argument need to be used here.
-//        return this.http.get(this._talksUrl)
 
         return this.http.get(this._asrFileUrl)
         .map(this.extractData)
@@ -31,8 +36,8 @@ export class AsrService {
     getAsrFromMemory(): any {
         console.log('getAsrFromMemory');
         return {
-            data: [
-                { startTime: '0:00', said: 'the tuesday october $YEAR 11 selectmen'},
+            "data": [
+                { "startTime": '0:00', said: 'the tuesday october $YEAR 11 selectmen'},
                 { startTime: '0:02', said: 'meeting i will apologize apologize for'},
                 { startTime: '0:06', said: 'my voice i can hardly speak i woke up'},
                 { startTime: '0:08', said: 'Saturday with a terrible cold so if you'},
@@ -48,10 +53,11 @@ export class AsrService {
         };
     }
 
-    postChanges(): Observable<any> {
+    postChanges(asr : any): Observable<any> {
         console.log('postChanges in asr.service');
         //return this.postData(this._talksUrl, 'my addtags data');
-        return this.postData(this._asrUrl, this.getAsrFromMemory());
+        // return this.postData(this._asrUrl, this.getAsrFromMemory());
+        return this.postData(this._asrUrl, asr);
     }
 
     private postData(url: string, data: any): Observable<any> {
@@ -59,7 +65,7 @@ export class AsrService {
         let body = JSON.stringify(data);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        console.log('postData in talks.service');
+        console.log('postData in asr.service');
         return this.http.post(url, body, options);
         //.map(res => console.info(res))
         //.catch(this.handleError);
