@@ -13,13 +13,18 @@ namespace CreateJsonFile
 
             string currentDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
 
-            string testdataDirectory = currentDir + @"\..\..\..\..\testdata";
+            string DataDirectory = currentDir + @"\..\..\..\..\..\..\Server\WebApp\wwwroot\assets\data";
+            string meetingDirectory = DataDirectory + "\\" + @"USA_ME_LincolnCounty_BoothbayHarbor_Selectmen\2016-10-11";
 
             processAutoTranscript.CreateJsonFile(
-              testdataDirectory + @"\Step 0 - transcript from Youtube.txt",
-              testdataDirectory + @"\output\Step 1 - json file.json"
+              meetingDirectory + @"\Step 1 - transcript from Youtube.txt",
+              meetingDirectory + @"\Step 2 - convert Youtube text to JSON.json"
 
             );
+
+            // Copy the output file to WebApp/wwwroot/assets
+            string srcDirectory = currentDir + @"\..\..\..\..\..";
+            string assetsDirectory = srcDirectory + @"Server\wwwroot\assets";
         }
     }
 }

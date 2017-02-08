@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { AsrSegment } from './asrsegment';
 import { AsrService } from './asr.service';
-import { VideoComponent } from '../video/video.component';
+//import { VideoComponent } from '../video/video.component';
 
 // This is the "Fix ASR" component for fixing the "Automatic Speech Recognition" errors.
 
@@ -26,8 +26,8 @@ export class FixasrComponent  implements OnInit, AfterViewInit{
 
     // https://github.com/videogular/videogular2/blob/master/docs/using-the-api.md
 
-    @ViewChild(VideoComponent)
-    private videoComponent : VideoComponent;
+    //@ViewChild(VideoComponent)
+    //private videoComponent : VideoComponent;
 
     ngOnInit() {
         let isTest : boolean = false;
@@ -59,7 +59,7 @@ export class FixasrComponent  implements OnInit, AfterViewInit{
             duration = this.convertToSeconds(endTime) - start + (contextTime * 2);
         } 
 
-        this.videoComponent.playPhrase(start, duration);
+        //this.videoComponent.playPhrase(start, duration);
     }
     convertToSeconds(time : string) {
         var array = time.split(":");

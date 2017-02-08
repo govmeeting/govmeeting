@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { FixasrRoutingModule } from './fixasr-routing.module';
 import { FixasrComponent } from './fixasr.component';
-import { VideoModule } from '../video/video.module';
+//import { VideoModule } from '../video/video.module';
 
 //import {CommonModule} from "@angular/common";  // Add this
 
@@ -20,7 +20,7 @@ import { VideoModule } from '../video/video.module';
     // BrowserModule,
     FormsModule,
     HttpModule,
-    VideoModule,
+    //VideoModule,
     FixasrRoutingModule,
     MaterialModule.forRoot()
   ],

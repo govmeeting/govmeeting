@@ -12,25 +12,30 @@ export class AsrService {
 // We need to pass an argument into the program from src/index.html that tells us
 // we are running standalone without a server. It will be checked here and
 // if true, we will return the data either from a local file or from memory.
-    private standalone : boolean = true;
+    private test = "notest";
 
     //private _talksFileUrl = 'assets/talks.json'; // URL to web api
     //private _asrFileUrl = 'assets/Philadelphia_CityCouncil_2014-09-25.json';
     //private _talksUrl = 'http://localhost:60366/api/addtags';
 
-    // private _asrFileUrl = 'assets/2016-10-11 Boothbay Harbor Selectmen.json';
-    private _asrFileUrl = 'assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).json';
-
-    private _asrUrl = 'http://localhost:60366/api/asr/BoothbayHarbor/Selectmen/2016-10-11';
+    // private _Url_Test = 'assets/2016-10-11 Boothbay Harbor Selectmen.json';
+    private _Url_Test = 'assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).json';
+    //private _Url = 'http://localhost:58880/api/fixasr/USA/ME/BoothbayHarbor/Selectmen/2016-10-11';
+    private _Url = 'http://localhost:58880/api/fixasr';
 
     constructor (private http: Http) {}
 
     getAsr(): Observable<AsrSegment[]> {
 
-
-        return this.http.get(this._asrFileUrl)
-        .map(this.extractData)
-        .catch(this.handleError);
+        if (this.test != "test") {
+            return this.http.get(this._Url)
+                .map(this.extractData)
+                .catch(this.handleError);
+        } else {
+            return this.http.get(this._Url_Test)
+                .map(this.extractData)
+                .catch(this.handleError);
+        }
     }
 
     getAsrFromMemory(): any {
@@ -57,18 +62,18 @@ export class AsrService {
         console.log('postChanges in asr.service');
         //return this.postData(this._talksUrl, 'my addtags data');
         // return this.postData(this._asrUrl, this.getAsrFromMemory());
-        return this.postData(this._asrUrl, asr);
+        return this.postData(this._Url, asr);
     }
 
     private postData(url: string, data: any): Observable<any> {
         //private postData (url: string, data: any) {
-        let body = JSON.stringify(data);
+        //let body = JSON.stringify(data);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         console.log('postData in asr.service');
-        return this.http.post(url, body, options);
-        //.map(res => console.info(res))
-        //.catch(this.handleError);
+        return this.http.post(url, { "data": data }, headers)
+        .map(res => console.info(res))
+        .catch(this.handleError);
     }
 
     private extractData(res: Response) {

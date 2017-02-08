@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <!--<link rel="stylesheet" href="ba/node_modules/bootstrap-grid-only/bootstrap.css?1468288678454">-->
+        <link rel="stylesheet" href="ba/node_modules/@@angular/material/core/theming/prebuilt/indigo-pink.css?1486498971055">
         <link rel="stylesheet" href="ba/dist/dev/css/main.css?1466603800031">
     </environment>
     <environment names="Staging,Production">
@@ -79,6 +80,7 @@
 
         <script src="ba/node_modules/systemjs/dist/system.src.js?1468288678438"></script>
 
+
         <script>
             // These are documentation links for SystemJs & ES6 module loader configuration.
             // https://github.com/systemjs/systemjs/tree/master/docs
@@ -106,6 +108,7 @@
                     "@@angular/http": "ba/node_modules/@@angular/http/bundles/http.umd.js",
                     "@@angular/platform-browser": "ba/node_modules/@@angular/platform-browser/bundles/platform-browser.umd.js",
                     "@@angular/platform-browser-dynamic": "ba/node_modules/@@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+                    "@@angular/material": "ba/node_modules/@@angular/material/bundles/material.umd.js",
 
                     //"@@angular/router": "ba/node_modules/@@angular/router/index.js",
                     '@@angular/router': 'ba/node_modules/@@angular/router/bundles/router.umd.js',
@@ -114,16 +117,34 @@
 
                     "dev/app/*": "ba/dist/dev/app/*",
 
-                    ////"*": "ba/node_modules/*"
                     //"*": "ba/node_modules/*"
                 },
+
+                map:{
+                    'videogular2': 'videogular2',
+                },
+                packages: {
+                    'videogular2':{
+                        main: 'core.js',
+                        defaultExtension:'js'
+                    }
+                },
+
+
                 "packages": {
                     //"rxjs": {
                     //    "defaultExtension": "js"
                     //}
+                    "@@angular/material": {
+                        "main": "index.js",
+                        "defaultExtension": "js"
+                    }
                 }
             })
+
         </script>
+
+
     </environment>
 
     <environment names="Development">
@@ -148,8 +169,6 @@
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
-        @*<script src="ba/dist/prod/js/shims.js?1463764236153"></script>
-        <script src="ba/dist/prod/js/app.js?1463764236155"></script>*@
         <script src="~/js/shims.js?1463764236153"></script>
         <script src="~/js/app.js?1463764236155"></script>
     </environment>

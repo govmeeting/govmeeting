@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace WebApp.Models
 {
-    public class Addtags
+    public class Fixasr
     {
-        public Talks[] data { get; set; }
+        public AsrSegment[] data { get; set; }
     }
 }

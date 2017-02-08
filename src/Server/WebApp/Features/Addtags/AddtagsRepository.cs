@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using Newtonsoft.Json;
 using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace WebApp.Models
 {
@@ -12,10 +13,19 @@ namespace WebApp.Models
     {
         static ConcurrentDictionary<string, Addtags> _addtags = new ConcurrentDictionary<string, Addtags>();
 
-        public AddtagsRepository()
+        //public AddtagsRepository()
+        //{
+        ////    Add(new Addtags { Name = "Item1" });
+        //}
+
+        // https://www.mikesdotnetting.com/article/302/server-mappath-equivalent-in-asp-net-core
+        private IHostingEnvironment _env;
+        public AddtagsRepository(IHostingEnvironment env)
         {
-        //    Add(new Addtags { Name = "Item1" });
+            _env = env;
+            //    Add(new Addtags { Name = "Item1" });
         }
+
 
         /*public IEnumerable<Addtags> GetAll()
         {
@@ -35,24 +45,32 @@ namespace WebApp.Models
             return item;
         }
 
-        // Example: Get("johnpank", "Philadelphia", "CityCouncil", "2016-03-17")
-        public Addtags Get(string username, string city, string govEntity, string meetingDate)
+        // We are currently storing the data under the following structure. Directories under assets/data are
+        // named as follows: <country>_<state>_<town-or-city>_<gov-entity>/<date>
+        // Example: Get("johnpank", "USA", "PA", "Philadelphia", "CityCouncil", "2016-03-17")
+        // will get the file in the directory "wwwroot/assets/data/USA_PA_Philadelphia_CityCouncil/2016-03-17".
+        // We will likely change this convention once the number of files grows and we need a deeper folder structure.
+        public Addtags Get(string username, string country, string state, string city, string govEntity, string meetingDate)
         {
             // Todo - check permissions
             //      - change to get a default govEntity
             //      - change to get the latest meeting
 
-            if (govEntity == null) govEntity = "CityCouncil";
+            //if (govEntity == null) govEntity = "CityCouncil";
 
-            if (meetingDate == null) meetingDate = "2016-03-17";
+            //if (meetingDate == null) meetingDate = "2016-03-17";
 
-            string path = city + "_" + govEntity + "_" + meetingDate + ".json";
-            return GetByPath("assets/" + path);
+            string path = "assets/data/" + country + "_" + state + "_" + city + "_" + govEntity + "/" + meetingDate + "/" + "Step 2A - Convert PDF file to JSON.json";
+
+            return GetByPath(path);
         }
 
         public Addtags GetByPath(string path)
         {
-            string addtagsString = Readfile(path);
+            var webRoot = _env.WebRootPath;
+            var fullpath = System.IO.Path.Combine(webRoot, path);
+
+            string addtagsString = Readfile(fullpath);
             //string addtagsString = getTagEditsString();
             if (addtagsString != null)
             {
@@ -77,10 +95,16 @@ namespace WebApp.Models
             }
         }
 
+        //public void PutByPath(string path, string value)
         public void PutByPath(string path, Addtags value)
         {
             string stringValue = JsonConvert.SerializeObject(value, Formatting.Indented);
-            //File.WriteAllText(outfile, stringValue);
+            //string stringValue = value;
+
+            var webRoot = _env.WebRootPath;
+            var fullpath = System.IO.Path.Combine(webRoot, path);
+
+            File.WriteAllText(fullpath, stringValue);
 
         }
 

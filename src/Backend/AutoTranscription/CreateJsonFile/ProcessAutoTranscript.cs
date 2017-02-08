@@ -20,7 +20,7 @@ namespace CreateJsonFile
         public string ConvertToJson(string text)
         {
 
-            Phrase phrase = new Phrase { startTime = null, speaker = null, said = null };
+            Phrase phrase = new Phrase { startTime = null, said = null };
 
             StringWriter strWriter = new StringWriter();
             strWriter.NewLine = "\n";
@@ -28,9 +28,6 @@ namespace CreateJsonFile
             StringReader strReader = new StringReader(text);
             string nextLine;
             bool firstRecord = true;
-
-            string speakerLabel = "Speaker: ";
-            int speakerLabelLen = speakerLabel.Length;
 
             string starttimeLabel = "startTime: ";
             int starttimeLabelLen = starttimeLabel.Length;

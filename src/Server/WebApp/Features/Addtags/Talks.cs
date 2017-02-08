@@ -9,7 +9,7 @@ namespace WebApp.Models
      * tags to the transcript. Each time a new speaker says something
      * the topic of discussion, meeting section, etc. may change.
      */
-    public class TagEdit
+    public class Talks
     {
         public string speaker;     // speaker name
         public string said;        // what they said

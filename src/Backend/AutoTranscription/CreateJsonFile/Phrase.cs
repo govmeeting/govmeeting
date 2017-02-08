@@ -8,7 +8,6 @@ namespace CreateJsonFile
     public class Phrase
     {
         public string startTime;
-        public string speaker;
         public string said;
     }
 }

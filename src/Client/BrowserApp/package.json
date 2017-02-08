@@ -141,7 +141,7 @@
     "rxjs": "5.0.2",
     "systemjs": "0.19.40",
     "videogular2": "^4.0.0",
-    "zone.js": "^0.7.2"
+    "zone.js": "^0.7.4"
   },
   "-vs-binding": {
     "AfterBuild": [

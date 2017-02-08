@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TalksService } from './talks.service';
 import { TopicsService } from '../topics/topics.service';
+import { Addtags } from '../addtags';
 // import { HTTP_PROVIDERS } from '@angular/http';
 import { Talk } from './talk';
 // import { SectionsComponent } from '../sections/sections.component';
@@ -22,6 +23,7 @@ import { Talk } from './talk';
 export class TalksComponent implements OnInit {
     errorMessage: string;
     talks: Talk[];
+    addtags: Addtags = {data: null};
     topics: string[];
     highlightedTopic: string;
     shownTopicSelection: number = -1; // index of where we are displaying topic choice.
@@ -45,14 +47,14 @@ export class TalksComponent implements OnInit {
     getTalks() {
         this._talkService.getTalks()
         .subscribe(
-        talks => this.talks = talks,
+        //talks => this.addtags.data = this.talks = talks,
+        addtags => (this.addtags = addtags, this.talks = addtags.data),
         error => this.errorMessage = <any>error);
     }
 
     saveChanges() {
         console.log('saveTranscript');
-        //this._talkService.postChanges(this.talks)
-        this._talkService.postChanges()
+        this._talkService.postChanges(this.addtags)
             .subscribe(
             t => {
                 t;

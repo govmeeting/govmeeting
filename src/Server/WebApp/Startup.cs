@@ -135,9 +135,10 @@ namespace WebApp
                 });
                 */
             });
-            
+
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc()
+                .AddXmlSerializerFormatters();
 
             services.Configure<RazorViewEngineOptions>(options =>
             {
@@ -149,6 +150,7 @@ namespace WebApp
             services.AddSingleton<IMeetingRepository, MeetingRepository>();
             services.AddSingleton<ITranscriptRepository, TranscriptRepository>();
             services.AddSingleton<IAddtagsRepository, AddtagsRepository>();
+            services.AddSingleton<IFixasrRepository, FixasrRepository>();
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -239,9 +241,13 @@ namespace WebApp
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "API Addtags+Transcripts",
-                    template: "{controller=Addtags}/{city}/{govEntity?}/{meetingDate?}");
+                //routes.MapRoute(
+                //    name: "API Addtags+Transcripts",
+                //    template: "{controller=Addtags}/{city}/{govEntity?}/{meetingDate?}");
+
+                //routes.MapRoute(
+                //    name: "API Fixasr+Transcripts",
+                //    template: "api/{controller=Fixasr}/{city?}/{govEntity?}/{meetingDate?}");
 
                 routes.MapRoute(
                    name: "default",

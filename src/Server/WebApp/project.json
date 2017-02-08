@@ -45,7 +45,8 @@
         "type": "build"
       },
       "Microsoft.AspNetCore.Authentication.Google": "1.0.0",
-      "Newtonsoft.Json": "9.0.1"
+      "Newtonsoft.Json": "9.0.1",
+      "Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.0.1"
     },
 
     "tools": {
