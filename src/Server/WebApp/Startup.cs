@@ -40,16 +40,17 @@ namespace WebApp
 
             if (env.IsDevelopment())
             {
-                // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
+                // For more details on using the user secret store see:
+                //   http://go.microsoft.com/fwlink/?LinkID=532709
+                //   http://asp.net-hacker.rocks/2016/07/11/user-secrets-in-aspnetcore.html
                 builder.AddUserSecrets();
             }
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
 
-            //System.Console.WriteLine("ConnectionStrng = " + Configuration["Data_DefaultConnection_ConnectionString"]);
-            //System.Console.WriteLine("ClientId = " + Configuration["ExternalAuth_Google_ClientId"]);
-            //System.Console.WriteLine("TestSettings = " + Configuration["TestSettings"]);
+            //System.Console.WriteLine("ConnectionStrng = " + Configuration["Data:DefaultConnection:ConnectionString"]);
+            //System.Console.WriteLine("ClientId = " + Configuration["ExternalAuth:Google:ClientId"]);
         }
 
         public IConfigurationRoot Configuration { get; set; }
@@ -65,9 +66,9 @@ namespace WebApp
             //services.AddEntityFramework()
             //    .AddSqlServer()
             services.AddDbContext<ApplicationDbContext>(options =>
-                // options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+                options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
                 // We use User Secrets to store this. We left the development string in appsettings.json, but it is not used.
-                options.UseSqlServer(Configuration["Data_DefaultConnection_ConnectionString"]));
+                // options.UseSqlServer(Configuration["Data_DefaultConnection_ConnectionString"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
@@ -227,11 +228,10 @@ namespace WebApp
             // http://localhost:60366/signin-google
             app.UseGoogleAuthentication(new GoogleOptions
             {
-                //ClientId = Configuration["ExternalAuth:Google:ClientId"],
-                //ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"],
-                // We use the User Secrets store for this info.
-                ClientId = Configuration["ExternalAuth_Google_ClientId"],
-                ClientSecret = Configuration["ExternalAuth_Google_ClientSecret"],
+                // We use the User Secrets store for this info during development.
+                // During production, we use an appsettings.production.json file.
+                ClientId = Configuration["ExternalAuth:Google:ClientId"],
+                ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"],
                 AuthenticationScheme = "Google",
 
                 // JP: ### Conversion to ASP.NET Core ###
