@@ -17,7 +17,7 @@ import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   imports: [BrowserModule, HttpModule, AppRoutingModule,
-     AboutModule, HomepageModule, AddtagsModule, MeetingModule, 
+     AboutModule, HomepageModule, AddtagsModule, MeetingModule,
       MatsampModule,
       //VideoModule,
       FixasrModule,

@@ -33,10 +33,10 @@ namespace WebApp
                 // JP: ### Conversion to ASP.NET Core ###
                 // These changes were made to new template.
                 .SetBasePath(env.ContentRootPath)
-                //.AddJsonFile("appsettings.json")
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             if (env.IsDevelopment())
             {

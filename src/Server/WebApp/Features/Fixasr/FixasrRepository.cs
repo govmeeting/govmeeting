@@ -58,7 +58,8 @@ namespace WebApp.Models
             // Todo - check permissions
 
 
-            string path = "assets\\data\\" + country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "\\" + meetingDate + "\\" + "Step 2 - transcript from Youtube.json";
+            //string path = "assets\\data\\" + country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "\\" + meetingDate + "\\" + "Step 2 - transcript from Youtube.json";
+            string path = "assets/data/" + country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "/" + meetingDate + "/" + "Step 2 - transcript from Youtube.json";
             return GetByPath(path);
         }
 

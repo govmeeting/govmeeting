@@ -56,9 +56,8 @@ export class TalksComponent implements OnInit {
         console.log('saveTranscript');
         this._talkService.postChanges(this.addtags)
             .subscribe(
-            t => {
-                t;
-            });
+            t => t
+            );
         //error => this.errorMessage = <any>error);
     }
 

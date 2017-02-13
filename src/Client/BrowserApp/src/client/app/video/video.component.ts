@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {VgAPI} from 'videogular2/core';
-import {Observable} from 'rxjs/Rx';
+import { VgAPI } from 'videogular2/core';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   moduleId: module.id,
@@ -18,15 +18,20 @@ export class VideoComponent {
     }
     constructor() {
         this.sources = [
+/*            {
+              src: 'assets/2016-10-11 Boothbay Harbor Selectmen Oct 11.mp4',
+              type: 'video/mp4'
+            }
+*/
             {
-              src: "assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).mp4",
-              type: "video/mp4"
-            },
-            {
-              src: "assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).ogg",
-              type: "video/ogg"
+              src: 'assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).mp4',
+              type: 'video/mp4'
             }
 /*            {
+              src: 'assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).ogg',
+              type: 'video/ogg'
+            }
+            {
                 src: "http://static.videogular.com/assets/videos/videogular.mp4",
                 type: "video/mp4"
             },
@@ -43,15 +48,7 @@ export class VideoComponent {
     }
 
     playPhrase(start : number, duration : number) {
-        /* let point = {
-                timeLapse: {
-                    start: start,
-                    end: start + duration 
-                }
-        }; */
-
-
-        console.log('In video playPhrase, start=' + start + " duration=" + duration);
+        console.log('In video playPhrase, start=' + start + ' duration=' + duration);
         let timer = Observable.timer(duration * 1000);
         timer.subscribe(t=>this.api.pause());
         //timer.subscribe(t=>console.log("done with timeout"));

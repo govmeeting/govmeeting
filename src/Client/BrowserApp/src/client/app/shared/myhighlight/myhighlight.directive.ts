@@ -3,10 +3,6 @@ import { HostListener } from '@angular/core';
 
 @Directive({
     selector:'[myhighlight]',
-//    host: {
-//        '(mouseenter)':'onMouseEnter()',
-//        '(mouseleave)':'onMouseLeave()'
-//    }
 })
 
 export class MyHighlightDirective {
@@ -33,10 +29,6 @@ export class MyHighlightDirective {
         // console.log('onMouseEnter');
         this._highlight(this.highlightColor || this._defaultColor);
     }
-
-//        onMouseEnter() {
-//        this._highlight(this.highlightColor || this._defaultColor);
-//    }
 
     @HostListener('mouseleave')
     onMouseLeave() {

@@ -12,27 +12,23 @@ export class AsrService {
 // We need to pass an argument into the program from src/index.html that tells us
 // we are running standalone without a server. It will be checked here and
 // if true, we will return the data either from a local file or from memory.
-    private test = "notest";
+    private env = 'server';
 
-    //private _talksFileUrl = 'assets/talks.json'; // URL to web api
-    //private _asrFileUrl = 'assets/Philadelphia_CityCouncil_2014-09-25.json';
-    //private _talksUrl = 'http://localhost:60366/api/addtags';
-
-    // private _Url_Test = 'assets/2016-10-11 Boothbay Harbor Selectmen.json';
-    private _Url_Test = 'assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).json';
-    //private _Url = 'http://localhost:58880/api/fixasr/USA/ME/BoothbayHarbor/Selectmen/2016-10-11';
-    private _Url = 'http://localhost:58880/api/fixasr';
+    // private _Url_NoServer = 'assets/2016-10-11 Boothbay Harbor Selectmen.json';
+    private _Url_NoServer = 'assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).json';
+    //private _Url = 'api/fixasr/USA/ME/LincolnCounty/BoothbayHarbor/Selectmen/2016-10-11';
+    private _Url = 'api/fixasr';
 
     constructor (private http: Http) {}
 
     getAsr(): Observable<AsrSegment[]> {
 
-        if (this.test != "test") {
+        if (this.env == 'server') {
             return this.http.get(this._Url)
                 .map(this.extractData)
                 .catch(this.handleError);
         } else {
-            return this.http.get(this._Url_Test)
+            return this.http.get(this._Url_NoServer)
                 .map(this.extractData)
                 .catch(this.handleError);
         }
@@ -41,15 +37,15 @@ export class AsrService {
     getAsrFromMemory(): any {
         console.log('getAsrFromMemory');
         return {
-            "data": [
-                { "startTime": '0:00', said: 'the tuesday october $YEAR 11 selectmen'},
+            'data': [
+                { 'startTime': '0:00', said: 'the tuesday october $YEAR 11 selectmen'},
                 { startTime: '0:02', said: 'meeting i will apologize apologize for'},
                 { startTime: '0:06', said: 'my voice i can hardly speak i woke up'},
                 { startTime: '0:08', said: 'Saturday with a terrible cold so if you'},
-                { startTime: '0:10', said: "can't hear me just speak up and i'll try"},
+                { startTime: '0:10', said: 'can\'t hear me just speak up and i\'ll try'},
                 { startTime: '0:13', said: 'to speak louder and you may want to stay'},
                 { startTime: '0:14', said: 'in the back yeah you guys today in the'},
-                { startTime: '0:17', said: "background is yeah I'm like have our"},
+                { startTime: '0:17', said: 'background is yeah I\'m like have our'},
                 { startTime: '0:20', said: 'full board with us tonight and we have'},
                 { startTime: '0:24', said: 'our recording secretary Kelly the ghost'},
                 { startTime: '0:26', said: 'town manager Tom women and selected'},
@@ -71,7 +67,7 @@ export class AsrService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         console.log('postData in asr.service');
-        return this.http.post(url, { "data": data }, headers)
+        return this.http.post(url, { 'data': data }, headers)
         .map(res => console.info(res))
         .catch(this.handleError);
     }

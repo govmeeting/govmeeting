@@ -39,9 +39,8 @@ export class MeetingComponent {
         console.log('postMeeting');
         this._backendService.postMeeting()
         .subscribe(
-            t => {
-                t;
-            });
+            t => t
+            );
             //error => this.errorMessage = <any>error);
     }
 }
