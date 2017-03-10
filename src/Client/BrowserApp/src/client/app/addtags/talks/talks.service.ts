@@ -7,13 +7,11 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Addtags } from '../addtags';
 
+// AppData is configuration which is passed in from index.html.
+import { AppData } from '../../appdata';
+
 @Injectable()
 export class TalksService {
-
-// We need to pass an argument into the program from src/index.html that tells us
-// we are running standalone without a server. It will be checked here and
-// if true, we will return the data either from a local file or from memory.
-    private env = 'noserver';
 
     // Todo - change to use this query string.
     //private getUrl = 'api/addtags/USA/PA/Philadelphia/Philadelphia/CityCouncil/2014-09-25';
@@ -22,11 +20,41 @@ export class TalksService {
 
     private _Url_NoServer : string = 'assets/Philadelphia_CityCouncil_2014-09-25.json';
 
-    constructor (private http: Http) {}
+    private testData: Addtags = {
+        data: [
+            { speaker: 'Joe', said: 'Waz up', section: 'Invocation', topic: null, showSetTopic: false },
+            { speaker: 'Mary', said: 'nutten', section: null, topic: null, showSetTopic: false },
+            { speaker: 'Jo', said: 'haiyall', section: null, topic: null, showSetTopic: false },
+            { speaker: 'Joe', said: '1111', section: 'Reports', topic: null, showSetTopic: false },
+            { speaker: 'Mary', said: '1111111', section: null, topic: 'Topic1', showSetTopic: false },
+            { speaker: 'Jo', said: '11111111', section: null, topic: null, showSetTopic: false },
+            { speaker: 'Jose', said: '22', section: null, topic: null, showSetTopic: false },
+            { speaker: 'Mary', said: '2222', section: null, topic: null, showSetTopic: false },
+            { speaker: 'Jo', said: '2222222', section: null, topic: null, showSetTopic: false },
+            { speaker: 'Joe', said: '33', section: 'Public Comment', topic: null, showSetTopic: false },
+            { speaker: 'Mary', said: '33333', section: null, topic: 'Topic2', showSetTopic: false },
+            { speaker: 'Jo', said: '33333333', section: null, topic: null, showSetTopic: false }
+        ]
+    };
+
+        constructor(private http: Http, private appData: AppData) {
+        console.log("TalksService - ", appData);
+    }
+
+    // The property "IsServerRunning" on AppData tells us if the ASP.NET 
+    // server is running. If so we will call the API to get the data.
+    // Otherwise, we will get the data via a file read from our assets folder.
+    // If "isDataFromMemory" is set, we will uese in-memory data.
+
+    isServerRunning: boolean = this.appData.isServerRunning;
+    isDataFromMemory: boolean = this.appData.isDataFromMemory;
 
     getTalks(): Observable<Addtags> {
-
-        if (this.env == 'server') {
+        // if data from memory, just return data as an `Observable`
+        if (this.isDataFromMemory) {
+            console.log('getTalksFromMemory');
+            return Observable.of(this.testData);
+        } else if (this.isServerRunning) {
             return this.http.get(this.getUrl)
             .map(this.extractData)
             .catch(this.handleError);
@@ -37,25 +65,6 @@ export class TalksService {
         }
     }
 
-    getTalksFromMemory(): any {
-        return {
-            data: [
-                { speaker: 'Joe', said: 'Waz up', section: 'Invocation', topic: null, showSetTopic: false },
-                { speaker: 'Mary', said: 'nutten', section: null, topic: null, showSetTopic: false },
-                { speaker: 'Jo', said: 'haiyall', section: null, topic: null, showSetTopic: false },
-                { speaker: 'Joe', said: '1111', section: 'Reports', topic: null, showSetTopic: false },
-                { speaker: 'Mary', said: '1111111', section: null, topic: 'Topic1', showSetTopic: false },
-                { speaker: 'Jo', said: '11111111', section: null, topic: null, showSetTopic: false },
-                { speaker: 'Jose', said: '22', section: null, topic: null, showSetTopic: false },
-                { speaker: 'Mary', said: '2222', section: null, topic: null, showSetTopic: false },
-                { speaker: 'Jo', said: '2222222', section: null, topic: null, showSetTopic: false },
-                { speaker: 'Joe', said: '33', section: 'Public Comment', topic: null, showSetTopic: false },
-                { speaker: 'Mary', said: '33333', section: null, topic: 'Topic2', showSetTopic: false },
-                { speaker: 'Jo', said: '33333333', section: null, topic: null, showSetTopic: false }
-            ]
-        };
-    }
-
     //postChanges(): Observable<any> {
     //    console.log('postChanges in talks.service');
     //    //return this.postData(this._talksUrl, 'my addtags data');
@@ -63,6 +72,9 @@ export class TalksService {
     //}
 
     postChanges(addtags: Addtags): Observable<any> {
+        if (this.isDataFromMemory) {
+            return Observable.of(this.testData);
+        }
         console.log('postChanges in talks.service');
         return this.postData(this.putUrl, addtags);
     }

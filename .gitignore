@@ -22,12 +22,15 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+# NOTE: We need to incorporate the .gitignore entries of BrowserApp angular-seed
+
 # JP: My changes
 **/[Bb]in/
 **/[Oo]bj/
 **/node_modules/
 **/bower_components/
 **/wwwroot/lib/
+**/wwwroot/assets/fullvideo
 /PublicSystem/Backend/Documentation/Help/
 /PublicSystem/Client/BrowserApp/Scripts/
 /PublicSystem/Client/BrowserApp/app/**/*.js

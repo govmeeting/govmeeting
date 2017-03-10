@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <base href="<%= APP_BASE %>">
@@ -14,9 +14,35 @@
 </head>
 <body>
 
-  <sd-app>Loading...</sd-app>
+
+<!-- The following is an experiment with using angular material. Also see app.component.html. 
+<div class="mypurplediv"> My Purple Div </div>
+<div class="call-outs-container">
+    <div class="call-out">
+        <h4>Feature 1</h4>
+        <p>Presently they  fell  asleep  for  a  little  while.  When
+            Winston  woke  up  the  hands  of  the clock had crept round to
+            nearly nine. He did not stir, because Julia was  sleeping  with
+            her  head  in  the  crook  of  his arm.</p>
+    </div>
+    <div class="call-out">
+        <h4>Feature 2</h4>
+        <p>Presently they  fell  asleep  for  a  little  while.  When
+            Winston  woke  up  the  hands  of  the clock had crept round to
+            nearly nine. He did not stir, because Julia was  sleeping  with
+            her  head  in  the  crook  of  his arm.</p>
+    </div>
+    <sd-app>Loading...</sd-app>
+</div>
+-->
+
+    <sd-app>Loading...</sd-app>
 
   <script>
+    window.APP_DATA = { IsServerRunning: false, isDataFromMemory: false } 
+  </script>
+
+<script>
   // Fixes undefined module function in SystemJS bundle
   function module() {}
   </script>
@@ -39,7 +65,7 @@
   System.import('<%= BOOTSTRAP_MODULE %>')
     .catch(function (e) {
       console.error(e.stack || e,
-        'Not expecting this error? Report it at https://github.com/mgechev/angular-seed/issues');
+        'Not expecting this error? Report it at https://github.com/govmeeting/govmeeting/issues');
     });
   </script>
   <% } %>

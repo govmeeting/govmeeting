@@ -1,3 +1,4 @@
+/// <binding ProjectOpened='build.dev.watch' />
 import * as gulp from 'gulp';
 import * as util from 'gulp-util';
 import * as runSequence from 'run-sequence';

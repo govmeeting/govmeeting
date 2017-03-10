@@ -18,14 +18,14 @@ import { HostListener } from '@angular/core';
 @Component({
   moduleId: module.id,
   selector: 'gm-fixasr',
-  templateUrl: './fixasr.component-map.html',
+  templateUrl: './fixasr.component.html',
   styleUrls: ['./fixasr.component.css'],
     providers: [
         AsrService
     ]
 })
 export class FixasrComponent  implements OnInit, AfterViewInit {
-    isTest : boolean = true;
+    //isTest : boolean = true;
     errorMessage: string;
     title = 'fixasr works!';
     asr : AsrSegment[];
@@ -214,15 +214,16 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        this.getAsr(this.isTest);
+        this.getAsr();
+        //this.getAsr(this.isTest);
 
     }
 
     ngAfterViewInit() {
-        console.log('In ngAfterViewInit');
+        //console.log('In ngAfterViewInit');
 
         // test
-        console.log(this.input);
+        //console.log(this.input);
         //this._el = this.input.nativeElement;
         //this.renderer.invokeElementMethod(this._el, 'focus');
     }
@@ -253,29 +254,24 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
         this.videoComponent.playPhrase(start, duration);
     }
 
-    convertToSeconds(time : string) {
-        var array = time.split(':');
-        let count = array.length;
-        let seconds = 0;
-        while (count > 0) {
-            seconds = seconds + Number(array[count - 1]) * Math.pow(60, array.length - count);
-            console.log('In convertToSeconds, seconds=' + seconds);
-            count--;
-        }
-        return seconds;
-    }
-
-    getAsr(isTest : boolean) {
-        if (isTest) {
-            this.asr = this._asrService.getAsrFromMemory().data;
-            console.log('return from getAsrFromMemory');
-        } else {
-            this._asrService.getAsr()
+    getAsr() {
+        this._asrService.getAsr()
             .subscribe(
             talks => this.asr = talks,
             error => this.errorMessage = <any>error);
-        }
     }
+
+    //getAsr(isTest: boolean) {
+    //    if (isTest) {
+    //        this.asr = this._asrService.getAsrFromMemory().data;
+    //        console.log('return from getAsrFromMemory');
+    //    } else {
+    //        this._asrService.getAsr()
+    //        .subscribe(
+    //        talks => this.asr = talks,
+    //        error => this.errorMessage = <any>error);
+    //    }
+    //}
 
     saveChanges() {
         console.log('saveTranscript');
@@ -333,5 +329,17 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
         return false;
         }
         return true;
+   }
+
+   convertToSeconds(time: string) {
+       var array = time.split(':');
+       let count = array.length;
+       let seconds = 0;
+       while (count > 0) {
+           seconds = seconds + Number(array[count - 1]) * Math.pow(60, array.length - count);
+           console.log('In convertToSeconds, seconds=' + seconds);
+           count--;
+       }
+       return seconds;
    }
 }

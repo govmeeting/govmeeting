@@ -14,6 +14,10 @@ import { FixasrModule } from './fixasr/fixasr.module';
 import { VideoModule } from './video/video.module';
 //import { MaterialModule } from '@angular/material';
 import { SharedModule } from './shared/shared.module';
+//import { ProgramOptions } from './programOptions';
+
+// Data passed in from index.html
+import { AppData } from './appdata';
 
 @NgModule({
   imports: [BrowserModule, HttpModule, AppRoutingModule,
@@ -23,10 +27,16 @@ import { SharedModule } from './shared/shared.module';
       FixasrModule,
       SharedModule.forRoot()],
   declarations: [AppComponent],
-  providers: [{
+  providers: [AppData,
+  {
     provide: APP_BASE_HREF,
     useValue: '<%= APP_BASE %>'
-  }],
+  },
+  {
+    provide: AppData,
+    useValue: window.APP_DATA
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

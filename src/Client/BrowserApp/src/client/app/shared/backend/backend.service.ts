@@ -14,6 +14,7 @@ export class BackendService {
 
 // The code outlined in main.ts for checking the Name argument need to be used here.
     private _meetingUrl = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
+    //private _meetingUrl = 'assets/data/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen/2014-09-08/Step 5 - processed transcript.json';
     //private _meetingUrl = 'http://birdw8.com:60366/api/transcript';
     //private _meetingUrl = 'http://localhost:60366/api/transcript';
     //private _meetingUrl = 'http://localhost:60366/api/transcript/BoothbayHarbor/Selectmen/2014-09-08';

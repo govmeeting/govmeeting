@@ -101,9 +101,35 @@ namespace WebApp.Models
 
             var webRoot = _env.WebRootPath;
             var fullpath = System.IO.Path.Combine(webRoot, path);
+            var filename = "Step 3 - transcript corrected for errors.json";
+            var fullname = fullpath + "/" + filename;
+ 
+            // If file exists, make backup
+            if (File.Exists(fullname))
+            {
+                MakeBackup(fullpath, filename);
+            }   
 
-            File.WriteAllText(fullpath, stringValue);
+            File.WriteAllText(fullname, stringValue);
 
+        }
+
+        // The backups will be (for example) "... backup 01.json", "... backup 02.json", .... "... backup 07 - last.json"
+        // The " - last" is the last backup made. The reason that we need this is because we will recyle the numbers once
+        // we hit the maximum backups. Thus if the maximum is 20, after "... backup 20.json" will come "... backup 01.json",
+        // which, if it is the last, will be named "... backup 01 - last.json"
+        private void MakeBackup(string fullpath, string filename)
+        {
+            string[] files = Directory.GetFiles(fullpath, "*Step 3*- last.json");
+            var fullname = fullpath + "/" + filename;
+
+            //File.Copy(fullname, newFile);
+
+            //while (File.Exists(nextBackup))
+            //{
+
+            //}
+            // http://timtrott.co.uk/string-formatting-examples/
         }
 
         /*public Fixasr Remove(string key)

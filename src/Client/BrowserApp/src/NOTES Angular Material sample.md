@@ -1,4 +1,4 @@
-# This folder contains a sample of using Angular Material
+# The "matsamp" folder contains a sample of using Angular Material
 
 
 

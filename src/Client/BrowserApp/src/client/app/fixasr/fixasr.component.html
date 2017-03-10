@@ -6,21 +6,21 @@
       <div style="border: 4px dashed red;">
           Click on any text to see and hear that part of the meeting. You can correct errors in the text.
            When done with all changed, click:
-         <button md-button>FLAT</button>
+         <!--<button md-button>FLAT</button>-->
          <button class="mymd-button" height="10px" (click)="saveChanges()">Save Changes</button>
       </div>
       <div *ngFor="let a of asr; let i = index">
+
           <!--<input type="text" size="50" [value]="a.said" (click)="playPhrase(i)" />--> 
           <!--<input gm-fixasr-edit type="text" size="50" [(ngModel)]="a.said" (click)="playPhrase(i)" (textSelected)="handleTextSelected($event)"/>-->
           <!--<input #myInput type="text" size="50" [(ngModel)]="a.said" (click)="playPhrase(i)"/>-->
           <!--<input #myInput type="text" size="50" [(ngModel)]="insideWords" (click)="playPhrase(1)"/>-->
           <!--<input #myInput type="text" size="50" [(ngModel)]="insideWords" (mouseup)="doMouseup()"/>-->
-<!--
-          <input #myInput type="text" size="50" [(ngModel)]="insideWords" (mouseup)="doMouseup($event, 1)" (focus)="onFocus($event, 1)" (keyup)="doKey($event, 1)"/>
-          <input #myInput type="text" size="50" [(ngModel)]="insideWords2" (mouseup)="doMouseup($event, 1)" (focus)="onFocus($event, 1)" (keyup)="doKey($event, 1)"/>
--->
+          <!--<input #myInput type="text" size="50" [(ngModel)]="insideWords" (mouseup)="doMouseup($event, 1)" (focus)="onFocus($event, 1)" (keyup)="doKey($event, 1)"/>-->
+          <!--<input #myInput type="text" size="50" [(ngModel)]="insideWords2" (mouseup)="doMouseup($event, 1)" (focus)="onFocus($event, 1)" (keyup)="doKey($event, 1)"/>-->
           <!--<input type="text" size="50" [(ngModel)]="a.said" (mouseup)="doMouseup($event, i)" (focus)="onFocus($event, i)" (keyup)="doKey($event, i)"/>-->
-          <div flex><input #myInput type="text" size="50" [(ngModel)]="a.said" (mouseup)="doMouseup($event, i)" (focus)="onFocus($event, i)" (keyup)="doKey($event, i)"/></div>
+
+          <div><input #myInput type="text" style="width: 400px;" [(ngModel)]="a.said" (mouseup)="doMouseup($event, i)" (focus)="onFocus($event, i)" (keyup)="doKey($event, i)"/></div>
       </div>
           <!--<input #myInput type="text" size="50" [(ngModel)]="asr[0].said"/>-->
           <!--<input #myInput type="text" size="50" [(ngModel)]="insideWords2"/>-->

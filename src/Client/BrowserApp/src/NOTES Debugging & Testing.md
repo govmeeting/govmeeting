@@ -1,16 +1,16 @@
-** Using VsCode **
+# Using VsCode
 
 Open project folder in VsCode
 Open a Bash shell
 cd to project folder
- (On my system: cd F:/GOVMEETING/CODE/SOURCE/Govmeeting/PublicSystem/Client/BrowserApp)
+ (On my system: cd C:/GOVMEETING/_SOURCECODE/src/Client/BrowserApp)
 
 > npm install
 > npm run build.dev
 > npm start
     Hit Ctrl-C to stop server
 
-** Debug in VsCode **
+# Debug in VsCode
 
 See: https://code.visualstudio.com/Docs/editor/debugging
 and: http://stackoverflow.com/questions/36494938/debug-run-angular2-typescript-with-visual-studio-code
@@ -179,6 +179,27 @@ I noticed many other simple errors which display totally uselss (to me) error me
 Perhaps it is possible to create a dictionary of these messages and match them up to what
 kind of error triggers each of them.
 
+
+#  Debugging in Visual Studio 
+
+## Task Runner
+
+I added a Binding for the BrowserApp project. I bound the "build.dev.watch" Custom task from package.json to Project Open.
+I tried just running this task by right-clicking on it and selecting "Run". The output of the command shows up in a tab named "build.dev.watch" within Task Runner Explorer. I got the following error:
+   cmd.exe /c yarn run build.dev.watch
+   'yarn' is not recognized as an internal or external command,
+   operable program or batch file.
+   Process terminated with code 1
+Yarn is a replacement for npm. 
+I installed yarn: npm i -g yarn. It said:
+	npm WARN deprecated yarn@0.18.1: It is recommended to install Yarn using the native installation method for your environment. See https://yarnpkg.com/en/docs/install
+	C:\Users\John\AppData\Roaming\npm\yarnpkg -> C:\Users\John\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+	C:\Users\John\AppData\Roaming\npm\yarn -> C:\Users\John\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+$ yarn --version
+0.18.1
+When I went to the yarn install page, it had a .MSI file named "yarn-0.18.1.msi". So I appear to have the latest version.
+Now when I right click on the build.dev.watch task and select run, it runs and builds the project.
+When I make a change to a source file, it sees the change and re-runs the build.
 
 
 
