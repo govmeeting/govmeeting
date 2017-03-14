@@ -33,6 +33,8 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
     currentIndex : number = -1;
     isTyping : boolean = false;
     firstSpace : boolean = false;
+    isInsertMode: boolean = false;
+    modeButtonText: string = "REPLACE"
 
     //test
     insideWords : string = "0123 4567 890A BCDE FGHI"
@@ -54,14 +56,21 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
     }
 
     onFocus(event: any, i : number){
-        console.log("onFocus index=" + i);
+        console.log("onFocus index=" + i + "  size=" + this.asr.length);
         this.currentIndex = i;
         this.isTyping = false;
         this.firstSpace = false;
     }
 
+    toggleInsertMode(){
+        this.isInsertMode = !this.isInsertMode;
+        this.modeButtonText = (this.isInsertMode ? "INSERT" : "REPLACE");
+    }
+
     // test
     doMouseup(event: any, i : number) {
+        if (this.isInsertMode) return;
+
         // console.log(window.getSelection());
         var ele : HTMLInputElement = (<HTMLInputElement>event.target);
         console.log("doMouseup index=" + i + "   start=" + ele.selectionStart + "   end=" + ele.selectionEnd);
@@ -73,34 +82,44 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
     }
 
     gotoNextInputElement(ele : HTMLInputElement, i : number) {
-        var next : HTMLInputElement = <HTMLInputElement>(ele.parentElement.parentElement.children[i + 2].children[0]);
+        // if on last element, select last word of this element
+        if (i >= (this.asr.length - 1)) {
+            this.selectLastWord(ele);
+            return;
+        }
+
+        // ele is this <input> element. ele.parentElement is the <div> enclosing just this <input>.
+        // That <div>'s nextSibling is the <div> whose sole child is the next <input>.
+        var next : HTMLInputElement = <HTMLInputElement>(ele.parentElement.nextSibling.children[0]);
         console.log(next.value);
-        //var next : HTMLInputElement = <HTMLInputElement>(ele.nextElementSibling);
+
         if (typeof next.setSelectionRange != 'undefined') {
-            next.setSelectionRange(1, 1);
-            this.selectWord(next);
-            next.focus();
+            this.selectFirstWord(next);
         }
     }
 
     gotoPriorInputElement(ele : HTMLInputElement, i : number) {
-        var prior : HTMLInputElement = <HTMLInputElement>(ele.parentElement.parentElement.children[i].children[0]);
-        //var prior : HTMLInputElement = <HTMLInputElement>(ele.previousElementSibling);
+        // if on first element, just return
+        if (i == 0) {
+            this.selectFirstWord(ele);
+            return;
+        }
+        var prior : HTMLInputElement = <HTMLInputElement>(ele.parentElement.previousSibling.children[0]);
         if (typeof prior.setSelectionRange != 'undefined') {
-            prior.setSelectionRange(1, 1);
-            this.selectWord(prior);
-            prior.focus();
+            this.selectFirstWord(prior);
         }
     }
 
     gotoLastWordInPriorInputElement(ele : HTMLInputElement, i : number) {
-        var prior : HTMLInputElement = <HTMLInputElement>(ele.parentElement.parentElement.children[i].children[0]);
-        //var prior : HTMLInputElement = <HTMLInputElement>(ele.previousElementSibling);
-        var len = prior.value.length
+        // if on first element, select first word in this element
+        if (i == 0) {
+            this.selectFirstWord(ele);
+            return;
+        }
+
+        var prior : HTMLInputElement = <HTMLInputElement>(ele.parentElement.previousSibling.children[0]);
         if (typeof prior.setSelectionRange != 'undefined') {
-            prior.setSelectionRange(len - 1, len - 1);
-            this.selectWord(prior);
-            prior.focus();
+            this.selectLastWord(prior);
         }
     }
     gotoNextWord(ele : HTMLInputElement) {
@@ -117,6 +136,12 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
 
 
     doKey(event: any, i : number) {
+        if (event.key == 'Insert') {
+            this.toggleInsertMode();
+            return;
+        }
+        if (this.isInsertMode) return;
+
         var key = event.key;   // get key value
         var ele : HTMLInputElement = (<HTMLInputElement>event.target);
         var value : string = ele.value;
@@ -132,16 +157,16 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
                 this.playPhrase(i);
                 return;
             case 'ArrowRight':
-            if (end  < value.length) {
-                this.gotoNextWord(ele);
-            } else {
-                this.gotoNextInputElement(ele, i);
-            }
-            return;
-          case 'ArrowLeft':
+                if (end  < value.length) {
+                    this.gotoNextWord(ele);
+                } else {
+                    this.gotoNextInputElement(ele, i);
+                }
+                return;
+            case 'ArrowLeft':
                 if (start != 0) {
                     this.gotoPriorWord(ele);
-               } else {
+                } else {
                     this.gotoLastWordInPriorInputElement(ele, i);
                 }
                 return;
@@ -283,6 +308,19 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
         //error => this.errorMessage = <any>error);
     }
 
+    private selectFirstWord(ele: HTMLInputElement) {
+        ele.setSelectionRange(1, 1);
+        this.selectWord(ele);
+        ele.focus();
+    }
+
+    private selectLastWord(ele: HTMLInputElement) {
+        var len = ele.value.length
+        ele.setSelectionRange(len - 1, len - 1);
+        this.selectWord(ele);
+        ele.focus();
+    }
+
     private selectWord(ele: HTMLInputElement) {
         var start = ele.selectionStart;
         var end = ele.selectionEnd;
@@ -299,12 +337,6 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
            return;
         } 
 
-        // If they clicked at start or end of text, ignore.
-        if ((start == 0) || (start == contentLen) ||
-            (content.charAt(start) == " ") || (content.charAt(start - 1) == " ")) {
-            console.log('selectWord ignore if start or end of word');
-            return;
-        }
         // find start of word
         while (start > 0 && this.isNotSpace(content.charAt(start -1))) {
           start--;
@@ -313,6 +345,16 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
         while (end < contentLen && this.isNotSpace(content.charAt(end))) {
           end++;
         }
+
+        // Unless it's a one-letter word, if they clicked at start or end of text, ignore.
+        //if (start + 1 != end) {
+        //    if ((start == 0) || (start == contentLen) ||
+        //        (content.charAt(start) == " ") || (content.charAt(start - 1) == " ")) {
+        //        console.log('selectWord ignore if start or end of word');
+        //        return;
+        //    }
+        //}
+
         ele.setSelectionRange(start, end);
         console.log('selectWord newstart=' + start + '   newend=' + end);
    }
