@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { AsrSegment } from './asrsegment';
+import { AsrText } from './asrtext';
 import { AsrService } from './asr.service';
 import { VideoComponent } from '../video/video.component';
 
@@ -36,11 +37,6 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
     isInsertMode: boolean = false;
     modeButtonText: string = "REPLACE"
 
-    //test
-    insideWords : string = "0123 4567 890A BCDE FGHI"
-    insideWords2 : string = "ABC EFG IJK MNO QRS"
-    private selection: Selection;
-
     // https://github.com/videogular/videogular2/blob/master/docs/using-the-api.md
 
     @ViewChild(VideoComponent)
@@ -49,10 +45,20 @@ export class FixasrComponent  implements OnInit, AfterViewInit {
     // test
     @ViewChild('myInput') input: ElementRef;
     _el : HTMLElement;
+    _scrollList: HTMLElement;
 
     // test
     // constructor(private _asrService: AsrService) {
     constructor(private _asrService: AsrService, private renderer: Renderer) {
+        this._scrollList = document.getElementById('scroll-text');
+    }
+
+    setScrollPosition(top: number){
+            this._scrollList.scrollTop = top;
+    }
+
+    getScrollPosition(top: number) : number {
+            return this._scrollList.scrollTop;
     }
 
     onFocus(event: any, i : number){

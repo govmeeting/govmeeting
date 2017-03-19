@@ -1,25 +1,35 @@
-<h1>
- <!-- {{title}} -->
-</h1>
 <sd-video></sd-video>
-  <div layout="column">
-      <div style="border: 4px dashed red;">
-          There are two editing modes: "REPLACE"" and "INSERT". Press this button:  
-         <button class="mymd-button" height="10px" (click)="toggleInsertMode()">{{modeButtonText}}</button>
-          or the "Insert" key while editing to change modes.<br>
-          In REPLACE mode, click on a word to highlight it. Then type over it to replace it or type space to delete it.<br>
-          in INSERT mode,  click anywhere to start typing.<br>
-          Use the arrow keys to navigate.<br>
-          At any place, press "Enter" to see and hear that part of the meeting.<br>
-          When done with changes, click:
-         <!--<button md-button>FLAT</button>-->
-         <button class="mymd-button" height="10px" (click)="saveChanges()">Save Changes</button>
-      </div>
-      <br>
-      <div *ngFor="let a of asr; let i = index">
-          <input #myInput type="text" style="width: 400px;" [(ngModel)]="a.said" (mouseup)="doMouseup($event, i)" (focus)="onFocus($event, i)" (keyup)="doKey($event, i)"/>
-      </div>
-     <div>
-          <button md-raised-button color="primary" (click)="saveChanges()">Save Changes</button>
-      </div>
-  </div>
+
+<div class="edit-region">
+
+    <div  id="scroll-text" class="scroll-text">
+        <div *ngFor="let a of asr; let i = index">
+            <input #myInput type="text" [(ngModel)]="a.said" (mouseup)="doMouseup($event, i)"
+             (focus)="onFocus($event, i)" (keyup)="doKey($event, i)"/>
+        </div>
+    </div>
+
+    <div class="controls-and-help">
+        <div class="edit-controls">
+            <button md-raised-button class="mode-button" color="primary" (click)="toggleInsertMode()">
+                EDIT MODE ({{modeButtonText}})
+            </button>
+            <button md-raised-button class="save-button" color="primary" (click)="saveChanges()">SAVE CHANGES</button>
+        </div>
+
+        <div class="edit-help">
+            <h3> Edit Modes </h3>
+            <ul>
+                <li>REPLACE: Click to highlight a word. Type to replace it.</li>
+                <li>INSERT: Click within text. Type to insert.</li>
+            </ul>
+            <h3> Keys </h3>
+            <ul>
+                <li>Arrow keys: Navigate Up/Down/Right/Left</li>
+                <li>Enter key:  Play current portion of  meeting</li>
+                <li>Insert key: Change edit mode</li>
+            </ul>
+        </div>
+    </div>
+
+</div>

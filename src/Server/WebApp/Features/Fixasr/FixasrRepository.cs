@@ -96,39 +96,67 @@ namespace WebApp.Models
         //public void PutByPath(string path, string value)
         public void PutByPath(string path, Fixasr value)
         {
+            //const string BASE_NAME = "Step 3 - transcript corrected for errors";
+            const string BASE_NAME = "x";   // for testung
+            const string EXTENSION = "json";
+
             string stringValue = JsonConvert.SerializeObject(value, Formatting.Indented);
-            //string stringValue = value;
 
             var webRoot = _env.WebRootPath;
             var fullpath = System.IO.Path.Combine(webRoot, path);
-            var filename = "Step 3 - transcript corrected for errors.json";
+            var filename = BASE_NAME + "." + EXTENSION;
             var fullname = fullpath + "/" + filename;
  
             // If file exists, make backup
             if (File.Exists(fullname))
             {
-                MakeBackup(fullpath, filename);
+                MakeBackup(fullpath, BASE_NAME, EXTENSION);
             }   
 
             File.WriteAllText(fullname, stringValue);
 
         }
 
-        // The backups will be (for example) "... backup 01.json", "... backup 02.json", .... "... backup 07 - last.json"
+        // The backups will be (for example) "... 01.json", "... 02.json", .... "... 07 - last.json"
         // The " - last" is the last backup made. The reason that we need this is because we will recyle the numbers once
-        // we hit the maximum backups. Thus if the maximum is 20, after "... backup 20.json" will come "... backup 01.json",
-        // which, if it is the last, will be named "... backup 01 - last.json"
-        private void MakeBackup(string fullpath, string filename)
+        // we hit the maximum backups. Thus if the maximum is 20, after "... 20.json" will come "... 01.json",
+        // which, if it is the last, will be named "... 01 - last.json"
+        private void MakeBackup(string fullpath, string basename, string extension)
         {
-            string[] files = Directory.GetFiles(fullpath, "*Step 3*- last.json");
-            var fullname = fullpath + "/" + filename;
+            const int MAX_BACKUPS = 20;
+            const string SUFFIX = " LAST";
+            const string SEPERATOR = " - ";
 
-            //File.Copy(fullname, newFile);
+            // if there was a prior backup, rename the file "basename xx - last.json" to "basename xx.json"
+            int numLast = 1; // number of last backup
+            string[] files = Directory.GetFiles(fullpath, basename + "*" + SUFFIX + "." + extension);
+            if (files.Length > 0)
+            {
+                string currentLast = files[0];
+                string renameLast = currentLast.Replace(SUFFIX, "");
+                System.IO.File.Move(currentLast, renameLast);
 
-            //while (File.Exists(nextBackup))
-            //{
+                // Rename the current working file "basename.json" to "basename xy - last.json", where xy = xx+1 or 1.
+                int startOfnumLast = fullpath.Length + basename.Length + SEPERATOR.Length + 1;
+                bool res = int.TryParse(currentLast.Substring(startOfnumLast, 2), out numLast);
+                if (!res)
+                {
+                    // todo - handle error
+                    return;
+                }
+                {
+                    if (++numLast > MAX_BACKUPS)
+                    {
+                        numLast = 1;
+                    }
+                }
+            }
 
-            //}
+            string currentWorking = fullpath + "/" + basename + "." + extension;
+            string numLastString = String.Format("{0:d2}", numLast);
+            string newLast = fullpath + "/" + basename + SEPERATOR + numLastString + SUFFIX + "." + extension;
+            File.Copy(currentWorking, newLast);
+
             // http://timtrott.co.uk/string-formatting-examples/
         }
 
