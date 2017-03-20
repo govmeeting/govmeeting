@@ -4,8 +4,8 @@
 
     <div  id="scroll-text" class="scroll-text">
         <div *ngFor="let a of asr; let i = index">
-            <input #myInput type="text" [(ngModel)]="a.said" (mouseup)="doMouseup($event, i)"
-             (focus)="onFocus($event, i)" (keyup)="doKey($event, i)"/>
+            <input #myInput type="text" [(ngModel)]="a.said" (mouseup)="onMouseup($event, i)"
+             (focus)="onFocus($event, i)" (keyup)="onKey($event, i)"/>
         </div>
     </div>
 
@@ -20,8 +20,8 @@
         <div class="edit-help">
             <h3> Edit Modes </h3>
             <ul>
-                <li>REPLACE: Click to highlight a word. Type to replace it.</li>
-                <li>INSERT: Click within text. Type to insert.</li>
+                <li>REPLACE: Click to highlight a word. Type to replace it (or space to delete).</li>
+                <li>INSERT: Click within text. Enter new text.</li>
             </ul>
             <h3> Keys </h3>
             <ul>
@@ -30,6 +30,8 @@
                 <li>Insert key: Change edit mode</li>
             </ul>
         </div>
+         <button (click)="getpos()"> GETPOS </button> pos={{scrollPosition}}
+         <button (click)="setpos()"> SETPOS </button> {{asrtext.lastedit}}
     </div>
 
 </div>

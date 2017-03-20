@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { AsrSegment } from './asrsegment';
+import { AsrText } from './asrtext';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -18,10 +19,9 @@ export class AsrService {
     //private _UrlServer = 'api/fixasr/USA/ME/LincolnCounty/BoothbayHarbor/Selectmen/2016-10-11';
     private _UrlServer = 'api/fixasr';
 
-    // Todo - Create a new class "AutoSpeech" which contains this array in the "data" property.
-    // See talks.service.ts for how we do this for the "Addtags" data. This way we will
-    // be able to add other properties when needed.
-    private testData: AsrSegment[] =    [
+    private testData: AsrText = {
+        "lastedit": 1,
+        "asrsegments":     [
         { startTime: '0:00', said: 'the tuesday october $YEAR 11 selectmen' },
         { startTime: '0:02', said: 'meeting i will apologize apologize for' },
         { startTime: '0:06', said: 'my voice i can hardly speak i woke up' },
@@ -34,7 +34,7 @@ export class AsrService {
         { startTime: '0:24', said: 'our recording secretary Kelly the ghost' },
         { startTime: '0:26', said: 'town manager Tom women and selected' },
         { startTime: '0:30', said: 'Trish Warren wendy wolf myself Denise' }
-   ];
+   ]};
 
     constructor (private http: Http, private appData:AppData) {
         console.log("AsrService - ",appData);
@@ -46,7 +46,7 @@ export class AsrService {
     isServerRunning: boolean = this.appData.isServerRunning;
     isDataFromMemory: boolean = this.appData.isDataFromMemory;
 
-    getAsr(): Observable<AsrSegment[]> {
+    getAsr(): Observable<AsrText> {
 
         console.log("isServerRunning=" + this.isServerRunning + "   isDataFromMemory=" + this.isDataFromMemory);
         // if data from memory, just return data as an `Observable`
@@ -80,8 +80,6 @@ export class AsrService {
     }
 
     private postData(url: string, data: any): Observable<any> {
-        //private postData (url: string, data: any) {
-        //let body = JSON.stringify(data);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         console.log('postData in asr.service');
@@ -95,7 +93,7 @@ export class AsrService {
         throw new Error('Bad response status: ' + res.status);
         }
         let body = res.json();
-        return body.asrsegments || { };
+        return body || { };
     }
 
     private handleError (error: any) {
