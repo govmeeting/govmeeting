@@ -35,7 +35,9 @@ namespace CreateJsonFile
             string saidLabel = "Said: ";
             int saidLabelLen = saidLabel.Length;
 
-            strWriter.WriteLine("{ \"data\": [");
+            strWriter.WriteLine("{");
+            strWriter.WriteLine("  \"lastedit\": 0,");
+            strWriter.WriteLine("  \"asrsegments\": [");
 
             bool ReadFirstBlankLine = false;
             int linenum = 0;
@@ -97,7 +99,7 @@ namespace CreateJsonFile
 
         string JsonRecord(ref Phrase phrase, ref StringWriter writer, ref bool firstRecord)
         {
-            string text = (firstRecord ? "" : ",") + "\n    " + Newtonsoft.Json.JsonConvert.SerializeObject(phrase);
+            string text = (firstRecord ? "" : ",\n") + "    " + Newtonsoft.Json.JsonConvert.SerializeObject(phrase);
             firstRecord = false;
             return text;
         }

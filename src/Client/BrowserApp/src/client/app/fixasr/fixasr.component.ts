@@ -4,10 +4,10 @@ import { AsrSegment } from './asrsegment';
 import { AsrText } from './asrtext';
 import { AsrService } from './asr.service';
 import { VideoComponent } from '../video/video.component';
-import { FixasrUtilities } from './fixasr-utilities'
+import { FixasrUtilities } from './fixasr-utilities';
 
 // test
-import { ElementRef} from '@angular/core';
+import { ElementRef } from '@angular/core';
 //import { HostListener } from '@angular/core';
 
 //2017-02-18
@@ -34,18 +34,18 @@ export class FixasrComponent  implements OnInit {
     lastPhrasePlayed : number = 0;
     currentIndex : number = -1;
     isTyping : boolean = false;
-    firstSpace : boolean = false;
+    isFirstSpace : boolean = false;
     isInsertMode: boolean = false;
-    modeButtonText: string = "REPLACE"
+    modeButtonText: string = 'REPLACE';
     _scrollList: HTMLElement;
-    scrollPosition: number;
+    lastedit: number;
 
     // https://github.com/videogular/videogular2/blob/master/docs/using-the-api.md
 
+    @ViewChild('myInput') input: ElementRef;
+
     @ViewChild(VideoComponent)
     private videoComponent : VideoComponent;
-
-   @ViewChild('myInput') input: ElementRef;
 
     constructor(
         private _asrService: AsrService,
@@ -58,14 +58,14 @@ export class FixasrComponent  implements OnInit {
     }
 
     getpos() {
-        this.scrollPosition = this.getScrollPosition();
+        this.lastedit = this.getScrollPosition();
     }
-    
+
     setpos() {
-        this._scrollList.scrollTop = this.scrollPosition;
+        this._scrollList.scrollTop = this.lastedit;
     }
-    
-    setScrollPosition(top: number){
+
+    setScrollPosition(top: number) {
         this._scrollList.scrollTop = top;
     }
 
@@ -73,31 +73,31 @@ export class FixasrComponent  implements OnInit {
         return this._scrollList.scrollTop;
     }
 
-    toggleInsertMode(){
+    toggleInsertMode() {
         this.isInsertMode = !this.isInsertMode;
-        this.modeButtonText = (this.isInsertMode ? "INSERT" : "REPLACE");
+        this.modeButtonText = (this.isInsertMode ? 'INSERT' : 'REPLACE');
     }
 
 // #########################  Event Handlers ################################################
 
-    onFocus(event: any, i : number){
-        console.log("onFocus index=" + i + "  size=" + this.asr.length);
+    onFocus(event: any, i : number) {
+        console.log('onFocus index=' + i + '  size=' + this.asr.length);
         this.currentIndex = i;
         this.isTyping = false;
-        this.firstSpace = false;
+        this.isFirstSpace = false;
     }
 
     onMouseup(event: any, i : number) {
         if (this.isInsertMode) return;
 
         var ele : HTMLInputElement = (<HTMLInputElement>event.target);
-        console.log("onMouseup index=" + i + "   start=" + ele.selectionStart + "   end=" + ele.selectionEnd);
-        console.log("onMouseup value=" + ele.value);
+        console.log('onMouseup index=' + i + '   start=' + ele.selectionStart + '   end=' + ele.selectionEnd);
+        console.log('onMouseup value=' + ele.value);
         this._Utilities.selectWord(ele);
     }
 
     onKey(event: any, i : number) {
-        if (event.key == 'Insert') {
+        if (event.key === 'Insert') {
             this.toggleInsertMode();
             return;
         }
@@ -108,14 +108,14 @@ export class FixasrComponent  implements OnInit {
         var value : string = ele.value;
         var start : number = ele.selectionStart;
         var end : number = ele.selectionEnd;
-        
 
-        console.log("doKey: key='" + key +"'" + "   isTyping=" + this.isTyping)
-        console.log("1 doKey index=" + i + "   start=" + start + "   end=" + end);
+
+        console.log('doKey: key=' + key + '   isTyping=' + this.isTyping);
+        console.log('1 doKey index=' + i + '   start=' + start + '   end=' + end);
 
         switch (key) {
 
-        // If "Enter" play that portion of video
+        // If 'Enter' play that portion of video
             case 'Enter':
                 this.playPhrase(i);
                 return;
@@ -129,7 +129,7 @@ export class FixasrComponent  implements OnInit {
                 }
                 return;
             case 'ArrowLeft':
-                if (start != 0) {
+                if (start !== 0) {
                     this._Utilities.gotoPriorWord(ele);
                 } else {
                     this._Utilities.gotoLastWordInPriorInputElement(ele, i);
@@ -148,24 +148,24 @@ export class FixasrComponent  implements OnInit {
         }
 
         // If not space, set isTyping true and firstSpace false and return
-        if (key != " ") {
+        if (key !== ' ') {
             this.isTyping = true;
-            this.firstSpace = false;
+            this.isFirstSpace = false;
             return;
         }
 
         // If they typed a space at the end of the text, set firstSpace & return
-        if (start == value.length) {
-            if (this.firstSpace == false) {
-                this.firstSpace = true;
+        if (start === value.length) {
+            if (this.isFirstSpace === false) {
+                this.isFirstSpace = true;
                 return;
             }
         }
 
-        if (this.isTyping == true) {
+        if (this.isTyping === true) {
             // ignore fist space if they were typing
-            if (this.firstSpace != true) {
-                this.firstSpace = true;
+            if (this.isFirstSpace !== true) {
+                this.isFirstSpace = true;
                 return;
             }
         }
@@ -174,33 +174,33 @@ export class FixasrComponent  implements OnInit {
         // 1. They typed a second space after typing some text.
         // 2. They typed a space when a word was selected.
         // First remove the space they just typed
-        console.log("2 left='" + value.substr(0, start - 1) + "'")
-        console.log("2 right='" + value.substr(start) + "'")
-        value = value.substr(0, start - 1) + value.substr(start)
+        console.log('2 left=' + value.substr(0, start - 1));
+        console.log('2 right=' + value.substr(start));
+        value = value.substr(0, start - 1) + value.substr(start);
         start--;
-        console.log("2 doKey start=" + start + "   value='" + value + "'")
+        console.log('2 doKey start=' + start + '   value=' + value);
 
         // If there is a space right after the one they typed, remove that also.
-        if (value.charAt(start) === " ") {
-            console.log("3 left='" + value.substr(0, start - 1) + "'")
-            console.log("3 right='" + value.substr(start) + "'")
-            value = value.substr(0, start - 1) + value.substr(start)
+        if (value.charAt(start) === ' ') {
+            console.log('3 left=' + value.substr(0, start - 1));
+            console.log('3 right=' + value.substr(start));
+            value = value.substr(0, start - 1) + value.substr(start);
             start--;
-            console.log("3 doKey start=" + start + "   value='" + value + "'")
+            console.log('3 doKey start=' + start + '   value=' + value);
         }
 
         // Select the correct word
-        
+
         // "start" now is just before the next word, or at end of text.
-        if (start == value.length) {
-            if (value.charAt(start - 1) === " ") {
+        if (start === value.length) {
+            if (value.charAt(start - 1) === ' ') {
                 value = value.substr(0, start - 1);
-                console.log("4 doKey start=" + start + "   value='" + value + "'")
+                console.log('4 doKey start=' + start + '   value=' + value);
             }
         }
         ele.value = value;
-        ele.setSelectionRange(start+2, start+2)
-        console.log("start=" + ele.selectionStart + "   end=" + ele.selectionEnd);
+        ele.setSelectionRange(start+2, start+2);
+        console.log('start=' + ele.selectionStart + '   end=' + ele.selectionEnd);
         this._Utilities.selectWord(ele);
 
     }
@@ -211,8 +211,16 @@ export class FixasrComponent  implements OnInit {
         this._asrService.getAsr()
             .subscribe(
             asrtext => {
+                // Todo - We should be able to just move asrtext to this.asrtext.
+                // It appears to move the data OK. When I stop at a breakpoint, the 
+                // the data is all there. But accessing it from the HTML 
+                // causes an error (It says asrtext is null).
                 this.asr = asrtext.asrsegments;
-                this.asrtext.lastedit = asrtext.lastedit;
+                this.lastedit = asrtext.lastedit;
+                // console.log('asr=' + this.asr);
+
+                // This causes an error: "lastedit not a property of asrtext"
+                // this.asrtext.lastedit = asrtext.lastedit;
             },
             error => this.errorMessage = <any>error);
     }
@@ -229,7 +237,7 @@ export class FixasrComponent  implements OnInit {
 // #####################  Play selected part of video ####################################
 
     playPhrase(i : number) {
-        if (i == this.lastPhrasePlayed) return;
+        if (i === this.lastPhrasePlayed) return;
         this.lastPhrasePlayed = i;
 
         let maxPhraseTime = 6; // minimum time of a single phrase

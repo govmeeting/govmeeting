@@ -7,13 +7,13 @@ import { MaterialModule } from '@angular/material';
 import { FixasrRoutingModule } from './fixasr-routing.module';
 import { FixasrComponent } from './fixasr.component';
 import { VideoModule } from '../video/video.module';
-import { FixasrEditDirective } from './fixasr-edit.directive';
+//import { FixasrEditDirective } from './fixasr-edit.directive';
 
 
 @NgModule({
   declarations: [
-    FixasrComponent,
-    FixasrEditDirective
+    FixasrComponent
+    //FixasrEditDirective
   ],
   imports: [
     CommonModule,

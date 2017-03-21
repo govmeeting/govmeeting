@@ -17,6 +17,6 @@ import { AppData } from './appdata';
 export class AppComponent {
   constructor(appData:AppData) {
     console.log('Environment config', Config);
-    console.log("AppComponent - ", appData);
+    console.log('AppComponent - ', appData);
   }
 }

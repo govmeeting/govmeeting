@@ -18,7 +18,7 @@ namespace CreateJsonFile
 
             processAutoTranscript.CreateJsonFile(
               meetingDirectory + @"\Step 1 - transcript from Youtube.txt",
-              meetingDirectory + @"\Step 2 - convert Youtube text to JSON.json"
+              meetingDirectory + @"\Step 2 - transcript from Youtube.json"
 
             );
 

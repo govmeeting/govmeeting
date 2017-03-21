@@ -7,6 +7,7 @@ namespace WebApp.Models
 {
     public class Fixasr
     {
-        public AsrSegment[] data { get; set; }
+        public double lastedit;
+        public AsrSegment[] asrsegments { get; set; }
     }
 }

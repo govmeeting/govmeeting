@@ -13,10 +13,10 @@ export class FixasrUtilities {
         // This also ignores a prior select that we set here. This has 
         // the effect of toggling the select on a word by clicking
         // on it multiple times.
-        if (start != end) {
+        if (start !== end) {
              console.log('selectWord ignore if current select');
            return;
-        } 
+        }
 
         // find start of word
         while (start > 0 && this.isNotSpace(content.charAt(start -1))) {
@@ -47,7 +47,7 @@ export class FixasrUtilities {
     }
 
     public selectLastWord(ele: HTMLInputElement) {
-        var len = ele.value.length
+        var len = ele.value.length;
         ele.setSelectionRange(len - 1, len - 1);
         this.selectWord(ele);
         ele.focus();
@@ -71,38 +71,38 @@ export class FixasrUtilities {
         var next : HTMLInputElement = <HTMLInputElement>(ele.parentElement.nextSibling.children[0]);
         console.log(next.value);
 
-        if (typeof next.setSelectionRange != 'undefined') {
+        if (typeof next.setSelectionRange !== 'undefined') {
             this.selectFirstWord(next);
         }
     }
 
     gotoPriorInputElement(ele : HTMLInputElement, i : number) {
         // if on first element, just return
-        if (i == 0) {
+        if (i === 0) {
             this.selectFirstWord(ele);
             return;
         }
         var prior : HTMLInputElement = <HTMLInputElement>(ele.parentElement.previousSibling.children[0]);
-        if (typeof prior.setSelectionRange != 'undefined') {
+        if (typeof prior.setSelectionRange !== 'undefined') {
             this.selectFirstWord(prior);
         }
     }
 
     gotoLastWordInPriorInputElement(ele : HTMLInputElement, i : number) {
         // if on first element, select first word in this element
-        if (i == 0) {
+        if (i === 0) {
             this.selectFirstWord(ele);
             return;
         }
 
         var prior : HTMLInputElement = <HTMLInputElement>(ele.parentElement.previousSibling.children[0]);
-        if (typeof prior.setSelectionRange != 'undefined') {
+        if (typeof prior.setSelectionRange !== 'undefined') {
             this.selectLastWord(prior);
         }
     }
 
    private isNotSpace(ch: string) {
-        return (ch != ' ');
+        return (ch !== ' ');
    }
 
    private isAlphaNum(ch: string) {
@@ -114,7 +114,4 @@ export class FixasrUtilities {
         }
         return true;
    }
-
-
-
 }

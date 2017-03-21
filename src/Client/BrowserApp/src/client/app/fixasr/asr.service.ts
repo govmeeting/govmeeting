@@ -13,6 +13,9 @@ import { AppData } from '../appdata';
 @Injectable()
 export class AsrService {
 
+    isServerRunning: boolean = this.appData.isServerRunning;
+    isDataFromMemory: boolean = this.appData.isDataFromMemory;
+
     // private _Url_NoServer = 'assets/2016-10-11 Boothbay Harbor Selectmen.json';
     private _Url_NoServer = 'assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).json';
 
@@ -20,8 +23,8 @@ export class AsrService {
     private _UrlServer = 'api/fixasr';
 
     private testData: AsrText = {
-        "lastedit": 1,
-        "asrsegments":     [
+        'lastedit': 1,
+        'asrsegments':     [
         { startTime: '0:00', said: 'the tuesday october $YEAR 11 selectmen' },
         { startTime: '0:02', said: 'meeting i will apologize apologize for' },
         { startTime: '0:06', said: 'my voice i can hardly speak i woke up' },
@@ -37,18 +40,15 @@ export class AsrService {
    ]};
 
     constructor (private http: Http, private appData:AppData) {
-        console.log("AsrService - ",appData);
-    }        
+        console.log('AsrService - ',appData);
+    }
 
     // The property "IsServerRunning" on AppData 
     // tells us if the ASP.NET server is running. If so we will call the API to get the data.
     // Otherwise, we will get the data via a file read from our assets folder.
-    isServerRunning: boolean = this.appData.isServerRunning;
-    isDataFromMemory: boolean = this.appData.isDataFromMemory;
-
     getAsr(): Observable<AsrText> {
 
-        console.log("isServerRunning=" + this.isServerRunning + "   isDataFromMemory=" + this.isDataFromMemory);
+        console.log('isServerRunning=' + this.isServerRunning + '   isDataFromMemory=' + this.isDataFromMemory);
         // if data from memory, just return data as an `Observable`
         if (this.isDataFromMemory) {
             console.log('getAsrFromMemory');

@@ -37,17 +37,17 @@ export class TalksService {
         ]
     };
 
-        constructor(private http: Http, private appData: AppData) {
-        console.log("TalksService - ", appData);
+    private isServerRunning: boolean = this.appData.isServerRunning;
+    private isDataFromMemory: boolean = this.appData.isDataFromMemory;
+
+    constructor(private http: Http, private appData: AppData) {
+        console.log('TalksService - ', appData);
     }
 
     // The property "IsServerRunning" on AppData tells us if the ASP.NET 
     // server is running. If so we will call the API to get the data.
     // Otherwise, we will get the data via a file read from our assets folder.
     // If "isDataFromMemory" is set, we will uese in-memory data.
-
-    isServerRunning: boolean = this.appData.isServerRunning;
-    isDataFromMemory: boolean = this.appData.isDataFromMemory;
 
     getTalks(): Observable<Addtags> {
         // if data from memory, just return data as an `Observable`
