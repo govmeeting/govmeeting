@@ -19,3 +19,10 @@
     margin: 40px 0 40px 0;
     }
 */
+
+.fixed-l {
+    position: fixed;
+    top: 0px;
+    left: 0;
+}
+

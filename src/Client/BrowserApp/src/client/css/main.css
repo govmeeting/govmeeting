@@ -1,3 +1,9 @@
+.unusedclass {
+    background-color: #cdf1c3;
+}
+/* I commented out all the css temporarily. The above is so that the loader still sees this file as css. */
+
+
 /*
 The following is the import statement that was in the example.
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
