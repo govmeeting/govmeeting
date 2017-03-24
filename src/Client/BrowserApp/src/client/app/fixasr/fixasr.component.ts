@@ -5,6 +5,7 @@ import { AsrText } from './asrtext';
 import { AsrService } from './asr.service';
 import { VideoComponent } from '../video/video.component';
 import { FixasrUtilities } from './fixasr-utilities';
+import { Observable } from 'rxjs/Rx';
 
 // test
 import { ElementRef } from '@angular/core';
@@ -29,8 +30,6 @@ import { ElementRef } from '@angular/core';
 })
 export class FixasrComponent  implements OnInit {
     errorMessage: string;
-    asrtext : AsrText;
-    asr: AsrSegment[];
     lastPhrasePlayed : number = 0;
     currentIndex : number = -1;
     isTyping : boolean = false;
@@ -38,6 +37,11 @@ export class FixasrComponent  implements OnInit {
     isInsertMode: boolean = false;
     modeButtonText: string = 'REPLACE';
     _scrollList: HTMLElement;
+
+    // Todo - Fix problem with asrtext.
+    // We should just use asrtext, which contains both asrsegments & lastedit.
+    // But the browser hangs when we try to access asrtext from HTML.
+    asrsegments: AsrSegment[];
     lastedit: number;
 
     // https://github.com/videogular/videogular2/blob/master/docs/using-the-api.md
@@ -57,14 +61,15 @@ export class FixasrComponent  implements OnInit {
         this._scrollList = document.getElementById('scroll-text');
     }
 
+    /* for testing
     getpos() {
         this.lastedit = this.getScrollPosition();
     }
-
     setpos() {
         this._scrollList.scrollTop = this.lastedit;
     }
-
+    */
+    
     setScrollPosition(top: number) {
         this._scrollList.scrollTop = top;
     }
@@ -81,7 +86,7 @@ export class FixasrComponent  implements OnInit {
 // #########################  Event Handlers ################################################
 
     onFocus(event: any, i : number) {
-        console.log('onFocus index=' + i + '  size=' + this.asr.length);
+        console.log('onFocus index=' + i + '  size=' + this.asrsegments.length);
         this.currentIndex = i;
         this.isTyping = false;
         this.isFirstSpace = false;
@@ -136,7 +141,7 @@ export class FixasrComponent  implements OnInit {
                 }
                 return;
             case 'ArrowDown':
-                if (i >= (this.asr.length - 1)) {
+                if (i >= (this.asrsegments.length - 1)) {
                     this._Utilities.selectLastWord(ele);
                 } else {
                     this._Utilities.gotoNextInputElement(ele, i);
@@ -215,19 +220,26 @@ export class FixasrComponent  implements OnInit {
                 // It appears to move the data OK. When I stop at a breakpoint, the 
                 // the data is all there. But accessing it from the HTML 
                 // causes an error (It says asrtext is null).
-                this.asr = asrtext.asrsegments;
+                this.asrsegments = asrtext.asrsegments;
                 this.lastedit = asrtext.lastedit;
-                // console.log('asr=' + this.asr);
+                console.log("getAsr lastedit=" + this.lastedit);
 
-                // This causes an error: "lastedit not a property of asrtext"
-                // this.asrtext.lastedit = asrtext.lastedit;
+                // We want to scroll the list to the last stored position.
+                // But Angular will not yet have updated the list. We need
+                // to yield for an instant to let it first do the update. 
+                let timer = Observable.timer(100);   // yield for 100 milliseconds
+                timer.subscribe(t=>this.setScrollPosition(this.lastedit));
             },
             error => this.errorMessage = <any>error);
     }
 
     saveChanges() {
+        var asrtext : AsrText;
         console.log('saveTranscript');
-        this._asrService.postChanges(this.asrtext)
+        // Todo - See notes under getAsr().
+        asrtext.lastedit = this.getScrollPosition();
+        asrtext.asrsegments = this.asrsegments;
+        this._asrService.postChanges(asrtext)
             .subscribe (
                 t => t
             );
@@ -243,7 +255,7 @@ export class FixasrComponent  implements OnInit {
         let maxPhraseTime = 6; // minimum time of a single phrase
         let beforeTime = 1;  // time to play before
         let afterTime = 3;   // and after selected phrase
-        let startTime  = this.asr[i].startTime;
+        let startTime  = this.asrsegments[i].startTime;
 
         console.log('In fixasr playPhrase, index=' + i);
 
@@ -255,8 +267,8 @@ export class FixasrComponent  implements OnInit {
         // Otherwise play for (contextTime * 2) seconds longer than duration.
         // This means contextTime before and contextTime after.
         let duration = maxPhraseTime;
-        if (this.asr.length > i+1) {
-            let endTime : string  = this.asr[i+1].startTime;
+        if (this.asrsegments.length > i+1) {
+            let endTime : string  = this.asrsegments[i+1].startTime;
             duration = this.convertToSeconds(endTime) - start + beforeTime + afterTime;
         }
         this.videoComponent.playPhrase(start, duration);

@@ -3,7 +3,7 @@
 <div class="edit-region">
 
     <div  id="scroll-text" class="scroll-text">
-        <div *ngFor="let a of asr; let i = index">
+        <div *ngFor="let a of asrsegments; let i = index">
             <input #myInput type="text" [(ngModel)]="a.said" (mouseup)="onMouseup($event, i)"
              (focus)="onFocus($event, i)" (keyup)="onKey($event, i)"/>
         </div>
@@ -11,10 +11,10 @@
 
     <div class="controls-and-help">
         <div class="edit-controls">
+            <button md-raised-button class="save-button" color="primary" (click)="saveChanges()">SAVE CHANGES</button>
             <button md-raised-button class="mode-button" color="primary" (click)="toggleInsertMode()">
                 MODE ({{modeButtonText}})
             </button>
-            <button md-raised-button class="save-button" color="primary" (click)="saveChanges()">SAVE CHANGES</button>
         </div>
 
         <div class="edit-help">
@@ -30,9 +30,12 @@
                 <li>Insert key: Change edit mode</li>
             </ul>
         </div>
-         <button (click)="getpos()"> GETPOS </button> pos={{scrollPosition}}
-         <button (click)="setpos()"> SETPOS </button>
-             <!--{{asrtext.lastedit}}   Why does it think asrtext is null? -->
+
+        <!--For testing
+         <button (click)="getpos()"> GETPOS </button> pos={{lastedit}}
+         <button (click)="setpos()"> SETPOS </button>-->
+
+         <!--{{asrtext.lastedit}}   Why does it think asrtext is null? -->
     </div>
 
 </div>

@@ -23,7 +23,7 @@ export class AsrService {
     private _UrlServer = 'api/fixasr';
 
     private testData: AsrText = {
-        'lastedit': 1,
+        'lastedit': 0,
         'asrsegments':     [
         { startTime: '0:00', said: 'the tuesday october $YEAR 11 selectmen' },
         { startTime: '0:02', said: 'meeting i will apologize apologize for' },
@@ -93,6 +93,7 @@ export class AsrService {
         throw new Error('Bad response status: ' + res.status);
         }
         let body = res.json();
+        console.log("extractData: " + body);
         return body || { };
     }
 
