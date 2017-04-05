@@ -11,10 +11,27 @@
 
     <div class="controls-and-help">
         <div class="edit-controls">
-            <button md-raised-button class="save-button" color="primary" (click)="saveChanges()">SAVE CHANGES</button>
-            <button md-raised-button class="mode-button" color="primary" (click)="toggleInsertMode()">
-                MODE ({{modeButtonText}})
-            </button>
+            <button md-raised-button class="mode-button" color="primary" (click)="toggleInsertMode()">MODE ({{modeButtonText}})</button>
+            <button md-raised-button class="play-button" color="primary" (click)="playPhrase()">PLAY </button>
+            <button md-raised-button class="save-button" color="primary" (click)="saveChanges()">SAVE</button>
+
+            <form>
+            <p><label>Speaker <input type="text" name="donation"
+            list="donations"></label></p>
+            <datalist id="donations">
+            <option value="Denise Griffin">Denise</option>
+            <option value="Tricia Warren">Tricia</option>
+            <option value="Wendy Wolf">Wendy</option>
+            <option value="Russell Hoffman">Russell</option>
+            <option value="Michael Tomko">Michael</option>
+            <option value="Kellie Bigos">Kellie</option>
+            <option value="Thomas Woodin">Thomas</option>
+            <option value="Michell Farnham">Michelle</option>
+            <option value="Other">Other</option>
+            </datalist>   
+            <!-- <p><button type="submit">Submit</button></p> -->
+            </form>
+
         </div>
 
         <div class="edit-help">

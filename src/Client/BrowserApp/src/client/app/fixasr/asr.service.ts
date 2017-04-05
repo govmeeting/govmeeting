@@ -68,22 +68,24 @@ export class AsrService {
 
     // TODO - What should we return from the postChanges call?
     // We need to handle errors.
-    postChanges(asr : any): Observable<any> {
+    postChanges(asrtext : AsrText): Observable<any> {
         // if data from memory, don't post it back.
         if (this.isDataFromMemory) {
             return Observable.of(this.testData);
+
+        // If the asp.net server is not running, don't post
         } else if (!this.isServerRunning) {
             return Observable.of(this.testData);
         }
         console.log('postChanges in asr.service  ' + this._UrlServer);
-        return this.postData(this._UrlServer, asr);
+        return this.postData(this._UrlServer, asrtext);
     }
 
-    private postData(url: string, data: any): Observable<any> {
+    private postData(url: string, asrtext: AsrText): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         console.log('postData in asr.service');
-        return this.http.post(url, { 'asrsegments': data }, headers)
+        return this.http.post(url, asrtext, headers)
         .map(res => console.info(res))
         .catch(this.handleError);
     }
@@ -99,6 +101,7 @@ export class AsrService {
 
     private handleError (error: any) {
         // In a real world app, we might send the error to remote logging infrastructure
+        console.log("asr.service handleError " + error);
         let errMsg = error.message || 'Server error';
         console.error(errMsg); // log to console instead
         return Observable.throw(errMsg);

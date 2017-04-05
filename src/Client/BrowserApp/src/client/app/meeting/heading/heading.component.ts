@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //import {HTTP_PROVIDERS} from '@angular/http';
-import { BackendService } from '../../shared/index';
+import { MeetingService } from '../meeting.service';
 
 @Component({
     moduleId: module.id,
@@ -17,15 +17,15 @@ export class HeadingComponent implements OnInit {
 
     errorMessage: string;
 
-    constructor(private _backendService: BackendService) {};
+    constructor(private _meetingService: MeetingService) {};
 
     ngOnInit() {this.getMeetingInfo();}
 
     getMeetingInfo() {
-        this._backendService.getMeeting()
+        this._meetingService.getMeeting()
         .subscribe(
-        (t: any) => {
-            this.meetingInfo = t.meetingInfo;
+        (meeting: any) => {
+            this.meetingInfo = meeting.meetingInfo;
             //console.log(this.meetingInfo);
         },
         (error: any) => this.errorMessage = <any>error);

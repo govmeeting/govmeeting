@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { NewfooterComponent } from './newfooter/index';
+//import { NewfooterComponent } from './newfooter/index';
 import { HeadingComponent } from './heading/index';
 // import { SpeakersComponent } from './speakers/index';
 // import { TopicsComponent } from './topics/index';
 import { BrowsemeetingComponent } from './browsemeeting/index';
 // import {HTTP_PROVIDERS} from '@angular/http';
-import { BackendService } from '../shared/index';
-import { UserchoiceService } from '../shared/index';
+import { MeetingService } from './meeting.service';
+import { UserchoiceService } from './userchoice.service';
 
 
 /**
@@ -25,7 +25,7 @@ import { UserchoiceService } from '../shared/index';
     // we would have a new instance injected each time the component was created.
     providers: [
         // HTTP_PROVIDERS,
-        BackendService,
+        MeetingService,
         UserchoiceService
     ],
 
@@ -33,11 +33,11 @@ import { UserchoiceService } from '../shared/index';
 })
 export class MeetingComponent {
 
-    constructor(private _backendService: BackendService) { };
+    constructor(private _meetingService: MeetingService) { };
 
     postMeeting() {
         console.log('postMeeting');
-        this._backendService.postMeeting()
+        this._meetingService.postMeeting()
         .subscribe(
             t => t
             );

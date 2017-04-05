@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-//import { HTTP_PROVIDERS } from '@angular/http';
-import { BackendService } from '../../shared/index';
-import { UserchoiceService } from '../../shared/index';
-// import { MyHighlightDirective } from '../../shared/index';
+import { MeetingService } from '../meeting.service';
+import { UserchoiceService } from '../userchoice.service';
 
 @Component({
     moduleId: module.id,
     selector: 'gm-speakers',
     templateUrl: 'speakers.component.html'
-    // directives: [MyHighlightDirective],
-    // The providers that we need are declared in meeting.component.ts
-    // providers: [
-    // ]
 })
 export class SpeakersComponent implements OnInit {
 
@@ -19,7 +13,7 @@ export class SpeakersComponent implements OnInit {
     errorMessage: string;
     selectedSpeaker: number = 0;
 
-    constructor(private _backendService: BackendService,
+    constructor(private _meetingService: MeetingService,
         private _userChoice: UserchoiceService) {};
 
     ngOnInit() {
@@ -28,13 +22,12 @@ export class SpeakersComponent implements OnInit {
     }
 
     getSpeakerNames() {
-        this._backendService.getMeeting()
+        this._meetingService.getMeeting()
         .subscribe(
-        t => {
-            this.speakerNames = t.speakerNames;
+        meeting => {
+            this.speakerNames = meeting.speakerNames;
             // console.log(this.speakerNames);},
         },
-            // console.log(this.speakerNames);},
         error => this.errorMessage = <any>error);
     }
 
@@ -50,15 +43,4 @@ export class SpeakersComponent implements OnInit {
             this._userChoice.setTopic('SHOW ALL');
         }
     }
-
-/*
-    mySpeaker(newSpeaker: string) {
-        //if (angular.isDefined(newSpeaker)) {
-        if ((newSpeaker != null) && (newSpeaker != "")) {
-            this._userChoice.setSpeaker(newSpeaker);
-        }
-        return this._userChoice.getSpeaker()
-    }
-*/
 }
-

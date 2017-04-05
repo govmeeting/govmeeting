@@ -47,3 +47,8 @@ In package.json, under devDependencies, it has "typescript": "~2.0.9",
 In a command window, "tsc -v" shows: Version 2.0.10. This is the same whether I run a normal command window, the Developer Command Prompt or the MsBuild Command Prompt.
 
 I changed the version in package.json to "~2.0.10" and did a "npm install" from the command line. I got some errors. I closed VS and then it installed OK.
+
+
+# Additional Node Packages being used
+
+npm install ng2-material-dropdown --save

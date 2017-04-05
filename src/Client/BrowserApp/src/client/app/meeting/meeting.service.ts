@@ -10,7 +10,7 @@ import 'rxjs/add/operator/catch';
 //import {Headers, RequestOptions} from '@angular/http';
 
 @Injectable()
-export class BackendService {
+export class MeetingService {
 
 // The code outlined in main.ts for checking the Name argument need to be used here.
     private _meetingUrl = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
@@ -22,6 +22,7 @@ export class BackendService {
     // private _meetingData: any = {};
     private data: any;
     private observable: Observable<any>;
+    errorMessage: string;
 
 
     constructor (private http: Http) {}
@@ -30,32 +31,34 @@ export class BackendService {
         return this.getData(this._meetingUrl);
     }
 
-    postMeeting(): Observable<any> {
-        console.log('postMeeting in backend.service');
-        return this.postData(this._meetingUrl, 'my meeting data');
+    private getData(url: string): Observable<any> {
+        // if `data` is available just return it as `Observable`
+        if (this.data) {
+            return Observable.of(this.data);
+
+        // else if `this.observable` is set then the request is in progress
+        // return the `Observable` for the ongoing request
+        } else if (this.observable) {
+            return this.observable;
+
+        // else create the request, store the `Observable` for subsequent subscribers
+        } else {
+            this.observable = this.http.get(url)
+                .map((res: any) => res.json())
+                .do((val: any) => {
+                    this.data = val;
+                    // when the cached data is available we don't need the `Observable` reference anymore
+                    this.observable = null;
+                })
+                // make it shared so more than one subscriber can get the result
+                .share();
+            return this.observable;
+        }
     }
 
-    private getData(url: string): Observable<any> {
-        if(this.data) {
-        // if `data` is available just return it as `Observable`
-        return Observable.of(this.data);
-        } else if(this.observable) {
-        // if `this.observable` is set then the request is in progress
-        // return the `Observable` for the ongoing request
-        return this.observable;
-        } else {
-        // create the request, store the `Observable` for subsequent subscribers
-        this.observable = this.http.get(url)
-            .map((res: any) => res.json())
-            .do((val: any) => {
-                this.data = val;
-                // when the cached data is available we don't need the `Observable` reference anymore
-                this.observable = null;
-            })
-            // make it shared so more than one subscriber can get the result
-            .share();
-        return this.observable;
-        }
+    postMeeting(): Observable<any> {
+        console.log('postMeeting in meeting.service');
+        return this.postData(this._meetingUrl, 'my meeting data');
     }
 
     private postData(url: string, data: any): Observable<any> {
@@ -75,7 +78,7 @@ export class BackendService {
 
     // From "asp.net core and angular2 - Part2"
 
-    console.log('postData in backend.service');
+    console.log('postData in meeting.service');
     return this.http.post(url, body, options);
         //.map(res => console.info(res))
         //.catch(this.handleError);

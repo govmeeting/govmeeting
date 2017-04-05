@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 //import { HTTP_PROVIDERS } from '@angular/http';
-import { BackendService } from '../../shared/index';
-import { UserchoiceService } from '../../shared/index';
+import { MeetingService } from '../meeting.service';
+import { UserchoiceService } from '../userchoice.service';
 
 @Component({
     moduleId: module.id,
@@ -19,17 +19,17 @@ export class BrowsemeetingComponent implements OnInit {
      * <summary>
      *  BrowseMeetingCtrl Constructor.
      * </summary>
-     * <param name="backEnd">       The back end service. </param>
-     * <param name="userChoiceSrv"> The user choice service. </param>
+     * <param name="_meetingService">       The meeting service. </param>
+     * <param name="_userChoiceSrv"> The user choice service. </param>
     **/
-    constructor(private _backendService: BackendService,
+    constructor(private _meetingService: MeetingService,
         private _userChoice: UserchoiceService) {
     }
 
     ngOnInit() {this.getTopicDiscussions();}
 
     getTopicDiscussions() {
-        this._backendService.getMeeting()
+        this._meetingService.getMeeting()
         .subscribe(
         t => {
             this.topicDiscussions = t.topicDiscussions;

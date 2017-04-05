@@ -6,6 +6,7 @@ import { AsrService } from './asr.service';
 import { VideoComponent } from '../video/video.component';
 import { FixasrUtilities } from './fixasr-utilities';
 import { Observable } from 'rxjs/Rx';
+//import { Ng2DropdownModule } from 'ng2-material-dropdown';
 
 // test
 import { ElementRef } from '@angular/core';
@@ -42,7 +43,7 @@ export class FixasrComponent  implements OnInit {
     // We should just use asrtext, which contains both asrsegments & lastedit.
     // But the browser hangs when we try to access asrtext from HTML.
     asrsegments: AsrSegment[];
-    lastedit: number;
+    lastedit: number = -1;
 
     // https://github.com/videogular/videogular2/blob/master/docs/using-the-api.md
 
@@ -106,6 +107,12 @@ export class FixasrComponent  implements OnInit {
             this.toggleInsertMode();
             return;
         }
+
+        if (event.key === 'Enter') {
+            this.playPhrase();
+            return;
+        }
+
         if (this.isInsertMode) return;
 
         var key = event.key;   // get key value
@@ -118,14 +125,8 @@ export class FixasrComponent  implements OnInit {
         console.log('doKey: key=' + key + '   isTyping=' + this.isTyping);
         console.log('1 doKey index=' + i + '   start=' + start + '   end=' + end);
 
-        switch (key) {
-
-        // If 'Enter' play that portion of video
-            case 'Enter':
-                this.playPhrase(i);
-                return;
-
         // Handle the arrow keys
+        switch (key) {
             case 'ArrowRight':
                 if (end  < value.length) {
                     this._Utilities.gotoNextWord(ele);
@@ -235,11 +236,13 @@ export class FixasrComponent  implements OnInit {
 
     saveChanges() {
         var asrtext : AsrText;
+        var lastedit = this.getScrollPosition();
         console.log('saveTranscript');
         // Todo - See notes under getAsr().
-        asrtext.lastedit = this.getScrollPosition();
-        asrtext.asrsegments = this.asrsegments;
-        this._asrService.postChanges(asrtext)
+        //asrtext.lastedit = this.getScrollPosition();
+        //asrtext.asrsegments = this.asrsegments;
+        //this._asrService.postChanges(asrtext)
+        this._asrService.postChanges({"lastedit": lastedit, "asrsegments": this.asrsegments})
             .subscribe (
                 t => t
             );
@@ -248,16 +251,26 @@ export class FixasrComponent  implements OnInit {
 
 // #####################  Play selected part of video ####################################
 
-    playPhrase(i : number) {
-        if (i === this.lastPhrasePlayed) return;
-        this.lastPhrasePlayed = i;
+    playPhrase() {
+        // start playing at the currently selected phrase
+        var toPlay = this.currentIndex;
+        // If not current phrase, start from last edited phrase.
+        if (toPlay == -1) {
+            toPlay = this.lastedit;
+            // Otherwise start from beginning.
+            if (toPlay == -1) {
+                toPlay = 0;
+            }
+        }
+        if (toPlay === this.lastPhrasePlayed) return;
+        this.lastPhrasePlayed = toPlay;
 
         let maxPhraseTime = 6; // minimum time of a single phrase
         let beforeTime = 1;  // time to play before
         let afterTime = 3;   // and after selected phrase
-        let startTime  = this.asrsegments[i].startTime;
+        let startTime  = this.asrsegments[toPlay].startTime;
 
-        console.log('In fixasr playPhrase, index=' + i);
+        console.log('In fixasr playPhrase, index=' + toPlay);
 
         // Play for contextTime seconds before selected phrase
         let start = this.convertToSeconds(startTime) - beforeTime;
@@ -267,8 +280,8 @@ export class FixasrComponent  implements OnInit {
         // Otherwise play for (contextTime * 2) seconds longer than duration.
         // This means contextTime before and contextTime after.
         let duration = maxPhraseTime;
-        if (this.asrsegments.length > i+1) {
-            let endTime : string  = this.asrsegments[i+1].startTime;
+        if (this.asrsegments.length > toPlay+1) {
+            let endTime : string  = this.asrsegments[toPlay+1].startTime;
             duration = this.convertToSeconds(endTime) - start + beforeTime + afterTime;
         }
         this.videoComponent.playPhrase(start, duration);

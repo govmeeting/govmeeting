@@ -1,60 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-//import { HTTP_PROVIDERS } from '@angular/http';
-import { BackendService } from '../../shared/index';
-import { UserchoiceService } from '../../shared/index';
-// import { MyHighlightDirective}  from '../../shared/index';
+import { MeetingService } from '../meeting.service';
+import { UserchoiceService } from '../userchoice.service';
 
 @Component({
     moduleId: module.id,
     selector: 'gm-topics',
     templateUrl: 'topics.component.html'
-    // directives: [MyHighlightDirective],
-    // The providers that we need are declared in meeting.component.ts
-    // providers: [
-    // ]
 })
 export class TopicsComponent implements OnInit {
 
-    topicNames: string[];
+    nameType: string = "topicNames";
+    Names: string[];
     errorMessage: string;
-    selectedTopic: number = 0;
-    selectedTopicColor: string = 'green';
+    selected: number = 0;
 
-    constructor(private _backendService: BackendService,
+    constructor(private _meetingService: MeetingService,
         private _userChoice: UserchoiceService) {};
 
     ngOnInit() {
-        this.getTopicNames();
+        this.getNames();
         this._userChoice.setTopic('SHOW ALL');
     }
 
-    getTopicNames() {
-        this._backendService.getMeeting()
+    getNames() {
+        this._meetingService.getMeeting()
         .subscribe(
         t => {
-            this.topicNames = t.topicNames;
+            this.Names = t.topicNames;
             // console.log(this.topicNames);
         },
         error => this.errorMessage = <any>error);
     }
 
-    IsSelectedTopic(i: number) : boolean {
-        return(this._userChoice.getTopic() === this.topicNames[i]);
+    IsSelected(i: number) : boolean {
+        return(this._userChoice.getTopic() === this.Names[i]);
     }
 
-    FilterByTopic(i: number) {
-        this.selectedTopic = i;
-        //console.log(this.topicNames[i])
-        this._userChoice.setTopic(this.topicNames[i]);
-        if (i!==0) {
-            this._userChoice.setSpeaker('SHOW ALL');
-        }
-    }
-
-    myTopic(newTopic: string) {
-        if ((newTopic !== null) && (newTopic !== '')) {
-            this._userChoice.setTopic(newTopic);
-        }
-        return this._userChoice.getTopic();
+    Filter(i: number) {
+        this.selected = i;
+        this._userChoice.setTopic(this.Names[i]);
     }
 }

@@ -35,7 +35,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public void Post([FromBody]Fixasr value)
         {
-            fixasr.PutByPath("assets/data/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen/2016-10-11", value);
+            fixasr.PutByPath("USA_ME_LincolnCounty_BoothbayHarbor_Selectmen/2016-10-11", value);
         }
     }
 }

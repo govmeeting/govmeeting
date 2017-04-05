@@ -5,7 +5,6 @@ import { HeadingComponent } from './heading/heading.component';
 import { BrowsemeetingComponent } from './browsemeeting/browsemeeting.component';
 import { SpeakersComponent } from './speakers/speakers.component';
 import { TopicsComponent } from './topics/topics.component';
-import { NewfooterComponent } from './newfooter/newfooter.component';
 // import { MyHighlightDirective } from '../shared/myhighlight/myhighlight.directive';
 import { FormsModule } from '@angular/forms';
 // import { MyHighlightDirective } from '../shared/shared.module';
@@ -20,7 +19,7 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
   imports: [CommonModule, FormsModule, MeetingRoutingModule, SharedModule],
   declarations: [MeetingComponent, HeadingComponent, BrowsemeetingComponent,
-   TopicsComponent, SpeakersComponent, NewfooterComponent],
+   TopicsComponent, SpeakersComponent],
   exports: [MeetingComponent]
 })
 export class MeetingModule { }

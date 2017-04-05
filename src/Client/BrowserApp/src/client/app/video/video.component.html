@@ -1,4 +1,5 @@
-<!--<h2>Video</h2>-->
+<br><br><br>
+
 <div class="videogular-container">
 <vg-player (onPlayerReady)="onPlayerReady($event)">
     <vg-overlay-play></vg-overlay-play>
@@ -28,6 +29,7 @@
 
         <vg-fullscreen></vg-fullscreen>
     </vg-controls>
+
     <video vgMedia #media id="singleVideo" preload="auto" crossorigin>
         <source *ngFor="let video of sources" [src]="video.src" [type]="video.type">
         <!--<track kind="subtitles" label="English" src="http://static.videogular.com/assets/subs/pale-blue-dot.vtt" srclang="en" default>

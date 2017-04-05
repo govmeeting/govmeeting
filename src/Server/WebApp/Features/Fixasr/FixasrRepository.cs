@@ -13,6 +13,10 @@ namespace WebApp.Models
     {
         static ConcurrentDictionary<string, Fixasr> _fixasr = new ConcurrentDictionary<string, Fixasr>();
 
+        private const string STEP2_BASE_NAME = "Step 2 - transcript from Youtube";
+        private const string STEP3_BASE_NAME = "Step 3 - transcript corrected for errors";
+        private const string EXTENSION = "json";
+
         //public FixasrRepository()
         //{
         ////    Add(new Fixasr { Name = "Item1" });
@@ -57,19 +61,38 @@ namespace WebApp.Models
         {
             // Todo - check permissions
 
+            string subpath = country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "/" + meetingDate;
 
-            //string path = "assets\\data\\" + country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "\\" + meetingDate + "\\" + "Step 2 - transcript from Youtube.json";
-            string path = "assets/data/" + country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "/" + meetingDate + "/" + "Step 2 - transcript from Youtube.json";
-            return GetByPath(path);
+            // If we already edited it, return the latest edit.
+            var fullpath = getFullPath(subpath);
+            string latestCopy = getLatestFile(fullpath, STEP3_BASE_NAME, EXTENSION);
+            if (File.Exists(latestCopy))
+            {
+                return GetByPath(latestCopy);
+            }
+            // Otherwise return the unedited one from step 2.
+            else
+            {
+                string filename = fullpath + "/" + STEP2_BASE_NAME + "." + EXTENSION;
+                return GetByPath(filename);
+            }
+        }
+
+        private string getDataPath()
+        {
+            string siteDataPath = "assets/data";
+            var webRoot = _env.WebRootPath;
+            return System.IO.Path.Combine(webRoot, siteDataPath);
+        }
+
+        private string getFullPath(string path)
+        {
+            return System.IO.Path.Combine(getDataPath(), path);
         }
 
         public Fixasr GetByPath(string path)
         {
-            var webRoot = _env.WebRootPath;
-            var fullpath = System.IO.Path.Combine(webRoot, path);
-
-            string fixasrString = Readfile(fullpath);
-            //string fixasrString = getTagEditsString();
+            string fixasrString = Readfile(path);
             if (fixasrString != null)
             {
                 Fixasr fixasr = JsonConvert.DeserializeObject<Fixasr>(fixasrString);
@@ -96,68 +119,67 @@ namespace WebApp.Models
         //public void PutByPath(string path, string value)
         public void PutByPath(string path, Fixasr value)
         {
-            //const string BASE_NAME = "Step 3 - transcript corrected for errors";
-            const string BASE_NAME = "x";   // for testung
-            const string EXTENSION = "json";
+            // const string STEP3_BASE_NAME = "x";   // for testing
+            const string SUFFIX = "-LAST";
+            const string SEPERATOR = " - ";
 
             string stringValue = JsonConvert.SerializeObject(value, Formatting.Indented);
 
-            var webRoot = _env.WebRootPath;
-            var fullpath = System.IO.Path.Combine(webRoot, path);
-            var filename = BASE_NAME + "." + EXTENSION;
-            var fullname = fullpath + "/" + filename;
- 
-            // If file exists, make backup
-            if (File.Exists(fullname))
+            var fullpath = getFullPath(path);
+            string numOfNextLatest = "01";          // Assume the next latest is "01".
+
+            // Find out what the current latest is.
+            string latestCopy = getLatestFile(fullpath, STEP3_BASE_NAME, EXTENSION);
+            if (latestCopy != null)
             {
-                MakeBackup(fullpath, BASE_NAME, EXTENSION);
-            }   
-
-            File.WriteAllText(fullname, stringValue);
-
-        }
-
-        // The backups will be (for example) "... 01.json", "... 02.json", .... "... 07 - last.json"
-        // The " - last" is the last backup made. The reason that we need this is because we will recyle the numbers once
-        // we hit the maximum backups. Thus if the maximum is 20, after "... 20.json" will come "... 01.json",
-        // which, if it is the last, will be named "... 01 - last.json"
-        private void MakeBackup(string fullpath, string basename, string extension)
-        {
-            const int MAX_BACKUPS = 20;
-            const string SUFFIX = " LAST";
-            const string SEPERATOR = " - ";
-
-            // if there was a prior backup, rename the file "basename xx - last.json" to "basename xx.json"
-            int numLast = 1; // number of last backup
-            string[] files = Directory.GetFiles(fullpath, basename + "*" + SUFFIX + "." + extension);
-            if (files.Length > 0)
-            {
-                string currentLast = files[0];
-                string renameLast = currentLast.Replace(SUFFIX, "");
-                System.IO.File.Move(currentLast, renameLast);
-
-                // Rename the current working file "basename.json" to "basename xy - last.json", where xy = xx+1 or 1.
-                int startOfnumLast = fullpath.Length + basename.Length + SEPERATOR.Length + 1;
-                bool res = int.TryParse(currentLast.Substring(startOfnumLast, 2), out numLast);
-                if (!res)
-                {
-                    // todo - handle error
-                    return;
-                }
-                {
-                    if (++numLast > MAX_BACKUPS)
-                    {
-                        numLast = 1;
-                    }
-                }
+                numOfNextLatest = getNumberOfNextLatest(latestCopy, SUFFIX, EXTENSION);
+                RenameLatestCopy(latestCopy, SUFFIX);
             }
 
-            string currentWorking = fullpath + "/" + basename + "." + extension;
-            string numLastString = String.Format("{0:d2}", numLast);
-            string newLast = fullpath + "/" + basename + SEPERATOR + numLastString + SUFFIX + "." + extension;
-            File.Copy(currentWorking, newLast);
+            string nextLatestCopy = fullpath + "/" + STEP3_BASE_NAME + SEPERATOR + numOfNextLatest + SUFFIX + "." + EXTENSION;
+            File.WriteAllText(nextLatestCopy, stringValue);
+        }
 
+        // get filename of latest copy
+        private string getLatestFile(string fullpath, string basename, string extension)
+        {
+            const string SUFFIX = "-LAST";
+
+            string[] files = Directory.GetFiles(fullpath, basename + "*" + SUFFIX + "." + extension);
+            if (files.Length == 1)
+            {
+                return files[0];
+            }
+            return null;
+        }
+
+        private void RenameLatestCopy(string latestCopy, string suffix)
+        {
+            string newname = latestCopy.Replace(suffix, "");
+            File.Move(latestCopy, newname);
+        }
+
+        // get number of next latest copy (as string)
+        private string getNumberOfNextLatest(string latestCopy, string suffix, string extension)
+        {
+            const int MAX_BACKUPS = 20;
+
+            int numLast;
+            int startOfnumLast = latestCopy.Length - suffix.Length - extension.Length - 3;
+
+            string numpart = latestCopy.Substring(startOfnumLast, 2);
+            bool res = int.TryParse(numpart, out numLast);
+            if (!res)
+            {
+                // todo - handle error
+                return "01";
+            }
+            if (++numLast > MAX_BACKUPS)
+            {
+                numLast = 1;
+            }
             // http://timtrott.co.uk/string-formatting-examples/
+            return String.Format("{0:d2}", numLast);
         }
 
         /*public Fixasr Remove(string key)

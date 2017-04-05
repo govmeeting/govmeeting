@@ -15,6 +15,7 @@ import { AppData } from './appdata';
   styles: ['app.component.css']
 })
 export class AppComponent {
+  pages: string[] = ["page1", "page2", "page3"];
   constructor(appData:AppData) {
     console.log('Environment config', Config);
     console.log('AppComponent - ', appData);

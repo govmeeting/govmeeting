@@ -12,20 +12,23 @@ import { MeetingModule } from './meeting/meeting.module';
 import { MatsampModule } from './matsamp/matsamp.module';
 import { FixasrModule } from './fixasr/fixasr.module';
 import { VideoModule } from './video/video.module';
-//import { MaterialModule } from '@angular/material';
 import { SharedModule } from './shared/shared.module';
 //import { ProgramOptions } from './programOptions';
 
 // Data passed in from index.html
 import { AppData } from './appdata';
 
+// Experiment with ng2-material-dropdown
+//import { Ng2DropdownModule } from 'ng2-material-dropdown';
+
 @NgModule({
   imports: [BrowserModule, HttpModule, AppRoutingModule,
      AboutModule, HomepageModule, AddtagsModule, MeetingModule,
       MatsampModule,
-      //VideoModule,
       FixasrModule,
-      SharedModule.forRoot()],
+      SharedModule.forRoot()
+      //Ng2DropdownModule
+      ],
   declarations: [AppComponent],
   providers: [AppData,
   {

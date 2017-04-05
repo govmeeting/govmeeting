@@ -7,6 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { FixasrRoutingModule } from './fixasr-routing.module';
 import { FixasrComponent } from './fixasr.component';
 import { VideoModule } from '../video/video.module';
+//import { Ng2DropdownModule } from 'ng2-material-dropdown/index';
 //import { FixasrEditDirective } from './fixasr-edit.directive';
 
 
@@ -23,6 +24,7 @@ import { VideoModule } from '../video/video.module';
     VideoModule,
     FixasrRoutingModule,
     MaterialModule.forRoot()
+    //Ng2DropdownModule
   ],
   providers: [],
 })

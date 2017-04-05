@@ -6,8 +6,6 @@ import { RouterModule } from '@angular/router';
 import { ToolbarComponent } from './toolbar/index';
 import { NavbarComponent } from './navbar/index';
 import { NameListService } from './name-list/index';
-import { BackendService } from './backend/index';
-import { UserchoiceService } from './userchoice/index';
 import { MyHighlightDirective } from './myhighlight/index';
 
 /**
@@ -24,7 +22,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [NameListService, BackendService, UserchoiceService]
+      providers: [NameListService]
     };
   }
 }
