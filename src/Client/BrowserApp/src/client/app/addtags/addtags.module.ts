@@ -11,8 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [CommonModule, FormsModule, AddtagsRoutingModule, SharedModule],
-  // declarations: [AddtagsComponent, Component],
- declarations: [AddtagsComponent, TalksComponent, TopicsComponent],
+  declarations: [AddtagsComponent, TalksComponent, TopicsComponent],
   exports: [AddtagsComponent]
 })
 export class AddtagsModule { }

@@ -6,6 +6,7 @@ import { AsrService } from './asr.service';
 import { VideoComponent } from '../video/video.component';
 import { FixasrUtilities } from './fixasr-utilities';
 import { Observable } from 'rxjs/Rx';
+import { Speaker } from './speaker';
 //import { Ng2DropdownModule } from 'ng2-material-dropdown';
 
 // test
@@ -44,6 +45,18 @@ export class FixasrComponent  implements OnInit {
     // But the browser hangs when we try to access asrtext from HTML.
     asrsegments: AsrSegment[];
     lastedit: number = -1;
+    speakerName: string = "";
+
+    speakers: Speaker [] = [
+    {'abbreviation': 'TrW', 'option': 'Tricia Warren'},
+    {'abbreviation': 'WW', 'option': 'Wendy Wolf'},
+    {'abbreviation': 'RH', 'option': 'Russell Hoffman'},
+    {'abbreviation': 'MT', 'option': 'Michael Tomko'},
+    {'abbreviation': 'KB', 'option': 'Kellie Bigos'},
+    {'abbreviation': 'ThW', 'option': 'Thomas Woodin'},
+    {'abbreviation': 'MF', 'option': 'Michelel Farnham'}
+  ];
+
 
     // https://github.com/videogular/videogular2/blob/master/docs/using-the-api.md
 
@@ -85,6 +98,18 @@ export class FixasrComponent  implements OnInit {
     }
 
 // #########################  Event Handlers ################################################
+
+    selectSpeaker(index: any) {
+        console.log("selected index=" + index);
+    }
+
+    addSpeaker(speaker: any) {
+        console.log("new speaker=" + speaker);
+    }
+
+    speakerAbrev(i: number): string {
+        return i.toString();
+    }
 
     onFocus(event: any, i : number) {
         console.log('onFocus index=' + i + '  size=' + this.asrsegments.length);

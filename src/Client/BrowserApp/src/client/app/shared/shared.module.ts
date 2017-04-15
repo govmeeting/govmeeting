@@ -7,15 +7,22 @@ import { ToolbarComponent } from './toolbar/index';
 import { NavbarComponent } from './navbar/index';
 import { NameListService } from './name-list/index';
 import { MyHighlightDirective } from './myhighlight/index';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DropdownComponent } from './dropdown/index';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
-  declarations: [ToolbarComponent, NavbarComponent, MyHighlightDirective],
+  imports: [CommonModule, RouterModule
+  ,ReactiveFormsModule
+],
+  declarations: [ToolbarComponent, NavbarComponent, MyHighlightDirective
+  , DropdownComponent
+  ],
   exports: [ToolbarComponent, NavbarComponent, MyHighlightDirective,
+  DropdownComponent,
     CommonModule, FormsModule, RouterModule]
 })
 export class SharedModule {

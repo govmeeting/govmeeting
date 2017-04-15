@@ -7,24 +7,21 @@ import { MaterialModule } from '@angular/material';
 import { FixasrRoutingModule } from './fixasr-routing.module';
 import { FixasrComponent } from './fixasr.component';
 import { VideoModule } from '../video/video.module';
-//import { Ng2DropdownModule } from 'ng2-material-dropdown/index';
-//import { FixasrEditDirective } from './fixasr-edit.directive';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
-    FixasrComponent
-    //FixasrEditDirective
+    FixasrComponent,
   ],
   imports: [
     CommonModule,
-    // BrowserModule,
     FormsModule,
     HttpModule,
     VideoModule,
     FixasrRoutingModule,
-    MaterialModule.forRoot()
-    //Ng2DropdownModule
+    MaterialModule.forRoot(),
+    SharedModule
   ],
   providers: [],
 })

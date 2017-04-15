@@ -52,6 +52,10 @@
   margin: 10px 10px 0 10px;
 }
 
+.speaker-input {
+  margin: 10px 10px 0 10px;
+}
+
 /*
 http://stackoverflow.com/questions/29108922/angular-material-how-to-make-content-scrollable?rq=1
 http://stackoverflow.com/questions/36906782/how-to-make-md-content-scrollable-in-angular-material-design
