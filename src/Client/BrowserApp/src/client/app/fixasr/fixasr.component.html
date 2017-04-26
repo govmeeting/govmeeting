@@ -5,7 +5,7 @@
     <div  id="scroll-text" class="scroll-text">
         <div *ngFor="let a of asrsegments; let i = index">
             <input #myInput type="text" [(ngModel)]="a.said" (mouseup)="onMouseup($event, i)"
-             (focus)="onFocus($event, i)" (keyup)="onKey($event, i)"/>
+             (focus)="onFocus($event, i)" (keyup)="onKey($event, i)" (keydown)="onKeyDown($event, i)"/>
         </div>
     </div>
 
@@ -16,22 +16,11 @@
             <button md-raised-button class="save-button" color="primary" (click)="saveChanges()">SAVE</button>
         </div>
 
-<!--
-            <p class="speaker-input">
-                <label>Speaker <input type="text" name="donation" list="donations"
-                [ngModel]="speakerName" (change)="setSpeaker($event)"></label>
-            </p>
-            <datalist id="speakerss">
-            <div *ngFor="let s of speakers; let i = index">
-                <option [value]="s">{{s}}</option>
-            </div>
-            </datalist>   
--->
-        <p class="speaker-input">
+        <p *ngIf="isSpeakerSelectVisible" class="speaker-input">
         <label> Speaker </label>
         <dropdown [values]="speakers" (selectSpeaker)="selectSpeaker($event)" (addSpeaker)="addSpeaker($event)"></dropdown>
         </p>
-    
+
 
         <div class="edit-help">
             <h3> Edit Modes </h3>

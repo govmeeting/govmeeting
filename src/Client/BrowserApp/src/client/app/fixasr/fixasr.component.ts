@@ -34,9 +34,11 @@ export class FixasrComponent  implements OnInit {
     errorMessage: string;
     lastPhrasePlayed : number = 0;
     currentIndex : number = -1;
+    currentElement: HTMLInputElement = null;
     isTyping : boolean = false;
     isFirstSpace : boolean = false;
     isInsertMode: boolean = false;
+    isSpeakerSelectVisible: boolean = false;
     modeButtonText: string = 'REPLACE';
     _scrollList: HTMLElement;
 
@@ -48,13 +50,14 @@ export class FixasrComponent  implements OnInit {
     speakerName: string = "";
 
     speakers: Speaker [] = [
-    {'abbreviation': 'TrW', 'option': 'Tricia Warren'},
+    {'abbreviation': 'TW', 'option': 'Tricia Warren'},
     {'abbreviation': 'WW', 'option': 'Wendy Wolf'},
     {'abbreviation': 'RH', 'option': 'Russell Hoffman'},
     {'abbreviation': 'MT', 'option': 'Michael Tomko'},
     {'abbreviation': 'KB', 'option': 'Kellie Bigos'},
-    {'abbreviation': 'ThW', 'option': 'Thomas Woodin'},
-    {'abbreviation': 'MF', 'option': 'Michelel Farnham'}
+    {'abbreviation': 'TWo', 'option': 'Thomas Woodin'},
+    {'abbreviation': 'MF', 'option': 'Michele Farnham'},
+    {'abbreviation': '?', 'option': 'unknown'}
   ];
 
 
@@ -83,7 +86,7 @@ export class FixasrComponent  implements OnInit {
         this._scrollList.scrollTop = this.lastedit;
     }
     */
-    
+
     setScrollPosition(top: number) {
         this._scrollList.scrollTop = top;
     }
@@ -101,19 +104,55 @@ export class FixasrComponent  implements OnInit {
 
     selectSpeaker(index: any) {
         console.log("selected index=" + index);
+        this._Utilities.insertAtStartCurrentWord(this.currentElement, "[" + this.speakers[index].abbreviation + "] ");
     }
 
     addSpeaker(speaker: any) {
         console.log("new speaker=" + speaker);
+        var abbrev = this.createSpeakerAbbrev(speaker);
+        this._Utilities.insertAtStartCurrentWord(this.currentElement, "[" + abbrev + "] ");
+        var newSpeaker = new Speaker(speaker, abbrev)
+        this.speakers.splice(this.speakers.length - 1, 0, newSpeaker);
+}
+
+    createSpeakerAbbrev(name: string): string {
+      var firstname, lastname, abbrev, extras: string;
+        var x = name.indexOf(" ");
+        // For a multi-word name, we start with abbreviaion of first-initial + last-initial.
+        if (x != -1) {
+          firstname = name.substr(0, x);
+          x = name.lastIndexOf(" ");
+          lastname = name.substr(x + 1);
+          abbrev = firstname.substr(0,1).toUpperCase() + lastname.substr(0,1).toUpperCase();
+          // "extras" has extra letters we may need to make the abbreviation unique.
+          extras = lastname.substr(1);  // Use rest of the letters of last name.
+        } else {
+         // For a single word name, we start with abbreviaion of first-initial.
+         abbrev = name.substr(0,1).toUpperCase();
+          extras = name.substr(1);  // Use rest of the letters of single name.
+        }
+        while (!this.isAbbreviationUnique(abbrev)) {
+          abbrev = abbrev + extras.substr(0,1);
+          extras = extras.substr(1);
+        }
+        return abbrev;
     }
 
-    speakerAbrev(i: number): string {
-        return i.toString();
+    isAbbreviationUnique(abbrev: string) : boolean {
+      var answer: boolean = true;
+      this.speakers.forEach(element => {
+        if (element.abbreviation == abbrev) {
+          answer = false;
+        }
+      });
+      return  answer;
     }
 
     onFocus(event: any, i : number) {
         console.log('onFocus index=' + i + '  size=' + this.asrsegments.length);
         this.currentIndex = i;
+        this.currentElement = (<HTMLInputElement>event.target);
+        this.isSpeakerSelectVisible = true;
         this.isTyping = false;
         this.isFirstSpace = false;
     }
@@ -127,7 +166,34 @@ export class FixasrComponent  implements OnInit {
         this._Utilities.selectWord(ele);
     }
 
+    onKeyDown(event: any, i : number) {
+        // When we enter punctuation while in "Replace" mode (some text is selected),
+        // put the puntuation at the end of the word and do NOT replace the text.
+        switch (event.key) {
+          case '.':
+          case ',':
+          case ';':
+          case '?':
+            var ele : HTMLInputElement = (<HTMLInputElement>event.target);
+            ele.selectionStart = ele.selectionEnd;
+            return;
+        }
+    }
+
     onKey(event: any, i : number) {
+      // After inserting punctuation while in "Replace" mode, go to next word.
+      if (!this.isInsertMode) {
+        switch (event.key) {
+          case '.':
+          case ',':
+          case ';':
+          case '?':
+            var ele : HTMLInputElement = (<HTMLInputElement>event.target);
+            this._Utilities.gotoNextWord(ele);
+            return;
+        }
+      }
+
         if (event.key === 'Insert') {
             this.toggleInsertMode();
             return;
@@ -176,6 +242,9 @@ export class FixasrComponent  implements OnInit {
             case 'ArrowUp':
                 this._Utilities.gotoPriorInputElement(ele, i);
                 return;
+//            case '.':
+//                this._Utilities.insertAtEndCurrentWord(this.currentElement, '.');
+//                return;
         }
 
         // If not space, set isTyping true and firstSpace false and return
@@ -243,8 +312,8 @@ export class FixasrComponent  implements OnInit {
             .subscribe(
             asrtext => {
                 // Todo - We should be able to just move asrtext to this.asrtext.
-                // It appears to move the data OK. When I stop at a breakpoint, the 
-                // the data is all there. But accessing it from the HTML 
+                // It appears to move the data OK. When I stop at a breakpoint, the
+                // the data is all there. But accessing it from the HTML
                 // causes an error (It says asrtext is null).
                 this.asrsegments = asrtext.asrsegments;
                 this.lastedit = asrtext.lastedit;
@@ -252,7 +321,7 @@ export class FixasrComponent  implements OnInit {
 
                 // We want to scroll the list to the last stored position.
                 // But Angular will not yet have updated the list. We need
-                // to yield for an instant to let it first do the update. 
+                // to yield for an instant to let it first do the update.
                 let timer = Observable.timer(100);   // yield for 100 milliseconds
                 timer.subscribe(t=>this.setScrollPosition(this.lastedit));
             },

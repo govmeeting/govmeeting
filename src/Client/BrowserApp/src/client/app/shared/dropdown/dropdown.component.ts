@@ -4,16 +4,9 @@ import { DropdownValue } from './dropdown.value';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
+  moduleId: module.id,
   selector: 'dropdown',
-  template: `
-<select name="example" (change)="onSelectChange($event.target.value)">
-    <option *ngFor="let v of values;let i=index" value={{i}}>{{v.option}}</option>
-</select>
-<form [formGroup]="newOptionForm" (ngSubmit)="onNewEntry($event)">
-    <input formControlName="newOption" type="text" placeholder="enter new name">
-  <button type="submit">Add new</button>
-</form>
-`
+  templateUrl: 'dropdown.component.html'
 })
 export class DropdownComponent {
 
@@ -44,6 +37,7 @@ export class DropdownComponent {
     //console.log(event);
     //console.log(this.loginForm.value);
     var value = this.newOptionForm.value.newOption;
+    this.newOptionForm.reset();
     this.addSpeaker.emit(value);
   }
 }

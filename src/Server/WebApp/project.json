@@ -45,8 +45,10 @@
         "type": "build"
       },
       "Microsoft.AspNetCore.Authentication.Google": "1.0.0",
-      "Newtonsoft.Json": "9.0.1",
-      "Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.0.1"
+      "Microsoft.AspNetCore.Mvc.Formatters.Xml": "1.0.1",
+      "Google.Cloud.Speech.V1": "1.0.0-beta08",
+      "Newtonsoft.Json": "10.0.2",
+      "NETStandard.Library": "1.6.1"
     },
 
     "tools": {

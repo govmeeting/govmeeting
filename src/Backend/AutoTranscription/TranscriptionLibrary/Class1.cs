@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CreateJsonFile
+namespace TranscriptionLibrary
 {
-    public class Phrase
+    public class Class1
     {
-        public string startTime;
-        public string said;
+        public Class1()
+        {
+        }
     }
 }

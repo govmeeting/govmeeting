@@ -98,13 +98,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeepGovmeetingWebsiteAlive"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutoTranscription", "AutoTranscription", "{BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CreateJsonFile", "src\Backend\AutoTranscription\CreateJsonFile\CreateJsonFile.xproj", "{C293237F-9112-4376-AE7E-49E5508EA25F}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TranscribeAudio", "src\Backend\AutoTranscription\TranscribeAudio\TranscribeAudio.xproj", "{2B363025-0C92-4486-B6B7-AB740B6598E2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "testdata", "testdata", "{CE5FCB9A-2FE9-4B3E-A26E-0FFF0A6A4CD0}"
-	ProjectSection(SolutionItems) = preProject
-		src\Backend\AutoTranscription\testdata\Readme.txt = src\Backend\AutoTranscription\testdata\Readme.txt
-		src\Backend\AutoTranscription\testdata\Step 0 - transcript from Youtube.txt = src\Backend\AutoTranscription\testdata\Step 0 - transcript from Youtube.txt
-	EndProjectSection
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CreateJsonFile", "src\Backend\AutoTranscription\CreateJsonFile\CreateJsonFile.xproj", "{A3290E13-557E-43A5-8283-44BE2C25B5AD}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TranscriptionLibrary", "src\Backend\AutoTranscription\TranscriptionLibrary\TranscriptionLibrary.xproj", "{9FF77838-4602-4EE7-81AD-A124492D2B20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -164,10 +162,18 @@ Global
 		{AC75E94C-D3CF-4997-B4F7-B89B58819DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC75E94C-D3CF-4997-B4F7-B89B58819DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC75E94C-D3CF-4997-B4F7-B89B58819DD6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C293237F-9112-4376-AE7E-49E5508EA25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C293237F-9112-4376-AE7E-49E5508EA25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C293237F-9112-4376-AE7E-49E5508EA25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C293237F-9112-4376-AE7E-49E5508EA25F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B363025-0C92-4486-B6B7-AB740B6598E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B363025-0C92-4486-B6B7-AB740B6598E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B363025-0C92-4486-B6B7-AB740B6598E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B363025-0C92-4486-B6B7-AB740B6598E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3290E13-557E-43A5-8283-44BE2C25B5AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3290E13-557E-43A5-8283-44BE2C25B5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3290E13-557E-43A5-8283-44BE2C25B5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3290E13-557E-43A5-8283-44BE2C25B5AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF77838-4602-4EE7-81AD-A124492D2B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF77838-4602-4EE7-81AD-A124492D2B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF77838-4602-4EE7-81AD-A124492D2B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF77838-4602-4EE7-81AD-A124492D2B20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -194,7 +200,8 @@ Global
 		{82A6FA99-73BD-46CB-BCA8-128F74FA8B5B} = {7A7C0DE4-8F51-4FB3-BD90-798B925739B3}
 		{AC75E94C-D3CF-4997-B4F7-B89B58819DD6} = {82A6FA99-73BD-46CB-BCA8-128F74FA8B5B}
 		{BEA36D8F-73D9-4DDD-BE5F-C49E1892796D} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
-		{C293237F-9112-4376-AE7E-49E5508EA25F} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
-		{CE5FCB9A-2FE9-4B3E-A26E-0FFF0A6A4CD0} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
+		{2B363025-0C92-4486-B6B7-AB740B6598E2} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
+		{A3290E13-557E-43A5-8283-44BE2C25B5AD} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
+		{9FF77838-4602-4EE7-81AD-A124492D2B20} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
 	EndGlobalSection
 EndGlobal

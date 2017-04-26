@@ -10,7 +10,7 @@ export class FixasrUtilities {
         console.log('selectWord start=' + start + '   end=' + end);
 
         // If they actually selected some text, ignore
-        // This also ignores a prior select that we set here. This has 
+        // This also ignores a prior select that we set here. This has
         // the effect of toggling the select on a word by clicking
         // on it multiple times.
         if (start !== end) {
@@ -51,6 +51,21 @@ export class FixasrUtilities {
         ele.setSelectionRange(len - 1, len - 1);
         this.selectWord(ele);
         ele.focus();
+    }
+
+    public insertAtStartCurrentWord(ele: HTMLInputElement, t: string) {
+      var pos = this.getStartCurrentWord(ele);
+      this.insertText(ele, pos, t);
+    }
+
+    public insertAtEndCurrentWord(ele: HTMLInputElement, t: string) {
+      var pos = this.getEndCurrentWord(ele);
+      this.insertText(ele, pos, t);
+    }
+
+    public insertText(ele: HTMLInputElement, pos: number, t: string) {
+      var content = ele.value;
+      ele.value = this.insertIntoString(content, pos, t);
     }
 
     gotoNextWord(ele : HTMLInputElement) {
@@ -100,6 +115,29 @@ export class FixasrUtilities {
             this.selectLastWord(prior);
         }
     }
+
+   public getStartCurrentWord(ele: HTMLInputElement) : number {
+        var start = ele.selectionStart;
+        var content = ele.value;
+        while (start > 0 && this.isNotSpace(content.charAt(start -1))) {
+          start--;
+        }
+        return start;
+   }
+
+   public getEndCurrentWord(ele: HTMLInputElement) : number {
+        var end = ele.selectionEnd;
+        var content = ele.value;
+        var contentLen = content.length;
+        while (end < contentLen && this.isNotSpace(content.charAt(end))) {
+          end++;
+        }
+        return end;
+   }
+
+   public insertIntoString(s: string, pos: number, i: string): string {
+     return s.slice(0, pos) + i + s.slice(pos);
+   }
 
    private isNotSpace(ch: string) {
         return (ch !== ' ');

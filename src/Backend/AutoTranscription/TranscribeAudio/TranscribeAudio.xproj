@@ -7,8 +7,8 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>a3290e13-557e-43a5-8283-44be2c25b5ad</ProjectGuid>
-    <RootNamespace>CreateJsonFile</RootNamespace>
+    <ProjectGuid>2b363025-0c92-4486-b6b7-ab740b6598e2</ProjectGuid>
+    <RootNamespace>TranscribeAudio</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
