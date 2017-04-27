@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace TranscriptionLibrary
 {
-    public class Class1
+    public class Phrase
     {
-        public Class1()
-        {
-        }
+        public string startTime;
+        public string said;
     }
 }

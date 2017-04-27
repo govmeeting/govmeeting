@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7A7C0DE4-8F51-4FB3-BD90-798B925739B3}"
 EndProject
@@ -23,22 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{116FC8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{D5775C0E-970A-4DD1-B7D5-7B947F6BE7D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbAccess", "src\Database\DbAccess\DbAccess.csproj", "{E107EACA-31D0-41FA-BB6A-AF1BC66C907D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbAccess_Tests", "src\Database\DbAccess_Tests\DbAccess_Tests.csproj", "{8F828C54-D08C-4086-833D-6794115C24AD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTranscript", "src\Database\ReadTranscript\ReadTranscript.csproj", "{3A7C42EF-1985-4E5B-99A5-0B1DE5CE146F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTranscript_Tests", "src\Database\ReadTranscript_Tests\ReadTranscript_Tests.csproj", "{D1C0CCDD-73A2-4FAF-A176-A8A4C180C0F3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowserApp_Tests", "src\Client\BrowserApp_Tests\BrowserApp_Tests.csproj", "{95E42BFF-6DE2-472E-8C23-823EAA864FD3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "src\Database\Model\Model.csproj", "{13C4BE35-0179-4152-AD99-3F136AEB7E0D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTranscriptIntoDb", "src\Database\LoadTranscriptIntoDb\LoadTranscriptIntoDb.csproj", "{57F83092-01E7-4C2B-86E8-1789F093F8E5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTranscriptIntoDb_Tests", "src\Database\LoadTranscriptIntoDb_Tests\LoadTranscriptIntoDb_Tests.csproj", "{433C928C-A2C5-43B3-8CC2-580109C2F124}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PreProcessTranscripts", "PreProcessTranscripts", "{1A11AE01-0F7E-4FF8-97A4-22E92A67D698}"
 	ProjectSection(SolutionItems) = preProject
 		src\Backend\PreProcessTranscripts\Readme.txt = src\Backend\PreProcessTranscripts\Readme.txt
@@ -59,15 +43,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "testdata", "testdata", "{A2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{A97B2C5A-FD21-46B0-8914-86156BE54EE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessAllTranscripts", "src\Backend\PreProcessTranscripts\ProcessAllTranscripts\ProcessAllTranscripts.csproj", "{3495C197-D9BF-4CA9-9A19-B60B274C4760}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessTranscript", "src\Backend\PreProcessTranscripts\ProcessTranscript\ProcessTranscript.csproj", "{6B3A920B-38A0-4D1D-9B3F-8B0DD0C1E148}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{69C777D6-6710-42B1-A795-1FDFE2DB6DF1}"
 	ProjectSection(SolutionItems) = preProject
 		images\mr-t-mrt-36834265-320-254-24kb.png = images\mr-t-mrt-36834265-320-254-24kb.png
 		images\Mr-T-mrt-36834265-320-254.png = images\Mr-T-mrt-36834265-320-254.png
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{82A6FA99-73BD-46CB-BCA8-128F74FA8B5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutoTranscription", "AutoTranscription", "{BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbAccess", "src\Database\DbAccess\DbAccess.csproj", "{E107EACA-31D0-41FA-BB6A-AF1BC66C907D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbAccess_Tests", "src\Database\DbAccess_Tests\DbAccess_Tests.csproj", "{8F828C54-D08C-4086-833D-6794115C24AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTranscript", "src\Database\ReadTranscript\ReadTranscript.csproj", "{3A7C42EF-1985-4E5B-99A5-0B1DE5CE146F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadTranscript_Tests", "src\Database\ReadTranscript_Tests\ReadTranscript_Tests.csproj", "{D1C0CCDD-73A2-4FAF-A176-A8A4C180C0F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowserApp_Tests", "src\Client\BrowserApp_Tests\BrowserApp_Tests.csproj", "{95E42BFF-6DE2-472E-8C23-823EAA864FD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "src\Database\Model\Model.csproj", "{13C4BE35-0179-4152-AD99-3F136AEB7E0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTranscriptIntoDb", "src\Database\LoadTranscriptIntoDb\LoadTranscriptIntoDb.csproj", "{57F83092-01E7-4C2B-86E8-1789F093F8E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTranscriptIntoDb_Tests", "src\Database\LoadTranscriptIntoDb_Tests\LoadTranscriptIntoDb_Tests.csproj", "{433C928C-A2C5-43B3-8CC2-580109C2F124}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessAllTranscripts", "src\Backend\PreProcessTranscripts\ProcessAllTranscripts\ProcessAllTranscripts.csproj", "{3495C197-D9BF-4CA9-9A19-B60B274C4760}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessTranscript", "src\Backend\PreProcessTranscripts\ProcessTranscript\ProcessTranscript.csproj", "{6B3A920B-38A0-4D1D-9B3F-8B0DD0C1E148}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BrowserApp", "src\Client\BrowserApp\", "{5A7A0A4D-DA39-4153-966B-8892173E4265}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -90,19 +94,15 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "BrowserApp", "src\Client\Br
 		SlnRelativePath = "src\Client\BrowserApp\"
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "WebApp", "src\Server\WebApp\WebApp.xproj", "{2FF8D2C3-421F-4DE9-B5E8-81D67A4AFAEC}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{82A6FA99-73BD-46CB-BCA8-128F74FA8B5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "src\Server\WebApp\WebApp.csproj", "{2FF8D2C3-421F-4DE9-B5E8-81D67A4AFAEC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeepGovmeetingWebsiteAlive", "src\Utilities\KeepGovmeetingWebsiteAlive\KeepGovmeetingWebsiteAlive.csproj", "{AC75E94C-D3CF-4997-B4F7-B89B58819DD6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutoTranscription", "AutoTranscription", "{BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranscriptionLibrary", "src\Backend\AutoTranscription\TranscriptionLibrary\TranscriptionLibrary.csproj", "{2115047E-7CC3-47A2-8287-B6D5BE89F91F}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TranscribeAudio", "src\Backend\AutoTranscription\TranscribeAudio\TranscribeAudio.xproj", "{2B363025-0C92-4486-B6B7-AB740B6598E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranscribeAudio", "src\Backend\AutoTranscription\TranscribeAudio\TranscribeAudio.csproj", "{CC3F370D-4D76-4A5A-A1A4-B43A27B80883}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CreateJsonFile", "src\Backend\AutoTranscription\CreateJsonFile\CreateJsonFile.xproj", "{A3290E13-557E-43A5-8283-44BE2C25B5AD}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TranscriptionLibrary", "src\Backend\AutoTranscription\TranscriptionLibrary\TranscriptionLibrary.xproj", "{9FF77838-4602-4EE7-81AD-A124492D2B20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateJsonFile", "src\Backend\AutoTranscription\CreateJsonFile\CreateJsonFile.csproj", "{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -162,18 +162,18 @@ Global
 		{AC75E94C-D3CF-4997-B4F7-B89B58819DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC75E94C-D3CF-4997-B4F7-B89B58819DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC75E94C-D3CF-4997-B4F7-B89B58819DD6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2B363025-0C92-4486-B6B7-AB740B6598E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B363025-0C92-4486-B6B7-AB740B6598E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B363025-0C92-4486-B6B7-AB740B6598E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B363025-0C92-4486-B6B7-AB740B6598E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3290E13-557E-43A5-8283-44BE2C25B5AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3290E13-557E-43A5-8283-44BE2C25B5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3290E13-557E-43A5-8283-44BE2C25B5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3290E13-557E-43A5-8283-44BE2C25B5AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9FF77838-4602-4EE7-81AD-A124492D2B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FF77838-4602-4EE7-81AD-A124492D2B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FF77838-4602-4EE7-81AD-A124492D2B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FF77838-4602-4EE7-81AD-A124492D2B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2115047E-7CC3-47A2-8287-B6D5BE89F91F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2115047E-7CC3-47A2-8287-B6D5BE89F91F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2115047E-7CC3-47A2-8287-B6D5BE89F91F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2115047E-7CC3-47A2-8287-B6D5BE89F91F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC3F370D-4D76-4A5A-A1A4-B43A27B80883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC3F370D-4D76-4A5A-A1A4-B43A27B80883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC3F370D-4D76-4A5A-A1A4-B43A27B80883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC3F370D-4D76-4A5A-A1A4-B43A27B80883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -182,6 +182,11 @@ Global
 		{2A1E9469-111C-43A6-9294-B505A32AFB4A} = {7A7C0DE4-8F51-4FB3-BD90-798B925739B3}
 		{116FC8D2-6465-4929-B3E7-23E443E82ECA} = {7A7C0DE4-8F51-4FB3-BD90-798B925739B3}
 		{D5775C0E-970A-4DD1-B7D5-7B947F6BE7D7} = {7A7C0DE4-8F51-4FB3-BD90-798B925739B3}
+		{1A11AE01-0F7E-4FF8-97A4-22E92A67D698} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
+		{A28B572E-3B96-4BFD-ABE3-3030B811A728} = {1A11AE01-0F7E-4FF8-97A4-22E92A67D698}
+		{A97B2C5A-FD21-46B0-8914-86156BE54EE0} = {7A7C0DE4-8F51-4FB3-BD90-798B925739B3}
+		{82A6FA99-73BD-46CB-BCA8-128F74FA8B5B} = {7A7C0DE4-8F51-4FB3-BD90-798B925739B3}
+		{BEA36D8F-73D9-4DDD-BE5F-C49E1892796D} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
 		{E107EACA-31D0-41FA-BB6A-AF1BC66C907D} = {2A1E9469-111C-43A6-9294-B505A32AFB4A}
 		{8F828C54-D08C-4086-833D-6794115C24AD} = {2A1E9469-111C-43A6-9294-B505A32AFB4A}
 		{3A7C42EF-1985-4E5B-99A5-0B1DE5CE146F} = {2A1E9469-111C-43A6-9294-B505A32AFB4A}
@@ -190,18 +195,13 @@ Global
 		{13C4BE35-0179-4152-AD99-3F136AEB7E0D} = {2A1E9469-111C-43A6-9294-B505A32AFB4A}
 		{57F83092-01E7-4C2B-86E8-1789F093F8E5} = {2A1E9469-111C-43A6-9294-B505A32AFB4A}
 		{433C928C-A2C5-43B3-8CC2-580109C2F124} = {2A1E9469-111C-43A6-9294-B505A32AFB4A}
-		{1A11AE01-0F7E-4FF8-97A4-22E92A67D698} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
-		{A28B572E-3B96-4BFD-ABE3-3030B811A728} = {1A11AE01-0F7E-4FF8-97A4-22E92A67D698}
-		{A97B2C5A-FD21-46B0-8914-86156BE54EE0} = {7A7C0DE4-8F51-4FB3-BD90-798B925739B3}
 		{3495C197-D9BF-4CA9-9A19-B60B274C4760} = {1A11AE01-0F7E-4FF8-97A4-22E92A67D698}
 		{6B3A920B-38A0-4D1D-9B3F-8B0DD0C1E148} = {1A11AE01-0F7E-4FF8-97A4-22E92A67D698}
 		{5A7A0A4D-DA39-4153-966B-8892173E4265} = {116FC8D2-6465-4929-B3E7-23E443E82ECA}
 		{2FF8D2C3-421F-4DE9-B5E8-81D67A4AFAEC} = {D5775C0E-970A-4DD1-B7D5-7B947F6BE7D7}
-		{82A6FA99-73BD-46CB-BCA8-128F74FA8B5B} = {7A7C0DE4-8F51-4FB3-BD90-798B925739B3}
 		{AC75E94C-D3CF-4997-B4F7-B89B58819DD6} = {82A6FA99-73BD-46CB-BCA8-128F74FA8B5B}
-		{BEA36D8F-73D9-4DDD-BE5F-C49E1892796D} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
-		{2B363025-0C92-4486-B6B7-AB740B6598E2} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
-		{A3290E13-557E-43A5-8283-44BE2C25B5AD} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
-		{9FF77838-4602-4EE7-81AD-A124492D2B20} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
+		{2115047E-7CC3-47A2-8287-B6D5BE89F91F} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
+		{CC3F370D-4D76-4A5A-A1A4-B43A27B80883} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
+		{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
 	EndGlobalSection
 EndGlobal
