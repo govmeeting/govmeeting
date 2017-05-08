@@ -17,7 +17,7 @@ namespace TranscriptionLibrary
             return true;
         }
 
-        public string ConvertToJson(string text)
+        private string ConvertToJson(string text)
         {
 
             Phrase phrase = new Phrase { startTime = null, said = null };
@@ -97,7 +97,7 @@ namespace TranscriptionLibrary
             return false;
         }
 
-        string JsonRecord(ref Phrase phrase, ref StringWriter writer, ref bool firstRecord)
+        private string JsonRecord(ref Phrase phrase, ref StringWriter writer, ref bool firstRecord)
         {
             string text = (firstRecord ? "" : ",\n") + "    " + Newtonsoft.Json.JsonConvert.SerializeObject(phrase);
             firstRecord = false;

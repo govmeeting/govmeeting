@@ -31,12 +31,10 @@ bld/
 **/bower_components/
 **/wwwroot/lib/
 **/wwwroot/assets/fullvideo
-/PublicSystem/Backend/Documentation/Help/
-/PublicSystem/Client/BrowserApp/Scripts/
-/PublicSystem/Client/BrowserApp/app/**/*.js
-/PublicSystem/Client/BrowserApp/app/**/*.map
+**/Database/Documentation/Help/
 .synkron.syncdb
 **/desktop.ini
+**/Backend/AutoTranscription/testdata/
 
 # Visual Studio 2015 cache/options directory
 .vs/

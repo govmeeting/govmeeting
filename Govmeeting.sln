@@ -52,6 +52,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{82A6FA99-73BD-46CB-BCA8-128F74FA8B5B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutoTranscription", "AutoTranscription", "{BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}"
+	ProjectSection(SolutionItems) = preProject
+		src\Backend\AutoTranscription\testdata\audio.raw = src\Backend\AutoTranscription\testdata\audio.raw
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbAccess", "src\Database\DbAccess\DbAccess.csproj", "{E107EACA-31D0-41FA-BB6A-AF1BC66C907D}"
 EndProject
@@ -103,6 +106,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranscribeAudio", "src\Backend\AutoTranscription\TranscribeAudio\TranscribeAudio.csproj", "{CC3F370D-4D76-4A5A-A1A4-B43A27B80883}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateJsonFile", "src\Backend\AutoTranscription\CreateJsonFile\CreateJsonFile.csproj", "{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTranscription_Test", "src\Backend\AutoTranscription\AutoTranscription_Test\AutoTranscription_Test.csproj", "{8E526775-D230-4BFB-916E-10D15BDF12D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitVideo", "src\Backend\AutoTranscription\SplitVideo\SplitVideo.csproj", "{403A29D3-866B-43C0-847D-60DDBFD4F25F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -174,6 +181,14 @@ Global
 		{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E526775-D230-4BFB-916E-10D15BDF12D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E526775-D230-4BFB-916E-10D15BDF12D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E526775-D230-4BFB-916E-10D15BDF12D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E526775-D230-4BFB-916E-10D15BDF12D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{403A29D3-866B-43C0-847D-60DDBFD4F25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{403A29D3-866B-43C0-847D-60DDBFD4F25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{403A29D3-866B-43C0-847D-60DDBFD4F25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{403A29D3-866B-43C0-847D-60DDBFD4F25F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -203,5 +218,7 @@ Global
 		{2115047E-7CC3-47A2-8287-B6D5BE89F91F} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
 		{CC3F370D-4D76-4A5A-A1A4-B43A27B80883} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
 		{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
+		{8E526775-D230-4BFB-916E-10D15BDF12D9} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
+		{403A29D3-866B-43C0-847D-60DDBFD4F25F} = {BEA36D8F-73D9-4DDD-BE5F-C49E1892796D}
 	EndGlobalSection
 EndGlobal
