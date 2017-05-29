@@ -22,10 +22,8 @@ namespace WebApp.Controllers
             this.meetings = meetings;
         }
 
-
-        // GET: api/values
         [HttpGet]
-        public IEnumerable<Meeting> Get()
+        public IEnumerable<Meeting> GetAll()
         {
             return meetings.GetAll();
         }

@@ -11,6 +11,8 @@ namespace WebApp.Models
     public class TranscriptRepository : ITranscriptRepository
     {
         static ConcurrentDictionary<string, Transcript> _transcripts = new ConcurrentDictionary<string, Transcript>();
+        private const string STEP5_BASE_NAME = "Step 5 - processed transcript";
+        private const string EXTENSION = "json";
 
         public TranscriptRepository()
         {
@@ -35,6 +37,25 @@ namespace WebApp.Models
             return item;
         }
 
+        public Transcript Get(string username, string country, string state, string county, string city, string govEntity, string meetingDate)
+        {
+            // Todo - check permissions
+
+            string subpath = country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "/" + meetingDate;
+
+            var fullpath = getFullPath(subpath);
+            string latestCopy = fullpath + "/" + STEP5_BASE_NAME + "." + EXTENSION;
+            if (File.Exists(latestCopy))
+            {
+                return GetByPath(latestCopy);
+            }
+            // Otherwise return the unedited one from step 2.
+            else
+            {
+                return null;
+            }
+        }
+
         // Example: Get("BoothbayHarbor", "Selectmen", "2014-09-08")
         public Transcript Get(string city, string govEntity, string meetingDate)
         {
@@ -50,7 +71,7 @@ namespace WebApp.Models
 
         public Transcript GetByPath(string path)
         {
-            string transcriptString = Readfile(path);
+            string transcriptString = Common.Readfile(path);
             if (transcriptString != null)
             {
                 Transcript transcript = JsonConvert.DeserializeObject<Transcript>(transcriptString);
@@ -76,19 +97,9 @@ namespace WebApp.Models
             //    _transcripts[item.key] = item;
         }
 
-        private string Readfile(string path)
+        private string getFullPath(string path)
         {
-            try
-            {
-                string text = System.IO.File.ReadAllText(path);
-                return text;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-                return null;
-            }
+            return System.IO.Path.Combine(Common.getDataPath(), path);
         }
 
     }

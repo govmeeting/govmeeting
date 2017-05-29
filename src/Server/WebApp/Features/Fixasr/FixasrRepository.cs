@@ -49,13 +49,13 @@ namespace WebApp.Models
             return item;
         }
 
-        // We are currently storing the data under the following structure. Directories under assets/data are
+        // We are currently storing the data under the following structure. Directories under Datafiles are
         // named as follows: 
         //    <country>_<state>_<county>_<town-or-city>_<gov-entity>/<date>
         // Example, calling:
         //     Get("johnpank", "USA", "PA", "Philadelphia", "Philadelphia", "CityCouncil", "2016-03-17")
         // gets data from:
-        //     "wwwroot/assets/data/USA_PA_Philadelphia_Philadelphia_CityCouncil/2016-03-17"
+        //     "Datafiles/USA_PA_Philadelphia_Philadelphia_CityCouncil/2016-03-17"
         // We will likely change this convention once the number of files grows and we need a deeper folder structure.
         public Fixasr Get(string username, string country, string state, string county, string city, string govEntity, string meetingDate)
         {
@@ -78,21 +78,14 @@ namespace WebApp.Models
             }
         }
 
-        private string getDataPath()
-        {
-            string siteDataPath = "assets/data";
-            var webRoot = _env.WebRootPath;
-            return System.IO.Path.Combine(webRoot, siteDataPath);
-        }
-
         private string getFullPath(string path)
         {
-            return System.IO.Path.Combine(getDataPath(), path);
+            return System.IO.Path.Combine(Common.getDataPath(), path);
         }
 
         public Fixasr GetByPath(string path)
         {
-            string fixasrString = Readfile(path);
+            string fixasrString = Common.Readfile(path);
             if (fixasrString != null)
             {
                 Fixasr fixasr = JsonConvert.DeserializeObject<Fixasr>(fixasrString);
@@ -105,7 +98,7 @@ namespace WebApp.Models
 
         public string GetStringByPath(string path)
         {
-            string fixasrString = Readfile(path);
+            string fixasrString = Common.Readfile(path);
             if (fixasrString != null)
             {
                 return fixasrString;
@@ -197,20 +190,6 @@ namespace WebApp.Models
             //    _transcriptEdits[item.key] = item;
         }
 
-        private string Readfile(string path)
-        {
-            try
-            {
-                string text = System.IO.File.ReadAllText(path);
-                return text;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-                return null;
-            }
-        }
         public static string getTagEditsString()
         {
             return @"{ 'data': [

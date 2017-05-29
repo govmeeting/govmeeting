@@ -45,10 +45,10 @@ namespace WebApp.Models
             return item;
         }
 
-        // We are currently storing the data under the following structure. Directories under assets/data are
+        // We are currently storing the data under the following structure. Directories under Datafiles are
         // named as follows: <country>_<state>_<town-or-city>_<gov-entity>/<date>
         // Example: Get("johnpank", "USA", "PA", "Philadelphia", "CityCouncil", "2016-03-17")
-        // will get the file in the directory "wwwroot/assets/data/USA_PA_Philadelphia_CityCouncil/2016-03-17".
+        // will get the file in the directory "Datafiles/USA_PA_Philadelphia_CityCouncil/2016-03-17".
         // We will likely change this convention once the number of files grows and we need a deeper folder structure.
         public Addtags Get(string username, string country, string state, string city, string govEntity, string meetingDate)
         {
@@ -60,9 +60,9 @@ namespace WebApp.Models
 
             //if (meetingDate == null) meetingDate = "2016-03-17";
 
-            string path = "assets/data/" + country + "_" + state + "_" + city + "_" + govEntity + "/" + meetingDate + "/" + "Step 2A - Convert PDF file to JSON.json";
+            string path = country + "_" + state + "_" + city + "_" + govEntity + "/" + meetingDate + "/" + "Step 2A - Convert PDF file to JSON.json";
 
-            return GetByPath(path);
+            return GetByPath(System.IO.Path.Combine(Common.getDataPath(), path));
         }
 
         public Addtags GetByPath(string path)

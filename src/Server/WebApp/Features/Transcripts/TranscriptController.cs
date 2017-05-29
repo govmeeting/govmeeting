@@ -27,29 +27,20 @@ namespace Webapp.Controllers
         [HttpGet]
         public Transcript Get()
         {
-            return transcripts.GetByPath("assets/BoothbayHarbor_Selectmen_2014-09-08.json");
+            //return transcripts.GetByPath("assets/BoothbayHarbor_Selectmen_2014-09-08.json");
+
+            Transcript ret = transcripts.Get("johnpank", "USA", "ME", "LincolnCounty", "BoothbayHarbor", "Selectmen", "2016-10-11");
+            return ret;
         }
+
+
+
 
         [HttpGet("{city}/{govEntity?}/{meetingDate?}")]
         public Transcript Get(string city, string govEntity = null, string meetingDate = null)
         {
             return transcripts.Get(city, govEntity, meetingDate);
         }
-
-        /*
-        // GET api/transcript/5
-        [HttpGet("{id}")]
-        public Transcript Get(int id)
-        {
-            //return "value";
-            switch (id) {
-                case 1: 
-                    return transcripts.GetByPath("assets/BoothbayHarbor_Selectmen_2014-09-08.json");
-                case 2:
-                    return transcripts.GetByPath("assets/Philadelphia_CityCouncil_03_17_2016.json");
-            }
-        }
-        */
 
         // POST api/transcript
         [HttpPost]

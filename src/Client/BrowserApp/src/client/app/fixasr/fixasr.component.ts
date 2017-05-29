@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { AsrSegment } from './asrsegment';
 import { AsrText } from './asrtext';
@@ -116,7 +116,7 @@ export class FixasrComponent  implements OnInit {
 }
 
     createSpeakerAbbrev(name: string): string {
-      var firstname, lastname, abbrev, extras: string;
+      var firstname: string, lastname: string, abbrev: string, extras: string;
         var x = name.indexOf(" ");
         // For a multi-word name, we start with abbreviaion of first-initial + last-initial.
         if (x != -1) {

@@ -1,5 +1,4 @@
 The files in this folder are original transcripts from actual meetings.
-We will use these as test data while building the app.
 
 Each top-level folder is named as follows:
 	<country-abbrev>_<state_abbrev>_<county>_<city>

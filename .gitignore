@@ -30,7 +30,7 @@ bld/
 **/node_modules/
 **/bower_components/
 **/wwwroot/lib/
-**/wwwroot/assets/fullvideo
+**/wwwroot/assets/video
 **/Database/Documentation/Help/
 .synkron.syncdb
 **/desktop.ini

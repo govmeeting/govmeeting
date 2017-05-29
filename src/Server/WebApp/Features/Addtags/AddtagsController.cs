@@ -49,7 +49,8 @@ namespace WebApp.Controllers
         public void Post([FromBody]Addtags value)
         //public void Post(Addtags value)
         {
-            addtags.PutByPath("assets/data/USA_PA_Philadelphia_CityCouncil/2016-03-17/Step 3 - Added topic tags.json", value);
+            string path = @"USA_PA_Philadelphia_CityCouncil/2016-03-17\Step 3 - Added topic tags.json";
+            addtags.PutByPath(System.IO.Path.Combine(Common.getDataPath(), path), value);
         }
 
         /*
@@ -68,23 +69,6 @@ namespace WebApp.Controllers
              }
          }
          */
-
-        /*
-    // GET: api/addtags/user/ciry/entity/meetingdate
-    //[HttpGet("{city}/{goventity}/{meetingdate}")]
-    //public Addtags Get(string city, string goventity,  string meetingdate)
-    [HttpGet("{city}")]
-    public Addtags Get(string city)
-    // public string Get()
-    {
-        //return addtags.GetByPath("assets/Philadelphia_CityCouncil_03_17_2016 - Copy.json");
-        //return addtags.GetStringByPath("assets/Philadelphia_CityCouncil_03_17_2016.json");
-        //return addtags.GetByPath("assets/Philadelphia_CityCouncil_03_17_2016.json");
-        //return addtags.Get("johnpank", "Philadelphia", "CityCouncil", "2016_03_17");
-        //return addtags.Get("johnpank", city, goventity, meetingdate);
-        return addtags.Get("johnpank", city, "CityCouncil", "2016-03-17");
-    }
-    */
 
         /*
         [HttpGet("{city}/{goventity}")]
@@ -106,7 +90,8 @@ namespace WebApp.Controllers
         {
             if (await _authz.AuthorizeAsync(User, "SalesSenior"))
             {
-                addtags.PutByPath("assets/Philadelphia_CityCouncil_03_17_2016 - Backup.json", value);
+                string path = @"Philadelphia_CityCouncil_03_17_2016 - Backup.json";
+                addtags.PutByPath(System.IO.Path.Combine(Common.getDataPath(), path), value);
                 // What do I return?
             } else
             {

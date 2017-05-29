@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace WebApp.Models
 {
@@ -48,10 +50,12 @@ namespace WebApp.Models
         {
             return _meetings.Values;
         }
+
         public void Add(Meeting item)
         {
             //item.Key = Guid.NewGuid().ToString();
             _meetings[item.key] = item;
         }
+
     }
 }

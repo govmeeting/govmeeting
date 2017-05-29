@@ -1,4 +1,9 @@
 ﻿<!DOCTYPE html>
+<!-- Note: This file, index.html. is only used when debugging the client side code without running the Asp.Net server.
+    This is true when we use Visual Studio Code. Normally, the file "Layout.cshtml" in the Asp.Net app, 
+    takes the place of this file. This is the case in production, or when debugging client and sever code
+    together.
+-->
 <html lang="en">
 <head>
   <base href="<%= APP_BASE %>">
@@ -40,6 +45,10 @@
     <sd-app>Loading...</sd-app>
 
   <script>
+    // These are flags passed to the Angular app. Loading this file, "index.html", implies
+    // isServerRunning is false and means that the Asp.Net server is not running.
+    // We then use test data contained within the Client's "assets" folder.
+    // If isDataFromMemory is true, we will use test data in memory.
     window.APP_DATA = { isServerRunning: false, isDataFromMemory: false } 
   </script>
 
