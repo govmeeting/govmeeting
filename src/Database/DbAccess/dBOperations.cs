@@ -42,7 +42,7 @@ namespace Govmeeting.Backend.DbAccess
         {
             using (var context = new MeetingContext())
             {
-                // Todo: This is only for during initial development, while schema may still be changing.
+                // Todo(gm): This is only for during initial development, while schema may still be changing.
                 Database.SetInitializer(
                     new DropCreateDatabaseIfModelChanges<MeetingContext>());
 
@@ -196,7 +196,7 @@ namespace Govmeeting.Backend.DbAccess
             return query.ToList();
         }
 
-        /* Todo: complete method to get speakers at meeting.
+        /* Todo(gm): complete method to get speakers at meeting.
         /// <summary>
         /// Gets the speakers at a specific meeting.
         /// </summary>

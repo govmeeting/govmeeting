@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Models;
+using WebApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,11 +21,14 @@ namespace WebApp.Controllers
         // JP: FromServices attribute is no longer valid on a property. I moved this DI service to constructor
         // [FromServices]
         public IAddtagsRepository addtags { get; set; }
+        private readonly DatafilesOptions _options;
 
-        public AddtagsController(IAuthorizationService authz, IAddtagsRepository addtags)
+        public AddtagsController(IAuthorizationService authz, IAddtagsRepository addtags,
+            IOptions<DatafilesOptions> optionsAccessor)
         {
             _authz = authz;
             this.addtags = addtags;
+            _options = optionsAccessor.Value;
         }
 
         /*
@@ -49,6 +54,7 @@ namespace WebApp.Controllers
         public void Post([FromBody]Addtags value)
         //public void Post(Addtags value)
         {
+            //addtags.Put("johnpank", "USA", "PA", "Philadelphia", "CityCouncil", "2016-03-17");
             string path = @"USA_PA_Philadelphia_CityCouncil/2016-03-17\Step 3 - Added topic tags.json";
             addtags.PutByPath(System.IO.Path.Combine(Common.getDataPath(), path), value);
         }

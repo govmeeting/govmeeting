@@ -1,4 +1,4 @@
-import { join } from 'path';
+﻿import { join } from 'path';
 import * as slash from 'slash';
 import { argv } from 'yargs';
 
@@ -371,7 +371,7 @@ export class SeedConfig {
       'dist/dev/*': '/base/dist/dev/*',
       '*': 'node_modules/*'
     },
-    
+
     map:{
     //'videogular2': 'videogular2',
     },
@@ -381,7 +381,7 @@ export class SeedConfig {
     //        defaultExtension:'js'
     //  }
     }
-    
+
   };
 
   /**

@@ -1,4 +1,4 @@
-<sd-video></sd-video>
+﻿<sd-video></sd-video>
 
 <div class="edit-region">
 
@@ -18,7 +18,7 @@
 
         <p *ngIf="isSpeakerSelectVisible" class="speaker-input">
         <label> Speaker </label>
-        <dropdown [values]="speakers" (selectSpeaker)="selectSpeaker($event)" (addSpeaker)="addSpeaker($event)"></dropdown>
+        <gm-dropdown [values]="speakers" (selectSpeaker)="selectSpeaker($event)" (addSpeaker)="addSpeaker($event)"></gm-dropdown>
         </p>
 
 

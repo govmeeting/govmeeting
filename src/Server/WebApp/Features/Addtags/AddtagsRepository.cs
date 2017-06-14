@@ -6,12 +6,14 @@ using System.Collections.Concurrent;
 using Newtonsoft.Json;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace WebApp.Models
 {
     public class AddtagsRepository : IAddtagsRepository
     {
         static ConcurrentDictionary<string, Addtags> _addtags = new ConcurrentDictionary<string, Addtags>();
+        private DatafilesOptions _options { get; set; }
 
         //public AddtagsRepository()
         //{
@@ -20,9 +22,10 @@ namespace WebApp.Models
 
         // https://www.mikesdotnetting.com/article/302/server-mappath-equivalent-in-asp-net-core
         private IHostingEnvironment _env;
-        public AddtagsRepository(IHostingEnvironment env)
+        public AddtagsRepository(IHostingEnvironment env, IOptions<DatafilesOptions> settings)
         {
             _env = env;
+            _options = settings.Value;
             //    Add(new Addtags { Name = "Item1" });
         }
 
@@ -52,7 +55,7 @@ namespace WebApp.Models
         // We will likely change this convention once the number of files grows and we need a deeper folder structure.
         public Addtags Get(string username, string country, string state, string city, string govEntity, string meetingDate)
         {
-            // Todo - check permissions
+            // Todo(gm) - check permissions
             //      - change to get a default govEntity
             //      - change to get the latest meeting
 
@@ -60,17 +63,14 @@ namespace WebApp.Models
 
             //if (meetingDate == null) meetingDate = "2016-03-17";
 
-            string path = country + "_" + state + "_" + city + "_" + govEntity + "/" + meetingDate + "/" + "Step 2A - Convert PDF file to JSON.json";
+            string path = country + "_" + state + "_" + city + "_" + govEntity + "\\" + meetingDate + "\\" + "Step 2A - Convert PDF file to JSON.json";
 
-            return GetByPath(System.IO.Path.Combine(Common.getDataPath(), path));
+            return GetByPath(System.IO.Path.Combine(_options.DatafilesPath, path));
         }
 
         public Addtags GetByPath(string path)
         {
-            var webRoot = _env.WebRootPath;
-            var fullpath = System.IO.Path.Combine(webRoot, path);
-
-            string addtagsString = Readfile(fullpath);
+            string addtagsString = Readfile(path);
             //string addtagsString = getTagEditsString();
             if (addtagsString != null)
             {

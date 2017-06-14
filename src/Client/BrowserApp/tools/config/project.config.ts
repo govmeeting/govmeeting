@@ -1,4 +1,4 @@
-import { join } from 'path';
+﻿import { join } from 'path';
 
 import { SeedConfig } from './seed.config';
 import { ExtendPackages } from './seed.config.interfaces';
@@ -74,7 +74,7 @@ export class ProjectConfig extends SeedConfig {
       //name:'ng2-material-dropdown',
       //path:'node_modules/ng2-material-dropdown/dist/ng2-dropdown.bundle'
       //}
-    
+
       //   name: 'ng2-translate',
       //   // Path to the package's bundle
       //   path: 'node_modules/ng2-translate/bundles/ng2-translate.umd.js'

@@ -6,29 +6,33 @@ using System.Collections.Concurrent;
 using Newtonsoft.Json;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace WebApp.Models
 {
     public class FixasrRepository : IFixasrRepository
     {
         static ConcurrentDictionary<string, Fixasr> _fixasr = new ConcurrentDictionary<string, Fixasr>();
+        private DatafilesOptions _options { get; set; }
 
         private const string STEP2_BASE_NAME = "Step 2 - transcript from Youtube";
         private const string STEP3_BASE_NAME = "Step 3 - transcript corrected for errors";
         private const string EXTENSION = "json";
 
+        public FixasrRepository(IOptions<DatafilesOptions> settings)
         //public FixasrRepository()
-        //{
-        ////    Add(new Fixasr { Name = "Item1" });
-        //}
+        {
+            _options = settings.Value;
+            ////    Add(new Fixasr { Name = "Item1" });
+        }
 
         // https://www.mikesdotnetting.com/article/302/server-mappath-equivalent-in-asp-net-core
-        private IHostingEnvironment _env;
-        public FixasrRepository(IHostingEnvironment env)
-        {
-            _env = env;
-            //    Add(new Fixasr { Name = "Item1" });
-        }
+        //private IHostingEnvironment _env;
+        //public FixasrRepository(IHostingEnvironment env)
+        //{
+        //    _env = env;
+        //    //    Add(new Fixasr { Name = "Item1" });
+        //}
 
 
         /*public IEnumerable<Fixasr> GetAll()
@@ -57,15 +61,16 @@ namespace WebApp.Models
         // gets data from:
         //     "Datafiles/USA_PA_Philadelphia_Philadelphia_CityCouncil/2016-03-17"
         // We will likely change this convention once the number of files grows and we need a deeper folder structure.
+
         public Fixasr Get(string username, string country, string state, string county, string city, string govEntity, string meetingDate)
         {
-            // Todo - check permissions
+            // Todo(gm) - check permissions
 
-            string subpath = country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "/" + meetingDate;
+            string subpath = country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "\\" + meetingDate;
+            string fullpath = System.IO.Path.Combine(_options.DatafilesPath, subpath);
+            string latestCopy = System.IO.Path.Combine(fullpath, STEP3_BASE_NAME + "." + EXTENSION);
 
             // If we already edited it, return the latest edit.
-            var fullpath = getFullPath(subpath);
-            string latestCopy = getLatestFile(fullpath, STEP3_BASE_NAME, EXTENSION);
             if (File.Exists(latestCopy))
             {
                 return GetByPath(latestCopy);
@@ -73,14 +78,9 @@ namespace WebApp.Models
             // Otherwise return the unedited one from step 2.
             else
             {
-                string filename = fullpath + "/" + STEP2_BASE_NAME + "." + EXTENSION;
+                string filename = System.IO.Path.Combine(fullpath, STEP2_BASE_NAME + "." + EXTENSION);
                 return GetByPath(filename);
             }
-        }
-
-        private string getFullPath(string path)
-        {
-            return System.IO.Path.Combine(Common.getDataPath(), path);
         }
 
         public Fixasr GetByPath(string path)
@@ -109,8 +109,21 @@ namespace WebApp.Models
             }
         }
 
+        public void Put(Fixasr value, string username, string country, string state, string county, string city, string govEntity, string meetingDate)
+        {
+            string subpath = country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "\\" + meetingDate;
+            string fullpath = System.IO.Path.Combine(_options.DatafilesPath, subpath);
+
+        }
+
         //public void PutByPath(string path, string value)
-        public void PutByPath(string path, Fixasr value)
+        public void PutByPath(Fixasr value)
+        {
+            string subpath = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen/2016-10-11";
+            var fullpath = System.IO.Path.Combine(_options.DatafilesPath, subpath);
+            WriteLatest(fullpath, value);
+        }
+        private void WriteLatest(string fullpath, Fixasr value)
         {
             // const string STEP3_BASE_NAME = "x";   // for testing
             const string SUFFIX = "-LAST";
@@ -118,7 +131,6 @@ namespace WebApp.Models
 
             string stringValue = JsonConvert.SerializeObject(value, Formatting.Indented);
 
-            var fullpath = getFullPath(path);
             string numOfNextLatest = "01";          // Assume the next latest is "01".
 
             // Find out what the current latest is.

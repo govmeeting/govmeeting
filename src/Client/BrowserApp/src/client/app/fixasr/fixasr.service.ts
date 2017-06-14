@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { AsrSegment } from './asrsegment';
@@ -11,13 +11,13 @@ import 'rxjs/add/operator/catch';
 import { AppData } from '../appdata';
 
 @Injectable()
-export class AsrService {
+export class FixasrService {
 
     isServerRunning: boolean = this.appData.isServerRunning;
     isDataFromMemory: boolean = this.appData.isDataFromMemory;
 
-    // private _Url_NoServer = 'assets/2016-10-11 Boothbay Harbor Selectmen.json';
-    private _Url_NoServer = 'assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).json';
+    // private _Url_NoServer = 'testdata/2016-10-11 Boothbay Harbor Selectmen.json';
+    private _Url_NoServer = 'testdata/2016-10-11 Boothbay Harbor Selectmen (3 minutes).json';
 
     //private _UrlServer = 'api/fixasr/USA/ME/LincolnCounty/BoothbayHarbor/Selectmen/2016-10-11';
     private _UrlServer = 'api/fixasr';
@@ -40,7 +40,7 @@ export class AsrService {
    ]};
 
     constructor (private http: Http, private appData:AppData) {
-        console.log('AsrService - ',appData);
+        console.log('FixasrService - ',appData);
     }
 
     // The property "IsServerRunning" on AppData 
@@ -66,7 +66,7 @@ export class AsrService {
         }
     }
 
-    // TODO - What should we return from the postChanges call?
+    // Todo(gm) - What should we return from the postChanges call?
     // We need to handle errors.
     postChanges(asrtext : AsrText): Observable<any> {
         // if data from memory, don't post it back.
@@ -77,14 +77,14 @@ export class AsrService {
         } else if (!this.isServerRunning) {
             return Observable.of(this.testData);
         }
-        console.log('postChanges in asr.service  ' + this._UrlServer);
+        console.log('postChanges in fixasr.service  ' + this._UrlServer);
         return this.postData(this._UrlServer, asrtext);
     }
 
     private postData(url: string, asrtext: AsrText): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        console.log('postData in asr.service');
+        console.log('postData in fixasr.service');
         return this.http.post(url, asrtext, headers)
         .map(res => console.info(res))
         .catch(this.handleError);
@@ -95,13 +95,13 @@ export class AsrService {
         throw new Error('Bad response status: ' + res.status);
         }
         let body = res.json();
-        console.log("extractData: " + body);
+        console.log('extractData: ' + body);
         return body || { };
     }
 
     private handleError (error: any) {
         // In a real world app, we might send the error to remote logging infrastructure
-        console.log("asr.service handleError " + error);
+        console.log('fixasr.service handleError ' + error);
         let errMsg = error.message || 'Server error';
         console.error(errMsg); // log to console instead
         return Observable.throw(errMsg);

@@ -1,11 +1,11 @@
-import { Component, Input, Output } from '@angular/core';
+﻿import { Component, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { DropdownValue } from './dropdown.value';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   moduleId: module.id,
-  selector: 'dropdown',
+  selector: 'gm-dropdown',
   templateUrl: 'dropdown.component.html'
 })
 export class DropdownComponent {
@@ -19,14 +19,14 @@ export class DropdownComponent {
  @Output()
   addSpeaker: EventEmitter<string>;
 
-  constructor(public fb: FormBuilder) {
+ public newOptionForm = this.fb.group({
+     newOption: ['', Validators.required],
+ });
+
+constructor(public fb: FormBuilder) {
     this.selectSpeaker = new EventEmitter();
     this.addSpeaker = new EventEmitter();
   }
-
-  public newOptionForm = this.fb.group({
-    newOption: ["", Validators.required],
-  });
 
   onSelectChange(i: number) {
     // console.log("DropdownComponent - selected index=" + i);
@@ -44,7 +44,7 @@ export class DropdownComponent {
 
 /**
 Then you can use the component like this:
-  <dropdown [values]="dropdownvalues" (select)="action($event)"></dropdown>
+  <gm-dropdown [values]="dropdownvalues" (select)="action($event)"></dropdown>
 Note that dropdownvalues and the action method are on the parent component (not the dropdown one).
   dropdownvalues: DropdownValue [] = [
     {'value': 'value1', 'label': 'label1'},

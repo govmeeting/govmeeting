@@ -66,7 +66,7 @@ namespace TranscriptionLibrary
                 }
                 else
                 {
-                    // Todo - check for invalid characters like a double quote.
+                    // Todo(gm) - check for invalid characters like a double quote.
                     if (phrase.said != null)
                     {
                         Console.WriteLine("ERROR: Invalid input data (duplicate said) on line " + linenum);

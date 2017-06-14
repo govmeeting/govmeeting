@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
+    // Todo(gm) #### Change all namespace names from "Models", "Controllers", etc to feature name.
 namespace WebApp.Controllers
 {
     [Route("api/[controller]")]
@@ -18,6 +19,7 @@ namespace WebApp.Controllers
         public IFixasrRepository fixasr { get; set; }
 
         public FixasrController(IAuthorizationService authz, IFixasrRepository fixasr)
+        //public FixasrController(IAuthorizationService authz)
         {
             _authz = authz;
             this.fixasr = fixasr;
@@ -35,7 +37,8 @@ namespace WebApp.Controllers
         [HttpPost]
         public void Post([FromBody]Fixasr value)
         {
-            fixasr.PutByPath("USA_ME_LincolnCounty_BoothbayHarbor_Selectmen/2016-10-11", value);
+            fixasr.PutByPath(value);
+            //fixasr.Put(value, "johnpank", "USA", "ME", "LincolnCounty", "BoothbayHarbor", "Selectmen", "2016-10-11");
         }
     }
 }

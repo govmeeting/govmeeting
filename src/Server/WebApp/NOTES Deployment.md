@@ -1,3 +1,20 @@
+# Quick Notes
+
+The bash script "build-publish.sh" in the root of the project will build and publiah the release version.
+
+
+### Build the client app for production
+    cd C:/GOVMEETING/_SOURCECODE/src/Client/BrowserApp
+	npm run build.prod
+Fix errors.
+
+### Publish to folder and test output
+
+In VS, Right-click on WebApp and select Publish... --> Profile = PublishFolder --> Publish
+The output should be in: C:\GOVMEETING\_SOURCECODE\src\Server\WebApp\bin\Release\PublishOutput
+
+
+
 # Publish from Visual Studio
 
 I created three publish profiles for WebApp
@@ -67,7 +84,7 @@ The following files are copied during publishing:
 | ----------- | ------------------ |  
 | appsettings.Production.json | PublishOutput|  
 | BrowserApp\dist\prod\css\main.css | PublishOutput\wwwroot\css |  
-| BrowserApp\dist\prod\js\main.js | PublishOutput\wwwroot\js |  
+| BrowserApp\dist\prod\js\app.js | PublishOutput\wwwroot\js |  
 | BrowserApp\dist\prod\js\shim.js | PublishOutput\wwwroot\js |  
 
 ### Test the deployment
@@ -76,6 +93,9 @@ Open MSBuild Command Prompt in the publish output folder and execute:
 
     dotnet WebApp.dll
 
+   (My publish folder is C:\GOVMEETING\_SOURCECODE\src\Server\WebApp\bin\Release\PublishOutput)
+
+Open a browser to localhost:<port> where <port> is the port specified in the command window. Usually 5000.
 
 
 

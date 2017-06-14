@@ -74,7 +74,7 @@ namespace WebApp.Controllers
             }
             catch
             {
-                // Todo - handle error
+                // Todo(gm) - handle error
                 return RedirectToAction("EditUsers");
             }
         }
@@ -93,7 +93,7 @@ namespace WebApp.Controllers
             }
             catch
             {
-                // Todo - handle error
+                // Todo(gm) - handle error
                 return RedirectToAction("EditUsers");
             }
         }

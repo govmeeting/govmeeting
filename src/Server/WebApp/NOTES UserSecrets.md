@@ -22,12 +22,9 @@ You can access user secrets in code via the configuration API:
 
  ### Secrets that we added to the store
 We added the following to the secret store:
- * Data_DefaultConnection_ConnectionString = default database connection string
- * ExternalAuth_Google_ClientId = ClientId for Google+ external authorization
- * ExternalAuth_Google_ClientSecret = CLientSecret for Google+
- 
- Now this info does not get checked into source control. In startup.cs, we can, for example, access the connection string as:
- * Configuration["Data_DefaultConnection_ConnectionString"]
+ * ExternalAuth:Google:ClientId = ClientId for Google+ external authorization
+ * ExternalAuth:Google:ClientSecret = ClientSecret for Google+
+ Now this info does not get checked into source control.
 
 
  ### Deploying to production

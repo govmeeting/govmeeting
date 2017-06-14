@@ -2,7 +2,7 @@
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { AsrSegment } from './asrsegment';
 import { AsrText } from './asrtext';
-import { AsrService } from './asr.service';
+import { FixasrService } from './fixasr.service';
 import { VideoComponent } from '../video/video.component';
 import { FixasrUtilities } from './fixasr-utilities';
 import { Observable } from 'rxjs/Rx';
@@ -26,7 +26,7 @@ import { ElementRef } from '@angular/core';
   templateUrl: './fixasr.component.html',
   styleUrls: ['./fixasr.component.css'],
     providers: [
-        AsrService,
+        FixasrService,
         FixasrUtilities
     ]
 })
@@ -42,12 +42,12 @@ export class FixasrComponent  implements OnInit {
     modeButtonText: string = 'REPLACE';
     _scrollList: HTMLElement;
 
-    // Todo - Fix problem with asrtext.
+    // Todo(gm) - Fix problem with asrtext.
     // We should just use asrtext, which contains both asrsegments & lastedit.
     // But the browser hangs when we try to access asrtext from HTML.
     asrsegments: AsrSegment[];
     lastedit: number = -1;
-    speakerName: string = "";
+    speakerName: string = '';
 
     speakers: Speaker [] = [
     {'abbreviation': 'TW', 'option': 'Tricia Warren'},
@@ -69,7 +69,7 @@ export class FixasrComponent  implements OnInit {
     private videoComponent : VideoComponent;
 
     constructor(
-        private _asrService: AsrService,
+        private _fixasrService: FixasrService,
         private _Utilities: FixasrUtilities) {
     }
 
@@ -103,25 +103,25 @@ export class FixasrComponent  implements OnInit {
 // #########################  Event Handlers ################################################
 
     selectSpeaker(index: any) {
-        console.log("selected index=" + index);
-        this._Utilities.insertAtStartCurrentWord(this.currentElement, "[" + this.speakers[index].abbreviation + "] ");
+        console.log('selected index=' + index);
+        this._Utilities.insertAtStartCurrentWord(this.currentElement, '[' + this.speakers[index].abbreviation + '] ');
     }
 
     addSpeaker(speaker: any) {
-        console.log("new speaker=" + speaker);
+        console.log('new speaker=' + speaker);
         var abbrev = this.createSpeakerAbbrev(speaker);
-        this._Utilities.insertAtStartCurrentWord(this.currentElement, "[" + abbrev + "] ");
-        var newSpeaker = new Speaker(speaker, abbrev)
+        this._Utilities.insertAtStartCurrentWord(this.currentElement, '[' + abbrev + '] ');
+        var newSpeaker = new Speaker(speaker, abbrev);
         this.speakers.splice(this.speakers.length - 1, 0, newSpeaker);
 }
 
     createSpeakerAbbrev(name: string): string {
       var firstname: string, lastname: string, abbrev: string, extras: string;
-        var x = name.indexOf(" ");
+        var x = name.indexOf(' ');
         // For a multi-word name, we start with abbreviaion of first-initial + last-initial.
-        if (x != -1) {
+        if (x !== -1) {
           firstname = name.substr(0, x);
-          x = name.lastIndexOf(" ");
+          x = name.lastIndexOf(' ');
           lastname = name.substr(x + 1);
           abbrev = firstname.substr(0,1).toUpperCase() + lastname.substr(0,1).toUpperCase();
           // "extras" has extra letters we may need to make the abbreviation unique.
@@ -141,7 +141,7 @@ export class FixasrComponent  implements OnInit {
     isAbbreviationUnique(abbrev: string) : boolean {
       var answer: boolean = true;
       this.speakers.forEach(element => {
-        if (element.abbreviation == abbrev) {
+        if (element.abbreviation === abbrev) {
           answer = false;
         }
       });
@@ -308,16 +308,16 @@ export class FixasrComponent  implements OnInit {
 // #####################  get & put data via AsrService ##########################
 
     getAsr() {
-        this._asrService.getAsr()
+        this._fixasrService.getAsr()
             .subscribe(
             asrtext => {
-                // Todo - We should be able to just move asrtext to this.asrtext.
+                // Todo(gm) - We should be able to just move asrtext to this.asrtext.
                 // It appears to move the data OK. When I stop at a breakpoint, the
                 // the data is all there. But accessing it from the HTML
                 // causes an error (It says asrtext is null).
                 this.asrsegments = asrtext.asrsegments;
                 this.lastedit = asrtext.lastedit;
-                console.log("getAsr lastedit=" + this.lastedit);
+                console.log('getAsr lastedit=' + this.lastedit);
 
                 // We want to scroll the list to the last stored position.
                 // But Angular will not yet have updated the list. We need
@@ -332,11 +332,11 @@ export class FixasrComponent  implements OnInit {
         var asrtext : AsrText;
         var lastedit = this.getScrollPosition();
         console.log('saveTranscript');
-        // Todo - See notes under getAsr().
+        // Todo(gm) - See notes under getAsr().
         //asrtext.lastedit = this.getScrollPosition();
         //asrtext.asrsegments = this.asrsegments;
         //this._asrService.postChanges(asrtext)
-        this._asrService.postChanges({"lastedit": lastedit, "asrsegments": this.asrsegments})
+        this._fixasrService.postChanges({'lastedit': lastedit, 'asrsegments': this.asrsegments})
             .subscribe (
                 t => t
             );
@@ -349,10 +349,10 @@ export class FixasrComponent  implements OnInit {
         // start playing at the currently selected phrase
         var toPlay = this.currentIndex;
         // If not current phrase, start from last edited phrase.
-        if (toPlay == -1) {
+        if (toPlay === -1) {
             toPlay = this.lastedit;
             // Otherwise start from beginning.
-            if (toPlay == -1) {
+            if (toPlay === -1) {
                 toPlay = 0;
             }
         }

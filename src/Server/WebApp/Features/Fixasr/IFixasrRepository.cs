@@ -14,9 +14,10 @@ namespace WebApp.Models
         //IEnumerable<Fixasr> GetAll();
 
         Fixasr Get(string username, string country, string state, string county, string city, string govEntity, string meetingDate);
+        void Put(Fixasr value, string username, string country, string state, string county, string city, string govEntity, string meetingDate);
         Fixasr GetByPath(string path);
         string GetStringByPath(string path);
-        void PutByPath(string path, Fixasr value);
+        void PutByPath(Fixasr value);
         //void PutByPath(string path, string value);
         Fixasr Find(string key);
         //Fixasr Remove(string key);

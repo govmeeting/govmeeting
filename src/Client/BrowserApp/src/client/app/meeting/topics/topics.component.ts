@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { MeetingService } from '../meeting.service';
 import { UserchoiceService } from '../userchoice.service';
 
@@ -9,7 +9,7 @@ import { UserchoiceService } from '../userchoice.service';
 })
 export class TopicsComponent implements OnInit {
 
-    nameType: string = "topicNames";
+    nameType: string = 'topicNames';
     Names: string[];
     errorMessage: string;
     selected: number = 0;

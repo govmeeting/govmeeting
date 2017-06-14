@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Headers, RequestOptions } from '@angular/http';
@@ -13,22 +13,27 @@ import 'rxjs/add/operator/catch';
 export class MeetingService {
 
 // The code outlined in main.ts for checking the Name argument need to be used here.
-    private _meetingUrl = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
+    //private _meetingUrl = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
     //private _meetingUrl = 'assets/data/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen/2014-09-08/Step 5 - processed transcript.json';
-    //private _meetingUrl = 'http://birdw8.com:60366/api/transcript';
-    //private _meetingUrl = 'http://localhost:60366/api/transcript';
-    //private _meetingUrl = 'http://localhost:60366/api/transcript/BoothbayHarbor/Selectmen/2014-09-08';
+    //private _meetingUrl = 'api/meeting';
+    //private _meetingUrl = 'api/meeting/BoothbayHarbor/Selectmen/2014-09-08';
+    private _meetingUrl = 'api/meeting/USA/ME/LincolnCounty/BoothbayHarbor/Selectmen/2014-09-08';
 
     // private _meetingData: any = {};
     private data: any;
     private observable: Observable<any>;
-    errorMessage: string;
+    private errorMessage: string;
 
 
     constructor (private http: Http) {}
 
-    getMeeting(): Observable<any> {
+    public getMeeting(): Observable<any> {
         return this.getData(this._meetingUrl);
+    }
+
+    public postMeeting(): Observable<any> {
+        console.log('postMeeting in meeting.service');
+        return this.postData(this._meetingUrl, 'my meeting data');
     }
 
     private getData(url: string): Observable<any> {
@@ -54,11 +59,6 @@ export class MeetingService {
                 .share();
             return this.observable;
         }
-    }
-
-    postMeeting(): Observable<any> {
-        console.log('postMeeting in meeting.service');
-        return this.postData(this._meetingUrl, 'my meeting data');
     }
 
     private postData(url: string, data: any): Observable<any> {

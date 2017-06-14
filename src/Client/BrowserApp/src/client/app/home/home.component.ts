@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/index';
 
 /**
@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
    * @return {boolean} false to prevent default form submit behavior to refresh the page.
    */
   addName(): boolean {
-    // TODO: implement nameListService.post
+    // Todo(gm): implement nameListService.post
     this.names.push(this.newName);
     this.newName = '';
     return false;

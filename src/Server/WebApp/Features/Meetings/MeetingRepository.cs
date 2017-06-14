@@ -3,59 +3,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
-using System.IO;
 using Newtonsoft.Json;
+using System.IO;
+using WebApp.Services;
+using Microsoft.Extensions.Options;
 
 namespace WebApp.Models
 {
     public class MeetingRepository : IMeetingRepository
     {
         static ConcurrentDictionary<string, Meeting> _meetings = new ConcurrentDictionary<string, Meeting>();
+        private const string STEP5_BASE_NAME = "Step 5 - processed transcript";
+        private const string EXTENSION = "json";
+        private DatafilesOptions _options { get; set; }
 
-        public MeetingRepository()
+        public MeetingRepository(IOptions<DatafilesOptions> settings)
         {
-            Add(new Meeting
-            {
-                key = "1",
-                country = "USA",
-                state = "ME",
-                municipality = "Boothbay Harbor",
-                meetingInfo = new Meetinginfo
-                { name = "Boothbay Harbor Selectmen meeting", date = "Sept. 8, 2014" },
-                path = "assets/BoothbayHarbor_Selectmen_2014-09-08.json"
-            });
-            Add(new Meeting
-            {
-                key = "2",
-                country = "USA",
-                state = "PA",
-                municipality = "Philadelphia",
-                meetingInfo = new Meetinginfo
-                { name = "Philadelphia City Council meeting", date = "March 17, 2016" },
-                path = "assets/Philadelphia_CityCouncil_2016-03-17.json"
-            });
-            Add(new Meeting
-            {
-                key = "3",
-                country = "USA",
-                state = "PA",
-                municipality = "Philadelphia",
-                meetingInfo = new Meetinginfo
-                { name = "Philadelphia City Council meeting", date = "Sept. 25, 2014" },
-                path = "assets/Philadelphia_CityCouncil_2014-09-25.json"
-            });
+            _options = settings.Value;
         }
 
-        public IEnumerable<Meeting> GetAll()
+        public Meeting Get(string country, string state, string county, string city, string govEntity, string meetingDate)
         {
-            return _meetings.Values;
+            // Todo(gm) - check permissions
+
+            string subpath = country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "\\" + meetingDate;
+
+            string latestCopy = System.IO.Path.Combine(_options.DatafilesPath, subpath, STEP5_BASE_NAME + "." + EXTENSION);
+
+            if (File.Exists(latestCopy))
+            {
+                return GetByPath(latestCopy);
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public void Add(Meeting item)
+        private Meeting GetByPath(string path)
         {
-            //item.Key = Guid.NewGuid().ToString();
-            _meetings[item.key] = item;
+            string meetingString = Common.Readfile(path);
+            if (meetingString != null)
+            {
+                Meeting meeting = JsonConvert.DeserializeObject<Meeting>(meetingString);
+                return meeting;
+            } else
+            {
+                return null;
+            }
         }
-
     }
 }

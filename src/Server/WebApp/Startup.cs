@@ -33,24 +33,36 @@ namespace WebApp
                 // JP: ### Conversion to ASP.NET Core ###
                 // These changes were made to new template.
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json")
+                //.AddJsonFile("appsettings.json")
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
                 //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
+            // Explanation of Asp.Net Core configuration and how to flow it to other parts of the app:
+            // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration
 
             if (env.IsDevelopment())
             {
+                builder.AddUserSecrets();
+                // We use the User Secrets store for secrets we don't want to check-in to Github during development.
+                // During production, we get these secrets from the appsettings.production.json file.
+                // Using the secret store:
+                // Open a command prompt at the project root folder and use these commands:
+                //     dotnet user-secrets--help
+                //     dotnet user-secrets set MySecret ValueOfMySecret
+                //     dotnet user-secrets list
+                // For example, to set the Google+ ClientSecret to "xxxxxxxx", do:
+                //     dotnet user-secrets set ExternalAuth:Google:ClientSecret xxxxxxxx
                 // For more details on using the user secret store see:
                 //   http://go.microsoft.com/fwlink/?LinkID=532709
                 //   http://asp.net-hacker.rocks/2016/07/11/user-secrets-in-aspnetcore.html
-                builder.AddUserSecrets();
             }
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
 
-            //System.Console.WriteLine("ConnectionStrng = " + Configuration["Data:DefaultConnection:ConnectionString"]);
-            //System.Console.WriteLine("ClientId = " + Configuration["ExternalAuth:Google:ClientId"]);
+            System.Console.WriteLine("ConnectionStrng = " + Configuration["Data:DefaultConnection:ConnectionString"]);
+            System.Console.WriteLine("ClientId = " + Configuration["ExternalAuth:Google:ClientId"]);
+            System.Console.WriteLine("Datafiles Path = " + Configuration["Datafiles:Path"]);
         }
 
         public IConfigurationRoot Configuration { get; set; }
@@ -60,15 +72,31 @@ namespace WebApp
         {
             // Add framework services.
 
+            // Adds services required for using options.
+            // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration
+            // https://weblog.west-wind.com/posts/2016/may/23/strongly-typed-configuration-settings-in-aspnet-core
+            services.AddOptions();
+            // Register the IConfiguration instance which DatafilesOptions binds against.
+            services.Configure<DatafilesOptions>(Configuration.GetSection("Datafiles"));
+
+            // Registers the following lambda used to configure options.
+            services.Configure<DatafilesOptions>(myOptions =>
+            {
+                // Combine the current directory path with the relative path in the configuration.
+                myOptions.DatafilesPath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), myOptions.DatafilesPath);
+                Console.WriteLine("Datafile path = " + myOptions.DatafilesPath);
+            });
+
+
             // JP: ### Conversion to ASP.NET Core ###
             // JP: The latest template for ASP.NET Core removes the calls to AddEntityFramework and AddSqlServer.
-            // Asp.Net Core documentatin: https://docs.microsoft.com/en-us/aspnet/core/
+            // Asp.Net Core documentation: https://docs.microsoft.com/en-us/aspnet/core/
             //services.AddEntityFramework()
             //    .AddSqlServer()
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
-                // We use User Secrets to store this. We left the development string in appsettings.json, but it is not used.
-                // options.UseSqlServer(Configuration["Data_DefaultConnection_ConnectionString"]));
+                // In development, we get this value from appsettings.json. In production, the value
+                // in appsettings.production.json overrides this value.
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
@@ -81,7 +109,7 @@ namespace WebApp
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // amount of time they are locked out
                 options.Lockout.AllowedForNewUsers = true;
-                // Todo: We should send the admin an email if someone is locked out.
+                // Todo(gm): We should send the admin an email if someone is locked out.
                 // Govmeeting: Require email confirmation
                 options.SignIn.RequireConfirmedEmail = true;
             })
@@ -104,7 +132,7 @@ namespace WebApp
                     policy.RequireClaim("Administrator", "System");
                 });
 
-                // Todo We need policies that are more dynamic and flexible.
+                // Todo(gm) We need policies that are more dynamic and flexible.
                 // These will work temporarily.
                 options.AddPolicy("PhillyEditor", policy =>
                 {
@@ -149,7 +177,6 @@ namespace WebApp
 
             // Add our repository type
             services.AddSingleton<IMeetingRepository, MeetingRepository>();
-            services.AddSingleton<ITranscriptRepository, TranscriptRepository>();
             services.AddSingleton<IAddtagsRepository, AddtagsRepository>();
             services.AddSingleton<IFixasrRepository, FixasrRepository>();
 
@@ -178,7 +205,7 @@ namespace WebApp
                 // Using migrations with asp.net core: https://dzone.com/articles/how-to-use-migration-with-entity-framework-core 
                 try
                 {
-                    //TODO - We should be able to replace all the code below with:
+                    // Todo(gm) - We should be able to replace all the code below with:
                     //          db.Database.Migrate();
                     // if we add another argument to the Configure() argument list:
                     //          public void Configure( ...... , ApplicationDbContext db)
@@ -228,8 +255,6 @@ namespace WebApp
             // http://localhost:60366/signin-google
             app.UseGoogleAuthentication(new GoogleOptions
             {
-                // We use the User Secrets store for this info during development.
-                // During production, we use an appsettings.production.json file.
                 ClientId = Configuration["ExternalAuth:Google:ClientId"],
                 ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"],
                 AuthenticationScheme = "Google",
@@ -241,14 +266,6 @@ namespace WebApp
 
             app.UseMvc(routes =>
             {
-                //routes.MapRoute(
-                //    name: "API Addtags+Transcripts",
-                //    template: "{controller=Addtags}/{city}/{govEntity?}/{meetingDate?}");
-
-                //routes.MapRoute(
-                //    name: "API Fixasr+Transcripts",
-                //    template: "api/{controller=Fixasr}/{city?}/{govEntity?}/{meetingDate?}");
-
                 routes.MapRoute(
                    name: "default",
                    template: "{controller=Home}/{action=Index}/{id?}");
@@ -268,9 +285,8 @@ namespace WebApp
             });
         }
 
-        // Entry point for the application.
-        // JP: ### Conversion to ASP.NET Core ###
-        // JP: It appears that the latest template created a "Main" entry point in "program.cs"
-        //public static void Main(string[] args) => WebApplication.Run<Startup>(args);
+        // This was the entry point for a normal Asp.Net application. But with Asp.Net Core, the
+        // entry point is now in program.cs.
+        //   public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

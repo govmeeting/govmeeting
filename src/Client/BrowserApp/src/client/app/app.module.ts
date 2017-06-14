@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
@@ -43,6 +43,3 @@ import { AppData } from './appdata';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-// Todo - Change error message that displays in F12 tools console "Report thid error at ...." to 
-// our own issue page instead of mgechev/angular2-seed.

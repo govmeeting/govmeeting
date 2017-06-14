@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 
 export interface IUserChoiceSrv {
     getSpeaker(): string;
@@ -25,8 +25,8 @@ export class UserchoiceService implements IUserChoiceSrv {
 
     setSpeaker(speaker : string) {
         this._speaker = speaker;
-        if (speaker !== "SHOW ALL") {
-            this.setTopic("SHOW ALL")
+        if (speaker !== 'SHOW ALL') {
+            this.setTopic('SHOW ALL');
         }
     }
 
@@ -36,8 +36,8 @@ export class UserchoiceService implements IUserChoiceSrv {
 
     setTopic(topic: string) {
         this._topic = topic;
-        if (topic !== "SHOW ALL") {
-            this.setSpeaker("SHOW ALL")
+        if (topic !== 'SHOW ALL') {
+            this.setSpeaker('SHOW ALL');
         }
     }
 }

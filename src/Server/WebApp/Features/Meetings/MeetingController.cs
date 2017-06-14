@@ -11,45 +11,42 @@ using Microsoft.AspNetCore.Authorization;
 namespace Webapp.Controllers
 {
     [Route("api/[controller]")]
-    public class TranscriptController : Controller
+    public class MeetingController : Controller
     {
         // JP: ### Conversion to ASP.NET Core ###
         // JP: FromServices attribute is no longer valid on a property. I moved this DI service to constructor
         // [FromServices]
-        public ITranscriptRepository transcripts { get; set; }
+        public IMeetingRepository meetings { get; set; }
 
-        public TranscriptController(ITranscriptRepository transcripts)
+        public MeetingController(IMeetingRepository meetings)
         {
-            this.transcripts = transcripts;
+            this.meetings = meetings;
         }
 
-        // GET: api/transcript
+        // default when no parameters passed. Used for testing.
         [HttpGet]
-        public Transcript Get()
+        public Meeting Get()
         {
-            //return transcripts.GetByPath("assets/BoothbayHarbor_Selectmen_2014-09-08.json");
+            //return meetings.GetByPath("assets/BoothbayHarbor_Selectmen_2014-09-08.json");
 
-            Transcript ret = transcripts.Get("johnpank", "USA", "ME", "LincolnCounty", "BoothbayHarbor", "Selectmen", "2016-10-11");
+            Meeting ret = meetings.Get("USA", "ME", "LincolnCounty", "BoothbayHarbor", "Selectmen", "2014-09-08");
             return ret;
         }
 
-
-
-
-        [HttpGet("{city}/{govEntity?}/{meetingDate?}")]
-        public Transcript Get(string city, string govEntity = null, string meetingDate = null)
+        [HttpGet("{country}/{state}/{county}/{city}/{govEntity?}/{meetingDate?}")]
+        public Meeting Get(string country, string state, string county, string city, string govEntity = null, string meetingDate = null)
         {
-            return transcripts.Get(city, govEntity, meetingDate);
+            return meetings.Get(country, state, county, city, govEntity, meetingDate);
         }
 
-        // POST api/transcript
+        // POST api/meeting
         [HttpPost]
         [Authorize("PhillyEditor")]
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/transcript/5
+        // PUT api/meeting/5
         [Authorize("PhillyEditor")]
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
@@ -57,7 +54,7 @@ namespace Webapp.Controllers
             
         }
 
-        // DELETE api/transcript/5
+        // DELETE api/meeting/5
         [Authorize("PhillyEditor")]
         [HttpDelete("{id}")]
         public void Delete(int id)
