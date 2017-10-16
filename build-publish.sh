@@ -1,8 +1,20 @@
-cd C:/GOVMEETING/_SOURCECODE/src/Client/BrowserApp
+GOV="/C/GOVMEETING/_SOURCECODE"
+GOV_SER="${GOV}/src/Server/WebApp"
+GOV_CLI="${GOV}/src/Client/BrowserApp"
+
+PUBLISH="${GOV_SER}/bin/Release/PublishOutput"
+
+cd ${GOV_CLI}
+echo "Run production build of BrowserApp"
 npm run build.prod
-cp -f dist/prod/css/main.css ../../Server/WebApp/bin/Release/PublishOutput/wwwroot/css
-cp -f dist/prod/js/app.js ../../Server/WebApp/bin/Release/PublishOutput/wwwroot/js
-cp -f dist/prod/js/shims.js ../../Server/WebApp/bin/Release/PublishOutput/wwwroot/js
-cp ../../../../_SECRETS/appsettings.Production.json ../../Server/WebApp/bin/Release/PublishOutput
 
+cd ${GOV_CLI}/dist/prod
+echo "Move css files to ${PUBLISH}/wwwroot/css"
+cp -f css/main.css ${PUBLISH}/wwwroot/css
+echo "Move js files to ${PUBLISH}/wwwroot/css"
+cp -f js/app.js    ${PUBLISH}/wwwroot/js
+cp -f js/shims.js  ${PUBLISH}/wwwroot/js
 
+echo "Move appsettings.Production.json to ${PUBLISH}"
+cd ${GOV}/../_SECRETS
+cp appsettings.Production.json ${PUBLISH}

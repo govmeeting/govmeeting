@@ -1,16 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
+	<!-- new for 2.0 -->
+   <TargetFramework>netcoreapp2.0</TargetFramework>
+	<!--
     <TargetFramework>netcoreapp1.0</TargetFramework>
+	-->
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>WebApp</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>WebApp</PackageId>
     <UserSecretsId>aspnet-WebApp-108c4b57-86d0-471d-a664-cd969571aafc</UserSecretsId>
+	<!--
     <RuntimeFrameworkVersion>1.0.4</RuntimeFrameworkVersion>
+	-->
     <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+	<!-- new for 2.0 -->
+    <AssetTargetFallback>$(AssetTargetFallback);dotnet5.6;portable-net45+win8</AssetTargetFallback>
+	<!--
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
-  </PropertyGroup>
+	-->
+ </PropertyGroup>
 
   <ItemGroup>
     <None Update="wwwroot\**\*">
@@ -19,6 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+	<!-- new for 2.0 -->
+	<PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+	<!--
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="1.0.2" />
@@ -50,6 +63,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Xml" Version="1.0.3" />
     <PackageReference Include="Google.Cloud.Speech.V1" Version="1.0.0-beta08" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+	-->
   </ItemGroup>
 
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
@@ -59,9 +73,15 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.2.301" />
+	<!-- new for 2.0 -->
+	<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+	<!--
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+	-->
   </ItemGroup>
 
   <ItemGroup>

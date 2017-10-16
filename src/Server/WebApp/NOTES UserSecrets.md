@@ -28,7 +28,8 @@ We added the following to the secret store:
 
 
  ### Deploying to production
-When we publish the WebApp using the "Publish" dialog in Visual Studio, we will add the secret keys to the published appsettings.json file.
+When we publish the WebApp using the "Publish" dialog in Visual Studio, we will copy an appsettings.Production.json file
+over to the Publish folder. The setting in this will override those in appsettings.json.
 See the notes for "Deployment".
 
   

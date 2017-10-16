@@ -32,6 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		build-publish.sh = build-publish.sh
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
@@ -101,15 +102,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "src\Server\WebApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeepGovmeetingWebsiteAlive", "src\Utilities\KeepGovmeetingWebsiteAlive\KeepGovmeetingWebsiteAlive.csproj", "{AC75E94C-D3CF-4997-B4F7-B89B58819DD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranscriptionLibrary", "src\Backend\AutoTranscription\TranscriptionLibrary\TranscriptionLibrary.csproj", "{2115047E-7CC3-47A2-8287-B6D5BE89F91F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranscriptionLibrary", "src\Backend\AutoTranscription\TranscriptionLibrary\TranscriptionLibrary.csproj", "{2115047E-7CC3-47A2-8287-B6D5BE89F91F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TranscribeAudio", "src\Backend\AutoTranscription\TranscribeAudio\TranscribeAudio.csproj", "{CC3F370D-4D76-4A5A-A1A4-B43A27B80883}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranscribeAudio", "src\Backend\AutoTranscription\TranscribeAudio\TranscribeAudio.csproj", "{CC3F370D-4D76-4A5A-A1A4-B43A27B80883}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateJsonFile", "src\Backend\AutoTranscription\CreateJsonFile\CreateJsonFile.csproj", "{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreateJsonFile", "src\Backend\AutoTranscription\CreateJsonFile\CreateJsonFile.csproj", "{A0A37D59-A712-4FD3-93B9-2CE2CEE5049A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoTranscription_Test", "src\Backend\AutoTranscription\AutoTranscription_Test\AutoTranscription_Test.csproj", "{8E526775-D230-4BFB-916E-10D15BDF12D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoTranscription_Test", "src\Backend\AutoTranscription\AutoTranscription_Test\AutoTranscription_Test.csproj", "{8E526775-D230-4BFB-916E-10D15BDF12D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitVideo", "src\Backend\AutoTranscription\SplitVideo\SplitVideo.csproj", "{403A29D3-866B-43C0-847D-60DDBFD4F25F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SplitVideo", "src\Backend\AutoTranscription\SplitVideo\SplitVideo.csproj", "{403A29D3-866B-43C0-847D-60DDBFD4F25F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

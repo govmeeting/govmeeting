@@ -1,23 +1,40 @@
 # Quick Notes
 
-The bash script "build-publish.sh" in the root of the project will build and publiah the release version.
+We will refer to the code repository folder as "REPOSITORY". This is where the .git folder is located.
 
+### Build just the client app for production (not including server)
 
-### Build the client app for production
-    cd C:/GOVMEETING/_SOURCECODE/src/Client/BrowserApp
-	npm run build.prod
-Fix errors.
+The bash script "build-publish.sh" in REPOSITORY will build and publish the release version.
+Run this within the bash shell.
+
+We are getting the following errors which can be ignored:
+	dist\tmp\app\app.module.ts(40,22): error TS2339: Property 'APP_DATA' does not exist on type 'Window'.
+	dist\tmp\app\fixasr\fixasr-utilities.ts(86,88): error TS2339: Property 'children' does not exist on type 'Node'.
+	dist\tmp\app\fixasr\fixasr-utilities.ts(100,93): error TS2339: Property 'children' does not exist on type 'Node'.
+	dist\tmp\app\fixasr\fixasr-utilities.ts(113,93): error TS2339: Property 'children' does not exist on type 'Node'.
+	C:/GOVMEETING/_SOURCECODE/src/Client/BrowserApp/node_modules/videogular2/src/core/services/vg-api.d.ts(1,1): error TS2688: Cannot find type de             finition file for 'core-js'.
+	C:/GOVMEETING/_SOURCECODE/src/Client/BrowserApp/node_modules/videogular2/src/core/vg-media/i-playable.d.ts(1,1): error TS2688: Cannot find typ             e definition file for 'core-js'.
+Other errors that these need to be looked into.
 
 ### Publish to folder and test output
 
-In VS, Right-click on WebApp and select Publish... --> Profile = PublishFolder --> Publish
-The output should be in: C:\GOVMEETING\_SOURCECODE\src\Server\WebApp\bin\Release\PublishOutput
+In Visual Studio, Right-click on WebApp and select Publish... --> Profile = PublishFolder --> Publish
+The output should be in: REPOSITORY\src\Server\WebApp\bin\Release\PublishOutput
+
+### Test the output
+
+[ "Developer Command Prompt for Visual Studio 2017" is a separate utility installed with VS. 
+   You can add screen icon to it. How do we open this in VS itself? ]
+Open MSBuild Command Prompt in the publish output folder and execute:
+
+    dotnet WebApp.dll
+
+Open a browser to localhost:<port> where <port> is the port specified in the command window. Usually 5000.
 
 
+# Details 
 
-# Publish from Visual Studio
-
-I created three publish profiles for WebApp
+I created three publish profiles for WebApp within Visual Studio
 
 * PublishFtp
 * PublishFolder
@@ -93,7 +110,7 @@ Open MSBuild Command Prompt in the publish output folder and execute:
 
     dotnet WebApp.dll
 
-   (My publish folder is C:\GOVMEETING\_SOURCECODE\src\Server\WebApp\bin\Release\PublishOutput)
+   (The publish folder is REPOSITORY\src\Server\WebApp\bin\Release\PublishOutput)
 
 Open a browser to localhost:<port> where <port> is the port specified in the command window. Usually 5000.
 

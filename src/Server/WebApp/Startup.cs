@@ -18,59 +18,77 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using WebApp.StartupCustomizations;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebApp
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+
+        // There is an entire new and much shorter Startup method for .NET SDK 2.0
+        public Startup(IConfiguration configuration)
         {
-            //Console.WriteLine("Environment = " + env.EnvironmentName);
-
-            // Set up configuration sources.
-            var builder = new ConfigurationBuilder()
-
-                // JP: ### Conversion to ASP.NET Core ###
-                // These changes were made to new template.
-                .SetBasePath(env.ContentRootPath)
-                //.AddJsonFile("appsettings.json")
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-                //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-
-            // Explanation of Asp.Net Core configuration and how to flow it to other parts of the app:
-            // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration
-
-            if (env.IsDevelopment())
-            {
-                builder.AddUserSecrets();
-                // We use the User Secrets store for secrets we don't want to check-in to Github during development.
-                // During production, we get these secrets from the appsettings.production.json file.
-                // Using the secret store:
-                // Open a command prompt at the project root folder and use these commands:
-                //     dotnet user-secrets--help
-                //     dotnet user-secrets set MySecret ValueOfMySecret
-                //     dotnet user-secrets list
-                // For example, to set the Google+ ClientSecret to "xxxxxxxx", do:
-                //     dotnet user-secrets set ExternalAuth:Google:ClientSecret xxxxxxxx
-                // For more details on using the user secret store see:
-                //   http://go.microsoft.com/fwlink/?LinkID=532709
-                //   http://asp.net-hacker.rocks/2016/07/11/user-secrets-in-aspnetcore.html
-            }
-
-            builder.AddEnvironmentVariables();
-            Configuration = builder.Build();
-
-            System.Console.WriteLine("ConnectionStrng = " + Configuration["Data:DefaultConnection:ConnectionString"]);
-            System.Console.WriteLine("ClientId = " + Configuration["ExternalAuth:Google:ClientId"]);
-            System.Console.WriteLine("Datafiles Path = " + Configuration["Datafiles:Path"]);
+            Configuration = configuration;
         }
+        public IConfiguration Configuration { get; set; }
 
-        public IConfigurationRoot Configuration { get; set; }
+        //public Startup(IHostingEnvironment env)
+        //{
+        //    //Console.WriteLine("Environment = " + env.EnvironmentName);
+
+        //    // Set up configuration sources.
+        //    var builder = new ConfigurationBuilder()
+
+        //        // JP: ### Conversion to ASP.NET Core ###
+        //        // These changes were made to new template.
+        //        .SetBasePath(env.ContentRootPath)
+        //        //.AddJsonFile("appsettings.json")
+        //        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+        //        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+        //        // appsettings.production.json is stored outside of the source code repo since it
+        //        // contains user secrets. It is copied during publishing to the publish folder. 
+        //        // See build-publish.sh in Solution items.
+
+        //    // Explanation of Asp.Net Core configuration and how to flow it to other parts of the app:
+        //    // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration
+
+        //    if (env.IsDevelopment())
+        //    {
+        //        builder.AddUserSecrets();
+        //        // We use the User Secrets store for secrets we don't want to check-in to Github during development.
+        //        // During production, we get these secrets from the appsettings.production.json file.
+        //        // Using the secret store:
+        //        // Open a command prompt at the project root folder and use these commands:
+        //        //     dotnet user-secrets--help
+        //        //     dotnet user-secrets set MySecret ValueOfMySecret
+        //        //     dotnet user-secrets list
+        //        // For example, to set the Google+ ClientSecret to "xxxxxxxx", do:
+        //        //     dotnet user-secrets set ExternalAuth:Google:ClientSecret xxxxxxxx
+        //        // For more details on using the user secret store see:
+        //        //   http://go.microsoft.com/fwlink/?LinkID=532709
+        //        //   http://asp.net-hacker.rocks/2016/07/11/user-secrets-in-aspnetcore.html
+        //    }
+
+        //    builder.AddEnvironmentVariables();
+        //    Configuration = builder.Build();
+
+        //    System.Console.WriteLine("ConnectionStrng = " + Configuration["Data:DefaultConnection:ConnectionString"]);
+        //    System.Console.WriteLine("ClientId = " + Configuration["ExternalAuth:Google:ClientId"]);
+        //    System.Console.WriteLine("DatafilesPath = " + Configuration["Datafiles:DatafilesPath"]);
+        //}
+
+        //public IConfigurationRoot Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+
+
+            // Here we will create a service for handling the configuration settings that were stored in
+            // "Configuration" in the Startup() method. This has two advantages:
+            // 1. We will be able to access the configuration settings from controllers using Dependency Injection.
+            // 2. The configuration setting can be strongly typed objects of any type and not just strings.
 
             // Adds services required for using options.
             // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration
@@ -95,15 +113,26 @@ namespace WebApp
             //    .AddSqlServer()
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
-                // In development, we get this value from appsettings.json. In production, the value
-                // in appsettings.production.json overrides this value.
+            // In development, we get this value from appsettings.json. In production, the value
+            // in appsettings.production.json overrides this value.
+
+            // This was added in upgrade to .Net SDK 2.0
+            services.AddAuthentication()
+            .AddGoogle(options => {
+                options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
+                options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
+            });
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 // Govmeeting: Set options for cookie expiration.
-                options.Cookies.ApplicationCookie.SlidingExpiration = true;
-                options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromHours(1);
-                // Govmeeting: Set option for password lehgth.
+
+                // Todo (gm) - While upgrading to .NET SDK 2.0, I was getting an error on the next two line so
+                // I commented them out. Error = "IdentityOptions does not contain a definition for Cookies"
+                //options.Cookies.ApplicationCookie.SlidingExpiration = true;
+                //options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromHours(1);
+
+                // Govmeeting: Set option for password length.
                 options.Password.RequiredLength = 8;
                 // Govmeeting: Set lockout options.
                 options.Lockout.MaxFailedAccessAttempts = 5;
@@ -186,7 +215,10 @@ namespace WebApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        // JP: added 
+        //public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
+            ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager) // added for call to DbInitializer
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -246,23 +278,23 @@ namespace WebApp
                 });
             }
 
-            app.UseIdentity();
+            app.UseAuthentication();
 
-            // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
+            // Upgrading to .Net SDK 2.0 - this configurtion is now in ConfigureServices method
+            //// To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
+            //// Govmeeting: Add Google middleware authentication. We also added 
+            //// "Microsoft.AspNet.Authentication.Google" dependency in project.json and using statement above.
+            //// http://localhost:60366/signin-google
+            //app.UseGoogleAuthentication(new GoogleOptions
+            //{
+            //    ClientId = Configuration["ExternalAuth:Google:ClientId"],
+            //    ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"],
+            //    AuthenticationScheme = "Google",
 
-            // Govmeeting: Add Google middleware authentication. We also added 
-            // "Microsoft.AspNet.Authentication.Google" dependency in project.json and using statement above.
-            // http://localhost:60366/signin-google
-            app.UseGoogleAuthentication(new GoogleOptions
-            {
-                ClientId = Configuration["ExternalAuth:Google:ClientId"],
-                ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"],
-                AuthenticationScheme = "Google",
-
-                // JP: ### Conversion to ASP.NET Core ###
-                //SignInScheme = new Microsoft.AspNet.Identity.IdentityCookieOptions().ExternalCookieAuthenticationScheme
-                SignInScheme = new Microsoft.AspNetCore.Identity.IdentityCookieOptions().ExternalCookieAuthenticationScheme
-            });
+                //// JP: ### Conversion to ASP.NET Core ###
+                ////SignInScheme = new Microsoft.AspNet.Identity.IdentityCookieOptions().ExternalCookieAuthenticationScheme
+                //SignInScheme = new Microsoft.AspNetCore.Identity.IdentityCookieOptions().ExternalCookieAuthenticationScheme;
+            //});
 
             app.UseMvc(routes =>
             {
@@ -283,6 +315,10 @@ namespace WebApp
                     defaults: new { controller = "Home", action = "index" });
 
             });
+
+            // Create seed data
+            DbInitializer.Initialize(context, userManager, roleManager).Wait();
+            //DbInitializer.Initialize(app).Wait();
         }
 
         // This was the entry point for a normal Asp.Net application. But with Asp.Net Core, the
