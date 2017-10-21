@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-    // Todo(gm) #### Change all namespace names from "Models", "Controllers", etc to feature name.
+    // Todo-g #### Change all namespace names from "Models", "Controllers", etc to feature name.
 namespace WebApp.Controllers
 {
     [Route("api/[controller]")]
@@ -34,6 +34,7 @@ namespace WebApp.Controllers
         }
 
         // POST api/fixasr
+        [Authorize(Policy = "Proofreader")]
         [HttpPost]
         public void Post([FromBody]Fixasr value)
         {

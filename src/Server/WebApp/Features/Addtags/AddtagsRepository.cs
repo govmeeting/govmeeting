@@ -55,7 +55,7 @@ namespace WebApp.Models
         // We will likely change this convention once the number of files grows and we need a deeper folder structure.
         public Addtags Get(string username, string country, string state, string city, string govEntity, string meetingDate)
         {
-            // Todo(gm) - check permissions
+            // Todo-g - check permissions
             //      - change to get a default govEntity
             //      - change to get the latest meeting
 

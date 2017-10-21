@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { Talk } from './talk';
@@ -13,7 +13,7 @@ import { AppData } from '../../appdata';
 @Injectable()
 export class TalksService {
 
-    // Todo(gm) - change to use this query string.
+    // Todo-g - change to use this query string.
     //private getUrl = 'api/addtags/USA/PA/Philadelphia/Philadelphia/CityCouncil/2014-09-25';
     private getUrl : string = 'api/addtags';
     private putUrl : string = 'api/addtags';

@@ -21,7 +21,7 @@
         @foreach (var claim in user.claims)
         {
             <ul>
-                <strong> @claim.type of @claim.value </strong>
+                <strong> Claim: @claim.type = @claim.value </strong>
                 @using (Html.BeginForm("DeleteUserClaim", "Admin", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
@@ -46,10 +46,28 @@
                     @Html.Hidden("userId", @user.id)
                 </div>
 
+                @Html.Hidden("type", "role")
 
-                <strong>Add Claim</strong>
-                @Html.DropDownList("type", new SelectList(new[] { "Editor", "Manager", "Administrator" }))
-                @Html.DropDownList("value", new SelectList(new[] { "Philadelphia", "Boothbay Harbor", "System" }))
+                <strong>Add Claim: role = </strong>
+                @Html.DropDownList("type", new SelectList(new[] { "proofreader", "editor", "manager", "administrator" }))
+
+                <input type="submit" value="Save" />
+            }
+        </ul>
+        <ul>
+            @using (Html.BeginForm("AddUserClaim", "Admin", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="editor-label">
+                    @Html.Hidden("userId", @user.id)
+                </div>
+
+                @Html.Hidden("type", "location")
+
+                <strong>Add Claim: location = </strong>
+                @Html.DropDownList("value", new SelectList(new[] { "Philadelphia", "Boothbay Harbor"}))
 
                 <input type="submit" value="Save" />
             }

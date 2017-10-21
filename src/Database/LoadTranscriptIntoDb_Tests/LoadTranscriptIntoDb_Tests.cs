@@ -87,14 +87,14 @@ We need to consider the costs involved in purchasing this equipment.
                 List<Talk> Talks = dbOps.GetTalks(td.Id);
                 Assert.That(td.Talks.Count(), Is.EqualTo(2));
                 Assert.That(td.Talks[0].Text, Is.EqualTo("This equipment is badly needed."));
-                // Todo(gm): Get speaker names. Right now we only see SpeakerId.
+                // Todo-g Get speaker names. Right now we only see SpeakerId.
                 // Assert.That(td.Talks[0].Speaker.Name, Is.EqualTo("Louise Dinkins"));
                 Assert.That(td.Talks[1].Text, Is.EqualTo("We need to consider the costs involved in purchasing this equipment."));
                 // Assert.That(td.Talks[1].Speaker.Name, Is.EqualTo("Joe Hammer"));
             }
         }
 
-        // Todo(gm): write this test for a more complete transcript file than the simple example above.
+        // Todo-g write this test for a more complete transcript file than the simple example above.
         //[Test()]
         //public void Backend_LoadTranscriptIntoDb_Full()
         //{

@@ -15,6 +15,8 @@ export class BrowsemeetingComponent implements OnInit {
     topics: string[];
     errorMessage: string;
 
+    // Todo-g Add option to show context surounding what a specific person said
+
     /**
      * <summary>
      *  BrowseMeetingCtrl Constructor.

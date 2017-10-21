@@ -11,7 +11,7 @@ using System.Web.Script.Serialization;
 
 namespace Govmeeting.Volunteer.PreProcessTranscript
 {
-    // Todo(gm): All methods in TranscriptFixes are in need of unit tests.
+    // Todo-g All methods in TranscriptFixes are in need of unit tests.
 
     public static class TranscriptFixes
     {

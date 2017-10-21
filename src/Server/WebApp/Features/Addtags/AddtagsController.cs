@@ -49,11 +49,15 @@ namespace WebApp.Controllers
         }
 
         // POST api/addtags
+        [Authorize(Policy = "Editor")]
         [HttpPost]
         //public void Post([FromForm]string value)
         public void Post([FromBody]Addtags value)
         //public void Post(Addtags value)
         {
+            //Todo-g Add authorization check that user's location matches that of the government entity.
+            // We need to read the location from the user's claims.
+
             //addtags.Put("johnpank", "USA", "PA", "Philadelphia", "CityCouncil", "2016-03-17");
             string path = @"USA_PA_Philadelphia_CityCouncil/2016-03-17\Step 3 - Added topic tags.json";
             addtags.PutByPath(System.IO.Path.Combine(Common.getDataPath(), path), value);

@@ -1,11 +1,13 @@
 # govmeeting
 ## Purpose
 
-Meetings are the heart and soul of democracy. They are where people of different opinions present their points of view and listen to the opposing views. In early democracy, it was possible for most of a country's citizens to directly participate.
+Meetings are the heart and soul of democracy. They are where people of different opinions present their points of view and listen to the opposing views. 
 
-In the Athenian Assembly of 500 BC, a quorum of 6,000 of the 43,000 citizens was needed at a government meeting in order to conduct business. In the 10th century, the yearly Icelandic Althing was held in a natural outdoor amphitheater for two weeks and every citizen could attend.
+In the Athenian Assembly of 500 BC, a quorum of 6,000 of the 43,000 citizens was needed at a government meeting in order to conduct business. In 10th century Iceland, the yearly Althing was held in a natural outdoor amphitheater for two weeks. Every citizen could attend.
 
-Today, in a town of 30,000, it is rare to see more than a dozen citizens attending thier town council meetings. Is this still democracy? Even finding out what was said at government meetings is difficult to impossible. The vast majority do not even produce a transcript.
+Today, in a town of 30,000, it is rare to see more than a dozen people attending thier town council meetings. Is this still democracy?
+
+Even finding out what was said at government meetings is difficult to impossible. The vast majority do not even produce a transcript.
 
 Most only produce “minutes”, which is a list of the topics discussed and actions taken. If there is a transcript, it is usually difficult to access and read. You need to download it. There is never a table of contents. Finding anything in it is very difficult.
 

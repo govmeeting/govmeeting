@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { AsrSegment } from './asrsegment';
@@ -66,7 +66,7 @@ export class FixasrService {
         }
     }
 
-    // Todo(gm) - What should we return from the postChanges call?
+    // Todo-g - What should we return from the postChanges call?
     // We need to handle errors.
     postChanges(asrtext : AsrText): Observable<any> {
         // if data from memory, don't post it back.

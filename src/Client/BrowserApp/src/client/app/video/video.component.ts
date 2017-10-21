@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { VgAPI } from 'videogular2/core';
 import { Observable } from 'rxjs/Rx';
 
@@ -21,9 +21,9 @@ export class VideoComponent {
     }
     constructor(private appData: AppData) {
         console.log('VideoComponent constructor isServerRunning=' + appData.isServerRunning);
-        // Todo(gm): Full videos will be split into pieces which will be processed seperately.
+        // Todo-g Full videos will be split into pieces which will be processed seperately.
         //      See Backend/ AutoTranscription / SplitVideo
-        // Todo(gm): Compose URL to handle production and development
+        // Todo-g Compose URL to handle production and development
         //var location: string = appData.isServerRunning ? 'http://localhost:58880/assets/video/' : 'assets/video/';
         //var location: string = appData.isServerRunning ? 'http://localhost:58880/assets/video/' : 'assets/shortvideo/';
         var location: string = 'assets/shortvideo/';

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace WebApp
 {
-    // Todo(gm) Move this to "Features/Shared". Rename it "FileAccess".
+    // Todo-g Move this to "Features/Shared". Rename it "FileAccess".
 
     public static class Common
     {
         public static string getDataPath()
         {
             // "Datafiles" folder is at same level with "WebApp"
-            // Todo(gm): Use better way to locate Datafiles than traversing relative to current project folder.
+            // Todo-g Use better way to locate Datafiles than traversing relative to current project folder.
             string appfolder = Directory.GetCurrentDirectory();
             Console.WriteLine("GetCurrentDirectory=" + appfolder);
             return System.IO.Path.Combine(appfolder, "..\\..\\Datafiles");

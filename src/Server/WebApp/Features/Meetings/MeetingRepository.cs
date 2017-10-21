@@ -24,7 +24,7 @@ namespace WebApp.Models
 
         public Meeting Get(string country, string state, string county, string city, string govEntity, string meetingDate)
         {
-            // Todo(gm) - check permissions
+            // Todo-g - check permissions
 
             string subpath = country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "\\" + meetingDate;
 

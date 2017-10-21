@@ -13,7 +13,8 @@ using WebApp.Data;
 
 namespace WebApp.Controllers
 {
-    [Authorize("SysAdmin")]
+    //[Authorize(Policy = "Administrator")]
+
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
@@ -74,7 +75,7 @@ namespace WebApp.Controllers
             }
             catch
             {
-                // Todo(gm) - handle error
+                // Todo-g - handle error
                 return RedirectToAction("EditUsers");
             }
         }
@@ -93,7 +94,7 @@ namespace WebApp.Controllers
             }
             catch
             {
-                // Todo(gm) - handle error
+                // Todo-g - handle error
                 return RedirectToAction("EditUsers");
             }
         }

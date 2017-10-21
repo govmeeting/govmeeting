@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { AsrSegment } from './asrsegment';
 import { AsrText } from './asrtext';
@@ -42,7 +42,7 @@ export class FixasrComponent  implements OnInit {
     modeButtonText: string = 'REPLACE';
     _scrollList: HTMLElement;
 
-    // Todo(gm) - Fix problem with asrtext.
+    // Todo-g - Fix problem with asrtext.
     // We should just use asrtext, which contains both asrsegments & lastedit.
     // But the browser hangs when we try to access asrtext from HTML.
     asrsegments: AsrSegment[];
@@ -311,7 +311,7 @@ export class FixasrComponent  implements OnInit {
         this._fixasrService.getAsr()
             .subscribe(
             asrtext => {
-                // Todo(gm) - We should be able to just move asrtext to this.asrtext.
+                // Todo-g - We should be able to just move asrtext to this.asrtext.
                 // It appears to move the data OK. When I stop at a breakpoint, the
                 // the data is all there. But accessing it from the HTML
                 // causes an error (It says asrtext is null).
@@ -332,7 +332,7 @@ export class FixasrComponent  implements OnInit {
         var asrtext : AsrText;
         var lastedit = this.getScrollPosition();
         console.log('saveTranscript');
-        // Todo(gm) - See notes under getAsr().
+        // Todo-g - See notes under getAsr().
         //asrtext.lastedit = this.getScrollPosition();
         //asrtext.asrsegments = this.asrsegments;
         //this._asrService.postChanges(asrtext)

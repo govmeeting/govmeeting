@@ -1,4 +1,4 @@
-﻿import { join } from 'path';
+import { join } from 'path';
 
 import { SeedConfig } from './seed.config';
 import { ExtendPackages } from './seed.config.interfaces';
@@ -68,6 +68,17 @@ export class ProjectConfig extends SeedConfig {
         defaultExtension: 'js'
         }
       }
+      //,
+      //{
+      //  name: 'angular2-markdown',
+      //  path: 'node_modules/angular2-markdown/bundles/angular2-markdown.umd.min.js'
+      //},
+      //// required for prod build
+      //{
+      //  name: 'angular2-markdown/*',
+      //  path: 'node_modules/angular2-markdown/bundles/angular2-markdown.umd.min.js'
+      //}
+
 
       // Experiment with ng2-material-dropdown
       //{

@@ -1,4 +1,4 @@
-﻿import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -6,7 +6,7 @@ import { MaterialModule } from '@angular/material';
 import { MatsampRoutingModule } from './matsamp-routing.module';
 import { MatsampComponent } from './matsamp.component';
 
-// Todo(gm) - I get the following error in the F12 console window in Chrome:
+// Todo-g - I get the following error in the F12 console window in Chrome:
 //   material.umd.js:3258 Could not find HammerJS. Certain Angular Material components may not work correctly.
 
 @NgModule({

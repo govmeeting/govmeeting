@@ -64,7 +64,7 @@ namespace WebApp.Models
 
         public Fixasr Get(string username, string country, string state, string county, string city, string govEntity, string meetingDate)
         {
-            // Todo(gm) - check permissions
+            // Todo-g - check permissions
 
             string subpath = country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "\\" + meetingDate;
             string fullpath = System.IO.Path.Combine(_options.DatafilesPath, subpath);
@@ -176,7 +176,7 @@ namespace WebApp.Models
             bool res = int.TryParse(numpart, out numLast);
             if (!res)
             {
-                // todo - handle error
+                // Todo-g - handle error
                 return "01";
             }
             if (++numLast > MAX_BACKUPS)

@@ -135,6 +135,7 @@
     "@angular/platform-browser-dynamic": "~2.4.0",
     "@angular/router": "~3.4.1",
     "@types/node": "^6.0.63",
+    "angular2-markdown": "^1.6.0",
     "bootstrap-grid-only": "^1.0.0",
     "core-js": "^2.4.1",
     "intl": "^1.2.5",

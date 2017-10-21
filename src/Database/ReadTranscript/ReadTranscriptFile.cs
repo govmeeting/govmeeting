@@ -146,7 +146,7 @@ namespace Govmeeting.Backend.ReadTranscript
                         if (!string.IsNullOrEmpty(meetingTime)) meetingDate = meetingDate + " " + meetingTime;
                         meeting.Date = DateTime.Parse(meetingDate);
 
-                        // Todo(gm): We need to accept other date formats besides those that DateTime.Parse allows.
+                        // Todo-g We need to accept other date formats besides those that DateTime.Parse allows.
                         // We should then change commonly used date formats to one that Parse can use.
                         // We need to document, for the user, the formats of date and time can be added to a transcript file.
                         // Standard Date and Time Format Strings:
