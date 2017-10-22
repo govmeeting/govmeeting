@@ -53,7 +53,7 @@
     "@types/gulp-protractor": "^1.0.29",
     "@types/gulp-sass": "^0.0.29",
     "@types/gulp-util": "^3.0.29",
-    "@types/jasmine": "^2.5.35",
+    "@types/jasmine": "2.5.36",
     "@types/node": "^6.0.45",
     "@types/protractor": "^1.5.20",
     "@types/rimraf": "0.0.28",

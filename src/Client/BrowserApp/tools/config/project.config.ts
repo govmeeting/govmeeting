@@ -25,7 +25,7 @@ export class ProjectConfig extends SeedConfig {
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
       {src: 'bootstrap-grid-only/bootstrap.css', inject: true}, // inject into css section
       /* Select a pre-built Material theme */
-      {src: '@angular/material/core/theming/prebuilt/indigo-pink.css', inject: true}
+      {src: '@angular/material/prebuilt-themes/indigo-pink.css', inject: true}
     ];
 
     // Add `local` third-party libraries to be injected/bundled.
