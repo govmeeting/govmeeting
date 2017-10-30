@@ -23,6 +23,18 @@ export class VideoComponent {
     ngOnInit() {
     }
 
+    // TODO - When the Firefox developer tools are open showing console output,
+    // an error appears when switching away from the "Fix Error" page where the
+    // videogular video is displayed. If we switch to the Home page, we get the
+    // error "Invalid URI. Load of media resource  failed." If we switch to any
+    // page (About, Add Tags, etc), then we get the error "Cannot play media. No
+    // decoders for requested formats: text/html". There are questions on stackoverflow
+    // about this problem, and it is often just occurring in Firefox.
+    // https://stackoverflow.com/questions/47003569/firefox-returning-content-type-text-html-not-supported-for-video
+    // https://stackoverflow.com/questions/30810955/loading-html-video-with-jquery-not-working-anymore
+
+
+
     constructor(private appData: AppData) {
         console.log('VideoComponent constructor isServerRunning=' + appData.isServerRunning);
         // Todo-g Full videos will be split into pieces which will be processed seperately.

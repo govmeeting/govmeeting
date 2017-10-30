@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./matsamp.component.css']
 })
 export class MatsampComponent implements OnInit {
+  title = 'matsamp works!';
+  isDarkTheme : boolean = false;
+  progress : number = 50;
 
   constructor() { }
 

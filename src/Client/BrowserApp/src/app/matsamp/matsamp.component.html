@@ -1,3 +1,118 @@
-<p>
-  matsamp works!
-</p>
+  <!-- experiment with scrollable region
+ <mat-content></mat-content>
+ -->
+
+<!--
+   This sample code was modified for changes made up to 2.0.0-beta.12 (2017-10-05)
+  * "md" prefix was changed to "mat"
+  * md-sidenav-layout" was deprecated.
+  * md-input was deprecated. Use <input>. <input> is a void element. Therefore all
+    content that was included in md-input is now commented out.
+-->
+
+ <!--<mat-sidenav-layout [class.m2app-dark]="isDarkTheme">-->
+   <mat-sidenav #sidenav mode="side" class="app-sidenav">
+     Sidenav
+   </mat-sidenav>
+
+   <mat-toolbar color="primary">
+     <button class="app-icon-button" (click)="sidenav.toggle()">
+       <i class="material-icons app-toolbar-menu">menu</i>
+     </button>
+     Angular 2 Material2 Example App
+     <span class="app-toolbar-filler"></span>
+     <button mat-button (click)="isDarkTheme = !isDarkTheme">TOGGLE DARK THEME</button>
+   </mat-toolbar>
+
+   <div class="app-content">
+     <mat-card>
+       <button mat-button>FLAT</button>
+       <button mat-raised-button mat-tooltip="This is a tooltip!">RAISED</button>
+       <button mat-raised-button color="primary">PRIMARY RAISED</button>
+       <button mat-raised-button color="accent">ACCENT RAISED</button>
+     </mat-card>
+
+     <mat-card>
+       <mat-checkbox>Unchecked</mat-checkbox>
+       <mat-checkbox [checked]="true">Checked</mat-checkbox>
+       <mat-checkbox [indeterminate]="true">Indeterminate</mat-checkbox>
+       <mat-checkbox [disabled]="true">Disabled</mat-checkbox>
+     </mat-card>
+
+     <mat-card>
+       <mat-radio-button name="symbol">Alpha</mat-radio-button>
+       <mat-radio-button name="symbol">Beta</mat-radio-button>
+       <mat-radio-button name="symbol" disabled>Gamma</mat-radio-button>
+     </mat-card>
+
+     <mat-card class="app-input-section">
+       <input mdInput placeholder="First name"><!--</input>-->
+       <input mdInput #nickname placeholder="Nickname" maxlength="50">
+         <!--<mat-hint align="end">
+           {{nickname.characterCount}} / 50
+         </mat-hint>
+       </input>-->
+       <input mdInput>
+         <!--<mat-placeholder>
+           <i class="material-icons app-input-icon">android</i> Favorite phone
+         </mat-placeholder>
+       </input>-->
+       <input mdInput placeholder="Motorcycle model">
+         <!--<span mat-prefix>
+           <i class="material-icons app-input-icon">motorcycle</i>
+           &nbsp;
+         </span>
+       </input>-->
+     </mat-card>
+
+     <mat-card>
+       <mat-spinner class="app-spinner"></mat-spinner>
+       <mat-spinner color="accent" class="app-spinner"></mat-spinner>
+     </mat-card>
+
+     <mat-card>
+       <label>
+         Indeterminate progress-bar
+         <mat-progress-bar
+           class="app-progress"
+           mode="indeterminate"
+           aria-label="Indeterminate progress-bar example"></mat-progress-bar>
+       </label>
+       <label>
+         Determinate progress bar - {{progress}}%
+         <mat-progress-bar
+           class="app-progress"
+           color="accent"
+           mode="determinate"
+           [value]="progress"
+           aria-label="Determinate progress-bar example"></mat-progress-bar>
+       </label>
+     </mat-card>
+
+     <mat-card>
+       <mat-tab-group>
+         <mat-tab>
+           <ng-template mat-tab-label>
+             Earth
+           </ng-template>
+           <ng-template mat-tab-content>
+             <p>EARTH</p>
+           </ng-template>
+         </mat-tab>
+         <mat-tab>
+           <ng-template mat-tab-label>
+             Fire
+           </ng-template>
+           <ng-template mat-tab-content>
+             <p>FIRE</p>
+           </ng-template>
+         </mat-tab>
+       </mat-tab-group>
+     </mat-card>
+   </div>
+ <!--</mat-sidenav-layout>-->
+
+ <span class="app-action" [class.m2app-dark]="isDarkTheme">
+   <button mat-fab><mat-icon>check circle</mat-icon></button>
+ </span>
+

@@ -6,7 +6,7 @@ import { AppData } from './appdata';
 // import './operators';
 
 // See aumentations.ts for the explanation of the following.
-// import 'rxjs/Subject';
+import 'rxjs/Subject';
 
 @Component({
   selector: 'app-root',
