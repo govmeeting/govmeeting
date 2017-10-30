@@ -13,11 +13,11 @@ import 'rxjs/add/operator/catch';
 export class MeetingService {
 
 // The code outlined in main.ts for checking the Name argument need to be used here.
-    //private _meetingUrl = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
+    private _meetingUrl = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
     //private _meetingUrl = 'assets/data/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen/2014-09-08/Step 5 - processed transcript.json';
     //private _meetingUrl = 'api/meeting';
     //private _meetingUrl = 'api/meeting/BoothbayHarbor/Selectmen/2014-09-08';
-    private _meetingUrl = 'api/meeting/USA/ME/LincolnCounty/BoothbayHarbor/Selectmen/2014-09-08';
+    //private _meetingUrl = 'api/meeting/USA/ME/LincolnCounty/BoothbayHarbor/Selectmen/2014-09-08';
 
     // private _meetingData: any = {};
     private data: any;

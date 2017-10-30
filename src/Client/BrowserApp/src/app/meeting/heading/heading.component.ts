@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MeetingService } from '../meeting.service';
 
 @Component({
   selector: 'gm-heading',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadingComponent implements OnInit {
 
-  constructor() { }
+  meetingInfo: any = {name: '', date: ''};
 
-  ngOnInit() {
-  }
+  errorMessage: string;
+
+  constructor(private _meetingService: MeetingService) { }
+
+  ngOnInit() {this.getMeetingInfo();}
+
+  getMeetingInfo() {
+    this._meetingService.getMeeting()
+    .subscribe(
+    (meeting: any) => {
+        this.meetingInfo = meeting.meetingInfo;
+        //console.log(this.meetingInfo);
+    },
+    (error: any) => this.errorMessage = <any>error);
+}
 
 }

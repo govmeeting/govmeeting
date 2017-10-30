@@ -1,3 +1,8 @@
-<p>
-  speakers works!
-</p>
+<div>
+  <span> <strong> Select a Speaker: </strong> </span>
+  <span *ngFor=" let speaker of speakerNames; let i = index">
+      <span [class.chosen]="IsSelectedSpeaker(i)" myhighlight [hidden]="i==0" (click)="FilterBySpeaker(i)"> {{speaker}} &#x2022; </span>
+      <span [class.chosen]="IsSelectedSpeaker(i)" myhighlight [hidden]="i!=0"  (click)="FilterBySpeaker(i)"> All Speakers &#x2022; </span>
+  </span>
+  <br>
+</div>
