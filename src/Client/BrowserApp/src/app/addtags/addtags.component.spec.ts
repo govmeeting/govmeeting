@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { AddtagsComponent } from './addtags.component';
+import { TalksComponent } from './talks/talks.component'
+import { TopicsComponent } from './topics/topics.component'
+import { SectionsComponent } from './sections/sections.component'
 
 describe('AddtagsComponent', () => {
   let component: AddtagsComponent;
@@ -8,7 +12,13 @@ describe('AddtagsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddtagsComponent ]
+      imports: [ FormsModule ],
+      declarations: [
+        AddtagsComponent,
+        TalksComponent,
+        TopicsComponent,
+        SectionsComponent
+       ]
     })
     .compileComponents();
   }));

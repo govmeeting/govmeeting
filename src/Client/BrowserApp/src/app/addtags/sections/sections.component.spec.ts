@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SectionsComponent } from './sections.component';
+import { SectionsService } from './sections.service'
 
 describe('SectionsComponent', () => {
   let component: SectionsComponent;

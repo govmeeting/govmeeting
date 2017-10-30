@@ -4,6 +4,15 @@
 //     "noStrictGenericChecks": true,
 // in tsconfig.json.
 
+// Other solution to this error from https://github.com/videogular/videogular2/issues/609
+// Solution 1
+//   Downgrade the rxjs to V5.1.0 (This is what videogular now uses.)
+//   Downgrade the typescript to V2.3.4
+// Solution 2
+//    Add this to compilerOptions in tsconfig.json:
+//      "skipLibCheck": true
+
+
 // augmentations.ts
 import {Operator} from 'rxjs/Operator';
 import {Observable} from 'rxjs/Observable';

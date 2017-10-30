@@ -5,11 +5,13 @@ import { TalksComponent } from './talks/talks.component';
 import { TopicsComponent } from './topics/topics.component';
 import { SectionsComponent } from './sections/sections.component';
 import { FormsModule } from '@angular/forms';
+//import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    //ReactiveFormsModule
   ],
   declarations: [AddtagsComponent, TalksComponent, TopicsComponent, SectionsComponent]
 })
