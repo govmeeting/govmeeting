@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { MeetingModule } from './meeting/meeting.module'
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -14,7 +15,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MeetingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
