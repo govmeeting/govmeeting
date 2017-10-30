@@ -1,0 +1,11 @@
+<p>
+  dropdown works!
+</p>
+<select name="example" (change)="onSelectChange($event.target.value)">
+  <option></option>
+  <option *ngFor="let v of values;let i=index" value={{i}}>{{v.option}}</option>
+</select>
+<form [formGroup]="newOptionForm" (ngSubmit)="onNewEntry($event)">
+  <input formControlName="newOption" type="text" placeholder="enter new name">
+<button type="submit">Add new</button>
+</form>
