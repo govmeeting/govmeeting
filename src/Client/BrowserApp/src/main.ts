@@ -8,5 +8,8 @@ if (environment.production) {
   enableProdMode();
 }
 
+// Data passed in from index.html
+import { AppData } from './app/appdata';
+
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));

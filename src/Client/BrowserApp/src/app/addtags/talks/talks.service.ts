@@ -38,14 +38,14 @@ export class TalksService {
         ]
     };
 
-    private appData: AppData = {isServerRunning: false, isDataFromMemory: false};
+    //private appData: AppData = {isServerRunning: false, isDataFromMemory: false};
 
-    //constructor(private http: Http, private appData: AppData) {
-    //    console.log('TalksService - ', appData);
-    //}
-    constructor(private http: Http) {
-
+    constructor(private http: Http, private appData: AppData) {
+        console.log('TalksService - ', appData);
     }
+    //constructor(private http: Http) {
+
+    //}
 
     // The property "IsServerRunning" on AppData tells us if the ASP.NET
     // server is running. If so we will call the API to get the data.

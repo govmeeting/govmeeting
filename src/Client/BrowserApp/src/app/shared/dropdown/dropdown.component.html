@@ -1,6 +1,3 @@
-<p>
-  dropdown works!
-</p>
 <select name="example" (change)="onSelectChange($event.target.value)">
   <option></option>
   <option *ngFor="let v of values;let i=index" value={{i}}>{{v.option}}</option>

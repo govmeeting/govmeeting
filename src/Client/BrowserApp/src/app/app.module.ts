@@ -4,31 +4,41 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MeetingModule } from './meeting/meeting.module'
 import { AddtagsModule } from './addtags/addtags.module'
 import { FixasrModule } from './fixasr/fixasr.module'
-import { ReactiveFormsModule } from '@angular/forms'
+import { SharedModule } from './shared/shared.module'
+import { HomeModule } from './home/home.module';
+import { AboutModule } from './about/about.module';
+import { MatsampModule } from './matsamp/matsamp.module';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { DropdownComponent } from './shared/dropdown/dropdown.component';
-import { MyhighlightDirective } from './shared/myhighlight/myhighlight.directive';
+
+import { AppData } from './appdata';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     NavbarComponent,
-    DropdownComponent,
-    MyhighlightDirective
   ],
   imports: [
-    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    HomeModule,
+    AboutModule,
     MeetingModule,
     AddtagsModule,
-    FixasrModule
+    FixasrModule,
+    MatsampModule,
+    SharedModule
   ],
-  providers: [],
+  exports: [
+  ],
+  providers: [AppData,
+    {
+      provide: AppData,
+      useValue: window['APP_DATA']
+    }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,5 +10,14 @@
 </head>
 <body>
   <app-root clientonly="true"></app-root>
+
+  <script>
+    // These are flags passed to the Angular app. Loading this file, "index.html", implies
+    // isServerRunning is false and means that the Asp.Net server is not running.
+    // We then use test data contained within the Client's "assets" folder.
+    // If isDataFromMemory is true, we will use test data in memory.
+    window.APP_DATA = { isServerRunning: false, isDataFromMemory: false }
+  </script>
+
 </body>
 </html>

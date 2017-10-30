@@ -1,0 +1,62 @@
+/*
+.mymd-button {
+  padding: 0 6px 0 6px;
+  min-width: 88px;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration:none;
+  border: none;
+  outline: none;
+}
+*/
+
+.edit-region {
+  display: flex;
+}
+
+.scroll-text {
+  flex: initial;
+  height: 405px;
+  width: 310px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.scroll-text input {
+  width: 310px;
+}
+
+.controls-and-help {
+  flex: 1;
+}
+
+.edit-controls {
+  flex: 1;
+}
+
+.mode-button {
+  margin: 10px 20px 0 20px;
+}
+
+.play-button {
+  margin: 10px 10px 0 20px;
+}
+
+.save-button {
+  margin: 10px 10px 0 20px;
+}
+
+.edit-help {
+  margin: 10px 10px 0 10px;
+}
+
+.speaker-input {
+  margin: 10px 10px 0 10px;
+}
+
+/*
+http://stackoverflow.com/questions/29108922/angular-material-how-to-make-content-scrollable?rq=1
+http://stackoverflow.com/questions/36906782/how-to-make-md-content-scrollable-in-angular-material-design
+*/
