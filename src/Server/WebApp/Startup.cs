@@ -167,8 +167,6 @@ namespace WebApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        // JP: added 
-        //public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
             ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager) // added for call to DbInitializer
         {
@@ -202,11 +200,6 @@ namespace WebApp
                 }
                 catch { }
             }
-
-            // JP: ### Conversion to ASP.NET Core ###
-            // Remove call to app.UseIISPlatformHandler(); This is handled by UseIIS in Main.
-            // See: https://github.com/aspnet/Announcements/issues/164
-            // app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
 
             app.UseStaticFiles();
 

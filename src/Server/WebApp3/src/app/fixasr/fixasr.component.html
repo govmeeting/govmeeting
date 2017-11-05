@@ -1,0 +1,46 @@
+<gm-video></gm-video>
+
+<div class="edit-region">
+
+    <div  id="scroll-text" class="scroll-text">
+        <div *ngFor="let a of asrsegments; let i = index">
+            <input #myInput type="text" [(ngModel)]="a.said" (mouseup)="onMouseup($event, i)"
+             (focus)="onFocus($event, i)" (keyup)="onKey($event, i)" (keydown)="onKeyDown($event, i)"/>
+        </div>
+    </div>
+
+    <div class="controls-and-help">
+        <div class="edit-controls">
+            <button md-raised-button class="mode-button" color="primary" (click)="toggleInsertMode()">MODE ({{modeButtonText}})</button>
+            <button md-raised-button class="play-button" color="primary" (click)="playPhrase()">PLAY </button>
+            <button md-raised-button class="save-button" color="primary" (click)="saveChanges()">SAVE</button>
+        </div>
+
+        <p *ngIf="isSpeakerSelectVisible" class="speaker-input">
+        <label> Speaker </label>
+        <gm-dropdown [values]="speakers" (selectSpeaker)="selectSpeaker($event)" (addSpeaker)="addSpeaker($event)"></gm-dropdown>
+        </p>
+
+
+        <div class="edit-help">
+            <h3> Edit Modes </h3>
+            <ul>
+                <li>REPLACE: Click to highlight a word. Type to replace it (or space to delete).</li>
+                <li>INSERT: Click within text. Enter new text.</li>
+            </ul>
+            <h3> Keys </h3>
+            <ul>
+                <li>Arrow keys: Navigate Up/Down/Right/Left</li>
+                <li>Enter key:  Play current portion of  meeting</li>
+                <li>Insert key: Change edit mode</li>
+            </ul>
+        </div>
+
+        <!--For testing
+         <button (click)="getpos()"> GETPOS </button> pos={{lastedit}}
+         <button (click)="setpos()"> SETPOS </button>-->
+
+         <!--{{asrtext.lastedit}}   Why does it think asrtext is null? -->
+    </div>
+
+</div>

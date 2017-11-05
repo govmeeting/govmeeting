@@ -1,0 +1,45 @@
+// This is a summary of startup before the change to use NgModule.
+
+index.html
+	<sd-app>Loading...</sd-app>
+	System.config( ...
+	System.import('app/main'). ...
+
+app/main.ts
+	bootstrap(AppComponent, [ ...
+
+app/app.component.ts
+	@Component({
+	  moduleId: module.id,
+	  selector: 'sd-app',
+	  viewProviders: [NameListService, HTTP_PROVIDERS],
+	  templateUrl: 'app.component.html',
+	  directives: [ROUTER_DIRECTIVES, NavbarComponent, ToolbarComponent]
+	})
+	export class AppComponent {
+
+app/app.component.html
+	<sd-toolbar></sd-toolbar>
+	<sd-navbar></sd-navbar>
+	<router-outlet></router-outlet>
+
+app/app.routes.ts
+	const routes: RouterConfig = [
+	  ...AddtagsRoutes,
+	  ...MeetingRoutes,
+	  ...HomeRoutes,
+	  ...AboutRoutes,
+	  ...HomepageRoutes
+	];
+	export const APP_ROUTER_PROVIDERS = [
+	  provideRouter(routes),
+	];
+
+
+app/about/about.routes.ts
+	export const AboutRoutes: RouterConfig = [
+	  {
+	    path: 'about',
+	    component: AboutComponent
+	  }
+	];

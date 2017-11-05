@@ -2,29 +2,21 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebApp</title>
 
-    <!--
-        "ba" is defined in startup.cs as a new PhysicalFileProvider and points to the Client/BrowserApp folder.
-    -->
-
+    <!-- "ba" is defined in startup.cs as a new PhysicalFileProvider and points to the Client/BrowserApp folder. -->
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <!--<link rel="stylesheet" href="ba/node_modules/bootstrap-grid-only/bootstrap.css?1468288678454">-->
-        <link rel="stylesheet" href="ba/node_modules/@@angular/material/prebuilt-themes/indigo-pink.css?1486498971055">
-        <link rel="stylesheet" href="ba/dist/dev/css/main.css?1466603800031">
-        @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css">*@
+        <!-- <link rel="stylesheet" href="ba/node_modules/@@angular/material/prebuilt-themes/indigo-pink.css?1486498971055">-->
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        @*<link rel="stylesheet" href="ba/dist/prod/css/main.css?1466603800031">*@
-        <link rel="stylesheet" href="~/css/main.css?1466603800031">
-        @*<llink rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css">*@
     </environment>
 
     <style>
@@ -42,166 +34,69 @@
             z-index: 2;
         }
     </style>
-
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+
 <body>
-  <script>
-    window.APP_DATA = { isServerRunning: true, isDataFromMemory: false } 
-  </script>
+    <script>
+        window.APP_DATA = { isServerRunning: true, isDataFromMemory: false }
+    </script>
 
     <!--<div class="navbar navbar-inverse navbar-fixed-top">-->
     <!--<div class="navbar navbar-inverse fixed-r">-->
-        <div class="navbar fixed-r">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar">===</span>
-                        <span class="icon-bar">===</span>
-                        <span class="icon-bar">===</span>
-                    </button>
-                    <!--<a asp-controller="Home" asp-action="Index" class="navbar-brand">
-                        <environment names="Development">
-                            Govmeeting (dev)
-                        </environment>
-                        <environment names="Staging,Production">
-                            Govmeeting
-                        </environment>
-                    </a>-->
-                </div>
-                <div class="navbar-collapse collapse">
-                    <!--<ul class="nav navbar-nav">
-                        <li><a href="/">HOME</a></li>
-                    </ul>-->
-                    @await Html.PartialAsync("_LoginPartial")
-                </div>
+    <div class="navbar fixed-r">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar">===</span>
+                    <span class="icon-bar">===</span>
+                    <span class="icon-bar">===</span>
+                </button>
+                <!--<a asp-controller="Home" asp-action="Index" class="navbar-brand">
+                    <environment names="Development">
+                        Govmeeting (dev)
+                    </environment>
+                    <environment names="Staging,Production">
+                        Govmeeting
+                    </environment>
+                </a>-->
+            </div>
+            <div class="navbar-collapse collapse">
+                <!--<ul class="nav navbar-nav">
+                    <li><a href="/">HOME</a></li>
+                </ul>-->
+                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
+    </div>
 
-        <!--<div>This element is fixed top left</div>-->
+    <!--<div>This element is fixed top left</div>-->
 
-        <div class="container body-content">
-            @RenderBody()
-            <!-- <footer> <p>&copy; 2016 - WebApp</p> </footer> -->
-        </div>
+    <div class="container body-content">
+        @RenderBody()
+        <!-- <footer> <p>&copy; 2016 - WebApp</p> </footer> -->
+    </div>
 
-        <script>
-            // Fixes undefined module function in SystemJS bundle
-            function module() { }
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
         </script>
-
-        <environment names="Development">
-            <script src="ba/node_modules/core-js/client/shim.min.js?1468288678438"></script>
-
-            <!-- The latest angular-seed on 2016-12-12 added this: -->
-            <script src="ba/node_modules/intl/dist/Intl.min.js?1483976882851"></script>
-
-            <script src="ba/node_modules/systemjs/dist/system.src.js?1468288678438"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
 
 
-            <script>
-                // These are documentation links for SystemJs & ES6 module loader configuration.
-                // https://github.com/systemjs/systemjs/tree/master/docs
-                // https://github.com/systemjs/systemjs/blob/master/docs/config-api.md
-                // https://github.com/ModuleLoader/es6-module-loader/blob/master/docs/loader-config.md
-                // https://github.com/systemjs/systemjs/pull/1049/files?short_path=762c0f6
+    @RenderSection("scripts", required: false)
 
-
-                // The commented-out lines are what was there before we started using the latest angular-seed on 2016-12-12
-                System.config({
-                    "defaultJSExtensions": true,
-
-                    //"packageConfigPaths": [
-                    //  "ba/node_modules/*/package.json",
-                    //  "ba/node_modules/**/package.json",
-                    //  "ba/node_modules/@@angular/*/package.json"
-                    //],
-
-                    "paths": {
-                        "dev/app/main": "ba/dist/dev/app/main",
-                        "@@angular/common": "ba/node_modules/@@angular/common/bundles/common.umd.js",
-                        "@@angular/compiler": "ba/node_modules/@@angular/compiler/bundles/compiler.umd.js",
-                        "@@angular/core": "ba/node_modules/@@angular/core/bundles/core.umd.js",
-                        "@@angular/forms": "ba/node_modules/@@angular/forms/bundles/forms.umd.js",
-                        "@@angular/http": "ba/node_modules/@@angular/http/bundles/http.umd.js",
-                        "@@angular/platform-browser": "ba/node_modules/@@angular/platform-browser/bundles/platform-browser.umd.js",
-                        "@@angular/platform-browser-dynamic": "ba/node_modules/@@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
-                        "@@angular/material": "ba/node_modules/@@angular/material/bundles/material.umd.js",
-                        //"videogular2": "ba/node_modules/videogular2/core.js",
-
-                        //"@@angular/router": "ba/node_modules/@@angular/router/index.js",
-                        '@@angular/router': 'ba/node_modules/@@angular/router/bundles/router.umd.js',
-
-                        //"rxjs/*": "ba/node_modules/rxjs/*",
-
-                        "dev/app/*": "ba/dist/dev/app/*",
-
-                        //"*": "ba/node_modules/*"
-                    },
-
-                    map: {
-                        'videogular2': 'ba/node_modules/videogular2',
-                    },
-                    packages: {
-                        'videogular2': {
-                            main: 'core.js',
-                            defaultExtension: 'js'
-                        }
-                    },
-
-
-                    "packages": {
-                        //"rxjs": {
-                        //    "defaultExtension": "js"
-                        //}
-                        "@@angular/material": {
-                            "main": "index.js",
-                            "defaultExtension": "js"
-                        }
-                    }
-                })
-
-            </script>
-
-
-        </environment>
-
-        <environment names="Development">
-            <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-            <script src="ba/node_modules/zone.js/dist/zone.js?1483976882869"></script>
-
-            <!-- The latest angular-seed on 2016-12-12 changed the RxJs include: -->
-            <script src="ba/node_modules/.tmp/Rx.min.js?1483976882871"></script>
-            @*<script src="ba/node_modules/rxjs/bundles/Rx.js?1468288678454"></script>*@
-
-        </environment>
-        <environment names="Staging,Production">
-            .
-            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
-                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                    asp-fallback-test="window.jQuery">
-            </script>
-            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
-                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-            </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
-            <script src="~/js/shims.js?1463764236153"></script>
-            <script src="~/js/app.js?1463764236155"></script>
-        </environment>
-
-        <environment names="Development">
-            <script>
-                System.import('ba/dist/dev/app/main')
-                .catch(function (e) {
-                    console.error(e,
-                      'Report this error at https://github.com/mgechev/angular2-seed/issues');
-                });
-            </script>
-        </environment>
-
-        @RenderSection("scripts", required: false)
 </body>
 </html>

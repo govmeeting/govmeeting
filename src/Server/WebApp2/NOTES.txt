@@ -1,0 +1,7 @@
+﻿Created a WebApi app and then made the same changes to it as in:
+	Angular CLI With .NET Core
+	From <https://dustinewers.com/angular-cli-with-net-core/> 
+	See notes in OneNote
+
+I copied all the contents of the "Client\BrowserApp\last-build" to wwwroot.
+The entire Angular App works when click on IIS Express. I can go to all the sub-pages (Home, Fixasr, Addtags, Meeting).
