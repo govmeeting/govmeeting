@@ -42,9 +42,10 @@ namespace WebApp.Controllers
         // GET: api/addtags
         [HttpGet]
         public Addtags Get()
+
         // public string Get()
         {
-            Addtags ret = addtags.Get("johnpank", "USA", "PA", "Philadelphia", "CityCouncil", "2016-03-17");
+            Addtags ret = addtags.Get("johnpank", "USA", "PA", "Philadelphia", "Philadelphia", "CityCouncil", "2016-03-17");
             return ret;
         }
 

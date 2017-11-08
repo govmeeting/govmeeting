@@ -17,9 +17,9 @@ namespace WebApp.Services
     // https://stackoverflow.com/questions/40027388/cannot-get-the-usermanager-class/40046290#40046290
     public static class DbInitializer
     {
-        static ApplicationDbContext context;
-        static UserManager<ApplicationUser> userManager;
-        static RoleManager<IdentityRole> roleManager;
+        //static ApplicationDbContext context;
+        //static UserManager<ApplicationUser> userManager;
+        //static RoleManager<IdentityRole> roleManager;
         public static async Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         //public static async Task Initialize(IApplicationBuilder app)

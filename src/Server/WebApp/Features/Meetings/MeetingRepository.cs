@@ -28,7 +28,7 @@ namespace WebApp.Models
 
             string subpath = country + "_" + state + "_" + county + "_" + city + "_" + govEntity + "\\" + meetingDate;
 
-            string latestCopy = System.IO.Path.Combine(_options.DatafilesPath, subpath, STEP5_BASE_NAME + "." + EXTENSION);
+            string latestCopy = Path.Combine(_options.DatafilesPath, subpath, STEP5_BASE_NAME + "." + EXTENSION);
 
             if (File.Exists(latestCopy))
             {

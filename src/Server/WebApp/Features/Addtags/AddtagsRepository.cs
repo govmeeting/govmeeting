@@ -10,62 +10,35 @@ using Microsoft.Extensions.Options;
 
 namespace WebApp.Models
 {
+    // We are currently storing the data under the following structure.
+    // Directories under Datafiles are named as follows: <country>_<state>_<town-or-city>_<gov-entity>/<date>
+    // Example: Get("johnpank", "USA", "PA", "Philadelphia", "CityCouncil", "2016-03-17")
+    // will get the file in the directory "Datafiles/USA_PA_Philadelphia_CityCouncil/2016-03-17".
+    // We will likely change this convention once the number of files grows and we need a deeper folder structure.
+
+
     public class AddtagsRepository : IAddtagsRepository
     {
         static ConcurrentDictionary<string, Addtags> _addtags = new ConcurrentDictionary<string, Addtags>();
         private DatafilesOptions _options { get; set; }
 
-        //public AddtagsRepository()
-        //{
-        ////    Add(new Addtags { Name = "Item1" });
-        //}
-
         // https://www.mikesdotnetting.com/article/302/server-mappath-equivalent-in-asp-net-core
-        private IHostingEnvironment _env;
-        public AddtagsRepository(IHostingEnvironment env, IOptions<DatafilesOptions> settings)
+        //private IHostingEnvironment _env;
+        public AddtagsRepository(IOptions<DatafilesOptions> settings)
         {
-            _env = env;
             _options = settings.Value;
             //    Add(new Addtags { Name = "Item1" });
         }
 
-
-        /*public IEnumerable<Addtags> GetAll()
-        {
-            return _addtags.Values;
-        }*/
-
-        /*public void Add(Addtags item)
-        {
-            item.Key = Guid.NewGuid().ToString();
-            _addtags[item.Key] = item;
-        }*/
-
-        public Addtags Find(string key)
-        {
-            Addtags item;
-            _addtags.TryGetValue(key, out item);
-            return item;
-        }
-
-        // We are currently storing the data under the following structure. Directories under Datafiles are
-        // named as follows: <country>_<state>_<town-or-city>_<gov-entity>/<date>
-        // Example: Get("johnpank", "USA", "PA", "Philadelphia", "CityCouncil", "2016-03-17")
-        // will get the file in the directory "Datafiles/USA_PA_Philadelphia_CityCouncil/2016-03-17".
-        // We will likely change this convention once the number of files grows and we need a deeper folder structure.
-        public Addtags Get(string username, string country, string state, string city, string govEntity, string meetingDate)
+        public Addtags Get(string username, string country, string state, string county, string city, string govEntity, string meetingDate)
         {
             // Todo-g - check permissions
             //      - change to get a default govEntity
             //      - change to get the latest meeting
 
-            //if (govEntity == null) govEntity = "CityCouncil";
+            string path = country + "_" + state + "_" + city + "_" + county + "_" + govEntity + "\\" + meetingDate + "\\" + "Step 2A - Convert PDF file to JSON.json";
 
-            //if (meetingDate == null) meetingDate = "2016-03-17";
-
-            string path = country + "_" + state + "_" + city + "_" + govEntity + "\\" + meetingDate + "\\" + "Step 2A - Convert PDF file to JSON.json";
-
-            return GetByPath(System.IO.Path.Combine(_options.DatafilesPath, path));
+            return GetByPath(Path.Combine(_options.DatafilesPath, path));
         }
 
         public Addtags GetByPath(string path)
@@ -82,45 +55,16 @@ namespace WebApp.Models
             }
         }
 
-        public string GetStringByPath(string path)
-        {
-            string addtagsString = Readfile(path);
-            if (addtagsString != null)
-            {
-                return addtagsString;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
         //public void PutByPath(string path, string value)
         public void PutByPath(string path, Addtags value)
         {
             string stringValue = JsonConvert.SerializeObject(value, Formatting.Indented);
-            //string stringValue = value;
 
-            var webRoot = _env.WebRootPath;
-            var fullpath = System.IO.Path.Combine(webRoot, path);
+            //var webRoot = _env.WebRootPath;
+            //var fullpath = Path.Combine(webRoot, path);
 
-            File.WriteAllText(fullpath, stringValue);
+            File.WriteAllText(path, stringValue);
 
-        }
-
-        /*public Addtags Remove(string key)
-           {
-               Addtags item;
-               _addtags.TryGetValue(key, out item);
-               _addtags.TryRemove(key, out item);
-               return item;
-           }*/
-
-        public void Update(Addtags item)
-        {
-            //Write out JSON data.
-            //string output = JsonConvert.SerializeObject(gto, Formatting.Indented);
-            //    _transcriptEdits[item.key] = item;
         }
 
         private string Readfile(string path)
@@ -154,6 +98,26 @@ namespace WebApp.Models
             {speaker: 'Jo', said: '33333333', section: null, topic: null, showSetTopic: false}
             ] }";
         }
+
+        //public string GetStringByPath(string path)
+        //{
+        //    string addtagsString = Readfile(path);
+        //    if (addtagsString != null)
+        //    {
+        //        return addtagsString;
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
+
+        //public void Update(Addtags item)
+        //{
+        //    Write out JSON data.
+        //    string output = JsonConvert.SerializeObject(gto, Formatting.Indented);
+        //        _transcriptEdits[item.key] = item;
+        //}
 
     }
 }

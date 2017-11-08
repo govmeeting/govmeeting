@@ -9,13 +9,16 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 //import {Headers, RequestOptions} from '@angular/http';
 
+// AppData is configuration which is passed in from index.html.
+import { AppData } from '../appdata';
+
 @Injectable()
 export class MeetingService {
 
 // The code outlined in main.ts for checking the Name argument need to be used here.
-    private _meetingUrl = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
+  private _meetingUrl_NoServer = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
     //private _meetingUrl = 'assets/data/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen/2014-09-08/Step 5 - processed transcript.json';
-    //private _meetingUrl = 'api/meeting';
+    private _meetingUrl = 'api/meeting';
     //private _meetingUrl = 'api/meeting/BoothbayHarbor/Selectmen/2014-09-08';
     //private _meetingUrl = 'api/meeting/USA/ME/LincolnCounty/BoothbayHarbor/Selectmen/2014-09-08';
 
@@ -25,10 +28,16 @@ export class MeetingService {
     private errorMessage: string;
 
 
-    constructor (private http: Http) {}
+    constructor(private http: Http, private appData: AppData) {
+      console.log('MeetingService - ', appData);
+    }
 
     public getMeeting(): Observable<any> {
+      if (this.appData.isServerRunning) {
         return this.getData(this._meetingUrl);
+      } else {
+        return this.getData(this._meetingUrl_NoServer);
+      }
     }
 
     public postMeeting(): Observable<any> {

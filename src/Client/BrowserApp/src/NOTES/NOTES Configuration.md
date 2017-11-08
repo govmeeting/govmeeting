@@ -52,3 +52,10 @@ I changed the version in package.json to "~2.0.10" and did a "npm install" from 
 # Additional Node Packages being used
 
 npm install ng2-material-dropdown --save
+
+
+# Configuration since switching from angular-seed with SystemJs to Angular-cli with WebPack.
+
+## Build BrowserApp and save built bundles
+
+  ng build --output-path=last-build/

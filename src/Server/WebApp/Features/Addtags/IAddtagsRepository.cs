@@ -17,13 +17,13 @@ namespace WebApp.Models
         //void Add(Addtags item);
         //IEnumerable<Addtags> GetAll();
 
-        Addtags Get(string username, string country, string state, string city, string govEntity, string meetingDate);
+        Addtags Get(string username, string country, string state, string county, string city, string govEntity, string meetingDate);
         Addtags GetByPath(string path);
-        string GetStringByPath(string path);
+        // string GetStringByPath(string path);
         void PutByPath(string path, Addtags value);
         //void PutByPath(string path, string value);
-        Addtags Find(string key);
+        //Addtags Find(string key);
         //Addtags Remove(string key);
-        void Update(Addtags item);
+        //void Update(Addtags item);
     }
 }

@@ -2346,6 +2346,7 @@ var MeetingModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_do__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/do.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_catch__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/catch.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__appdata__ = __webpack_require__("../../../../../src/app/appdata.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2365,14 +2366,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 //import {Headers, RequestOptions} from '@angular/http';
+// AppData is configuration which is passed in from index.html.
+
 var MeetingService = /** @class */ (function () {
-    function MeetingService(http) {
+    function MeetingService(http, appData) {
         this.http = http;
+        this.appData = appData;
         // The code outlined in main.ts for checking the Name argument need to be used here.
-        this._meetingUrl = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
+        this._meetingUrl_NoServer = 'assets/BoothbayHarbor_Selectmen_2014-09-08.json';
+        //private _meetingUrl = 'assets/data/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen/2014-09-08/Step 5 - processed transcript.json';
+        this._meetingUrl = 'api/meeting';
+        console.log('MeetingService - ', appData);
     }
     MeetingService.prototype.getMeeting = function () {
-        return this.getData(this._meetingUrl);
+        if (this.appData.isServerRunning) {
+            return this.getData(this._meetingUrl);
+        }
+        else {
+            return this.getData(this._meetingUrl_NoServer);
+        }
     };
     MeetingService.prototype.postMeeting = function () {
         console.log('postMeeting in meeting.service');
@@ -2444,10 +2456,10 @@ var MeetingService = /** @class */ (function () {
     };
     MeetingService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_8__appdata__["a" /* AppData */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__appdata__["a" /* AppData */]) === "function" && _b || Object])
     ], MeetingService);
     return MeetingService;
-    var _a;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=meeting.service.js.map
