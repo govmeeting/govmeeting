@@ -1145,8 +1145,7 @@
     "core-js": {
       "version": "2.4.1",
       "resolved": "https://registry.npmjs.org/core-js/-/core-js-2.4.1.tgz",
-      "integrity": "sha1-TekR5mew6ukSTjQlS1OupvxhjT4=",
-      "dev": true
+      "integrity": "sha1-TekR5mew6ukSTjQlS1OupvxhjT4="
     },
     "core-util-is": {
       "version": "1.0.2",
@@ -4879,6 +4878,11 @@
       "resolved": "https://registry.npmjs.org/symbol-observable/-/symbol-observable-1.0.4.tgz",
       "integrity": "sha1-Kb9hXUqnEhvdiYsi1LP5vE4qoD0="
     },
+    "systemjs": {
+      "version": "0.20.9",
+      "resolved": "https://registry.npmjs.org/systemjs/-/systemjs-0.20.9.tgz",
+      "integrity": "sha1-gMAKiVEaIGTD9Xzm6PJ3hGIEd+w="
+    },
     "tapable": {
       "version": "0.2.6",
       "resolved": "https://registry.npmjs.org/tapable/-/tapable-0.2.6.tgz",
@@ -5238,6 +5242,33 @@
       "version": "1.0.1",
       "resolved": "https://registry.npmjs.org/vendors/-/vendors-1.0.1.tgz",
       "integrity": "sha1-N61zyO5Bf7PVgOeFMSMH0nSEfyI="
+    },
+    "videogular2": {
+      "version": "5.6.3",
+      "resolved": "https://registry.npmjs.org/videogular2/-/videogular2-5.6.3.tgz",
+      "integrity": "sha1-d0KJYNjGghSx/JaLyqtEZZ0ZN1M=",
+      "requires": {
+        "core-js": "2.4.1",
+        "reflect-metadata": "0.1.10",
+        "rxjs": "5.1.0",
+        "systemjs": "0.20.9",
+        "zone.js": "0.8.5"
+      },
+      "dependencies": {
+        "rxjs": {
+          "version": "5.1.0",
+          "resolved": "https://registry.npmjs.org/rxjs/-/rxjs-5.1.0.tgz",
+          "integrity": "sha1-CqkBi39EC1BfpCvXQrZzi+VQ5yA=",
+          "requires": {
+            "symbol-observable": "1.0.4"
+          }
+        },
+        "zone.js": {
+          "version": "0.8.5",
+          "resolved": "https://registry.npmjs.org/zone.js/-/zone.js-0.8.5.tgz",
+          "integrity": "sha1-eQbgF0gsv/TD8HnFw0MFzpQfW6I="
+        }
+      }
     },
     "vlq": {
       "version": "0.2.2",
