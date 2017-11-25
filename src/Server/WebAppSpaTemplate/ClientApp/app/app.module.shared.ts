@@ -12,13 +12,13 @@ import { CounterComponent } from './components/counter/counter.component';
 
 import { AppComponent } from './app.component';
 
-//import { AppRoutingModule } from './app-routing/app-routing.module';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 //import { MeetingModule } from './meeting/meeting.module'
 //import { AddtagsModule } from './addtags/addtags.module'
 //import { FixasrModule } from './fixasr/fixasr.module'
 //import { SharedModule } from './shared/shared.module'
 //import { HomeModule } from './home/home.module';
-//import { AboutModule } from './about/about.module';
+import { AboutModule } from './about/about.module';
 //import { MatsampModule } from './matsamp/matsamp.module';
 
 
@@ -35,9 +35,9 @@ import { AppComponent } from './app.component';
         HttpModule,
         FormsModule,
 
-        //AppRoutingModule
+        AppRoutingModule,
         //HomeModule,
-        //AboutModule,
+        AboutModule
         //MeetingModule,
         //AddtagsModule,
         //FixasrModule,
@@ -45,13 +45,13 @@ import { AppComponent } from './app.component';
         //SharedModule,
 
 
-        RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
-            { path: '**', redirectTo: 'home' }
-        ])
+        //RouterModule.forRoot([
+        //    { path: '', redirectTo: 'home', pathMatch: 'full' },
+        //    { path: 'home', component: HomeComponent },
+        //    { path: 'counter', component: CounterComponent },
+        //    { path: 'fetch-data', component: FetchDataComponent },
+        //    { path: '**', redirectTo: 'home' }
+        //])
     ]
     //exports: [ AppComponent]
 })
