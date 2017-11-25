@@ -30,15 +30,8 @@
 
 
 
-<div class="container-fluid">
+<!--<div class="container-fluid">
   <div class="hide-webapp">
-      <!--
-      <div class="row">
-          <div class="col-sm-12">
-              <sd-toolbar></sd-toolbar>
-          </div>
-      </div>
-      -->
       <div class="row fixed-l">
           <div class="col-sm-12">
               <gm-navbar></gm-navbar>
@@ -46,5 +39,17 @@
       </div>
   </div>
   <router-outlet></router-outlet>
+</div>-->
+
+<div class='container-fluid'>
+    <div class='row'>
+        <div class='col-sm-3'>
+            <gm-navbar></gm-navbar>
+        </div>
+        <div class='col-sm-9 body-content'>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>
+
 

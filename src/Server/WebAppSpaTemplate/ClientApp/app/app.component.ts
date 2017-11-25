@@ -23,7 +23,7 @@ export class AppComponent {
 //    console.log( 'clientonly - ', test);
 //  }
 
-  constructor(appData:AppData) {
-    console.log('AppComponent - ', appData);
-  }
+  //constructor(appData:AppData) {
+  //  console.log('AppComponent - ', appData);
+  //}
 }
