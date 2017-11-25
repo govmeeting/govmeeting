@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="~/dist/vendor.css" asp-append-version="true" />
 </head>
 <body>
+
+    @*<script>
+        window.APP_DATA = { isServerRunning: true, isDataFromMemory: false }
+    </script>*@
+
     @RenderBody()
 
     @RenderSection("scripts", required: false)

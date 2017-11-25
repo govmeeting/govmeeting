@@ -13,12 +13,13 @@ import { CounterComponent } from './components/counter/counter.component';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-//import { MeetingModule } from './meeting/meeting.module'
+import { MeetingModule } from './meeting/meeting.module'
 //import { AddtagsModule } from './addtags/addtags.module'
 //import { FixasrModule } from './fixasr/fixasr.module'
 //import { SharedModule } from './shared/shared.module'
 //import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
+import { AppData } from './appdata';
 //import { MatsampModule } from './matsamp/matsamp.module';
 
 
@@ -37,8 +38,8 @@ import { AboutModule } from './about/about.module';
 
         AppRoutingModule,
         //HomeModule,
-        AboutModule
-        //MeetingModule,
+        AboutModule,
+        MeetingModule,
         //AddtagsModule,
         //FixasrModule,
         //MatsampModule,
@@ -52,8 +53,15 @@ import { AboutModule } from './about/about.module';
         //    { path: 'fetch-data', component: FetchDataComponent },
         //    { path: '**', redirectTo: 'home' }
         //])
-    ]
-    //exports: [ AppComponent]
+    ],
+    providers: [AppData,
+        {
+            provide: AppData,
+            useValue: { isServerRunning: false, isDataFromMemory: false }
+            //useValue: window.APP_DATA
+            //useValue: window['APP_DATA']
+        }
+    ],
 })
 export class AppModuleShared {
 }

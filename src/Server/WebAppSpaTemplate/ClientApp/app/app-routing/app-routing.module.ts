@@ -17,10 +17,6 @@ const routes: Routes = [
     //  component: HomeComponent,
     //},
     //{
-    //  path: 'meeting',
-    //  component: MeetingComponent,
-    //},
-    //{
     //  path: 'addtags',
     //  component: AddtagsComponent,
     //},
@@ -36,6 +32,7 @@ const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'about', component: AboutComponent },
+    { path: 'meeting', component: MeetingComponent },
     { path: 'counter', component: CounterComponent },
     { path: 'fetch-data', component: FetchDataComponent },
     { path: '**', redirectTo: 'home' }
