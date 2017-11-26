@@ -7,7 +7,7 @@
                 <span class='icon-bar'></span>
                 <span class='icon-bar'></span>
             </button>
-            <a class='navbar-brand' [routerLink]="['/home']">WebAppSpaTemplate</a>
+            <a class='navbar-brand' [routerLink]="['/home']">Govmeeting</a>
         </div>
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse'>
@@ -20,6 +20,16 @@
                 <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/about']">
                         <span class='glyphicon glyphicon-book '></span> About
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/fixasr']">
+                        <span class='glyphicon glyphicon-edit '></span> Fix ASR
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/addtags']">
+                        <span class='glyphicon glyphicon-flag '></span> Add Tags
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
