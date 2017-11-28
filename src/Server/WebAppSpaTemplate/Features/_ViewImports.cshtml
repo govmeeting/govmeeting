@@ -1,0 +1,24 @@
+﻿@using WebApp
+@using WebApp.Models
+@using WebApp.Models.AccountViewModels
+@using WebApp.Models.ManageViewModels
+@using Microsoft.AspNetCore.Identity
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@addTagHelper "*, TagHelperSamples.Markdown"
+
+
+@*_ViewImports.cshtml serves one major purpose: to provide namespaces which can be used by all other views.
+     In previous MVC projects, this functionality was provided by the web.config file in the Views folder.
+     Since the web.config no longer exists, global namespaces are now provided by this file.
+
+A simple _ViewImports.cshtml file might look like this:
+    @using MyProject.Web
+    @using Microsoft.Framework.OptionsModel
+    @addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+
+The first two lines say that we want the MyProject.Web and Microsoft.Framework.OptionsModel namespaces to be available to all views.
+     If we wanted another namespace to be available, we'd simply add it here.
+The reason that we use the @addTagHelper keyword is because we need the Tag Helpers to actually execute (at some point in the page rendering lifecycle) rather than just be available to the views.
+     So, we specify a tag helper namespace, and the asterisk (*) specifies that we want all tag helpers in that namespace to be used.*@
+
+

@@ -1,0 +1,76 @@
+﻿@model IList<UserInfo>
+@{
+    ViewBag.Title = "Users";
+}
+<h2>Users Listing </h2>
+<hr />
+    @foreach (var user in Model)
+    {
+        <strong> @user.userName @user.email @user.phoneNumber </strong>
+
+        @using (Html.BeginForm("DeleteUser", "Admin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            @Html.Hidden("userId", @user.id)
+
+            <input onclick="return confirm('Are you sure to delete?')" type="submit" value="Delete User" style="color:red;"/>
+        }
+
+        @foreach (var claim in user.claims)
+        {
+            <ul>
+                <strong> Claim: @claim.type = @claim.value </strong>
+                @using (Html.BeginForm("DeleteUserClaim", "Admin", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    @Html.Hidden("userId", @user.id)
+                    @Html.Hidden("type", @claim.type)
+                    @Html.Hidden("value", @claim.value)
+
+                    <input onclick="return confirm('Are you sure to delete?')" type="submit" value="Delete Claim" style="color:red;"/>
+                }
+
+            </ul>
+        }
+        <ul>
+            @using (Html.BeginForm("AddUserClaim", "Admin", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="editor-label">
+                    @Html.Hidden("userId", @user.id)
+                </div>
+
+                @Html.Hidden("type", "role")
+
+                <strong>Add Claim: role = </strong>
+                @Html.DropDownList("type", new SelectList(new[] { "proofreader", "editor", "manager", "administrator" }))
+
+                <input type="submit" value="Save" />
+            }
+        </ul>
+        <ul>
+            @using (Html.BeginForm("AddUserClaim", "Admin", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="editor-label">
+                    @Html.Hidden("userId", @user.id)
+                </div>
+
+                @Html.Hidden("type", "location")
+
+                <strong>Add Claim: location = </strong>
+                @Html.DropDownList("value", new SelectList(new[] { "Philadelphia", "Boothbay Harbor"}))
+
+                <input type="submit" value="Save" />
+            }
+        </ul>
+    }
+

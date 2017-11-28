@@ -92,7 +92,6 @@ Views\Shared\_Layout.cshtml
 
 ================= Existing Web/BrowserApp =================
 
-
 Features\Home\Index.cshtml	
         <app-root>
             Loading product application…
