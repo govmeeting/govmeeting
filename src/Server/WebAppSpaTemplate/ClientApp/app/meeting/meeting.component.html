@@ -10,36 +10,38 @@
   }
   </style>
 
-  <div id="wrap" class="row">
-    <!-- <div class="col-sm-12"> -->
+<p>
+    <br /><h1> Browse meeting transcript </h1>
+<p>
+    <div id="wrap" class="row">
+        <!-- <div class="col-sm-12"> -->
 
-      <div class="row">
-        <!-- <div class="col-sm-12" style="padding:1px"> -->
-          <div id="header" style="background:#ddd">
-            <gm-heading></gm-heading>
-          </div>
-         <!-- </div> -->
-      </div>
+        <div class="row">
+            <!-- <div class="col-sm-12" style="padding:1px"> -->
+            <div id="header" style="background:#ddd">
+                <gm-heading></gm-heading>
+            </div>
+            <!-- </div> -->
+        </div>
 
         <!-- The sidebar contains the options for choosing a topic or a speaker.  Only what is chosen
         will be displayed in the main content. -->
         <div style="padding:10px">
-        <!-- <div class="col-md-12 col-sm-3 col-xs-6" style="padding:1px"> -->
-          <div id="sidebar">
-          <!-- [Select topic/speaker] <br><br> -->
-            <gm-topics></gm-topics> <br>
-            <gm-speakers></gm-speakers>
-          </div>
+            <!-- <div class="col-md-12 col-sm-3 col-xs-6" style="padding:1px"> -->
+            <div id="sidebar">
+                <!-- [Select topic/speaker] <br><br> -->
+                <gm-topics></gm-topics> <br>
+                <gm-speakers></gm-speakers>
+            </div>
         </div>
-      </div>
+    </div>
 
-      <div class="row gutter-0.row">
+    <div class="row gutter-0.row">
         <!-- <div class="col-md-12 col-sm-9 col-xs-6"> -->
-          <div id="main" style="background:#fff;padding:1px">
-                      <!-- <button (click)="postMeeting()">Post Meeting</button> -->
+        <div id="main" style="background:#fff;padding:1px">
+            <!-- <button (click)="postMeeting()">Post Meeting</button> -->
             <gm-browsemeeting></gm-browsemeeting>
-          </div>
+        </div>
         <!-- </div> -->
-
-    <!-- </div> -->
-  </div>
+        <!-- </div> -->
+    </div>

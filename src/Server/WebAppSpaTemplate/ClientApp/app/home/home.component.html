@@ -1,18 +1,20 @@
 <p>
-  <br /><h1> Govmeeting - Access to your town or city council meetings </h1>
+  <br /><h1> Govmeeting - Access local government meetings </h1>
 <p>
 
 <!--<markdown>
   ## Test of Markdown h2 content
 </markdown>-->
 
-<h2> Using this site, you will be able to: </h2>
 <ul>
   <li>
-    Browse transcripts of your town or city meetings. Browse by subject, speaker, etc. <a href="meeting">Browse meetings </a>
+    Browse transcripts of your town or city meetings. Browse by subject, speaker, etc.
+      <!--<a href="/meeting">Browse meetings </a>-->
+      <a [routerLink]="['/meeting']">Browse Meeting Transcript</a>
   </li>
   <li>
-    Be notified when a specific topic is discussed at future meetings: <a href="updates">Notifications</a></li>
+    Be notified when a specific topic is discussed at future meetings:
+    <a href="updates">Notifications</a></li>
 </ul>
 
 <h2> How it works: </h2>
