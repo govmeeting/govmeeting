@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Test</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <style>
+        .fixed-l {
+            position: fixed;
+            top: 8px;
+            left: 20px;
+        }
+
+        div.fixed-r {
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+
+        div.showme {
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="navbar fixed-r">
+        <div class="container">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Admin</a></li>
+                <li><a href="/">Register</a></li>
+                <li><a href="/">Log in</a></li>
+            </ul>
+        </div>
+    </div>-->
+
+    <div class="fixed-r">
+        <a href="/">Admin</a>
+        <a href="/">Register</a>
+        <a href="/">Log in</a>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

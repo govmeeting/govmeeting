@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -24,13 +25,12 @@ namespace WebApp
 {
     public class Startup
     {
-
-        // There is an entire new and much shorter Startup method for .NET SDK 2.0
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-        public IConfiguration Configuration { get; set; }
+
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -150,6 +150,8 @@ namespace WebApp
             services.AddMvc()
                 .AddXmlSerializerFormatters();
 
+            // This enables the use of "Feature Folders".
+            // https://scottsauber.com/2016/04/25/feature-folder-structure-in-asp-net-core/
             services.Configure<RazorViewEngineOptions>(options =>
             {
                 options.ViewLocationExpanders.Add(new FeatureLocationExpander());
@@ -167,17 +169,21 @@ namespace WebApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,
+            //ILoggerFactory loggerFactory,
             ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager) // added for call to DbInitializer
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            // Logging configuration is now part of the "WebHost.CreateDefaultBuilder(args)" call in Program.cs
+            //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            //loggerFactory.AddDebug();
 
             if (env.IsDevelopment())
             {
-                app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true
+                });
             }
             else
             {
@@ -225,11 +231,13 @@ namespace WebApp
 
             app.UseAuthentication();
 
+
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                   name: "default",
-                   template: "{controller=Home}/{action=Index}/{id?}");
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
 
                 /* The following is for Angular SPA routes. When someone does a browser refresh or uses a 
                  * bookmark that's a deep link into the SPA, a request is sent to the server, instead
@@ -238,11 +246,9 @@ namespace WebApp
                  * the index page of the Home controller. This returns the page containing the SPA. Once
                  * the SPA is running, it sees the URL that is being requested and handles it properly.
                  */
-                routes.MapRoute(
+                routes.MapSpaFallbackRoute(
                     name: "spa-fallback",
-                    template: "{*url}",
-                    defaults: new { controller = "Home", action = "index" });
-
+                    defaults: new { controller = "Home", action = "Index" });
             });
 
             // Create seed data
