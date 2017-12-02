@@ -4,12 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-//import { AppComponent } from './components/app/app.component';
-import { NavMenuComponent } from './components/navmenu/navmenu.component';
-//import { HomeComponent } from './components/home/home.component';
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/counter/counter.component';
-
+import { NavMenuComponent } from './navmenu/navmenu.component';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -19,16 +14,15 @@ import { FixasrModule } from './fixasr/fixasr.module'
 import { SharedModule } from './shared/shared.module'
 import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
-import { AppData } from './appdata';
+import { TestModule } from './test/test.module';
 //import { MatsampModule } from './matsamp/matsamp.module';
 
+import { AppData } from './appdata';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavMenuComponent,
-        CounterComponent,
-        FetchDataComponent,
+        NavMenuComponent
     ],
     imports: [
         CommonModule,
@@ -42,7 +36,8 @@ import { AppData } from './appdata';
         AddtagsModule,
         FixasrModule,
         //MatsampModule,
-        SharedModule
+        SharedModule,
+        TestModule
     ],
     providers: [AppData,
         {

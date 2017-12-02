@@ -7,8 +7,7 @@ import { AddtagsComponent } from '../addtags/addtags.component'
 import { FixasrComponent } from '../fixasr/fixasr.component'
 //import { MatsampComponent } from '../matsamp/matsamp.component'
 
-import { CounterComponent } from '../components/counter/counter.component';
-import { FetchDataComponent } from '../components/fetchdata/fetchdata.component';
+import { TestComponent } from '../test/test.component';
 
 const routes: Routes = [
 
@@ -19,8 +18,7 @@ const routes: Routes = [
     { path: 'addtags', component: AddtagsComponent },
     { path: 'fixasr', component: FixasrComponent },
     //{ path: 'matsamp', component: MatsampComponent },
-    { path: 'counter', component: CounterComponent },
-    { path: 'fetch-data', component: FetchDataComponent },
+    { path: 'test', component: TestComponent },
     { path: '**', redirectTo: 'home' }
 
 ];
