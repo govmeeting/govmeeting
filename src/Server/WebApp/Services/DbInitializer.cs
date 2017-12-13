@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -13,29 +14,36 @@ using WebApp.Models;
 
 namespace WebApp.Services
 {
+    public interface IDbInitializer
+    {
+        //Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
+        //    RoleManager<IdentityRole> roleManager, IConfiguration configuration);
+        Task Initialize();
+    }
+
     // Class to inialize the database with the first admin user. See:
     // https://stackoverflow.com/questions/40027388/cannot-get-the-usermanager-class/40046290#40046290
-    public static class DbInitializer
+    public class DbInitializer : IDbInitializer
     {
-        //static ApplicationDbContext context;
-        //static UserManager<ApplicationUser> userManager;
-        //static RoleManager<IdentityRole> roleManager;
-        public static async Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager, IConfiguration configuration)
-        //public static async Task Initialize(IApplicationBuilder app)
+        public DbInitializer(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager, IConfiguration configuration) {
+            _context = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
+            _configuration = configuration;
+            }
+
+        ApplicationDbContext _context;
+        UserManager<ApplicationUser> _userManager;
+        RoleManager<IdentityRole> _roleManager;
+        IConfiguration _configuration;
+
+        //public async Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
+        //    RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        public async Task Initialize()
         {
-            // Get the db context of the Application
-            //var context = app.ApplicationServices.GetService<ApplicationDbContext>();
-            // Get the user manager
-            //var userManager = app.ApplicationServices.GetService<UserManager<ApplicationUs‌​er>>();
-            // Get the role manager
-            //var roleManager = app.ApplicationServices.GetService<RoleManager<IdentityRole>‌​>();
-            // So you can simply use the app parameter to get the required service.
-
-
-
             // Ensure that the database exists and all pending migrations are applied.
-            context.Database.Migrate();
+            _context.Database.Migrate();
 
             // The following was from before we switch to using claims.
             //// Create roles. This adds them to the table dbo.AspNetRoles.
@@ -49,19 +57,19 @@ namespace WebApp.Services
             //}
 
             // Create admin user. This adds it to the table dbo.AspNetUsers
-            string admin_username = configuration["AdminUser:Username"];
-            string admin_password = configuration["AdminUser:Password"];
-            string admin_email = configuration["AdminUser:Email"];
-            if (!context.Users.Any())
+            string admin_username = _configuration["AdminUser:Username"];
+            string admin_password = _configuration["AdminUser:Password"];
+            string admin_email = _configuration["AdminUser:Email"];
+            if (!_context.Users.Any())
             {
-                await userManager.CreateAsync(new ApplicationUser() { UserName = admin_username, Email = admin_email }, admin_password);
+                await _userManager.CreateAsync(new ApplicationUser() { UserName = admin_username, Email = admin_email }, admin_password);
             }
 
             // Confirm the admin's email
             ApplicationUser admin_user;
-            admin_user = await userManager.FindByEmailAsync(admin_email);
-            var emailConfirmationCode = await userManager.GenerateEmailConfirmationTokenAsync(admin_user);
-            var confirmResult = await userManager.ConfirmEmailAsync(admin_user, emailConfirmationCode);
+            admin_user = await _userManager.FindByEmailAsync(admin_email);
+            var emailConfirmationCode = await _userManager.GenerateEmailConfirmationTokenAsync(admin_user);
+            var confirmResult = await _userManager.ConfirmEmailAsync(admin_user, emailConfirmationCode);
 
             // The following was from before we switch to using claims.
             //// assign admin privileges. This adds and enty in table dbo.AspNetUserRoles
@@ -71,13 +79,12 @@ namespace WebApp.Services
             //    await userManager.AddToRoleAsync(admin, role);
             //}
 
-
             // assign admin privileges. This adds and enty in table AspNetUserClaims
-            var claims = await userManager.GetClaimsAsync(admin_user);
+            var claims = await _userManager.GetClaimsAsync(admin_user);
             var jobClaim = claims.FirstOrDefault(c => c.Type == "role");
             if (jobClaim == null)
             {
-                await userManager.AddClaimAsync(admin_user, new Claim("role", "Administrator"));
+                await _userManager.AddClaimAsync(admin_user, new Claim("role", "Administrator"));
             }
         }
     }

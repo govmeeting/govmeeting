@@ -27,6 +27,7 @@ namespace WebApp
     {
         public Startup(IConfiguration configuration)
         {
+            DebugStartup("In Startup");
             Configuration = configuration;
         }
 
@@ -35,10 +36,9 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Here we will create a service for handling the configuration settings that were stored in
-            // "Configuration" in the Startup() method. This has two advantages:
-            // 1. We will be able to access the configuration settings from controllers using Dependency Injection.
-            // 2. The configuration setting can be strongly typed objects of any type and not just strings.
+            services.AddSingleton<IRedirectConsole, RedirectConsole>();
+
+            DebugStartup("In ConfigureServices");
 
             // Adds services required for using options.
             // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration
@@ -55,16 +55,24 @@ namespace WebApp
                 Console.WriteLine("Datafile path = " + myOptions.DatafilesPath);
             });
 
+            DebugStartup("In ConfigureServices - after DataFileOptions");
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
             // In development, we get this value from appsettings.json. In production, the value
             // in appsettings.production.json overrides this value.
 
+            DebugStartup("In ConfigureServices - after AddDbContext");
+            DebugStartup("ConnectionString: " + Configuration["Data:DefaultConnection:ConnectionString"]);
+
+            // https://docs.microsoft.com/en-us/aspnet/core/migration/1x-to-2x/identity-2x
             services.AddAuthentication()
             .AddGoogle(options => {
                 options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
                 options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
             });
+
+            DebugStartup("In ConfigureServices - after AddAuthentication");
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
@@ -74,18 +82,17 @@ namespace WebApp
                 //options.Cookies.ApplicationCookie.SlidingExpiration = true;
                 //options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromHours(1);
 
-                // Govmeeting: Set option for password length.
                 options.Password.RequiredLength = 8;
-                // Govmeeting: Set lockout options.
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // amount of time they are locked out
                 options.Lockout.AllowedForNewUsers = true;
                 // Todo-g We should send the admin an email if someone is locked out.
-                // Govmeeting: Require email confirmation
                 options.SignIn.RequireConfirmedEmail = true;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            DebugStartup("In ConfigureServices - after AddIdentity");
 
             // Govmeeting: Brock Allen suggest stronger hashing instead of the default.
             //services.Configure<PasswordHasherOptions>(options =>
@@ -146,9 +153,13 @@ namespace WebApp
                 */
             });
 
+            DebugStartup("In ConfigureServices - after second AddAuthorization");
+
             // Add framework services.
             services.AddMvc()
                 .AddXmlSerializerFormatters();
+
+            DebugStartup("In ConfigureServices - after AddMvc");
 
             // This enables the use of "Feature Folders".
             // https://scottsauber.com/2016/04/25/feature-folder-structure-in-asp-net-core/
@@ -166,16 +177,25 @@ namespace WebApp
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            DebugStartup("In ConfigureServices - after AddTransient");
+
+            services.AddTransient<IDbInitializer, DbInitializer>();
+
+            //services.AddScoped<ValidateReCaptchaAttribute>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env,
-            //ILoggerFactory loggerFactory,
-            ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager) // added for call to DbInitializer
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IRedirectConsole redirect, IDbInitializer dbInitializer)
+            //ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager) // added for call to DbInitializer
         {
             // Logging configuration is now part of the "WebHost.CreateDefaultBuilder(args)" call in Program.cs
             //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             //loggerFactory.AddDebug();
+
+            redirect.Start();
+            Console.WriteLine("Time = " + DateTime.Now);
+            Console.WriteLine("connection string = " + Configuration["Data:DefaultConnection:ConnectionString"]);
 
             if (env.IsDevelopment())
             {
@@ -187,6 +207,10 @@ namespace WebApp
             }
             else
             {
+                // added for debugging deploy problem.
+                //app.UseDeveloperExceptionPage();
+                //app.UseDatabaseErrorPage();
+
                 app.UseExceptionHandler("/Home/Error");
 
                 // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
@@ -209,6 +233,8 @@ namespace WebApp
 
             app.UseStaticFiles();
 
+            DebugStartup("In Configure - after UseStaticFiles");
+
             if (env.IsDevelopment())
             {
                 // Add a PhysicalFileProvider for the BrowserApp folder.
@@ -229,9 +255,10 @@ namespace WebApp
                 });
             }
 
+            // https://docs.microsoft.com/en-us/aspnet/core/migration/1x-to-2x/identity-2x
             app.UseAuthentication();
 
-
+            DebugStartup("In Configure - after UseAuthentication");
 
             app.UseMvc(routes =>
             {
@@ -251,9 +278,18 @@ namespace WebApp
                     defaults: new { controller = "Home", action = "Index" });
             });
 
+            DebugStartup("In Configure - after UseMvc");
+
             // Create seed data
-            DbInitializer.Initialize(context, userManager, roleManager, Configuration).Wait();
-            //DbInitializer.Initialize(app).Wait();
+            dbInitializer.Initialize().Wait();
+
+            DebugStartup("In Configure - after DbInitializer.Initialize");
+
+        }
+
+        private void DebugStartup(string message)
+        {
+            File.AppendAllText("DebugLogStartup.txt", message + "\r\n");
         }
     }
 }

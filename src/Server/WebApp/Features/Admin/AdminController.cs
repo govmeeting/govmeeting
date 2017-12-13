@@ -13,7 +13,7 @@ using WebApp.Data;
 
 namespace WebApp.Controllers
 {
-    //[Authorize(Policy = "Administrator")]
+    [Authorize(Policy = "Administrator")]
 
     public class AdminController : Controller
     {

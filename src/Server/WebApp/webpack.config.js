@@ -17,7 +17,11 @@ module.exports = (env) => {
         },
         module: {
             rules: [
-                { test: /\.ts$/, include: /ClientApp/, use: isDevBuild ? ['awesome-typescript-loader?silent=true', 'angular2-template-loader'] : '@ngtools/webpack' },
+                // I got many webpack errors saying: "Unexpected token (11:25) You may need an appropriate loader to handle this file type."
+                // See: https://github.com/aspnet/JavaScriptServices/issues/1168#issuecomment-320026397
+                // I changed the following line.
+                // { test: /\.ts$/, include: /ClientApp/, use: isDevBuild ? ['awesome-typescript-loader?silent=true', 'angular2-template-loader'] : '@ngtools/webpack' },
+                { test: /\.ts$/, use: isDevBuild ? ['awesome-typescript-loader?silent=true', 'angular2-template-loader'] : '@ngtools/webpack' },
                 { test: /\.html$/, use: 'html-loader?minimize=false' },
                 { test: /\.css$/, use: [ 'to-string-loader', isDevBuild ? 'css-loader' : 'css-loader?minimize' ] },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }
