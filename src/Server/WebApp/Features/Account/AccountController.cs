@@ -13,6 +13,7 @@ using WebApp.Services;
 using WebApp.Models.AccountViewModels;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Hosting;
 
 namespace WebApp.Controllers
 {
@@ -24,19 +25,22 @@ namespace WebApp.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        IHostingEnvironment _env;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory,
+            IHostingEnvironment env)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _env = env;
         }
 
         //
@@ -52,6 +56,7 @@ namespace WebApp.Controllers
         //
         // POST: /Account/Login
         [HttpPost]
+        [ServiceFilter(typeof(ValidateReCaptchaAttribute))]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
@@ -100,6 +105,7 @@ namespace WebApp.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
+        [ServiceFilter(typeof(ValidateReCaptchaAttribute))]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
@@ -138,6 +144,10 @@ namespace WebApp.Controllers
                     //return RedirectToAction(nameof(HomeController.Index), "Home");
 
                     ViewBag.Link = callbackUrl;
+
+                    // During development, display the "Confirm Email" link on the RegisterEmail page.
+                    ViewBag.ClickHere = _env.IsDevelopment() ? "<a href=" + callbackUrl + "> During development click here </a>" : "";
+
                     return View("RegisterEmail");
                 }
                 AddErrors(result);

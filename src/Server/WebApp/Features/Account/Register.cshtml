@@ -3,6 +3,8 @@
     ViewData["Title"] = "Register";
 }
 
+@inject Microsoft.Extensions.Configuration.IConfiguration configuration
+
 <h2>@ViewData["Title"].</h2>
 
 <form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
@@ -36,6 +38,10 @@
                 After you click "Register", you will receive an email containing a link.
                 Please go to your email and click the link to confirm your email.
             </h4>
+
+            <div class="g-recaptcha" data-sitekey="@(configuration["ReCaptcha:SiteKey"])"></div>
+            <br>
+
             <button type="submit" class="btn btn-default">Register</button>
         </div>
     </div>
@@ -43,4 +49,5 @@
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 }
