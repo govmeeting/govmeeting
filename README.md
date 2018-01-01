@@ -52,12 +52,7 @@ For a detailed system design, see: [System Design](https://github.com/govmeeting
 * Install the extension "C# for Visual Studio Code" by Microsoft
 
 
-
-
-
-
 For a demo of some working code, see:  [govmeeting.org](http://govmeeting.org)
-
 
 
 ## Contacts
