@@ -1,43 +1,60 @@
 # Govmeeting
 
-Meetings are the heart and soul of democracy. They are where people of different opinions present their points of view and listen to the opposing views. 
+Meetings are the heart and soul of democracy. They are where people of different opinions listen to others and present their points of view.
 
-In the Athenian Assembly of 500 BC, a quorum of 6,000 of the 43,000 citizens was needed at a government meeting in order to conduct business. In 10th century Iceland, the yearly Althing was held in a natural outdoor amphitheater for two weeks. Every citizen could attend.
+In the Athenian Assembly of 500 BC, a quorum of 6,000 of the 43,000 citizens was needed to conduct business. In the 10th century, the Icelandic Althing was held in a natural outdoor amphitheater and all citizens could attend.
 
-Today, in a town of 30,000, it is rare to see more than a dozen people at a town council meeting. Is this still democracy? Staying informed can be very difficult. Most meetings don't produce transcripts. The minutes are a sanitized  list of topics discussed. Some meeings are braodcast. But how people have time to watch 2 hours to find what's important to them? 
+Today it is rare to see more than a dozen attendees at a council meeting in a town of 30,000 people. Is this still democracy?
 
-This software produces transcripts of  meetings, processes them, extracts the information and makes it available in a very user friendly way. Shortly after a government meeting you can:
-* Receive a summary of issues discussed via text or email.
-* Receive notices whenever specific issues are discussed.
-* Go online and see what issues were discussed and exactly what was said and by whom.
-* See exactly what any specific official said in the past on any specific issue.
+Some public meetings are broadcast on local TV.  But a very small percent of people actually watch. Sometimes very contentious issues are debated and voted on. But there is usually no public record kept of what was said.
+
+A dozen people at the meeting, including some council members, might speak strongly against some terrible decision. But it is easy today for the majority of the council to totally ignore them. They know that less than one percent of the voters will ever hear what they said.
+
+The purpose of this project is to preserve those discussions and make them easily available to all citizens of the community. It will do this through a combination of intelligent software and community volunteer effort.
+
+
+## Functional overview
+
+<p>Shortly after a government meeting takes place, you will be able to:
+* Receive a summary of issues discussed via text message or email.
+* Optionally receive a full transcript of the meeting via email.
+
+At any time, you can go online and:
+* Sign up to receive a phone alert or email whenever a specific issue is discussed.
+* Use a more powerful tool to browse a specific meeting.</li>
+* Search all past meetings for issues discussed.</li>
+* See all that was said in the past on any specific issue.</li>
+* See what any specific official said on any specific issue in all past meetings. This is especially helpful at election time.
+
+For a detailed functional design, see: [Functional Design](https://github.com/govmeeting/govmeeting/wiki/functional-design)
 
 ## Technical overview
 
-The Front-end is written in Typescript using Angular 2.
+* Front-end written in Typescript and Angular.
+* Web server written in C# using ASP.NET Core.
+* SQL database using Entity Framework Core as an ORM.
+* Back-end processing written in C# with .Net Core.
 
-The Back-end is written in C# using ASP.NET Core and Entity Framework Core.
-.NET Core is the open-source version of .NET which runs on Windows, Mac and Linux.
 
 
-For more technical details, see: [System Design](https://github.com/govmeeting/govmeeting/wiki/system-design)
+ASP.NET Core and Entity Framework Core is open-source software which runs on Windows, Mac and Linux.
+For a detailed system design, see: [System Design](https://github.com/govmeeting/govmeeting/wiki/system-design)
 
 ## Quickstart
 
 ### Visual Studio
   * Opening the "govmeeting.sln" will load all the projects
   * Opening src\Server\WebApp\WebApp.sln will load just the Angular - Asp.Net Core app.
-  
+
 ### Visual Studio Code
 
-* Install the extension "Debugger fr Chrome" by Microsoft
+* Install the extension "Debugger for Chrome" by Microsoft
 * Install the extension "C# for Visual Studio Code" by Microsoft
 
-## Goals
 
-The goal is to first get the software working for towns and small cities. The lessons learned can then be used to implement it for larger city, state or national government entities. People throughout the world deal with the same problems. The software will be designed to be used anywhere, wherever there is democracy and public access to government meetings.
 
-For more functional details, see: [Functional Design](https://github.com/govmeeting/govmeeting/wiki/functional-design)
+
+
 
 For a demo of some working code, see:  [govmeeting.org](http://govmeeting.org)
 
@@ -48,16 +65,3 @@ For a demo of some working code, see:  [govmeeting.org](http://govmeeting.org)
 
 <info@govmeeting.org>
 
-
--------------------------------------------------------------------------------------------------------
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-75868363-1', 'auto');
-  ga('send', 'pageview');
-
-</script>

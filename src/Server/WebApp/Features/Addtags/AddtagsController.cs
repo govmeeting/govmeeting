@@ -21,10 +21,10 @@ namespace WebApp.Controllers
         // JP: FromServices attribute is no longer valid on a property. I moved this DI service to constructor
         // [FromServices]
         public IAddtagsRepository addtags { get; set; }
-        private readonly DatafilesOptions _options;
+        private readonly TypedOptions _options;
 
         public AddtagsController(IAuthorizationService authz, IAddtagsRepository addtags,
-            IOptions<DatafilesOptions> optionsAccessor)
+            IOptions<TypedOptions> optionsAccessor)
         {
             _authz = authz;
             this.addtags = addtags;

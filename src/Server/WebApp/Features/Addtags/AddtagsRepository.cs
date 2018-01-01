@@ -20,13 +20,13 @@ namespace WebApp.Models
     public class AddtagsRepository : IAddtagsRepository
     {
         static ConcurrentDictionary<string, Addtags> _addtags = new ConcurrentDictionary<string, Addtags>();
-        private DatafilesOptions _options { get; set; }
+        private TypedOptions _options { get; set; }
 
         // https://www.mikesdotnetting.com/article/302/server-mappath-equivalent-in-asp-net-core
         //private IHostingEnvironment _env;
-        public AddtagsRepository(IOptions<DatafilesOptions> settings)
+        public AddtagsRepository(IOptions<TypedOptions> options)
         {
-            _options = settings.Value;
+            _options = options.Value;
             //    Add(new Addtags { Name = "Item1" });
         }
 
