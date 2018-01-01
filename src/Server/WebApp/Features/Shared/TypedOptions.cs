@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebApp.Models
 {
-    public class DatafilesOptions
+    public class TypedOptions
     {
-        public DatafilesOptions()
+        public TypedOptions()
         {
         }
         public string DatafilesPath { get; set; }

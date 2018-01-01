@@ -36,27 +36,40 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // We will redirect console output to a file during production.
             services.AddSingleton<IRedirectConsole, RedirectConsole>();
 
             DebugStartup("In ConfigureServices");
 
-            // Adds services required for using options.
+            // Add services required for using strongly typed options.
             // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration
             // https://weblog.west-wind.com/posts/2016/may/23/strongly-typed-configuration-settings-in-aspnet-core
             services.AddOptions();
-            // Register the IConfiguration instance which DatafilesOptions binds against.
-            services.Configure<DatafilesOptions>(Configuration.GetSection("Datafiles"));
-
-            // Registers the following lambda used to configure options.
-            services.Configure<DatafilesOptions>(myOptions =>
+            services.Configure<TypedOptions>(Configuration.GetSection("TypedOptions"));
+            services.Configure<TypedOptions>(myOptions =>
             {
-                // Combine the current directory path with the relative path in the configuration.
+                // Modify the DataFilesPath option to be the full path.
                 myOptions.DatafilesPath = System.IO.Path.Combine(Directory.GetCurrentDirectory(), myOptions.DatafilesPath);
                 Console.WriteLine("Datafile path = " + myOptions.DatafilesPath);
             });
+            // All the options in the "TypedOptions" section of appsettings.json (or other config stores)
+            // are available as strongly typed values.
+            // Example of use:
+            //   public class AddtagsRepository : IAddtagsRepository {
+            //     private TypedOptions _options { get; set; }
+            //     public AddtagsRepository(IOptions<TypedOptions> settings)
+            //          {_options = settings.Value;}
+            //   private void foo() {
+            //      string s = _options.DatafilesPath;
+            // One disadvantage of using strongly typed values is that you can't reload these
+            // configuration values without restarting. 
+
 
             DebugStartup("In ConfigureServices - after DataFileOptions");
 
+            // Here we add our ApplicationDbContext to thr service container. This allows us to do this:
+            //    public MyController(ApplicationDbContext context) { ... }
+            // and then have access to the context within the controller.
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
             // In development, we get this value from appsettings.json. In production, the value
@@ -184,6 +197,7 @@ namespace WebApp
 
             //services.AddSingleton<IConfigurationRoot>(Configuration);
             services.AddSingleton<IConfiguration>(Configuration);
+
             services.AddScoped<ValidateReCaptchaAttribute>();
         }
 

@@ -13,16 +13,16 @@ namespace WebApp.Models
     public class FixasrRepository : IFixasrRepository
     {
         static ConcurrentDictionary<string, Fixasr> _fixasr = new ConcurrentDictionary<string, Fixasr>();
-        private DatafilesOptions _options { get; set; }
+        private TypedOptions _options { get; set; }
 
         private const string STEP2_BASE_NAME = "Step 2 - transcript from Youtube";
         private const string STEP3_BASE_NAME = "Step 3 - transcript corrected for errors";
         private const string EXTENSION = "json";
 
-        public FixasrRepository(IOptions<DatafilesOptions> settings)
+        public FixasrRepository(IOptions<TypedOptions> options)
         //public FixasrRepository()
         {
-            _options = settings.Value;
+            _options = options.Value;
             ////    Add(new Fixasr { Name = "Item1" });
         }
 

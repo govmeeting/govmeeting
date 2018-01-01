@@ -15,11 +15,11 @@ namespace WebApp.Models
         static ConcurrentDictionary<string, Meeting> _meetings = new ConcurrentDictionary<string, Meeting>();
         private const string STEP5_BASE_NAME = "Step 5 - processed transcript";
         private const string EXTENSION = "json";
-        private DatafilesOptions _options { get; set; }
+        private TypedOptions _options { get; set; }
 
-        public MeetingRepository(IOptions<DatafilesOptions> settings)
+        public MeetingRepository(IOptions<TypedOptions> options)
         {
-            _options = settings.Value;
+            _options = options.Value;
         }
 
         public Meeting Get(string country, string state, string county, string city, string govEntity, string meetingDate)
