@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iTextSharp" Version="5.5.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProcessTranscriptLib\ProcessTranscriptLib.csproj" />
+    <ProjectReference Include="..\SpecificTranscriptFixes\SpecificTranscriptFixes.csproj" />
+  </ItemGroup>
+
+</Project>

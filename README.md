@@ -12,21 +12,22 @@ A dozen people at the meeting, including some council members, might speak stron
 
 The purpose of this project is to preserve those discussions and make them easily available to all citizens of the community. It will do this through a combination of intelligent software and community volunteer effort.
 
-
 ## Functional overview
 
-<p>Shortly after a government meeting takes place, you will be able to:
+Shortly after a government meeting takes place, you will be able to:
 * Receive a summary of issues discussed via text message or email.
 * Optionally receive a full transcript of the meeting via email.
 
 At any time, you can go online and:
 * Sign up to receive a phone alert or email whenever a specific issue is discussed.
-* Use a more powerful tool to browse a specific meeting.</li>
-* Search all past meetings for issues discussed.</li>
-* See all that was said in the past on any specific issue.</li>
+* Use a more powerful tool to browse a specific meeting.
+* Search all past meetings for issues discussed.
+* See all that was said in the past on any specific issue.
 * See what any specific official said on any specific issue in all past meetings. This is especially helpful at election time.
 
 For a detailed functional design, see: [Functional Design](https://github.com/govmeeting/govmeeting/wiki/functional-design)
+
+For a demo of some working code, see:  [govmeeting.org](http://govmeeting.org)
 
 ## Technical overview
 
@@ -34,8 +35,6 @@ For a detailed functional design, see: [Functional Design](https://github.com/go
 * Web server written in C# using ASP.NET Core.
 * SQL database using Entity Framework Core as an ORM.
 * Back-end processing written in C# with .Net Core.
-
-
 
 ASP.NET Core and Entity Framework Core is open-source software which runs on Windows, Mac and Linux.
 For a detailed system design, see: [System Design](https://github.com/govmeeting/govmeeting/wiki/system-design)
@@ -50,15 +49,6 @@ For a detailed system design, see: [System Design](https://github.com/govmeeting
 
 * Install the extension "Debugger for Chrome" by Microsoft
 * Install the extension "C# for Visual Studio Code" by Microsoft
-
-
-
-
-
-
-For a demo of some working code, see:  [govmeeting.org](http://govmeeting.org)
-
-
 
 ## Contacts
 [![Join the chat at https://gitter.im/govmeeting/govmeeting](https://badges.gitter.im/govmeeting/govmeeting.svg)](https://gitter.im/govmeeting/govmeeting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)

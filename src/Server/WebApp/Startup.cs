@@ -251,25 +251,26 @@ namespace WebApp
 
             DebugStartup("In Configure - after UseStaticFiles");
 
-            if (env.IsDevelopment())
-            {
-                // Add a PhysicalFileProvider for the BrowserApp folder.
-                string s = Directory.GetCurrentDirectory();     // directory of ...PublicSystem\Server\WebApp\wwwroot
-                int i = s.LastIndexOf("\\");        // go back 1st of three backslashes
-                i = s.LastIndexOf("\\", i - 1);     // second backslash
+            // When the client code was in src\Client\BrowserApp, we created a FileProvider for that folder.
+            //if (env.IsDevelopment())
+            //{
+            //    // Add a PhysicalFileProvider for the BrowserApp folder.
+            //    string s = Directory.GetCurrentDirectory();     // directory of ...PublicSystem\Server\WebApp\wwwroot
+            //    int i = s.LastIndexOf("\\");        // go back 1st of three backslashes
+            //    i = s.LastIndexOf("\\", i - 1);     // second backslash
 
-                // JP: ### Conversion to ASP.NET Core ###
-                // JP: GetCurrentDIrectory no longer gets ...PublicSystem\Server\WebApp\wwwroot but it gets ...PublicSystem\Server\WebApp
-                // JP: Why is this?
-                // i = s.LastIndexOf("\\", i - 1);     // third backslash
+            //    // JP: ### Conversion to ASP.NET Core ###
+            //    // JP: GetCurrentDIrectory no longer gets ...PublicSystem\Server\WebApp\wwwroot but it gets ...PublicSystem\Server\WebApp
+            //    // JP: Why is this?
+            //    // i = s.LastIndexOf("\\", i - 1);     // third backslash
 
-                string browserAppPath = s.Substring(0, i) + @"\Client\BrowserApp";  // ...PublicSystem\Client\BrowserApp 
-                app.UseStaticFiles(new StaticFileOptions()
-                {
-                    FileProvider = new PhysicalFileProvider(browserAppPath),
-                    RequestPath = new PathString("/ba")
-                });
-            }
+            //    string browserAppPath = s.Substring(0, i) + @"\Client\BrowserApp";  // ...PublicSystem\Client\BrowserApp 
+            //    app.UseStaticFiles(new StaticFileOptions()
+            //    {
+            //        FileProvider = new PhysicalFileProvider(browserAppPath),
+            //        RequestPath = new PathString("/ba")
+            //    });
+            //}
 
             // https://docs.microsoft.com/en-us/aspnet/core/migration/1x-to-2x/identity-2x
             app.UseAuthentication();

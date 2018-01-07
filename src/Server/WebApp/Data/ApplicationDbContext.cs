@@ -8,6 +8,9 @@ using WebApp.Models;
 
 namespace WebApp.Data
 {
+
+    // See here for extending this class:
+    //   https://stackoverflow.com/a/40579369/1978840
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
