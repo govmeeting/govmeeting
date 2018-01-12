@@ -5,4 +5,12 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProcessRecordingLib\ProcessRecordingLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="testdata\" />
+  </ItemGroup>
+
 </Project>

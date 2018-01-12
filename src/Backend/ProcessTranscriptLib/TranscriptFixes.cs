@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using iTextSharp.text.pdf;
-using iTextSharp.text.pdf.parser;
 using System.Text.RegularExpressions;
 
 namespace GM.ProcessTranscriptLib
@@ -14,36 +12,6 @@ namespace GM.ProcessTranscriptLib
 
     public class TranscriptFixes
     {
-        /*
-         * Convert a PDF file to a text by extracting just the text.
-        */
-        public string ConvertPdfToText(string infile)
-        {
-            StringBuilder strPdfContent = new StringBuilder();
-
-            PdfReader reader = new PdfReader(infile);
-
-            /*
-             * This conversion code is thanks to the developers of iTextSharp and asturcon at
-             * http://www.codeproject.com/Questions/770857/Convert-PDF-tp-text-formatted-using-iTextSharp-csh 
-             * Before this was used, manual conversion was done with Adobe Acrobat or Microsoft Word.
-             * They both convert very badly - missing spaces, linefeeds, reversed lines, etc. Their problems appear
-             * to be related to how they handle default character encoding on Windows. For an explanation, see:
-             * https://www.informit.com/guides/content.aspx?g=dotnet&seqNum=163
-             */
-            for (int i = 1; i <= reader.NumberOfPages; i++)
-            {
-                ITextExtractionStrategy objExtractStrategy = new SimpleTextExtractionStrategy();
-                string strLineText = PdfTextExtractor.GetTextFromPage(reader, i, objExtractStrategy);
-                strLineText = Encoding.UTF8.GetString(ASCIIEncoding.Convert(Encoding.Default, Encoding.UTF8, Encoding.Default.GetBytes(strLineText)));
-
-                strPdfContent.Append(strLineText);
-                strPdfContent.Append("\n");
-            }
-            reader.Close();
-            string text = strPdfContent.ToString();
-            return text;
-        }
 
         public string LinesBetween(string text, string before, string after)
         {
@@ -120,22 +88,10 @@ namespace GM.ProcessTranscriptLib
             string replacement = " $1";
             text = Regex.Replace(text, pattern, replacement, RegexOptions.Multiline);
         }
-
-        public void FormatSectionHeaders(ref string text)
+        public void RemoveLineContainingOnlyThisText(ref string text, string remove)
         {
-            string pattern1 = "^.* - STATED - +(.*)$";
-            string replacement = "    Section: $1\n";
-            //Regex rgx = new Regex(pattern1);
-            text = Regex.Replace(text, pattern1, replacement, RegexOptions.Multiline);
-        }
-
-        // The speaker names are all caps. But a name can have these characters within it: ' . -
-        // For example: O'BRIAN, MR. SMITH and RUTH SMITH-JONES.
-        public void FormatSpeakerHeaders(ref string text)
-        {
-            // "-" is a meta-character when between two characters in a character class, but not when at the end.
-            string pattern = "^    ([A-Z '.-]*): *";
-            string replacement = "    Speaker: $1\n    ";
+            string pattern = "^ *" + remove + " *\n";
+            string replacement = "";
             text = Regex.Replace(text, pattern, replacement, RegexOptions.Multiline);
         }
 
@@ -207,87 +163,6 @@ namespace GM.ProcessTranscriptLib
             text = Regex.Replace(text, pattern, replacement, RegexOptions.Multiline);
         }
 
-        public void ConvertToJson(ref string text)
-        {
-
-            Talk talk = new Talk { speaker = null, said = null, section = null, topic = null, showSetTopic = false };
-
-            StringWriter strWriter = new StringWriter();
-            strWriter.NewLine = "\n";
-
-            StringWriter said = new StringWriter();
-            said.NewLine = "\n";
-
-            StringReader strReader = new StringReader(text);
-            string nextLine;
-            bool firstRecord = true;
-
-            string sectionLabel = "Section: ";
-            int sectionLabelLen = sectionLabel.Length;
-            string speakerLabel = "Speaker: ";
-            int speakerLabelLen = speakerLabel.Length;
-
-            strWriter.WriteLine("{ \"data\": [");
-
-            while ((nextLine = strReader.ReadLine()) != null)
-            {
-                // if line is blank, ignore it.
-                if (nextLine == "")
-                {
-                }
-                // If line is section name, store it.
-                else if ((nextLine.Length >= sectionLabelLen) && (nextLine.Substring(0, sectionLabelLen) == sectionLabel))
-                {
-                    if (talk.speaker != null)
-                    {
-                        strWriter.WriteLine(JsonRecord(ref talk, ref said, ref firstRecord));
-                    }
-                    // ignore blank lines after Section: line.
-                    talk.section = nextLine.Substring(sectionLabelLen);
-                }
-                // if line is speaker name, store it.
-                else if ((nextLine.Length >= speakerLabelLen) && (nextLine.Substring(0, speakerLabelLen) == speakerLabel))
-                {
-                    if (talk.speaker != null)
-                    {
-                        strWriter.WriteLine(JsonRecord(ref talk, ref said, ref firstRecord));
-                    }
-                    talk.speaker = nextLine.Substring(speakerLabelLen);
-
-                }
-                // If it is something else and we have a current speaker, it is what was said.
-                else if (talk.speaker != null)
-                {
-                    said.WriteLine(nextLine);
-                }
-            }
-            if (talk.speaker != null)
-            {
-                strWriter.WriteLine(JsonRecord(ref talk, ref said, ref firstRecord));
-            }
-            strWriter.WriteLine("\n] }");
-            text = strWriter.ToString();
-        }
-
-        string JsonRecord(ref Talk talk, ref StringWriter said, ref bool firstRecord)
-        {
-            talk.said = said.ToString();
-
-            //string text = (firstRecord ? "" : ",") + "\n    " + new JavaScriptSerializer().Serialize(talk);
-            string text = (firstRecord ? "" : ",") + "\n    " + Newtonsoft.Json.JsonConvert.SerializeObject(talk);
-            firstRecord = false;
-
-            talk.speaker = null;
-            talk.section = null;
-            talk.said = null;
-            talk.topic = null;
-            talk.showSetTopic = false;
-            said.Dispose();
-            said = new StringWriter();
-            said.NewLine = "\n";
-            return text;
-        }
-        
         /*
          * For debugging transcript formats - outputs the file in hex.
          */

@@ -1,41 +1,21 @@
 ﻿using System;
+using System.IO;
 using GM.ProcessRecordingLib;
 
-namespace GM.ProcessRecording
+namespace GM.ProcessRecordings
 {
     class Program
     {
         static void Main(string[] args)
         {
-            transcribe();
-            Convert();
+            string incomingRecordings = Environment.CurrentDirectory + @"..\..\Datafiles\IN PROCESS";
+            string testDataFolder = Environment.CurrentDirectory + "\\testdata";
+
+            string filename = "2016-10-11 USA_ME_LincolnCounty_BoothbayHarbor_Selectmen.mp4";
+            string inputFile = incomingRecordings + "\\" + filename;
+
+            ProcessRecording processRec = new ProcessRecording();
+            processRec.Process(inputFile, testDataFolder);
         }
-
-        static void transcribe()
-        {
-            TranscribeAudio transcribeAudio = new TranscribeAudio();
-            string transcription;
-            transcription = transcribeAudio.Transcribe("../testdata/audio.raw", "en");
-        }
-        static void Convert()
-        {
-            ProcessAutoTranscript processAutoTranscript = new ProcessAutoTranscript();
-
-            string currentDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-
-            string DataDirectory = currentDir + @"\..\..\..\..\..\..\Server\WebApp\wwwroot\assets\data";
-            string meetingDirectory = DataDirectory + "\\" + @"USA_ME_LincolnCounty_BoothbayHarbor_Selectmen\2016-10-11";
-
-            processAutoTranscript.CreateJsonFile(
-              meetingDirectory + @"\Step 1 - transcript from Youtube.txt",
-                  meetingDirectory + @"\Step 2 - transcript from Youtube.json"
-
-                );
-
-            // Copy the output file to WebApp/wwwroot/assets
-            string srcDirectory = currentDir + @"\..\..\..\..\..";
-            string assetsDirectory = srcDirectory + @"Server\wwwroot\assets";
-        }
-
     }
 }
