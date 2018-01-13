@@ -9,10 +9,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="itextsharp">
-      <HintPath>..\..\..\ExternalLibraries\itextSharp\itextsharp.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

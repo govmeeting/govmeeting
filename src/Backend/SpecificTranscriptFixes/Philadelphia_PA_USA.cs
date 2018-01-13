@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using GM.ProcessTranscriptLib;
@@ -7,24 +6,19 @@ using GM.ProcessTranscriptLib;
 
 namespace GM.SpecificTranscriptFixes
 {
-    public class Philadelphia_PA_USA
+    public class Philadelphia_PA_USA : SpecificFixesBase
     {
         // original PDF sources at: http://legislation.phila.gov/council-transcriptroom/
 
         TranscriptFixes tf = new TranscriptFixes();
-        string basefilename;
-        string filename;
-        string officersNames = "";
-        string meetingInfo = "";
-        string transcript = "";
 
-        int step = 1;
+        public Philadelphia_PA_USA(string meetingDate, string logDirectory) : base(meetingDate, logDirectory)
+        {
+        }
 
-        public string Fix(string _transcript, string _filename)
+        public string Fix(string _transcript)
         {
             transcript = _transcript;
-            filename = _filename;
-            basefilename = filename.Substring(filename.LastIndexOf("\\") + 1);
 
             LOGPROGRESS("Start");
 
@@ -63,14 +57,6 @@ namespace GM.SpecificTranscriptFixes
         }
 
         // #############################################################################
-
-        void LOGPROGRESS(string fix_step)
-        {
-            string outputFile = filename + "_step" + step + "_" + fix_step + ".txt";
-            step++;
-
-            File.WriteAllText(outputFile, meetingInfo + "-----------------------------\n" + officersNames + "-----------------------------\n" + transcript);
-        }
 
         void DeleteExtraText(ref string transcript)
         {
@@ -143,16 +129,10 @@ namespace GM.SpecificTranscriptFixes
             LOGPROGRESS("DeleteExtraNewlines");
         }
 
+        // The date and time of the meeting is on each page on a separate line a,s for example: "May 3, 2017"
         void DeleteDateLine(ref string transcript)
         {
-            // https://blog.nicholasrogoff.com/2012/05/05/c-datetime-tostring-formats-quick-reference/
-            // https://docs.microsoft.com/en-us/dotnet/standard/base-types/parsing-datetime
-            CultureInfo MyCultureInfo = new CultureInfo("en-US");
-
-            // string ymd = "2016-03-17";
-            string ymd = basefilename.Substring(0, 10);
-            DateTime dateTime = DateTime.ParseExact(ymd, "yyyy-MM-dd", MyCultureInfo);
-
+            DateTime dateTime = GetMeetingDatetime();
             string date = dateTime.ToString("MMMM dd, yyyy");
 
             tf.RemoveLineContainingOnlyThisText(ref transcript, date);
