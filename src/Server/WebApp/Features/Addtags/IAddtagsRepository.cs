@@ -18,6 +18,7 @@ namespace WebApp.Models
         //IEnumerable<Addtags> GetAll();
 
         Addtags Get(string username, string country, string state, string county, string city, string govEntity, string meetingDate);
+        void Put(Addtags value, string username, string country, string state, string county, string city, string govEntity, string meetingDate);
         Addtags GetByPath(string path);
         // string GetStringByPath(string path);
         void PutByPath(string path, Addtags value);

@@ -11,6 +11,8 @@ namespace GM.ProcessTranscripts
     class ProcessTranscripts
     {
         string datafiles = Environment.CurrentDirectory + @"\..\..\Datafiles";
+        bool TEST = false;
+
         public void Process()
         {
             string incoming = datafiles + @"\INCOMING";
@@ -21,30 +23,75 @@ namespace GM.ProcessTranscripts
             watcher.watch(incoming, "*.pdf", doWork);
         }
 
+        public void RunTest()
+        {
+            TEST = true;
+            string incoming = datafiles + @"\INCOMING";
+            string[] files = Directory.GetFiles(incoming, "*.pdf");
+            foreach (string file in files)
+            {
+                doWork(file);
+            }
+        }
 
         private void doWork(string filename)
         {
-            string inprocess = datafiles + @"\IN_PROCESS";
+            // If file is "USA_PA_Philadelphia_Philadelphia_CityCouncil 2016-03-17.pdf"
+            //     location = USA_PA_Philadelphia_Philadelphia_CityCouncil
+            //     meetingDate = 2016-03-17.pdf
+            string name = Path.GetFileNameWithoutExtension(filename);
+            string location = name.Substring(0, name.Length - 11);
+            string meetingDate = name.Substring(name.Length - 10, 10);
+            string meetingFolder = datafiles + "\\" + location + "\\" + meetingDate;
 
-            // Copy the new file from "INCOMING" to "INPROCESS" folder
+            // Meeting folder, for example, will be: "USA_PA_Philadelphia_Philadelphia_CityCouncil/2016-03-17"
+            if (Directory.Exists(meetingFolder))
+            {
+                if (TEST)
+                {
+                    Directory.Delete(meetingFolder, true);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            Directory.CreateDirectory(meetingFolder);
+
+            // Copy PDF to meeting directory
             FileInfo infile = new FileInfo(filename);
-            string outfile = inprocess + "\\" + infile.Name;
-            File.Move(filename, outfile);
+            string outfile = meetingFolder + "\\" + "Step 1 - PDF of transcript.pdf";
+            File.Copy(filename, outfile);
 
             // Convert the PDF file to text
             string text = ConvertPdfToText.Convert(outfile);
 
             // Make the specific fixes to the philly data
-            string name = Path.GetFileNameWithoutExtension(outfile);
-            string meetingDate = name.Substring(name.Length - 10, 10);
-            Philadelphia_PA_USA philly = new Philadelphia_PA_USA(meetingDate, Path.GetDirectoryName(outfile));
+            Philadelphia_PA_USA philly = new Philadelphia_PA_USA(meetingDate, meetingFolder);
             string transcript = philly.Fix(text);
 
             // Convert the fixed transcript to JSON
             ConvertToJson.Convert(ref transcript);
-            string jsonfile = inprocess + "\\" + Path.GetFileNameWithoutExtension(filename) + ".json";
+            string jsonfile = meetingFolder + "\\" + Path.GetFileNameWithoutExtension(filename) + ".json";
             File.WriteAllText(jsonfile, transcript);
 
+            if (!TEST)
+            {
+                // Move the original PDF to "COMPLETED" folder
+                File.Move(filename, datafiles + "\\" + "COMPLETED");
+            }
+
+        }
+
+        private bool CreateMeetingFolder (string location, string meetingDate)
+        {
+            string directory = datafiles + "\\" + location + "\\" + meetingDate;
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+                return true;
+            }
+            return false;
         }
     }
 }

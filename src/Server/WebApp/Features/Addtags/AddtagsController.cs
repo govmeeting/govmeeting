@@ -45,6 +45,8 @@ namespace WebApp.Controllers
 
         // public string Get()
         {
+            // Normally Get would receive the paramaters that we are passing below.
+            // For now, we have this hard-coded.
             Addtags ret = addtags.Get("johnpank", "USA", "PA", "Philadelphia", "Philadelphia", "CityCouncil", "2016-03-17");
             return ret;
         }
@@ -60,8 +62,9 @@ namespace WebApp.Controllers
             // We need to read the location from the user's claims.
 
             //addtags.Put("johnpank", "USA", "PA", "Philadelphia", "CityCouncil", "2016-03-17");
-            string path = @"USA_PA_Philadelphia_CityCouncil/2016-03-17\Step 3 - Added topic tags.json";
-            addtags.PutByPath(System.IO.Path.Combine(Common.getDataPath(), path), value);
+            //string path = @"USA_PA_Philadelphia_CityCouncil/2016-03-17\Step 4 - Add tags.json";
+            //addtags.PutByPath(System.IO.Path.Combine(Common.getDataPath(), path), value);
+            addtags.Put(value, "johnpank", "USA", "PA", "Philadelphia", "Philadelphia", "CityCouncil", "2016-03-17");
         }
 
         /*

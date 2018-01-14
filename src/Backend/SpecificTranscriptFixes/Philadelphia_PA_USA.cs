@@ -18,6 +18,10 @@ namespace GM.SpecificTranscriptFixes
 
         public string Fix(string _transcript)
         {
+            string ss = "abc\n1 aaa\n22 ttt\nzzz\n";
+            tf.RemoveLinesExceptThoseStartingWithLineNumber(ref ss);
+
+
             transcript = _transcript;
 
             LOGPROGRESS("Start");
@@ -28,11 +32,13 @@ namespace GM.SpecificTranscriptFixes
             // Delete extra text like page headers & footers
             DeleteExtraText(ref transcript);
 
-            // Delete the page numbers and line numbers
-            DeletePageAndLineNumbers(ref transcript);
-
             // Split the transcript into three sections: meeting info, list of officers and transcript text.
             Split(ref transcript, ref meetingInfo, ref officersNames);
+
+            tf.RemoveLinesExceptThoseStartingWithLineNumber(ref transcript);
+
+            // Delete the line numbers
+            DeleteLineNumbers(ref transcript);
 
             // Align text left
             AlignTextLeft(ref transcript);
@@ -71,6 +77,14 @@ namespace GM.SpecificTranscriptFixes
             LOGPROGRESS("DeleteExtraText");
         }
 
+        void DeleteLineNumbers(ref string transcript)
+        {
+            // Remove page and line numbers.
+            tf.RemoveLineNumbers(ref transcript);
+
+            LOGPROGRESS("DeleteLineNumbers");
+        }
+
         void DeletePageAndLineNumbers(ref string transcript)
         {
             // Remove page and line numbers.
@@ -90,7 +104,7 @@ namespace GM.SpecificTranscriptFixes
             tf.RemoveSpacesAtStartOfLine(ref officersNames);
 
             // Get the transcript of what was said
-            transcript = tf.LinesBetween(transcript, "    - - -\n", "    - - -\n");
+            transcript = tf.LinesBetween(transcript, "    - - -\n", "Page 1\nA\n");
 
             LOGPROGRESS("Split");
         }
