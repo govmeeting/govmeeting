@@ -12,29 +12,24 @@ namespace GM.SpecificTranscriptFixes
 
         TranscriptFixes tf = new TranscriptFixes();
 
-        public Philadelphia_PA_USA(string meetingDate, string logDirectory) : base(meetingDate, logDirectory)
+        public Philadelphia_PA_USA(string meetingDate, string logDirectory) : base(logDirectory)
         {
         }
 
         public string Fix(string _transcript)
         {
-            string ss = "abc\n1 aaa\n22 ttt\nzzz\n";
-            tf.RemoveLinesExceptThoseStartingWithLineNumber(ref ss);
-
-
             transcript = _transcript;
 
-            LOGPROGRESS("Start");
+            LOGPROGRESS("TXT of transcript");
 
             // Delete the date of the meeting that appears on each page
-            DeleteDateLine(ref transcript);
-
-            // Delete extra text like page headers & footers
-            DeleteExtraText(ref transcript);
+            //            DeleteDateLine(ref transcript);
 
             // Split the transcript into three sections: meeting info, list of officers and transcript text.
             Split(ref transcript, ref meetingInfo, ref officersNames);
 
+            //string ss = "abc\n1 aaa\n22 ttt\nzzz\n";
+            //tf.RemoveLinesExceptThoseStartingWithLineNumber(ref ss);
             tf.RemoveLinesExceptThoseStartingWithLineNumber(ref transcript);
 
             // Delete the line numbers
@@ -54,28 +49,12 @@ namespace GM.SpecificTranscriptFixes
 
             // Put newlines before & after section headers and before speaker headings.
             ReformatHeadings(ref transcript);
-            tf.ReFormatSectionHeaders(ref transcript);
-            tf.ReFormatSpeakerHeaders(ref transcript);
 
-            LOGPROGRESS("reformatHeaders");
 
             return transcript;
         }
 
         // #############################################################################
-
-        void DeleteExtraText(ref string transcript)
-        {
-            // Delete these strings. Each page had what appears to be the name of the company providing transcription.
-            string[] ToDelete = {
-                    "Strehlow & Associates, Inc.",
-                    "STREHLOW & ASSOCIATES, INC.",
-                    "Stated Meeting Invocation",
-                    "(215) 504-4622" };
-            tf.DeleteStrings(ref transcript, ToDelete);
-
-            LOGPROGRESS("DeleteExtraText");
-        }
 
         void DeleteLineNumbers(ref string transcript)
         {
@@ -106,7 +85,7 @@ namespace GM.SpecificTranscriptFixes
             // Get the transcript of what was said
             transcript = tf.LinesBetween(transcript, "    - - -\n", "Page 1\nA\n");
 
-            LOGPROGRESS("Split");
+            LOGPROGRESS("Split heading,speakers,text");
         }
 
         void FormatSectionHeaders(ref string transcript)
@@ -143,17 +122,6 @@ namespace GM.SpecificTranscriptFixes
             LOGPROGRESS("DeleteExtraNewlines");
         }
 
-        // The date and time of the meeting is on each page on a separate line a,s for example: "May 3, 2017"
-        void DeleteDateLine(ref string transcript)
-        {
-            DateTime dateTime = GetMeetingDatetime();
-            string date = dateTime.ToString("MMMM dd, yyyy");
-
-            tf.RemoveLineContainingOnlyThisText(ref transcript, date);
-
-            LOGPROGRESS("RemoveDateLine");
-        }
-
         void AlignTextLeft(ref string transcript)
         {
             // Continuation lines for speaking can have up to 4 initial spaces.
@@ -170,6 +138,8 @@ namespace GM.SpecificTranscriptFixes
         {
             tf.ReFormatSectionHeaders(ref transcript);
             tf.ReFormatSpeakerHeaders(ref transcript);
+
+            LOGPROGRESS("ReformatHeaders");
         }
 
     }

@@ -16,21 +16,22 @@ namespace GM.SpecificTranscriptFixes
 
         int step = 1;
 
-        public SpecificFixesBase(string _meetingDate, string _logDirectory)
+        public SpecificFixesBase(string _logDirectory)
         {
-            meetingDate = _meetingDate;
             logDirectory = _logDirectory;
         }
 
         protected void LOGPROGRESS(string fix_step)
         {
-            string outputFile = logDirectory + "\\" + "step" + step + "_" + fix_step + ".txt";
+            string outputFile = logDirectory + "\\" + "Step 2-" + step + " " + fix_step + ".txt";
             step++;
 
             File.WriteAllText(outputFile, meetingInfo + "-----------------------------\n" + officersNames + "-----------------------------\n" + transcript);
         }
 
-        protected DateTime GetMeetingDatetime()
+        // Convert the meeting date as shown in the file name (EG: 2017-01-27")
+        // to the following format: "January 27, 2017"
+        protected DateTime GetMeetingDatetime(string meetingDate)
         {
             // https://blog.nicholasrogoff.com/2012/05/05/c-datetime-tostring-formats-quick-reference/
             // https://docs.microsoft.com/en-us/dotnet/standard/base-types/parsing-datetime

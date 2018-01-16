@@ -19,7 +19,7 @@ namespace WebApp.Models
 
     public class AddtagsRepository : IAddtagsRepository
     {
-        static ConcurrentDictionary<string, Addtags> _addtags = new ConcurrentDictionary<string, Addtags>();
+        //static ConcurrentDictionary<string, Addtags> _addtags = new ConcurrentDictionary<string, Addtags>();
         private TypedOptions _options { get; set; }
 
         // https://www.mikesdotnetting.com/article/302/server-mappath-equivalent-in-asp-net-core
@@ -36,7 +36,7 @@ namespace WebApp.Models
             //      - change to get a default govEntity
             //      - change to get the latest meeting
 
-            string path = country + "_" + state + "_" + city + "_" + county + "_" + govEntity + "\\" + meetingDate + "\\" + "Step 3 - Convert to JSON.json";
+            string path = country + "_" + state + "_" + city + "_" + county + "_" + govEntity + "\\" + meetingDate + "\\" + "Step 3 - JSON output.json";
 
             return GetByPath(Path.Combine(_options.DatafilesPath, path));
         }

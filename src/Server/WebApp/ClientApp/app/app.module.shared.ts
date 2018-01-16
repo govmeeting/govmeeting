@@ -42,7 +42,7 @@ import { AppData } from './appdata';
     providers: [AppData,
         {
             provide: AppData,
-            useValue: { isServerRunning: false, isDataFromMemory: false }
+            useValue: { isServerRunning: true, isDataFromMemory: false }
             //useValue: window.APP_DATA
             //useValue: window['APP_DATA']
         }

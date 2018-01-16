@@ -30,6 +30,12 @@ namespace GM.ProcessTranscriptLib
             return text.Substring(start, len);
         }
 
+        // Delete multiple strings. For example:
+        //   string[] ToDelete = {
+        //      "Strehlow & Associates, Inc.",
+        //      "Stated Meeting Invocation",
+        //      "(215) 504-4622" };
+        //   DeleteStrings(ref transcript, ToDelete);
         public void DeleteStrings(ref string text, string[] ToDelete)
         {
             StringBuilder textBuilder = new StringBuilder(text);
@@ -106,7 +112,7 @@ namespace GM.ProcessTranscriptLib
 
         public void RemoveLinesExceptThoseStartingWithLineNumber(ref string text)
         {
-            string pattern = "^[^1-9][^1-9 ].*\n";
+            string pattern = "^[^1-9].*\n";
             string replacement = "";
             text = Regex.Replace(text, pattern, replacement, RegexOptions.Multiline);
         }

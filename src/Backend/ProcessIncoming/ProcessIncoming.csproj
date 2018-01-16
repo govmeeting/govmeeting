@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProcessRecordingLib\ProcessRecordingLib.csproj" />
     <ProjectReference Include="..\ProcessTranscriptLib\ProcessTranscriptLib.csproj" />
     <ProjectReference Include="..\SpecificTranscriptFixes\SpecificTranscriptFixes.csproj" />
   </ItemGroup>

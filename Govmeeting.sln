@@ -60,22 +60,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "src\Server\WebApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeepGovmeetingWebsiteAlive", "src\Utilities\KeepGovmeetingWebsiteAlive\KeepGovmeetingWebsiteAlive.csproj", "{AC75E94C-D3CF-4997-B4F7-B89B58819DD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessRecordingLib", "src\Backend\ProcessRecordingLib\ProcessRecordingLib.csproj", "{ABBF3D5A-0D0E-4AAB-B01F-D5B906E51B9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessRecordingLib", "src\Backend\ProcessRecordingLib\ProcessRecordingLib.csproj", "{ABBF3D5A-0D0E-4AAB-B01F-D5B906E51B9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessTranscriptLib", "src\Backend\ProcessTranscriptLib\ProcessTranscriptLib.csproj", "{E65FE82D-7DE5-4B70-94CA-D23BFEFE779E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessTranscriptLib", "src\Backend\ProcessTranscriptLib\ProcessTranscriptLib.csproj", "{E65FE82D-7DE5-4B70-94CA-D23BFEFE779E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecificTranscriptFixes", "src\Backend\SpecificTranscriptFixes\SpecificTranscriptFixes.csproj", "{1DD59506-E3AA-4356-8171-AFF35F76C23B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecificTranscriptFixes", "src\Backend\SpecificTranscriptFixes\SpecificTranscriptFixes.csproj", "{1DD59506-E3AA-4356-8171-AFF35F76C23B}"
 	ProjectSection(ProjectDependencies) = postProject
 		{E65FE82D-7DE5-4B70-94CA-D23BFEFE779E} = {E65FE82D-7DE5-4B70-94CA-D23BFEFE779E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessRecordings", "src\Backend\ProcessRecordings\ProcessRecordings.csproj", "{1A7B10EF-CB08-44D2-8A46-F0DD528ACB55}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessTranscripts", "src\Backend\ProcessTranscripts\ProcessTranscripts.csproj", "{880AF77E-2F7B-4F81-BC14-86559D73C3CC}"
-	ProjectSection(ProjectDependencies) = postProject
-		{1DD59506-E3AA-4356-8171-AFF35F76C23B} = {1DD59506-E3AA-4356-8171-AFF35F76C23B}
-		{E65FE82D-7DE5-4B70-94CA-D23BFEFE779E} = {E65FE82D-7DE5-4B70-94CA-D23BFEFE779E}
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessIncoming", "src\Backend\ProcessIncoming\ProcessIncoming.csproj", "{42A3AC51-1990-4813-8FCB-12A5AB0B813A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -131,14 +125,10 @@ Global
 		{1DD59506-E3AA-4356-8171-AFF35F76C23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DD59506-E3AA-4356-8171-AFF35F76C23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DD59506-E3AA-4356-8171-AFF35F76C23B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A7B10EF-CB08-44D2-8A46-F0DD528ACB55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A7B10EF-CB08-44D2-8A46-F0DD528ACB55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A7B10EF-CB08-44D2-8A46-F0DD528ACB55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A7B10EF-CB08-44D2-8A46-F0DD528ACB55}.Release|Any CPU.Build.0 = Release|Any CPU
-		{880AF77E-2F7B-4F81-BC14-86559D73C3CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{880AF77E-2F7B-4F81-BC14-86559D73C3CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{880AF77E-2F7B-4F81-BC14-86559D73C3CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{880AF77E-2F7B-4F81-BC14-86559D73C3CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42A3AC51-1990-4813-8FCB-12A5AB0B813A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A3AC51-1990-4813-8FCB-12A5AB0B813A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42A3AC51-1990-4813-8FCB-12A5AB0B813A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42A3AC51-1990-4813-8FCB-12A5AB0B813A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -161,8 +151,7 @@ Global
 		{ABBF3D5A-0D0E-4AAB-B01F-D5B906E51B9E} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
 		{E65FE82D-7DE5-4B70-94CA-D23BFEFE779E} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
 		{1DD59506-E3AA-4356-8171-AFF35F76C23B} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
-		{1A7B10EF-CB08-44D2-8A46-F0DD528ACB55} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
-		{880AF77E-2F7B-4F81-BC14-86559D73C3CC} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
+		{42A3AC51-1990-4813-8FCB-12A5AB0B813A} = {A97B2C5A-FD21-46B0-8914-86156BE54EE0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FD5F3662-C3BA-4207-8B9B-AFCB14399401}
