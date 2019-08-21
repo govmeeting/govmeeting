@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using System.IO;
 using GM.FileDataRepositories;
-using GM.FileDataModel;
+using GM.ViewModels;
 
 namespace GM.WebApp.Features.Addtags
 {

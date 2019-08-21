@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using GM.FileDataModel;
+using GM.ViewModels;
 
 namespace GM.ProcessRecording
 {

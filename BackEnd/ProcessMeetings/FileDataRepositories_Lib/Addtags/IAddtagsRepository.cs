@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GM.FileDataModel;
+using GM.ViewModels;
 
 namespace GM.FileDataRepositories
 {

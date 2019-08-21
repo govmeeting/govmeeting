@@ -8,7 +8,7 @@ import { Addtags, Talk } from '../models/addtags-view';
 export class AddtagsServiceStub {
 
     getTalks(): Observable<Addtags> {
-        console.log('getAsr from memory');
+        console.log('getTalks from memory');
         return Observable.of(this.addtags);
     }
 

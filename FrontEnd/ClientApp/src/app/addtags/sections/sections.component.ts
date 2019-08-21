@@ -9,6 +9,7 @@ import { AddtagsService } from '../addtags.service';
 export class SectionsComponent implements OnInit {
     errorMessage: string;
     sections: string[];
+    gotSections: boolean = false;
 
   constructor(private _addtagsService: AddtagsService) {
   }
@@ -16,6 +17,9 @@ export class SectionsComponent implements OnInit {
     ngOnInit() { this.getSections(); }
 
 getSections() {
+  if (! this.gotSections) {
+    this.gotSections = true;
+    console.log('getSections');
     this._addtagsService.getTalks()
         .subscribe(
         addtags => {
@@ -23,7 +27,8 @@ getSections() {
              console.log(this.sections);
         },
         error => this.errorMessage = <any>error);
-}
+      }
+    }
 
  OnChange(newValue: any) {
       console.log(newValue);

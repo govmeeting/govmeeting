@@ -8,8 +8,8 @@
             "name": "Chrome",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:5000",
-            "webRoot": "${workspaceRoot}/src/ClientApp"
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceRoot}/Frontend/ClientApp"
         },
 		{
 			"name": "Web_App",
@@ -18,7 +18,7 @@
 			"preLaunchTask": "build-webapp",
 			"program": "${workspaceFolder}/src/Web_App/bin/Debug/netcoreapp2.0/Web_App.dll",
 			"args": [],
-			"cwd": "${workspaceFolder}/src/Web_App",
+			"cwd": "${workspaceFolder}/Backend/Web_App",
 			"stopAtEntry": false,
 			"internalConsoleOptions": "openOnSessionStart",
 			"launchBrowser": {
@@ -34,9 +34,9 @@
             "request": "launch",
             "preLaunchTask": "build-webapp",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/Web_App/bin/Debug/netcoreapp2.0/Web_App.dll",
+            "program": "${workspaceFolder}/Backend/Web_App/bin/Debug/netcoreapp2.0/Web_App.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/Web_App",
+            "cwd": "${workspaceFolder}/Backend/Web_App",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
@@ -66,9 +66,9 @@
             "request": "launch",
             "preLaunchTask": "build-workflowapp",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/Workflow_App/bin/Debug/netcoreapp2.0/Workflow_App.dll",
+            "program": "${workspaceFolder}/Backend/Workflow_App/bin/Debug/netcoreapp2.0/Workflow_App.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/Workflow_App",
+            "cwd": "${workspaceFolder}/Backend/Workflow_App",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
             "console": "internalConsole",
             "stopAtEntry": false,

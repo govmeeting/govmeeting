@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using GM.ProcessRecording;
 using GM.ProcessTranscript;
-using GM.FileDataModel;
+using GM.ViewModels;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 using GM.FileDataRepositories;

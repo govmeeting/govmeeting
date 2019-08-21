@@ -3,7 +3,7 @@ using System.IO;
 using Newtonsoft.Json;
 
 using GM.ProcessRecording;
-using GM.FileDataModel;
+using GM.ViewModels;
 using GM.ProcessRecordings;
 
 namespace GM.ProcessRecording_Tests

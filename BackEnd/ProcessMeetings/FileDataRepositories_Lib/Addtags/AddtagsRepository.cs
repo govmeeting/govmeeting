@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.IO;
 using Microsoft.Extensions.Options;
-using GM.FileDataModel;
+using GM.ViewModels;
 using GM.Configuration;
 
 namespace GM.FileDataRepositories

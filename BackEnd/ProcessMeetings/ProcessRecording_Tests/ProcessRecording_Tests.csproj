@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FileDataModel_Lib\FileDataModel_Lib.csproj" />
+    <ProjectReference Include="..\ViewModels_Lib\ViewModels_Lib.csproj" />
     <ProjectReference Include="..\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
     <ProjectReference Include="..\ProcessRecording_Lib\ProcessRecording_Lib.csproj" />
   </ItemGroup>

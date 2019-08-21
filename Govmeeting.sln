@@ -60,7 +60,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleCloud_Lib", "BackEnd\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineAccess_Lib", "BackEnd\Online\OnlineAccess_Lib\OnlineAccess_Lib.csproj", "{4FDE049C-2F66-4388-B238-83D4ED86AD44}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileDataModel_Lib", "BackEnd\ProcessMeetings\FileDataModel_Lib\FileDataModel_Lib.csproj", "{1127C865-3AA0-4BA6-B12F-CC9289F47219}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModels_Lib", "BackEnd\ProcessMeetings\ViewModels_Lib\ViewModels_Lib.csproj", "{1127C865-3AA0-4BA6-B12F-CC9289F47219}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileDataRepositories_Lib", "BackEnd\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj", "{9862C055-6935-4513-94CF-C81CE7FEF25D}"
 EndProject

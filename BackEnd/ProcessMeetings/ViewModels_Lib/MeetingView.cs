@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GM.FileDataModel
+namespace GM.ViewModels
 {
     /* The model of the meeting data for the JSON
      * data is different from that of the database

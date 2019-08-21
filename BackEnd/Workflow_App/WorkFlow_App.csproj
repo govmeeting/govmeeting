@@ -25,7 +25,7 @@
     <ProjectReference Include="..\Configuration_Lib\Configuration_Lib.csproj" />
     <ProjectReference Include="..\Database\DatabaseRepositories_Lib\DatabaseRepositories_Lib.csproj" />
     <ProjectReference Include="..\Database\LoadDatabase_Lib\LoadDatabase_Lib.csproj" />
-    <ProjectReference Include="..\ProcessMeetings\FileDataModel_Lib\FileDataModel_Lib.csproj" />
+    <ProjectReference Include="..\ProcessMeetings\ViewModels_Lib\ViewModels_Lib.csproj" />
     <ProjectReference Include="..\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
     <ProjectReference Include="..\ProcessMeetings\ProcessRecording_Lib\ProcessRecording_Lib.csproj" />
     <ProjectReference Include="..\ProcessMeetings\ProcessTranscript_Lib\ProcessTranscript_Lib.csproj" />

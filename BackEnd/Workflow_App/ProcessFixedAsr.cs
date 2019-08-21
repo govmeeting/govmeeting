@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 using GM.Configuration;
 using Newtonsoft.Json;
 using GM.FileDataRepositories;
-using GM.FileDataModel;
+using GM.ViewModels;
 
 
 namespace GM.WorkFlow

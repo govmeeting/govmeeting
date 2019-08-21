@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using GM.FileDataModel;
+using GM.ViewModels;
 using GM.ProcessRecordings;
 
 namespace GM.ProcessRecording

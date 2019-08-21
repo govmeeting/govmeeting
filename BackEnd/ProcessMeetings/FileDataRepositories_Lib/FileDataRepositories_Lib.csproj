@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Database\DatabaseRepositories_Lib\DatabaseRepositories_Lib.csproj" />
-    <ProjectReference Include="..\FileDataModel_Lib\FileDataModel_Lib.csproj" />
+    <ProjectReference Include="..\ViewModels_Lib\ViewModels_Lib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

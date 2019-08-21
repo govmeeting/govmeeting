@@ -9,7 +9,7 @@ using System.IO;
 using GM.WebApp.Features.Shared;
 using Microsoft.AspNetCore.Hosting;
 using GM.FileDataRepositories;
-using GM.FileDataModel;
+using GM.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 

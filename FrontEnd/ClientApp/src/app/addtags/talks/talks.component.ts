@@ -17,6 +17,7 @@ export class TalksComponent implements OnInit {
 
   errorMessage: string;
   talks: Talk[] | null;
+  gotTalks: boolean = false;
   addtags: Addtags = {sections: [""], topics: [""], talks: null};
   topics: string[];
   highlightedTopic: string;
@@ -34,7 +35,8 @@ export class TalksComponent implements OnInit {
 ///////////////////////////////////////////////////////////////
 
   ngOnInit() {
-      this.getTalks();
+    console.log('talks.component.ts ngOnInit');
+    this.getTalks();
 
       // The following would get the list in memory.
       // this.talks = this._talkService.getTalksFromMemory();
@@ -43,10 +45,14 @@ export class TalksComponent implements OnInit {
   }
 
   getTalks() {
+    if (! this.gotTalks) {
+      this.gotTalks = true;
+      console.log('getTalks');
       this._addtagsService.getTalks()
       .subscribe(
       addtags => (this.addtags = addtags, this.talks = addtags.talks),
       error => this.errorMessage = <any>error);
+    }
   }
 
   saveChanges() {

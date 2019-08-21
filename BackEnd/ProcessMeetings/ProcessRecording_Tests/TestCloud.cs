@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
 
 using GM.ProcessRecording;
-using GM.FileDataModel;
+using GM.ViewModels;
 using GM.Configuration;
 using GM.ProcessRecordings;
 

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using GM.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using GM.FileDataRepositories;
-using GM.FileDataModel;
+using GM.ViewModels;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 

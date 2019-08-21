@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GM.FileDataModel
+namespace GM.ViewModels
+
 {
 
     /* These classes are used in the browser Fixasr module for editing the transcript produced
