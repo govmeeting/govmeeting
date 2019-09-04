@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, VERSION } from '@angular/core';
 
 @Component({
   selector: 'gm-root',
@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
   public isCollapsed = true;
+  version: string;
+
+  constructor() {
+    this.version = VERSION.full;
+  }
 }

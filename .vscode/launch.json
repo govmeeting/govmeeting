@@ -16,7 +16,7 @@
 			"type": "coreclr",
 			"request": "launch",
 			"preLaunchTask": "build-webapp",
-			"program": "${workspaceFolder}/src/Web_App/bin/Debug/netcoreapp2.0/Web_App.dll",
+			"program": "${workspaceFolder}/Backend/Web_App/bin/Debug/netcoreapp2.0/Web_App.dll",
 			"args": [],
 			"cwd": "${workspaceFolder}/Backend/Web_App",
 			"stopAtEntry": false,

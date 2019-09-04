@@ -30,7 +30,7 @@ namespace GM.WebApp
     public class Startup
 
     {
-        NLog.Logger _logger;
+        readonly NLog.Logger _logger;
 
         //public Startup(IConfiguration configuration, ILogger<Startup> logger)
         public Startup(IConfiguration configuration)
@@ -93,7 +93,8 @@ namespace GM.WebApp
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "../ClientApp/dist";
+                //configuration.RootPath = "../../Frontend/ClientApp/dist";
+                configuration.RootPath = "ClientApp/dist";
             });
 
             _logger.Trace("GM: Add Application services");
@@ -107,7 +108,7 @@ namespace GM.WebApp
             IApplicationBuilder app,
             IHostingEnvironment env,
             IDbInitializer dbInitializer,
-            ILoggerFactory loggerFactory,
+            //ILoggerFactory loggerFactory,
             IOptions<AppSettings> config
             )
         {
@@ -158,10 +159,12 @@ namespace GM.WebApp
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                spa.Options.SourcePath = "../ClientApp";
+                //spa.Options.SourcePath = "../../Frontend/ClientApp";
+                spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
                 {
+                    //spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });

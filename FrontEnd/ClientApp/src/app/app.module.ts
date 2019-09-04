@@ -30,7 +30,7 @@ import { FixasrServiceStub } from './fixasr/fixasr.service-stub';
 import { AppData } from './appdata';
 
 // Is the Asp.Net server running
-const _isAspServerRunning = false;
+const _isAspServerRunning = true;
 
 @NgModule({
   declarations: [
