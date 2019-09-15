@@ -68,9 +68,15 @@ export class FixasrComponent  implements OnInit {
 
     // https://github.com/videogular/videogular2/blob/master/docs/using-the-api.md
 
-    @ViewChild('myInput') input: ElementRef;
+    // "static" argument of @ViewChild: Angular recommends retrieving view queries results
+    // in the ngAfterViewInit lifecycle hook to ensure that queries matches that are dependent
+    // on binding resolutions (like in *ngFor loops or *ngIf conditions) are ready and will
+    // thus be found by the query. To get this behavior, the static parameter must be set to false.
+    // See: https://dev.to/angular/the-angular-viewchild-decorator-424c
 
-    @ViewChild(VideoComponent)
+    @ViewChild('myInput', { static: false }) input: ElementRef;
+
+    @ViewChild(VideoComponent, { static: false })
     private videoComponent: VideoComponent;
 
     constructor(
