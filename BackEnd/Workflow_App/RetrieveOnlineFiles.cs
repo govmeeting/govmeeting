@@ -11,7 +11,7 @@ namespace GM.WorkFlow
 {
     public class RetrieveOnlineFiles
     {
-        // Todo - IMPLEMENT THIS CLASS
+        // TODO - IMPLEMENT THIS CLASS
 
         /* RetrieveOnlineFiles will:
          * Read the meeting schedules for all government bodies in the database.
@@ -51,7 +51,7 @@ namespace GM.WorkFlow
             {
                 "USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2017-12-07.pdf",
                 //"USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15.mp4"
-               // Todo - This is about 58MB. Github prefers < 50.
+               // TODO - This is about 58MB. Github prefers < 50.
                 "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4" //
             };
 

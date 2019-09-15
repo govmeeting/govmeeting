@@ -71,7 +71,7 @@ namespace GM.FileDataRepositories
                 endLastSpokenText = i - 1;
                 if ((i = text.IndexOf("]", i++)) != -1)
                 {
-                    // todo - check end condition of "]" as last char in text.
+                    // TODO - check end condition of "]" as last char in text.
                     startNextSpokenText = i + 1;
                     Speaker = text.Substring(endLastSpokenText + 2, startNextSpokenText - endLastSpokenText - 3);
                     startNextSpokenText = i + 1;

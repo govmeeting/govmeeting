@@ -26,7 +26,7 @@ export class VideoComponent {
         console.log('VideoComponent constructor');
         console.log('AppData=' + appData);
         console.log('appData.isAspServerRunning=' + appData.isAspServerRunning);
-        // Todo - Use the server API to return the video. Until then we need to specify the full path of the video file.
+        // TODO - Use the server API to return the video. Until then we need to specify the full path of the video file.
         // var location: string = 'api/video/3/1';  // This would be for MeetingID=3 Part=1
 
         // If Web_App is running, return from solutions's Datafiles folder
@@ -46,7 +46,7 @@ export class VideoComponent {
                 src: location + fileBasename + '.mp4',
                 type: 'video/mp4'
             }
-/*            // Todo - provide .ogg and .webm versions of the videos
+/*            // TODO - provide .ogg and .webm versions of the videos
             {
               src: location + location + fileBasename + '.ogg',
               type: 'video/ogg'

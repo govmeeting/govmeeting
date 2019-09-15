@@ -144,7 +144,7 @@ namespace GM.FileDataRepositories
             bool res = int.TryParse(numpart, out numLast);
             if (!res)
             {
-                // Todo-g - handle error
+                // TODO - handle error
                 return "01";
             }
             if (++numLast > maxBackups)

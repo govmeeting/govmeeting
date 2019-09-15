@@ -29,7 +29,7 @@ namespace GM.FileDataRepositories
             string meetingFolder = _meetingFolder.GetPathFromId(meetingId);
             string workFolder = meetingFolder + "\\" + WORK_FOLDER;
 
-            // Todo-g - Remove later - For development: If the data is not in Datafiles folder, copy it from testdata.
+            // TODO - Remove later - For development: If the data is not in Datafiles folder, copy it from testdata.
             // UseTestData.CopyIfNeeded(workFolder, _config.DatafilesPath, _config.TestfilesPath);
 
             string toTagFolderPath = Path.Combine(_config.DatafilesPath, workFolder);

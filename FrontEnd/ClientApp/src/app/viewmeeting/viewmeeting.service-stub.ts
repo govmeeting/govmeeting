@@ -94,7 +94,7 @@ export class ViewMeetingServiceStub {
           return this.observable;
       }
       const url = 'assets/stubdata/1 tagged.json';
-        // Todo - handle null return. Here we just cast to the correct object type.
+        // TODO - handle null return. Here we just cast to the correct object type.
         this.observable = <Observable<ViewMeeting>> this.http.get<ViewMeeting>(url)
            .pipe(catchError(this.errHandling.handleError))
            .share();     // make it shared so more than one subscriber can get the same result.

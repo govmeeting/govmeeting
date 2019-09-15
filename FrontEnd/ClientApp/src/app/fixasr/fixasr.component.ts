@@ -47,7 +47,7 @@ export class FixasrComponent  implements OnInit {
     showhelp = true;
     showhidehelp = 'Hide';
 
-    // Todo-g - Fix problem with asrtext.
+    // TODO - Fix problem with asrtext.
     // We should just use asrtext, which contains both asrsegments & lastedit.
     // But the browser hangs when we try to access asrtext from HTML.
     asrsegments: AsrSegment[];
@@ -343,7 +343,7 @@ export class FixasrComponent  implements OnInit {
         this._fixasrService.getAsr()
             .subscribe(
             asrtext => {
-                // Todo-g - We should be able to just move asrtext to this.asrtext.
+                // TODO - We should be able to just move asrtext to this.asrtext.
                 // It appears to move the data OK. When I stop at a breakpoint, the
                 // the data is all there. But accessing it from the HTML
                 // causes an error (It says asrtext is null).
@@ -366,7 +366,7 @@ export class FixasrComponent  implements OnInit {
         // let asrtext: FixasrText;
         const lastedit = this.getScrollPosition();
         console.log('saveTranscript');
-        // Todo-g - See notes under getAsr().
+        // TODO - See notes under getAsr().
         // asrtext.lastedit = this.getScrollPosition();
         // asrtext.asrsegments = this.asrsegments;
         // this._asrService.postChanges(asrtext)

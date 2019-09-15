@@ -210,7 +210,7 @@ namespace GM.DatabaseAccess
             return query.ToList();
         }
 
-        /* Todo-g complete method to get speakers at meeting.
+        /* TODO complete method to get speakers at meeting.
         /// <summary>
         /// Gets the speakers at a specific meeting.
         /// </summary>

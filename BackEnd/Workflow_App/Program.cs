@@ -48,7 +48,7 @@ namespace GM.WorkFlow
 
             // build configuration
             var configuration = new ConfigurationBuilder()
-                // Todo - The following path will only work in development.
+                // TODO - The following path will only work in development.
                 // It isn't yet decided how Workflow_App will be run in production.
                 // Will it be a separate .EXE or a .LIB loaded by Web_App?
                 .SetBasePath(Directory.GetCurrentDirectory() + @"\..\..\..")

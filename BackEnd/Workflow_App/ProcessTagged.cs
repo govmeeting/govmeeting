@@ -6,7 +6,7 @@ namespace GM.WorkFlow
 {
     public class ProcessTagged
     {
-        // Todo - IMPLEMENT THIS CLASS
+        // TODO - IMPLEMENT THIS CLASS
 
         public void Run()
         {

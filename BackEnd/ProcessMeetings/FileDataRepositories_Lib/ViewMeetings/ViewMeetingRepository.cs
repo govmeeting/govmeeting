@@ -36,7 +36,7 @@ namespace GM.FileDataRepositories
             // Then it will build the path name of the work folder.
             string meetingFolder = _meetingFolder.GetPathFromId(meetingId);
 
-            // Todo-g - Remove later - For development: If the data is not in Datafiles folder, copy it from testdata.
+            // TODO - Remove later - For development: If the data is not in Datafiles folder, copy it from testdata.
             // UseTestData.CopyIfNeeded(meetingFolder, _config.DatafilesPath, _config.TestfilesPath);
 
 

@@ -13,7 +13,7 @@ using GM.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-// Todo-g #### Change all namespace names from "Models", "Controllers", etc to feature name.
+// TODO #### Change all namespace names from "Models", "Controllers", etc to feature name.
 namespace GM.WebApp.Features.Fixasr
 {
     [Route("api/[controller]")]

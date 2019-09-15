@@ -10,7 +10,7 @@ namespace GM.ProcessRecording_Tests
 {
     public class TestProcessing
     {
-        // Todo-g - These should come from configuration
+        // TODO - These should come from configuration
         private string testdataPath = Environment.CurrentDirectory + @"\..\..\testdata";
         //private string datafilesPath = Environment.CurrentDirectory + @"\..\..\Datafiles";
 

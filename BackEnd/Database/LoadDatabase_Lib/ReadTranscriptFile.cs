@@ -161,7 +161,7 @@ namespace GM.LoadDatabase
 //                        if (!string.IsNullOrEmpty(meetingTime)) meetingDate = meetingDate + " " + meetingTime;
 //                        meeting.Date = DateTime.Parse(meetingDate);
 
-//                        // Todo-g We need to accept other date formats besides those that DateTime.Parse allows.
+//                        // TODO We need to accept other date formats besides those that DateTime.Parse allows.
 //                        // We should then change commonly used date formats to one that Parse can use.
 //                        // We need to document, for the user, the formats of date and time can be added to a transcript file.
 //                        // Standard Date and Time Format Strings:

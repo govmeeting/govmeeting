@@ -115,7 +115,7 @@ namespace GM.ProcessRecording
                 }
                 else
                 {
-                    // Todo-g - check for invalid characters like a double quote.
+                    // TODO - check for invalid characters like a double quote.
                     if (phrase.said != null)
                     {
                         Console.WriteLine("CreateJsonFiles.cs - ERROR: Invalid input data (duplicate said) on line " + linenum);

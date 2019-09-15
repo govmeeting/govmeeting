@@ -16,7 +16,7 @@ export class BrowseComponent implements OnInit {
   topics: string[];
   errorMessage: string;
 
-    // Todo-g Add option to show context surounding what a specific person said
+    // TODO Add option to show context surounding what a specific person said
 
     /**
      * <summary>

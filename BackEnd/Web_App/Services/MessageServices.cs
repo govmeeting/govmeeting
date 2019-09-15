@@ -69,7 +69,7 @@ namespace GM.WebApp.Services
             }
             catch (Exception ex)
             {
-                // Todo: Use logging.
+                // TODO: Use logging.
                 Console.WriteLine("MessageServices.cs - Exception in SendEmailAsync: " + ex.Message);
                 //return (false, ex.Message);
             }

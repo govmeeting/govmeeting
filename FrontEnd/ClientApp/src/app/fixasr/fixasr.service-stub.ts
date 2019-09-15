@@ -33,7 +33,7 @@ export class FixasrServiceStub {
         // console.log('getAsr from memory');
         // return Observable.of(this.asrtext);
         const url = 'assets/stubdata/ToFix.json';
-        // Todo - handle null return. Here we just cast to the correct object type.
+        // TODO - handle null return. Here we just cast to the correct object type.
         return <Observable<FixasrText>> this.http.get<FixasrText>(url)
             .pipe(catchError(this.errHandling.handleError));
     }

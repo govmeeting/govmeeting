@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace GM.ProcessTranscript
 {
-    // Todo-g All methods in TranscriptFixes are in need of unit tests.
+    // TODO All methods in TranscriptFixes are in need of unit tests.
 
     public class TranscriptFixes
     {

@@ -33,7 +33,7 @@ namespace GM.FileDataRepositories
             string partFolder = workFolder + $"\\part{part:D2}";
 
 
-            // Todo-g - Remove later - for development: If the data is not in Datafiles folder, copy it from testdata.
+            // TODO - Remove later - for development: If the data is not in Datafiles folder, copy it from testdata.
             // UseTestData.CopyIfNeeded(workFolder, _config.DatafilesPath, _config.TestfilesPath);
 
             string partFolderPath = Path.Combine(_config.DatafilesPath, partFolder);

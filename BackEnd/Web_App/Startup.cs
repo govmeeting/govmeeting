@@ -196,7 +196,7 @@ namespace GM.WebApp
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 // Govmeeting: Set options for cookie expiration.
-                // Todo-g - While upgrading to .NET SDK 2.0, I was getting an error on the next two line so
+                // TODO - While upgrading to .NET SDK 2.0, I was getting an error on the next two line so
                 // I commented them out. Error = "IdentityOptions does not contain a definition for Cookies"
                 //options.Cookies.ApplicationCookie.SlidingExpiration = true;
                 //options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromHours(1);
@@ -205,7 +205,7 @@ namespace GM.WebApp
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // amount of time they are locked out
                 options.Lockout.AllowedForNewUsers = true;
-                // Todo-g We should send the admin an email if someone is locked out.
+                // TODO We should send the admin an email if someone is locked out.
                 options.SignIn.RequireConfirmedEmail = true;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()

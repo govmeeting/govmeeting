@@ -75,7 +75,7 @@ namespace GM.WebApp.Features.Admin
             }
             catch
             {
-                // Todo-g - handle error
+                // TODO - handle error
                 return RedirectToAction("EditUsers");
             }
         }
@@ -94,7 +94,7 @@ namespace GM.WebApp.Features.Admin
             }
             catch
             {
-                // Todo-g - handle error
+                // TODO - handle error
                 return RedirectToAction("EditUsers");
             }
         }

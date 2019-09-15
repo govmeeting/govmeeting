@@ -31,7 +31,7 @@ export class FixasrService {
         url = url + '/' + this.meetingId + '/' + this.part;
 
         console.log('get data from ' + url);
-        // Todo - handle null return. Here we just cast to the correct object type.
+        // TODO - handle null return. Here we just cast to the correct object type.
         return <Observable<FixasrText>> this.http.get<FixasrText>(url)
             .pipe(catchError(this.errHandling.handleError));
     }
@@ -52,7 +52,7 @@ export class FixasrService {
             })
         };
         console.log('postData in fixasr.service');
-        // Todo - handle null return. Here we just cast to the correct object type.
+        // TODO - handle null return. Here we just cast to the correct object type.
         return <Observable<FixasrText>> this.http.post<FixasrText>(url, asrtext, httpOptions)
             .pipe(catchError(this.errHandling.handleError));
     }
