@@ -18,7 +18,6 @@ import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
 import { VolunteerModule } from './volunteer/volunteer.module';
 import { TemppagesModule } from './temppages/temppages.module';
-import { TestModule } from './test/test.module';
 // import { MatsampModule } from './matsamp/matsamp.module
 
 import { ViewMeetingService } from './viewmeeting/viewmeeting.service';
@@ -51,8 +50,7 @@ const _isAspServerRunning = true;
     VolunteerModule,
     TemppagesModule,
     // MatsampModule,
-    GmSharedModule,
-    TestModule
+    GmSharedModule
   ],
   providers: [
     ErrorHandlingService,
@@ -74,3 +72,4 @@ const _isAspServerRunning = true;
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

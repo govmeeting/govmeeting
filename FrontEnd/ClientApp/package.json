@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -20,21 +20,14 @@
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
-    "@ng-bootstrap/ng-bootstrap": "^2.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1",
-    "bootstrap": "^4.3.1",
-    "classlist.js": "^1.1.20150312",
-    "core-js": "^2.5.6",
-    "jquery": "^3.3.1",
-    "less": "^3.0.4",
-    "ngx-toastr": "^10.1.0",
-    "popper.js": "^1.14.3",
     "rxjs-compat": "^6.2.0",
-    "videogular2": "^6.1.1",
-    "webpack": "^4.8.3",
-    "webpack-dev-server": "^3.1.4"
+    "ngx-toastr": "^10.1.0",
+    "@ng-bootstrap/ng-bootstrap": "^2.0.0",
+    "bootstrap": "^4.3.1",
+    "videogular2": "^6.1.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.802.0",
@@ -56,10 +49,5 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
-  },
-  "-vs-binding": {
-    "BeforeBuild": [
-      "install"
-    ]
   }
 }

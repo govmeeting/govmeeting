@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewMeetingComponent } from './viewmeeting.component';
+import { ViewMeetingServiceStub } from './viewmeeting.service-stub';
 
 describe('ViewMeetingComponent', () => {
   let component: ViewMeetingComponent;
@@ -8,7 +9,8 @@ describe('ViewMeetingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        declarations: [ ViewMeetingComponent ]
+        declarations: [ ViewMeetingComponent ],
+        providers: [ViewMeetingServiceStub]
     })
     .compileComponents();
   }));
@@ -24,6 +26,7 @@ describe('ViewMeetingComponent', () => {
   });
 });
 
+//let viewMeetingService = new ViewMeetingServiceStub(null, null);
 
 
 /*

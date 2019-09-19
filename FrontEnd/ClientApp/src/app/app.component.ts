@@ -1,12 +1,12 @@
 import { Component, VERSION } from '@angular/core';
 
 @Component({
-  selector: 'gm-root',
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'ClientApp';
   public isCollapsed = true;
   version: string;
 

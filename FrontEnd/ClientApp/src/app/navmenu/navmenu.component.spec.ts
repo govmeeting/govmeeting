@@ -1,14 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavMenuComponent } from './navmenu.component';
+import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-describe('NavbarComponent', () => {
+describe('NavMenuComponent', () => {
     let component: NavMenuComponent;
     let fixture: ComponentFixture<NavMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        declarations: [ NavMenuComponent ]
+        declarations: [ NavMenuComponent ],
+        imports:[
+          RouterModule.forRoot([]),
+          NgbModule
+        ]
     })
     .compileComponents();
   }));
