@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-//import { MaterialModule } from '../material';
-//import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @Component({
   selector : 'ff-checkbox-group',

@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material';
+import { DemoMaterialModule } from './material';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './navmenu/navmenu.component';
 import { MainNavComponent } from './main-nav/main-nav.component'
+import { NavMenu2Component } from './nav-menu2/nav-menu2.component';
+import { GMDashboardComponent } from './gmdashboard/gmdashboard.component';
 
 import { ErrorHandlingService } from './gmshared/error-handling/error-handling.service';
 
@@ -31,13 +33,7 @@ import { FixasrService } from './fixasr/fixasr.service';
 import { FixasrServiceStub } from './fixasr/fixasr.service-stub';
 import { AppData } from './appdata';
 import { TestModule } from './test/test.module';
-//import { LayoutModule } from '@angular/cdk/layout';
-//import { MatToolbarModule } from '@angular/material/toolbar';
-//import { MatButtonModule } from '@angular/material/button';
-//import { MatSidenavModule } from '@angular/material/sidenav';
-//import { MatIconModule } from '@angular/material/icon';
-//import { MatListModule } from '@angular/material/list';
-import { GMLayoutModule } from './gmlayout/gm-layout.module'
+import { GMLayoutModule } from './gmlayout/gmlayout.module';
 
 // Is the Asp.Net server running
 const _isAspServerRunning = true;
@@ -47,7 +43,8 @@ const _isAspServerRunning = true;
     AppComponent,
     NavMenuComponent,
     MainNavComponent,
-    //CheckboxGroupComponent
+    GMDashboardComponent,
+    NavMenu2Component
   ],
   imports: [
     BrowserModule,
@@ -55,7 +52,7 @@ const _isAspServerRunning = true;
     FormsModule,
     BrowserAnimationsModule,
     NgbModule.forRoot(),
-    MaterialModule,
+    DemoMaterialModule,
     AppRoutingModule,
     HomeModule,
     AboutModule,
@@ -66,12 +63,6 @@ const _isAspServerRunning = true;
     TemppagesModule,
     GmSharedModule,
     TestModule,
-    //LayoutModule,
-    //MatToolbarModule,
-    //MatButtonModule,
-    //MatSidenavModule,
-    //MatIconModule,
-    //MatListModule,
     GMLayoutModule
   ],
   providers: [

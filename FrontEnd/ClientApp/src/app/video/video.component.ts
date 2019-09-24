@@ -4,13 +4,23 @@ import { Observable } from 'rxjs';
 import { timer } from 'rxjs/observable/timer';
 import { AppData } from '../appdata';
 
+class videoSource {
+  src: string;
+  type: string
+}
+
+// https://github.com/videogular/videogular2
+// https://stackblitz.com/edit/angular-videogular?file=app%2Fhello.component.ts
+// https://www.npmjs.com/package/videogular2
+// https://videogular.github.io/videogular2/docs/getting-started/
+
 @Component({
   selector: 'gm-video',
   templateUrl: 'video.component.html',
   styleUrls: ['video.component.css']
 })
 export class VideoComponent {
-    sources: Array<Object>;
+    sources: Array<videoSource>;
     api: VgAPI;
 
 
