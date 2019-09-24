@@ -14,7 +14,7 @@ import { SearchComponent } from '../temppages/search.component'
 import { RegisterGovComponent } from '../temppages/registergov.component'
 //import { MatsampComponent } from '../matsamp/matsamp.component'
 
-import { TestComponent } from '../test/test.component';
+//import { TestComponent } from '../test/test.component';
 
 const routes: Routes = [
 
@@ -34,7 +34,7 @@ const routes: Routes = [
     { path: 'search', component: SearchComponent },
     { path: 'registergov', component: RegisterGovComponent },
     //{ path: 'matsamp', component: MatsampComponent },
-    { path: 'test', component: TestComponent },
+    //{ path: 'test', component: TestComponent },
     { path: '**', redirectTo: 'homedemo' }
 
 ];

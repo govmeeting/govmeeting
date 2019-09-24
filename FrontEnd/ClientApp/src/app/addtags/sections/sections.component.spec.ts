@@ -1,13 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SectionsComponent } from './sections.component';
+import { AddtagsService } from '../addtags.service';
+import { AddtagsServiceStub } from '../addtags.service-stub';
 
 describe('SectionsComponent', () => {
   let component: SectionsComponent;
   let fixture: ComponentFixture<SectionsComponent>;
+  // let addtagsService = new AddtagsServiceStub();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SectionsComponent ]
+      declarations: [ SectionsComponent ],
+      providers: [
+        {provide: AddtagsService, useClass: AddtagsServiceStub}
+      ]
     })
     .compileComponents();
   }));

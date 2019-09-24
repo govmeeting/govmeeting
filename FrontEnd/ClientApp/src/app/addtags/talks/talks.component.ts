@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-//import { TalksService } from './talks.service';
-//import { TopicsService } from '../topics/topics.service';
 import { AddtagsService } from '../addtags.service';
 import { Addtags, Talk } from '../../models/addtags-view';
 
 @Component({
   selector: 'gm-talks',
   templateUrl: './talks.component.html',
-  styleUrls: ['./talks.component.css'],
-  //providers: [
-    //TalksService,
-    //TopicsService
-//]
+  styleUrls: ['./talks.component.css']
 })
 export class TalksComponent implements OnInit {
 
@@ -22,9 +16,6 @@ export class TalksComponent implements OnInit {
   topics: string[];
   highlightedTopic: string;
   shownTopicSelection: number = -1; // index of where we are displaying topic choice.
-
-  //constructor(private _talkService: TalksService, private _topicsService: TopicsService) {
-  //}
 
     constructor(private _addtagsService: AddtagsService) {
         //this.talks = addtagsService.getTalks();

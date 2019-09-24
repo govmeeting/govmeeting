@@ -1,0 +1,14 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-sm-3'>
+      <gm-navbar></gm-navbar>
+    </div>
+    <!--<div class='col-sm-9 body-content'>-->
+	<!--<p>You are running Angular {{version}}!</p>-->
+    <div class='col-sm-9'>
+        <router-outlet></router-outlet>
+    </div>
+    <gm-test> This is test. </gm-test>
+
+  </div>
+</div>

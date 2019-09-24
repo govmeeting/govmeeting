@@ -4,9 +4,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './navmenu/navmenu.component';
+import { MainNavComponent } from './main-nav/main-nav.component'
+
 import { ErrorHandlingService } from './gmshared/error-handling/error-handling.service';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -18,7 +22,6 @@ import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
 import { VolunteerModule } from './volunteer/volunteer.module';
 import { TemppagesModule } from './temppages/temppages.module';
-// import { MatsampModule } from './matsamp/matsamp.module
 
 import { ViewMeetingService } from './viewmeeting/viewmeeting.service';
 import { ViewMeetingServiceStub } from './viewmeeting/viewmeeting.service-stub';
@@ -27,6 +30,14 @@ import { AddtagsServiceStub } from './addtags/addtags.service-stub';
 import { FixasrService } from './fixasr/fixasr.service';
 import { FixasrServiceStub } from './fixasr/fixasr.service-stub';
 import { AppData } from './appdata';
+import { TestModule } from './test/test.module';
+//import { LayoutModule } from '@angular/cdk/layout';
+//import { MatToolbarModule } from '@angular/material/toolbar';
+//import { MatButtonModule } from '@angular/material/button';
+//import { MatSidenavModule } from '@angular/material/sidenav';
+//import { MatIconModule } from '@angular/material/icon';
+//import { MatListModule } from '@angular/material/list';
+import { GMLayoutModule } from './gmlayout/gm-layout.module'
 
 // Is the Asp.Net server running
 const _isAspServerRunning = true;
@@ -35,12 +46,16 @@ const _isAspServerRunning = true;
   declarations: [
     AppComponent,
     NavMenuComponent,
+    MainNavComponent,
+    //CheckboxGroupComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
+    BrowserAnimationsModule,
     NgbModule.forRoot(),
+    MaterialModule,
     AppRoutingModule,
     HomeModule,
     AboutModule,
@@ -49,8 +64,15 @@ const _isAspServerRunning = true;
     FixasrModule,
     VolunteerModule,
     TemppagesModule,
-    // MatsampModule,
-    GmSharedModule
+    GmSharedModule,
+    TestModule,
+    //LayoutModule,
+    //MatToolbarModule,
+    //MatButtonModule,
+    //MatSidenavModule,
+    //MatIconModule,
+    //MatListModule,
+    GMLayoutModule
   ],
   providers: [
     ErrorHandlingService,
