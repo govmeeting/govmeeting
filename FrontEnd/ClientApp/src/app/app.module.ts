@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './material';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './navmenu/navmenu.component';
@@ -63,7 +64,8 @@ const _isAspServerRunning = true;
     TemppagesModule,
     GmSharedModule,
     TestModule,
-    GMLayoutModule
+    GMLayoutModule,
+    FlexLayoutModule
   ],
   providers: [
     ErrorHandlingService,
