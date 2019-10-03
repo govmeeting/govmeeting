@@ -1,7 +1,11 @@
-<p>
+<mat-card>
+  <mat-card-content [style.overflow]="'auto'" [style.height.px]="'300'">
+  <p>
   <br /><h1> {{title}} </h1>
   <button (click)="changeTitle()">Change title</button>
 <p>
+
+<h2>Purpose</h2>
 
 <p>
   Meetings are the heart and soul of democracy.
@@ -78,5 +82,5 @@
   Computers are first and foremost communication tools.
   Who else but computer programmers have the power to build the types of tools that are needed.
 </p>
-
-
+</mat-card-content>
+</mat-card>

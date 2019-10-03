@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './navmenu/navmenu.component';
 import { MainNavComponent } from './main-nav/main-nav.component'
 import { NavMenu2Component } from './nav-menu2/nav-menu2.component';
-import { GMDashboardComponent } from './gmdashboard/gmdashboard.component';
 
 import { ErrorHandlingService } from './gmshared/error-handling/error-handling.service';
 
@@ -35,6 +34,7 @@ import { FixasrServiceStub } from './fixasr/fixasr.service-stub';
 import { AppData } from './appdata';
 import { TestModule } from './test/test.module';
 import { GMLayoutModule } from './gmlayout/gmlayout.module';
+import { GmDashboardModule } from './gmdashboard/gmdashboard.module';
 
 // Is the Asp.Net server running
 const _isAspServerRunning = true;
@@ -44,7 +44,6 @@ const _isAspServerRunning = true;
     AppComponent,
     NavMenuComponent,
     MainNavComponent,
-    GMDashboardComponent,
     NavMenu2Component
   ],
   imports: [
@@ -65,7 +64,11 @@ const _isAspServerRunning = true;
     GmSharedModule,
     TestModule,
     GMLayoutModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    GmDashboardModule
+  ],
+  exports: [
+    //DemoMaterialModule
   ],
   providers: [
     ErrorHandlingService,

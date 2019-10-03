@@ -1,0 +1,122 @@
+<!-- <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        This is the expansion title
+      </mat-panel-title>
+      <mat-panel-description>
+        This is a summary of the content
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <p>This is the primary content of the panel.</p>
+
+  </mat-expansion-panel> -->
+
+    <!-- from demoapp/src/app/responsive/responsive-flex-directive.component.ts -->
+    <mat-card class="card-demo scrollable-content">
+        <mat-card-title>Responsive Flex Directives</mat-card-title>
+        <mat-card-subtitle>Use the show hide APIs to responsively show or hide elements:
+        </mat-card-subtitle>
+        <mat-card-content>
+          <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header style="position: absolute; right: 0px; top: 0px;"></mat-expansion-panel-header>
+          <div class="containerX">
+            <div fxLayout="row" class="coloredContainerX box">
+              <div fxFlex.gt-sm="67" fxFlex="33"> flex 33% on mobile, <br>and 66% on gt-sm devices.
+              </div>
+              <div fxFlex.gt-sm="33" fxFlex="67"> flex 67% on mobile, <br>and 33% on gt-sm devices.
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-card-content>
+        <mat-card-footer style="width:95%">
+          footer
+        </mat-card-footer>
+      </mat-card>
+
+
+
+
+
+
+  <!-- <mat-card style="margin-top:1em; margin-bottom:1em">
+      <mat-card-header>
+      <mat-card-title> Yemi Orokotan </mat-card-title>
+      <mat-card-subtitle>Lagos, Nigeria</mat-card-subtitle>
+      </mat-card-header>
+
+  <mat-card-content>
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header style="position: absolute; right: 0px; top: 0px;"></mat-expansion-panel-header>
+
+        <mat-form-field>
+        <input matInput placeholder="Occupation">
+        </mat-form-field>
+
+        <mat-form-field>
+        <input matInput placeholder="DOB">
+        </mat-form-field>
+    </mat-expansion-panel>
+
+    </mat-card-content>
+  </mat-card> -->
+
+<!-- <mat-card>
+  <mat-card-header>
+      <mat-card-title style="font-size: 20px;">My collapsible card title</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="!collapsed">
+    <p>This is some example text.</p>
+    <p>This text will disappear when you use the action button in the actions bar below.</p>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-button (click)="collapsed=true">Collapse text</button>
+      <button mat-button (click)="collapsed=false">Uncollapse text</button>
+  </mat-card-actions>
+</mat-card>
+ -->
+
+
+<!-- <mat-card class="dashboard-card">
+    <mat-card-header>
+      <mat-card-title>
+        <ng-content></ng-content>
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <div>Card Content Here</div>
+    </mat-card-content>
+  </mat-card> -->
+
+  <!-- from demoapp/src/app/grid/grid-layout/grid-layout.component.ts -->
+  <!-- <mat-card class="card-demo">
+      <mat-card-title><ng-content></ng-content></mat-card-title>
+      <mat-card-content class="containerX">
+        <div class="colorNested box" style="height: auto;">
+          <div gdAreas.xs="header | sidebar | content | sidebar2 | footer" gdGap="1em"
+               gdColumns.xs="none"
+               gdAreas.sm="header header | sidebar content | sidebar2 sidebar2 | footer footer"
+               gdColumns.sm="20%!"
+               gdAreas.gt-sm="header header header | sidebar content sidebar2 | footer footer footer"
+               gdColumns.gt-sm="120px auto 120px" gdGap.gt-sm="20px" [ngStyle]="{'max-width': 'auto'}"
+               [ngStyle.gt-sm]="{'max-width': '600px'}">
+            <div class="blocks one" gdArea="header">Header</div>
+            <div class="blocks two" gdArea="sidebar">Sidebar</div>
+            <div class="blocks three" gdArea="sidebar2">Sidebar 2</div>
+            <div class="blocks four" gdArea="content">Content
+              <br /> More content than we had before so this column is now quite tall.</div>
+            <div class="blocks five" gdArea="footer">Footer</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card> -->
+
