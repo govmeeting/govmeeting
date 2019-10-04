@@ -10,7 +10,6 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './navmenu/navmenu.component';
-import { MainNavComponent } from './main-nav/main-nav.component'
 import { NavMenu2Component } from './nav-menu2/nav-menu2.component';
 
 import { ErrorHandlingService } from './gmshared/error-handling/error-handling.service';
@@ -30,7 +29,6 @@ import { FixasrService } from './fixasr/fixasr.service';
 import { FixasrServiceStub } from './fixasr/fixasr.service-stub';
 import { AppData } from './appdata';
 import { TestModule } from './test/test.module';
-import { GMLayoutModule } from './gmlayout/gmlayout.module';
 import { GmDashboardModule } from './gmdashboard/gmdashboard.module';
 
 // Is the Asp.Net server running
@@ -40,7 +38,6 @@ const _isAspServerRunning = true;
   declarations: [
     AppComponent,
     NavMenuComponent,
-    MainNavComponent,
     NavMenu2Component
   ],
   imports: [
@@ -57,7 +54,6 @@ const _isAspServerRunning = true;
     TemppagesModule,
     GmSharedModule,
     TestModule,
-    GMLayoutModule,
     FlexLayoutModule,
     GmDashboardModule
   ],
