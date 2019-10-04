@@ -34,25 +34,27 @@
   width/height={{ innerWidth }}/{{ innerHeight }}
   isHandset={{isHandset}}
   orientation={{orientation}}
+  viewsize = {{viewsize}}
 
   <div class="grid-container">
-      <mat-grid-list [cols]="isHandset ? 6 : 12" rowHeight="350px">
+      <mat-grid-list [cols]="GetCols()" rowHeight="400px">
+          <!--<mat-grid-list [cols]="isHandset ? 6 : 12" rowHeight="400px">-->
         <mat-grid-tile [colspan]='3' [rowspan]='1'>
+        <gm-about></gm-about>
+        <!-- <sample-card>First Card</sample-card> -->
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="GetColspan(1, 2)" [rowspan]='1'>
           <gm-about></gm-about>
-          <!-- <sample-card>First Card</sample-card> -->
+          <!-- <sample-card>Second Card</sample-card> -->
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]='3' [rowspan]='1'>
+          <gm-about></gm-about>
+          <!-- <sample-card>Third Card</sample-card> -->
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]='3' [rowspan]='1'>
+          <gm-about></gm-about>
+          <!-- <sample-card>Fourth Card</sample-card> -->
         </mat-grid-tile>
-        <mat-grid-tile [colspan]='3' [rowspan]='1'>
-            <gm-about></gm-about>
-            <!-- <sample-card>Second Card</sample-card> -->
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]='3' [rowspan]='1'>
-            <gm-about></gm-about>
-            <!-- <sample-card>Third Card</sample-card> -->
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]='3' [rowspan]='1'>
-            <gm-about></gm-about>
-            <!-- <sample-card>Fourth Card</sample-card> -->
-          </mat-grid-tile>
-        </mat-grid-list>
-    </div>
+      </mat-grid-list>
+  </div>
 
