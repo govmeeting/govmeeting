@@ -20,9 +20,6 @@ import { ViewMeetingModule } from './viewmeeting/viewmeeting.module';
 import { AddtagsModule } from './addtags/addtags.module';
 import { FixasrModule } from './fixasr/fixasr.module';
 import { GmSharedModule } from './gmshared/gmshared.module';
-import { HomeModule } from './home/home.module';
-import { AboutModule } from './about/about.module';
-import { VolunteerModule } from './volunteer/volunteer.module';
 import { TemppagesModule } from './temppages/temppages.module';
 
 import { ViewMeetingService } from './viewmeeting/viewmeeting.service';
@@ -54,12 +51,9 @@ const _isAspServerRunning = true;
     NgbModule.forRoot(),
     DemoMaterialModule,
     AppRoutingModule,
-    HomeModule,
-    AboutModule,
     ViewMeetingModule,
     AddtagsModule,
     FixasrModule,
-    VolunteerModule,
     TemppagesModule,
     GmSharedModule,
     TestModule,

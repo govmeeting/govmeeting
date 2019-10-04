@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { VolunteerComponent } from './volunteer.component';
 import { GmSharedModule } from '../gmshared/gmshared.module'
 import { RouterModule } from '@angular/router';
+import { DemoMaterialModule } from '../material';
 
 
 @NgModule({
   imports: [
     CommonModule,
       GmSharedModule,
-      RouterModule
+      RouterModule,
+      DemoMaterialModule
   ],
   declarations: [VolunteerComponent],
   exports: [VolunteerComponent]

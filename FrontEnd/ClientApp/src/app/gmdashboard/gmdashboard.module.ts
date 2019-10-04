@@ -8,6 +8,10 @@ import { DemoMaterialModule } from '../material';
 import { LayoutModule } from '@angular/cdk/layout';
 
 import { AboutModule } from '../about/about.module';
+import { VolunteerModule } from '../volunteer/volunteer.module';
+import { HomeModule } from '../home/home.module';
+
+
 
 import { SampleCardComponent } from './sample-card.component';
 import { GMDashboardComponent } from './gmdashboard.component';
@@ -20,7 +24,9 @@ import { GMDashboardComponent } from './gmdashboard.component';
     //GmSharedModule,
     DemoMaterialModule,
     LayoutModule,
-    AboutModule
+    AboutModule,
+    VolunteerModule,
+    HomeModule
     ],
   declarations: [
     SampleCardComponent,
