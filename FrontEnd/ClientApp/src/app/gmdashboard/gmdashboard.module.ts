@@ -13,6 +13,8 @@ import { HomeModule } from './home/home.module';
 import { SampleCardComponent } from './sample-card/sample-card.component';
 import { GMDashboardComponent } from './gmdashboard.component';
 import { ProjectStatusModule } from './project-status/project-status.module';
+import { NeededFeaturesModule } from './needed-features/needed-features.module';
+import { ChatModule } from '../gmdashboard/chat/chat.module';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import { ProjectStatusModule } from './project-status/project-status.module';
     AboutModule,
     VolunteerModule,
     HomeModule,
-    ProjectStatusModule
+    ProjectStatusModule,
+    NeededFeaturesModule,
+    ChatModule
     ],
   declarations: [
     SampleCardComponent,
