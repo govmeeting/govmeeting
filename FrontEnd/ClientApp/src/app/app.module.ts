@@ -9,7 +9,6 @@ import { DemoMaterialModule } from './material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './navmenu/navmenu.component';
 import { NavMenu2Component } from './nav-menu2/nav-menu2.component';
 
 import { ErrorHandlingService } from './gmshared/error-handling/error-handling.service';
@@ -37,7 +36,6 @@ const _isAspServerRunning = true;
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
     NavMenu2Component
   ],
   imports: [

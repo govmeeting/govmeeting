@@ -12,6 +12,7 @@ import { HomeModule } from './home/home.module';
 
 import { SampleCardComponent } from './sample-card/sample-card.component';
 import { GMDashboardComponent } from './gmdashboard.component';
+import { ProjectStatusModule } from './project-status/project-status.module';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { GMDashboardComponent } from './gmdashboard.component';
     LayoutModule,
     AboutModule,
     VolunteerModule,
-    HomeModule
+    HomeModule,
+    ProjectStatusModule
     ],
   declarations: [
     SampleCardComponent,
