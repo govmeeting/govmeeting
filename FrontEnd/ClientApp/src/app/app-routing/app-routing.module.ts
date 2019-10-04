@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from '../home/home.component'
-import { AboutComponent } from '../about/about.component';
+import { HomeComponent } from '../gmdashboard/home/home.component'
+import { AboutComponent } from '../gmdashboard/about/about.component';
 import { ViewMeetingComponent } from '../viewmeeting/viewmeeting.component'
 import { AddtagsComponent } from '../addtags/addtags.component'
 import { FixasrComponent } from '../fixasr/fixasr.component'
-import { VolunteerComponent } from '../volunteer/volunteer.component'
+import { VolunteerComponent } from '../gmdashboard/volunteer/volunteer.component'
 import { HomedemoComponent } from '../temppages/homedemo.component'
 import { ServerdemoComponent } from '../temppages/serverdemo.component'
 import { OtherfeaturesComponent } from '../temppages/otherfeatures.component'

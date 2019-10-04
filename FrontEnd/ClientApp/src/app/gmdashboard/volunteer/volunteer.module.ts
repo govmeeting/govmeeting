@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VolunteerComponent } from './volunteer.component';
-import { GmSharedModule } from '../gmshared/gmshared.module'
+import { GmSharedModule } from '../../gmshared/gmshared.module'
 import { RouterModule } from '@angular/router';
-import { DemoMaterialModule } from '../material';
+import { DemoMaterialModule } from '../../material';
 
 
 @NgModule({

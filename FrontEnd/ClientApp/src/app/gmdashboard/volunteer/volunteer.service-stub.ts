@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { WorkProgress, WorkItem, Volunteer, Location } from '../models/workprogress-view';
-import { MeetingForView } from '../models/meetingforview'
+import { WorkProgress, WorkItem, Volunteer, Location } from '../../models/workprogress-view';
+import { MeetingForView } from '../../models/meetingforview'
 
 @Injectable()
 export class FixasrService {
