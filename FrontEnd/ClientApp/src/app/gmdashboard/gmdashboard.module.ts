@@ -16,6 +16,9 @@ import { ProjectStatusModule } from './project-status/project-status.module';
 import { NeededFeaturesModule } from './needed-features/needed-features.module';
 import { ChatModule } from '../gmdashboard/chat/chat.module';
 
+import { ChatService } from './chat/chat.service';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -36,6 +39,7 @@ import { ChatModule } from '../gmdashboard/chat/chat.module';
   ],
   exports: [
     GMDashboardComponent,
-  ]
+  ],
+  providers: [ChatService]
 })
 export class GmDashboardModule { }

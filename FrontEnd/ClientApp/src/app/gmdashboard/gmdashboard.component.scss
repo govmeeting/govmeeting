@@ -19,3 +19,16 @@
 // .dashboard-card-content {
 //   text-align: center;
 // }
+
+// mat-card.simple {
+//   width: calc(100% - 70px);
+//   height: calc(100% - 70px);
+// }
+
+.mat-card {
+  border-style: dotted
+}
+
+.mat-grid-tile {
+  border-style: solid
+}

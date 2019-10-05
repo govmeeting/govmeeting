@@ -13,19 +13,19 @@ h2 {
 }
 */
 
-.mat-card.scrollable {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+// .mat-card.scrollable {
+//   overflow: hidden;
+//   display: flex;
+//   flex-direction: column;
 
-  > .mat-card-title-group {
-    display: block;
-  }
+//   > .mat-card-title-group {
+//     display: block;
+//   }
 
-  > .mat-card-content {
-    overflow-y: auto;
-  }
-}
+//   > .mat-card-content {
+//     overflow-y: auto;
+//   }
+// }
 
 // .flex {
 //   flex: 1 1 auto;

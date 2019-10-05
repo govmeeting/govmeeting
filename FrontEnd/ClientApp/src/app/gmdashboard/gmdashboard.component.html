@@ -37,9 +37,12 @@
   viewsize = {{viewsize}}
 
   <div class="grid-container">
-      <mat-grid-list [cols]="GetCols()" rowHeight="400px">
+      <mat-grid-list [cols]="GetCols()" rowHeight="340" gutterSize="5" [style.background]="'skyblue'">
           <!--<mat-grid-list [cols]="isHandset ? 6 : 12" rowHeight="400px">-->
-        <mat-grid-tile [colspan]='3' [rowspan]='1'>
+        <mat-grid-tile [colspan]='2' [rowspan]='1'>
+          <gm-chat></gm-chat>
+        </mat-grid-tile>
+          <mat-grid-tile [colspan]='3' [rowspan]='1'>
         <gm-about></gm-about>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="GetColspan(1, 2)" [rowspan]='1'>
@@ -54,9 +57,7 @@
       <mat-grid-tile [colspan]='3' [rowspan]='1'>
         <gm-project-status></gm-project-status>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]='3' [rowspan]='1'>
-        <gm-chat></gm-chat>
-      </mat-grid-tile>
+      <mat-grid-tile><mat-card class="simple">Simple card</mat-card></mat-grid-tile>
       </mat-grid-list>
   </div>
 

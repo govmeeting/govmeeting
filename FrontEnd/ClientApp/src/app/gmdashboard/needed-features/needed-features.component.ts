@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'gm-needed-features',
   templateUrl: './needed-features.component.html',
-  styleUrls: ['./needed-features.component.scss']
+  styleUrls: ['./needed-features.component.scss', '../gmdashboard.component.scss']
 })
 export class NeededFeaturesComponent implements OnInit {
 
