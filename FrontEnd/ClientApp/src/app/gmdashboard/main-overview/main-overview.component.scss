@@ -1,0 +1,77 @@
+// Overview quicklink cards container
+$color-white: #FFF; // card bg
+$color-zest: #e67e22; // document icon bg
+$color-jungle-green: #27ae60; // calendar icon bg
+$color-cinnabar: #e74c3c; // main icon bg, red
+$color-amethyst: #af64cc; // main photo icon bg
+$color-java: #1BBAE1; // blue text  // used many places
+$color-abbey: #777; // gray text  // used many places
+
+
+.main-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  grid-auto-rows: 94px;
+  grid-gap: 30px;
+  margin: 20px;
+}
+
+.overviewCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: $color-white;
+  transform: translateY(0);
+  transition: all .3s;
+
+  &-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    font-size: 21px;
+    color: #fff;
+
+    &--document {
+      background-color: $color-zest;
+    }
+
+    &--calendar {
+      background-color: $color-jungle-green;
+    }
+
+    &--mail {
+      background-color: $color-cinnabar;
+    }
+
+    &--photo {
+      background-color: $color-amethyst;
+    }
+  }
+
+  &-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-title {
+    font-size: 18px;
+    color: $color-java;
+    margin: 0;
+  }
+
+  &-subtitle {
+    margin: 2px;
+    color: $color-abbey;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
+    cursor: pointer;
+  }
+}

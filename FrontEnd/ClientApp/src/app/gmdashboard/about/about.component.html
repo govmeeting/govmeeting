@@ -1,11 +1,21 @@
 <mat-card>
-  <mat-card-content [style.overflow]="'auto'" [style.height.px]="'300'">
-  <p>
-  <br /><h1> {{title}} </h1>
-  <button (click)="changeTitle()">Change title</button>
-<p>
+  <mat-card-title>
+       Purpose
+      <mat-icon class="help-icon" [ngStyle]="{'color':'lightblue'}" matTooltip="Meetings are the heart and soul of democracy.
+  They are where people of different opinions listen to others and present their points of view. Info about the action">help</mat-icon>
+  </mat-card-title>
 
-<h2>Purpose</h2>
+  <!-- matTooltip positioning
+  Position 	Description
+above 	Always display above the element
+below 	Always display beneath the element
+left 	Always display to the left of the element
+right 	Always display to the right of the element
+before 	Display to the left in left-to-right layout and to the right in right-to-left layout
+after 	Display to the right in left-to-right layout and to the left in right-to-left layout -->
+
+  <mat-card-content [style.overflow]="'auto'" [style.height.px]="'300'">
+
 
 <p>
   Meetings are the heart and soul of democracy.
