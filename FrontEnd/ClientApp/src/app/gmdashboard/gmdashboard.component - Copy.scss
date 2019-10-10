@@ -1,22 +1,24 @@
 // Sass tils
-$color-fiord: #394263; // sidenav bg & dark text
+$color-fiord: #394263; // sidenav bg & dark text  // used also elsewhere
 $color-white: #FFF; // card bg
 $color-athens-gray: #EAEDF1; // content bg
 $color-catskill-white: #F9FAFC; // top nav bg
-$color-abbey: #777; // gray text
+$color-abbey: #777; // gray text                // used many places
 $color-mischka: #DADAE3; // light gray for menu icon
-$color-java: #1BBAE1; // blue text
+$color-java: #1BBAE1; // blue text            // used many places
 $color-mine-shaft: #333; // main section header bg
-$color-zest: #e67e22; // document icon bg
-$color-jungle-green: #27ae60; // calendar icon bg
-$color-cinnabar: #e74c3c; // main icon bg, red
-$color-amethyst: #af64cc; // main photo icon bg
-$color-transparent: rgba(255, 255, 255, .5);
-$color-alto: #D3D3D3;
+$color-cinnabar: #e74c3c; // main icon bg, red //used also elsewhere
+$color-transparent: rgba(255, 255, 255, .5);   // used also elsewhere
+
+// should not be needed in gmdashboard
+// $color-jungle-green: #27ae60; // calendar icon bg
+// $color-zest: #e67e22; // document icon bg
+// $color-amethyst: #af64cc; // main photo icon bg
+// $color-alto: #D3D3D3;
 
 $height-header: 50px;
 $height-footer: 50px;
-$width-sidenav: 240px;
+$width-sidenav: 240px;   // used also in navlist.component.scss
 
 @mixin profile-avatar {
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1609106/headshot.png");
@@ -26,6 +28,7 @@ $width-sidenav: 240px;
   border: 2px solid rgba(255, 255, 255, .2);
 }
 
+// used also in user-dropdown.component.scss
 @mixin box-shadow {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
@@ -143,63 +146,63 @@ a {
   }
 }
 
-.dropdown {
-  position: absolute;
-  top: 54px;
-  right: -16px;
-  width: 220px;
-  height: auto;
-  z-index: 1;
-  background-color: #fff;
-  border-radius: 4px;
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all .3s;
-  @include box-shadow;
+// .dropdown {
+//   position: absolute;
+//   top: 54px;
+//   right: -16px;
+//   width: 220px;
+//   height: auto;
+//   z-index: 1;
+//   background-color: #fff;
+//   border-radius: 4px;
+//   visibility: hidden;
+//   opacity: 0;
+//   transform: translateY(-10px);
+//   transition: all .3s;
+//   @include box-shadow;
 
-  &__list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
+//   &__list {
+//     margin: 0;
+//     padding: 0;
+//     list-style-type: none;
+//   }
 
-  &__list-item {
-    padding: 12px 24px;
-    color: $color-abbey;
-    text-transform: capitalize;
+//   &__list-item {
+//     padding: 12px 24px;
+//     color: $color-abbey;
+//     text-transform: capitalize;
 
-    &:hover {
-      background-color: rgba(0,0,0, .1);
-    }
-  }
+//     &:hover {
+//       background-color: rgba(0,0,0, .1);
+//     }
+//   }
 
-  &__icon {
-    color: $color-java;
-  }
+//   &__icon {
+//     color: $color-java;
+//   }
 
-  &__title {
-    margin-left: 10px;
-  }
+//   &__title {
+//     margin-left: 10px;
+//   }
 
-  &:before {
-    position: absolute;
-    content: "";
-    top: -6px;
-    right: 30px;
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-bottom: 6px solid #FFF;
-  }
+//   &:before {
+//     position: absolute;
+//     content: "";
+//     top: -6px;
+//     right: 30px;
+//     width: 0;
+//     height: 0;
+//     border-left: 4px solid transparent;
+//     border-right: 4px solid transparent;
+//     border-bottom: 6px solid #FFF;
+//   }
 
-  &--active {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+//   &--active {
+//     visibility: visible;
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
 
 .sidenav {
   position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
@@ -288,103 +291,103 @@ a {
   }
 }
 
-.navList {
-  width: $width-sidenav;
-  padding: 0;
-  margin: 0;
-  background-color: $color-fiord;
-  list-style-type: none;
+// .navList {
+//   width: $width-sidenav;
+//   padding: 0;
+//   margin: 0;
+//   background-color: $color-fiord;
+//   list-style-type: none;
 
-  &__heading {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 16px 3px;
-    color: $color-transparent;
-    text-transform: uppercase;
-    font-size: 15px;
-  }
+//   &__heading {
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     padding: 16px 16px 3px;
+//     color: $color-transparent;
+//     text-transform: uppercase;
+//     font-size: 15px;
+//   }
 
-  &__subheading {
-    position: relative;
-    padding: 10px 30px;
-    color: #fff;
-    font-size: 16px;
-    text-transform: capitalize;
+//   &__subheading {
+//     position: relative;
+//     padding: 10px 30px;
+//     color: #fff;
+//     font-size: 16px;
+//     text-transform: capitalize;
 
-    &-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: $color-transparent;
-      width: 12px; // Keep spacing consistent
-    }
+//     &-icon {
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       font-size: 12px;
+//       color: $color-transparent;
+//       width: 12px; // Keep spacing consistent
+//     }
 
-    &-title {
-      margin: 0 15px;
-    }
+//     &-title {
+//       margin: 0 15px;
+//     }
 
-    &:after {
-      position: absolute;
-      content: "";
-      height: 6px;
-      width: 6px;
-      top: 17px;
-      right: 25px;
-      border-left: 1px solid $color-transparent;
-      border-bottom: 1px solid $color-transparent;
-      transform: rotate(225deg);
-      transition: all .2s;
-    }
+//     &:after {
+//       position: absolute;
+//       content: "";
+//       height: 6px;
+//       width: 6px;
+//       top: 17px;
+//       right: 25px;
+//       border-left: 1px solid $color-transparent;
+//       border-bottom: 1px solid $color-transparent;
+//       transform: rotate(225deg);
+//       transition: all .2s;
+//     }
 
-    &:hover {
-      background-color: darken($color-fiord, 5%);
-      cursor: pointer;
-    }
+//     &:hover {
+//       background-color: darken($color-fiord, 5%);
+//       cursor: pointer;
+//     }
 
-    &--open {
-      background-color: darken($color-fiord, 5%);
+//     &--open {
+//       background-color: darken($color-fiord, 5%);
 
-      &:after {
-        transform: rotate(315deg);
-      }
-    }
-  }
+//       &:after {
+//         transform: rotate(315deg);
+//       }
+//     }
+//   }
 
-  .subList {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    background-color: darken($color-fiord, 10%);
-    visibility: visible;
-    overflow: hidden;
-    max-height: 200px;
-    transition: all .4s ease-in-out;
+//   .subList {
+//     padding: 0;
+//     margin: 0;
+//     list-style-type: none;
+//     background-color: darken($color-fiord, 10%);
+//     visibility: visible;
+//     overflow: hidden;
+//     max-height: 200px;
+//     transition: all .4s ease-in-out;
 
-    &__item {
-      padding: 8px;
-      text-transform: capitalize;
-      padding: 8px 30px;
-      color: $color-alto;
+//     &__item {
+//       padding: 8px;
+//       text-transform: capitalize;
+//       padding: 8px 30px;
+//       color: $color-alto;
 
-      &:first-child {
-        padding-top: 15px;
-      }
+//       &:first-child {
+//         padding-top: 15px;
+//       }
 
-      &:hover {
-        background-color: rgba(255, 255, 255, .1);
-        cursor: pointer;
-      }
-    }
+//       &:hover {
+//         background-color: rgba(255, 255, 255, .1);
+//         cursor: pointer;
+//       }
+//     }
 
-    &--hidden {
-      visibility: hidden;
-      max-height: 0;
-    }
-  }
-}
+//     &--hidden {
+//       visibility: hidden;
+//       max-height: 0;
+//     }
+//   }
+// }
 
 // Dashboard content wrapper
 .main {
@@ -440,98 +443,98 @@ a {
 }
 
 // Main header quick view update items
-.quickview {
-  display: grid;
-  grid-auto-flow: column;
-  grid-gap: 60px;
+// .quickview {
+//   display: grid;
+//   grid-auto-flow: column;
+//   grid-gap: 60px;
 
-  &__item {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+//   &__item {
+//     display: flex;
+//     align-items: center;
+//     flex-direction: column;
 
-    &-total {
-      margin-bottom: 2px;
-      font-size: 32px;
-    }
+//     &-total {
+//       margin-bottom: 2px;
+//       font-size: 32px;
+//     }
 
-    &-description {
-      font-size: 16px;
-      text-align: center;
-    }
-  }
-}
+//     &-description {
+//       font-size: 16px;
+//       text-align: center;
+//     }
+//   }
+// }
 
 // Overview quicklink cards container
-.main-overview {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-  grid-auto-rows: 94px;
-  grid-gap: 30px;
-  margin: 20px;
-}
+// .main-overview {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+//   grid-auto-rows: 94px;
+//   grid-gap: 30px;
+//   margin: 20px;
+// }
 
-.overviewCard {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px;
-  background-color: $color-white;
-  transform: translateY(0);
-  transition: all .3s;
+// .overviewCard {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding: 12px;
+//   background-color: $color-white;
+//   transform: translateY(0);
+//   transition: all .3s;
 
-  &-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    font-size: 21px;
-    color: #fff;
+//   &-icon {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 60px;
+//     width: 60px;
+//     border-radius: 50%;
+//     font-size: 21px;
+//     color: #fff;
 
-    &--document {
-      background-color: $color-zest;
-    }
+//     &--document {
+//       background-color: $color-zest;
+//     }
 
-    &--calendar {
-      background-color: $color-jungle-green;
-    }
+//     &--calendar {
+//       background-color: $color-jungle-green;
+//     }
 
-    &--mail {
-      background-color: $color-cinnabar;
-    }
+//     &--mail {
+//       background-color: $color-cinnabar;
+//     }
 
-    &--photo {
-      background-color: $color-amethyst;
-    }
-  }
+//     &--photo {
+//       background-color: $color-amethyst;
+//     }
+//   }
 
-  &-description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+//   &-description {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//   }
 
-  &-title {
-    font-size: 18px;
-    color: $color-java;
-    margin: 0;
-  }
+//   &-title {
+//     font-size: 18px;
+//     color: $color-java;
+//     margin: 0;
+//   }
 
-  &-subtitle {
-    margin: 2px;
-    color: $color-abbey;
-  }
+//   &-subtitle {
+//     margin: 2px;
+//     color: $color-abbey;
+//   }
 
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 5px rgba(0,0,0,.1);
-    cursor: pointer;
-  }
-}
+//   &:hover {
+//     transform: translateY(-3px);
+//     box-shadow: 0 5px 5px rgba(0,0,0,.1);
+//     cursor: pointer;
+//   }
+// }
 
-.card {
+/* .card {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -587,7 +590,7 @@ a {
   }
 
   &__photo {
-    // background-image: url('../../img/pumpkin-carving.jpg'); // TODO find image
+    // background-image: url('../../img/pumpkin-carving.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-color: slategray;
@@ -669,9 +672,9 @@ a {
     color: $color-java;
   }
 
-  &__description {
+  // &__description {
 
-  }
+  // }
 
   &__note {
     margin: 10px 0;
@@ -682,9 +685,9 @@ a {
     position: relative;
   }
 }
-
+ */
 // Card header settings icons
-.settings {
+/* .settings {
   display: flex;
   margin: 8px;
   align-self: flex-start;
@@ -720,8 +723,9 @@ a {
     cursor: pointer;
   }
 }
+ */
 
-.documents {
+ .documents {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
   grid-auto-rows: 214px;
