@@ -1,3 +1,21 @@
+
+// .grid {   border: 3px dotted green; }
+.header {  border: 3px dashed Aquamarine; }
+.header__menu { border: 3px dotted red; }
+.header__search { border: 3px dotted yellow }
+.sidenav  { border: 3px dotted Fuchsia }
+.subList  { border: 3px dashed green; }
+.navList  { border: 3px dashed gold; }
+.main  { border: 3px dashed blue }
+.footer { border: 3px dashed Fuchsia }
+.documents { border: 3px dotted red; }
+.settings  { border: 3px dotted green }
+.header  { border: 3px dotted yellow; }
+.quickview  { border: 3px dotted blue }
+.overview { border: 3px dotted Fuchsia }
+.overviewCard  { border: 3px dashed red; }
+
+
 // Sass tils
 $color-fiord: #394263; // sidenav bg & dark text
 $color-white: #FFF; // card bg
