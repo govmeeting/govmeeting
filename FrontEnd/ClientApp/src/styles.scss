@@ -8,15 +8,31 @@
 html,
 body {
   height: 100%;
-  font-family: 'Open Sans';
-  //font-family: 'Times New Roman';
-
-}
-
-
-body {
   margin: 0;
+  padding: 0;
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  //font-family: 'Times New Roman';
 }
+
+// from Matt's
+/* html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif
+}
+ */
+
+.text-light {
+  font-weight: 300;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+
+
 
 // .mat-tooltip.tooltip {
 //   background-color: darkblue;

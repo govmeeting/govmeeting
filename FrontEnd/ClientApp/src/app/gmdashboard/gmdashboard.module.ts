@@ -26,6 +26,9 @@ import { UserDropdownComponent } from './user-dropdown/user-dropdown.component';
 import { MainOverviewComponent } from './main-overview/main-overview.component';
 import { YourEventsComponent } from './your-events/your-events.component';
 import { RecentDocumentsComponent } from './recent-documents/recent-documents.component';
+import { DashFooterComponent } from './dash-footer/dash-footer.component';
+import { FinanceComponent } from './finance/finance.component';
+import { MainCardComponent } from './main-card/main-card.component';
 
 
 @NgModule({
@@ -51,8 +54,11 @@ import { RecentDocumentsComponent } from './recent-documents/recent-documents.co
     QuickviewComponent,
     UserDropdownComponent,
     MainOverviewComponent,
+    MainCardComponent,
     YourEventsComponent,
-    RecentDocumentsComponent
+    RecentDocumentsComponent,
+    FinanceComponent,
+    DashFooterComponent
   ],
   exports: [
     GMDashboardComponent,

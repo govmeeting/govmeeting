@@ -7,8 +7,6 @@
 .subList  { border: 3px dashed green; }
 .navList  { border: 3px dashed gold; }
 .main  { border: 3px dashed blue }
-.footer { border: 3px dashed Fuchsia }
-.documents { border: 3px dotted red; }
 .settings  { border: 3px dotted green }
 .header  { border: 3px dotted yellow; }
 .quickview  { border: 3px dotted blue }
@@ -61,13 +59,15 @@ a {
 }
 
 // Util classes
-.text-light {
+
+/* .text-light {
   font-weight: 300;
 }
 
 .text-bold {
   font-weight: bold;
 }
+ */
 
 .row {
   display: flex;
