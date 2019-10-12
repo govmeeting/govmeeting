@@ -29,6 +29,7 @@ import { RecentDocumentsComponent } from './recent-documents/recent-documents.co
 import { DashFooterComponent } from './dash-footer/dash-footer.component';
 import { FinanceComponent } from './finance/finance.component';
 import { MainCardComponent } from './main-card/main-card.component';
+import { OverviewCardComponent } from './overview-card/overview-card.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { MainCardComponent } from './main-card/main-card.component';
     QuickviewComponent,
     UserDropdownComponent,
     MainOverviewComponent,
+    OverviewCardComponent,
     MainCardComponent,
     YourEventsComponent,
     RecentDocumentsComponent,

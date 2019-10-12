@@ -1,4 +1,6 @@
-// Overview quicklink cards container
+// for debug
+.overviewCard  { border: 3px dashed red; }
+
 $color-white: #FFF; // card bg
 $color-zest: #e67e22; // document icon bg
 $color-jungle-green: #27ae60; // calendar icon bg
@@ -7,16 +9,7 @@ $color-amethyst: #af64cc; // main photo icon bg
 $color-java: #1BBAE1; // blue text  // used many places
 $color-abbey: #777; // gray text  // used many places
 
-
-.main-overview {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-  grid-auto-rows: 94px;
-  grid-gap: 30px;
-  margin: 20px;
-}
-
-/* .overviewCard {
+.overviewCard {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -74,4 +67,4 @@ $color-abbey: #777; // gray text  // used many places
     box-shadow: 0 5px 5px rgba(0,0,0,.1);
     cursor: pointer;
   }
-} */
+}

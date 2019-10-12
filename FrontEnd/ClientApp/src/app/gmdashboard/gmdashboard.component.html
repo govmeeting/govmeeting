@@ -250,7 +250,11 @@
       </div>
     </div>
     <div class="main-overview">
-      <div class="overviewCard">
+
+
+      <gm-overview-card icon="far fa-file-alt" title="New Document" subtitle="Europe Trip"></gm-overview-card>
+
+<!--       <div class="overviewCard">
         <div class="overviewCard-icon overviewCard-icon--document">
            <i class="far fa-file-alt"></i>
         </div>
@@ -259,7 +263,11 @@
           <p class="overviewCard-subtitle">Europe Trip</p>
         </div>
       </div>
-      <div class="overviewCard">
+ -->
+      <gm-overview-card icon="far fa-calendar-check" title="Upcoming Event" subtitle="Chili Cookoff"></gm-overview-card>
+
+
+<!--       <div class="overviewCard">
         <div class="overviewCard-icon overviewCard-icon--calendar">
            <i class="far fa-calendar-check"></i>
         </div>
@@ -268,7 +276,11 @@
           <p class="overviewCard-subtitle">Chili Cookoff</p>
         </div>
       </div>
-      <div class="overviewCard">
+ -->
+  <gm-overview-card icon="far fa-envelope" title="Recent Emails" subtitle="+10"></gm-overview-card>
+
+
+<!--       <div class="overviewCard">
         <div class="overviewCard-icon overviewCard-icon--mail">
            <i class="far fa-envelope"></i>
         </div>
@@ -277,7 +289,11 @@
           <p class="overviewCard-subtitle">+10</p>
         </div>
       </div>
-      <div class="overviewCard">
+ -->
+      <gm-overview-card icon="far fa-file-image" title="New Album" subtitle="House Concert"></gm-overview-card>
+
+
+<!--       <div class="overviewCard">
         <div class="overviewCard-icon overviewCard-icon--photo">
            <i class="far fa-file-image"></i>
         </div>
@@ -286,48 +302,22 @@
           <p class="overviewCard-subtitle">House Concert</p>
         </div>
       </div>
+ -->
     </div> <!-- /.main__overview -->
 
     <div class="main__cards">
 
-      <div class="card">
-        <div class="card__header">
-          <div class="card__header-title text-light">Your <strong>Events </strong>
-            <a href="#" class="card__header-link text-bold">View All</a>
-          </div>
-          <div class="settings">
-            <div class="settings__block"><i class="fas fa-edit"></i></div>
-            <div class="settings__block"><i class="fas fa-cog"></i></div>
-          </div>
-        </div>
+      <gm-main-card title="Your Events">
         <gm-your-events></gm-your-events>
-      </div>
+      </gm-main-card>
 
-       <div class="card">
-        <div class="card__header">
-          <div class="card__header-title text-light">Recent <strong>Documents </strong>
-            <a href="#" class="card__header-link text-bold">View All</a>
-          </div>
-          <div class="settings">
-            <div class="settings__block"><i class="fas fa-edit"></i></div>
-            <div class="settings__block"><i class="fas fa-cog"></i></div>
-          </div>
-        </div>
-        <gm-recent-documents></gm-recent-documents>
-      </div>
+      <gm-main-card title="Recent Documents">
+          <gm-recent-documents></gm-recent-documents>
+        </gm-main-card>
 
-      <div class="card card--finance">
-        <div class="card__header">
-          <div class="card__header-title text-light">Monthly <strong>Spending </strong>
-            <a href="#" class="card__header-link text-bold">View All</a>
-          </div>
-          <div class="settings">
-            <div class="settings__block"><i class="fas fa-edit"></i></div>
-            <div class="settings__block"><i class="fas fa-cog"></i></div>
-          </div>
-        </div>
-        <gm-finance></gm-finance>
-      </div>
+      <gm-main-card title="Monthly Spending">
+          <gm-finance></gm-finance>
+      </gm-main-card>
 
     </div> <!-- /.main-cards -->
 
