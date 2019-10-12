@@ -25,6 +25,7 @@ import { QuickviewComponent } from './quickview/quickview.component';
 import { UserDropdownComponent } from './user-dropdown/user-dropdown.component';
 import { MainOverviewComponent } from './main-overview/main-overview.component';
 import { YourEventsComponent } from './your-events/your-events.component';
+import { RecentDocumentsComponent } from './recent-documents/recent-documents.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { YourEventsComponent } from './your-events/your-events.component';
     QuickviewComponent,
     UserDropdownComponent,
     MainOverviewComponent,
-    YourEventsComponent
+    YourEventsComponent,
+    RecentDocumentsComponent
   ],
   exports: [
     GMDashboardComponent,
