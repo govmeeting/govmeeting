@@ -30,6 +30,7 @@ import { DashFooterComponent } from './dash-footer/dash-footer.component';
 import { FinanceComponent } from './finance/finance.component';
 import { MainCardComponent } from './main-card/main-card.component';
 import { OverviewCardComponent } from './overview-card/overview-card.component';
+import { QuickItemComponent } from './quick-item/quick-item.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { OverviewCardComponent } from './overview-card/overview-card.component';
     NavlistComponent,
     QuickviewComponent,
     UserDropdownComponent,
+    QuickItemComponent,
     MainOverviewComponent,
     OverviewCardComponent,
     MainCardComponent,
