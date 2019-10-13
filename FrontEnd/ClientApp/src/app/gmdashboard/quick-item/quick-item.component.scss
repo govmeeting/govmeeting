@@ -1,0 +1,15 @@
+.quickitem {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &-total {
+    margin-bottom: 2px;
+    font-size: 32px;
+  }
+
+  &-description {
+    font-size: 16px;
+    text-align: center;
+  }
+}
