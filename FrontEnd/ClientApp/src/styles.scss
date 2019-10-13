@@ -5,6 +5,38 @@
 // @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 
+$color-fiord: #394263; // sidenav bg & dark text
+$color-white: #FFF; // card bg
+$color-athens-gray: #EAEDF1; // content bg
+$color-catskill-white: #F9FAFC; // top nav bg
+$color-abbey: #777; // gray text
+$color-mischka: #DADAE3; // light gray for menu icon
+$color-java: #1BBAE1; // blue text
+$color-mine-shaft: #333; // main section header bg
+$color-zest: #e67e22; // document icon bg
+$color-jungle-green: #27ae60; // calendar icon bg
+$color-cinnabar: #e74c3c; // main icon bg, red
+$color-amethyst: #af64cc; // main photo icon bg
+$color-transparent: rgba(255, 255, 255, .5);
+$color-alto: #D3D3D3;
+
+
+.document-icon-color {
+  background-color: $color-zest;
+}
+
+.calendar-icon-color {
+  background-color: $color-jungle-green;
+}
+
+.mail-icon-color {
+  background-color: $color-cinnabar;
+}
+
+.photo-icon-color {
+  background-color: $color-amethyst;
+}
+
 html,
 body {
   height: 100%;

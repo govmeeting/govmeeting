@@ -13,9 +13,10 @@
 .overview { border: 3px dotted Fuchsia }
 //.overviewCard  { border: 3px dashed red; }
 
+@import "../../styles.scss";
 
 // Sass tils
-$color-fiord: #394263; // sidenav bg & dark text
+/* $color-fiord: #394263; // sidenav bg & dark text
 $color-white: #FFF; // card bg
 $color-athens-gray: #EAEDF1; // content bg
 $color-catskill-white: #F9FAFC; // top nav bg
@@ -29,6 +30,7 @@ $color-cinnabar: #e74c3c; // main icon bg, red
 $color-amethyst: #af64cc; // main photo icon bg
 $color-transparent: rgba(255, 255, 255, .5);
 $color-alto: #D3D3D3;
+ */
 
 $height-header: 50px;
 $height-footer: 50px;

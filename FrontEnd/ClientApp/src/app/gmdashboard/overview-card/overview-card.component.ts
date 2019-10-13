@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class OverviewCardComponent implements OnInit {
   @Input() icon: string;
+  @Input() iconcolor: string;
   @Input() title: string;
   @Input() subtitle: string;
 
