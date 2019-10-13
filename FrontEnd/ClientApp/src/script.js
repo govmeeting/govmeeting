@@ -3,7 +3,7 @@
 $(document).ready(() => {
   addResizeListeners();
   setSidenavListeners();
-  setUserDropdownListener();
+  // setUserDropdownListener();
   renderChart();
   setMenuClickListener();
   setSidenavCloseListener();
@@ -24,7 +24,7 @@ function toggleClass(el, className) {
 }
 
 // User avatar dropdown functionality
-function setUserDropdownListener() {
+/* function setUserDropdownListener() {
   const userAvatar = $('.header__avatar');
 
   userAvatar.on('click', function(e) {
@@ -32,10 +32,12 @@ function setUserDropdownListener() {
     toggleClass(dropdown, 'dropdown--active');
   });
 }
+ */
 
-// Sidenav list sliding functionality
+ // Sidenav list sliding functionality
 function setSidenavListeners() {
-  const subHeadings = $('.navList__subheading'); console.log('subHeadings: ', subHeadings);
+  const subHeadings = $('.navList__subheading');
+   console.log('subHeadings: ', subHeadings);
   const SUBHEADING_OPEN_CLASS = 'navList__subheading--open';
   const SUBLIST_HIDDEN_CLASS = 'subList--hidden';
 

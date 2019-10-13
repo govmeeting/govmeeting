@@ -6,6 +6,17 @@ $width-sidenav: 240px;   // used also in gmdashboard.component.scss
 
 @import "../../../styles.scss";
 
+.row {
+  display: flex;
+
+  &--align-v-center {
+    align-items: center;
+  }
+
+  &--align-h-center {
+    justify-content: center;
+  }
+}
 
 .navList {
   width: $width-sidenav;

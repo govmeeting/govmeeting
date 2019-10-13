@@ -23,15 +23,16 @@ import { MessagingService } from './conversation/messaging.service';
 import { NavlistComponent } from './navlist/navlist.component';
 import { QuickviewComponent } from './quickview/quickview.component';
 import { UserDropdownComponent } from './user-dropdown/user-dropdown.component';
-import { MainOverviewComponent } from './main-overview/main-overview.component';
 import { YourEventsComponent } from './your-events/your-events.component';
 import { RecentDocumentsComponent } from './recent-documents/recent-documents.component';
 import { DashFooterComponent } from './dash-footer/dash-footer.component';
 import { FinanceComponent } from './finance/finance.component';
 import { MainCardComponent } from './main-card/main-card.component';
+import { OverviewComponent } from './overview/overview.component';
 import { OverviewCardComponent } from './overview-card/overview-card.component';
-import { QuickItemComponent } from './quick-item/quick-item.component';
+import { QuickviewItemComponent } from './quickview-item/quickview-item.component';
 import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
+import { DashHeaderComponent } from './dash-header/dash-header.component';
 
 
 @NgModule({
@@ -55,16 +56,17 @@ import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
     GMDashboardComponent,
     NavlistComponent,
     QuickviewComponent,
+    QuickviewItemComponent,
     UserDropdownComponent,
-    QuickItemComponent,
-    MainOverviewComponent,
+    OverviewComponent,
     OverviewCardComponent,
     MainCardComponent,
     YourEventsComponent,
     RecentDocumentsComponent,
     FinanceComponent,
     DashFooterComponent,
-	SidenavMenuComponent
+	SidenavMenuComponent,
+	DashHeaderComponent
   ],
   exports: [
     GMDashboardComponent,

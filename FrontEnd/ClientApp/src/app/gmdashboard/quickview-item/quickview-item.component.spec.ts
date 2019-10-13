@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainOverviewComponent } from './main-overview.component';
+import { QuickviewItemComponent } from './quick-item.component';
 
-describe('MainOverviewComponent', () => {
-  let component: MainOverviewComponent;
-  let fixture: ComponentFixture<MainOverviewComponent>;
+describe('QuickviewItemComponent', () => {
+  let component: QuickviewItemComponent;
+  let fixture: ComponentFixture<QuickviewItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainOverviewComponent ]
+      declarations: [ QuickviewItemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainOverviewComponent);
+    fixture = TestBed.createComponent(QuickviewItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
