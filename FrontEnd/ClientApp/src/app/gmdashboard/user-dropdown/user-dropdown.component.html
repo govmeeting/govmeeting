@@ -1,17 +1,18 @@
-<div class="dropdown">
+<div class="dropdown__avatar" (click)="setDropdownActive()">
+  <div class="dropdown {{dropdownActive}}">
     <ul class="dropdown__list">
-      <li class="dropdown__list-item">
-        <span class="dropdown__icon"><i class="far fa-user"></i></span>
-        <span class="dropdown__title">my profile</span>
-      </li>
-      <li class="dropdown__list-item">
-        <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
-        <span class="dropdown__title">my account</span>
-      </li>
-      <li class="dropdown__list-item">
-        <span class="dropdown__icon"><i class="fas fa-sign-out-alt"></i></span>
-        <span class="dropdown__title">log out</span>
-      </li>
-    </ul>
-  </div>
-
+    <li class="dropdown__list-item">
+      <span class="dropdown__icon"><i class="far fa-user"></i></span>
+      <span class="dropdown__title">my profile</span>
+    </li>
+    <li class="dropdown__list-item">
+      <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
+      <span class="dropdown__title">my account</span>
+    </li>
+    <li class="dropdown__list-item">
+      <span class="dropdown__icon"><i class="fas fa-sign-out-alt"></i></span>
+      <span class="dropdown__title">log out</span>
+    </li>
+  </ul>
+</div>
+</div>

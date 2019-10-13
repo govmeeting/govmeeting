@@ -4,6 +4,14 @@
 $color-abbey: #777; // gray text
 $color-java: #1BBAE1; // blue text
 
+@mixin profile-avatar {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1609106/headshot.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, .2);
+}
+
 .dropdown {
   position: absolute;
   top: 54px;
@@ -18,6 +26,28 @@ $color-java: #1BBAE1; // blue text
   transform: translateY(-10px);
   transition: all .3s;
   @include box-shadow;
+
+  &__avatar {
+    @include profile-avatar;
+    position: relative;
+    margin: 0 26px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+
+    &:after {
+      position: absolute;
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: none;
+      border-left: 2px solid $color-abbey;
+      border-bottom: 2px solid $color-abbey;
+      transform: rotate(-45deg) translateY(-50%);
+      top: 50%;
+      right: -18px;
+    }
+  }
 
   &__list {
     margin: 0;
@@ -59,5 +89,23 @@ $color-java: #1BBAE1; // blue text
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media only screen and (min-width: 46.875em) {
+  .dropdown {
+    &__menu {
+      display: none;
+    }
+/*
+    &__search {
+      margin-left: 20px; // No menu icon; move 'er back over
+    }
+
+ */
+    &__avatar {
+      width: 40px;
+      height: 40px;
+    }
   }
 }

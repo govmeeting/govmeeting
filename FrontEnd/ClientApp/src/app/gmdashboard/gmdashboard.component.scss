@@ -4,8 +4,8 @@
 .header__menu { border: 3px dotted red; }
 .header__search { border: 3px dotted yellow }
 .sidenav  { border: 3px dotted Fuchsia }
-.subList  { border: 3px dashed green; }
-.navList  { border: 3px dashed gold; }
+// .subList  { border: 3px dashed green; }
+// .navList  { border: 3px dashed gold; }
 .main  { border: 3px dashed blue }
 .settings  { border: 3px dotted green }
 .header  { border: 3px dotted yellow; }
@@ -13,22 +13,6 @@
 
 @import "../../styles.scss";
 
-// Sass tils
-/* $color-fiord: #394263; // sidenav bg & dark text
-$color-white: #FFF; // card bg
-$color-athens-gray: #EAEDF1; // content bg
-$color-catskill-white: #F9FAFC; // top nav bg
-$color-abbey: #777; // gray text
-$color-mischka: #DADAE3; // light gray for menu icon
-$color-java: #1BBAE1; // blue text
-$color-mine-shaft: #333; // main section header bg
-$color-zest: #e67e22; // document icon bg
-$color-jungle-green: #27ae60; // calendar icon bg
-$color-cinnabar: #e74c3c; // main icon bg, red
-$color-amethyst: #af64cc; // main photo icon bg
-$color-transparent: rgba(255, 255, 255, .5);
-$color-alto: #D3D3D3;
- */
 
 $height-header: 50px;
 $height-footer: 50px;
@@ -303,104 +287,6 @@ a {
 
   &--active {
     transform: translateX(0);
-  }
-}
-
-.navList {
-  width: $width-sidenav;
-  padding: 0;
-  margin: 0;
-  background-color: $color-fiord;
-  list-style-type: none;
-
-  &__heading {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 16px 3px;
-    color: $color-transparent;
-    text-transform: uppercase;
-    font-size: 15px;
-  }
-
-  &__subheading {
-    position: relative;
-    padding: 10px 30px;
-    color: #fff;
-    font-size: 16px;
-    text-transform: capitalize;
-
-    &-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: $color-transparent;
-      width: 12px; // Keep spacing consistent
-    }
-
-    &-title {
-      margin: 0 15px;
-    }
-
-    &:after {
-      position: absolute;
-      content: "";
-      height: 6px;
-      width: 6px;
-      top: 17px;
-      right: 25px;
-      border-left: 1px solid $color-transparent;
-      border-bottom: 1px solid $color-transparent;
-      transform: rotate(225deg);
-      transition: all .2s;
-    }
-
-    &:hover {
-      background-color: darken($color-fiord, 5%);
-      cursor: pointer;
-    }
-
-    &--open {
-      background-color: darken($color-fiord, 5%);
-
-      &:after {
-        transform: rotate(315deg);
-      }
-    }
-  }
-
-  .subList {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    background-color: darken($color-fiord, 10%);
-    visibility: visible;
-    overflow: hidden;
-    max-height: 200px;
-    transition: all .4s ease-in-out;
-
-    &__item {
-      padding: 8px;
-      text-transform: capitalize;
-      padding: 8px 30px;
-      color: $color-alto;
-
-      &:first-child {
-        padding-top: 15px;
-      }
-
-      &:hover {
-        background-color: rgba(255, 255, 255, .1);
-        cursor: pointer;
-      }
-    }
-
-    &--hidden {
-      visibility: hidden;
-      max-height: 0;
-    }
   }
 }
 

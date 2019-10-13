@@ -31,6 +31,7 @@ import { FinanceComponent } from './finance/finance.component';
 import { MainCardComponent } from './main-card/main-card.component';
 import { OverviewCardComponent } from './overview-card/overview-card.component';
 import { QuickItemComponent } from './quick-item/quick-item.component';
+import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { QuickItemComponent } from './quick-item/quick-item.component';
     YourEventsComponent,
     RecentDocumentsComponent,
     FinanceComponent,
-    DashFooterComponent
+    DashFooterComponent,
+	SidenavMenuComponent
   ],
   exports: [
     GMDashboardComponent,
