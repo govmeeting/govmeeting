@@ -33,6 +33,7 @@ import { OverviewCardComponent } from './overview-card/overview-card.component';
 import { QuickviewItemComponent } from './quickview-item/quickview-item.component';
 import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
 import { DashHeaderComponent } from './dash-header/dash-header.component';
+import { SidenavHeaderComponent } from './sidenav-header/sidenav-header.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { DashHeaderComponent } from './dash-header/dash-header.component';
     FinanceComponent,
     DashFooterComponent,
     SidenavMenuComponent,
-    DashHeaderComponent
+    DashHeaderComponent,
+    SidenavHeaderComponent
   ],
   exports: [
     GMDashboardComponent,

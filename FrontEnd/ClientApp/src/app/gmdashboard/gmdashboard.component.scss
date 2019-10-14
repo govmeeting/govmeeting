@@ -18,6 +18,7 @@ $height-header: 50px;
 $height-footer: 50px;
 $width-sidenav: 240px;
 
+
 @mixin profile-avatar {
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1609106/headshot.png");
   background-size: cover;
@@ -146,7 +147,7 @@ a {
 }
 
 
- .sidenav {
+.sidenav {
   position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
   grid-area: sidenav;
   height: 100%;

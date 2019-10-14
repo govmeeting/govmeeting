@@ -1,0 +1,119 @@
+@import "../../../styles.scss";
+
+$height-header: 50px;
+$height-footer: 50px;
+$width-sidenav: 240px;
+
+@mixin profile-avatar {
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1609106/headshot.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, .2);
+}
+
+@mixin box-shadow {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+
+.sidenav {
+  position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
+  grid-area: sidenav;
+  height: 100%;
+  overflow-y: auto;
+  background-color: $color-fiord;
+  color: $color-white;
+  width: $width-sidenav; // Will match grid area on medium + screens
+  transform: translateX(-245px);
+  transition: all .6s ease-in-out;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  z-index: 2; // Needs to sit above the hamburger menu icon
+
+  &__brand {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    height: $height-header;
+    background-color: rgba(0, 0, 0, .15);
+
+    &-icon {
+      margin-top: 2px;
+      font-size: 14px;
+      color: $color-transparent;
+    }
+
+    &-close {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      visibility: visible;
+      color: $color-transparent;
+      cursor: pointer;
+    }
+
+    &-link {
+      font-size: 18px;
+      font-weight: bold;
+      color: $color-white;
+      margin: 0 15px;
+      letter-spacing: 1.5px;
+    }
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    min-height: 90px;
+    background-color: rgba(255, 255, 255, .1);
+
+    &-avatar {
+      @include profile-avatar;
+      height: 64px;
+      width: 64px;
+      margin: 0 15px;
+    }
+
+    &-title {
+      font-size: 17px;
+      letter-spacing: 1px;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    content: "";
+    width: 6px;
+    height: 6px;
+    top: 50%;
+    right: 20px;
+    border-left: 2px solid rgba(255,255,255,.5);
+    border-bottom: 2px solid rgba(255,255,255,.5);
+    transform: translateY(-50%) rotate(225deg);
+  }
+
+  &__sublist {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0 0;
+  }
+
+  &--active {
+    transform: translateX(0);
+  }
+}
+
+// Dashboard content wrapper
+.main {
+  grid-area: main;
+  background-color: $color-athens-gray;
+  color: $color-fiord;
+
+  &__cards {
+    display: block;
+    column-count: 1;
+    column-gap: 20px;
+    margin: 20px;
+  }
+}
