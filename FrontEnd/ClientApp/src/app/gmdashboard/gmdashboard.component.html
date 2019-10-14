@@ -35,28 +35,6 @@ Ideas for dashboard layout
       <input class="header__input" placeholder="Search..." />
     </div>
     <gm-user-dropdown></gm-user-dropdown>
-
-
-<!--     <div class="header__avatar">
-      <div class="dropdown">
-        <ul class="dropdown__list">
-          <li class="dropdown__list-item">
-            <span class="dropdown__icon"><i class="far fa-user"></i></span>
-            <span class="dropdown__title">my profile</span>
-          </li>
-          <li class="dropdown__list-item">
-            <span class="dropdown__icon"><i class="fas fa-clipboard-list"></i></span>
-            <span class="dropdown__title">my account</span>
-          </li>
-          <li class="dropdown__list-item">
-            <span class="dropdown__icon"><i class="fas fa-sign-out-alt"></i></span>
-            <span class="dropdown__title">log out</span>
-          </li>
-        </ul>
-      </div>
-    </div>
- -->
-
   </header>
 
   <aside class="sidenav">
@@ -70,29 +48,19 @@ Ideas for dashboard layout
       <div class="sidenav__profile-title text-light">Matthew H</div>
     </div>
     <div class="row row--align-v-center row--align-h-center">
-
       <gm-sidenav-menu></gm-sidenav-menu>>
-
-</div>
+    </div>
   </aside>
 
   <main class="main">
-    <div class="main-header">
-      <div class="main-header__intro-wrapper">
-        <div class="main-header__welcome">
-          <div class="main-header__welcome-title text-light">Welcome, <strong>Matthew</strong></div>
-          <div class="main-header__welcome-subtitle text-light">How are you today?</div>
-        </div>
 
+    <gm-dash-header>
         <gm-quickview>
             <gm-quickview-item total="41" icon="far fa-calendar-alt" desc="Events"></gm-quickview-item>
             <gm-quickview-item total="64" icon="far fa-comment" desc="Messages"></gm-quickview-item>
             <gm-quickview-item total="27&deg;" icon="fas fa-map-marker-alt" desc="Austin"></gm-quickview-item>
         </gm-quickview>
-
-      </div>
-    </div>
-
+    </gm-dash-header>
 
     <gm-overview>
       <gm-overview-card icon="far fa-file-alt" iconcolor="document-icon-color"

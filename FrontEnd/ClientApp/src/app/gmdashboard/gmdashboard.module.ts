@@ -65,8 +65,8 @@ import { DashHeaderComponent } from './dash-header/dash-header.component';
     RecentDocumentsComponent,
     FinanceComponent,
     DashFooterComponent,
-	SidenavMenuComponent,
-	DashHeaderComponent
+    SidenavMenuComponent,
+    DashHeaderComponent
   ],
   exports: [
     GMDashboardComponent,

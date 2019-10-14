@@ -1,0 +1,40 @@
+@import "../../../styles.scss";
+
+.main-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 250px;
+  color: $color-white;
+  background-size: cover;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1609106/lake-shadow-water.jpg");
+  margin-bottom: 20px;
+
+  &__intro-wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column; // Mobile-first; break out to row on medium + screens
+    align-items: center;
+    justify-content: space-between;
+    height: 160px;
+    padding: 12px 30px;
+    background: rgba(255,255,255,.12);
+    font-size: 26px;
+    letter-spacing: 1px;
+  }
+
+  &__welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-title {
+      margin-bottom: 8px;
+      font-size: 26px;
+    }
+
+    &-subtitle {
+      font-size: 18px;
+    }
+  }
+}
