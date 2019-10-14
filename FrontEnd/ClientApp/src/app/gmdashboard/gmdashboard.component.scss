@@ -17,17 +17,20 @@ $height-footer: 50px;
 $width-sidenav: 240px;
 
 
-@mixin profile-avatar {
+/* @mixin profile-avatar {
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1609106/headshot.png");
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, .2);
 }
+ */
 
-@mixin box-shadow {
+
+/* @mixin box-shadow {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
+ */
 
 // Resets
 html, body {
@@ -79,31 +82,6 @@ a {
     }
   }
 }
-
-/*   &__avatar {
-    @include profile-avatar;
-    position: relative;
-    margin: 0 26px;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-
-    &:after {
-      position: absolute;
-      content: "";
-      width: 6px;
-      height: 6px;
-      background: none;
-      border-left: 2px solid $color-abbey;
-      border-bottom: 2px solid $color-abbey;
-      transform: rotate(-45deg) translateY(-50%);
-      top: 50%;
-      right: -18px;
-    }
-  }
- */
-
-
 
 
 .sidenav {
@@ -193,16 +171,6 @@ a {
   .main {
     &__cards {
       column-count: 2;
-    }
-  }
-
-  .main-header {
-    &__intro-wrapper {
-      flex-direction: row;
-    }
-
-    &__welcome {
-      align-items: flex-start;
     }
   }
 }
