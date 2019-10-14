@@ -34,6 +34,7 @@ import { QuickviewItemComponent } from './quickview-item/quickview-item.componen
 import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
 import { DashHeaderComponent } from './dash-header/dash-header.component';
 import { SidenavHeaderComponent } from './sidenav-header/sidenav-header.component';
+import { DashSearchComponent } from './dash-search/dash-search.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { SidenavHeaderComponent } from './sidenav-header/sidenav-header.componen
     DashFooterComponent,
     SidenavMenuComponent,
     DashHeaderComponent,
-    SidenavHeaderComponent
+    SidenavHeaderComponent,
+    DashSearchComponent
   ],
   exports: [
     GMDashboardComponent,

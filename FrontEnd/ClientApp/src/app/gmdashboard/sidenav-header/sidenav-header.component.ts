@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'gm-sidenav',
+  selector: 'gm-sidenav-header',
   templateUrl: './sidenav-header.component.html',
   styleUrls: ['./sidenav-header.component.scss']
 })

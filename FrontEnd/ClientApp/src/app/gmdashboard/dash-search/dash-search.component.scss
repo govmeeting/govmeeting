@@ -1,0 +1,23 @@
+@import "../../../styles.scss";
+
+
+.header {
+  &__search {
+    margin-left: 55px;
+    font-size: 20px;
+    color: $color-abbey;
+  }
+
+  &__input {
+    border: none;
+    background: transparent;
+    padding: 12px;
+    font-size: 20px;
+    color: $color-abbey;
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+}

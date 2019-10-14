@@ -25,42 +25,28 @@ Ideas for dashboard layout
 -->
 
 
+<!--
 
+Classes to turn into angular components:
+  grid
+  sidenav
+  main
+  main__cards
 
+-->
 
 <div class="grid">
   <header class="header">
     <i class="fas fa-bars header__menu"></i>
-    <div class="header__search">
-      <input class="header__input" placeholder="Search..." />
-    </div>
+
+    <gm-dash-search></gm-dash-search>
     <gm-user-dropdown></gm-user-dropdown>
   </header>
 
-<!-- <gm-sidenav> -->
+  <aside class="sidenav">
 
-<aside class="sidenav">
-
-
-<!--     <div class="sidenav__brand">
-      <i class="fas fa-feather-alt sidenav__brand-icon"></i>
-      <a class="sidenav__brand-link" href="#">Ux<span class="text-light">Pro</span></a>
-      <i class="fas fa-times sidenav__brand-close"></i>
-    </div>
-    <div class="sidenav__profile">
-      <div class="sidenav__profile-avatar"></div>
-      <div class="sidenav__profile-title text-light">Matthew H</div>
-    </div>
-    <div class="row row--align-v-center row--align-h-center">
- -->
-
-      <gm-sidenav></gm-sidenav>
-
-      <gm-sidenav-menu></gm-sidenav-menu>>
-
-
-<!-- </div> -->
-
+      <gm-sidenav-header></gm-sidenav-header>
+      <gm-sidenav-menu></gm-sidenav-menu>
 
   </aside>
 
