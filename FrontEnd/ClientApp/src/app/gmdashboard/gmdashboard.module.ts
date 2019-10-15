@@ -36,6 +36,7 @@ import { QuickviewHeaderComponent } from './quickview-header/quickview-header.co
 import { SidenavHeaderComponent } from './sidenav-header/sidenav-header.component';
 import { DashSearchComponent } from './dash-search/dash-search.component';
 import { DashHeaderComponent } from './dash-header/dash-header.component';
+import { MainCardsComponent } from './main-cards/main-cards.component';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { DashHeaderComponent } from './dash-header/dash-header.component';
     QuickviewHeaderComponent,
     SidenavHeaderComponent,
     DashSearchComponent,
-    DashHeaderComponent
+    DashHeaderComponent,
+    MainCardsComponent
   ],
   exports: [
     GMDashboardComponent,

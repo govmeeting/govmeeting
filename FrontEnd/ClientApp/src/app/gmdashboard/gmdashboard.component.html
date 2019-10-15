@@ -40,16 +40,10 @@ Classes to turn into angular components:
 <div class="grid">
 
   <gm-dash-header>
-
-<!--   <header class="header">
-    <i class="fas fa-bars header__menu"></i>
- -->
     <gm-dash-search></gm-dash-search>
     <gm-user-dropdown></gm-user-dropdown>
-
   </gm-dash-header>
 
-  <!-- </header> -->
 
   <aside class="sidenav">
 
@@ -81,7 +75,9 @@ Classes to turn into angular components:
         title="New Album" subtitle="House Concert"></gm-overview-card>
     </gm-overview>
 
-    <div class="main__cards">
+    <!-- <div class="main__cards"> -->
+
+    <gm-main-cards>
 
       <gm-main-card title="Your Events">
         <gm-your-events></gm-your-events>
@@ -95,13 +91,12 @@ Classes to turn into angular components:
           <gm-finance></gm-finance>
       </gm-main-card>
 
-    </div> <!-- /.main-cards -->
+    <!-- </div> -->
 
-  </main>
+    </gm-main-cards>
 
   <gm-dash-footer></gm-dash-footer>
 
-</div>
 
 <!-- partial -->
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
