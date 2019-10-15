@@ -2,7 +2,6 @@
 // .grid {   border: 3px dotted green; }
 .header {  border: 3px dashed Aquamarine; }
 .header__menu { border: 3px dotted red; }
-.header__search { border: 3px dotted yellow }
 .sidenav  { border: 3px dotted Fuchsia }
 .main  { border: 3px dashed blue }
 .settings  { border: 3px dotted green }
@@ -17,21 +16,6 @@ $height-footer: 50px;
 $width-sidenav: 240px;
 
 
-/* @mixin profile-avatar {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1609106/headshot.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, .2);
-}
- */
-
-
-/* @mixin box-shadow {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-}
- */
-
 // Resets
 html, body {
   margin: 0;
@@ -40,9 +24,7 @@ html, body {
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif
 }
 
-a {
-  text-decoration: none;
-}
+///////////////////////// GRID ////////////////////////////////////
 
 // Establish dashboard css grid layout - mobile
 .grid {
@@ -61,6 +43,22 @@ a {
     overflow-y: hidden;
   }
 }
+
+// Break out to sidenav grid layout on medium + screens
+@media only screen and (min-width: 46.875em) {
+  .grid {
+    display: grid;
+    grid-template-columns: $width-sidenav calc(100% - 240px); // Charts responsiveness won't work with fr units
+    grid-template-rows: $height-header 1fr $height-footer;
+    grid-template-areas:
+      'sidenav header'
+      'sidenav main'
+      'sidenav footer';
+    height: 100vh;
+  }
+}
+
+///////////////////////////// HEADER ///////////////////////////
 
 .header {
   grid-area: header;
@@ -83,6 +81,16 @@ a {
   }
 }
 
+// Mobile screen breakpoints (750px)
+@media only screen and (min-width: 46.875em) {
+  .header {
+    &__menu {
+      display: none;
+    }
+  }
+}
+
+//////////////////////////// SIDENAV //////////////////////////
 
 .sidenav {
   position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
@@ -98,6 +106,19 @@ a {
   z-index: 2; // Needs to sit above the hamburger menu icon
 }
 
+@media only screen and (min-width: 46.875em) {
+  .sidenav {
+    position: relative;
+    transform: translateX(0);
+
+    &__brand-close {
+      visibility: hidden;
+    }
+  }
+}
+
+  //////////////////////////////////////////////////////////////////
+
 // Dashboard content wrapper
 .main {
   grid-area: main;
@@ -111,6 +132,16 @@ a {
     margin: 20px;
   }
 }
+// Medium screens breakpoint (1050px)
+@media only screen and (min-width: 65.625em) {
+  .main {
+    &__cards {
+      column-count: 2;
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////
 
 
 // Styles for example chart
@@ -121,56 +152,5 @@ a {
   min-width: 0;
 }
 
-// Mobile screen breakpoints (750px)
-@media only screen and (min-width: 46.875em) {
-  // Break out to sidenav grid layout on medium + screens
-  .grid {
-    display: grid;
-    grid-template-columns: $width-sidenav calc(100% - 240px); // Charts responsiveness won't work with fr units
-    grid-template-rows: $height-header 1fr $height-footer;
-    grid-template-areas:
-      'sidenav header'
-      'sidenav main'
-      'sidenav footer';
-    height: 100vh;
-  }
+////////////////////////////////////////////////////////////////
 
-  .sidenav {
-    position: relative;
-    transform: translateX(0);
-
-    &__brand-close {
-      visibility: hidden;
-    }
-  }
-
-  .main-header {
-    &__intro-wrapper {
-      padding: 0 30px;
-    }
-  }
-
-  .header {
-    &__menu {
-      display: none;
-    }
-
-    &__search {
-      margin-left: 20px; // No menu icon; move 'er back over
-    }
-
-    &__avatar {
-      width: 40px;
-      height: 40px;
-    }
-  }
-}
-
-// Medium screens breakpoint (1050px)
-@media only screen and (min-width: 65.625em) {
-  .main {
-    &__cards {
-      column-count: 2;
-    }
-  }
-}

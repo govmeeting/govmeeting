@@ -51,3 +51,12 @@
     }
   }
 }
+
+// Mobile screen breakpoints (750px)
+@media only screen and (min-width: 46.875em) {
+  .main-header {
+    &__intro-wrapper {
+      padding: 0 30px;
+    }
+  }
+}

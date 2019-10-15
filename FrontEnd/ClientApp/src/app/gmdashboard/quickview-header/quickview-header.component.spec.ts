@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashHeaderComponent } from './dash-header.component';
+import { QuickviewHeaderComponent } from './quickview-header.component';
 
-describe('DashHeaderComponent', () => {
-  let component: DashHeaderComponent;
-  let fixture: ComponentFixture<DashHeaderComponent>;
+describe('QuickviewHeaderComponent', () => {
+  let component: QuickviewHeaderComponent;
+  let fixture: ComponentFixture<QuickviewHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashHeaderComponent ]
+      declarations: [ QuickviewHeaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashHeaderComponent);
+    fixture = TestBed.createComponent(QuickviewHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
