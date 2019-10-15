@@ -38,12 +38,18 @@ Classes to turn into angular components:
 -->
 
 <div class="grid">
-  <header class="header">
-    <i class="fas fa-bars header__menu"></i>
 
+  <gm-dash-header>
+
+<!--   <header class="header">
+    <i class="fas fa-bars header__menu"></i>
+ -->
     <gm-dash-search></gm-dash-search>
     <gm-user-dropdown></gm-user-dropdown>
-  </header>
+
+  </gm-dash-header>
+
+  <!-- </header> -->
 
   <aside class="sidenav">
 
@@ -56,13 +62,13 @@ Classes to turn into angular components:
 
   <main class="main">
 
-    <gm-dash-header>
+    <gm-quickview-header>
         <gm-quickview>
             <gm-quickview-item total="41" icon="far fa-calendar-alt" desc="Events"></gm-quickview-item>
             <gm-quickview-item total="64" icon="far fa-comment" desc="Messages"></gm-quickview-item>
             <gm-quickview-item total="27&deg;" icon="fas fa-map-marker-alt" desc="Austin"></gm-quickview-item>
         </gm-quickview>
-    </gm-dash-header>
+    </gm-quickview-header>
 
     <gm-overview>
       <gm-overview-card icon="far fa-file-alt" iconcolor="document-icon-color"
