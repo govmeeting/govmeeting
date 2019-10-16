@@ -1,0 +1,13 @@
+// for debug
+.testgrid { border: 3px dashed Fuchsia }
+
+
+.testgrid {
+  grid-area: testgrid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  // padding: 0 16px;
+  // color: $color-abbey;
+  background-color: blue;
+}

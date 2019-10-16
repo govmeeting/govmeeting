@@ -1,0 +1,29 @@
+@import "../../../styles.scss";
+
+$width-sidenav: 240px;
+
+.sidenav {
+  position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
+  grid-area: sidenav;
+  height: 100%;
+  overflow-y: auto;
+  background-color: $color-fiord;
+  color: $color-white;
+  width: $width-sidenav; // Will match grid area on medium + screens
+  transform: translateX(-245px);
+  transition: all .6s ease-in-out;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  z-index: 2; // Needs to sit above the hamburger menu icon
+}
+
+@media only screen and (min-width: 46.875em) {
+  .sidenav {
+    position: relative;
+    transform: translateX(0);
+
+    &__brand-close {
+      visibility: hidden;
+    }
+  }
+}
+

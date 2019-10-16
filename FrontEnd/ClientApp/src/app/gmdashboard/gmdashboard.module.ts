@@ -37,6 +37,8 @@ import { SidenavHeaderComponent } from './sidenav-header/sidenav-header.componen
 import { DashSearchComponent } from './dash-search/dash-search.component';
 import { DashHeaderComponent } from './dash-header/dash-header.component';
 import { MainCardsComponent } from './main-cards/main-cards.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { TestgridComponent } from './testgrid/testgrid.component';
 
 
 @NgModule({
@@ -74,7 +76,9 @@ import { MainCardsComponent } from './main-cards/main-cards.component';
     SidenavHeaderComponent,
     DashSearchComponent,
     DashHeaderComponent,
-    MainCardsComponent
+    MainCardsComponent,
+    SidenavComponent,
+    TestgridComponent
   ],
   exports: [
     GMDashboardComponent,
