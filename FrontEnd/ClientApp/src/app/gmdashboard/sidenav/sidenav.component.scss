@@ -3,16 +3,26 @@
 $width-sidenav: 240px;
 
 .sidenav {
-  position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
-  grid-area: sidenav;
-  height: 100%;
+  //position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
+  //grid-area: sidenav;
+  //height: 100%;
   overflow-y: auto;
   background-color: $color-fiord;
   color: $color-white;
+  //width: $width-sidenav; // Will match grid area on medium + screens
+  //transform: translateX(-245px);
+  //transition: all .6s ease-in-out;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  //z-index: 2; // Needs to sit above the hamburger menu icon
+}
+:host {
+  //display: block;
+  grid-area: sidenav;
+  position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
+  height: 100%;
   width: $width-sidenav; // Will match grid area on medium + screens
   transform: translateX(-245px);
   transition: all .6s ease-in-out;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
   z-index: 2; // Needs to sit above the hamburger menu icon
 }
 
@@ -25,5 +35,13 @@ $width-sidenav: 240px;
       visibility: hidden;
     }
   }
-}
+  :host {
+    position: relative;
+    height: 100%;
+    width: $width-sidenav; // Will match grid area on medium + screens
+    transform: translateX(0);
+    transition: all .6s ease-in-out;
+    z-index: 2; // Needs to sit above the hamburger menu icon
+  }
+  }
 

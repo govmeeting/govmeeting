@@ -1,10 +1,10 @@
 /* Scripts for css grid dashboard */
 
 $(document).ready(() => {
-  addResizeListeners();
-  setSidenavListeners();
-  setMenuClickListener();
-  setSidenavCloseListener();
+  // addResizeListeners();
+  // setSidenavListeners();
+  // setMenuClickListener();
+  // setSidenavCloseListener();
 });
 
 // Set constants and grab needed elements
