@@ -1,7 +1,10 @@
+// for debug
+.header { border: 3px dashed Fuchsia }
+
 @import "../../../styles.scss";
 
 .header {
-  grid-area: header;
+  //grid-area: header;
   display: flex;
   align-items: center;
   justify-content: space-between;

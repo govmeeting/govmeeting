@@ -24,51 +24,20 @@ Ideas for dashboard layout
 
 -->
 
-
-<!--
-
-Classes to turn into angular components:
-  grid
-  header
-  header__menu
-  sidenav
-  main
-  main__cards
-
--->
-
 <div class="grid">
 
-
-
-  <gm-dash-header>
+  <gm-dash-header class="header">
     <gm-dash-search></gm-dash-search>
     <gm-user-dropdown></gm-user-dropdown>
   </gm-dash-header>
 
 
-<!--    <aside class="sidenav">
-    SIDENAV
-  </aside>
- -->
-
-  <gm-sidenav></gm-sidenav>
-
-
-<!--    <aside class="sidenav">
-       <gm-sidenav-header></gm-sidenav-header>
-      <gm-sidenav-menu></gm-sidenav-menu>
-  </aside>
- -->
-
-<!--   <gm-sidenav>
-      <gm-sidenav-header></gm-sidenav-header>
-      <gm-sidenav-menu></gm-sidenav-menu>
-  </gm-sidenav>
- -->
+  <gm-sidenav class="sidenav">
+    <gm-sidenav-header></gm-sidenav-header>
+    <gm-sidenav-menu></gm-sidenav-menu>
+</gm-sidenav>
 
   <!-- <gm-testgrid></gm-testgrid> -->
-
 
   <main class="main">
 
@@ -103,9 +72,9 @@ Classes to turn into angular components:
       </gm-main-card>
     </gm-main-cards>
 
-    <gm-dash-footer></gm-dash-footer>
-
   </main>
+
+  <gm-dash-footer class="footer"></gm-dash-footer>
 
 </div>
 
