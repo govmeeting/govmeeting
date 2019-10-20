@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* See material.angular.io/guide/theming */
-// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 // @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
+
+//@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 
 $color-fiord: #394263; // sidenav bg & dark text
 $color-white: #FFF; // card bg
@@ -74,15 +77,18 @@ body {
 //   font-size: 12px;
 // }
 
-// .mat-tooltip {
-//   font-size: 12px;
-//   // background: red!important;
-// }
+.mat-tooltip {
+  font-size: 14px;
+  background-color: darkblue;
+  // background: red!important;
+}
 
-// .help-icon {
-//   position: relative;
-//   right: 0;
-// }
+.help-icon {
+  // position: relative;
+  position: fixed;
+  right: 20;
+  top: 0;
+}
 
 // .mat-icon {
 //   font-size: 35px;

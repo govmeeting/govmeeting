@@ -30,6 +30,8 @@ import { AppData } from './appdata';
 import { TestModule } from './test/test.module';
 import { GmDashboardModule } from './gmdashboard/gmdashboard.module';
 
+import { AboutModule } from './gmdashboard/about/about.module';
+
 // Is the Asp.Net server running
 const _isAspServerRunning = true;
 
@@ -54,7 +56,8 @@ const _isAspServerRunning = true;
     GmSharedModule,
     TestModule,
     FlexLayoutModule,
-    GmDashboardModule
+    GmDashboardModule,
+    AboutModule
   ],
   exports: [
     //DemoMaterialModule
