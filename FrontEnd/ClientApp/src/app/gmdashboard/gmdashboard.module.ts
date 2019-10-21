@@ -1,15 +1,15 @@
+// Modules - external
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DemoMaterialModule } from '../material';
 import { LayoutModule } from '@angular/cdk/layout';
 
+// Modules - internal
+import { DemoMaterialModule } from '../material';
 import { AboutModule } from './about/about.module';
 import { VolunteerModule } from './volunteer/volunteer.module';
 import { HomeModule } from './home/home.module';
-
 import { SampleCardComponent } from './sample-card/sample-card.component';
 import { GMDashboardComponent } from './gmdashboard.component';
 import { ProjectStatusModule } from './project-status/project-status.module';
@@ -18,8 +18,7 @@ import { ChatModule } from '../gmdashboard/chat/chat.module';
 import { ConversationModule } from './conversation/conversation.module';
 import { FormsModule } from '@angular/forms';
 
-import { ChatService } from './chat/chat.service';
-import { MessagingService } from './conversation/messaging.service';
+// Components
 import { NavlistComponent } from './navlist/navlist.component';
 import { QuickviewComponent } from './quickview/quickview.component';
 import { UserDropdownComponent } from './user-dropdown/user-dropdown.component';
@@ -40,6 +39,12 @@ import { MainCardsComponent } from './main-cards/main-cards.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { TestgridComponent } from './testgrid/testgrid.component';
 import { AmguageComponent } from './amguage/amguage.component';
+
+// Services
+import { ChatService } from './chat/chat.service';
+import { MessagingService } from './conversation/messaging.service';
+import { DataFactoryService } from './data-factory.service';
+import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
 
 
 @NgModule({
@@ -80,14 +85,16 @@ import { AmguageComponent } from './amguage/amguage.component';
     MainCardsComponent,
     SidenavComponent,
     TestgridComponent,
-    AmguageComponent
+    AmguageComponent,
+    ShoutoutsComponent
   ],
   exports: [
     GMDashboardComponent,
   ],
   providers: [
     ChatService,
-    MessagingService
+    MessagingService,
+    DataFactoryService
   ]
 })
 export class GmDashboardModule { }

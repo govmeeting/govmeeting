@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-/* Imports */
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+
+/*
+  This example is from https://www.amcharts.com/docs/v4/getting-started/basics/
+  The example on https://www.amcharts.com/docs/v4/getting-started/integrations/using-angular2/
+    is more complicated. It uses the NgZone service and adds an ngAfterViewInit method which creates the chart.
+    I am not sure what the advantage is. I was not able to get a chart working in the component's html doing this.
+*/
 
 @Component({
   selector: 'gm-amguage',
@@ -11,8 +17,8 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 })
 export class AmguageComponent implements OnInit {
 
-  private chart: am4charts.GaugeChart;
-  private hand: { showValue: (arg0: number, arg1: number, arg2: (t: number) => number) => void; };
+  //private chart: am4charts.GaugeChart;
+  //private hand: { showValue: (arg0: number, arg1: number, arg2: (t: number) => number) => void; };
 
   constructor() { }
 
@@ -23,13 +29,13 @@ export class AmguageComponent implements OnInit {
     // Themes end
 
     // create chart
-    this.chart = am4core.create("chartdiv", am4charts.GaugeChart);
-    this.chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+    let chart = am4core.create("chartdiv", am4charts.GaugeChart);
+    chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
 
-    this.chart.innerRadius = -25;
+    chart.innerRadius = -25;
 
     //let axis = chart.xAxes.push(new am4charts.ValueAxis());
-    let axis = this.chart.xAxes.push(new am4charts.ValueAxis<am4charts.AxisRendererCircular>());
+    let axis = chart.xAxes.push(new am4charts.ValueAxis<am4charts.AxisRendererCircular>());
 
     axis.min = 0;
     axis.max = 100;
@@ -60,17 +66,20 @@ export class AmguageComponent implements OnInit {
     range2.axisFill.fill = colorSet.getIndex(4);
     range2.axisFill.zIndex = -1;
 
-    this.hand = this.chart.hands.push(new am4charts.ClockHand());
+    let hand = chart.hands.push(new am4charts.ClockHand());
 
+    // console.log("this is hand: ")
+    // console.log(hand)
     // using chart.setTimeout method as the timeout will be disposed together with a chart
-    this.chart.setTimeout(this.randomValue, 2000);
-  }
+    chart.setTimeout(randomValue, 2000);
 
-  randomValue() {
-    this.hand.showValue(Math.random() * 100, 1000, am4core.ease.cubicOut);
-    this.chart.setTimeout(this.randomValue, 2000);
-  }
-
+    function randomValue() {
+      // console.log("this is hand in randomValue: ")
+      // console.log(hand)
+      hand.showValue(Math.random() * 100, 1000, am4core.ease.cubicOut);
+      chart.setTimeout(randomValue, 2000);
+    }
+}
 
 }
 
