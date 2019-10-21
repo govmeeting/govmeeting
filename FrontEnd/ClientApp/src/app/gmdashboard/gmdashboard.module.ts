@@ -39,6 +39,7 @@ import { DashHeaderComponent } from './dash-header/dash-header.component';
 import { MainCardsComponent } from './main-cards/main-cards.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { TestgridComponent } from './testgrid/testgrid.component';
+import { AmguageComponent } from './amguage/amguage.component';
 
 
 @NgModule({
@@ -78,7 +79,8 @@ import { TestgridComponent } from './testgrid/testgrid.component';
     DashHeaderComponent,
     MainCardsComponent,
     SidenavComponent,
-    TestgridComponent
+    TestgridComponent,
+    AmguageComponent
   ],
   exports: [
     GMDashboardComponent,
