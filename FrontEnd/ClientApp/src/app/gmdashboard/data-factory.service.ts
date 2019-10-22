@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import * as Factory from "factory.ts";
-import * as faker from 'faker';
 
 
 // https://www.npmjs.com/package/factory.ts and https://github.com/willryan/factory.ts
@@ -28,7 +27,7 @@ export class DataFactoryService {
 
   constructor() { }
 
-  personFactory = Factory.Sync.makeFactory<Person>({
+   personFactory = Factory.Sync.makeFactory<Person>({
     id: Factory.each(i => i),
     firstName: "Bob",
     lastName: "Smith",
@@ -39,4 +38,5 @@ export class DataFactoryService {
   randomInteger(start, end) {
     return start + Math.round((Math.random() * (end - start)))
   }
+
 }

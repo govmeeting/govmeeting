@@ -2,10 +2,11 @@
 
 /* See material.angular.io/guide/theming */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-// @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
-
 //@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
+// @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 
 
 $color-fiord: #394263; // sidenav bg & dark text
@@ -24,21 +25,11 @@ $color-transparent: rgba(255, 255, 255, .5);
 $color-alto: #D3D3D3;
 
 
-.document-icon-color {
-  background-color: $color-zest;
-}
+.document-icon-color {background-color: $color-zest;}
+.calendar-icon-color {background-color: $color-jungle-green;}
+.mail-icon-color {background-color: $color-cinnabar;}
+.photo-icon-color {background-color: $color-amethyst;}
 
-.calendar-icon-color {
-  background-color: $color-jungle-green;
-}
-
-.mail-icon-color {
-  background-color: $color-cinnabar;
-}
-
-.photo-icon-color {
-  background-color: $color-amethyst;
-}
 
 html,
 body {
@@ -57,6 +48,7 @@ body {
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif
 }
  */
+
  a {
   text-decoration: none;
 }
@@ -68,14 +60,6 @@ body {
 .text-bold {
   font-weight: bold;
 }
-/////////////
-
-
-
-// .mat-tooltip.tooltip {
-//   background-color: darkblue;
-//   font-size: 12px;
-// }
 
 .mat-tooltip {
   font-size: 14px;
@@ -88,7 +72,13 @@ body {
   position: fixed;
   right: 20;
   top: 0;
+  color: lightblue;
 }
+
+// .mat-tooltip.tooltip {
+//   background-color: darkblue;
+//   font-size: 12px;
+// }
 
 // .mat-icon {
 //   font-size: 35px;

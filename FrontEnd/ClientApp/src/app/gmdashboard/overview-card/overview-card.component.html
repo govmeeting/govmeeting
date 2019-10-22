@@ -1,26 +1,15 @@
 <div class="overviewCard">
-    <div class="overviewCard-icon {{iconcolor}}">
-        <!-- <div class="overviewCard-icon document-icon-color"> -->
-        <!-- <div class="overviewCard-icon" style="background-color:blue"> -->
-        <!-- <div class="overviewCard-icon overviewCard-icon--document"> -->
-    <i class={{icon}}></i>
+      <div class="overviewCard-icon {{iconcolor}}">
+        <!-- <div class="overviewCard-icon" [style.background-color]="xiconcolor"> -->
+        <i class={{icon}}></i>
   </div>
   <div class="overviewCard-description">
-      <mat-icon class="help-icon" [ngStyle]="{'color':'lightblue'}" matTooltip="This is the help in a overview card.">help</mat-icon>
+      <mat-icon class="help-icon"
+        matTooltip="This is the help in a overview card.">help</mat-icon>
       <h3 class="overviewCard-title text-light"><strong>{{title}}</strong></h3>
     <p class="overviewCard-subtitle">{{subtitle}}</p>
   </div>
 </div>
 
-<!-- <div class="overviewCard">
-    <div class="overviewCard-icon overviewCard-icon--document">
-        <i class="far fa-file-alt"></i>
-    </div>
-    <div class="overviewCard-description">
-      <h3 class="overviewCard-title text-light">New <strong>Document</strong></h3>
-      <p class="overviewCard-subtitle">Europe Trip</p>
-    </div>
-  </div>
- -->
 
-<!-- background-color="blue" -->
+<!-- <mat-icon class="help-icon" [ngStyle]="{'color':'lightblue'}" -->

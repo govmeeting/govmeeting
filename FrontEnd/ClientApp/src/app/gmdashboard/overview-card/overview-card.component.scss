@@ -31,22 +31,6 @@ $color-abbey: #777; // gray text  // used many places
     border-radius: 50%;
     font-size: 21px;
     color: #fff;
-
-    &--document {
-      background-color: $color-zest;
-    }
-
-    &--calendar {
-      background-color: $color-jungle-green;
-    }
-
-    &--mail {
-      background-color: $color-cinnabar;
-    }
-
-    &--photo {
-      background-color: $color-amethyst;
-    }
   }
 
   &-description {

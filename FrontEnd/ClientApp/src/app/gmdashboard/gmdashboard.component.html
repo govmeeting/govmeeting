@@ -6,6 +6,9 @@ Ideas for dashboard layout
     unread messages
   Member organizations (in sidebar)
     Government
+      council
+      board of Ed
+      planning board
     Non-government
   Work in progress
   Shoutouts
@@ -21,6 +24,9 @@ Ideas for dashboard layout
   Legislature
     proposed
     1st / 2nd reading
+  Legislators
+    comments on issues
+    voting record
 
 -->
 
@@ -43,12 +49,15 @@ Ideas for dashboard layout
 
     <gm-quickview-header>
         <gm-quickview>
-            <gm-quickview-item total="41" icon="far fa-calendar-alt" desc="Events"></gm-quickview-item>
-            <gm-quickview-item total="64" icon="far fa-comment" desc="Messages"></gm-quickview-item>
+          <gm-quickview-item total="24" icon="far fa-clipboard" desc="Issues"></gm-quickview-item>
+          <gm-quickview-item total="24" icon="far fa-calendar-alt" desc="Events"></gm-quickview-item>
+            <gm-quickview-item total="5" icon="far fa-bell" desc="Alerts"></gm-quickview-item>
+            <gm-quickview-item total="13" icon="far fa-comment" desc="Mail"></gm-quickview-item>
             <gm-quickview-item total="27&deg;" icon="fas fa-map-marker-alt" desc="Austin"></gm-quickview-item>
         </gm-quickview>
     </gm-quickview-header>
 
+    <!-- Icon colors defined in src/styles.scss  -->
     <gm-overview>
       <gm-overview-card icon="far fa-file-alt" iconcolor="document-icon-color"
         title="New Document" subtitle="Europe Trip"></gm-overview-card>

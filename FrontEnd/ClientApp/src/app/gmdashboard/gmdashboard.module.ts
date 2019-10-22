@@ -39,12 +39,13 @@ import { MainCardsComponent } from './main-cards/main-cards.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { TestgridComponent } from './testgrid/testgrid.component';
 import { AmguageComponent } from './amguage/amguage.component';
+import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
 
 // Services
 import { ChatService } from './chat/chat.service';
 import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from './data-factory.service';
-import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
+import { DataFakeService } from './data-fake.service';
 
 
 @NgModule({
@@ -94,7 +95,8 @@ import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
   providers: [
     ChatService,
     MessagingService,
-    DataFactoryService
+    DataFactoryService,
+    DataFakeService
   ]
 })
 export class GmDashboardModule { }
