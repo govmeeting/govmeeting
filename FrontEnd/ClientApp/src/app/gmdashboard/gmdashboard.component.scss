@@ -1,32 +1,11 @@
 
-// .grid {   border: 3px dotted green; }
-.header {  border: 3px dashed Aquamarine; }
-.header__menu { border: 3px dotted red; }
-.sidenav  { border: 3px dotted Fuchsia }
 .main  { border: 3px dashed blue }
-.settings  { border: 3px dotted green }
-.header  { border: 3px dotted yellow; }
-.overview { border: 3px dotted Fuchsia }
 
 @import "../../styles.scss";
-
-.document-icon-color {background-color: $color-zest;}
-.calendar-icon-color {background-color: $color-jungle-green;}
-.mail-icon-color {background-color: $color-cinnabar;}
-.photo-icon-color {background-color: $color-amethyst;}
 
 $height-header: 50px;
 $height-footer: 50px;
 $width-sidenav: 240px;
-
-
-// Resets
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif
-}
 
 ///////////////////////// GRID ////////////////////////////////////
 
@@ -91,51 +70,28 @@ html, body {
   }
 }
 
-.header {
+///////////////////////////////////////////////////////////////////
+
+/* .header {
   grid-area: header;
-}
-
-.main {
-  grid-area: main;
-}
-
-.footer {
-  grid-area: footer;
-}
-
-
-/* .sidenav {
-  position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
-  grid-area: sidenav;
-  height: 100%;
-  overflow-y: auto;
-  background-color: $color-fiord;
-  color: $color-white;
-  width: $width-sidenav; // Will match grid area on medium + screens
-  transform: translateX(-245px);
-  transition: all .6s ease-in-out;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-  z-index: 2; // Needs to sit above the hamburger menu icon
-}
-
-@media only screen and (min-width: 46.875em) {
-  .sidenav {
-    position: relative;
-    transform: translateX(0);
-
-    &__brand-close {
-      visibility: hidden;
-    }
-  }
 }
  */
 
+/* .main {
+  grid-area: main;
+}
+ */
+/* .footer {
+  grid-area: footer;
+}
+ */
 ///////////////////////////////////////////////////////////////////
 
 // Styles for example chart
-#chartdiv {
+/* #chartdiv {
   width: 100%;
   height: 300px;
   font-size: 11px;
   min-width: 0;
 }
+ */

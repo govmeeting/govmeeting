@@ -7,8 +7,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 // @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-
-
 $color-fiord: #394263; // sidenav bg & dark text
 $color-white: #FFF; // card bg
 $color-athens-gray: #EAEDF1; // content bg
@@ -24,30 +22,22 @@ $color-amethyst: #af64cc; // main photo icon bg
 $color-transparent: rgba(255, 255, 255, .5);
 $color-alto: #D3D3D3;
 
+$color-photo-icon: $color-amethyst;
 
 .document-icon-color {background-color: $color-zest;}
 .calendar-icon-color {background-color: $color-jungle-green;}
 .mail-icon-color {background-color: $color-cinnabar;}
-.photo-icon-color {background-color: $color-amethyst;}
-
+.hoto-icon-colopr {background-color: $color-amethyst;}
 
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
   //font-family: 'Times New Roman';
 }
-
-////////////// from sample
-/* html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif
-}
- */
 
  a {
   text-decoration: none;
@@ -59,12 +49,6 @@ body {
 
 .text-bold {
   font-weight: bold;
-}
-
-.mat-tooltip {
-  font-size: 14px;
-  background-color: darkblue;
-  // background: red!important;
 }
 
 .help-icon {
