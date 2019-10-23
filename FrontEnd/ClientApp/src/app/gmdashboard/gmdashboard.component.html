@@ -45,8 +45,7 @@ Ideas for dashboard layout
 
   <!-- <gm-testgrid></gm-testgrid> -->
 
-  <main style="grid-area: main;">
-    <!-- <main class="main"> -->
+  <gm-dash-main style="grid-area: main;">
 
     <gm-quickview-header>
         <gm-quickview>
@@ -60,13 +59,13 @@ Ideas for dashboard layout
 
     <!-- Icon colors defined in src/styles.scss  -->
     <gm-overview>
-      <gm-overview-card icon="far fa-file-alt" iconcolor="document-icon-color"
+      <gm-overview-card icon="far fa-file-alt" iconcolor="color-document-icon"
         title="New Document" subtitle="Europe Trip"></gm-overview-card>
-      <gm-overview-card icon="far fa-calendar-check" iconcolor="calendar-icon-color"
+      <gm-overview-card icon="far fa-calendar-check" iconcolor="color-calendar-icon"
         title="Upcoming Event" subtitle="Chili Cookoff"></gm-overview-card>
-      <gm-overview-card icon="far fa-envelope" iconcolor="mail-icon-color"
+      <gm-overview-card icon="far fa-envelope" iconcolor="color-mail-icon"
         title="Recent Emails" subtitle="+10"></gm-overview-card>
-      <gm-overview-card icon="far fa-file-image" iconcolor="photo-icon-color"
+      <gm-overview-card icon="far fa-file-image" iconcolor="color-photo-icon"
         title="New Album" subtitle="House Concert"></gm-overview-card>
     </gm-overview>
 
@@ -86,12 +85,9 @@ Ideas for dashboard layout
       </gm-main-card>
     </gm-main-cards>
 
-  </main>
+  </gm-dash-main>
 
-  <gm-dash-footer style="grid-area: footer;">
-    <!-- <gm-dash-footer class="footer"> -->
-
-  </gm-dash-footer>
+  <gm-dash-footer style="grid-area: footer;"></gm-dash-footer>
 
 </div>
 

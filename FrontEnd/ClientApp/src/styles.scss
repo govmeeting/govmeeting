@@ -23,11 +23,12 @@ $color-transparent: rgba(255, 255, 255, .5);
 $color-alto: #D3D3D3;
 
 $color-photo-icon: $color-amethyst;
+$color-mail-icon: $color-cinnabar;
 
-.document-icon-color {background-color: $color-zest;}
-.calendar-icon-color {background-color: $color-jungle-green;}
-.mail-icon-color {background-color: $color-cinnabar;}
-.hoto-icon-colopr {background-color: $color-amethyst;}
+.color-document-icon {background-color: $color-zest;}
+.color-calendar-icon {background-color: $color-jungle-green;}
+.color-mail-icon {background-color: $color-mail-icon;}
+.color-photo-icon {background-color: $color-photo-icon;}
 
 html,
 body {

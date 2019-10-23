@@ -40,6 +40,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { TestgridComponent } from './testgrid/testgrid.component';
 import { AmguageComponent } from './amguage/amguage.component';
 import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
+import { DashMainComponent } from './dash-main/dash-main.component';
 
 // Services
 import { ChatService } from './chat/chat.service';
@@ -87,7 +88,8 @@ import { DataFakeService } from './data-fake.service';
     SidenavComponent,
     TestgridComponent,
     AmguageComponent,
-    ShoutoutsComponent
+    ShoutoutsComponent,
+    DashMainComponent
   ],
   exports: [
     GMDashboardComponent,

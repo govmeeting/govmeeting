@@ -9,7 +9,7 @@ $width-sidenav: 240px;
 
 ///////////////////////// GRID ////////////////////////////////////
 
-// Establish dashboard css grid layout - mobile
+//  Dashboard layout on mobile
 .grid {
   position: relative;
   display: grid;
@@ -28,7 +28,7 @@ $width-sidenav: 240px;
   }
 }
 
-// Break out to sidenav grid layout on medium + screens
+// Show sidenav on medium screens and above
 @media only screen and (min-width: 46.875em) {
   .grid {
     display: grid;
@@ -70,21 +70,6 @@ $width-sidenav: 240px;
   }
 }
 
-///////////////////////////////////////////////////////////////////
-
-/* .header {
-  grid-area: header;
-}
- */
-
-/* .main {
-  grid-area: main;
-}
- */
-/* .footer {
-  grid-area: footer;
-}
- */
 ///////////////////////////////////////////////////////////////////
 
 // Styles for example chart
