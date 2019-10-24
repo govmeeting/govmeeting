@@ -32,10 +32,10 @@ import { DashSearchComponent } from './top-header/dash-search/dash-search.compon
 import { UserDropdownComponent } from './top-header/user-dropdown/user-dropdown.component';
 
 // Main Header
-import { QuickviewHeaderComponent } from './quickview-header/quickview-header.component';
-import { DashWelcomeComponent } from './dash-welcome/dash-welcome.component';
-import { QuickviewComponent } from './quickview/quickview.component';
-import { QuickviewItemComponent } from './quickview-item/quickview-item.component';
+import { MainHeaderComponent } from './main-header/main-header/main-header.component';
+import { MainWelcomeComponent } from './main-header/main-welcome/main-welcome.component';
+import { QuickviewComponent } from './main-header/quickview/quickview.component';
+import { QuickviewItemComponent } from './main-header/quickview-item/quickview-item.component';
 
 // Main Container - contains small and large cards
 import { DashMainComponent } from './dash-main/dash-main.component';
@@ -94,8 +94,8 @@ import { DataFakeService } from './data-fake.service';
     TopHeaderComponent,
     UserDropdownComponent,
 
-    QuickviewHeaderComponent,
-    DashWelcomeComponent,
+    MainHeaderComponent,
+    MainWelcomeComponent,
     QuickviewComponent,
     QuickviewItemComponent,
 

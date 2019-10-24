@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashWelcomeComponent } from './dash-welcome.component';
+import { MainWelcomeComponent } from './main-welcome.component';
 
-describe('DashWelcomeComponent', () => {
-  let component: DashWelcomeComponent;
-  let fixture: ComponentFixture<DashWelcomeComponent>;
+describe('MainWelcomeComponent', () => {
+  let component: MainWelcomeComponent;
+  let fixture: ComponentFixture<MainWelcomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashWelcomeComponent ]
+      declarations: [ MainWelcomeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashWelcomeComponent);
+    fixture = TestBed.createComponent(MainWelcomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

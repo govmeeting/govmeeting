@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuickviewHeaderComponent } from './quickview-header.component';
+import { MainHeaderComponent } from './main-header.component';
 
-describe('QuickviewHeaderComponent', () => {
-  let component: QuickviewHeaderComponent;
-  let fixture: ComponentFixture<QuickviewHeaderComponent>;
+describe('MainHeaderComponent', () => {
+  let component: MainHeaderComponent;
+  let fixture: ComponentFixture<MainHeaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuickviewHeaderComponent ]
+      declarations: [ MainHeaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuickviewHeaderComponent);
+    fixture = TestBed.createComponent(MainHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
