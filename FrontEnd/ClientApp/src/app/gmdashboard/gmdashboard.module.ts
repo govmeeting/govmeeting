@@ -34,8 +34,8 @@ import { UserDropdownComponent } from './top-header/user-dropdown/user-dropdown.
 // Main Header
 import { MainHeaderComponent } from './main-header/main-header/main-header.component';
 import { MainWelcomeComponent } from './main-header/main-welcome/main-welcome.component';
-import { QuickviewComponent } from './main-header/quickview/quickview.component';
-import { QuickviewItemComponent } from './main-header/quickview-item/quickview-item.component';
+import { FastFactsComponent } from './main-header/fast-facts/fast-facts.component';
+import { FastFactComponent } from './main-header/fast-fact/fast-fact.component';
 
 // Main Container - contains small and large cards
 import { DashMainComponent } from './dash-main/dash-main.component';
@@ -96,8 +96,8 @@ import { DataFakeService } from './data-fake.service';
 
     MainHeaderComponent,
     MainWelcomeComponent,
-    QuickviewComponent,
-    QuickviewItemComponent,
+    FastFactsComponent,
+    FastFactComponent,
 
     DashMainComponent,
 

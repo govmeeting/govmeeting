@@ -1,8 +1,8 @@
 // for debug
-.quickview  { border: 3px dotted blue }
+.fast-facts  { border: 3px dotted blue }
 
 // Main header quick view update items
-.quickview {
+.fast-facts {
   display: grid;
   grid-auto-flow: column;
   grid-gap: 60px;

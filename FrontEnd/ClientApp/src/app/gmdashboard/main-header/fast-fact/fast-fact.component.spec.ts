@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuickviewItemComponent } from './quick-item.component';
+import { FastFactComponent } from './fast-fact.component';
 
-describe('QuickviewItemComponent', () => {
-  let component: QuickviewItemComponent;
-  let fixture: ComponentFixture<QuickviewItemComponent>;
+describe('FastFactComponent', () => {
+  let component: FastFactComponent;
+  let fixture: ComponentFixture<FastFactComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuickviewItemComponent ]
+      declarations: [ FastFactComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuickviewItemComponent);
+    fixture = TestBed.createComponent(FastFactComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
