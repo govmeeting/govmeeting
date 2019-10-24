@@ -47,6 +47,7 @@ import { ChatService } from './chat/chat.service';
 import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from './data-factory.service';
 import { DataFakeService } from './data-fake.service';
+import { QuickviewIntroComponent } from './quickview-intro/quickview-intro.component';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import { DataFakeService } from './data-fake.service';
     TestgridComponent,
     AmguageComponent,
     ShoutoutsComponent,
-    DashMainComponent
+    DashMainComponent,
+    QuickviewIntroComponent
   ],
   exports: [
     GMDashboardComponent,

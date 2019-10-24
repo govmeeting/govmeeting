@@ -1,0 +1,45 @@
+.intro-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column; // Mobile-first; break out to row on medium + screens
+  align-items: center;
+  justify-content: space-between;
+  height: 160px;
+  padding: 12px 30px;
+  background: rgba(255,255,255,.12);
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-title {
+    margin-bottom: 8px;
+    font-size: 26px;
+  }
+
+  &-subtitle {
+    font-size: 18px;
+  }
+}
+
+// Medium screens breakpoint (1050px)
+@media only screen and (min-width: 65.625em) {
+  .intro-wrapper {
+    flex-direction: row;
+  }
+  .welcome {
+    align-items: flex-start;
+  }
+}
+
+// Mobile screen breakpoints (750px)
+@media only screen and (min-width: 46.875em) {
+  .intro-wrapper {
+    padding: 0 30px;
+  }
+}
+

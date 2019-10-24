@@ -9,8 +9,9 @@
   background-size: cover;
   background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1609106/lake-shadow-water.jpg");
   margin-bottom: 20px;
+}
 
-  &__intro-wrapper {
+/*   &__intro-wrapper {
     display: flex;
     flex: 1;
     flex-direction: column; // Mobile-first; break out to row on medium + screens
@@ -37,9 +38,9 @@
       font-size: 18px;
     }
   }
-}
+ */
 
-// Medium screens breakpoint (1050px)
+/* // Medium screens breakpoint (1050px)
 @media only screen and (min-width: 65.625em) {
   .main-header {
     &__intro-wrapper {
@@ -51,12 +52,13 @@
     }
   }
 }
-
+ */
 // Mobile screen breakpoints (750px)
-@media only screen and (min-width: 46.875em) {
+/* @media only screen and (min-width: 46.875em) {
   .main-header {
     &__intro-wrapper {
       padding: 0 30px;
     }
   }
 }
+ */
