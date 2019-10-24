@@ -41,8 +41,8 @@ import { FastFactComponent } from './main-header/fast-fact/fast-fact.component';
 import { DashMainComponent } from './dash-main/dash-main.component';
 
 // Small Cards
-import { OverviewComponent } from './overview/overview.component';
-import { OverviewCardComponent } from './overview-card/overview-card.component';
+import { SmallCardsComponent } from './small-cards/small-cards/small-cards.component';
+import { SmallCardComponent } from './small-cards/small-card/small-card.component';
 
 // Large Cards
 import { MainCardsComponent } from './main-cards/main-cards.component';
@@ -90,8 +90,8 @@ import { DataFakeService } from './data-fake.service';
 
     GMDashboardComponent,
 
-    DashSearchComponent,
     TopHeaderComponent,
+    DashSearchComponent,
     UserDropdownComponent,
 
     MainHeaderComponent,
@@ -101,8 +101,8 @@ import { DataFakeService } from './data-fake.service';
 
     DashMainComponent,
 
-    OverviewComponent,
-    OverviewCardComponent,
+	SmallCardsComponent,
+    SmallCardComponent,
 
     MainCardsComponent,
     MainCardComponent,

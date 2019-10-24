@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'gm-overview-card',
-  templateUrl: './overview-card.component.html',
-  styleUrls: ['./overview-card.component.scss']
+  selector: 'gm-small-card',
+  templateUrl: './small-card.component.html',
+  styleUrls: ['./small-card.component.scss']
 })
-export class OverviewCardComponent implements OnInit {
+export class SmallCardComponent implements OnInit {
   @Input() icon: string;
   @Input() iconcolor: string;
   @Input() title: string;

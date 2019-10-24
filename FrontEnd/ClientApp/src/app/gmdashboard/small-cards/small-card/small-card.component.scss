@@ -1,9 +1,9 @@
 // for debug
-.overviewCard  { border: 3px dashed red; }
+.smallCard  { border: 3px dashed red; }
 
- @import "../../../styles.scss";
+ @import "../../../../styles.scss";
 
-.overviewCard {
+.smallCard {
   display: flex;
   align-items: center;
   justify-content: space-between;
