@@ -11,7 +11,7 @@
   letter-spacing: 1px;
 }
 
-.welcome {
+/* .welcome {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,15 +25,17 @@
     font-size: 18px;
   }
 }
+ */
 
 // Medium screens breakpoint (1050px)
 @media only screen and (min-width: 65.625em) {
   .intro-wrapper {
     flex-direction: row;
   }
-  .welcome {
+/*   .welcome {
     align-items: flex-start;
   }
+*/
 }
 
 // Mobile screen breakpoints (750px)

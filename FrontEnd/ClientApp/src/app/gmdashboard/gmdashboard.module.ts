@@ -48,6 +48,7 @@ import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from './data-factory.service';
 import { DataFakeService } from './data-fake.service';
 import { QuickviewIntroComponent } from './quickview-intro/quickview-intro.component';
+import { DashWelcomeComponent } from './dash-welcome/dash-welcome.component';
 
 
 @NgModule({
@@ -91,7 +92,8 @@ import { QuickviewIntroComponent } from './quickview-intro/quickview-intro.compo
     AmguageComponent,
     ShoutoutsComponent,
     DashMainComponent,
-    QuickviewIntroComponent
+    QuickviewIntroComponent,
+    DashWelcomeComponent
   ],
   exports: [
     GMDashboardComponent,

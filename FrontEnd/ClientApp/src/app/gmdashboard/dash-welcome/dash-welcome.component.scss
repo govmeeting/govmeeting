@@ -1,0 +1,21 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-title {
+    margin-bottom: 8px;
+    font-size: 26px;
+  }
+
+  &-subtitle {
+    font-size: 18px;
+  }
+}
+
+// Medium screens breakpoint (1050px)
+@media only screen and (min-width: 65.625em) {
+  .welcome {
+    align-items: flex-start;
+  }
+}
