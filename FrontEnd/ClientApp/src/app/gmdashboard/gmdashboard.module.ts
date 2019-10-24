@@ -41,14 +41,13 @@ import { TestgridComponent } from './testgrid/testgrid.component';
 import { AmguageComponent } from './amguage/amguage.component';
 import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
 import { DashMainComponent } from './dash-main/dash-main.component';
+import { DashWelcomeComponent } from './dash-welcome/dash-welcome.component';
 
 // Services
 import { ChatService } from './chat/chat.service';
 import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from './data-factory.service';
 import { DataFakeService } from './data-fake.service';
-import { QuickviewIntroComponent } from './quickview-intro/quickview-intro.component';
-import { DashWelcomeComponent } from './dash-welcome/dash-welcome.component';
 
 
 @NgModule({
@@ -92,7 +91,6 @@ import { DashWelcomeComponent } from './dash-welcome/dash-welcome.component';
     AmguageComponent,
     ShoutoutsComponent,
     DashMainComponent,
-    QuickviewIntroComponent,
     DashWelcomeComponent
   ],
   exports: [
