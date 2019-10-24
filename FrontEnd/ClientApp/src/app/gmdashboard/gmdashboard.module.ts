@@ -10,40 +10,56 @@ import { DemoMaterialModule } from '../material';
 import { AboutModule } from './about/about.module';
 import { VolunteerModule } from './volunteer/volunteer.module';
 import { HomeModule } from './home/home.module';
-import { SampleCardComponent } from './sample-card/sample-card.component';
-import { GMDashboardComponent } from './gmdashboard.component';
 import { ProjectStatusModule } from './project-status/project-status.module';
 import { NeededFeaturesModule } from './needed-features/needed-features.module';
 import { ChatModule } from '../gmdashboard/chat/chat.module';
 import { ConversationModule } from './conversation/conversation.module';
 import { FormsModule } from '@angular/forms';
 
-// Components
-import { NavlistComponent } from './navlist/navlist.component';
+/////////////////// Components ///////////////////////////////////
+// Unused
+//import { NavlistComponent } from './navlist/navlist.component';
+//import { SampleCardComponent } from './sample-card/sample-card.component';
+//import { FinanceComponent } from './finance/finance.component';
+//import { TestgridComponent } from './testgrid/testgrid.component';
+
+// Dashboard container
+import { GMDashboardComponent } from './gmdashboard.component';
+
+// Top Header
+import { TopHeaderComponent } from './top-header/top-header/top-header.component';
+import { DashSearchComponent } from './top-header/dash-search/dash-search.component';
+import { UserDropdownComponent } from './top-header/user-dropdown/user-dropdown.component';
+
+// Main Header
+import { QuickviewHeaderComponent } from './quickview-header/quickview-header.component';
+import { DashWelcomeComponent } from './dash-welcome/dash-welcome.component';
 import { QuickviewComponent } from './quickview/quickview.component';
-import { UserDropdownComponent } from './user-dropdown/user-dropdown.component';
-import { YourEventsComponent } from './your-events/your-events.component';
-import { RecentDocumentsComponent } from './recent-documents/recent-documents.component';
-import { DashFooterComponent } from './dash-footer/dash-footer.component';
-import { FinanceComponent } from './finance/finance.component';
-import { MainCardComponent } from './main-card/main-card.component';
+import { QuickviewItemComponent } from './quickview-item/quickview-item.component';
+
+// Main Container - contains small and large cards
+import { DashMainComponent } from './dash-main/dash-main.component';
+
+// Small Cards
 import { OverviewComponent } from './overview/overview.component';
 import { OverviewCardComponent } from './overview-card/overview-card.component';
-import { QuickviewItemComponent } from './quickview-item/quickview-item.component';
-import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
-import { QuickviewHeaderComponent } from './quickview-header/quickview-header.component';
-import { SidenavHeaderComponent } from './sidenav-header/sidenav-header.component';
-import { DashSearchComponent } from './dash-search/dash-search.component';
-import { DashHeaderComponent } from './dash-header/dash-header.component';
+
+// Large Cards
 import { MainCardsComponent } from './main-cards/main-cards.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
-import { TestgridComponent } from './testgrid/testgrid.component';
+import { MainCardComponent } from './main-card/main-card.component';
+import { YourEventsComponent } from './your-events/your-events.component';
+import { RecentDocumentsComponent } from './recent-documents/recent-documents.component';
 import { AmguageComponent } from './amguage/amguage.component';
 import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
-import { DashMainComponent } from './dash-main/dash-main.component';
-import { DashWelcomeComponent } from './dash-welcome/dash-welcome.component';
 
-// Services
+import { DashFooterComponent } from './dash-footer/dash-footer.component';
+
+// Sidenav
+import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
+import { SidenavHeaderComponent } from './sidenav-header/sidenav-header.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+
+//////////////////////////////////////// Services /////////////////////////////////////
 import { ChatService } from './chat/chat.service';
 import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from './data-factory.service';
@@ -67,31 +83,39 @@ import { DataFakeService } from './data-fake.service';
     FormsModule
     ],
   declarations: [
-    SampleCardComponent,
+    //SampleCardComponent,
+    //NavlistComponent,
+    //FinanceComponent,
+    //TestgridComponent,
+
     GMDashboardComponent,
-    NavlistComponent,
+
+    DashSearchComponent,
+    TopHeaderComponent,
+    UserDropdownComponent,
+
+    QuickviewHeaderComponent,
+    DashWelcomeComponent,
     QuickviewComponent,
     QuickviewItemComponent,
-    UserDropdownComponent,
+
+    DashMainComponent,
+
     OverviewComponent,
     OverviewCardComponent,
+
+    MainCardsComponent,
     MainCardComponent,
     YourEventsComponent,
-    RecentDocumentsComponent,
-    FinanceComponent,
-    DashFooterComponent,
-    SidenavMenuComponent,
-    QuickviewHeaderComponent,
-    SidenavHeaderComponent,
-    DashSearchComponent,
-    DashHeaderComponent,
-    MainCardsComponent,
-    SidenavComponent,
-    TestgridComponent,
-    AmguageComponent,
     ShoutoutsComponent,
-    DashMainComponent,
-    DashWelcomeComponent
+    RecentDocumentsComponent,
+    AmguageComponent,
+
+    DashFooterComponent,
+
+    SidenavMenuComponent,
+    SidenavHeaderComponent,
+    SidenavComponent
   ],
   exports: [
     GMDashboardComponent,
