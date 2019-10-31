@@ -1,8 +1,0 @@
-<!-- <gm-main-nav>
-  <router-outlet></router-outlet>
-</gm-main-nav> -->
-<!-- <gm-nav-menu2>
-    <gm-dashboard></gm-dashboard>
-</gm-nav-menu2> -->
-<gm-dashboard></gm-dashboard>
-<!-- <gm-about></gm-about> -->

@@ -18,7 +18,7 @@ import { ViewMeetingModule } from './viewmeeting/viewmeeting.module';
 import { AddtagsModule } from './addtags/addtags.module';
 import { FixasrModule } from './fixasr/fixasr.module';
 import { GmSharedModule } from './gmshared/gmshared.module';
-import { TemppagesModule } from './temppages/temppages.module';
+// import { TemppagesModule } from './temppages/temppages.module';
 
 import { ViewMeetingService } from './viewmeeting/viewmeeting.service';
 import { ViewMeetingServiceStub } from './viewmeeting/viewmeeting.service-stub';
@@ -29,8 +29,9 @@ import { FixasrServiceStub } from './fixasr/fixasr.service-stub';
 import { AppData } from './appdata';
 import { TestModule } from './test/test.module';
 import { GmDashboardModule } from './gmdashboard/gmdashboard.module';
+import { AboutProjectModule } from './about-project/about-project.module';
 
-import { AboutModule } from './gmdashboard/about/about.module';
+// import { AboutModule } from './gmdashboard/about/about.module';
 
 // Is the Asp.Net server running
 const _isAspServerRunning = true;
@@ -52,12 +53,12 @@ const _isAspServerRunning = true;
     ViewMeetingModule,
     AddtagsModule,
     FixasrModule,
-    TemppagesModule,
+    // TemppagesModule,
     GmSharedModule,
     TestModule,
     FlexLayoutModule,
     GmDashboardModule,
-    AboutModule
+    AboutProjectModule
   ],
   exports: [
     //DemoMaterialModule

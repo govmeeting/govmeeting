@@ -7,10 +7,15 @@ import { Component, VERSION } from '@angular/core';
 })
 export class AppComponent {
   title = 'ClientApp';
-  //public isCollapsed = true;
+  public collapsed = true;
   version: string;
 
   constructor() {
     this.version = VERSION.full;
   }
+
+ toggleCollapsed() {
+   this.collapsed = !this.collapsed;
+ }
+
 }

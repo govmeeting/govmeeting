@@ -17,7 +17,6 @@ $width-sidenav: 240px;
   grid-template-rows: $height-header 1fr $height-footer;
   grid-template-areas:
     'header'
-    //'testgrid'
     'main'
     'footer';
   height: 100vh;
@@ -36,7 +35,6 @@ $width-sidenav: 240px;
     grid-template-rows: $height-header 1fr $height-footer;
     grid-template-areas:
       'sidenav header'
-      //'sidenav testgrid'
       'sidenav main'
       'sidenav footer';
     height: 100vh;
@@ -45,9 +43,9 @@ $width-sidenav: 240px;
 
 //////////////////////////// SIDENAV //////////////////////////
 
-.sidenav {
+/* .sidenav {
   position: fixed;
-  grid-area: sidenav;
+  // grid-area: sidenav;
   height: 100%;
   width: $width-sidenav;
   overflow-y: auto;
@@ -69,7 +67,7 @@ $width-sidenav: 240px;
     }
   }
 }
-
+ */
 ///////////////////////////////////////////////////////////////////
 
 // Styles for example chart

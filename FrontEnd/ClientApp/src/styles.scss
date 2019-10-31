@@ -55,16 +55,16 @@ body {
 .help-icon {
 position: relative;
   // position: fixed;
-  right: 20;
-  top: 0;
+  right: 8px;
+  top: -6px;
   color: lightblue;
 }
 
-// .mat-tooltip.tooltip {
-//   background-color: darkblue;
-//   font-size: 12px;
-// }
+.mat-tooltip.tooltip {
+  background-color: darkblue;
+  font-size: 14px;
+}
 
-// .mat-icon {
-//   font-size: 35px;
-// }
+.mat-icon {
+  font-size: 25px;
+}

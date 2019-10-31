@@ -1,9 +1,4 @@
-$color-fiord: #394263;
-$color-white: #FFF; // card bg
-$color-java: #1BBAE1; // blue text
-$color-cinnabar: #e74c3c; // main icon bg, red
-$color-abbey: #777; // gray text
-$color-transparent: rgba(255, 255, 255, .5);
+@import "../../../styles.scss";
 
 .card {
   display: flex;

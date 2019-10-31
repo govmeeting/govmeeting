@@ -1,14 +1,85 @@
-<div class="smallCard">
-      <div class="smallCard-icon {{iconcolor}}">
-        <!-- <div class="smallCard-icon" [style.background-color]="xiconcolor"> -->
-        <i class={{icon}}></i>
-  </div>
+<!-- <div class="smallCard">
+  <div class="smallCard-icon {{iconcolor}}">
+<div class="smallCard-icon" [style.background-color]="blue">
+<i class={{icon}}></i>
+   </div>
   <div class="smallCard-description">
-      <mat-icon class="help-icon"
-        matTooltip="This is the help in a overview card.">help</mat-icon>
-      <h3 class="smallCard-title text-light"><strong>{{title}}</strong></h3>
+    <mat-icon class="help-icon"
+      matTooltip="This is the help in a overview card.">help</mat-icon>
+    <h3 class="smallCard-title text-light"><strong>{{title}}</strong></h3>
     <p class="smallCard-subtitle">{{subtitle}}</p>
   </div>
 </div>
-
+ -->
 <!-- <mat-icon class="help-icon" [ngStyle]="{'color':'lightblue'}" -->
+
+
+<div class="card" [ngStyle]="{'z-index': zIndex, 'height': height, 'overflow': overflow}" (click)="toggleCollapsed()">
+  <div class="card__header">
+    <div class="card__header-icon {{iconcolor}}">
+      <i class={{icon}}></i>
+    </div>
+    <div class="card__header-title text-light">
+      <strong>{{title}} </strong>
+      <i *ngIf="collapsed" class="fa fa-angle-down custom" (click)="collapsed=false" ></i>
+      <i *ngIf="!collapsed" class="fa fa-angle-up custom" (click)="collapsed=true" ></i>
+          <!-- <a href="#" class="card__header-link text-bold">View All</a> -->
+    </div>
+    <mat-icon class="help-icon"
+    matTooltip="This is the help in a overview card.">help</mat-icon>
+  <!--       <div class="settings">
+      <div class="settings__block"><i class="fas fa-edit"></i></div>
+      <div class="settings__block"><i class="fas fa-cog"></i></div>
+    </div>
+  -->    </div>
+  <div *ngIf="!collapsed">
+    {{sampleContent}}
+  <ng-content></ng-content>
+  </div>
+</div>
+
+
+<!-- <mat-card class = "tp-card">
+      <mat-card-header>
+         <div mat-card-avatar class = "tp-header-image"></div>
+         <mat-card-title>HTML5</mat-card-title>
+         <mat-card-subtitle>HTML Basics</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+         <p>
+            HTML5 is the next major revision of the HTML standard superseding
+            HTML 4.01, XHTML 1.0, and XHTML 1.1. HTML5 is a standard for
+            structuring and presenting content on the World Wide Web.
+         </p>
+      </mat-card-content>
+      <mat-card-actions>
+         <button mat-button>LIKE</button>
+         <button mat-raised-button color="primary">SHARE</button>
+      </mat-card-actions>
+   </mat-card>
+ -->
+
+<!--    <mat-card class="example-card">
+      <mat-card-header style="background-color: #394263; height:50px;">
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title >Card title</mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngIf="!collapsed">
+          <span (click)="collapsed=true">
+        <p>material design card <code class="docs-markdown-code">&lt;mat-card&gt;</code></p>
+        <p><a href="https://material.angular.io/components/card/examples">Material design card </a></p>
+         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+            the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+             of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+              but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+              in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+               with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </span>
+      </mat-card-content>
+      <mat-card-actions>
+          <i class="fa fa-angle-down custom" (click)="collapsed=false" ></i>
+          <i class="fa fa-angle-up custom" (click)="collapsed=true" ></i>
+      </mat-card-actions>
+    </mat-card>
+
+ -->

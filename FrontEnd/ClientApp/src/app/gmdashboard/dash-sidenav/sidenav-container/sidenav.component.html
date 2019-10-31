@@ -1,0 +1,23 @@
+<!-- <div class="hamburger">{{message}}</div> -->
+<!-- <aside class="sidenav" [class.enav--activesid]="true"> -->
+
+
+
+<aside class="sidenav" [ngClass]="mysideobj">
+  {{sidenavText}}
+  <ng-content></ng-content>
+</aside>
+
+
+
+
+
+
+<!-- <div [className]="'myside'" (click)="turnGreen()">{{sidenavText}}</div> -->
+
+<!-- <div [class.myside]="true" (click)="turnGreen()">{{sidenavText}}</div> -->
+
+<!-- <div [ngClass]="{myside: true}" (click)="turnGreen()">{{sidenavText}}</div> -->
+
+<!-- <div [ngClass]="mysideobj" (click)="changeColor()">{{sidenavText}}</div> -->
+

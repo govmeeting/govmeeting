@@ -1,0 +1,44 @@
+.header__search { border: 3px dotted green }
+
+
+@import "../../../../../styles.scss";
+
+
+.header {
+  &__search {
+    margin-left: 55px;
+    font-size: 20px;
+    color: $color-abbey;
+  }
+
+  &__input {
+    border: none;
+    background: transparent;
+    padding: 12px;
+    font-size: 20px;
+    color: $color-abbey;
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+}
+
+// Mobile screen breakpoints (750px)
+@media only screen and (min-width: 46.875em) {
+  .header {
+    &__menu {
+      display: none;
+    }
+
+    &__search {
+      margin-left: 20px; // No menu icon; move 'er back over
+    }
+
+    &__avatar {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

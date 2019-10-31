@@ -4,17 +4,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule } from '@angular/forms';
 
 // Modules - internal
 import { DemoMaterialModule } from '../material';
-import { AboutModule } from './about/about.module';
-import { VolunteerModule } from './volunteer/volunteer.module';
-import { HomeModule } from './home/home.module';
+// import { AboutModule } from './about/about.module';
+// import { VolunteerModule } from './volunteer/volunteer.module';
+// import { HomeModule } from './home/home.module';
 import { ProjectStatusModule } from './project-status/project-status.module';
-import { NeededFeaturesModule } from './needed-features/needed-features.module';
+// import { NeededFeaturesModule } from './MOVETOABOUTPROJECT/needed-features/needed-features.module';
 import { ChatModule } from '../gmdashboard/chat/chat.module';
 import { ConversationModule } from './conversation/conversation.module';
-import { FormsModule } from '@angular/forms';
+import { AboutProjectModule } from '../about-project/about-project.module';
 
 /////////////////// Components ///////////////////////////////////
 // Unused
@@ -27,15 +28,15 @@ import { FormsModule } from '@angular/forms';
 import { GMDashboardComponent } from './gmdashboard.component';
 
 // Top Header
-import { TopHeaderComponent } from './top-header/top-header/top-header.component';
-import { DashSearchComponent } from './top-header/dash-search/dash-search.component';
-import { UserDropdownComponent } from './top-header/user-dropdown/user-dropdown.component';
+import { TopHeaderComponent } from './dash-header/top-header/top-header/top-header.component';
+import { DashSearchComponent } from './dash-header/top-header/dash-search/dash-search.component';
+import { UserDropdownComponent } from './dash-header/top-header/user-dropdown/user-dropdown.component';
 
 // Main Header
-import { MainHeaderComponent } from './main-header/main-header/main-header.component';
-import { MainWelcomeComponent } from './main-header/main-welcome/main-welcome.component';
-import { FastFactsComponent } from './main-header/fast-facts/fast-facts.component';
-import { FastFactComponent } from './main-header/fast-fact/fast-fact.component';
+import { MainHeaderComponent } from './dash-header/main-header/main-header/main-header.component';
+import { MainWelcomeComponent } from './dash-header/main-header/main-welcome/main-welcome.component';
+import { FastFactsComponent } from './dash-header/main-header/fast-facts/fast-facts.component';
+import { FastFactComponent } from './dash-header/main-header/fast-fact/fast-fact.component';
 
 // Main Container - contains small and large cards
 import { DashMainComponent } from './dash-main/dash-main.component';
@@ -55,15 +56,16 @@ import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
 import { DashFooterComponent } from './dash-footer/dash-footer.component';
 
 // Sidenav
-import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu.component';
-import { SidenavHeaderComponent } from './sidenav-header/sidenav-header.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
+import { SidenavMenuComponent } from './dash-sidenav/sidenav-menu/sidenav-menu.component';
+import { SidenavHeaderComponent } from './dash-sidenav/sidenav-header/sidenav-header.component';
+import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
 
 //////////////////////////////////////// Services /////////////////////////////////////
 import { ChatService } from './chat/chat.service';
 import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from './data-factory.service';
 import { DataFakeService } from './data-fake.service';
+import { MainContentComponent } from './main-content/main-content.component';
 
 
 @NgModule({
@@ -73,14 +75,15 @@ import { DataFakeService } from './data-fake.service';
     BrowserAnimationsModule,
     DemoMaterialModule,
     LayoutModule,
-    AboutModule,
-    VolunteerModule,
-    HomeModule,
+    FormsModule,
+    // AboutModule,
+    // VolunteerModule,
+    // HomeModule,
     ProjectStatusModule,
-    NeededFeaturesModule,
+    // NeededFeaturesModule,
     ChatModule,
     ConversationModule,
-    FormsModule
+    AboutProjectModule
     ],
   declarations: [
     //SampleCardComponent,
@@ -115,7 +118,8 @@ import { DataFakeService } from './data-fake.service';
 
     SidenavMenuComponent,
     SidenavHeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    MainContentComponent
   ],
   exports: [
     GMDashboardComponent,
