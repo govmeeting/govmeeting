@@ -22,6 +22,9 @@
   .intro-wrapper {
     flex-direction: row;
   }
+  .main-header {
+    height: 350px;
+  }
 }
 
 // Mobile screen breakpoints (750px)
@@ -29,16 +32,20 @@
   .intro-wrapper {
     padding: 0 30px;
   }
+  .main-header {
+    height: 250px;
+  }
 }
 
 .main-header {
   position: relative;
   display: flex;
   justify-content: space-between;
-  height: 250px;
+  height: 150px;
   color: $color-white;
   background-size: cover;
-  background-image: url("1024px-Austin_skyline_in_2014 - cropped.png");
+  background-image: url("1024px-Austin_panorama_2018.png");
+  // background-image: url("1024px-Austin_skyline_in_2014 - cropped.png");
   // background-image: url("images/1024px-Austin_skyline_in_2014 - cropped.png");
   // background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1609106/lake-shadow-water.jpg");
   margin-bottom: 20px;

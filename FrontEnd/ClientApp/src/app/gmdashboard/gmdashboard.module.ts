@@ -5,21 +5,17 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule } from '@angular/forms';
+import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 
 // Modules - internal
 import { DemoMaterialModule } from '../material';
-// import { AboutModule } from './about/about.module';
-// import { VolunteerModule } from './volunteer/volunteer.module';
-// import { HomeModule } from './home/home.module';
 import { ProjectStatusModule } from './project-status/project-status.module';
-// import { NeededFeaturesModule } from './MOVETOABOUTPROJECT/needed-features/needed-features.module';
 import { ChatModule } from '../gmdashboard/chat/chat.module';
 import { ConversationModule } from './conversation/conversation.module';
 import { AboutProjectModule } from '../about-project/about-project.module';
 
 /////////////////// Components ///////////////////////////////////
 // Unused
-//import { NavlistComponent } from './navlist/navlist.component';
 //import { SampleCardComponent } from './sample-card/sample-card.component';
 //import { FinanceComponent } from './finance/finance.component';
 //import { TestgridComponent } from './testgrid/testgrid.component';
@@ -59,6 +55,7 @@ import { DashFooterComponent } from './dash-footer/dash-footer.component';
 import { SidenavMenuComponent } from './dash-sidenav/sidenav-menu/sidenav-menu.component';
 import { SidenavHeaderComponent } from './dash-sidenav/sidenav-header/sidenav-header.component';
 import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
+import { DashSidenav2Component } from './dash-sidenav2/dash-sidenav2.component'
 
 //////////////////////////////////////// Services /////////////////////////////////////
 import { ChatService } from './chat/chat.service';
@@ -76,18 +73,15 @@ import { MainContentComponent } from './main-content/main-content.component';
     DemoMaterialModule,
     LayoutModule,
     FormsModule,
-    // AboutModule,
-    // VolunteerModule,
-    // HomeModule,
+    NgMaterialMultilevelMenuModule,
+
     ProjectStatusModule,
-    // NeededFeaturesModule,
     ChatModule,
     ConversationModule,
     AboutProjectModule
     ],
   declarations: [
     //SampleCardComponent,
-    //NavlistComponent,
     //FinanceComponent,
     //TestgridComponent,
 
@@ -104,7 +98,7 @@ import { MainContentComponent } from './main-content/main-content.component';
 
     DashMainComponent,
 
-	SmallCardsComponent,
+    SmallCardsComponent,
     SmallCardComponent,
 
     MainCardsComponent,
@@ -119,7 +113,8 @@ import { MainContentComponent } from './main-content/main-content.component';
     SidenavMenuComponent,
     SidenavHeaderComponent,
     SidenavComponent,
-    MainContentComponent
+    MainContentComponent,
+    DashSidenav2Component
   ],
   exports: [
     GMDashboardComponent,
