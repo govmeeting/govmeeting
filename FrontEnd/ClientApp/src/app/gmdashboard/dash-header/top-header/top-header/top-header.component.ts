@@ -8,20 +8,17 @@ import { SidenavService } from '../../../sidenav.service';
 })
 export class TopHeaderComponent implements OnInit {
 
-  message:string;
+  // message:string;
 
   constructor(private data: SidenavService) { }
 
   ngOnInit() {
-    this.data.currentMessage.subscribe(message => this.message = message)
+    // this.data.currentMessage.subscribe(message => this.message = message)
   }
 
   showSidebar() {
-    this.data.changeMessage("Show Sidebar")
+    this.data.changeMessage("Show")
   }
-
-  // showSidebar(){
-  // }
 }
 
 

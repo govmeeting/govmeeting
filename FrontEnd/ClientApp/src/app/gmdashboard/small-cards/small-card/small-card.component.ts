@@ -13,7 +13,7 @@ export class SmallCardComponent implements OnInit {
 
    // Currently hard-coded in gmdashboard.component.html for each card.
    // It should be added in cards.component automatically.
-  @Input() zIndex: number;
+//  @Input() zIndex: number;
 
   sampleContent: string = 'A rather long string of English text, an error message ' +
   'actually that just keeps going and going -- an error ' +

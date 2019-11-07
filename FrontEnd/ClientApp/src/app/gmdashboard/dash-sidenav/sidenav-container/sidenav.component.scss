@@ -2,73 +2,47 @@
 
 $width-sidenav: 240px;
 
-.hamburger {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 5;
-}
-
-.greenside {
-  background-color: lightgreen;
-}
-.yellowside {
-  background-color: lightyellow;
-}
-
-.sidenav {
-  // This does not work to enable access at any scroll position
-  // position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
-  top: 10;
-
-  //grid-area: sidenav;
-  height: 100%;   // without, it shows horizontal scroll bars
-  overflow-y: auto;
-  //background-color: $color-fiord;
-  //background-color: lightgreen;
-  color: $color-white;
-  width: $width-sidenav; // Will match grid area on medium + screens   // needed? works without
-
-  // With these, it closes faster but the white area stays longer
-  //transform: translateX(-245px);
-  //transition: all .6s ease-in-out;
-
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-  z-index: 2; // Needs to sit above the hamburger menu icon
-
-}
 :host {
-  //display: block;
-  //grid-area: sidenav;
-  position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
+  position: fixed;
+  grid-area: sidenav;
   height: 100%;
-  width: $width-sidenav; // Will match grid area on medium + screens
+  background-color: $color-fiord;
+  color: #FFF;
+  width: $width-sidenav;
   transform: translateX(-245px);
   transition: all .6s ease-in-out;
-  z-index: 2; // Needs to sit above the hamburger menu icon
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  // z-index: 2;
+}
+:host.sidenav--active {   transform: translateX(0); z-index: 2 }
+
+.sidenav__close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  visibility: visible;
+  color: white;
+  cursor: pointer;
 }
 
-// .sidenav--active {
-//   transform: translateX(0);
-// }
-
-
-@media only screen and (min-width: 46.875em) {
-  .sidenav {
-    position: relative;
+// @media only screen and (min-width: 750px) {
+  @media only screen and (min-width: 46.875em) {
+  :host {
+    position: fixed;
     transform: translateX(0);
+    z-index: 2;
 
     &__brand-close {
       visibility: hidden;
     }
   }
-  :host {
-    position: relative;
-    height: 100%;
-    width: $width-sidenav; // Will match grid area on medium + screens
-    transform: translateX(0);
-    transition: all .6s ease-in-out;
-    z-index: 2; // Needs to sit above the hamburger menu icon
-  }
-  }
-
+}
+  // :host {
+  //   position: relative;
+  //   height: 100%;
+  //   width: $width-sidenav; // Will match grid area on medium + screens
+  //   transform: translateX(0);
+  //   transition: all .6s ease-in-out;
+  //   z-index: 2; // Needs to sit above the hamburger menu icon
+  // }
+// }
