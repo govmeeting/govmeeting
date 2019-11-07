@@ -9,21 +9,15 @@ import { Breakpoints, BreakpointObserver, BreakpointState  } from '@angular/cdk/
 })
 export class SidenavComponent implements OnInit {
 
-  message:string;
-  sidenavClass: string;
-  sidenavText: string = "This is the sidenav";
-  viewsize;
-
-  // isActive: boolean = false;
   @HostBinding('class.sidenav--active') isActive: boolean = false;
 
-  //  constructor(private data: SidenavService,
-  //    private breakpointObserver: BreakpointObserver) {   }
-  constructor(private data: SidenavService) { }
+   constructor(private data: SidenavService,
+     private breakpointObserver: BreakpointObserver) {   }
 
   ngOnInit() {
+    // The menu icon in the top header will display the sidenav.
+    // If sidenav is visible, the "X" icon in its eader will close it.
     this.data.currentMessage.subscribe(message => {
-      this.message = this.message + message;
       if (message == "Show"){
         this.show();
       }
@@ -31,6 +25,17 @@ export class SidenavComponent implements OnInit {
         this.hide();
       }
     });
+    // If the user expands the viewport, set sidenav-active to false,
+    // so that the sidenav goes away if they later narrow the viewport. (more intuitive)
+    this.breakpointObserver
+    .observe(['(min-width: 750px)'])
+    .subscribe((state: BreakpointState) => {
+      //console.log(state);
+      if (state.matches) {
+        this.hide();
+      }
+    });
+
   }
 
   hide() {
@@ -42,20 +47,6 @@ export class SidenavComponent implements OnInit {
   }
 }
 
-    // this.breakpointObserver
-    // .observe(['(max-width: 750px)', '(min-width: 750px)'])
-    // .subscribe((state: BreakpointState) => {
-    //   console.log(state);
-
-    //   if (!state.breakpoints['(max-width: 750px)']) {
-    //     this.show();
-    //   }
-
-    //   // This is true if width changed from less than or equal to 750 to more than 750 (No!)
-    //   if (!state.breakpoints['(min-width: 750px)']) {
-    //     this.hide();
-    //   }
-    // });
 
 
     // .observe(['(max-width: 1000px)', '(max-width: 1500px)',

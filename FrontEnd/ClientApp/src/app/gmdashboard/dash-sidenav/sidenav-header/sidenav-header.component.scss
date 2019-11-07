@@ -34,5 +34,11 @@ $height-header: 50px;
       letter-spacing: 1.5px;
     }
   }
-
+}
+@media only screen and (min-width: 46.875em) {
+  .sidenav {
+    &__brand-close {
+      visibility: hidden;
+    }
+  }
 }
