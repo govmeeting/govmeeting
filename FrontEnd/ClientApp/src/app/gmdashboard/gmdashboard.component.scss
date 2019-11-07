@@ -20,11 +20,11 @@ $width-sidenav: 240px;
     'main'
     'footer';
   height: 100vh;
-  overflow-x: hidden; // Prevent overflow scroll from hidden sidenav
+  // overflow-x: hidden; // Prevent overflow scroll from hidden sidenav  (needed?)
 
-  &--noscroll {
-    overflow-y: hidden;
-  }
+  // &--noscroll {        // (needed?)
+  //   overflow-y: hidden;
+  // }
 }
 
 // Show sidenav on medium screens and above

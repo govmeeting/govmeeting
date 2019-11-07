@@ -16,6 +16,18 @@
     background-color: $color-fiord;
     color: $color-white;
 
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      margin: 5px;
+      font-size: 15px;
+      color: #fff;
+    }
+
     &-title {
       margin: 0 20px;
       font-size: 20px;
