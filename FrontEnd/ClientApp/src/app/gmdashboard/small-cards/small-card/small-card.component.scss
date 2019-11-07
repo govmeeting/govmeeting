@@ -1,53 +1,4 @@
 // for debug
-/*.smallCard  { border: 3px dashed red; }
-
- @import "../../../../styles.scss";
-
-.smallCard {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px;
-  background-color: $color-white;
-  transform: translateY(0);
-  transition: all .3s;
-
-  &-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    font-size: 21px;
-    color: #fff;
-  }
-
-  &-description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &-title {
-    font-size: 18px;
-    color: $color-java;
-    margin: 0;
-  }
-
-  &-subtitle {
-    margin: 2px;
-    color: $color-abbey;
-  }
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 5px rgba(0,0,0,.1);
-    cursor: pointer;
-  }
-}
- */
-
 //.card  { border: 3px dashed red; }
 
  @import "../../../../styles.scss";
@@ -57,13 +8,17 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  // height: 100px;
+  //height: 85px;
   overflow: hidden;
   background-color: #fff;
   margin-bottom: 20px;
   -webkit-column-break-inside: avoid;
   // z-index: 3;
   border: 2px solid $color-fiord;
+
+  &__content {
+    background-color: lightgreen;
+  }
 
   &-icon {
     display: flex;
@@ -113,39 +68,39 @@
 }
 
 // Card header settings icons
-.settings {
-  display: flex;
-  margin: 8px;
-  align-self: flex-start;
-  background-color: $color-transparent;
-  border: 1px solid rgba(0,0,0,.1);
-  border-radius: 2px;
+// .settings {
+//   display: flex;
+//   margin: 8px;
+//   align-self: flex-start;
+//   background-color: $color-transparent;
+//   border: 1px solid rgba(0,0,0,.1);
+//   border-radius: 2px;
 
-  &__block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    color: $color-fiord;
-    font-size: 11px;
+//   &__block {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 4px;
+//     color: $color-fiord;
+//     font-size: 11px;
 
-    &:not(:last-child) {
-      border-right: 1px solid rgba(0,0,0,.1);
-    }
-  }
+//     &:not(:last-child) {
+//       border-right: 1px solid rgba(0,0,0,.1);
+//     }
+//   }
 
-  &__icon {
-    padding: 0px 3px;
-    font-size: 12px;
+//   &__icon {
+//     padding: 0px 3px;
+//     font-size: 12px;
 
-    &:hover {
-      background-color: rgba(255,255,255,.8);
-      cursor: pointer;
-    }
-  }
+//     &:hover {
+//       background-color: rgba(255,255,255,.8);
+//       cursor: pointer;
+//     }
+//   }
 
-  &:hover {
-    background-color: #fff;
-    cursor: pointer;
-  }
-}
+//   &:hover {
+//     background-color: #fff;
+//     cursor: pointer;
+//   }
+// }

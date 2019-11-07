@@ -22,21 +22,29 @@ export class SmallCardComponent implements OnInit {
   'you\'ve got an error and all the extraneous whitespace is ' +
   'just gravy.  Have a nice day.';
 
-  height: number;
-  overflow: string;
-
+  // height: string;
+  // overflow: string;
   collapsed: boolean = true;
+  // bcolor: string = "lightgreen";
+  // zIndex: number = 0;
+
+  currentStyles: any;
+
   toggleCollapsed() {
     this.collapsed = !this.collapsed;
-    this.height = (this.height == 45) ? 500 : 45;
-    this.overflow = (this.overflow == 'hidden') ? 'visible' : 'hidden';
+
+    this.currentStyles = {
+      'height': this.collapsed  ? '85px' : '400px',
+      'z-index': this.collapsed ? '0'   : '8'
+    };
+    //this.overflow = (this.overflow == 'hidden') ? 'visible' : 'hidden';
   }
 
   constructor() { }
 
   ngOnInit() {
-    this.height = 20;
-    this.overflow = 'hidden';
+    this.collapsed = true;
+    //this.overflow = 'hidden';
   }
 
 }

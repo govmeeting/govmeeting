@@ -14,7 +14,9 @@
 <!-- <mat-icon class="help-icon" [ngStyle]="{'color':'lightblue'}" -->
 
 
-<div class="card" [ngStyle]="{'height': height, 'overflow': overflow}" (click)="toggleCollapsed()">
+    <div class="card" [ngStyle]="currentStyles" (click)="toggleCollapsed()">
+        <!-- <div class="card" [ngStyle]="{'height': height, 'z-index': zIndex}" (click)="toggleCollapsed()"> -->
+        <!-- <div class="card" style="height: 85px;" (click)="toggleCollapsed()"> -->
   <div class="card__header">
     <div class="card__header-icon {{iconcolor}}">
       <i class={{icon}}></i>
@@ -26,13 +28,16 @@
           <!-- <a href="#" class="card__header-link text-bold">View All</a> -->
     </div>
     <mat-icon class="help-icon"
-    matTooltip="This is the help in a overview card.">help</mat-icon>
+      matTooltip="This is the help in a overview card.">help</mat-icon>
+
   <!--       <div class="settings">
       <div class="settings__block"><i class="fas fa-edit"></i></div>
       <div class="settings__block"><i class="fas fa-cog"></i></div>
+    </div> -->
+
     </div>
-  -->    </div>
-  <div *ngIf="!collapsed">
+    <div class="card__content">
+      <!-- <div class="card__content"  [ngStyle]="{'height': height, 'overflow': overflow" *ngIf="!collapsed"> -->
     {{sampleContent}}
   <ng-content></ng-content>
   </div>
