@@ -32,11 +32,12 @@ export class SmallCardComponent implements OnInit {
 
   toggleCollapsed() {
     this.collapsed = !this.collapsed;
-
     this.currentStyles = {
-      'height': this.collapsed  ? '85px' : '400px',
+      // 'height': this.collapsed  ? '85px' : '400px',
+      // 'z-index': this.collapsed ? '0'   : '8'
+      'height': this.collapsed  ? '85px' : null,
       'z-index': this.collapsed ? '0'   : '8'
-    };
+   };
     //this.overflow = (this.overflow == 'hidden') ? 'visible' : 'hidden';
   }
 
@@ -44,6 +45,10 @@ export class SmallCardComponent implements OnInit {
 
   ngOnInit() {
     this.collapsed = true;
+    this.currentStyles = {
+      'height': '85px',
+      'z-index':  '8'
+    };
     //this.overflow = 'hidden';
   }
 

@@ -118,6 +118,8 @@ import { MainContentComponent } from './main-content/main-content.component';
   ],
   exports: [
     GMDashboardComponent,
+    SmallCardsComponent,
+    SmallCardComponent
   ],
   providers: [
     ChatService,
