@@ -1,9 +1,9 @@
 <div class="grid">
 
-  <gm-top-header style="grid-area: header;">
+  <!-- <gm-top-header style="grid-area: header;">
     <gm-dash-search></gm-dash-search>
     <gm-user-dropdown></gm-user-dropdown>
-  </gm-top-header>
+  </gm-top-header> -->
 
    <gm-sidenav style="grid-area: sidenav;">
       <gm-sidenav-header></gm-sidenav-header>
@@ -11,9 +11,13 @@
        <!-- <gm-dash-sidenav2></gm-dash-sidenav2> -->
     </gm-sidenav>
 
-  <gm-dash-main style="grid-area: main;">
 
-     <gm-main-header>
+    <gm-main-header style="grid-area: header;">
+        <gm-top-header >
+            <gm-dash-search></gm-dash-search>
+            <gm-user-dropdown></gm-user-dropdown>
+          </gm-top-header>
+
         <gm-main-welcome></gm-main-welcome>
         <gm-fast-facts>
           <gm-fast-fact total="24" icon="far fa-clipboard" desc="Issues"></gm-fast-fact>
@@ -23,6 +27,9 @@
           <gm-fast-fact total="27&deg;" icon="fas fa-map-marker-alt" desc="Austin"></gm-fast-fact>
         </gm-fast-facts>
     </gm-main-header>
+
+  <gm-dash-main style="grid-area: main;">
+
 
     <div style="display: flex; flex-direction: column;">
 

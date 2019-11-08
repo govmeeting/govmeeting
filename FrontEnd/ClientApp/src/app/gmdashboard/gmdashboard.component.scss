@@ -3,7 +3,7 @@
 
 @import "../../styles.scss";
 
-$height-header: 50px;
+$height-header: 150px;
 $height-footer: 50px;
 $width-sidenav: 240px;
 
@@ -41,33 +41,6 @@ $width-sidenav: 240px;
   }
 }
 
-//////////////////////////// SIDENAV //////////////////////////
-
-/* .sidenav {
-  position: fixed;
-  // grid-area: sidenav;
-  height: 100%;
-  width: $width-sidenav;
-  overflow-y: auto;
-  background-color: $color-fiord;
-  color: $color-white;
-  transform: translateX(-245px);
-  transition: all .6s ease-in-out;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-  z-index: 2;
-}
-
-@media only screen and (min-width: 46.875em) {
-  .sidenav {
-    position: relative;
-    transform: translateX(0);
-
-     &__brand-close {
-      visibility: hidden;
-    }
-  }
-}
- */
 ///////////////////////////////////////////////////////////////////
 
 // Styles for example chart
