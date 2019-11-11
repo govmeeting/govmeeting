@@ -5,7 +5,8 @@ $color-abbey: #777; // gray text
 $color-java: #1BBAE1; // blue text
 
 @mixin profile-avatar {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1609106/headshot.png");
+  // background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1609106/headshot.png");
+  background-image: url("/assets/images/avatar-icon-png-12.png");
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50%;

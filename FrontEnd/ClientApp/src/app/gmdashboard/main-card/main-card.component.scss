@@ -4,17 +4,19 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #fff;
+  //background-color: #fff;
   margin-bottom: 20px;
   -webkit-column-break-inside: avoid;
+  border: 3px dashed green;
 
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 50px;
-    background-color: $color-fiord;
+    //background-color: $color-fiord;
     color: $color-white;
+    border: 3px dashed lightgreen;
 
     &-icon {
       display: flex;
@@ -44,42 +46,42 @@
 }
 
 // Card header settings icons
-.settings {
-  display: flex;
-  margin: 8px;
-  align-self: flex-start;
-  background-color: $color-transparent;
-  border: 1px solid rgba(0,0,0,.1);
-  border-radius: 2px;
+// .settings {
+//   display: flex;
+//   margin: 8px;
+//   align-self: flex-start;
+//   background-color: $color-transparent;
+//   border: 1px solid rgba(0,0,0,.1);
+//   border-radius: 2px;
 
-  &__block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
-    color: $color-fiord;
-    font-size: 11px;
+//   &__block {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 4px;
+//     color: $color-fiord;
+//     font-size: 11px;
 
-    &:not(:last-child) {
-      border-right: 1px solid rgba(0,0,0,.1);
-    }
-  }
+//     &:not(:last-child) {
+//       border-right: 1px solid rgba(0,0,0,.1);
+//     }
+//   }
 
-  &__icon {
-    padding: 0px 3px;
-    font-size: 12px;
+//   &__icon {
+//     padding: 0px 3px;
+//     font-size: 12px;
 
-    &:hover {
-      background-color: rgba(255,255,255,.8);
-      cursor: pointer;
-    }
-  }
+//     &:hover {
+//       background-color: rgba(255,255,255,.8);
+//       cursor: pointer;
+//     }
+//   }
 
-  &:hover {
-    background-color: #fff;
-    cursor: pointer;
-  }
-}
+//   &:hover {
+//     background-color: #fff;
+//     cursor: pointer;
+//   }
+// }
 
 
 // The code below is not used. He probably had a photo card that he removed.

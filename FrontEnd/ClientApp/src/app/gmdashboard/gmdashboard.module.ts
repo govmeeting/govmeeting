@@ -56,6 +56,7 @@ import { SidenavMenuComponent } from './dash-sidenav/sidenav-menu/sidenav-menu.c
 import { SidenavHeaderComponent } from './dash-sidenav/sidenav-header/sidenav-header.component';
 import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
 import { DashSidenav2Component } from './dash-sidenav2/dash-sidenav2.component'
+import { DashSidenav3Component } from './dash-sidenav3/dash-sidenav3.component'
 
 //////////////////////////////////////// Services /////////////////////////////////////
 import { ChatService } from './chat/chat.service';
@@ -63,6 +64,11 @@ import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from './data-factory.service';
 import { DataFakeService } from './data-fake.service';
 import { MainContentComponent } from './main-content/main-content.component';
+
+import {AmchartsModule } from './amcharts/amcharts.module';
+import { PieChart } from '@amcharts/amcharts4/charts';
+import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
+import { BarChartComponent } from './amcharts/bar-chart/bar-chart.component';
 
 
 @NgModule({
@@ -78,7 +84,8 @@ import { MainContentComponent } from './main-content/main-content.component';
     ProjectStatusModule,
     ChatModule,
     ConversationModule,
-    AboutProjectModule
+    AboutProjectModule,
+    AmchartsModule
     ],
   declarations: [
     //SampleCardComponent,
@@ -114,12 +121,26 @@ import { MainContentComponent } from './main-content/main-content.component';
     SidenavHeaderComponent,
     SidenavComponent,
     MainContentComponent,
-    DashSidenav2Component
+    DashSidenav2Component,
+    DashSidenav3Component,
+
   ],
   exports: [
     GMDashboardComponent,
-    SmallCardsComponent,
-    SmallCardComponent
+
+    // The ones below are just for testing that compnent in app.component.html
+    // SmallCardsComponent,
+    // SmallCardComponent,
+    TopHeaderComponent,
+    DashSearchComponent,
+    UserDropdownComponent,
+    DashSidenav2Component,
+    SidenavHeaderComponent,
+    SidenavComponent,
+    AmguageComponent,
+    MainCardComponent,
+    PieChartComponent,
+    BarChartComponent
   ],
   providers: [
     ChatService,
