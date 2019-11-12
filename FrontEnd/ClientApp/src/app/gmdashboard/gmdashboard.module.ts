@@ -65,10 +65,10 @@ import { DataFactoryService } from './data-factory.service';
 import { DataFakeService } from './data-fake.service';
 import { MainContentComponent } from './main-content/main-content.component';
 
-import {AmchartsModule } from './amcharts/amcharts.module';
-import { PieChart } from '@amcharts/amcharts4/charts';
-import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
-import { BarChartComponent } from './amcharts/bar-chart/bar-chart.component';
+// import {AmchartsModule } from './amcharts/amcharts.module';
+// import { PieChart } from '@amcharts/amcharts4/charts';
+// import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
+// import { BarChartComponent } from './amcharts/bar-chart/bar-chart.component';
 
 
 @NgModule({
@@ -85,7 +85,7 @@ import { BarChartComponent } from './amcharts/bar-chart/bar-chart.component';
     ChatModule,
     ConversationModule,
     AboutProjectModule,
-    AmchartsModule
+    // AmchartsModule
     ],
   declarations: [
     //SampleCardComponent,
@@ -137,10 +137,10 @@ import { BarChartComponent } from './amcharts/bar-chart/bar-chart.component';
     DashSidenav2Component,
     SidenavHeaderComponent,
     SidenavComponent,
-    AmguageComponent,
+    // AmguageComponent,
     MainCardComponent,
-    PieChartComponent,
-    BarChartComponent
+    // PieChartComponent,
+    // BarChartComponent
   ],
   providers: [
     ChatService,
