@@ -1,4 +1,4 @@
-import { DropdownValue } from '../gmshared/dropdown/dropdown.value';
+import { DropdownValue } from '../shared/dropdown/dropdown.value';
 
 // This is the dropdown box used for selecting a speaker.
 

@@ -10,13 +10,13 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
 
-import { ErrorHandlingService } from '../gmshared/error-handling/error-handling.service';
+import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { ViewMeetingModule } from '../viewmeeting/viewmeeting.module';
 import { AddtagsModule } from '../addtags/addtags.module';
 import { FixasrModule } from '../fixasr/fixasr.module';
-import { GmSharedModule } from '../gmshared/gmshared.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { ViewMeetingService } from '../viewmeeting/viewmeeting.service';
 import { ViewMeetingServiceStub } from '../viewmeeting/viewmeeting.service-stub';
@@ -25,11 +25,8 @@ import { AddtagsServiceStub } from '../addtags/addtags.service-stub';
 import { FixasrService } from '../fixasr/fixasr.service';
 import { FixasrServiceStub } from '../fixasr/fixasr.service-stub';
 import { AppData } from '../appdata';
-import { TestModule } from '../test/test.module';
-import { GmDashboardModule } from '../gmdashboard/gmdashboard.module';
+import { DashboardModule } from '../dashboard/dashboard.module';
 import { AboutProjectModule } from '../about-project/about-project.module';
-
-// import { AboutModule } from '../gmdashboard/about/about.module';
 
 // Is the Asp.Net server running
 const _isAspServerRunning = true;
@@ -50,10 +47,9 @@ const _isAspServerRunning = true;
     ViewMeetingModule,
     AddtagsModule,
     FixasrModule,
-    GmSharedModule,
-    TestModule,
+    SharedModule,
     FlexLayoutModule,
-    GmDashboardModule,
+    DashboardModule,
     AboutProjectModule
   ],
   exports: [

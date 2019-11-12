@@ -1,0 +1,89 @@
+<div class="grid">
+
+  <gm-top-header style="grid-area: header;">
+    <gm-dash-search></gm-dash-search>
+    <gm-user-dropdown></gm-user-dropdown>
+  </gm-top-header>
+
+   <gm-sidenav style="grid-area: sidenav;">
+      <gm-sidenav-header></gm-sidenav-header>
+       <!-- <gm-sidenav-menu></gm-sidenav-menu> -->
+       <gm-dash-sidenav2></gm-dash-sidenav2>
+    </gm-sidenav>
+
+
+    <gm-main-header style="grid-area: header;">
+            <gm-top-header >
+            <!-- <gm-dash-search></gm-dash-search> -->
+            <gm-user-dropdown></gm-user-dropdown>
+          </gm-top-header>
+
+        <!-- <gm-main-welcome></gm-main-welcome> -->
+        <!-- <gm-fast-facts>
+          <gm-fast-fact total="24" icon="far fa-clipboard" desc="Issues"></gm-fast-fact>
+          <gm-fast-fact total="24" icon="far fa-calendar-alt" desc="Events"></gm-fast-fact>
+          <gm-fast-fact total="5" icon="far fa-bell" desc="Alerts"></gm-fast-fact>
+          <gm-fast-fact total="13" icon="far fa-comment" desc="Mail"></gm-fast-fact>
+          <gm-fast-fact total="27&deg;" icon="fas fa-map-marker-alt" desc="Austin"></gm-fast-fact>
+        </gm-fast-facts> -->
+    </gm-main-header>
+
+  <gm-dash-main style="grid-area: main;">
+
+
+    <div style="display: flex; flex-direction: column;">
+
+      <div fxLayoutAlign="start start"></div> <!-- ?????????? -->
+
+      <router-outlet></router-outlet>
+      <!-- <gm-main-content></gm-main-content> -->
+      <!-- <gm-about-project></gm-about-project> -->
+
+    </div> <!-- style="display: flex; flex-direction: column;" -->
+
+  </gm-dash-main>
+
+  <gm-dash-footer style="grid-area: footer;"></gm-dash-footer>
+
+</div>  <!--class="grid"-->
+
+<!-- partial -->
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src='https://www.amcharts.com/lib/3/amcharts.js'></script>
+<script src='https://www.amcharts.com/lib/3/serial.js'></script>
+<script src='https://www.amcharts.com/lib/3/themes/light.js'></script>
+<script  src="../../../script.js"></script>
+
+
+<!--
+Ideas for dashboard layout
+X Welcome message with
+    city temp
+    Unread alerts
+    unread messages
+X  Member organizations (in sidebar)
+    Government
+      council
+      board of Ed
+      planning board
+    Non-government
+  Work in progress
+X  Shoutouts
+    most work
+    new organizations
+  Chat box
+    by topic
+    by organization
+X  Issues
+    new
+    most active
+    mine
+  Legislature
+    proposed
+    1st / 2nd reading
+  Legislators
+    comments on issues
+    voting record
+
+-->
+

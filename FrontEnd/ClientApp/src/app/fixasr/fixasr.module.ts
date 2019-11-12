@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule  } from '@angular/common/http';
 import { FixasrComponent } from './fixasr.component';
 import { VideoModule } from '../video/video.module';
-import { GmSharedModule } from '../gmshared/gmshared.module'
+import { SharedModule } from '../shared/shared.module'
 import { RouterModule } from '@angular/router';
 //import { FixasrRoutingModule } from './fixasr-routing.module';
 //import { ReactiveFormsModule } from '@angular/forms'
@@ -21,7 +21,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     HttpClientModule,
     VideoModule,
-    GmSharedModule
+    SharedModule
   ],
   providers: [],
 })

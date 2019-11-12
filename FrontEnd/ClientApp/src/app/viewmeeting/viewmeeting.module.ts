@@ -8,14 +8,14 @@ import { BrowseComponent } from './browse/browse.component';
 import { HeadingComponent } from './heading/heading.component';
 import { SpeakersComponent } from './speakers/speakers.component';
 import { TopicsComponent } from './topics/topics.component';
-import { GmSharedModule } from '../gmshared/gmshared.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     HttpClientModule,
-    GmSharedModule
+    SharedModule
  ],
   declarations: [ViewMeetingComponent, BrowseComponent,
      HeadingComponent, SpeakersComponent, TopicsComponent]

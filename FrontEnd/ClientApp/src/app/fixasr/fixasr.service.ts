@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
-import { ErrorHandlingService } from '../gmshared/error-handling/error-handling.service';
+import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 
 @Injectable()
 export class FixasrService {

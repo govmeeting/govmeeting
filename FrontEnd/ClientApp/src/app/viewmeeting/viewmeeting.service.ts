@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { ViewMeeting } from '../models/viewmeeting-view';
 
-import { ErrorHandlingService } from '../gmshared/error-handling/error-handling.service';
+import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 
 @Injectable()
 export class ViewMeetingService {

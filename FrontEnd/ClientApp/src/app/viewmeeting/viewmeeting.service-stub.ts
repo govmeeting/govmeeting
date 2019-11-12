@@ -5,7 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 import { ViewMeeting } from '../models/viewmeeting-view';
-import { ErrorHandlingService } from '../gmshared/error-handling/error-handling.service';
+import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 
 @Injectable()
 export class ViewMeetingServiceStub {

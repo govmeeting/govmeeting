@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/observable/of';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { ErrorHandlingService } from '../gmshared/error-handling/error-handling.service';
+import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 
 @Injectable()
 export class FixasrServiceStub {
