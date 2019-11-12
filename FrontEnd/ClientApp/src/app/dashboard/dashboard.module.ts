@@ -40,7 +40,7 @@ import { SmallCardComponent } from './small-cards/small-card/small-card.componen
 // Large Cards
 import { MainCardsComponent } from './main-cards/main-cards.component';
 import { MainCardComponent } from './main-card/main-card.component';
-import { AmguageComponent } from './amguage/amguage.component';
+// import { GaugeComponent } from './gauge/gauge.component';
 import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
 
 import { DashFooterComponent } from './dash-footer/dash-footer.component';
@@ -60,8 +60,7 @@ import { DataFakeService } from '../services/data-fake.service';
 import { MainContentComponent } from './main-content/main-content.component';
 
 import { AmchartsModule } from './amcharts/amcharts.module';
-// import { PieChart } from '@amcharts/amcharts4/charts';
-// import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
+import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
 // import { BarChartComponent } from './amcharts/bar-chart/bar-chart.component';
 
 
@@ -101,7 +100,7 @@ import { AmchartsModule } from './amcharts/amcharts.module';
     MainCardsComponent,
     MainCardComponent,
     ShoutoutsComponent,
-    AmguageComponent,
+    // AmgaugeComponent,
 
     DashFooterComponent,
 
@@ -124,9 +123,9 @@ import { AmchartsModule } from './amcharts/amcharts.module';
     DashSidenav2Component,
     SidenavHeaderComponent,
     SidenavComponent,
-    // AmguageComponent,
+    // AmgaugeComponent,
     MainCardComponent,
-    // PieChartComponent,
+    PieChartComponent,
     // BarChartComponent
   ],
   providers: [

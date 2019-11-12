@@ -11,11 +11,11 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 */
 
 @Component({
-  selector: 'gm-amguage',
-  templateUrl: './amguage.component.html',
-  styleUrls: ['./amguage.component.scss']
+  selector: 'gm-gauge',
+  templateUrl: './gauge.component.html',
+  styleUrls: ['./gauge.component.scss']
 })
-export class AmguageComponent implements OnInit {
+export class GaugeComponent implements OnInit {
 
   //private chart: am4charts.GaugeChart;
   //private hand: { showValue: (arg0: number, arg1: number, arg2: (t: number) => number) => void; };

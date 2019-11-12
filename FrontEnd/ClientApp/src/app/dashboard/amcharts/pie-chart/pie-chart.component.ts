@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
+//import { PieChart } from '@amcharts/amcharts4/charts';
 
 @Component({
   selector: 'gm-pie-chart',
@@ -29,25 +30,25 @@ export class PieChartComponent implements OnInit {
     "issue": "Police Hires",
     "comments": 301.9
   }, {
-    "issue": "Ireland",
+    "issue": "Summer Concerts",
     "comments": 201.1
   }, {
-    "issue": "Germany",
+    "issue": "Apartment Recycling",
     "comments": 165.8
   }, {
-    "issue": "Australia",
+    "issue": "Paving Materials",
     "comments": 139.9
   }, {
-    "issue": "Austria",
+    "issue": "Housing Finance",
     "comments": 128.3
   }, {
-    "issue": "UK",
+    "issue": "Homeless Ordinances",
     "comments": 99
   }, {
-    "issue": "Belgium",
+    "issue": "Voting Rights",
     "comments": 60
   }, {
-    "issue": "The Netherlands",
+    "issue": "City Holiday",
     "comments": 50
   }];
 }
