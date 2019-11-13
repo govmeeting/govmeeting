@@ -40,7 +40,6 @@ import { SmallCardComponent } from './small-cards/small-card/small-card.componen
 // Large Cards
 import { MainCardsComponent } from './main-cards/main-cards.component';
 import { MainCardComponent } from './main-card/main-card.component';
-// import { GaugeComponent } from './gauge/gauge.component';
 import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
 
 import { DashFooterComponent } from './dash-footer/dash-footer.component';
@@ -100,7 +99,6 @@ import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
     MainCardsComponent,
     MainCardComponent,
     ShoutoutsComponent,
-    // AmgaugeComponent,
 
     DashFooterComponent,
 
@@ -123,7 +121,6 @@ import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
     DashSidenav2Component,
     SidenavHeaderComponent,
     SidenavComponent,
-    // AmgaugeComponent,
     MainCardComponent,
     PieChartComponent,
     // BarChartComponent

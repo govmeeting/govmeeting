@@ -24,25 +24,19 @@ export class PieChartComponent implements OnInit {
   }
 
   chartdata = [{
-    "issue": "Pave John St.",
-    "comments": 501.9
-  }, {
-    "issue": "Police Hires",
-    "comments": 301.9
-  }, {
-    "issue": "Summer Concerts",
+    "issue": "Concerts",
     "comments": 201.1
   }, {
-    "issue": "Apartment Recycling",
+    "issue": "Recycling",
     "comments": 165.8
   }, {
-    "issue": "Paving Materials",
+    "issue": "Paving",
     "comments": 139.9
   }, {
     "issue": "Housing Finance",
     "comments": 128.3
   }, {
-    "issue": "Homeless Ordinances",
+    "issue": "Homeless",
     "comments": 99
   }, {
     "issue": "Voting Rights",

@@ -4,8 +4,8 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 
 
 interface IChartData {
-  country: string;
-  litres: number;
+  issue: string;
+  alerts: number;
   units: number;
 }
 
@@ -27,17 +27,17 @@ chart.data = this.chartdata;
 
 // Create axes
 let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-categoryAxis.dataFields.category = "country";
-categoryAxis.title.text = "Countries";
+categoryAxis.dataFields.category = "issue";
+categoryAxis.title.text = "Issues";
 
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-valueAxis.title.text = "Litres sold (M)";
+valueAxis.title.text = "Alerts set";
 
 // Create series
 var series = chart.series.push(new am4charts.ColumnSeries());
-series.dataFields.valueY = "litres";
-series.dataFields.categoryX = "country";
-series.name = "Sales";
+series.dataFields.valueY = "alerts";
+series.dataFields.categoryX = "issue";
+series.name = "Issues";
 series.columns.template.tooltipText = "Series: {name}\nCategory: {categoryX}\nValue: {valueY}";
 
 var gradient = new am4core.LinearGradient();
@@ -49,54 +49,46 @@ gradient.rotation = 90;
 // series.columns.template.fill = gradient;
 
 // Parallel gradient
-var max = 500;
+var max = 250;
 var red = am4core.color('red');
 var blue = am4core.color('blue');
 series.columns.template.adapter.add('fill', function(fill, column) {
   var columnGradient = new am4core.LinearGradient();
   columnGradient.rotation = 90;
   // interpolate(min.rgb, max.rgb, percent)
-  //columnGradient.addColor(am4core.color( am4core.colors.interpolate(blue.rgb, red.rgb, column.dataItem.dataContext.litres / max) ), 1, 0);
+  //columnGradient.addColor(am4core.color( am4core.colors.interpolate(blue.rgb, red.rgb, column.dataItem.dataContext.alerts / max) ), 1, 0);
   columnGradient.addColor(blue, 1, 1);
   return columnGradient;
 });
 }
 
 chartdata: IChartData[] = [{
-  "country": "Lithuania",
-  "litres": 501.9,
-  "units": 250
-}, {
-  "country": "Czech Republic",
-  "litres": 301.9,
-  "units": 222
-}, {
-  "country": "Ireland",
-  "litres": 201.1,
+  "issue": "Concerts",
+  "alerts": 201.1,
   "units": 170
 }, {
-  "country": "Germany",
-  "litres": 165.8,
+  "issue": "Recycling",
+  "alerts": 165.8,
   "units": 122
 }, {
-  "country": "Australia",
-  "litres": 139.9,
+  "issue": "Paving",
+  "alerts": 139.9,
   "units": 99
 }, {
-  "country": "Austria",
-  "litres": 128.3,
+  "issue": "Housing Finance",
+  "alerts": 128.3,
   "units": 85
 }, {
-  "country": "UK",
-  "litres": 99,
+  "issue": "Homeless",
+  "alerts": 99,
   "units": 93
 }, {
-  "country": "Belgium",
-  "litres": 60,
+  "issue": "Voting Rights",
+  "alerts": 60,
   "units": 50
 }, {
-  "country": "The Netherlands",
-  "litres": 50,
+  "issue": "City Holiday",
+  "alerts": 50,
   "units": 42
 }];
 
