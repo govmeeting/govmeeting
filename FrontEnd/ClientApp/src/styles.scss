@@ -7,6 +7,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 // @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
+// Named Colors Sorted by HEX Value
+// https://www.w3schools.com/colors/colors_hex.asp
+
 $color-fiord: #394263; // sidenav bg & dark text
 $color-white: #FFF; // card bg
 $color-athens-gray: #EAEDF1; // content bg
@@ -61,7 +64,8 @@ position: relative;
 }
 
 .mat-tooltip.tooltip {
-  background-color: darkblue;
+  background-color: lightblue;
+  color: black;
   font-size: 14px;
 }
 

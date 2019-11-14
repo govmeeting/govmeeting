@@ -28,12 +28,15 @@ import { AppData } from '../appdata';
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { AboutProjectModule } from '../about-project/about-project.module';
 
+import { SmallComponent } from '../small/small.component';
+
 // Is the Asp.Net server running
 const _isAspServerRunning = true;
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SmallComponent
   ],
   imports: [
     BrowserModule,

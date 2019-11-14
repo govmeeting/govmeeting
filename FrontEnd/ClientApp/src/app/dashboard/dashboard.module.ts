@@ -9,7 +9,6 @@ import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 
 // Modules - internal
 import { DemoMaterialModule } from '../material';
-import { ProjectStatusModule } from './project-status/project-status.module';
 import { ChatModule } from '../dashboard/chat/chat.module';
 import { ConversationModule } from './conversation/conversation.module';
 import { AboutProjectModule } from '../about-project/about-project.module';
@@ -45,11 +44,11 @@ import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
 import { DashFooterComponent } from './dash-footer/dash-footer.component';
 
 // Sidenav
-import { SidenavMenuComponent } from './dash-sidenav/sidenav-menu/sidenav-menu.component';
 import { SidenavHeaderComponent } from './dash-sidenav/sidenav-header/sidenav-header.component';
 import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
-import { DashSidenav2Component } from './dash-sidenav2/dash-sidenav2.component'
-import { DashSidenav3Component } from './dash-sidenav3/dash-sidenav3.component'
+import { SidenavMenuComponent } from './dash-sidenav/sidenav-menu/sidenav-menu.component';
+import { SidenavMenu2Component } from './dash-sidenav/sidenav-menu2/sidenav-menu2.component'
+import { SidenavMenu3Component } from './dash-sidenav/sidenav-menu3/sidenav-menu3.component'
 
 //////////////////////////////////////// Services /////////////////////////////////////
 import { ChatService } from './chat/chat.service';
@@ -73,7 +72,6 @@ import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
     FormsModule,
     NgMaterialMultilevelMenuModule,
 
-    ProjectStatusModule,
     ChatModule,
     ConversationModule,
     AboutProjectModule,
@@ -102,12 +100,12 @@ import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
 
     DashFooterComponent,
 
-    SidenavMenuComponent,
     SidenavHeaderComponent,
     SidenavComponent,
     MainContentComponent,
-    DashSidenav2Component,
-    DashSidenav3Component,
+    SidenavMenuComponent,
+    SidenavMenu2Component,
+    SidenavMenu3Component,
   ],
   exports: [
     DashboardComponent,
@@ -118,7 +116,7 @@ import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
     TopHeaderComponent,
     DashSearchComponent,
     UserDropdownComponent,
-    DashSidenav2Component,
+    SidenavMenu2Component,
     SidenavHeaderComponent,
     SidenavComponent,
     MainCardComponent,

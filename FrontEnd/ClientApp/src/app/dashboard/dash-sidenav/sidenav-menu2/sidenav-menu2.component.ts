@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-  selector: 'gm-dash-sidenav2',
-  templateUrl: './dash-sidenav2.component.html',
-  styleUrls: ['./dash-sidenav2.component.scss']
+  selector: 'gm-sidenav-menu2',
+  templateUrl: './sidenav-menu2.component.html',
+  styleUrls: ['./sidenav-menu2.component.scss']
 })
-export class DashSidenav2Component implements OnInit {
+export class SidenavMenu2Component implements OnInit {
 
   constructor() { }
 

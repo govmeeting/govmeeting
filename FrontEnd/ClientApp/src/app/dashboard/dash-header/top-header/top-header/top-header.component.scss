@@ -1,5 +1,5 @@
 // for debug
-.header { border: 3px dashed Fuchsia }
+// .header { border: 3px dashed Fuchsia }
 
 @import "../../../../../styles.scss";
 
@@ -15,6 +15,7 @@
     position: fixed; // Needs to stay visible for all mobile scrolling
     padding: 13px;
     left: 12px;
+    top: 5px;
     background-color: $color-mischka;
     border-radius: 50%;
     z-index: 1;
@@ -23,6 +24,13 @@
       cursor: pointer;
     }
   }
+}
+.header a {
+  position: relative; // Needs to stay visible for all mobile scrolling
+  padding: 13px;
+  left: 12px;
+  top: 5px;
+  color: blue;
 }
 
 // Mobile screen breakpoints (750px)

@@ -18,7 +18,8 @@ $color-java: #1BBAE1; // blue text
   position: absolute;
   top: 54px;
   right: -16px;
-  width: 220px;
+  width: 150px;
+  //width: 110;
   height: auto;
   z-index: 1;
   background-color: #fff;
@@ -28,10 +29,17 @@ $color-java: #1BBAE1; // blue text
   transform: translateY(-10px);
   transition: all .3s;
   @include box-shadow;
+  font-size: 14px;
+
 
   &__avatar {
     @include profile-avatar;
-    position: relative;
+
+    // position: relative;
+    position: fixed;
+    right: 12px;
+    top: 5px;
+
     margin: 0 26px;
     width: 35px;
     height: 35px;
