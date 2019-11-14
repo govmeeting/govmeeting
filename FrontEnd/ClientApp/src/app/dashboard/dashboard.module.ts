@@ -33,12 +33,12 @@ import { FastFactComponent } from './dash-header/main-header/fast-fact/fast-fact
 import { DashMainComponent } from './dash-main/dash-main.component';
 
 // Small Cards
-import { SmallCardsComponent } from './small-cards/small-cards/small-cards.component';
+import { SmallCardsComponent } from './small-cards/small-cards.component';
 import { SmallCardComponent } from './small-cards/small-card/small-card.component';
 
 // Large Cards
 import { MainCardsComponent } from './main-cards/main-cards.component';
-import { MainCardComponent } from './main-card/main-card.component';
+import { MainCardComponent } from './main-cards/main-card/main-card.component';
 import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
 
 import { DashFooterComponent } from './dash-footer/dash-footer.component';
