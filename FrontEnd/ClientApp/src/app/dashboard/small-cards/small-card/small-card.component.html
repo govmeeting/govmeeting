@@ -1,5 +1,5 @@
 <div class="card" [ngStyle]="currentStyles" (click)="toggleCollapsed()">
-  <div class="card__header">
+  <div class="card__header help-header" matTooltip={{tooltip}} matTooltipClass="tooltip">
     <div class="card__header-icon {{iconcolor}}">
       <i class={{icon}}></i>
     </div>
@@ -10,10 +10,10 @@
           <!-- <a href="#" class="card__header-link text-bold">View All</a> -->
     </div>
     <mat-icon class="help-icon"
-      matTooltip="This is the help in a overview card." matTooltipClass="tooltip">help</mat-icon>
+      matTooltip={{tooltip}} matTooltipClass="tooltip">help</mat-icon>
     </div>
     <div class="card__content">
-    {{sampleContent}}
+    <!-- {{sampleContent}} -->
   <ng-content></ng-content>
   </div>
 </div>

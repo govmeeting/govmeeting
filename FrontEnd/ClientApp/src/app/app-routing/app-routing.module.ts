@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ViewMeetingComponent } from '../viewmeeting/viewmeeting.component'
 import { AddtagsComponent } from '../addtags/addtags.component'
 import { FixasrComponent } from '../fixasr/fixasr.component'
-import { MainContentComponent } from '../dashboard/main-content/main-content.component';
+import { MainContentComponent } from '../dashboard/dash-main/main-content/main-content.component';
 import { AboutProjectComponent } from '../about-project/about-project.component';
 
 const routes: Routes = [

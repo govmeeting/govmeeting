@@ -1,14 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'gm-main-card',
-  templateUrl: './main-card.component.html',
-  styleUrls: ['./main-card.component.scss']
+  selector: 'gm-large-card',
+  templateUrl: './large-card.component.html',
+  styleUrls: ['./large-card.component.scss']
 })
-export class MainCardComponent implements OnInit {
+export class LargeCardComponent implements OnInit {
   @Input() title: string;
   @Input() icon: string;
   @Input() iconcolor: string;
+  @Input() tooltip: string;
 
   constructor() { }
 

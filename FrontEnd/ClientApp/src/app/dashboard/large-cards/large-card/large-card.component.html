@@ -1,5 +1,6 @@
 <div class="card">
-  <div class="card__header">
+  <div class="card__header"
+    matTooltip={{tooltip}} matTooltipClass="headertip">
     <!-- <div class="card__header-title text-light">Your <strong>Events</strong> -->
         <div class="card__header-icon {{iconcolor}}">
       <i class={{icon}}></i>
@@ -8,7 +9,7 @@
       <!-- <a href="#" class="card__header-link text-bold">View All</a> -->
     </div>
      <mat-icon class="help-icon"
-        matTooltip="This is the help in a overview card.">help</mat-icon>
+        matTooltip={{tooltip}} matTooltipClass="tooltip">help</mat-icon>
   <!-- <div class="settings">
       <div class="settings__block"><i class="fas fa-edit"></i></div>
       <div class="settings__block"><i class="fas fa-cog"></i></div>

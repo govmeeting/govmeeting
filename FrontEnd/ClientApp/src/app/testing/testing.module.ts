@@ -2,16 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // test small card
-import { SmallComponent } from './small/small.component';
-
+import { SampleContentComponent } from './sample-content/sample-content.component';
 
 
 @NgModule({
   declarations: [
-    SmallComponent
+    SampleContentComponent
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    SampleContentComponent
   ]
 })
 export class TestingModule { }

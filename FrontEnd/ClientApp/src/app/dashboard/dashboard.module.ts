@@ -37,8 +37,8 @@ import { SmallCardsComponent } from './small-cards/small-cards.component';
 import { SmallCardComponent } from './small-cards/small-card/small-card.component';
 
 // Large Cards
-import { MainCardsComponent } from './main-cards/main-cards.component';
-import { MainCardComponent } from './main-cards/main-card/main-card.component';
+import { LargeCardsComponent } from './large-cards/large-cards.component';
+import { LargeCardComponent } from './large-cards/large-card/large-card.component';
 import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
 
 import { DashFooterComponent } from './dash-footer/dash-footer.component';
@@ -55,12 +55,13 @@ import { ChatService } from './chat/chat.service';
 import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from '../services/data-factory.service';
 import { DataFakeService } from '../services/data-fake.service';
-import { MainContentComponent } from './main-content/main-content.component';
+import { MainContentComponent } from './dash-main/main-content/main-content.component';
 
 import { AmchartsModule } from './amcharts/amcharts.module';
 import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
 // import { BarChartComponent } from './amcharts/bar-chart/bar-chart.component';
 
+import { TestingModule } from '../testing/testing.module';
 
 @NgModule({
   imports: [
@@ -75,7 +76,8 @@ import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
     ChatModule,
     ConversationModule,
     AboutProjectModule,
-    AmchartsModule
+    AmchartsModule,
+    TestingModule
     ],
   declarations: [
     DashboardComponent,
@@ -94,8 +96,8 @@ import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
     SmallCardsComponent,
     SmallCardComponent,
 
-    MainCardsComponent,
-    MainCardComponent,
+    LargeCardsComponent,
+    LargeCardComponent,
     ShoutoutsComponent,
 
     DashFooterComponent,
@@ -119,7 +121,7 @@ import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
     SidenavMenu2Component,
     SidenavHeaderComponent,
     SidenavComponent,
-    MainCardComponent,
+    LargeCardComponent,
     PieChartComponent,
     // BarChartComponent
   ],

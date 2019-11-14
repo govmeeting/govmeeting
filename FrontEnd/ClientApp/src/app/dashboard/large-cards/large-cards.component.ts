@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'gm-main-cards',
+  selector: 'gm-large-cards',
   template:  `
   <style>
     $color-athens-gray: #EAEDF1;
@@ -32,7 +32,7 @@ import { Component, OnInit } from '@angular/core';
   </div>
 `
 })
-export class MainCardsComponent implements OnInit {
+export class LargeCardsComponent implements OnInit {
 
   constructor() { }
 

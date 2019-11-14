@@ -10,17 +10,8 @@ export class SmallCardComponent implements OnInit {
   @Input() iconcolor: string;
   @Input() title: string;
   @Input() subtitle: string;
+  @Input() tooltip: string;
 
-   // Currently hard-coded in dashboard.component.html for each card.
-   // It should be added in cards.component automatically.
-//  @Input() zIndex: number;
-
-  sampleContent: string = 'A rather long string of English text, an error message ' +
-  'actually that just keeps going and going -- an error ' +
-  'message to make the Energizer bunny blush (right through ' +
-  'those Schwarzenegger shades)! Where was I? Oh yes, ' +
-  'you\'ve got an error and all the extraneous whitespace is ' +
-  'just gravy.  Have a nice day.';
 
   // height: string;
   // overflow: string;
@@ -47,7 +38,6 @@ export class SmallCardComponent implements OnInit {
     this.collapsed = true;
     this.currentStyles = {
       'height': '85px',
-      'z-index':  '2'
     };
     //this.overflow = 'hidden';
   }
