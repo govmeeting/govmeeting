@@ -86,3 +86,17 @@ position: relative;
 .mat-icon {
   font-size: 25px;
 }
+
+// On large screen, we show the tooltip when hovering over the header
+// and do not show the help icon.
+@media only screen and (min-width: 46.875em) {
+  .help-icon {
+    visibility: hidden;
+  }
+}
+// On small screens, we show the help icon.
+@media only screen and (max-width: 46.875em) {
+  .mat-tooltip.headertip {
+    visibility: hidden;
+  }
+}

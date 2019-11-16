@@ -57,11 +57,13 @@ import { DataFactoryService } from '../services/data-factory.service';
 import { DataFakeService } from '../services/data-fake.service';
 import { MainContentComponent } from './dash-main/main-content/main-content.component';
 
-import { AmchartsModule } from './amcharts/amcharts.module';
-import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
+// import { AmchartsModule } from './amcharts/amcharts.module';
+// import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
 // import { BarChartComponent } from './amcharts/bar-chart/bar-chart.component';
 
 import { TestingModule } from '../testing/testing.module';
+// import { SidenavMenu4Component } from './dash-sidenav/sidenav-menu4/sidenav-menu4.component';
+import { SidenavMenu4Module } from './dash-sidenav/sidenav-menu4/sidenav-menu4.module';
 
 @NgModule({
   imports: [
@@ -76,8 +78,9 @@ import { TestingModule } from '../testing/testing.module';
     ChatModule,
     ConversationModule,
     AboutProjectModule,
-    AmchartsModule,
-    TestingModule
+    // AmchartsModule,
+    TestingModule,
+    SidenavMenu4Module,
     ],
   declarations: [
     DashboardComponent,
@@ -108,6 +111,7 @@ import { TestingModule } from '../testing/testing.module';
     SidenavMenuComponent,
     SidenavMenu2Component,
     SidenavMenu3Component,
+    // SidenavMenu4Component
   ],
   exports: [
     DashboardComponent,
@@ -122,7 +126,7 @@ import { TestingModule } from '../testing/testing.module';
     SidenavHeaderComponent,
     SidenavComponent,
     LargeCardComponent,
-    PieChartComponent,
+    // PieChartComponent,
     // BarChartComponent
   ],
   providers: [

@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { SidenavService } from '../../sidenav.service';
+import { SidenavService } from '../../../services/sidenav.service';
 import { Breakpoints, BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
 
 @Component({
