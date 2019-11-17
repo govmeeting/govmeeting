@@ -16,6 +16,7 @@ export class AppComponent {
 
  toggleCollapsed() {
    this.collapsed = !this.collapsed;
+
  }
 
 }

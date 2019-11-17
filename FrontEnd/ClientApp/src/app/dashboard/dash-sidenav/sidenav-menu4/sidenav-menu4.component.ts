@@ -1,4 +1,4 @@
-import {Component, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import {VERSION} from '@angular/material';
 import {NavItem} from './nav-item';
 import {NavService} from './nav.service';
@@ -13,26 +13,31 @@ export class SidenavMenu4Component implements AfterViewInit {
   @ViewChild('appDrawer', {static: false}) appDrawer: ElementRef;
   version = VERSION;
 
-  navItems2: NavItem[];
+  // navItems = new Array();
+    // navItems: NavItem[];
 
-  BuildSidenavMenu() {
-    this.navItems2.push(
+  ngOnInit(){
+    // this.BuildSidenavMenu(this.navItems);
+  }
+
+  BuildSidenavMenu(navItems) {
+    navItems.push(
       new NavItem('Government', 'group'),
       new NavItem('Non-Government', 'group')
       )
-    this.navItems2[0].children.push(
-      new NavItem('Austin', 'group'),
-      new NavItem('Traves County', 'group'),
-      new NavItem('State of Texas', 'group'),
-      new NavItem('United States', 'group')
-    )
-    this.navItems2[0][0].children.pus(
+    // navItems[0].children.push(
+    //   new NavItem('Austin', 'group'),
+    //   new NavItem('Traves County', 'group'),
+    //   new NavItem('State of Texas', 'group'),
+    //   new NavItem('United States', 'group')
+    // )
+    // navItems[0][0].children.pus(
 
-    )
-    this.navItems2[1].children.push(
-      new NavItem('Glendale HOA', 'group'),
-      new NavItem('Paws Rescue', 'group'),
-    )
+    // )
+    // navItems[1].children.push(
+    //   new NavItem('Glendale HOA', 'group'),
+    //   new NavItem('Paws Rescue', 'group'),
+    // )
 }
 
   navItems: NavItem[] = [
