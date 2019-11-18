@@ -23,7 +23,7 @@ export class MenuListItemComponent {
   @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
   @Input() item: NavItem;
   @Input() depth: number;
-  @Output() valueChange = new EventEmitter();
+  @Output() emitted = new EventEmitter();
 
   constructor(public navService: NavService,
               public router: Router) {
@@ -32,13 +32,34 @@ export class MenuListItemComponent {
     }
   }
 
+  // itemEmitted: string = '';
+  onEmitted(item: NavItem){
+    //this.itemEmitted = this.itemEmitted + ' : ' + item.displayName;
+    console.log("====OnEmitted(menulist):");
+    console.log('my item');
+    console.log(this.item);
+    console.log('received emitted item');
+    console.log(item);
+    this.emitted.emit(this.item); //////////////////////////////////////
+  }
+
+  navItems: Array<NavItem>;
+
   onItemSelected(item: NavItem) {
     if (!item.children || !item.children.length) {
       // this.router.navigate([item.route]);
-      this.router.navigate([{outlets: {sidenav: item.route}}]);
-      // this.valueChange.emit(item);
+      // this.router.navigate([{outlets: {sidenav: item.route}}]);
+
+      console.log("====OnItemSelected(before emit):");
+      console.log('my item');
+      console.log(this.item);
+      console.log('sending emitted item');
       console.log(item);
-      console.log("OnItemSelected");
+      // this.navItems.push(item);
+      this.emitted.emit(item); ///////////////////////////////
+      // this.emitted.emit(this.navItems);
+      console.log("OnItemSelected(after emit):");
+      console.log(item);
       this.navService.closeNav();
     }
     if (item.children && item.children.length) {

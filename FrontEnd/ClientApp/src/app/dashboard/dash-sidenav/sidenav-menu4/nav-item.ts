@@ -13,10 +13,14 @@ export class NavItem {
   route?: string;
   children?: NavItem[];
 
-  constructor(displayName, iconName) {
+  constructor(displayName, iconName, children?: NavItem[]) {
     this.displayName = displayName;
     this.iconName = iconName;
-    this.children = new Array();
+    if (children != undefined) {
+      this.children = children;
+    } else {
+      this.children = new Array();
+    }
     this.route = 'what-up-web';
   }
 }

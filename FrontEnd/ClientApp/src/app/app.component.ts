@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { NavItem } from './dashboard/dash-sidenav/sidenav-menu4/nav-item';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,18 @@ export class AppComponent {
 
  toggleCollapsed() {
    this.collapsed = !this.collapsed;
-
+  this.RunTestCode();
  }
 
+  navItems1 = new Array();
+  navItems2: NavItem[];
+
+  navItems: Array<NavItem> = [
+    new NavItem('Government', 'group'),
+    new NavItem('Non-Government', 'group')
+  ];
+
+  RunTestCode() {
+
+  }
 }

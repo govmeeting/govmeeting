@@ -13,34 +13,35 @@ export class SidenavMenu4Component implements AfterViewInit {
   @ViewChild('appDrawer', {static: false}) appDrawer: ElementRef;
   version = VERSION;
 
-  // navItems = new Array();
-    // navItems: NavItem[];
+    navItems: Array<NavItem> = [
+      new NavItem('Government', 'group',
+      [
+        new NavItem('Austin', 'group',
+        [
+          new NavItem('all', 'group'),
+          new NavItem('City Council', 'group'),
+          new NavItem('Board of Education', 'group'),
+          new NavItem('Planning Board', 'group')
+        ]),
+        new NavItem('Traves County', 'group'),
+        new NavItem('State of Texas', 'group'),
+        new NavItem('United States', 'group')
+      ]),
+      new NavItem('Non-Government', 'group',
+      [
+        new NavItem('Glendale HOA', 'group'),
+        new NavItem('Paws Rescue', 'group')
+      ])
+    ];
 
-  ngOnInit(){
-    // this.BuildSidenavMenu(this.navItems);
+  itemEmitted: string = '';
+  onEmitted(item: NavItem){
+    this.itemEmitted = this.itemEmitted + ' : ' + item.displayName;
+    console.log("====OnEmitted(sidenav): " + this.itemEmitted);
+    console.log(item);
   }
 
-  BuildSidenavMenu(navItems) {
-    navItems.push(
-      new NavItem('Government', 'group'),
-      new NavItem('Non-Government', 'group')
-      )
-    // navItems[0].children.push(
-    //   new NavItem('Austin', 'group'),
-    //   new NavItem('Traves County', 'group'),
-    //   new NavItem('State of Texas', 'group'),
-    //   new NavItem('United States', 'group')
-    // )
-    // navItems[0][0].children.pus(
-
-    // )
-    // navItems[1].children.push(
-    //   new NavItem('Glendale HOA', 'group'),
-    //   new NavItem('Paws Rescue', 'group'),
-    // )
-}
-
-  navItems: NavItem[] = [
+  navItems2: NavItem[] = [
     {
       displayName: 'Government',
       iconName: 'recent_actors',
@@ -176,13 +177,6 @@ export class SidenavMenu4Component implements AfterViewInit {
 }
 
 ];
-
-
-
-
-
-
-
 
   constructor(private navService: NavService) {
   }
