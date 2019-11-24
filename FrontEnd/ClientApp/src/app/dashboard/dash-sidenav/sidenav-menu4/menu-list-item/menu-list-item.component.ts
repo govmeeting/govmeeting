@@ -19,11 +19,13 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ]
 })
 export class MenuListItemComponent {
-  expanded: boolean;
+  expanded: boolean = false;
   @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
   @Input() item: NavItem;
   @Input() depth: number;
   @Output() emitted = new EventEmitter();
+
+  displayNameClass: string;
 
   constructor(public navService: NavService,
               public router: Router) {
@@ -32,21 +34,27 @@ export class MenuListItemComponent {
     }
   }
 
-  // itemEmitted: string = '';
-  onEmitted(item: NavItem){
-    //this.itemEmitted = this.itemEmitted + ' : ' + item.displayName;
+  ngOnInit() {
+    this.displayNameClass = 'depth' + this.depth;
+  }
+
+  onEmitted(items: Array<NavItem> ){
     console.log("====OnEmitted(menulist):");
     console.log('my item');
     console.log(this.item);
     console.log('received emitted item');
-    console.log(item);
-    this.emitted.emit(this.item); //////////////////////////////////////
-  }
+    console.log(items);
 
-  navItems: Array<NavItem>;
+    items.push(this.item);    // add my item to the array.
+    this.emitted.emit(items);
+}
+
+  navItems: Array<NavItem> = new Array<NavItem>();
 
   onItemSelected(item: NavItem) {
-    if (!item.children || !item.children.length) {
+    if (item.children && item.children.length) {
+      this.expanded = !this.expanded;
+    } else {
       // this.router.navigate([item.route]);
       // this.router.navigate([{outlets: {sidenav: item.route}}]);
 
@@ -55,15 +63,10 @@ export class MenuListItemComponent {
       console.log(this.item);
       console.log('sending emitted item');
       console.log(item);
-      // this.navItems.push(item);
-      this.emitted.emit(item); ///////////////////////////////
-      // this.emitted.emit(this.navItems);
-      console.log("OnItemSelected(after emit):");
-      console.log(item);
+
+      this.navItems.push(item);
+      this.emitted.emit(this.navItems);
       this.navService.closeNav();
-    }
-    if (item.children && item.children.length) {
-      this.expanded = !this.expanded;
     }
   }
 }

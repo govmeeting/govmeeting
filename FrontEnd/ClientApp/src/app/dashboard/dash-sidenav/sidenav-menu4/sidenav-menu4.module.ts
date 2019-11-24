@@ -14,7 +14,7 @@ import {PortalModule} from '@angular/cdk/portal';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
-import {
+import {                    // TODO Use material.ts instead or just modules needed
   MatAutocompleteModule,
   MatButtonModule,
   MatButtonToggleModule,
@@ -109,7 +109,7 @@ export class MaterialModule {}
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,          // TODO This is also imported in dashboard.module & app.module. Choose which we need.
     FlexLayoutModule,
     SidenavMenu4RoutingModule
   ],
