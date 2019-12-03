@@ -1,0 +1,34 @@
+<mat-checkbox formControlName="fixed">Fixed</mat-checkbox>
+
+<mat-form-field [style.padding]="'5px'" [style.width]="'100px'">
+  <input matInput type="number" formControlName="top" placeholder="Top gap">
+</mat-form-field>
+
+<mat-form-field  [style.padding]="'5px'" [style.width]="'100px'">
+  <input matInput type="number" formControlName="bottom" placeholder="Bottom gap">
+</mat-form-field>
+
+<button mat-button (click)="sidenav.toggle()">Toggle</button>
+
+<mat-form-field>
+    <mat-label>Sidenav mode</mat-label>
+    <!-- <mat-select #mode value="side" formControlName="mode"> -->
+        <mat-select #mode value="side">
+            <mat-option value="side">Side</mat-option>
+      <mat-option value="over">Over</mat-option>
+      <mat-option value="push">Push</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Has backdrop</mat-label>
+    <mat-select #hasBackdrop formControlName="hasBackdrop">
+      <mat-option>Unset</mat-option>
+      <mat-option [value]="true">True</mat-option>
+      <mat-option [value]="false">False</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- <p>Top: {{options.value.top}} Bottom: {{options.value.bottom}}
+     Mode: {{options.value.mode}} HasBackdrop: {{options.value.hasBackdrop}}
+  </p> -->

@@ -27,6 +27,9 @@ export class DashboardComponent {
 
   myob = {'(max-width: 1000px)': true, '(max-width: 1500px)': true, '(max-width: 2000px)': true}
 
+  setMode(value) {
+    this.options.value.mode = value;
+  }
 
   constructor(public navService: NavService, private breakpointObserver: BreakpointObserver, fb: FormBuilder) {
     this.options = fb.group({
