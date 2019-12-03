@@ -1,4 +1,52 @@
 
+.example-container {
+  position: absolute;
+  top: 100px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
+
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  //background: rgba(255, 0, 0, 0.5);
+  background: rgb(105, 144, 202);
+}
+
+.example-header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-size: 100% 100%;
+  // background-size: cover;
+  background-image: url("/assets/images/1024px-Austin_panorama_2018.png");
+}
+
+.example-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+// mat-option {
+//   width: 80px
+// }
+
+
+
+
+
+
+
 .main  { border: 3px dashed blue }
 
 @import "../../styles.scss";

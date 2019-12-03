@@ -1,24 +1,98 @@
-<div class="grid">
 
-   <gm-sidenav style="grid-area: sidenav;">
-      <gm-sidenav-header></gm-sidenav-header>
-       <gm-sidenav-menu4></gm-sidenav-menu4>
-    </gm-sidenav>
+<ng-container>
+
+  <mat-toolbar color="primary" class="mat-elevation-z1">
+      <button mat-icon-button id="menu" (click)="navService.openNav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Select</span>
+    </mat-toolbar>
+
+  <mat-sidenav-container class="example-container" [hasBackdrop]="hasBackdrop.value">
+
+    <mat-sidenav #sidenav [mode]="mode.value" opened class="example-sidenav"
+                  [fixedInViewport]="options.value.fixed"
+                  [fixedTopGap]="options.value.top"
+                  [fixedBottomGap]="options.value.bottom">
+      <!-- {{options.value.fixed ? 'Fixed' : 'Non-fixed'}} Sidenav -->
+      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+      <gm-sidenav-menu4></gm-sidenav-menu4>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content [formGroup]="options">
+
+      <mat-checkbox formControlName="fixed">Fixed</mat-checkbox>
+
+      <mat-form-field [style.padding]="'5px'" [style.width]="'100px'">
+        <input matInput type="number" formControlName="top" placeholder="Top gap">
+      </mat-form-field>
+
+      <mat-form-field  [style.padding]="'5px'" [style.width]="'100px'">
+        <input matInput type="number" formControlName="bottom" placeholder="Bottom gap">
+      </mat-form-field>
+
+      <button mat-button (click)="sidenav.toggle()">Toggle</button>
+
+      <mat-form-field>
+          <mat-label>Sidenav mode</mat-label>
+          <!-- <mat-select #mode value="side" formControlName="mode"> -->
+              <mat-select #mode value="side">
+                  <mat-option value="side">Side</mat-option>
+            <mat-option value="over">Over</mat-option>
+            <mat-option value="push">Push</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Has backdrop</mat-label>
+          <mat-select #hasBackdrop formControlName="hasBackdrop">
+            <mat-option>Unset</mat-option>
+            <mat-option [value]="true">True</mat-option>
+            <mat-option [value]="false">False</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- <p>Top: {{options.value.top}} Bottom: {{options.value.bottom}}
+           Mode: {{options.value.mode}} HasBackdrop: {{options.value.hasBackdrop}}
+        </p> -->
+
+        <router-outlet></router-outlet>
+        <!-- <gm-about-project></gm-about-project> -->
+        <!-- <gm-main-content></gm-main-content> -->
 
 
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+  <mat-toolbar class="example-footer">Footer</mat-toolbar>
+</ng-container>
+
+
+
+<!-- <gm-sidenav style="grid-area: sidenav;"> -->
+      <!-- <gm-sidenav-header></gm-sidenav-header> -->
+
+       <!-- <gm-sidenav-menu4></gm-sidenav-menu4> -->
+
+    <!-- </gm-sidenav> -->
+
+
+<!--
     <gm-main-header style="grid-area: header;">
       <gm-top-header >
         <gm-user-dropdown></gm-user-dropdown>
       </gm-top-header>
-
     </gm-main-header>
+
+<div class="grid">
 
   <gm-dash-main style="grid-area: main;">
 
-
     <div style="display: flex; flex-direction: column;">
 
-      <div fxLayoutAlign="start start"></div> <!-- ?????????? -->
+      <div fxLayoutAlign="start start"></div>
 
       <router-outlet></router-outlet>
 
@@ -29,6 +103,7 @@
   <gm-dash-footer style="grid-area: footer;"></gm-dash-footer>
 
 </div>
+-->
 
 <!-- partial -->
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>

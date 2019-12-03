@@ -1,12 +1,15 @@
-<app-top-nav class="fixed-topnav" fxHide.gt-xs></app-top-nav>
-<mat-sidenav-container>
-  <mat-sidenav #appDrawer mode="over" opened="false">
+<!-- <app-top-nav class="fixed-topnav" fxHide.gt-xs></app-top-nav> -->
+<!-- <!--<mat-sidenav-container>
+  <mat-sidenav #appDrawer mode="over" opened="false"> -->
+
     <mat-nav-list>
       <app-menu-list-item *ngFor="let item of navItems" [item]="item" (emitted)=onEmitted($event)></app-menu-list-item>
     </mat-nav-list>
-  </mat-sidenav>
-  <app-top-nav fxHide.xs></app-top-nav>
+  <!-- </mat-sidenav> -->
+  <!-- <app-top-nav fxHide.xs></app-top-nav> -->
   {{itemSelected}}
+
   <!-- <router-outlet name="sidenav"></router-outlet> -->
-</mat-sidenav-container>
-<span class="version-info">Current build: {{version.full ? version.full : version}}</span>
+
+<!-- </mat-sidenav-container>
+<span class="version-info">Current build: {{version.full ? version.full : version}}</span> -->

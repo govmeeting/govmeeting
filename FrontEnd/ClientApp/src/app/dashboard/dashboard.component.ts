@@ -4,6 +4,9 @@
 import { Component, HostListener } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
+import {NavService} from './dash-sidenav/sidenav-menu4/nav.service';
 
 @Component({
   selector: 'gm-dashboard',
@@ -20,9 +23,20 @@ export class DashboardComponent {
   public innerHeight;
   orientation:string;
 
+  options: FormGroup;
+
   myob = {'(max-width: 1000px)': true, '(max-width: 1500px)': true, '(max-width: 2000px)': true}
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+
+  constructor(public navService: NavService, private breakpointObserver: BreakpointObserver, fb: FormBuilder) {
+    this.options = fb.group({
+      bottom: 0,
+      fixed: false,
+      top: 0,
+      mode: 'side',
+      hasBackdrop: false
+    });
+  }
 
   ngOnInit() {
     this.results1$ = this.breakpointObserver.observe('(max-width: 350px)')

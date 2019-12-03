@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 
 // Modules - internal
@@ -64,6 +64,7 @@ import { MainContentComponent } from './dash-main/main-content/main-content.comp
 import { TestingModule } from '../testing/testing.module';
 // import { SidenavMenu4Component } from './dash-sidenav/sidenav-menu4/sidenav-menu4.component';
 import { SidenavMenu4Module } from './dash-sidenav/sidenav-menu4/sidenav-menu4.module';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -73,6 +74,7 @@ import { SidenavMenu4Module } from './dash-sidenav/sidenav-menu4/sidenav-menu4.m
     DemoMaterialModule,
     LayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     NgMaterialMultilevelMenuModule,
 
     ChatModule,
@@ -111,6 +113,7 @@ import { SidenavMenu4Module } from './dash-sidenav/sidenav-menu4/sidenav-menu4.m
     SidenavMenuComponent,
     SidenavMenu2Component,
     SidenavMenu3Component,
+    RegisterComponent,
     // SidenavMenu4Component
   ],
   exports: [

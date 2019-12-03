@@ -11,7 +11,8 @@ import { string } from '@amcharts/amcharts4/core';
   encapsulation: ViewEncapsulation.None
 })
 export class SidenavMenu4Component implements AfterViewInit {
-  @ViewChild('appDrawer', {static: false}) appDrawer: ElementRef;
+  @ViewChild('appDrawer', {static: false})
+  appDrawer: ElementRef;
   version = VERSION;
 
   itemSelected: string = '';
@@ -21,6 +22,19 @@ export class SidenavMenu4Component implements AfterViewInit {
 
   ngAfterViewInit() {
     this.navService.appDrawer = this.appDrawer;
+  }
+
+  onEmitted(items: Array<NavItem>){
+    var selected: string = '';
+    console.log("====OnEmitted(sidenav): ");
+    console.log(items);
+    for(var i = (items.length -1); i >= 0; i--)
+    {
+      console.log(items[i]);
+      selected = selected + items[i].displayName + ((i !=0) ? ' ; ' : '');
+    }
+    console.log("itemSelected: " + selected);
+    this.itemSelected = selected;
   }
 
     navItems: Array<NavItem> = [
@@ -63,18 +77,5 @@ export class SidenavMenu4Component implements AfterViewInit {
         new NavItem('Paws Rescue', 'group')
       ])
     ];
-
-  onEmitted(items: Array<NavItem>){
-    var selected: string = '';
-    console.log("====OnEmitted(sidenav): ");
-    console.log(items);
-    for(var i = (items.length -1); i >= 0; i--)
-    {
-      console.log(items[i]);
-      selected = selected + items[i].displayName + ((i !=0) ? ' ; ' : '');
-    }
-    console.log("itemSelected: " + selected);
-    this.itemSelected = selected;
-  }
 
 }

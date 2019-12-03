@@ -1,12 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './material';
 import { FlexLayoutModule } from "@angular/flex-layout";
+
+// TODO - eliminate duplicate imports
+// I was getting errors when ReactiveFormsModule was not in dashboard.module.ts
+// When do I need this both here and in other module?.
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -27,6 +32,9 @@ import { FixasrServiceStub } from './fixasr/fixasr.service-stub';
 import { AppData } from './appdata';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AboutProjectModule } from './about-project/about-project.module';
+import { TestmatComponent } from './testmat/testmat.component';
+
+// import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 // Is the Asp.Net server running
@@ -34,12 +42,15 @@ const _isAspServerRunning = true;
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TestmatComponent
+    // DashboardComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     //NgbModule.forRoot(),
     NgbModule,
