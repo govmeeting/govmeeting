@@ -1,12 +1,24 @@
 
 <ng-container>
 
-  <mat-toolbar color="primary" class="mat-elevation-z1">
+    <!-- <gm-top-header style="grid-area: header;">
+        <gm-user-dropdown></gm-user-dropdown>
+    </gm-top-header> -->
+
+    <mat-toolbar class="example-header">
+        <button mat-icon-button class="example-header-button">
+            <!-- <mat-icon fontSet="material-icons-outlined">menu_outline</mat-icon> -->
+            <mat-icon>menu</mat-icon>
+        </button>
+        <gm-user-dropdown></gm-user-dropdown>
+    </mat-toolbar>
+
+        <!-- <mat-toolbar color="primary" class="mat-elevation-z1">
       <button mat-icon-button id="menu" (click)="navService.openNav()">
         <mat-icon>menu</mat-icon>
       </button>
       <span>Select</span>
-    </mat-toolbar>
+    </mat-toolbar> -->
 
   <mat-sidenav-container class="example-container" [hasBackdrop]="hasBackdrop.value">
 
