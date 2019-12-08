@@ -1,13 +1,12 @@
 
-<ng-container>
+<ng-container [class.example-is-mobile]="mobileQuery.matches">
 
     <!-- <gm-top-header style="grid-area: header;">
         <gm-user-dropdown></gm-user-dropdown>
     </gm-top-header> -->
 
-    <mat-toolbar class="example-header">
-        <button mat-icon-button class="example-header-button" (click)="sidenav.toggle()">
-            <!-- <mat-icon fontSet="material-icons-outlined">menu_outline</mat-icon> -->
+    <mat-toolbar class="main-header">
+        <button mat-icon-button class="main-header-button" (click)="sidenav.toggle()">
             <mat-icon>menu</mat-icon>
         </button>
         <gm-user-dropdown></gm-user-dropdown>
@@ -15,33 +14,35 @@
 
   <mat-sidenav-container class="example-container" [hasBackdrop]="options.value.hasBackdrop">
 
-    <mat-sidenav #sidenav [mode]="options.value.mode" opened class="example-sidenav"
-                  [fixedInViewport]="options.value.fixed"
-                  [fixedTopGap]="options.value.top"
-                  [fixedBottomGap]="options.value.bottom">
+    <mat-sidenav class="example-sidenav" #sidenav
+      [mode]="options.value.mode"
+      [opened]="!mobileQuery.matches"
+      [fixedInViewport]="options.value.fixed"
+      [fixedTopGap]="options.value.top"
+      [fixedBottomGap]="options.value.bottom">
 
-      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-      <gm-sidenav-menu4></gm-sidenav-menu4>
+      <div class="sidenav-header">
+        <button class="sidenav-close" mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <div class="div1">div1</div>
+      <div [class.ismatches]="mobileQuery.matches"> ismatches </div>
+
+      <!-- <button mat-icon-button class="example-sidenav-button" (click)="sidenav.toggle()">
+          <mat-icon>close</mat-icon>
+      </button>
+
+      <gm-sidenav-menu4></gm-sidenav-menu4> -->
 
     </mat-sidenav>
 
     <mat-sidenav-content [formGroup]="options">
 
-        <!-- <mat-form-field>
-            <mat-label>Sidenav mode</mat-label>
-                <mat-select #mode value="side" [(value)]="options.value.mode">
-                    <mat-option value="side">Side</mat-option>
-              <mat-option value="over">Over</mat-option>
-              <mat-option value="push">Push</mat-option>
-            </mat-select>
-          </mat-form-field> -->
-
-      <!-- dashboard.debug-sidenav.html -->
-
         <router-outlet></router-outlet>
         <!-- <gm-about-project></gm-about-project> -->
         <!-- <gm-main-content></gm-main-content> -->
-
 
     </mat-sidenav-content>
 

@@ -16,9 +16,44 @@
   width: 300px;
   //background: rgba(255, 0, 0, 0.5);
   background: rgb(105, 144, 202);
+
+  &-button {
+    position: relative;
+    background-color: $color-mischka;
+    border-radius: 50%;
+    right: 0px;
+  }
+
+}
+// .example-header {
+//   border: 3px solid red;
+
+// }
+
+.example-is-mobile .main-header {
+  // position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  // background: green;
+  // z-index: 2;
+  border: 3px solid red;
 }
 
-.example-header {
+// div {
+//   border: 3px solid #73AD21;
+// }
+
+.sidenav-close {
+  border: 3px solid #73AD21;
+  position: relative;
+  right: 0;
+}
+.ismatches {
+  border: 3px solid #73AD21;
+  // position: relative;
+  // right: 0;
+}
+
+.main-header {
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -55,47 +90,47 @@
 
 
 
-.main  { border: 3px dashed blue }
+// .main  { border: 3px dashed blue }
 
-@import "../../styles.scss";
+// @import "../../styles.scss";
 
-$height-header: 150px;
-$height-footer: 50px;
-$width-sidenav: 240px;
+// $height-header: 150px;
+// $height-footer: 50px;
+// $width-sidenav: 240px;
 
 ///////////////////////// GRID ////////////////////////////////////
 
-//  Dashboard layout on mobile
-.grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: 100%; // Charts responsiveness won't work with fr units
-  grid-template-rows: $height-header 1fr $height-footer;
-  grid-template-areas:
-    'header'
-    'main'
-    'footer';
-  height: 100vh;
-  // overflow-x: hidden; // Prevent overflow scroll from hidden sidenav  (needed?)
+// //  Dashboard layout on mobile
+// .grid {
+//   position: relative;
+//   display: grid;
+//   grid-template-columns: 100%; // Charts responsiveness won't work with fr units
+//   grid-template-rows: $height-header 1fr $height-footer;
+//   grid-template-areas:
+//     'header'
+//     'main'
+//     'footer';
+//   height: 100vh;
+//   // overflow-x: hidden; // Prevent overflow scroll from hidden sidenav  (needed?)
 
-  // &--noscroll {        // (needed?)
-  //   overflow-y: hidden;
-  // }
-}
+//   // &--noscroll {        // (needed?)
+//   //   overflow-y: hidden;
+//   // }
+// }
 
-// Show sidenav on medium screens and above
-@media only screen and (min-width: 46.875em) {
-  .grid {
-    display: grid;
-    grid-template-columns: $width-sidenav calc(100% - 240px); // Charts responsiveness won't work with fr units
-    grid-template-rows: $height-header 1fr $height-footer;
-    grid-template-areas:
-      'sidenav header'
-      'sidenav main'
-      'sidenav footer';
-    height: 100vh;
-  }
-}
+// // Show sidenav on medium screens and above
+// @media only screen and (min-width: 46.875em) {
+//   .grid {
+//     display: grid;
+//     grid-template-columns: $width-sidenav calc(100% - 240px); // Charts responsiveness won't work with fr units
+//     grid-template-rows: $height-header 1fr $height-footer;
+//     grid-template-areas:
+//       'sidenav header'
+//       'sidenav main'
+//       'sidenav footer';
+//     height: 100vh;
+//   }
+// }
 
 ///////////////////////////////////////////////////////////////////
 
