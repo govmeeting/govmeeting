@@ -1,4 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { number } from '@amcharts/amcharts4/core';
+
+// interface IStyles {
+//   height: string;
+//   zindex: number;
+// }
 
 @Component({
   selector: 'gm-small-card',
@@ -18,8 +24,10 @@ export class SmallCardComponent implements OnInit {
   collapsed: boolean = true;
   // bcolor: string = "lightgreen";
   // zIndex: number = 0;
+  x: number;
 
   currentStyles: any;
+  // currentStyles = {'height': null, 'z-index': 2};
 
   toggleCollapsed() {
     this.collapsed = !this.collapsed;
@@ -29,6 +37,7 @@ export class SmallCardComponent implements OnInit {
       'height': this.collapsed  ? '85px' : null,
       'z-index': this.collapsed ? '0'   : '2'
    };
+   this.x = 4/2;
     //this.overflow = (this.overflow == 'hidden') ? 'visible' : 'hidden';
   }
 

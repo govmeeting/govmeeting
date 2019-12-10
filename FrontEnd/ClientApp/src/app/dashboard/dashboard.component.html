@@ -1,20 +1,20 @@
 
-<ng-container [class.example-is-mobile]="mobileQuery.matches">
+<ng-container>
+  <!-- <ng-container [class.is-mobile]="mobileQuery.matches"> -->
 
-    <!-- <gm-top-header style="grid-area: header;">
-        <gm-user-dropdown></gm-user-dropdown>
-    </gm-top-header> -->
 
-    <mat-toolbar class="main-header">
+    <mat-toolbar class="main-header" [class.is-mobile]="mobileQuery.matches">
         <button mat-icon-button class="main-header-button" (click)="sidenav.toggle()">
+          <!-- <button mat-icon-button class="main-header-button"> -->
             <mat-icon>menu</mat-icon>
         </button>
         <gm-user-dropdown></gm-user-dropdown>
     </mat-toolbar>
 
-  <mat-sidenav-container class="example-container" [hasBackdrop]="options.value.hasBackdrop">
+  <mat-sidenav-container class="sidenav-container"
+    [hasBackdrop]="options.value.hasBackdrop">
 
-    <mat-sidenav class="example-sidenav" #sidenav
+    <mat-sidenav class="sidenav" #sidenav
       [mode]="options.value.mode"
       [opened]="!mobileQuery.matches"
       [fixedInViewport]="options.value.fixed"
@@ -27,20 +27,21 @@
         </button>
       </div>
 
-      <div class="div1">div1</div>
-      <div [class.ismatches]="mobileQuery.matches"> ismatches </div>
+      <!-- <div class="div1">div1
+        <div class="div1a">div1a</div>
+      </div>
+      <div class="div2">div2</div> -->
 
-      <!-- <button mat-icon-button class="example-sidenav-button" (click)="sidenav.toggle()">
-          <mat-icon>close</mat-icon>
-      </button>
+      <!-- <div [class.ismatches]="mobileQuery.matches"> ismatches </div> -->
 
-      <gm-sidenav-menu4></gm-sidenav-menu4> -->
+      <gm-sidenav-menu4></gm-sidenav-menu4>
 
     </mat-sidenav>
 
     <mat-sidenav-content [formGroup]="options">
 
         <router-outlet></router-outlet>
+
         <!-- <gm-about-project></gm-about-project> -->
         <!-- <gm-main-content></gm-main-content> -->
 
@@ -48,8 +49,10 @@
 
   </mat-sidenav-container>
 
-  <mat-toolbar class="example-footer">Footer</mat-toolbar>
+  <mat-toolbar class="main-footer">Footer</mat-toolbar>
 </ng-container>
+
+
 
 
 
@@ -59,7 +62,6 @@
        <!-- <gm-sidenav-menu4></gm-sidenav-menu4> -->
 
     <!-- </gm-sidenav> -->
-
 
 <!--
     <gm-main-header style="grid-area: header;">

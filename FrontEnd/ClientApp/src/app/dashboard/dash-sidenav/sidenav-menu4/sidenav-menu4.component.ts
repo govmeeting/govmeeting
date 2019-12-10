@@ -38,6 +38,9 @@ export class SidenavMenu4Component implements AfterViewInit {
   }
 
     navItems: Array<NavItem> = [
+      new NavItem('Select', 'group',
+
+    [
       new NavItem('Government', 'group',
       [
         new NavItem('Austin', 'location_city',
@@ -76,6 +79,7 @@ export class SidenavMenu4Component implements AfterViewInit {
         ]),
         new NavItem('Paws Rescue', 'group')
       ])
-    ];
+    ])
+  ];
 
 }
