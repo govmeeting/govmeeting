@@ -3,13 +3,13 @@
   <mat-sidenav #appDrawer mode="over" opened="false"> -->
 
     <mat-nav-list>
-      <app-menu-list-item *ngFor="let item of navItems" [item]="item" (emitted)=onEmitted($event)></app-menu-list-item>
+      <app-menu-list-item *ngFor="let item of navItems" [item]="item" (finalSelection)=OnFinalSelection($event)></app-menu-list-item>
     </mat-nav-list>
   <!-- </mat-sidenav> -->
   <!-- <app-top-nav fxHide.xs></app-top-nav> -->
   {{itemSelected}}
 
-  <!-- <router-outlet name="sidenav"></router-outlet> -->
+  <router-outlet name="sidenav"></router-outlet>
 
 <!-- </mat-sidenav-container>
 <span class="version-info">Current build: {{version.full ? version.full : version}}</span> -->

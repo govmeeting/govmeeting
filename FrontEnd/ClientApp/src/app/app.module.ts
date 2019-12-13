@@ -9,7 +9,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 
 // TODO - eliminate duplicate imports
 // I was getting errors when ReactiveFormsModule was not in dashboard.module.ts
-// When do I need this both here and in other module?.
+// When do I need this both here and in other modules?.
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 

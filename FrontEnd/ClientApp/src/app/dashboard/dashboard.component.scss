@@ -5,12 +5,14 @@
 .div1  {
   border: 3px solid blue;
 }
-
 .div1 .div1a {
   border: 3px solid red;
 }
-
-
+.ismatches {
+  border: 3px solid #73AD21;
+  // position: relative;
+  // right: 0;
+}
 
 .sidenav-container {
   position: absolute;
@@ -42,12 +44,6 @@
   right: 0;
 }
 
-.ismatches {
-  border: 3px solid #73AD21;
-  // position: relative;
-  // right: 0;
-}
-
 .main-header {
   position: fixed;
   display: flex;
@@ -59,7 +55,7 @@
   height: 100px;
   background-size: 100% 100%;
   // background-size: cover;
-  // During development, this image is coming from:
+  // During development, this image comes from:
   //     C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp\src\assets\images
   // During production, it comes from:
   //     C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp\dist\assets\images

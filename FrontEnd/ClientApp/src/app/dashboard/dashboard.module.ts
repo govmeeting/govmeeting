@@ -46,8 +46,6 @@ import { DashFooterComponent } from './dash-footer/dash-footer.component';
 // Sidenav
 import { SidenavHeaderComponent } from './dash-sidenav/sidenav-header/sidenav-header.component';
 import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
-import { SidenavMenuComponent } from './dash-sidenav/sidenav-menu/sidenav-menu.component';
-import { SidenavMenu2Component } from './dash-sidenav/sidenav-menu2/sidenav-menu2.component'
 import { SidenavMenu3Component } from './dash-sidenav/sidenav-menu3/sidenav-menu3.component'
 
 //////////////////////////////////////// Services /////////////////////////////////////
@@ -110,8 +108,6 @@ import { RegisterComponent } from './register/register.component';
     SidenavHeaderComponent,
     SidenavComponent,
     MainContentComponent,
-    SidenavMenuComponent,
-    SidenavMenu2Component,
     SidenavMenu3Component,
     RegisterComponent,
     // SidenavMenu4Component
@@ -125,7 +121,6 @@ import { RegisterComponent } from './register/register.component';
     TopHeaderComponent,
     DashSearchComponent,
     UserDropdownComponent,
-    SidenavMenu2Component,
     SidenavHeaderComponent,
     SidenavComponent,
     LargeCardComponent,

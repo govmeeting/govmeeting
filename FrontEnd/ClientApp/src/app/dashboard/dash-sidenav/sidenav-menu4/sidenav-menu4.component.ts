@@ -24,7 +24,7 @@ export class SidenavMenu4Component implements AfterViewInit {
     this.navService.appDrawer = this.appDrawer;
   }
 
-  onEmitted(items: Array<NavItem>){
+  OnFinalSelection(items: Array<NavItem>){
     var selected: string = '';
     console.log("====OnEmitted(sidenav): ");
     console.log(items);
@@ -45,16 +45,16 @@ export class SidenavMenu4Component implements AfterViewInit {
       [
         new NavItem('Austin', 'location_city',
         [
+          new NavItem('All Departments', 'group', 'what-up-web'),
           new NavItem('City Council', 'group'),
           new NavItem('Board of Education', 'school'),
-          new NavItem('Planning Board', 'group'),
-          new NavItem('All Departments', 'group')
+          new NavItem('Planning Board', 'group')
         ]),
         new NavItem('Traves County', 'group',
         [
+          new NavItem('All Departments', 'group'),
           new NavItem('Commissioners', 'group'),
-          new NavItem('Transportation', 'group'),
-          new NavItem('All Departments', 'group')
+          new NavItem('Transportation', 'group')
         ]),
         new NavItem('State of Texas', 'star',
         [
@@ -64,9 +64,9 @@ export class SidenavMenu4Component implements AfterViewInit {
         ]),
         new NavItem('United States', 'flag',
         [
+          new NavItem('Both Branches', 'group'),
           new NavItem('Senate', 'group'),
-          new NavItem('House of Representatives', 'group'),
-          new NavItem('Both Branches', 'group')
+          new NavItem('House of Representatives', 'group')
         ])
       ]),
       new NavItem('Non-Government', 'group',

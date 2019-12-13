@@ -37,7 +37,7 @@ export class SmallCardComponent implements OnInit {
       'height': this.collapsed  ? '85px' : null,
       'z-index': this.collapsed ? '0'   : '2'
    };
-   this.x = 4/2;
+   this.x = 4/2; // for setting breakpoint
     //this.overflow = (this.overflow == 'hidden') ? 'visible' : 'hidden';
   }
 
