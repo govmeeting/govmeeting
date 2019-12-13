@@ -45,39 +45,34 @@ export class SidenavMenu4Component implements AfterViewInit {
       [
         new NavItem('Austin', 'location_city',
         [
-          new NavItem('All Departments', 'group', 'what-up-web'),
-          new NavItem('City Council', 'group'),
-          new NavItem('Board of Education', 'school'),
-          new NavItem('Planning Board', 'group')
+          new NavItem('All Departments', 'group', 'info-city'),
+          new NavItem('City Council', 'group', 'info-city'),
+          new NavItem('Board of Education', 'school', 'info-city'),
+          new NavItem('Planning Board', 'group', 'info-city')
         ]),
         new NavItem('Traves County', 'group',
         [
-          new NavItem('All Departments', 'group'),
-          new NavItem('Commissioners', 'group'),
-          new NavItem('Transportation', 'group')
+          new NavItem('All Departments', 'group', 'info-county'),
+          new NavItem('Commissioners', 'group', 'info-county'),
+          new NavItem('Transportation', 'group', 'info-county')
         ]),
         new NavItem('State of Texas', 'star',
         [
-          new NavItem('Senate', 'group'),
-          new NavItem('House of Representatives', 'group'),
-          new NavItem('bBoth Branches', 'group')
+          new NavItem('Senate & House', 'group', 'info-state'),
+          new NavItem('Senate', 'group', 'info-state'),
+          new NavItem('House of Representatives', 'group', 'info-state')
         ]),
         new NavItem('United States', 'flag',
         [
-          new NavItem('Both Branches', 'group'),
-          new NavItem('Senate', 'group'),
-          new NavItem('House of Representatives', 'group')
+          new NavItem('Senate & House', 'group', 'info-federal'),
+          new NavItem('Senate', 'group', 'info-federal'),
+          new NavItem('House of Representatives', 'group', 'info-federal')
         ])
       ]),
       new NavItem('Non-Government', 'group',
       [
-        new NavItem('Glendale HOA', 'group',
-        [
-          new NavItem('Governing Board', 'group'),
-          new NavItem('Covenance Committee', 'group'),
-          new NavItem('Both', 'group')
-        ]),
-        new NavItem('Paws Rescue', 'group')
+        new NavItem('Glendale HOA', 'group', 'info-HOA'),
+        new NavItem('Paws Rescue', 'group', 'info-non-profit')
       ])
     ])
   ];

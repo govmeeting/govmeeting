@@ -50,10 +50,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MenuListItemComponent} from './menu-list-item/menu-list-item.component';
 import {SidenavMenu4Component} from './sidenav-menu4.component';
 import {SidenavMenu4RoutingModule} from './sidenav-menu4-routing.module';
-import { FirstComponent } from './first/first.component';
-import { SecondComponent } from './second/second.component';
-import { ThirdComponent } from './third/third.component';
-import { FourthComponent } from './fourth/fourth.component';
+import { InfoCityComponent } from './info-city/info-city.component';
+import { InfoCountyComponent } from './info-county/info-county.component';
+import { InfoStateComponent } from './info-state/info-state.component';
+import { InfoFederalComponent } from './info-federal/info-federal.component';
 import { NavService } from './nav.service';
 import { TopNavComponent } from './top-nav/top-nav.component';
 
@@ -120,10 +120,10 @@ export class MaterialModule {}
   declarations: [
     SidenavMenu4Component,
     MenuListItemComponent,
-    FirstComponent,
-    SecondComponent,
-    ThirdComponent,
-    FourthComponent,
+    InfoCityComponent,
+    InfoCountyComponent,
+    InfoStateComponent,
+    InfoFederalComponent,
     TopNavComponent
   ],
   exports: [

@@ -2,20 +2,12 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-first',
-  templateUrl: './first.component.html',
-  styleUrls: ['./first.component.scss']
+  selector: 'app-info-federal',
+  templateUrl: './info-federal.component.html',
+  styleUrls: ['./info-federal.component.scss']
 })
-// export class FirstComponent implements OnInit {
 
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
-export class FirstComponent implements OnInit, OnDestroy {
+export class InfoFederalComponent implements OnInit, OnDestroy {
   id: string;
   location: string;
   private sub: any;

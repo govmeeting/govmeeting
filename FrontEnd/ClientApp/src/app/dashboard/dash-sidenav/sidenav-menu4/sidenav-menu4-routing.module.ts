@@ -1,16 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {FirstComponent} from './first/first.component';
-import {SecondComponent} from './second/second.component';
-import {ThirdComponent} from './third/third.component';
-import {FourthComponent} from './fourth/fourth.component';
+import {InfoCityComponent} from './info-city/info-city.component';
+import {InfoCountyComponent} from './info-county/info-county.component';
+import {InfoStateComponent} from './info-state/info-state.component';
+import {InfoFederalComponent} from './info-federal/info-federal.component';
 
 const routes: Routes = [
-  {path: '', component: FirstComponent, pathMatch: 'full'},
-  {path: 'material-design/:id/:location', component: FirstComponent, outlet:"sidenav"},
-  {path: 'what-up-web', component: SecondComponent, outlet:"sidenav"},
-  {path: 'my-ally-cli', component: ThirdComponent, outlet:"sidenav"},
-  {path: 'become-angular-tailer', component: FourthComponent, outlet:"sidenav"}
+  {path: '', component: InfoFederalComponent, pathMatch: 'full'},
+  {path: 'info-federal/:id/:location', component: InfoFederalComponent, outlet:"sidenav"},
+  {path: 'info-city', component: InfoCityComponent, outlet:"sidenav"},
+  {path: 'info-county', component: InfoCountyComponent, outlet:"sidenav"},
+  {path: 'info-state', component: InfoStateComponent, outlet:"sidenav"}
 ];
 
 @NgModule({
