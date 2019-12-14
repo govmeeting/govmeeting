@@ -37,14 +37,17 @@ export class MenuListItemComponent {
 
   ngOnInit() {
     this.displayNameClass = 'depth' + this.depth;
+    console.log(this.item.displayName),
+    console.log("route=" + this.item.route);
+    console.log(this.router.isActive(this.item.route, true))
   }
 
   OnFinalSelection(items: Array<NavItem> ){
-    console.log("====OnEmitted(menulist):");
-    console.log('my item');
-    console.log(this.item);
-    console.log('received emitted item');
-    console.log(items);
+    // console.log("====OnEmitted(menulist):");
+    // console.log('my item');
+    // console.log(this.item);
+    // console.log('received emitted item');
+    // console.log(items);
 
     // Some descendent was selected. Append myself to the
     // item array and send it to my parent.
@@ -58,16 +61,17 @@ export class MenuListItemComponent {
     if (item.children && item.children.length) {
       this.expanded = !this.expanded;
 
-    // Otherwise, the user has made the final selection. Report it.
+    // Otherwise, the user has made the final selection.
     } else {
+      // Display info on selection in sidenav
       this.router.navigate([item.route]);
       this.router.navigate([{outlets: {sidenav: item.route}}]);
 
-      console.log("====OnItemSelected(before emit):");
-      console.log('my item');
-      console.log(this.item);
-      console.log('sending emitted item');
-      console.log(item);
+      // console.log("====OnItemSelected(before emit):");
+      // console.log('my item');
+      // console.log(this.item);
+      // console.log('sending emitted item');
+      // console.log(item);
 
       // Put myself onto the navItems array.
       // Since I was just selected, I am the only entry so far
@@ -78,8 +82,8 @@ export class MenuListItemComponent {
       // My parent will append herself and send the array to her parent.
       this.finalSelection.emit(this.navItems);
 
-      // Close the mat-drawer ???
-      this.navService.closeNav();
+      // Close the sidenav
+      // this.navService.closeNav();
     }
   }
 }

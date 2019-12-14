@@ -2,6 +2,7 @@
 //  ng generate @angular/material:material-dashboard --name=GMDashboard
 
 import { Component, HostListener } from '@angular/core';
+import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';
 import {FormBuilder, FormGroup} from '@angular/forms';
@@ -18,7 +19,9 @@ import {NavService} from './dash-sidenav/sidenav-menu4/nav.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements AfterViewInit {
+  @ViewChild('sidenav', {static: false}) sidenav: ElementRef;
+
   // isHandset = false;
   // isLarge = false;
   // viewsize: number = 1;
@@ -59,6 +62,10 @@ export class DashboardComponent {
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
 
+  }
+
+  ngAfterViewInit() {
+    this.navService.appDrawer = this.sidenav;
   }
 
   ngOnDestroy(): void {
