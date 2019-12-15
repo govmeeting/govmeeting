@@ -61,7 +61,7 @@ import { MainContentComponent } from './dash-main/main-content/main-content.comp
 
 import { TestingModule } from '../testing/testing.module';
 // import { SidenavMenu4Component } from './dash-sidenav/sidenav-menu4/sidenav-menu4.component';
-import { SidenavMenu4Module } from './dash-sidenav/sidenav-menu4/sidenav-menu4.module';
+import { SidenavMenuModule } from './dash-sidenav/sidenav-menu/sidenav-menu.module';
 import { RegisterComponent } from './register/register.component';
 
 @NgModule({
@@ -80,7 +80,7 @@ import { RegisterComponent } from './register/register.component';
     AboutProjectModule,
     // AmchartsModule,
     TestingModule,
-    SidenavMenu4Module,
+    SidenavMenuModule,
     ],
   declarations: [
     DashboardComponent,

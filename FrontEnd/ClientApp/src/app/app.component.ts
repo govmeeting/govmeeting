@@ -1,5 +1,5 @@
 import { Component, VERSION } from '@angular/core';
-import { NavItem } from './dashboard/dash-sidenav/sidenav-menu4/nav-item';
+// import { NavItem } from './dashboard/dash-sidenav/sidenav-menu/nav-item';
 
 @Component({
   selector: 'app-root',
@@ -15,20 +15,20 @@ export class AppComponent {
     this.version = VERSION.full;
   }
 
- toggleCollapsed() {
-   this.collapsed = !this.collapsed;
-  this.RunTestCode();
- }
+//  toggleCollapsed() {
+//    this.collapsed = !this.collapsed;
+//   this.RunTestCode();
+//  }
 
-  navItems1 = new Array();
-  navItems2: NavItem[];
+//   navItems1 = new Array();
+//   navItems2: NavItem[];
 
-  navItems: Array<NavItem> = [
-    new NavItem('Government', 'group'),
-    new NavItem('Non-Government', 'group')
-  ];
+//   navItems: Array<NavItem> = [
+//     new NavItem('Government', 'group'),
+//     new NavItem('Non-Government', 'group')
+//   ];
 
-  RunTestCode() {
+//   RunTestCode() {
 
-  }
+//   }
 }

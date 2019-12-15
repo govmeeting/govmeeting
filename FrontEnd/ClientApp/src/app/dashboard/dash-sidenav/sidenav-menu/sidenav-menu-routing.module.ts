@@ -1,13 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {InfoCityComponent} from './info-city/info-city.component';
-import {InfoCountyComponent} from './info-county/info-county.component';
-import {InfoStateComponent} from './info-state/info-state.component';
-import {InfoFederalComponent} from './info-federal/info-federal.component';
+import {InfoCityComponent} from '../sidenav-info/info-city/info-city.component';
+import {InfoCountyComponent} from '../sidenav-info/info-county/info-county.component';
+import {InfoStateComponent} from '../sidenav-info/info-state/info-state.component';
+import {InfoFederalComponent} from '../sidenav-info/info-federal/info-federal.component';
 
 const routes: Routes = [
   {path: '', component: InfoFederalComponent, pathMatch: 'full'},
-  {path: 'info-federal/:id/:location', component: InfoFederalComponent, outlet:"sidenav"},
+  // {path: 'info-federal/:id/:location', component: InfoFederalComponent, outlet:"sidenav"},
+  {path: 'info-federal', component: InfoFederalComponent, outlet:"sidenav"},
   {path: 'info-city', component: InfoCityComponent, outlet:"sidenav"},
   {path: 'info-county', component: InfoCountyComponent, outlet:"sidenav"},
   {path: 'info-state', component: InfoStateComponent, outlet:"sidenav"}
@@ -18,7 +19,7 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: []
 })
-export class SidenavMenu4RoutingModule {
+export class SidenavMenuRoutingModule {
 }
 
 

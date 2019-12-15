@@ -5,12 +5,12 @@ import {NavService} from './nav.service';
 import { string } from '@amcharts/amcharts4/core';
 
 @Component({
-  selector: 'gm-sidenav-menu4',
-  templateUrl: 'sidenav-menu4.component.html',
-  styleUrls: ['sidenav-menu4.component.scss'],
+  selector: 'gm-sidenav-menu',
+  templateUrl: 'sidenav-menu.component.html',
+  styleUrls: ['sidenav-menu.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class SidenavMenu4Component implements AfterViewInit {
+export class SidenavMenuComponent implements AfterViewInit {
   @ViewChild('appDrawer', {static: false})
   appDrawer: ElementRef;
   version = VERSION;

@@ -48,12 +48,12 @@ import { DemoMaterialModule } from '../../../material';
 // } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MenuListItemComponent} from './menu-list-item/menu-list-item.component';
-import {SidenavMenu4Component} from './sidenav-menu4.component';
-import {SidenavMenu4RoutingModule} from './sidenav-menu4-routing.module';
-import { InfoCityComponent } from './info-city/info-city.component';
-import { InfoCountyComponent } from './info-county/info-county.component';
-import { InfoStateComponent } from './info-state/info-state.component';
-import { InfoFederalComponent } from './info-federal/info-federal.component';
+import {SidenavMenuComponent} from './sidenav-menu.component';
+import {SidenavMenuRoutingModule} from './sidenav-menu-routing.module';
+import { InfoCityComponent } from '../sidenav-info/info-city/info-city.component';
+import { InfoCountyComponent } from '../sidenav-info/info-county/info-county.component';
+import { InfoStateComponent } from '../sidenav-info/info-state/info-state.component';
+import { InfoFederalComponent } from '../sidenav-info/info-federal/info-federal.component';
 import { NavService } from './nav.service';
 import { TopNavComponent } from './top-nav/top-nav.component';
 
@@ -115,10 +115,10 @@ export class MaterialModule {}
     ReactiveFormsModule,
     BrowserAnimationsModule,          // TODO This is also imported in dashboard.module & app.module. Choose which we need.
     FlexLayoutModule,
-    SidenavMenu4RoutingModule
+    SidenavMenuRoutingModule
   ],
   declarations: [
-    SidenavMenu4Component,
+    SidenavMenuComponent,
     MenuListItemComponent,
     InfoCityComponent,
     InfoCountyComponent,
@@ -127,9 +127,9 @@ export class MaterialModule {}
     TopNavComponent
   ],
   exports: [
-    SidenavMenu4Component
+    SidenavMenuComponent
   ],
   // bootstrap: [AppComponent],
   providers: [NavService]
 })
-export class SidenavMenu4Module {}
+export class SidenavMenuModule {}
