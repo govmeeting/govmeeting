@@ -65,7 +65,7 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.navService.appDrawer = this.sidenav;
+    this.navService.sidenav = this.sidenav;
   }
 
   ngOnDestroy(): void {

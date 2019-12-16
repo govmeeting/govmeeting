@@ -19,9 +19,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ]
 })
 export class MenuListItemComponent {
-  expanded: boolean = false;
-  @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
+  // expandedx: boolean = false;
   @Input() item: NavItem;
+  // @HostBinding('attr.aria-expanded') ariaExpanded = this.item.expanded;
   @Input() depth: number;
   @Output() finalSelection = new EventEmitter();
 
@@ -59,7 +59,8 @@ export class MenuListItemComponent {
 
     // It this item has children, show them
     if (item.children && item.children.length) {
-      this.expanded = !this.expanded;
+      // this.expandedx = !this.expandedx;
+      item.expanded = !item.expanded;
 
     // Otherwise, the user has made the final selection.
     } else {

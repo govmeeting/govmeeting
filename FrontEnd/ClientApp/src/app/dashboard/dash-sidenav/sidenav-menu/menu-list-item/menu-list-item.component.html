@@ -4,12 +4,12 @@
   <span class="{{displayNameClass}}">{{item.displayName}}</span>
   <span fxFlex *ngIf="item.children && item.children.length">
     <span fxFlex></span>
-    <mat-icon [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
+    <mat-icon [@indicatorRotate]="item.expanded ? 'expanded': 'collapsed'">
       expand_more
     </mat-icon>
   </span>
 </a>
-<div *ngIf="expanded">
+<div *ngIf="item.expanded">
   <app-menu-list-item *ngFor="let child of item.children" [item]="child" [depth]="depth+1" (finalSelection)=OnFinalSelection($event)>
   </app-menu-list-item>
 </div>

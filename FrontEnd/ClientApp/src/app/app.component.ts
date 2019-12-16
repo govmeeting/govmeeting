@@ -8,7 +8,7 @@ import { Component, VERSION } from '@angular/core';
 })
 export class AppComponent {
   title = 'ClientApp';
-  public collapsed = true;
+  // public collapsed = true;
   version: string;
 
   constructor() {

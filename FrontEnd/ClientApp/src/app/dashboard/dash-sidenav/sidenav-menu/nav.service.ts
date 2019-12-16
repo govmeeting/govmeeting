@@ -2,16 +2,16 @@ import {EventEmitter, Injectable} from '@angular/core';
 
 @Injectable()
 export class NavService {
-  public appDrawer: any;
+  public sidenav: any;
 
   constructor() {
   }
 
   public closeNav() {
-    this.appDrawer.close();
+    this.sidenav.close();
   }
 
   public openNav() {
-    this.appDrawer.open();
+    this.sidenav.open();
   }
 }

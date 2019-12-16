@@ -12,7 +12,7 @@ import { string } from '@amcharts/amcharts4/core';
 })
 export class SidenavMenuComponent implements AfterViewInit {
   @ViewChild('appDrawer', {static: false})
-  appDrawer: ElementRef;
+  sidenav: ElementRef;
   version = VERSION;
 
   itemSelected: string = '';
@@ -21,7 +21,7 @@ export class SidenavMenuComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.navService.appDrawer = this.appDrawer;
+    this.navService.sidenav = this.sidenav;
   }
 
   OnFinalSelection(items: Array<NavItem>){
@@ -36,6 +36,8 @@ export class SidenavMenuComponent implements AfterViewInit {
     console.log("itemSelected: " + selected);
     this.itemSelected = selected;
   }
+
+    oneNavItem: NavItem = new NavItem('Austin', 'location_city');
 
     navItems: Array<NavItem> = [
     //   new NavItem('Select', 'group',
@@ -68,7 +70,6 @@ export class SidenavMenuComponent implements AfterViewInit {
       new NavItem('Non-Government', 'group',
       [
         new NavItem('Glendale HOA', 'group', 'info-HOA'),
-        new NavItem('Paws Rescue', 'group', 'info-non-profit')
       ])
     // ])
   ];
