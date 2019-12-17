@@ -9,10 +9,10 @@ import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 
 // Modules - internal
 import { DemoMaterialModule } from '../material';
-import { ChatModule } from '../dashboard/chat/chat.module';
+import { ChatModule } from './chat/chat.module';
 import { ConversationModule } from './conversation/conversation.module';
 import { AboutProjectModule } from '../about-project/about-project.module';
-
+import { VirtualMeetingModule } from './virtual-meeting/virtual-meeting.module';
 /////////////////// Components ///////////////////////////////////
 
 // Dashboard container
@@ -81,6 +81,7 @@ import { RegisterComponent } from './register/register.component';
     // AmchartsModule,
     TestingModule,
     SidenavMenuModule,
+    VirtualMeetingModule
     ],
   declarations: [
     DashboardComponent,

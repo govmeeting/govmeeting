@@ -22,6 +22,7 @@ export class SidenavMenuComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.navService.sidenav = this.sidenav;
+    this.navService.navItems = this.navItems;
   }
 
   OnFinalSelection(items: Array<NavItem>){
@@ -35,43 +36,45 @@ export class SidenavMenuComponent implements AfterViewInit {
     }
     console.log("itemSelected: " + selected);
     this.itemSelected = selected;
+
+    this.navService.closeMenu(0);
   }
 
-    oneNavItem: NavItem = new NavItem('Austin', 'location_city');
+    // oneNavItem: NavItem = new NavItem('Austin', 'location_city', 2);
 
     navItems: Array<NavItem> = [
-    //   new NavItem('Select', 'group',
-    // [
-      new NavItem('Austin', 'location_city',
+      new NavItem('Select', 'group', 0,
+    [
+      new NavItem('Austin', 'location_city', 1,
       [
-        new NavItem('City Council', 'group', 'info-city'),
-        new NavItem('Board of Education', 'school', 'info-city'),
-        new NavItem('Planning Board', 'group', 'info-city'),
-        new NavItem('All Depts.', 'group', 'info-city'),
+        new NavItem('City Council', 'group', 2, 'info-city'),
+        new NavItem('Board of Education', 'school', 2, 'info-city'),
+        new NavItem('Planning Board', 'group', 2, 'info-city'),
+        new NavItem('All Depts.', 'group', 2, 'info-city'),
       ]),
-      new NavItem('Traves County', 'group',
+      new NavItem('Traves County', 'group', 1,
       [
-        new NavItem('Commissioners', 'group', 'info-county'),
-        new NavItem('Transportation', 'group', 'info-county'),
-        new NavItem('Both Depts.', 'group', 'info-county'),
+        new NavItem('Commissioners', 'group', 2, 'info-county'),
+        new NavItem('Transportation', 'group', 2, 'info-county'),
+        new NavItem('Both Depts.', 'group', 2, 'info-county'),
       ]),
-      new NavItem('State of Texas', 'star',
+      new NavItem('State of Texas', 'star', 1,
       [
-        new NavItem('Senate', 'group', 'info-state'),
-        new NavItem('House', 'group', 'info-state'),
-        new NavItem('Both chambers', 'group', 'info-state')
+        new NavItem('Senate', 'group', 2, 'info-state'),
+        new NavItem('House', 'group', 2, 'info-state'),
+        new NavItem('Both chambers', 'group', 2, 'info-state')
       ]),
-      new NavItem('United States', 'flag',
+      new NavItem('United States', 'flag', 1,
       [
-        new NavItem('Senate', 'group', 'info-federal'),
-        new NavItem('House', 'group', 'info-federal'),
-        new NavItem('Both chambers', 'group', 'info-federal')
+        new NavItem('Senate', 'group', 2, 'info-federal'),
+        new NavItem('House', 'group', 2, 'info-federal'),
+        new NavItem('Both chambers', 'group', 2, 'info-federal')
       ]),
-      new NavItem('Non-Government', 'group',
+      new NavItem('Non-Government', 'group', 1,
       [
-        new NavItem('Glendale HOA', 'group', 'info-HOA'),
+        new NavItem('Glendale HOA', 'group', 2, 'info-HOA'),
       ])
-    // ])
+    ])
   ];
 
 }

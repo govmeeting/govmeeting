@@ -19,7 +19,6 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   ]
 })
 export class MenuListItemComponent {
-  // expandedx: boolean = false;
   @Input() item: NavItem;
   // @HostBinding('attr.aria-expanded') ariaExpanded = this.item.expanded;
   @Input() depth: number;
@@ -30,16 +29,17 @@ export class MenuListItemComponent {
 
   constructor(public navService: NavService,
               public router: Router) {
-    if (this.depth === undefined) {
-      this.depth = 0;
-    }
+    // if (this.depth === undefined) {
+    //   this.depth = 0;
+    // }
   }
 
   ngOnInit() {
-    this.displayNameClass = 'depth' + this.depth;
-    console.log(this.item.displayName),
-    console.log("route=" + this.item.route);
-    console.log(this.router.isActive(this.item.route, true))
+    // this.item.depth = this.depth;
+    this.displayNameClass = 'depth' + this.item.depth;
+    // console.log(this.item.displayName),
+    // console.log("route=" + this.item.route);
+    // console.log(this.router.isActive(this.item.route, true))
   }
 
   OnFinalSelection(items: Array<NavItem> ){
@@ -57,10 +57,13 @@ export class MenuListItemComponent {
 
   onItemSelected(item: NavItem) {
 
-    // It this item has children, show them
     if (item.children && item.children.length) {
-      // this.expandedx = !this.expandedx;
-      item.expanded = !item.expanded;
+      if (item.expanded) {
+        item.expanded = false;
+      } else {
+      this.navService.closeMenu(1);
+      item.expanded = true;
+      }
 
     // Otherwise, the user has made the final selection.
     } else {
