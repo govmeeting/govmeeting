@@ -1,22 +1,16 @@
-import { Component, OnInit} from '@angular/core';
-import { SidenavService } from '../../../services/sidenav.service';
+import { Component, OnInit } from '@angular/core';
+import {NavService} from '../../../services/sidenav.service';
 
 @Component({
   selector: 'gm-sidenav-header',
   templateUrl: './sidenav-header.component.html',
   styleUrls: ['./sidenav-header.component.scss']
 })
-export class SidenavHeaderComponent implements OnInit {
+export class TopNavComponent implements OnInit {
 
-  message:string;
-
-  constructor(private data: SidenavService) { }
+  constructor(public navService: NavService) { }
 
   ngOnInit() {
-    this.data.currentMessage.subscribe(message => this.message = message)
   }
 
-  hideSidebar() {
-    this.data.changeMessage("Hide")
-  }
-  }
+}

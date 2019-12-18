@@ -1,17 +1,11 @@
-  <div class="sidenav__brand">
-    <!-- <i class="fas fa-feather-alt sidenav__brand-icon"></i> -->
-    <i class="material-icons" style="font-size:36px">people_outline</i>
-    <a class="sidenav__brand-link" href="#">
-      Govmeeting
-      <!-- <span class="text-light"> xx</span> -->
-    </a>
-    <i class="fas fa-times sidenav__brand-close" (click)="hideSidebar()"></i>
-  </div>
-<!--   <div class="sidenav__profile">
-    <div class="sidenav__profile-avatar"></div>
-    <div class="sidenav__profile-title text-light">Some Name</div>
-  </div>
- -->  <div class="row row--align-v-center row--align-h-center">
-    <ng-content></ng-content>
-  </div>
+<mat-toolbar color="primary" class="mat-elevation-z1">
+  <!-- <button mat-icon-button id="menu" (click)="navService.openNav()">
+    <mat-icon>menu</mat-icon>
+  </button> -->
+  <span>Sidenav Heading</span>
+      <span class = "filler"></span>
+    <button class="sidenav-close" mat-icon-button (click)="navService.closeNav()">
+      <mat-icon>close</mat-icon>
+    </button>
 
+</mat-toolbar>

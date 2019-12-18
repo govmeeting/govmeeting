@@ -11,8 +11,8 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 
 
-import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
-import {NavService} from './dash-sidenav/sidenav-menu/nav.service';
+// import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
+import {NavService} from '../services/sidenav.service';
 
 @Component({
   selector: 'gm-dashboard',

@@ -54,8 +54,8 @@ import { InfoCityComponent } from '../sidenav-info/info-city/info-city.component
 import { InfoCountyComponent } from '../sidenav-info/info-county/info-county.component';
 import { InfoStateComponent } from '../sidenav-info/info-state/info-state.component';
 import { InfoFederalComponent } from '../sidenav-info/info-federal/info-federal.component';
-import { NavService } from './nav.service';
-import { TopNavComponent } from './top-nav/top-nav.component';
+import { NavService } from '../../../services/sidenav.service';
+import { TopNavComponent } from '../sidenav-header/sidenav-header.component';
 
 /**
  * NgModule that includes all Material modules that are required.

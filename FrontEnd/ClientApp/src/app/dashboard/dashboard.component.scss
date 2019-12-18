@@ -2,18 +2,6 @@
 @import "../../styles.scss";
 
 
-.div1  {
-  border: 3px solid blue;
-}
-.div1 .div1a {
-  border: 3px solid red;
-}
-.ismatches {
-  border: 3px solid #73AD21;
-  // position: relative;
-  // right: 0;
-}
-
 .sidenav-container {
   position: absolute;
   top: 100px;
@@ -30,19 +18,19 @@
   //background: rgba(255, 0, 0, 0.5);
   background: rgb(105, 144, 202);
 
-  &-button {
-    position: relative;
-    background-color: $color-mischka;
-    border-radius: 50%;
-    right: 0px;
-  }
+  // &-button {
+  //   position: relative;
+  //   background-color: $color-mischka;
+  //   border-radius: 50%;
+  //   right: 0px;
+  // }
 }
 
-.sidenav-close {
-  border: 3px solid #73AD21;
-  position: relative;
-  right: 0;
-}
+// .sidenav-close {
+//   border: 3px solid #73AD21;
+//   position: relative;
+//   right: 0;
+// }
 
 .main-header {
   position: fixed;
@@ -85,54 +73,6 @@
   left: 0;
   right: 0;
 }
-
-
-
-
-
-
-
-// .main  { border: 3px dashed blue }
-
-// @import "../../styles.scss";
-
-// $height-header: 150px;
-// $height-footer: 50px;
-// $width-sidenav: 240px;
-
-///////////////////////// GRID ////////////////////////////////////
-
-// //  Dashboard layout on mobile
-// .grid {
-//   position: relative;
-//   display: grid;
-//   grid-template-columns: 100%; // Charts responsiveness won't work with fr units
-//   grid-template-rows: $height-header 1fr $height-footer;
-//   grid-template-areas:
-//     'header'
-//     'main'
-//     'footer';
-//   height: 100vh;
-//   // overflow-x: hidden; // Prevent overflow scroll from hidden sidenav  (needed?)
-
-//   // &--noscroll {        // (needed?)
-//   //   overflow-y: hidden;
-//   // }
-// }
-
-// // Show sidenav on medium screens and above
-// @media only screen and (min-width: 46.875em) {
-//   .grid {
-//     display: grid;
-//     grid-template-columns: $width-sidenav calc(100% - 240px); // Charts responsiveness won't work with fr units
-//     grid-template-rows: $height-header 1fr $height-footer;
-//     grid-template-areas:
-//       'sidenav header'
-//       'sidenav main'
-//       'sidenav footer';
-//     height: 100vh;
-//   }
-// }
 
 ///////////////////////////////////////////////////////////////////
 

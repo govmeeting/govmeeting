@@ -1,7 +1,12 @@
-<!-- <app-top-nav class="fixed-topnav" fxHide.gt-xs></app-top-nav> -->
-<app-top-nav class="fixed-topnav"></app-top-nav>
-<!-- <!--<mat-sidenav-container>
+<!-- <gm-sidenav-header class="fixed-topnav" fxHide.gt-xs></gm-sidenav-header> -->
+
+<gm-sidenav-header class="fixed-topnav"></gm-sidenav-header>
+
+<!-- <mat-sidenav-container>
   <mat-sidenav #appDrawer mode="over" opened="false"> -->
+
+  <a [routerLink]="['/about']">Documentation</a>
+
 
     <mat-nav-list>
       <app-menu-list-item *ngFor="let item of navItems" [item]="item" (finalSelection)=OnFinalSelection($event)></app-menu-list-item>
@@ -9,7 +14,7 @@
 
 
   <!-- </mat-sidenav> -->
-  <!-- <app-top-nav fxHide.xs></app-top-nav> -->
+  <!-- <gm-sidenav-header fxHide.xs></gm-sidenav-header> -->
   <!-- {{itemSelected}} -->
 
   <router-outlet name="sidenav"></router-outlet>

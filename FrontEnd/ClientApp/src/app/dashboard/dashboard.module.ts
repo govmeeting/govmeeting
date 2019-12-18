@@ -44,8 +44,8 @@ import { ShoutoutsComponent } from './shoutouts/shoutouts.component';
 import { DashFooterComponent } from './dash-footer/dash-footer.component';
 
 // Sidenav
-import { SidenavHeaderComponent } from './dash-sidenav/sidenav-header/sidenav-header.component';
-import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
+// import { SidenavHeaderComponent } from './dash-sidenav/sidenav-header/sidenav-header.component';
+// import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
 import { SidenavMenu3Component } from './dash-sidenav/sidenav-menu3/sidenav-menu3.component'
 
 //////////////////////////////////////// Services /////////////////////////////////////
@@ -106,8 +106,8 @@ import { RegisterComponent } from './register/register.component';
 
     DashFooterComponent,
 
-    SidenavHeaderComponent,
-    SidenavComponent,
+    // SidenavHeaderComponent,
+    // SidenavComponent,
     MainContentComponent,
     SidenavMenu3Component,
     RegisterComponent,
@@ -122,8 +122,8 @@ import { RegisterComponent } from './register/register.component';
     TopHeaderComponent,
     DashSearchComponent,
     UserDropdownComponent,
-    SidenavHeaderComponent,
-    SidenavComponent,
+    // SidenavHeaderComponent,
+    // SidenavComponent,
     LargeCardComponent,
     // PieChartComponent,
     // BarChartComponent

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SidenavService } from '../../../../services/sidenav.service';
+// import { SidenavService } from '../../../../services/sidenav.service';
 
 @Component({
   selector: 'gm-top-header',
@@ -10,14 +10,15 @@ export class TopHeaderComponent implements OnInit {
 
   // message:string;
 
-  constructor(private data: SidenavService) { }
+  constructor() {}
+  // constructor(private data: SidenavService) { }
 
   ngOnInit() {
     // this.data.currentMessage.subscribe(message => this.message = message)
   }
 
   showSidebar() {
-    this.data.changeMessage("Show")
+    // this.data.changeMessage("Show")
   }
 }
 

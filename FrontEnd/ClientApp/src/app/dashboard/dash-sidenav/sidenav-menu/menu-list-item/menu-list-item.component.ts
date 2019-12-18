@@ -1,7 +1,7 @@
 import {Component, HostBinding, Input, OnInit, EventEmitter, Output } from '@angular/core';
-import {NavItem} from '../nav-item';
+import {NavItem} from '../../../../models//nav-item';
 import {Router} from '@angular/router';
-import {NavService} from '../nav.service';
+import {NavService} from '../../../../services/sidenav.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -57,6 +57,8 @@ export class MenuListItemComponent {
 
   onItemSelected(item: NavItem) {
 
+    this.router.navigate(['dashboard']);
+
     if (item.children && item.children.length) {
       if (item.expanded) {
         item.expanded = false;
@@ -68,7 +70,7 @@ export class MenuListItemComponent {
     // Otherwise, the user has made the final selection.
     } else {
       // Display info on selection in sidenav
-      this.router.navigate([item.route]);
+      // this.router.navigate([item.route]);
       this.router.navigate([{outlets: {sidenav: item.route}}]);
 
       // console.log("====OnItemSelected(before emit):");

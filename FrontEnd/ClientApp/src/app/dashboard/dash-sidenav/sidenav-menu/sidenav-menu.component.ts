@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import {VERSION} from '@angular/material';
-import {NavItem} from './nav-item';
-import {NavService} from './nav.service';
+import {NavItem} from '../../../models/nav-item';
+import {NavService} from '../../../services/sidenav.service';
 import { string } from '@amcharts/amcharts4/core';
 
 @Component({
@@ -43,7 +43,7 @@ export class SidenavMenuComponent implements AfterViewInit {
     // oneNavItem: NavItem = new NavItem('Austin', 'location_city', 2);
 
     navItems: Array<NavItem> = [
-      new NavItem('Select', 'group', 0,
+      new NavItem('Organization', null, 0,
     [
       new NavItem('Austin', 'location_city', 1,
       [
