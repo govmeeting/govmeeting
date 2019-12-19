@@ -1,4 +1,4 @@
-import { DropdownValue } from '../shared/dropdown/dropdown.value';
+import { DropdownValue } from '../shared/dropdown/value';
 
 // This is the dropdown box used for selecting a speaker.
 

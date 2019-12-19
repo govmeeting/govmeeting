@@ -15,24 +15,24 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
-import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
+import { ErrorHandlingService } from './shared/error-handling/service';
 
-import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ViewMeetingModule } from './viewmeeting/viewmeeting.module';
-import { AddtagsModule } from './addtags/addtags.module';
-import { FixasrModule } from './fixasr/fixasr.module';
-import { SharedModule } from './shared/shared.module';
+import { AppRoutingModule } from './app-routing/module';
+import { ViewMeetingModule } from './viewmeeting/module';
+import { AddtagsModule } from './addtags/module';
+import { FixasrModule } from './fixasr/module';
+import { SharedModule } from './shared/module';
 
-import { ViewMeetingService } from './viewmeeting/viewmeeting.service';
-import { ViewMeetingServiceStub } from './viewmeeting/viewmeeting.service-stub';
-import { AddtagsService } from './addtags/addtags.service';
-import { AddtagsServiceStub } from './addtags/addtags.service-stub';
-import { FixasrService } from './fixasr/fixasr.service';
-import { FixasrServiceStub } from './fixasr/fixasr.service-stub';
+import { ViewMeetingService } from './viewmeeting/service';
+import { ViewMeetingServiceStub } from './viewmeeting/service-stub';
+import { AddtagsService } from './addtags/service';
+import { AddtagsServiceStub } from './addtags/service-stub';
+import { FixasrService } from './fixasr/service';
+import { FixasrServiceStub } from './fixasr/service-stub';
 import { AppData } from './appdata';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { AboutProjectModule } from './about-project/about-project.module';
-import { TestmatComponent } from './testmat/testmat.component';
+import { DashboardModule } from './dashboard/module';
+import { AboutProjectModule } from './about-project/module';
+import { TestmatComponent } from './testmat/component';
 
 // import { DashboardComponent } from './dashboard/dashboard.component';
 
