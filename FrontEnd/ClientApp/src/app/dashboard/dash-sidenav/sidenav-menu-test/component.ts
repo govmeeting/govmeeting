@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'gm-sidenav-menu3',
+  selector: 'gm-sidenav-menu-test',
   templateUrl: './component.html',
   styleUrls: ['./component.scss']
 })
-export class SidenavMenu3Component implements OnInit {
+export class SidenavMenuTestComponent implements OnInit {
 
   constructor() { }
 

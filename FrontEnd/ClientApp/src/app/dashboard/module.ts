@@ -13,6 +13,8 @@ import { ChatModule } from './chat/module';
 import { ConversationModule } from './conversation/module';
 import { AboutProjectModule } from '../about-project/module';
 import { VirtualMeetingModule } from './virtual-meeting/module';
+import { CardsModule } from './cards/module';
+
 /////////////////// Components ///////////////////////////////////
 
 // Dashboard container
@@ -34,12 +36,13 @@ import { DashMainComponent } from './dash-main/component';
 import { MainContentComponent } from './dash-main/main-content/component';
 
 // Small Cards
-import { SmallCardsComponent } from './small-cards/component';
-import { SmallCardComponent } from './small-cards/small-card/component';
+// import { SmallCardsComponent } from './small-cards/component';
+// import { SmallCardComponent } from './small-cards/small-card/component';
 
-// Large Cards
-import { LargeCardsComponent } from './large-cards/component';
-import { LargeCardComponent } from './large-cards/large-card/component';
+// // Large Cards
+// import { LargeCardsComponent } from './large-cards/component';
+// import { LargeCardComponent } from './large-cards/large-card/component';
+
 import { ShoutoutsComponent } from './shoutouts/component';
 
 import { DashFooterComponent } from './dash-footer/component';
@@ -47,7 +50,7 @@ import { DashFooterComponent } from './dash-footer/component';
 // Sidenav
 // import { SidenavHeaderComponent } from './dash-sidenav/component';
 // import { SidenavComponent } from './dash-sidenav/sidenav-container/component';
-import { SidenavMenu3Component } from './dash-sidenav/sidenav-menu3/component'
+import { SidenavMenuTestComponent } from './dash-sidenav/sidenav-menu-test/component'
 
 //////////////////////////////////////// Services /////////////////////////////////////
 import { ChatService } from './chat/service';
@@ -76,6 +79,7 @@ import { OrganizationComponent } from './organization/organization.component';
     ReactiveFormsModule,
     NgMaterialMultilevelMenuModule,
 
+    CardsModule,
     ChatModule,
     ConversationModule,
     AboutProjectModule,
@@ -99,18 +103,19 @@ import { OrganizationComponent } from './organization/organization.component';
     DashMainComponent,
     MainContentComponent,
 
-    SmallCardsComponent,
-    SmallCardComponent,
+    // SmallCardsComponent,
+    // SmallCardComponent,
 
-    LargeCardsComponent,
-    LargeCardComponent,
+    // LargeCardsComponent,
+    // LargeCardComponent,
+
     ShoutoutsComponent,
 
     DashFooterComponent,
 
     // SidenavHeaderComponent,
     // SidenavComponent,
-    SidenavMenu3Component,
+    SidenavMenuTestComponent,
     RegisterComponent,
     // SidenavMenu4Component
 
@@ -127,7 +132,7 @@ import { OrganizationComponent } from './organization/organization.component';
     UserDropdownComponent,
     // SidenavHeaderComponent,
     // SidenavComponent,
-    LargeCardComponent,
+    // LargeCardComponent,
     // PieChartComponent,
     // BarChartComponent
   ],
