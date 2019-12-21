@@ -12,7 +12,7 @@ import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 
 
 // import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
-import {NavService} from '../services/sidenav.service';
+import {NavService} from './dash-sidenav/sidenav-menu/service';
 
 @Component({
   selector: 'gm-dashboard',

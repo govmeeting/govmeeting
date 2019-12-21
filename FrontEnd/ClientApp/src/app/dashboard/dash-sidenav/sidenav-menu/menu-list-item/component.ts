@@ -1,7 +1,7 @@
 import {Component, HostBinding, Input, OnInit, EventEmitter, Output } from '@angular/core';
-import {NavItem} from '../../../../models//nav-item';
+import {NavItem} from '../nav-item';
 import {Router} from '@angular/router';
-import {NavService} from '../../../../services/sidenav.service';
+import {NavService} from '../service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -63,7 +63,7 @@ export class MenuListItemComponent {
       if (item.expanded) {
         item.expanded = false;
       } else {
-      this.navService.closeMenu(1);
+      this.navService.closeOrgMenu(1);
       item.expanded = true;
       }
 
@@ -71,7 +71,7 @@ export class MenuListItemComponent {
     } else {
       // Display info on selection in sidenav
       // this.router.navigate([item.route]);
-      this.router.navigate([{outlets: {sidenav: item.route}}]);
+      // this.router.navigate([{outlets: {sidenav: item.route}}]);
 
       // console.log("====OnItemSelected(before emit):");
       // console.log('my item');
@@ -88,8 +88,6 @@ export class MenuListItemComponent {
       // My parent will append herself and send the array to her parent.
       this.finalSelection.emit(this.navItems);
 
-      // Close the sidenav
-      // this.navService.closeNav();
     }
   }
 }

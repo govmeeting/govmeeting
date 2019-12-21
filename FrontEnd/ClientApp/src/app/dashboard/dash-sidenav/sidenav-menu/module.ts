@@ -17,35 +17,6 @@ import {CdkTableModule} from '@angular/cdk/table';
 
 import { DemoMaterialModule } from '../../../material';
 
-// import {
-//   MatAutocompleteModule,
-//   MatButtonModule,
-//   MatButtonToggleModule,
-//   MatCardModule,
-//   MatCheckboxModule,
-//   MatChipsModule,
-//   MatDatepickerModule,
-//   MatDialogModule,
-//   MatExpansionModule,
-//   MatGridListModule,
-//   MatIconModule,
-//   MatInputModule,
-//   MatListModule,
-//   MatMenuModule,
-//   MatNativeDateModule,
-//   MatProgressBarModule,
-//   MatProgressSpinnerModule,
-//   MatRadioModule,
-//   MatRippleModule,
-//   MatSelectModule,
-//   MatSidenavModule,
-//   MatSliderModule,
-//   MatSlideToggleModule,
-//   MatSnackBarModule,
-//   MatTabsModule,
-//   MatToolbarModule,
-//   MatTooltipModule
-// } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MenuListItemComponent} from './menu-list-item/component';
 import {SidenavMenuComponent} from './component';
@@ -54,12 +25,9 @@ import { InfoCityComponent } from '../sidenav-info/info-city/component';
 import { InfoCountyComponent } from '../sidenav-info/info-county/component';
 import { InfoStateComponent } from '../sidenav-info/info-state/component';
 import { InfoFederalComponent } from '../sidenav-info/info-federal/component';
-import { NavService } from '../../../services/sidenav.service';
+import { NavService } from './service';
 import { TopNavComponent } from '../sidenav-header/component';
 
-/**
- * NgModule that includes all Material modules that are required.
- */
 @NgModule({
   exports: [
     // CDK
@@ -74,34 +42,6 @@ import { TopNavComponent } from '../sidenav-header/component';
     CdkTableModule,
 
     DemoMaterialModule
-    // Material
-    // MatAutocompleteModule,
-    // MatButtonModule,
-    // MatButtonToggleModule,
-    // MatCardModule,
-    // MatCheckboxModule,
-    // MatChipsModule,
-    // MatDatepickerModule,
-    // MatDialogModule,
-    // MatExpansionModule,
-    // MatGridListModule,
-    // MatIconModule,
-    // MatInputModule,
-    // MatListModule,
-    // MatMenuModule,
-    // MatProgressBarModule,
-    // MatProgressSpinnerModule,
-    // MatRadioModule,
-    // MatRippleModule,
-    // MatSelectModule,
-    // MatSidenavModule,
-    // MatSlideToggleModule,
-    // MatSliderModule,
-    // MatSnackBarModule,
-    // MatTabsModule,
-    // MatToolbarModule,
-    // MatTooltipModule,
-    // MatNativeDateModule,
   ]
 })
 export class MaterialModule {}

@@ -31,6 +31,7 @@ import { FastFactComponent } from './dash-header/main-header/fast-fact/component
 
 // Main Container - contains small and large cards
 import { DashMainComponent } from './dash-main/component';
+import { MainContentComponent } from './dash-main/main-content/component';
 
 // Small Cards
 import { SmallCardsComponent } from './small-cards/component';
@@ -53,7 +54,6 @@ import { ChatService } from './chat/service';
 import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from '../services/data-factory.service';
 import { DataFakeService } from '../services/data-fake.service';
-import { MainContentComponent } from './dash-main/main-content/component';
 
 // import { AmchartsModule } from './amcharts/amcharts.module';
 // import { PieChartComponent } from './amcharts/pie-chart/pie-chart.component';
@@ -63,6 +63,7 @@ import { TestingModule } from '../testing/module';
 // import { SidenavMenu4Component } from './dash-sidenav/sidenav-menu4/sidenav-menu4.component';
 import { SidenavMenuModule } from './dash-sidenav/sidenav-menu/module';
 import { RegisterComponent } from './register/component';
+import { OrganizationComponent } from './organization/organization.component';
 
 @NgModule({
   imports: [
@@ -96,6 +97,7 @@ import { RegisterComponent } from './register/component';
     FastFactComponent,
 
     DashMainComponent,
+    MainContentComponent,
 
     SmallCardsComponent,
     SmallCardComponent,
@@ -108,10 +110,11 @@ import { RegisterComponent } from './register/component';
 
     // SidenavHeaderComponent,
     // SidenavComponent,
-    MainContentComponent,
     SidenavMenu3Component,
     RegisterComponent,
     // SidenavMenu4Component
+
+    OrganizationComponent
   ],
   exports: [
     DashboardComponent,

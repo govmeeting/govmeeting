@@ -1,10 +1,10 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import { NavItem } from '../models/nav-item'
+import { NavItem } from './nav-item'
 
 @Injectable()
 export class NavService {
   public sidenav: any;
-  public navItems: NavItem[];
+  public orgItems: NavItem[];
 
   constructor() {
   }
@@ -17,18 +17,14 @@ export class NavService {
     this.sidenav.open();
   }
 
-  public closeMenu(
+  public closeOrgMenu(
     startDepth: number,
     maxDepth: number = 99  // unspecified means all depths
-    )
-    {
-      this.navItems.forEach(item => {
-        this.closeMenux(this.navItems, startDepth, maxDepth);
-      }
-    )
+    ) {
+    this.closeMenu(this.orgItems, startDepth, maxDepth)
   }
 
-  public closeMenux(
+  private closeMenu(
     items: NavItem[],
     startDepth: number,
     maxDepth: number
@@ -41,7 +37,7 @@ export class NavService {
       }
       if ((item.children !== null) && (item.children !== undefined)){
         if (item.depth + 1 <= maxDepth) {
-          this.closeMenux(item.children, item.depth + 1, maxDepth)
+          this.closeMenu(item.children, item.depth + 1, maxDepth)
         }
       }
     })

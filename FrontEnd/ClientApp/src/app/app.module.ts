@@ -6,35 +6,30 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './material';
 import { FlexLayoutModule } from "@angular/flex-layout";
-
 // TODO - eliminate duplicate imports
 // I was getting errors when ReactiveFormsModule was not in dashboard.module.ts
 // When do I need this both here and in other modules?.
-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
-
-import { ErrorHandlingService } from './shared/error-handling/service';
 
 import { AppRoutingModule } from './app-routing/module';
 import { ViewMeetingModule } from './viewmeeting/module';
 import { AddtagsModule } from './addtags/module';
 import { FixasrModule } from './fixasr/module';
 import { SharedModule } from './shared/module';
+import { DashboardModule } from './dashboard/module';
+import { AboutProjectModule } from './about-project/module';
 
+import { ErrorHandlingService } from './shared/error-handling/service';
 import { ViewMeetingService } from './viewmeeting/service';
 import { ViewMeetingServiceStub } from './viewmeeting/service-stub';
 import { AddtagsService } from './addtags/service';
 import { AddtagsServiceStub } from './addtags/service-stub';
 import { FixasrService } from './fixasr/service';
 import { FixasrServiceStub } from './fixasr/service-stub';
-import { AppData } from './appdata';
-import { DashboardModule } from './dashboard/module';
-import { AboutProjectModule } from './about-project/module';
-import { TestmatComponent } from './testmat/component';
 
-// import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppData } from './appdata';
 
 
 // Is the Asp.Net server running
@@ -43,7 +38,6 @@ const _isAspServerRunning = true;
 @NgModule({
   declarations: [
     AppComponent,
-    TestmatComponent
     // DashboardComponent
   ],
   imports: [
