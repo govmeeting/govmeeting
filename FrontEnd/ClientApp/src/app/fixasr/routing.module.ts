@@ -1,7 +1,7 @@
 ﻿import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { FixasrComponent } from './component';
+import { FixasrComponent } from './fixasr';
 
 
 const routes: Routes = [

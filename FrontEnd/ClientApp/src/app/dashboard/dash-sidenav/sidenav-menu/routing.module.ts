@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {InfoCityComponent} from '../sidenav-info/info-city/component';
-import {InfoCountyComponent} from '../sidenav-info/info-county/component';
-import {InfoStateComponent} from '../sidenav-info/info-state/component';
-import {InfoFederalComponent} from '../sidenav-info/info-federal/component';
+import {InfoCityComponent} from '../sidenav-info/info-city/info-city';
+import {InfoCountyComponent} from '../sidenav-info/info-county/info-county';
+import {InfoStateComponent} from '../sidenav-info/info-state/info-state';
+import {InfoFederalComponent} from '../sidenav-info/info-federal/info-federal';
 
 const routes: Routes = [
   {path: '', component: InfoFederalComponent, pathMatch: 'full'},

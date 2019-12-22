@@ -1,0 +1,91 @@
+
+<ng-container>
+  <!-- <ng-container [class.is-mobile]="mobileQuery.matches"> -->
+
+
+    <!-- <gm-header></gm-header> -->
+
+    <mat-toolbar class="main-header" [class.is-mobile]="mobileQuery.matches">
+        <button mat-icon-button class="main-header-button" (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <gm-user-dropdown></gm-user-dropdown>
+    </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container"
+    [hasBackdrop]="options.value.hasBackdrop">
+
+    <mat-sidenav class="sidenav" #sidenav
+      [mode]="options.value.mode"
+      [opened]="!mobileQuery.matches"
+      [fixedInViewport]="options.value.fixed"
+      [fixedTopGap]="options.value.top"
+      [fixedBottomGap]="options.value.bottom">
+
+      <!-- <div class="sidenav-header">
+        <button class="sidenav-close" mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div> -->
+
+      <gm-sidenav-menu></gm-sidenav-menu>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content [formGroup]="options">
+
+        <router-outlet></router-outlet>
+
+        <!-- <gm-about-project></gm-about-project> -->
+        <!-- <gm-main-content></gm-main-content> -->
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+  <mat-toolbar class="main-footer">Footer</mat-toolbar>
+</ng-container>
+
+
+
+
+
+<!-- <gm-sidenav style="grid-area: sidenav;"> -->
+      <!-- <gm-sidenav-header></gm-sidenav-header> -->
+
+       <!-- <gm-sidenav-menu4></gm-sidenav-menu4> -->
+
+    <!-- </gm-sidenav> -->
+
+<!--
+    <gm-main-header style="grid-area: header;">
+      <gm-top-header >
+        <gm-user-dropdown></gm-user-dropdown>
+      </gm-top-header>
+    </gm-main-header>
+
+<div class="grid">
+
+  <gm-dash-main style="grid-area: main;">
+
+    <div style="display: flex; flex-direction: column;">
+
+      <div fxLayoutAlign="start start"></div>
+
+      <router-outlet></router-outlet>
+
+    </div>
+
+  </gm-dash-main>
+
+  <gm-dash-footer style="grid-area: footer;"></gm-dash-footer>
+
+</div>
+-->
+
+<!-- partial -->
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src='https://www.amcharts.com/lib/3/amcharts.js'></script>
+<script src='https://www.amcharts.com/lib/3/serial.js'></script>
+<script src='https://www.amcharts.com/lib/3/themes/light.js'></script>
+<script  src="../../../script.js"></script>

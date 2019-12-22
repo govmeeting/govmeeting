@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { DemoMaterialModule } from '../../material';
 
 // Small Cards
-import { SmallCardsComponent } from './small-cards/component';
-import { SmallCardComponent } from './small-cards/small-card/component';
+import { SmallCardsComponent } from './small-cards/small-cards';
+import { SmallCardComponent } from './small-cards/small-card/small-card';
 
 // Large Cards
-import { LargeCardsComponent } from './large-cards/component';
-import { LargeCardComponent } from './large-cards/large-card/component';
+import { LargeCardsComponent } from './large-cards/large-cards';
+import { LargeCardComponent } from './large-cards/large-card/large-card';
 
 
 
