@@ -13,7 +13,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
-import { AppRoutingModule } from './app-routing/module';
+import { AppRoutingModule } from './app-routing.module';
 import { ViewMeetingModule } from './viewmeeting/module';
 import { AddtagsModule } from './addtags/addtags.module';
 import { FixasrModule } from './fixasr/fixasr.module';
