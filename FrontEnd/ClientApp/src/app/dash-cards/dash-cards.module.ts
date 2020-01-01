@@ -30,4 +30,4 @@ import { LargeCardComponent } from './large-cards/large-card/large-card';
     LargeCardComponent
   ]
 })
-export class CardsModule { }
+export class DashCardsModule { }

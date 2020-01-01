@@ -29,7 +29,7 @@ import { ChatModule } from './chat/chat.module';
 import { ConversationModule } from './conversation/conversation.module';
 import { AboutProjectModule } from './about-project/about-project.module';
 import { VirtualMeetingModule } from './virtual-meeting/virtual-meeting-module';
-import { CardsModule } from './cards/module';
+import { DashCardsModule } from './dash-cards/dash-cards.module';
 
 /////////////////// Components ///////////////////////////////////
 
@@ -93,7 +93,7 @@ const _isAspServerRunning = true;
     NgMaterialMultilevelMenuModule,
 
     // internal
-    CardsModule,
+    DashCardsModule,
     ChatModule,
     ConversationModule,
     AboutProjectModule,
