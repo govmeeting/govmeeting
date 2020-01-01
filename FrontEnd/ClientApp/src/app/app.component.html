@@ -1,51 +1,54 @@
-<!-- <div style="border: 3px dashed green;">this is the div</div> -->
 
-<!-- <gm-about-project></gm-about-project> -->
+<ng-container>
+  <!-- <ng-container [class.is-mobile]="mobileQuery.matches"> -->
 
-<gm-dashboard></gm-dashboard>
+    <!-- <gm-header></gm-header> -->
 
-<!-- <mat-form-field>
-  <mat-label>Sidenav mode</mat-label>
-  <mat-select #mode value="side" formControlName="mode">
-          <mat-option value="side">Side</mat-option>
-    <mat-option value="over">Over</mat-option>
-    <mat-option value="push">Push</mat-option>
-  </mat-select>
-</mat-form-field> -->
+    <mat-toolbar class="main-header" [class.is-mobile]="mobileQuery.matches">
+        <button mat-icon-button class="main-header-button" (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <gm-user-dropdown></gm-user-dropdown>
+    </mat-toolbar>
 
-<!-- <button (click)="toggleCollapsed()"> button </button> -->
+  <mat-sidenav-container class="sidenav-container"
+    [hasBackdrop]="options.value.hasBackdrop">
 
-<!-- <gm-small icon="far fa-envelope" iconcolor="color-mail-icon"
-title="Messages" subtitle="+10">
-</gm-small> -->
+    <mat-sidenav class="sidenav" #sidenav
+      [mode]="options.value.mode"
+      [opened]="!mobileQuery.matches"
+      [fixedInViewport]="options.value.fixed"
+      [fixedTopGap]="options.value.top"
+      [fixedBottomGap]="options.value.bottom">
 
-<!-- <gm-large-card  icon="far fa-calendar-check" iconcolor="color-calendar-icon" title="Issues"> -->
-<!-- Recent<br/>Most active<br/>Those I am following<br/> -->
-<!-- <gm-pie-chart></gm-pie-chart> -->
-<!-- <gm-bar-chart></gm-bar-chart> -->
+      <!-- <div class="sidenav-header">
+        <button class="sidenav-close" mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div> -->
 
-<!-- </gm-large-card> -->
+      <gm-sidenav-menu></gm-sidenav-menu>
 
-<!-- <gm-sidenav-menu2></gm-da<divsh-sidenav2> -->
+    </mat-sidenav>
 
-<!-- <gm-amgauge></gm-amgauge> -->
+    <mat-sidenav-content [formGroup]="options">
 
-<!-- <gm-sidenav style="grid-area: sidenav;">
-  <gm-sidenav-header></gm-sidenav-header>
-   <gm-sidenav-menu2></gm-sidenav-menu2>
-</gm-sidenav> -->
+        <router-outlet></router-outlet>
+
+        <!-- <gm-about-project></gm-about-project> -->
+        <!-- <gm-main-content></gm-main-content> -->
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+  <mat-toolbar class="main-footer">Footer</mat-toolbar>
+</ng-container>
 
 
-
-<!-- <gm-top-header >
-  <gm-dash-search></gm-dash-search>
-  <gm-user-dropdown></gm-user-dropdown>
-</gm-top-header> -->
-
-
-
-<!-- <gm-user-dropdown></gm-user-dropdown> -->
-
-<!-- <gm-small-card icon="far fa-file-alt" iconcolor="color-document-icon"
-  title="Proposed Bills" subtitle="City Council">
-</gm-small-card> -->
+<!-- partial -->
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src='https://www.amcharts.com/lib/3/amcharts.js'></script>
+<script src='https://www.amcharts.com/lib/3/serial.js'></script>
+<script src='https://www.amcharts.com/lib/3/themes/light.js'></script>
+<script  src="../../../script.js"></script>

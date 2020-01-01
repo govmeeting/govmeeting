@@ -15,7 +15,7 @@ import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
 
-import { DemoMaterialModule } from '../../../material';
+import { DemoMaterialModule } from '../../material';
 
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MenuListItemComponent} from './menu-list-item/menu-list-item';

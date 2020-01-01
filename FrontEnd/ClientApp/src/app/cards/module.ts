@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DemoMaterialModule } from '../../material';
+import { DemoMaterialModule } from '../material';
 
 // Small Cards
 import { SmallCardsComponent } from './small-cards/small-cards';

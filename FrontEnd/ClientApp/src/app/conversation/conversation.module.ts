@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DemoMaterialModule } from '../../material';
+import { DemoMaterialModule } from '../material';
 import { FormsModule } from '@angular/forms';
 import { KeysPipe } from './keys.pipe';
 

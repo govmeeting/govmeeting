@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VgAPI } from 'videogular2/core';
 import { Observable } from 'rxjs';
 import { timer } from 'rxjs/observable/timer';
+
 import { AppData } from '../appdata';
 
 class videoSource {
@@ -30,18 +31,21 @@ export class VideoComponent {
         api.play();
     }
 
-    constructor(private appData: AppData) {
-      let location: string;
+      constructor(private appData: AppData) {
+
+        let location: string;
 
         console.log('VideoComponent constructor');
-        console.log('AppData=' + appData);
-        console.log('appData.isAspServerRunning=' + appData.isAspServerRunning);
+        // console.log('AppData=' + appData);
+        // console.log('appData.isAspServerRunning=' + appData.isAspServerRunning);
         // TODO - Use the server API to return the video. Until then we need to specify the full path of the video file.
         // var location: string = 'api/video/3/1';  // This would be for MeetingID=3 Part=1
 
         // If Web_App is running, return from solutions's Datafiles folder
+
         if (appData.isAspServerRunning) {
-          //location = 'datafiles/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part01/';
+
+                    //location = 'datafiles/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part01/';
           location = 'datafiles/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part01/';
        // else return from ClientApp stubdata folder
         } else {

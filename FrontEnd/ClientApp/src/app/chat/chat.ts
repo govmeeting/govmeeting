@@ -5,7 +5,7 @@ import { ChatService } from './chat.service';
 @Component({
   selector: 'gm-chat',
   templateUrl: './chat.html',
-  styleUrls: ['./chat.scss', '../dashboard.scss']
+  styleUrls: ['./chat.scss', '../app.component.scss']
 })
 export class ChatComponent {
 
