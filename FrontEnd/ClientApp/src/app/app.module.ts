@@ -38,8 +38,8 @@ import { AppComponent } from './app.component';
 
 
 // Main Container - contains small and large cards
-import { DashMainComponent } from './dash-main/dash-main';
-import { MainContentComponent } from './dash-main/main-content/main-content';
+// import { DashMainComponent } from './dash-main/dash-main';
+import { MainContentComponent } from './dash-main/dash-main';
 
 import { ShoutoutsComponent } from './shoutouts/shoutouts';
 
@@ -110,7 +110,7 @@ const _isAspServerRunning = true;
     // TopHeaderComponent,
     // UserDropdownComponent,
 
-    DashMainComponent,
+    // DashMainComponent,
     MainContentComponent,
 
     DashFooterComponent,

@@ -1,3 +1,83 @@
 <main class="main">
-  <ng-content></ng-content>
+
+<!-- Icon colors defined in src/styles.scss  -->
+
+
+<gm-small-cards>
+  <gm-small-card
+  icon="far fa-envelope"
+  iconcolor="color-mail-icon"
+  title="Organization"
+  subtitle="+10"
+  tooltip="This is the help for Organization.">
+  <gm-organization></gm-organization>
+</gm-small-card>
+<gm-small-card
+      icon="far fa-file-alt"
+      iconcolor="color-document-icon"
+      title="Bills"
+      subtitle="City Council"
+      tooltip="This is the help for Bills.">
+      <gm-sample-content></gm-sample-content>
+    </gm-small-card>
+    <gm-small-card
+      icon="far fa-calendar-check"
+      iconcolor="color-calendar-icon"
+      title="Meetings"
+      subtitle="All Departments"
+      tooltip="This is the help for Meetings.">
+      <gm-sample-content></gm-sample-content>
+    </gm-small-card>
+    <gm-small-card
+      icon="far fa-file-image"
+      iconcolor="color-photo-icon"
+      title="Recognition"
+      subtitle="Most active"
+      tooltip="This is the help for Recognition.">
+      <gm-shoutouts></gm-shoutouts>
+    </gm-small-card>
+  </gm-small-cards>
+
+  <gm-large-cards>
+    <gm-large-card
+      icon="far fa-calendar-check"
+      iconcolor="color-calendar-icon"
+      title="Issues"
+      tooltip="This is the help for Issues.">
+     Recent<br/>
+     Most active<br/>
+     Those I am following<br/>
+    </gm-large-card>
+    <gm-large-card
+      icon="far fa-calendar-check"
+      iconcolor="color-calendar-icon"
+      title="Representatives"
+      tooltip="This is the help for Representatives.">
+    </gm-large-card>
+    <gm-large-card
+      icon="far fa-calendar-check"
+      iconcolor="color-mail-icon"
+      title="Virtual Meeting"
+      tooltip="This is the help for Virtual Meeting.">
+      <gm-virtual-meeting></gm-virtual-meeting>
+    </gm-large-card>
+    <gm-large-card
+      icon="far fa-calendar-check"
+      iconcolor="color-mail-icon"
+      title="Chat"
+      tooltip="This is the help for Chat.">
+      <gm-chat></gm-chat>
+    </gm-large-card>
+    <gm-large-card
+      icon="far fa-calendar-check"
+      iconcolor="color-calendar-icon"
+      title="Charts"
+      tooltip="This is the help for Charts.">
+      <!-- <gm-pie-chart></gm-pie-chart> -->
+      <!-- <gm-bar-chart></gm-bar-chart> -->
+      <!-- <gm-gauge></gm-gauge> -->
+    </gm-large-card>
+  </gm-large-cards>
+
+
 </main>

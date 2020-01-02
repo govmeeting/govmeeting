@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'gm-dash-main',
+  selector: 'gm-main-content',
   templateUrl: './dash-main.html',
   styleUrls: ['./dash-main.scss']
 })
-export class DashMainComponent implements OnInit {
+export class MainContentComponent implements OnInit {
 
   constructor() { }
 
