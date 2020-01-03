@@ -65,6 +65,7 @@ import { OrganizationComponent } from './organization/organization';
 // import { HeaderModule } from './header/header.module';
 // import { UserdropdownModule } from './userdropdown/userdropdown.module';
 import { HeaderModule } from './header/header.module';
+import { GovInfoComponent } from './gov-info/gov-info.component';
 
 const _isAspServerRunning = true;
 
@@ -117,7 +118,8 @@ const _isAspServerRunning = true;
 
     ShoutoutsComponent,
     RegisterComponent,
-    OrganizationComponent
+    OrganizationComponent,
+    GovInfoComponent
   ],
   exports: [
     DemoMaterialModule

@@ -1,22 +1,22 @@
 <main class="main">
 
-<!-- Icon colors defined in src/styles.scss  -->
+  <!-- Icon colors defined in src/styles.scss  -->
+  <!-- <a [routerLink]="['infocity']">InfoCity</a> <br/> -->
 
 
-<gm-small-cards>
-  <gm-small-card
-  icon="far fa-envelope"
-  iconcolor="color-mail-icon"
-  title="Organization"
-  subtitle="+10"
-  tooltip="This is the help for Organization.">
-  <gm-organization></gm-organization>
-</gm-small-card>
-<gm-small-card
+  <gm-small-cards>
+    <gm-small-card
+    icon="far fa-envelope"
+    iconcolor="color-mail-icon"
+    title="Government"
+    tooltip="This is the help for Organization.">
+    <router-outlet> </router-outlet>
+    <!-- <gm-organization></gm-organization> -->
+    </gm-small-card>
+    <gm-small-card
       icon="far fa-file-alt"
       iconcolor="color-document-icon"
       title="Bills"
-      subtitle="City Council"
       tooltip="This is the help for Bills.">
       <gm-sample-content></gm-sample-content>
     </gm-small-card>
@@ -24,7 +24,6 @@
       icon="far fa-calendar-check"
       iconcolor="color-calendar-icon"
       title="Meetings"
-      subtitle="All Departments"
       tooltip="This is the help for Meetings.">
       <gm-sample-content></gm-sample-content>
     </gm-small-card>
@@ -32,7 +31,6 @@
       icon="far fa-file-image"
       iconcolor="color-photo-icon"
       title="Recognition"
-      subtitle="Most active"
       tooltip="This is the help for Recognition.">
       <gm-shoutouts></gm-shoutouts>
     </gm-small-card>
