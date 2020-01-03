@@ -34,11 +34,12 @@ export class SidenavMenuComponent implements AfterViewInit {
 
     let agency = items[0].displayName;
     let location = items[1].displayName;
-    console.log("navigate:location="+location+"agency="+agency)
+    console.log("navigate: location="+location+" agency="+agency)
 
     this.navService.closeOrgMenu(0);
 
     this.router.navigate(['dashboard/govinfo', location, agency]);
+    // this.router.navigate([{outlets: {'dashboard/bills': "bills"}}]);
   }
 
     // For debugging

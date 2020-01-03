@@ -66,6 +66,9 @@ import { OrganizationComponent } from './organization/organization';
 // import { UserdropdownModule } from './userdropdown/userdropdown.module';
 import { HeaderModule } from './header/header.module';
 import { GovInfoComponent } from './gov-info/gov-info.component';
+import { BillsComponent } from './bills/bills.component';
+import { MeetingsComponent } from './meetings/meetings.component';
+import { NewsComponent } from './news/news.component';
 
 const _isAspServerRunning = true;
 
@@ -119,7 +122,10 @@ const _isAspServerRunning = true;
     ShoutoutsComponent,
     RegisterComponent,
     OrganizationComponent,
-    GovInfoComponent
+    GovInfoComponent,
+    BillsComponent,
+    MeetingsComponent,
+    NewsComponent
   ],
   exports: [
     DemoMaterialModule

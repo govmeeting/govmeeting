@@ -8,8 +8,10 @@ import { MainContentComponent } from './dash-main/dash-main';
 import { AboutProjectComponent } from './about-project/about-project';
 import { GovInfoComponent } from './gov-info/gov-info.component';
 
-import {InfoCityComponent} from './dash-sidenav/sidenav-info/info-city/info-city';
-import {InfoCountyComponent} from './dash-sidenav/sidenav-info/info-county/info-county';
+
+import { BillsComponent } from './bills/bills.component';
+import { MeetingsComponent } from './meetings/meetings.component';
+import { NewsComponent } from './news/news.component';
 
 const routes: Routes = [
 
@@ -18,10 +20,10 @@ const routes: Routes = [
     { path: 'fixasr', component: FixasrComponent },
     { path: 'dashboard', component: MainContentComponent,
     children: [
-      // { path: '', redirectTo: 'infocity', pathMatch: 'full' },
-      // { path: 'infocity', component: InfoCityComponent },
-      // { path: 'infocounty', component: InfoCountyComponent }
-      { path: 'govinfo/:location/:agency', component: GovInfoComponent }
+      { path: 'govinfo/:location/:agency', component: GovInfoComponent },
+      { path: 'bills', component: BillsComponent, outlet:"bills"},
+      { path: 'meetings', component: MeetingsComponent, outlet:'meetings'}
+      // { path: 'news', component: NewsComponent, outlet:"news"}
     ]
      },
     { path: 'about', component: AboutProjectComponent},

@@ -3,40 +3,53 @@
   <!-- Icon colors defined in src/styles.scss  -->
   <!-- <a [routerLink]="['infocity']">InfoCity</a> <br/> -->
 
+<button (click)="CallBills()">Call Bills</button><br/>
+
+<a [routerLink]="[{ outlets: { 'bills': ['bills'] } }]">Link Bills</a><br/>
+<a [routerLink]="[{ outlets: { 'meetings': ['meetings'] } }]">Link meetings</a><br/>
+<a [routerLink]="[{ outlets: { 'bills': ['bills'],'meetings': ['meetings'] } }]">Link bills & meetings</a>
+
+<!-- <a [routerLink]="[{ outlets: { 'primary': ['govinfo'] } }]">Link govinfo</a><br/>
+<a [routerLink]="[{ outlets: { primary: ['govinfo'],bills: ['bills'] } }]">Link govinfo & bills</a> -->
 
   <gm-small-cards>
+
     <gm-small-card
     icon="far fa-envelope"
     iconcolor="color-mail-icon"
     title="Agency"
     tooltip="This is the help for Organization.">
     <router-outlet> </router-outlet>
-    <!-- <gm-organization></gm-organization> -->
     </gm-small-card>
+
     <gm-small-card
       icon="far fa-file-alt"
       iconcolor="color-document-icon"
       title="Bills"
       tooltip="This is the help for Bills.">
-      <gm-sample-content></gm-sample-content>
+      <router-outlet name="bills"> </router-outlet>
     </gm-small-card>
+
     <gm-small-card
       icon="far fa-calendar-check"
       iconcolor="color-calendar-icon"
       title="Meetings"
       tooltip="This is the help for Meetings.">
-      <gm-sample-content></gm-sample-content>
+      <router-outlet name="meetings"> </router-outlet>
     </gm-small-card>
+
     <gm-small-card
       icon="far fa-file-image"
       iconcolor="color-photo-icon"
-      title="Recognition"
-      tooltip="This is the help for Recognition.">
-      <gm-shoutouts></gm-shoutouts>
+      title="News"
+      tooltip="This is the help for News.">
+      <router-outlet name="news"> </router-outlet>
     </gm-small-card>
+
   </gm-small-cards>
 
   <gm-large-cards>
+
     <gm-large-card
       icon="far fa-calendar-check"
       iconcolor="color-calendar-icon"
@@ -46,12 +59,14 @@
      Most active<br/>
      Those I am following<br/>
     </gm-large-card>
+
     <gm-large-card
       icon="far fa-calendar-check"
       iconcolor="color-calendar-icon"
       title="Representatives"
       tooltip="This is the help for Representatives.">
     </gm-large-card>
+
     <gm-large-card
       icon="far fa-calendar-check"
       iconcolor="color-mail-icon"
@@ -59,6 +74,7 @@
       tooltip="This is the help for Virtual Meeting.">
       <gm-virtual-meeting></gm-virtual-meeting>
     </gm-large-card>
+
     <gm-large-card
       icon="far fa-calendar-check"
       iconcolor="color-mail-icon"
@@ -66,6 +82,7 @@
       tooltip="This is the help for Chat.">
       <gm-chat></gm-chat>
     </gm-large-card>
+
     <gm-large-card
       icon="far fa-calendar-check"
       iconcolor="color-calendar-icon"
@@ -75,6 +92,7 @@
       <!-- <gm-bar-chart></gm-bar-chart> -->
       <!-- <gm-gauge></gm-gauge> -->
     </gm-large-card>
+
   </gm-large-cards>
 
 
