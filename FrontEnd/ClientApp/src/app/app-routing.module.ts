@@ -21,7 +21,7 @@ const routes: Routes = [
       // { path: '', redirectTo: 'infocity', pathMatch: 'full' },
       // { path: 'infocity', component: InfoCityComponent },
       // { path: 'infocounty', component: InfoCountyComponent }
-      { path: 'govinfo/:item', component: GovInfoComponent }
+      { path: 'govinfo/:location/:agency', component: GovInfoComponent }
     ]
      },
     { path: 'about', component: AboutProjectComponent},

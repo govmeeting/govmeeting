@@ -7,7 +7,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./gov-info.component.scss']
 })
 export class GovInfoComponent implements OnInit, OnDestroy {
-  item: string;
+  location: string;
+  agency: string;
   private sub: any;
   information: string;
 
@@ -15,15 +16,14 @@ export class GovInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.item = params['item'];
+      this.location = params['location'];
+      this.agency = params['agency'];
+
+      console.log("gov-info:location="+this.location+"agency="+this.agency)
 
       // In a real app: dispatch action to load the details here.
 
-      let x = this.item.indexOf(';');
-      let location = this.item.substr(0, x-1)
-      // this.information = location;
-
-      switch (location) {
+      switch (this.location) {
         case 'Austin': {
           this.information = "info on Austin";
           break;

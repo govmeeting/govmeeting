@@ -32,28 +32,13 @@ export class SidenavMenuComponent implements AfterViewInit {
     console.log("====OnEmitted(sidenav): ");
     console.log(items);
 
-    // If the menu selection is "Select Location" -> "Austin" -> "City Council"
-    // then the array will contain: ["City Council", "Austin", "Select Location"]
-    // and then we just want "Austin; City Council" as the parameter to pass in
-    // the router.navigate call.
-    for(var i = (items.length -2); i >= 0; i--)
-    {
-      console.log(items[i]);
-      selected = selected + items[i].displayName + ((i !=0) ? ' ; ' : '');
-    }
-    console.log("itemSelected: " + selected);
-
-    // selected = selected.replace('Select Location','');
-    this.itemSelected = selected;
-
+    let agency = items[0].displayName;
+    let location = items[1].displayName;
+    console.log("navigate:location="+location+"agency="+agency)
 
     this.navService.closeOrgMenu(0);
-    // Navigate to route of selected item
-    // this.router.navigate([{outlets: {sidenav: items[0].route}}]);
-    // this.router.navigateByUrl("dashboard/infocounty");
-    // this.router.navigateByUrl(items[0].route);
-    // this.router.navigateByUrl("dashboard/govinfo");
-    this.router.navigate(['dashboard/govinfo', selected]);
+
+    this.router.navigate(['dashboard/govinfo', location, agency]);
   }
 
     // For debugging
@@ -63,7 +48,7 @@ export class SidenavMenuComponent implements AfterViewInit {
     orgItems: Array<NavItem> = [
 
 
-      new NavItem('Select Location', null, 0,
+      new NavItem('Select Agency', null, 0,
     [
       new NavItem('Austin', 'location_city', 1,
       [
