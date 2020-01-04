@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewMeetingComponent } from './viewmeeting.component';
+import { ViewMeetingComponent } from './viewmeeting';
 import { ViewMeetingServiceStub } from './viewmeeting.service-stub';
 
 describe('ViewMeetingComponent', () => {

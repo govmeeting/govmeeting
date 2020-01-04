@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewMeetingService } from '../service';
+import { ViewMeetingService } from '../viewmeeting.service';
 import { UserchoiceService } from '../userchoice.service';
 
 @Component({
   selector: 'gm-speakers',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+  templateUrl: './speakers.html',
+  styleUrls: ['./speakers.css']
 })
 export class SpeakersComponent implements OnInit {
 

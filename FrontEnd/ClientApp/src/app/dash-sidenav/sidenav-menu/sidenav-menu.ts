@@ -39,6 +39,11 @@ export class SidenavMenuComponent implements AfterViewInit {
     this.navService.closeOrgMenu(0);
 
     this.router.navigate(['dashboard/govinfo', location, agency]);
+
+    // this.router.navigateByUrl('dashboard/(bills:bills//meetings:meetings)');
+
+
+    // this.router.navigateByUrl('dashboard/(meetings:meetings)');
     // this.router.navigate([{outlets: {'dashboard/bills': "bills"}}]);
   }
 

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewMeetingService } from '../service';
+import { ViewMeetingService } from '../viewmeeting.service';
 
 @Component({
   selector: 'gm-heading',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+  templateUrl: './heading.html',
+  styleUrls: ['./heading.css']
 })
 export class HeadingComponent implements OnInit {
 

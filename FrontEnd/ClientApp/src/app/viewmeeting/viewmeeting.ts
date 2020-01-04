@@ -3,8 +3,8 @@ import { UserchoiceService } from './userchoice.service';
 
 @Component({
   selector: 'gm-meeting',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css'],
+  templateUrl: './viewmeeting.html',
+  styleUrls: ['./viewmeeting.css'],
   providers: [
     UserchoiceService
   ]

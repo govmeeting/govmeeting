@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { ViewMeetingComponent } from './component';
-import { BrowseComponent } from './browse/component';
-import { HeadingComponent } from './heading/component';
-import { SpeakersComponent } from './speakers/component';
-import { TopicsComponent } from './topics/component';
+import { ViewMeetingComponent } from './viewmeeting';
+import { BrowseComponent } from './browse/browse';
+import { HeadingComponent } from './heading/heading';
+import { SpeakersComponent } from './speakers/speakers';
+import { TopicsComponent } from './topics/topics';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({

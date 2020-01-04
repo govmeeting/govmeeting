@@ -27,7 +27,11 @@
       iconcolor="color-document-icon"
       title="Bills"
       tooltip="This is the help for Bills.">
-      <router-outlet name="bills"> </router-outlet>
+      <gm-bills
+        [location]="location"
+        [agency]="agency" >
+      </gm-bills
+      >
     </gm-small-card>
 
     <gm-small-card

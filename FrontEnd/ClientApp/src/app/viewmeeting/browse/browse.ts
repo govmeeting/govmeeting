@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 // import { MeetingService } from '../meeting.service-stub';
-import { ViewMeetingService } from '../service';
+import { ViewMeetingService } from '../viewmeeting.service';
 import { UserchoiceService } from '../userchoice.service';
 import { TopicDiscussion } from '../../models/viewmeeting-view'
 
 @Component({
   selector: 'gm-browse',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+  templateUrl: './browse.html',
+  styleUrls: ['./browse.css']
 })
 export class BrowseComponent implements OnInit {
 

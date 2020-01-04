@@ -13,7 +13,7 @@ import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 
 // import { SidenavComponent } from './dash-sidenav/sidenav-container/sidenav.component';
 import { NavService } from './dash-sidenav/sidenav-menu/service';
-// import { MediaQueryService } from '../services/media-query.service';
+// import { MediaQueryService } from './media-query.service';
 
 @Component({
   selector: 'app-root',

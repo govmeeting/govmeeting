@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 //import { MeetingService } from '../meeting.service-stub';
-import { ViewMeetingService } from '../service';
+import { ViewMeetingService } from '../viewmeeting.service';
 import { UserchoiceService } from '../userchoice.service';
 
 @Component({
   selector: 'gm-topics',
-  templateUrl: './component.html',
-  styleUrls: ['./component.css']
+  templateUrl: './topics.html',
+  styleUrls: ['./topics.css']
 })
 export class TopicsComponent implements OnInit {
 

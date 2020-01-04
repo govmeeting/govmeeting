@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ViewMeetingComponent } from './viewmeeting/component'
+import { ViewMeetingComponent } from './viewmeeting/viewmeeting'
 import { AddtagsComponent } from './addtags/addtags'
 import { FixasrComponent } from './fixasr/fixasr'
 import { MainContentComponent } from './dash-main/dash-main';

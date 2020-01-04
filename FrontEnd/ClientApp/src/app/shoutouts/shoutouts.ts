@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataFactoryService } from '../services/data-factory.service';
-import { DataFakeService } from '../services/data-fake.service';
+import { DataFactoryService } from '../testing/data-factory.service';
+import { DataFakeService } from '../testing/data-fake.service';
 
 @Component({
   selector: 'gm-shoutouts',

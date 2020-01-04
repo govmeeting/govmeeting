@@ -1,12 +1,12 @@
 // from app.module.ts
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { ViewMeetingModule } from './viewmeeting/module';
+import { ViewMeetingModule } from './viewmeeting/viewmeeting.module';
 import { AddtagsModule } from './addtags/addtags.module';
 import { FixasrModule } from './fixasr/fixasr.module';
 import { SharedModule } from './shared/shared.module';
 import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
-import { ViewMeetingService } from './viewmeeting/service';
-import { ViewMeetingServiceStub } from './viewmeeting/service-stub';
+import { ViewMeetingService } from './viewmeeting/viewmeeting.service';
+import { ViewMeetingServiceStub } from './viewmeeting/viewmeeting.service-stub';
 import { AddtagsService } from './addtags/addtags.service';
 import { AddtagsServiceStub } from './addtags/addtags.service-stub';
 import { FixasrService } from './fixasr/fixasr.service';
@@ -48,8 +48,8 @@ import { DashFooterComponent } from './dash-footer/dash-footer';
 //////////////////////////////////////// Services /////////////////////////////////////
 import { ChatService } from './chat/chat.service';
 import { MessagingService } from './conversation/messaging.service';
-import { DataFactoryService } from './services/data-factory.service';
-import { DataFakeService } from './services/data-fake.service';
+import { DataFactoryService } from './testing/data-factory.service';
+import { DataFakeService } from './testing/data-fake.service';
 
 // import { AmchartsModule } from './amcharts/amcharts.module';
 // import { PieChartComponent } from './amcharts/pie-chart/pie-chart';
