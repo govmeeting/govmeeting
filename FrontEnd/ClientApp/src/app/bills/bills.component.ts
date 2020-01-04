@@ -6,8 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./bills.component.scss']
 })
 export class BillsComponent implements OnInit {
-  private _location = '';
-  private _agency = '';
+  _location = '';
+  _agency = '';
 
   @Input()
     set location(location: string) {

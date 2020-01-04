@@ -3,11 +3,11 @@
   <!-- Icon colors defined in src/styles.scss  -->
   <!-- <a [routerLink]="['infocity']">InfoCity</a> <br/> -->
 
-<button (click)="CallBills()">Call Bills</button><br/>
+<!-- <button (click)="CallBills()">Call Bills</button><br/> -->
 
-<a [routerLink]="[{ outlets: { 'bills': ['bills'] } }]">Link Bills</a><br/>
+<!-- <a [routerLink]="[{ outlets: { 'bills': ['bills'] } }]">Link Bills</a><br/>
 <a [routerLink]="[{ outlets: { 'meetings': ['meetings'] } }]">Link meetings</a><br/>
-<a [routerLink]="[{ outlets: { 'bills': ['bills'],'meetings': ['meetings'] } }]">Link bills & meetings</a>
+<a [routerLink]="[{ outlets: { 'bills': ['bills'],'meetings': ['meetings'] } }]">Link bills & meetings</a> -->
 
 <!-- <a [routerLink]="[{ outlets: { 'primary': ['govinfo'] } }]">Link govinfo</a><br/>
 <a [routerLink]="[{ outlets: { primary: ['govinfo'],bills: ['bills'] } }]">Link govinfo & bills</a> -->
@@ -19,7 +19,11 @@
     iconcolor="color-mail-icon"
     title="Agency"
     tooltip="This is the help for Organization.">
-    <router-outlet> </router-outlet>
+    <gm-gov-info
+      [location]="location"
+      [agency]="agency" >
+    </gm-gov-info>
+    <!-- <router-outlet> </router-outlet> -->
     </gm-small-card>
 
     <gm-small-card
@@ -39,7 +43,7 @@
       iconcolor="color-calendar-icon"
       title="Meetings"
       tooltip="This is the help for Meetings.">
-      <router-outlet name="meetings"> </router-outlet>
+      <!-- <router-outlet name="meetings"> </router-outlet> -->
     </gm-small-card>
 
     <gm-small-card
@@ -47,7 +51,7 @@
       iconcolor="color-photo-icon"
       title="News"
       tooltip="This is the help for News.">
-      <router-outlet name="news"> </router-outlet>
+      <!-- <router-outlet name="news"> </router-outlet> -->
     </gm-small-card>
 
   </gm-small-cards>

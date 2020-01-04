@@ -58,7 +58,7 @@ import { DataFakeService } from './testing/data-fake.service';
 import { TestingModule } from './testing/testing.module';
 import { SidenavMenuModule } from './dash-sidenav/sidenav-menu/sidenav-menu-module';
 import { RegisterComponent } from './register/register';
-import { OrganizationComponent } from './organization/organization';
+// import { OrganizationComponent } from './organization/organization';
 // import { TopHeaderComponent } from './header/top-header/top-header/top-header';
 // import { UserDropdownComponent } from './header/top-header/user-dropdown/user-dropdown';
 
@@ -121,7 +121,7 @@ const _isAspServerRunning = true;
 
     ShoutoutsComponent,
     RegisterComponent,
-    OrganizationComponent,
+    // OrganizationComponent,
     GovInfoComponent,
     BillsComponent,
     MeetingsComponent,

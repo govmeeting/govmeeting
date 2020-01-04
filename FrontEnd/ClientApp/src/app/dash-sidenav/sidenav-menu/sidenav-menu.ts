@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 
 import {NavItem} from './nav-item';
 import {NavService} from './service';
+import { MessageService } from '../../message.service';
+
 import { string } from '@amcharts/amcharts4/core';
 
 @Component({
@@ -19,7 +21,7 @@ export class SidenavMenuComponent implements AfterViewInit {
 
   itemSelected: string = '';
 
-  constructor(private navService: NavService, public router: Router) {
+  constructor(private navService: NavService, public router: Router, private messageService: MessageService) {
   }
 
   ngAfterViewInit() {
@@ -34,11 +36,13 @@ export class SidenavMenuComponent implements AfterViewInit {
 
     let agency = items[0].displayName;
     let location = items[1].displayName;
-    console.log("navigate: location="+location+" agency="+agency)
+    console.log("location=" + location + " agency="+agency)
 
     this.navService.closeOrgMenu(0);
 
-    this.router.navigate(['dashboard/govinfo', location, agency]);
+    this.messageService.sendMessage('AgencySelected:' + location + ':' + agency);
+
+    // this.router.navigate(['dashboard/govinfo', location, agency]);
 
     // this.router.navigateByUrl('dashboard/(bills:bills//meetings:meetings)');
 

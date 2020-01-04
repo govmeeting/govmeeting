@@ -18,14 +18,14 @@ const routes: Routes = [
     { path: 'viewmeeting', component: ViewMeetingComponent },
     { path: 'addtags', component: AddtagsComponent },
     { path: 'fixasr', component: FixasrComponent },
-    { path: 'dashboard', component: MainContentComponent,
-    children: [
-      { path: 'govinfo/:location/:agency', component: GovInfoComponent },
-      { path: 'bills', component: BillsComponent, outlet:"bills"},
-      { path: 'meetings', component: MeetingsComponent, outlet:'meetings'}
+    { path: 'dashboard', component: MainContentComponent},
+    // children: [
+    //   { path: 'govinfo/:location/:agency', component: GovInfoComponent },
+    //   { path: 'bills', component: BillsComponent, outlet:"bills"},
+    //   { path: 'meetings', component: MeetingsComponent, outlet:'meetings'}
       // { path: 'news', component: NewsComponent, outlet:"news"}
-    ]
-     },
+    // ]
+    //  },
     { path: 'about', component: AboutProjectComponent},
     { path: '**', redirectTo: 'dashboard' }
 
