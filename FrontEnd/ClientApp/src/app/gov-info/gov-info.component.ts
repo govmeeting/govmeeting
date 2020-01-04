@@ -12,11 +12,14 @@ export class GovInfoComponent implements OnInit {
   @Input()
     set location(location: string) {
       this._location = location;
-      console.log("bills set location=" + location)
-    }
+      console.log("bills set location=" + location)}
     get location(): string { return this._location; }
 
-    @Input() agency: string;
+    @Input()
+    set agency(agency: string) {
+      this._agency = agency;
+      console.log("bills set agency=" + agency)}
+    get agency(): string { return this._agency; }
 
   constructor() { }
 

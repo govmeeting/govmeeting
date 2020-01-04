@@ -15,15 +15,14 @@
   <gm-small-cards>
 
     <gm-small-card
-    icon="far fa-envelope"
-    iconcolor="color-mail-icon"
-    title="Agency"
-    tooltip="This is the help for Organization.">
-    <gm-gov-info
-      [location]="location"
-      [agency]="agency" >
-    </gm-gov-info>
-    <!-- <router-outlet> </router-outlet> -->
+      icon="far fa-envelope"
+      iconcolor="color-mail-icon"
+      title="Agency"
+      tooltip="This is the help for Organization.">
+      <gm-gov-info
+        [location]="location"
+        [agency]="agency" >
+      </gm-gov-info>
     </gm-small-card>
 
     <gm-small-card
@@ -34,8 +33,7 @@
       <gm-bills
         [location]="location"
         [agency]="agency" >
-      </gm-bills
-      >
+      </gm-bills>
     </gm-small-card>
 
     <gm-small-card
@@ -43,7 +41,10 @@
       iconcolor="color-calendar-icon"
       title="Meetings"
       tooltip="This is the help for Meetings.">
-      <!-- <router-outlet name="meetings"> </router-outlet> -->
+      <gm-meetings
+        [location]="location"
+        [agency]="agency">
+      </gm-meetings>
     </gm-small-card>
 
     <gm-small-card
@@ -51,7 +52,11 @@
       iconcolor="color-photo-icon"
       title="News"
       tooltip="This is the help for News.">
-      <!-- <router-outlet name="news"> </router-outlet> -->
+      <gm-news
+      [location]="location"
+      [agency]="agency">
+    </gm-news
+        >
     </gm-small-card>
 
   </gm-small-cards>

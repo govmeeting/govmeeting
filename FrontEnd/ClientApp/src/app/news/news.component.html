@@ -1,1 +1,4 @@
-<p>news works!</p>
+<div *ngIf ="location" class="subhead">
+  {{_location}} - {{_agency}}  <br/>
+  {{datetime | date: 'longDate'}}
+</div>

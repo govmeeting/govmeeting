@@ -30,18 +30,28 @@ export class SidenavMenuComponent implements AfterViewInit {
   }
 
   OnFinalSelection(items: Array<NavItem>){
-    var selected: string = '';
     console.log("====OnEmitted(sidenav): ");
     console.log(items);
 
-    let agency = items[0].displayName;
-    let location = items[1].displayName;
-    console.log("location=" + location + " agency="+agency)
-
     this.navService.closeOrgMenu(0);
 
-    this.messageService.sendMessage('AgencySelected:' + location + ':' + agency);
-
+    let submenu = items[items.length -1].displayName;
+    switch (submenu){
+      case 'Select Agency': {
+          let agency = items[0].displayName;
+          let location = items[1].displayName;
+          console.log("location=" + location + " agency="+agency)
+          this.messageService.sendMessage('AgencySelected:' + location + ':' + agency);
+          break;
+        }
+        case 'Transcripts': {
+          break;
+        }
+        case 'Documentation': {
+          break;
+        }
+      }
+    }
     // this.router.navigate(['dashboard/govinfo', location, agency]);
 
     // this.router.navigateByUrl('dashboard/(bills:bills//meetings:meetings)');
@@ -49,7 +59,6 @@ export class SidenavMenuComponent implements AfterViewInit {
 
     // this.router.navigateByUrl('dashboard/(meetings:meetings)');
     // this.router.navigate([{outlets: {'dashboard/bills': "bills"}}]);
-  }
 
     // For debugging
     // oneNavItem: NavItem = new NavItem('Austin', 'location_city', 2);
