@@ -45,9 +45,25 @@ export class SidenavMenuComponent implements AfterViewInit {
           break;
         }
         case 'Transcripts': {
+          let transcriptTask = items[0].displayName;
+          switch (transcriptTask) {
+            case 'Proofread': {
+              this.router.navigateByUrl('fixasr');
+              break;
+            }
+            case 'Add Issue Tags': {
+              this.router.navigateByUrl('addtags');
+              break;
+            }
+            case 'Browse': {
+              this.router.navigateByUrl('viewmeeting');
+              break;
+            }
+          }
           break;
         }
         case 'Documentation': {
+          this.router.navigateByUrl('about');
           break;
         }
       }
@@ -107,11 +123,11 @@ export class SidenavMenuComponent implements AfterViewInit {
         new NavItem('Browse', 'school', 1, 'info-city')
       ]),
 
-      new NavItem('Documentation', null, 0,
-      [
-        new NavItem('About', 'group', 1, 'info-city'),
-        new NavItem('Github', 'school', 1, 'info-city')
-      ])
+      new NavItem('Documentation', null, 0)
+      // [
+      //   new NavItem('About', 'group', 1, 'info-city'),
+      //   new NavItem('Github', 'school', 1, 'info-city')
+      // ])
 
 
     ];

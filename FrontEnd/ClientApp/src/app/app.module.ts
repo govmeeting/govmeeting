@@ -70,7 +70,7 @@ import { BillsComponent } from './bills/bills.component';
 import { MeetingsComponent } from './meetings/meetings.component';
 import { NewsComponent } from './news/news.component';
 
-const _isAspServerRunning = true;
+const _isAspServerRunning = false;
 
 
 @NgModule({
