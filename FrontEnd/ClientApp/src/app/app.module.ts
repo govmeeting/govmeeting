@@ -69,6 +69,7 @@ import { GovInfoComponent } from './gov-info/gov-info.component';
 import { BillsComponent } from './bills/bills.component';
 import { MeetingsComponent } from './meetings/meetings.component';
 import { NewsComponent } from './news/news.component';
+import { ConfigComponent } from './config/config.component';
 
 const _isAspServerRunning = false;
 
@@ -125,7 +126,8 @@ const _isAspServerRunning = false;
     GovInfoComponent,
     BillsComponent,
     MeetingsComponent,
-    NewsComponent
+    NewsComponent,
+    ConfigComponent
   ],
   exports: [
     DemoMaterialModule
