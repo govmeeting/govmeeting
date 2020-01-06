@@ -5,6 +5,8 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
+import { FixasrText, AsrSegment } from '../models/fixasr-view'
+
 export interface Config {
   heroesUrl: string;
   textfile: string;
@@ -13,8 +15,17 @@ export interface Config {
 @Injectable()
 export class ConfigService {
   configUrl = 'assets/config.json';
+  fixasrUrl = 'assets/stubdata/ToFix.json';
 
   constructor(private http: HttpClient) { }
+
+  getFixasr() {
+    return this.http.get<FixasrText>(this.fixasrUrl)
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
+  }
 
   getConfig() {
     return this.http.get<Config>(this.configUrl)

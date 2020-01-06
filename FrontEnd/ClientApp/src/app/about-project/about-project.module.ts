@@ -12,7 +12,9 @@ import { OverviewComponent } from './overview/overview';
 import { RegisterOrganizationComponent } from './register-organization/register-organization';
 import { SearchMeetingsComponent } from './search-meetings/search-meetings';
 import { AutoProcessingComponent } from './auto-processing/auto-processing';
-
+import { FeaturesComponent } from './features/features';
+import { HurdlesComponent } from './hurdles/hurdles.component';
+import { MovedComponent } from './moved/moved.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,10 @@ import { AutoProcessingComponent } from './auto-processing/auto-processing';
     OverviewComponent,
     RegisterOrganizationComponent,
     SearchMeetingsComponent,
-    AutoProcessingComponent
+    AutoProcessingComponent,
+    FeaturesComponent,
+    HurdlesComponent,
+    MovedComponent
   ],
   imports: [
     CommonModule,

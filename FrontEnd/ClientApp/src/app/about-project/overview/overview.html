@@ -1,47 +1,50 @@
 <p>
-    <br /><h1> Govmeeting - under construction </h1>
+  The most important first feature for Govmeeting is to improve access to the content of government meetings.
+</p>
+<h2>The Before</h2>
+
+Today our options for this are limited:
+
+<p>Perhaps we have time to attend or watch the two to three hour meetings, though only a few minutes may be relevant for us.</p>
+<p>Perhaps we can read meeting minutes on the town website. But these are missing the important discusssions.</p>
+<p>If this is a large city, perhaps there are transcripts available.
+      But they are usually not user friendly.
   <p>
-  <p>
-    This is an open source project. It's goal is to enable greater participation in local democracy.
-    See: <a href="https://github.com/govmeeting/govmeeting"> Govmeeting Github Project </a>
-    These pages describe the components. Those with an asterisk demo some working parts.
-  </p>
+  Here is a sample page from a Philadelphia transcript.
+  It is 154 pages of double-spaced lines, 10-words-per-line. It is also in PDF format,
+  making it unusable on small screens.
+  Click: <button (click)="ToggleTranscript()"> {{showhidetranscript}} Sample Transcript </button>
+<img [hidden]="!CheckShowTranscript()" (click)="ToggleTranscript()" src="/assets/images/Philly transcript page.png" width="900" alt="Philadelphia transcript page">
+</p>
+<p>
+  Finding information is difficult. There is no table of contents. There is a computer generated single-word index.
+  But it is meant for a legal researcher, not the average person. Click:
+  <button (click)="ToggleIndex()"> {{showhideindex}} Sample Index </button>
+<img [hidden]="!CheckShowIndex()" (click)="ToggleIndex()" src="/assets/images/Philly transcript index.png" width="900" alt="Philadelphia transcript index">
+</p>
 
-  <h3> <a [routerLink]="['/about']">About</a> </h3>
-    This page explains more about the goals of project.
+<h2> The After</h2>
+
+Govmeeting will generate transcipts of government meetings, extract the information and populate a database.
+Then you will be able to the following:
+
+<ul>
+  <li> Go to a page where you see a list of all issues discussed at the meeting. </li>
+  <li> Click on any issue and see all that was said on that issue. </li>
+  <li> Click on the name of a speaker and see what he/she said. </li>
+  <li> Do combinations of the above (see what someone said on a specific issue). </li>
+  <li> Expand the criteria to past meetings. See everything ever said on an issue. </li>
+  <li> Receive a summary of issues for each meeting via text message or email. </li>
+  <li> Sign up to receive a email or text whenever a specific issue is discussed in the future.</li>
+  <li> See statistics that compare issues for number of alerts on them, etc .</li>
+  <li> See statistics that compare attendence and involvement of elected officials.</li>
+  <li> Use graphical tools to view statistics.</li>
+  <li> Hear any part of any prior meeting (depends on bandwidth). </li>
+</ul>
 
 
-  <h3> <a [routerLink]="['/serverdemo']">1. Pre-processing</a> </h3>
-    Govmeeting will retrieve existing recording and transcripts of meetings and then pre-process them.
 
-  <h3> <a [routerLink]="['/fixasr']">2. Fix ASR *</a> </h3>
-  <p>
-    A couple of steps need the help of community volunteers.
-    One is fixing errors in the generated text.
-  </p>
 
-  <h3> <a [routerLink]="['/addtags']">3. Add Tags *</a> </h3>
-    The other manual step is to assign "tags" to parts of the meeting:
 
-  <h3> <a [routerLink]="['/viewmeeting']">4. View Meeting *</a> </h3>
-    After the pre-processing, fixing and tagging, we now have a browsable transcript.
-
-  <h3> <a [routerLink]="['/search']">5. Search Meetings</a> </h3>
-    The next step is to populate a relational database. Then we can search it in many ways.
-
-  <h3> <a [routerLink]="['/home']">New Home Page</a> </h3>
-    This current home page is temporary. A new page needs to be built.
-
-  <h3> <a [routerLink]="['/volunteer']">Volunteer Page</a> </h3>
-    Volunteers need a page to aid in collaboration.
-
-  <h3> <a [routerLink]="['/registergov']">Register Entity</a> </h3>
-    A page is needed for registering a government entity to take part in Govmeeting
-
-  <h3> <a [routerLink]="['/otherfeatures']">Other Features</a> </h3>
-    This page talks of other features we will want to build.
-
-  <!--<h3> <a [routerLink]="['/test']">Test Area</a> </h3>
-  This is a temporary test page.-->
 
 

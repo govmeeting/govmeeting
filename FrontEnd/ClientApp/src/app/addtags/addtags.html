@@ -1,6 +1,4 @@
-<p>
-  <br /><h1> Add topic & section tags </h1>
-<p>
+  <div class="head"> Add Tags - Town Council Meeting - Jan. 15, 2018</div>
 
   <style>
     .edit-help {
@@ -9,27 +7,24 @@
     }
   </style>
 
-<br /> <button md-raised-button class="show-help-button" (click)="ToggleHelp()"> {{showhidehelp}} Help </button>
+<button md-raised-button class="show-help-button" (click)="ToggleHelp()"> {{showhidehelp}} Help </button>
 <div class="edit-help" [hidden]="!CheckShowHelp()" (click)="ToggleHelp()">
-  Step 3 is to assign "tags" to parts of the meeting:
+  The next step after a transcript is proofread, is to "Add Tags".
   <ul>
     <li>
-      SECTION TAGS: Read Minutes, Introduce Bills, Public Comment, etc.
-    </li>
+      SECTION TAGS: These mark the start of a new meeting section. For example: Introduction of Bills, Public Comment, etc.
+      Pre-processing assigns these automatically. You can use the up/down arrows to move their positions.
+    </li><br/>
     <li>
-      TOPIC TAGS: "Pave Main St.", "Hire policemen", "Parking fees", etc.
-    </li>
-  </ul>
-   To add a topic tag:
-  <ul>
-    <li> Highlight a text phrase to use it as the topic. </li>
-    <li> Or select a topic name from recent past toics. </li>
-    <li> Click up/down arrows to move tag.</li>
-  </ul>
-  Section tags:
-  <ul>
-    <li> Pre-processing attempts to assign these. </li>
-    <li> Click up/down arrows to move if incorect.</li>
+      TOPIC TAGS: These name the topics that are being discussed. For example: "Pave Main St.", "Hire policemen", etc.
+      To enter these:
+      <ul>
+        <li> Click in the text paragraph to open a dialog OR </li>
+        <li> Highlight a couple of words to use as the topic. </li>
+        <li> You can also select from recent topics. </li>
+        <li> To move a tag, click up/down arrows.</li>
+      </ul>
+        </li>
   </ul>
 </div>
 

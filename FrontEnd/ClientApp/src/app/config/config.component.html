@@ -1,9 +1,14 @@
 <h3>Get configuration from JSON file</h3>
 <div>
+  <button (click)="clear(); showFixasr()">getFixasr</button>
   <button (click)="clear(); showConfig()">get</button>
   <button (click)="clear(); showConfigResponse()">getResponse</button>
   <button (click)="clear()">clear</button>
   <button (click)="clear(); makeError()">error</button>
+  <span *ngIf="fixasr">
+    <p>Fixasr lastedit is "{{fixasr.lastedit}}"</p>
+    <p>First said is "{{fixasr.asrsegments[0].said}}"</p>
+  </span>
   <span *ngIf="config">
     <p>Heroes API URL is "{{config.heroesUrl}}"</p>
     <p>Textfile URL is "{{config.textfile}}"</p>
