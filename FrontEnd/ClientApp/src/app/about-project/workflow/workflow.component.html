@@ -1,0 +1,128 @@
+<ol>
+  <li>
+    <span class="L1"> Individual Registration</span>
+  </li>
+  <li>
+    <span class="L1">Government Body Registration</span>
+  </li>
+  <li>
+    <span class="L1"> Import recordings or transcripts</span>
+    <ul>
+      <li>
+        Download existing online recordings or transcripts on a regular schedule from
+        the online locations specified in the Government Body Registration.
+      </li>
+      <li>
+        User upload of recordings or transcripts.
+         Occasionally the upload process may require manual steps by a volunteer.
+      </li>
+      <li>
+        In person recording of meetings. Govmeeting will provide a smartphome app that can be used to
+        personally record and upload a meeting recording.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <span class="L1">Conversion to text</span>
+    <ul>
+      <li>
+        <span class="L2">Convert transcripts to plain text</span>
+        Often existing transcripts are in other formats like PDF. These are convertee to plain text.
+      </li>
+      <li>
+        <span class="L2">Convert recordings using speech-to-text</span><br/>
+        The following processing is currently being done:
+        <ul>
+          <li>
+            Convert to each of the primary web video formats (mp4, ogg and webm.)
+            This enables volunteers to view or hear the recording during the proofreading stage,
+            irregardless of the device they are using.
+          </li>
+          <li>
+            Extract and merge the audio tracks.
+          </li>
+          <li>
+            Upload the audio file to the Google Cloud.
+          </li>
+          <li>
+            Call the asynchronous Google Speech API to do auto voice recognition.
+          </li>
+        </ul>
+    </li>
+    </ul>
+  </li>
+  <li>
+    <span class="L1"> Further processing of speech-to-text output</span>
+    <ul>
+      <li>
+        <span class="L2">Speaker change recognition</span>
+      </li>
+      <li>
+        <span class="L2">Add speaker identification</span>
+      </li>
+      <li>
+        <span class="L2">Proofread generated text</span><br/>
+        The following processing is currently being done:
+        <ul>
+          <li> Split the video, audio and trancript files into 3 minute work segments.</li>
+          <li> Provide a user friendly interface for quickly correcting errors.
+            See: <a [routerLink]="['/fixasr']">Proofread</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <span class="L1">Add section labels</span>
+    <ul>
+      <li> Extract information such as speaker and section names. * </li>
+      <li> Put the information into a JSON format for further processing. * </li>
+    </ul>
+
+  </li>
+  <li>
+    <span class="L1"> Add issue tags</span>
+  </li>
+  <li>
+    <span class="L1">Populate database with final output</span>
+  </li>
+  <li>
+    <span class="L1">Data is now available for use</span>
+    <ul>
+      <li>
+        A browe-able & search-able transcript is now available
+      </li>
+      <li>
+        A summary of the issues discussed at the meeting is sent to those requesting it.
+      </li>
+      <li>
+        Alerts are sent on specific issues to those requesting it.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <span class="L1">Virtual meeting is arranged.</span>
+    <ul>
+      <li>
+        An agenda is created based on issues at the real meeting.
+      </li>
+      <li>
+        Invitatations are sent to community members. Included are requests for possible additional agenda items.
+      </li>
+      <li>
+        When responses are received, a ballot is sent to those who wil attend. On this ballot, members can vote on whether
+        to include any of the suggested new agenda items.
+      </li>
+      <li>
+        Within a few days, a virtual meeting is held.
+      </li>
+  </ul>
+  </li>
+</ol>
+
+
+<p>
+  For a detailed functional design, see: <a href="https://github.com/govmeeting/govmeeting/wiki/functional-design">Funtional Design on Github.</a><br>
+  For a detailed system design, see: <a href="https://github.com/govmeeting/govmeeting/wiki/system-design">System Design on Github.</a>
+</p>
+

@@ -15,6 +15,7 @@ import { AutoProcessingComponent } from './auto-processing/auto-processing';
 import { FeaturesComponent } from './features/features';
 import { HurdlesComponent } from './hurdles/hurdles.component';
 import { MovedComponent } from './moved/moved.component';
+import { WorkflowComponent } from './workflow/workflow.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MovedComponent } from './moved/moved.component';
     AutoProcessingComponent,
     FeaturesComponent,
     HurdlesComponent,
+    WorkflowComponent,
     MovedComponent
   ],
   imports: [
