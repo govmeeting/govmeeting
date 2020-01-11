@@ -57,7 +57,9 @@ export class MenuListItemComponent {
 
   onItemSelected(item: NavItem) {
 
-    this.router.navigate(['dashboard']);
+    if (item.displayName == "Select Agency"){
+      this.router.navigate(['dashboard']);
+    }
 
     if (item.children && item.children.length) {
       if (item.expanded) {
@@ -84,8 +86,8 @@ export class MenuListItemComponent {
       this.navItems.push(item);
 
       // Tell my parent that the user made a selection and
-      // send her the navItems array. This calls "OnEmitted()" on my parent.
-      // My parent will append herself and send the array to her parent.
+      // send the navItems array. This calls "OnEmitted()" on my parent.
+      // My parent will append herself and send the array to their parent.
       this.finalSelection.emit(this.navItems);
 
     }

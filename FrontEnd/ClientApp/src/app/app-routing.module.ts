@@ -15,19 +15,13 @@ import { NewsComponent } from './news/news.component';
 
 const routes: Routes = [
 
+    // { path: '', redirectTo: 'about' },
     { path: 'viewmeeting', component: ViewMeetingComponent },
     { path: 'addtags', component: AddtagsComponent },
     { path: 'fixasr', component: FixasrComponent },
     { path: 'dashboard', component: MainContentComponent},
-    // children: [
-    //   { path: 'govinfo/:location/:agency', component: GovInfoComponent },
-    //   { path: 'bills', component: BillsComponent, outlet:"bills"},
-    //   { path: 'meetings', component: MeetingsComponent, outlet:'meetings'}
-      // { path: 'news', component: NewsComponent, outlet:"news"}
-    // ]
-    //  },
     { path: 'about', component: AboutProjectComponent},
-    { path: '**', redirectTo: 'dashboard' }
+    { path: '**', redirectTo: 'about' }
 
 ];
 

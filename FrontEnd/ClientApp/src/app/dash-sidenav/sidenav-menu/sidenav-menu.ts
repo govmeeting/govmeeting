@@ -38,6 +38,7 @@ export class SidenavMenuComponent implements AfterViewInit {
     let submenu = items[items.length -1].displayName;
     switch (submenu){
       case 'Select Agency': {
+          this.router.navigate(['dashboard']);
           let agency = items[0].displayName;
           let location = items[1].displayName;
           console.log("location=" + location + " agency="+agency)

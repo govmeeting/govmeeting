@@ -6,9 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-  private _location = '';
-  private _agency = '';
-  private datetime;
+  public _location = '';
+  public _agency = '';
+  public datetime;
 
   @Input()
     set location(location: string) {
