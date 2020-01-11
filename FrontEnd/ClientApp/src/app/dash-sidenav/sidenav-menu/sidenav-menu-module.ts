@@ -3,7 +3,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
 
 import {A11yModule} from '@angular/cdk/a11y';
 import {BidiModule} from '@angular/cdk/bidi';
@@ -20,11 +19,6 @@ import { DemoMaterialModule } from '../../material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MenuListItemComponent} from './menu-list-item/menu-list-item';
 import {SidenavMenuComponent} from './sidenav-menu';
-import {SidenavMenuRoutingModule} from './routing.module';
-import { InfoCityComponent } from '../sidenav-info/info-city/info-city';
-import { InfoCountyComponent } from '../sidenav-info/info-county/info-county';
-import { InfoStateComponent } from '../sidenav-info/info-state/info-state';
-import { InfoFederalComponent } from '../sidenav-info/info-federal/info-federal';
 import { NavService } from './service';
 import { TopNavComponent } from '../sidenav-header/sidenav-header';
 
@@ -54,16 +48,11 @@ export class MaterialModule {}
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,          // TODO This is also imported in dashboard.module & app.module. Choose which we need.
-    FlexLayoutModule,
-    SidenavMenuRoutingModule
+    FlexLayoutModule
   ],
   declarations: [
     SidenavMenuComponent,
     MenuListItemComponent,
-    InfoCityComponent,
-    InfoCountyComponent,
-    InfoStateComponent,
-    InfoFederalComponent,
     TopNavComponent
   ],
   exports: [

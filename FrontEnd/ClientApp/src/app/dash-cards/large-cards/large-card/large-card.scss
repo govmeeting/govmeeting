@@ -7,7 +7,7 @@
   //background-color: #fff;
   margin-bottom: 20px;
   -webkit-column-break-inside: avoid;
-  border: 3px dashed green;
+  // border: 3px dashed green;
 
   &__header {
     display: flex;
@@ -16,7 +16,7 @@
     height: 50px;
     background-color: $color-fiord;
     color: $color-white;
-    border: 3px dashed lightgreen;
+    // border: 3px dashed lightgreen;
 
     &-icon {
       display: flex;

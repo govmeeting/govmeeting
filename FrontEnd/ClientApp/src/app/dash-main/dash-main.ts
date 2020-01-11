@@ -17,6 +17,10 @@ export class MainContentComponent implements OnInit, OnDestroy {
   agency: string;
 
   constructor(public router: Router, private messageService: MessageService) {
+    // constructor(private messageService: MessageService) {
+
+
+
     this.subscription = this.messageService.getMessage().subscribe(message => {
       if (message) {
         this.messages.push(message);
