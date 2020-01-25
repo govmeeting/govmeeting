@@ -5,8 +5,16 @@ import {Router} from '@angular/router';
 import {NavItem} from './nav-item';
 import {NavService} from './service';
 import { MessageService } from '../../message.service';
-
 import { string } from '@amcharts/amcharts4/core';
+
+import { navigationItems } from './menu-items';
+import { months } from './menu-items';
+
+enum DeviceType{
+  desktop,
+  tablet,
+  mobile
+}
 
 @Component({
   selector: 'gm-sidenav-menu',
@@ -20,18 +28,47 @@ export class SidenavMenuComponent implements AfterViewInit {
   version = VERSION;
 
   itemSelected: string = '';
+  navigationItems: NavItem[];
+
+  deviceType: string;
 
   constructor(private navService: NavService, public router: Router, private messageService: MessageService) {
   }
 
+  checkDeviceType() : DeviceType {
+    var width = window.innerWidth;
+    var deviceType;
+    if (width <= 768) {
+      deviceType = DeviceType.mobile;
+      this.deviceType = "Mobile";
+      console.log('mobile device detected')
+    } else if (width > 768 && width <= 992) {
+      deviceType = DeviceType.tablet;
+      this.deviceType = "Tablet";
+      console.log('tablet detected')
+    } else {
+      deviceType = DeviceType.desktop;
+      this.deviceType = "Desktop";
+      console.log('desktop detected')
+    }
+    return deviceType;
+  }
+
+  isMobile() {
+    return (this.checkDeviceType() == DeviceType.mobile)
+  }
+
   ngAfterViewInit() {
     this.navService.sidenav = this.sidenav;
-    this.navService.orgItems = this.orgItems;
+    this.navigationItems = navigationItems;
+    this.navService.navigationItems = this.navigationItems;
   }
 
   OnFinalSelection(items: Array<NavItem>){
     console.log("====OnEmitted(sidenav): ");
     console.log(items);
+    console.log("Month:" + months[0])
+    console.log("org:" + this.navigationItems[0].displayName)
 
     // this.navService.closeOrgMenu(0);
 
@@ -81,72 +118,9 @@ export class SidenavMenuComponent implements AfterViewInit {
         break;
       }
     }
-  }
-    // this.router.navigate(['dashboard/govinfo', location, agency]);
-
-    // this.router.navigateByUrl('dashboard/(bills:bills//meetings:meetings)');
-
-
-    // this.router.navigateByUrl('dashboard/(meetings:meetings)');
-    // this.router.navigate([{outlets: {'dashboard/bills': "bills"}}]);
-
-    // For debugging
-    // oneNavItem: NavItem = new NavItem('Austin', 'location_city', 2);
-
-
-    orgItems: Array<NavItem> = [
-
-      new NavItem('About', null, 0,
-      [
-        new NavItem('Purpose', 'group', 1, 'info-city'),
-        new NavItem('Overview', 'school', 1, 'info-city'),
-        new NavItem('Workflow', 'school', 1, 'info-city'),
-        new NavItem('Auto Processing', 'school', 1, 'info-city'),
-        new NavItem('[All Pages]', 'school', 1, 'info-city')
-      ]),
-
-      // new NavItem('Transcripts', null, 0,
-      // [
-      //   new NavItem('Proofread', 'group', 1, 'info-city'),
-      //   new NavItem('Add Issue Tags', 'school', 1, 'info-city'),
-      //   new NavItem('Browse', 'school', 1, 'info-city')
-      // ]),
-
-    new NavItem('Select Location', null, 0,
-    [
-      new NavItem('Austin', 'location_city', 1,
-      [
-        new NavItem('City Council', 'group', 2, 'dashboard/govinfo'),
-        new NavItem('Board of Education', 'school', 2, 'dashboard/govinfo'),
-        new NavItem('Planning Board', 'group', 2, 'dashboard/govinfo'),
-        new NavItem('All Depts.', 'group', 2, 'dashboard/govinfo'),
-      ]),
-      new NavItem('Travis County', 'group', 1,
-      [
-        new NavItem('Commissioners', 'group', 2, 'dashboard/infocounty'),
-        new NavItem('Transportation', 'group', 2, 'dashboard/infocounty'),
-        new NavItem('Both Depts.', 'group', 2, 'dashboard/infocounty'),
-      ]),
-      new NavItem('State of Texas', 'star', 1,
-      [
-        new NavItem('Senate', 'group', 2, 'info-state'),
-        new NavItem('House', 'group', 2, 'info-state'),
-        new NavItem('Both chambers', 'group', 2, 'info-state')
-      ]),
-      new NavItem('United States', 'flag', 1,
-      [
-        new NavItem('Senate', 'group', 2, 'info-federal'),
-        new NavItem('House', 'group', 2, 'info-federal'),
-        new NavItem('Both chambers', 'group', 2, 'info-federal')
-      ]),
-      new NavItem('Non-Government', 'group', 1,
-      [
-        new NavItem('Glendale HOA', 'group', 2, 'info-HOA'),
-      ])
-    ])
-
-    // new NavItem('Documentation', null, 0)
-
-  ];
+    if (this.isMobile()) {
+      this.navService.closeNav();
+    }
+}
 
 }

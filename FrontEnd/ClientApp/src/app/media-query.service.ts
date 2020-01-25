@@ -6,7 +6,6 @@ import { MediaMatcher } from '@angular/cdk/layout';
   providedIn: 'root'
 })
 export class MediaQueryService  {
-
   mediaQueryList: MediaQueryList;
   private mediaQueryListener:() => void;
 
@@ -21,17 +20,45 @@ export class MediaQueryService  {
       }
     this.mediaQueryList.addListener(this.mediaQueryListener);
   }
-
   ngOnDestroy(): void {
     this.mediaQueryList.removeListener(this.mediaQueryListener);
   }
-
   isMobile() {
     return false;
     // return this.mediaQueryService.isMobile();
   }
-
 }
+
+// import { Injectable } from '@angular/core';
+// import { ChangeDetectorRef } from '@angular/core';
+// import { MediaMatcher } from '@angular/cdk/layout';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class MediaQueryService  {
+//   mediaQueryList: MediaQueryList;
+//   private mediaQueryListener:() => void;
+
+//   constructor(
+//     changeDetectorRef: ChangeDetectorRef,
+//     media: MediaMatcher
+//   ) {
+//     this.mediaQueryList = media.matchMedia('(max-width: 992px)');
+//     this.mediaQueryListener = () => {
+//       changeDetectorRef.detectChanges();
+//       console.log("Match?: ", this.mediaQueryList.matches)
+//       }
+//     this.mediaQueryList.addListener(this.mediaQueryListener);
+//   }
+//   ngOnDestroy(): void {
+//     this.mediaQueryList.removeListener(this.mediaQueryListener);
+//   }
+//   isMobile() {
+//     return false;
+//     // return this.mediaQueryService.isMobile();
+//   }
+// }
 
 
 

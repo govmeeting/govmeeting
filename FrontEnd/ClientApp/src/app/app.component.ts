@@ -4,9 +4,10 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, OnDestroy} from '@angular/core';
+// import {ApplicationRef} from '@angular/core';
 
 import { NavService } from './dash-sidenav/sidenav-menu/service';
-// import { MediaQueryService } from './media-query.service';
+import { MediaQueryService } from './media-query.service';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,7 @@ export class AppComponent implements AfterViewInit {
     // public mediaQueryService: MediaQueryService,
     fb: FormBuilder,
     changeDetectorRef: ChangeDetectorRef,
+    // changeDetectorRef: ApplicationRef,
     media: MediaMatcher
     ) {
     this.options = fb.group({
@@ -42,6 +44,7 @@ export class AppComponent implements AfterViewInit {
     this.mediaQueryListener = () => {
       changeDetectorRef.detectChanges();
       console.log("mediaQueryListener:" + this.mediaQueryList.matches);
+      this.checkDeviceType();
     }
     this.mediaQueryList.addListener(this.mediaQueryListener);
   }
@@ -57,5 +60,16 @@ export class AppComponent implements AfterViewInit {
   isMobile() {
     return false;
     // return this.mediaQueryService.isMobile();
+  }
+
+  checkDeviceType() {
+    var width = window.innerWidth;
+    if (width <= 768) {
+      console.log('mobile device detected')
+    } else if (width > 768 && width <= 992) {
+      console.log('tablet detected')
+    } else {
+      console.log('desktop detected')
+    }
   }
 }

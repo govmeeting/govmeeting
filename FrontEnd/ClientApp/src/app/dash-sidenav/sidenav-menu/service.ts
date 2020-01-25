@@ -4,7 +4,7 @@ import { NavItem } from './nav-item'
 @Injectable()
 export class NavService {
   public sidenav: any;
-  public orgItems: NavItem[];
+  public navigationItems: NavItem[];
 
   constructor() {
   }
@@ -21,7 +21,7 @@ export class NavService {
     startDepth: number,
     maxDepth: number = 99  // unspecified means all depths
     ) {
-    this.closeMenu(this.orgItems, startDepth, maxDepth)
+    this.closeMenu(this.navigationItems, startDepth, maxDepth)
   }
 
   private closeMenu(
