@@ -12,6 +12,9 @@ namespace GM.Workflow
     public class RetrieveOnlineFiles
     {
         // TODO - IMPLEMENT THIS CLASS
+        // Instead of retrieving online files, we currently just copy some test files into
+        // the INCOMING folder. The next step in the workflow, ProcessIncomingFiles, will
+        // then see the new files and start to process them.
 
         /* RetrieveOnlineFiles will:
          * Read the meeting schedules for all government bodies in the database.
@@ -47,6 +50,7 @@ namespace GM.Workflow
             Directory.CreateDirectory(datafilesPath + "\\" + "INCOMING");
             Directory.CreateDirectory(datafilesPath + "\\" + "PROCESSED");
 
+            // These are the test files that we will copy.
             string[] files = new string[]
             {
                 "USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2017-12-07.pdf",
@@ -62,7 +66,7 @@ namespace GM.Workflow
                 {
                     string source = testfilesPath + "\\" + file;
 
-                    // For testing, use the first 9 minutes of the video recordings.
+                    // For testing, use only the first 9 minutes of the video recordings.
                     if (file.EndsWith(".mp4"))
                     {
                         SplitRecording splitRecording = new SplitRecording();

@@ -3,10 +3,13 @@
 
 <div class="container">
 
-  <div *ngIf="location=='Boothbay Harbor'">
+  <div  [hidden]="location" class="subhead">
+    Select Location in menu<br/><br/>
+  </div>
 
-[ From town website ]
-    <h4> Boards and Committees</h4>
+  <span *ngIf="location=='Boothbay Harbor'">
+
+   <div class="subhead">Boards and Committees</div>
     <ul>
       <li>Board of Appeals</li>
       <li>Board of Selectmen</li>
@@ -22,7 +25,7 @@
       <li>Shellfish Committee</li>
     </ul>
 
-    <h4>Board of Selectmen</h4>
+    <br/><div class="subhead">Board of Selectmen</div>
     <table>
       <tr> <td>Till year</td> <td>Name</td> <td>Position</td> </tr>
       <tr> <td>2020</td> <td>Denise Griffin</td> <td></td> </tr>
@@ -32,13 +35,13 @@
       <tr> <td>2022</td> <td>Michael Tomko</td> <td>Chair</td> </tr>
     </table>
 
-</div>
+    [ From town website ]
+
+  </span>
 
 
 <div *ngIf="location=='Lincoln County'">
-[From Lincoln County website]
-  <h4>Board of Commissioners</h4>
-
+  <div class="subhead">Board of Commissioners</div>
   <p>
   The Board of Commissioners meets on the first and third Tuesdays of each Month starting at 9:00 A.M. in the Hearing Room at the Courthouse in Wiscasset.  Additional Meetings are held when needed and during the preparation of the Budget.
   </p>
@@ -54,32 +57,25 @@
   District Three: Commissioner Mary Trescot (chair)<br/>
   (Term Expires 12-31-2020)<br/>
   Alna, Damariscotta, Dresden, Jefferson, Newcastle, Somerville, Whitefield and Hibberts Gore<br/>
+  [From Lincoln County website]
 
 </div>
 
 
 <div *ngIf="location=='State of Maine'">
-    [From Wikipedia]  Texas has a plural executive branch system limiting the power of the governor,
-    which is a weak executive compared to some other states. Except for the Secretary of State,
-    voters elect executive officers independently; thus candidates are directly
-    answerable to the public, not the governor.[140] This election system has led
-    to some executive branches split between parties and reduced the ability of the
-    governor to carry out a program. When Republican President George W. Bush
-    served as Texas's governor, the state had a Democratic lieutenant governor,
-    Bob Bullock. The executive branch positions consist of the Governor,
-    Lieutenant Governor, Comptroller of Public Accounts, Land Commissioner,
-    Attorney General, Agriculture Commissioner, the three-member
-    Texas Railroad Commission, the State Board of Education, and the Secretary of State.[140]
-  <p>
-    The bicameral Texas Legislature consists of the House of Representatives, with 150 members,
-    and a Senate, with 31 members. The Speaker of the House leads the House, and the lieutenant governor,
-    the Senate.[141] The Legislature meets in regular session biennially for just over 100 days,
-    but the governor can call for special sessions as often as desired (notably,
-    the Legislature cannot call itself into session).[142]
-    The state's fiscal year spans from the previous calendar year's September 1
-    to the current year's August 31. Thus, the FY 2015 dates from September 1,
-    2014 through August 31, 2015.
-  </p>
+  <div class="subhead">{{location}} Political Structure</div>
+<p>
+  The Maine Constitution structures Maine's state government, composed of three co-equal branches—the executive, legislative, and judicial branches. The state of Maine also has three Constitutional Officers (the Secretary of State, the State Treasurer, and the State Attorney General) and one Statutory Officer (the State Auditor).
+</p>
+<p>
+  The legislative branch is the Maine Legislature, a bicameral body composed of the Maine House of Representatives, with 151 members, and the Maine Senate, with 35 members. The Legislature is charged with introducing and passing laws.
+</p>
+<p>
+  The executive branch is responsible for the execution of the laws created by the Legislature and is headed by the Governor of Maine (currently Janet Mills). The Governor is elected every four years; no individual may serve more than two consecutive terms in this office. The current attorney general of Maine is Aaron Frey. As with other state legislatures, the Maine Legislature can by a two-thirds majority vote from both the House and Senate override a gubernatorial veto. Maine is one of seven states that do not have a lieutenant governor.
+</p>
+<p>
+  The judicial branch is responsible for interpreting state laws. The highest court of the state is the Maine Supreme Judicial Court. The lower courts are the District Court, Superior Court and Probate Court. All judges except for probate judges serve full-time, are nominated by the Governor and confirmed by the Legislature for terms of seven years. Probate judges serve part-time and are elected by the voters of each county for four-year terms.   [From Wikipedia]
+</p>
 </div>
 
 
@@ -122,7 +118,7 @@
 
 
   <div *ngIf="location=='United States'">
-      [From Wikipedia] The United States is the world's oldest surviving federation. It is a representative democracy, "in which majority rule is tempered by minority rights protected by law".[374] The government is regulated by a system of checks and balances defined by the U.S. Constitution, which serves as the country's supreme legal document.[375] For 2018, the U.S. ranked 25th on the Democracy Index[376] and 22nd on the Corruption Perceptions Index.[377]
+      The United States is the world's oldest surviving federation. It is a representative democracy, "in which majority rule is tempered by minority rights protected by law".[374] The government is regulated by a system of checks and balances defined by the U.S. Constitution, which serves as the country's supreme legal document.[375] For 2018, the U.S. ranked 25th on the Democracy Index[376] and 22nd on the Corruption Perceptions Index.[377]
     <p>
     In the American federalist system, citizens are usually subject to three levels of government: federal, state, and local. The local government's duties are commonly split between county and municipal governments. In almost all cases, executive and legislative officials are elected by a plurality vote of citizens by district. There is no proportional representation at the federal level, and it is rare at lower levels.[378]
     </p>
@@ -135,6 +131,7 @@
         Judicial: The Supreme Court and lower federal courts, whose judges are appointed by the president with Senate approval, interpret laws and overturn those they find unconstitutional.[382]
       </li>
     </ul>
+    [From Wikipedia]
   </div>
 
   <div *ngIf="agency=='Glendale HOA'">

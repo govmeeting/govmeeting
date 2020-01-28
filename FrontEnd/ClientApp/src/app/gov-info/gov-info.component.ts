@@ -6,8 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./gov-info.component.scss']
 })
 export class GovInfoComponent implements OnInit {
-  private _location = '';
-  private _agency = '';
+  public _location = '';
+  public _agency = '';
 
   @Input()
     set location(location: string) {

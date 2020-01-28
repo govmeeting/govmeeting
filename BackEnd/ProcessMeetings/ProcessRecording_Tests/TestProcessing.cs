@@ -1,18 +1,29 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Options;
 
 using GM.ProcessRecording;
 using GM.ViewModels;
 using GM.ProcessRecordings;
+using GM.Configuration;
+
 
 namespace GM.ProcessRecording_Tests
 {
     public class TestProcessing
     {
-        // TODO - These should come from configuration
-        private string testdataPath = Environment.CurrentDirectory + @"\..\..\testdata";
-        //private string datafilesPath = Environment.CurrentDirectory + @"\..\..\Datafiles";
+        AppSettings _config;
+
+        private string testdataPath;
+        // private string datafilesPath;
+
+        public TestProcessing(IOptions<AppSettings> config)
+        {
+            _config = config.Value;
+            testdataPath = Environment.CurrentDirectory + _config.TestfilesPath;
+            // datafilesPath = Environment.CurrentDirectory + _config.DatafilesPath;
+        }
 
         public void TestAll()
         {

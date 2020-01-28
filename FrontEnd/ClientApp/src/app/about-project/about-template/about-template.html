@@ -4,21 +4,14 @@
     <mat-panel-title>
       {{title}}
     </mat-panel-title>
-    <mat-panel-description>
-      <mat-icon class="help-icon" [ngStyle]="{'color':'lightblue'}" matTooltip="Meetings are the heart and soul of democracy.
-      They are where people of different opinions listen to others and present their points of view. Info about the action">help</mat-icon>
-    </mat-panel-description>
 
-<!--     <div *ngIf="!example.expanded">Expand</div>
-    <div *ngIf="example.expanded">Collapse</div>
- -->
-<!--     <mat-icon *ngIf="!example.expanded">arrow_downward</mat-icon>
-    <mat-icon *ngIf="example.expanded">arrow_upward</mat-icon>
- -->
-<!--     <mat-panel-description>
-      Currently I am {{panelOpenState ? 'open' : 'closed'}}
-    </mat-panel-description>
- -->  </mat-expansion-panel-header>
+    <!-- <mat-panel-description>
+      <mat-icon class="help-icon" [ngStyle]="{'color':'lightblue'}" matTooltip="Tooltip help text">help</mat-icon>
+    </mat-panel-description> -->
+
+    <!-- <mat-panel-description> {{panelOpenState ? 'open' : 'closed'}} </mat-panel-description> -->
+
+</mat-expansion-panel-header>
   <ng-content></ng-content>
 </mat-expansion-panel>
 

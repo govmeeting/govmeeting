@@ -114,6 +114,7 @@ namespace GM.FileDataRepositories
         {
             if (!Path.IsPathRooted(path))
             {
+                string cd = Directory.GetCurrentDirectory();
                 path = Path.Combine(Directory.GetCurrentDirectory(), path);
             }
             return Path.GetFullPath(path);

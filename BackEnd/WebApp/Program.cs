@@ -16,6 +16,13 @@ namespace GM.WebApp
     {
         public static void Main(string[] args)
         {
+            //string en = Environment.CurrentDirectory;
+            //string dr = Directory.GetCurrentDirectory();
+            //string ad = AppDomain.CurrentDomain.BaseDirectory;
+            //string sa = System.AppContext.BaseDirectory;
+            //string rootDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+
             // NLog: setup the logger first to catch all errors
             var logger = LogManager.LoadConfiguration("nlog.config").GetCurrentClassLogger();
             try

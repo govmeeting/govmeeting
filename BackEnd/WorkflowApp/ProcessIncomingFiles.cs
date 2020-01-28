@@ -37,6 +37,8 @@ namespace GM.Workflow
             MeetingFolder meetingFolder
            )
         {
+            _config = config.Value;
+
             // Google Cloud libraries automatically use the environment variable GOOGLE_APPLICATION_CREDENTIALS
             // to authenticate to Google Cloud. Here we set this variable to the path of the credentials file,
             // which is defined in app.settings.json.
@@ -44,7 +46,6 @@ namespace GM.Workflow
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
 
             _meetingFolder = meetingFolder;
-            _config = config.Value;
             _processTranscript = processTranscript;
             _processRecording = processRecording;
         }
@@ -99,7 +100,10 @@ namespace GM.Workflow
             switch (extension)
             {
                 case ".pdf":
-                    _processTranscript.Process(filename, meetingFolder);
+                    _processTranscript.ProcessPdf(filename, meetingFolder, language);
+                    break;
+                case ".txt":
+                    _processTranscript.ProcessTxt(filename, meetingFolder, language);
                     break;
                 case ".mp4":
                     _processRecording.Process(filename, meetingFolder, language);

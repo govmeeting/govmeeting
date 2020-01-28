@@ -9,9 +9,9 @@ namespace GM.ProcessTranscript
     {
         // original PDF sources at: http://legislation.phila.gov/council-transcriptroom/
 
-        TranscriptFixes tf = new TranscriptFixes();
+        CommonFixes cf = new CommonFixes();
 
-        public Specific_Philadelphia_PA_USA(string meetingDate, string logDirectory) : base(logDirectory)
+        public Specific_Philadelphia_PA_USA(string logDirectory) : base(logDirectory)
         {
         }
 
@@ -26,8 +26,8 @@ namespace GM.ProcessTranscript
             Split(ref transcript, ref meetingInfo, ref officersNames);
 
             //string ss = "abc\n1 aaa\n22 ttt\nzzz\n";
-            //tf.RemoveLinesExceptThoseStartingWithLineNumber(ref ss);
-            tf.RemoveLinesExceptThoseStartingWithLineNumber(ref transcript);
+            //cf.RemoveLinesExceptThoseStartingWithLineNumber(ref ss);
+            cf.RemoveLinesExceptThoseStartingWithLineNumber(ref transcript);
 
             // Delete the line numbers
             DeleteLineNumbers(ref transcript);
@@ -56,7 +56,7 @@ namespace GM.ProcessTranscript
         void DeleteLineNumbers(ref string transcript)
         {
             // Remove page and line numbers.
-            tf.RemoveLineNumbers(ref transcript);
+            cf.RemoveLineNumbers(ref transcript);
 
             LOGPROGRESS("DeleteLineNumbers");
         }
@@ -64,7 +64,7 @@ namespace GM.ProcessTranscript
         void DeletePageAndLineNumbers(ref string transcript)
         {
             // Remove page and line numbers.
-            tf.RemovePageAndLineNumbers(ref transcript);
+            cf.RemovePageAndLineNumbers(ref transcript);
 
             LOGPROGRESS("DeletePageAndLineNumbers");
         }
@@ -72,15 +72,15 @@ namespace GM.ProcessTranscript
         void Split(ref string transcript, ref string meetingInfo, ref string officersNames)
         {
             // Get the meeting information
-            meetingInfo = tf.LinesFromAndUpto(transcript, "    COUNCIL OF THE CITY OF PHILADELPHIA", "PRESENT:\n");
-            tf.RemoveSpacesAtStartOfLine(ref meetingInfo);
+            meetingInfo = cf.LinesFromAndUpto(transcript, "    COUNCIL OF THE CITY OF PHILADELPHIA", "PRESENT:\n");
+            cf.RemoveSpacesAtStartOfLine(ref meetingInfo);
 
             // Get the officers' names
-            officersNames = tf.LinesBetween(transcript, "PRESENT:\n", "    - - -\n");
-            tf.RemoveSpacesAtStartOfLine(ref officersNames);
+            officersNames = cf.LinesBetween(transcript, "PRESENT:\n", "    - - -\n");
+            cf.RemoveSpacesAtStartOfLine(ref officersNames);
 
             // Get the transcript of what was said
-            transcript = tf.LinesBetween(transcript, "    - - -\n", "Page 1\nA\n");
+            transcript = cf.LinesBetween(transcript, "    - - -\n", "Page 1\nA\n");
 
             LOGPROGRESS("Split heading,speakers,text");
         }
@@ -93,7 +93,7 @@ namespace GM.ProcessTranscript
             transcript = Regex.Replace(transcript, pattern1, replacement, RegexOptions.Multiline);
 
             // Sometimes a section header can occur within the text of someone speaking. Move to above current speaker.
-            tf.MoveSectionHeaders(ref transcript);
+            cf.MoveSectionHeaders(ref transcript);
 
             LOGPROGRESS("FormatSectionHeaders");
         }
@@ -112,9 +112,9 @@ namespace GM.ProcessTranscript
 
         void DeleteExtraNewlines(ref string transcript)
         {
-            tf.RemoveBlankLines(ref transcript);
+            cf.RemoveBlankLines(ref transcript);
 
-            tf.RemoveNewlinesInsideParagraphs(ref transcript);
+            cf.RemoveNewlinesInsideParagraphs(ref transcript);
 
             LOGPROGRESS("DeleteExtraNewlines");
         }
@@ -123,18 +123,18 @@ namespace GM.ProcessTranscript
         {
             // Continuation lines for speaking can have up to 4 initial spaces.
             // We want them all to start flush left.
-            tf.Remove4SpacesAtStartOfLine(ref transcript);
+            cf.Remove4SpacesAtStartOfLine(ref transcript);
 
             // On the lines which still have 4 or more initial spaces, make them all four.
-            tf.MakeAllIndents4Spaces(ref transcript);
+            cf.MakeAllIndents4Spaces(ref transcript);
 
             LOGPROGRESS("AlignTextLeft");
         }
 
         void ReformatHeadings(ref string transcript)
         {
-            tf.ReFormatSectionHeaders(ref transcript);
-            tf.ReFormatSpeakerHeaders(ref transcript);
+            cf.ReFormatSectionHeaders(ref transcript);
+            cf.ReFormatSpeakerHeaders(ref transcript);
 
             LOGPROGRESS("ReformatHeaders");
         }

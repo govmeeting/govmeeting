@@ -18,13 +18,15 @@ namespace GM.ProcessRecordings
 {
     public class TranscribeAudio
     {
-        private readonly AppSettings _config;
+        private AppSettings _config;
 
         public TranscribeAudio(
-             AppSettings config
+             //AppSettings config
+             IOptions<AppSettings> config
         )
         {
-            _config = config;
+            //_config = config;
+            _config = config.Value;
         }
 
         /// <param name="language">Language of the audio. This is the ISO 639 code</param>

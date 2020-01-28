@@ -1,5 +1,9 @@
-<div *ngIf ="location" class="subhead">
-  <span></span>Recent Meetings
+<div  [hidden]="location" class="subhead">
+  Select Location in menu<br/><br/>
+</div>
+
+<span *ngIf ="location">
+  <div class="subhead">Recent Meetings</div>
 
   <table style="width:100%">
     <tr>
@@ -23,5 +27,5 @@
       <td>Capital Metro and City Council Joint Work Session</td>
     </tr>
   </table>
-</div>
+</span>
 

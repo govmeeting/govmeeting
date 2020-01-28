@@ -15,7 +15,7 @@ using GM.ProcessRecordings;
 
 namespace GM.Workflow
 {
-    /* Eventually This will become part of WebApp. It is in a separate proceess
+    /* Eventually This may become part of WebApp. It is in a separate proceess
      * for development. We want to start it in the same way that WebApp will start it.
      * So we use dependency injection with providers for logging, configuration and other services.
      */
@@ -24,6 +24,14 @@ namespace GM.Workflow
     {
         public static void Main(string[] args)
         {
+            //string en = Environment.CurrentDirectory;
+            //string dr = Directory.GetCurrentDirectory();
+            //string ad = AppDomain.CurrentDomain.BaseDirectory;
+            //string sa = System.AppContext.BaseDirectory;
+            //string cd = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            //System.Reflection.Assembly sra = System.Reflection.Assembly.GetExecutingAssembly();
+            //string rootDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
             // https://pioneercode.com/post/dependency-injection-logging-and-configuration-in-a-dot-net-core-console-app
 
             // create service collection
@@ -47,11 +55,16 @@ namespace GM.Workflow
             services.AddLogging();
 
             // build configuration
+
+            // appsettings.json is copied to the output folder during the build.
+            // Otherwise, we would need to set appsettingsdir as follows:
+            // string appsettingsdir = Directory.GetCurrentDirectory() + @"\..\..\..";
+            string appsettingsdir = Directory.GetCurrentDirectory();
             var configuration = new ConfigurationBuilder()
                 // TODO - The following path will only work in development.
                 // It isn't yet decided how Workflow_App will be run in production.
                 // Will it be a separate .EXE or a .LIB loaded by WebApp?
-                .SetBasePath(Directory.GetCurrentDirectory() + @"\..\..\..")
+                .SetBasePath(appsettingsdir)
                 .AddJsonFile("appsettings.json", false)
                 .Build();
 

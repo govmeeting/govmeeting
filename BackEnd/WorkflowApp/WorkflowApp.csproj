@@ -31,4 +31,10 @@
     <ProjectReference Include="..\ProcessMeetings\ProcessTranscript_Lib\ProcessTranscript_Lib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
