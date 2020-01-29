@@ -8,7 +8,6 @@ import { MessageService } from '../../message.service';
 import { string } from '@amcharts/amcharts4/core';
 
 import { navigationItems } from './menu-items';
-import { months } from './menu-items';
 
 enum DeviceType{
   desktop,
@@ -28,7 +27,7 @@ export class SidenavMenuComponent implements AfterViewInit {
   version = VERSION;
 
   itemSelected: string = '';
-  navigationItems: NavItem[];
+  navigationItems: NavItem[] = navigationItems;
 
   deviceType: string;
 
@@ -60,14 +59,12 @@ export class SidenavMenuComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.navService.sidenav = this.sidenav;
-    this.navigationItems = navigationItems;
     this.navService.navigationItems = this.navigationItems;
   }
 
   OnFinalSelection(items: Array<NavItem>){
     console.log("====OnEmitted(sidenav): ");
     console.log(items);
-    console.log("Month:" + months[0])
     console.log("org:" + this.navigationItems[0].displayName)
 
     // this.navService.closeOrgMenu(0);
@@ -107,6 +104,10 @@ export class SidenavMenuComponent implements AfterViewInit {
           }
           case 'Manual Processing': {
             this.router.navigateByUrl('manualprocessing');
+            break;
+          }
+          case 'Extend Govmeeting': {
+            this.router.navigateByUrl('extendgovmeeting');
             break;
           }
           case '[All Pages]': {

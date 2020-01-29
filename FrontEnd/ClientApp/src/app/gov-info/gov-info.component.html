@@ -1,6 +1,13 @@
 <!-- This page is hard coded with example text.
    In real life, it will get its content via data binding  -->
 
+   <mat-icon>explore</mat-icon>
+   <mat-icon>info</mat-icon>
+   <mat-icon> table_chart</mat-icon>
+   <mat-icon>zoom_out</mat-icon>
+   <mat-icon>toc</mat-icon>
+
+
 <div class="container">
 
   <div  [hidden]="location" class="subhead">
@@ -79,7 +86,9 @@
 </div>
 
 
-  <!-- <div *ngIf="location=='Austin'">
+
+
+  <div *ngIf="location=='Austin'">
       [From Wikipedia] Austin is administered by an 11-member city council (10 council members elected by geographic district plus a mayor elected at large). The council is accompanied by a hired city manager under the manager-council system of municipal governance. Council and mayoral elections are non-partisan, with a runoff in case there is no majority winner. A referendum approved by voters on November 6, 2012 changed the council composition from six council members plus a mayor elected at large to the current "10+1" district system. November 2014 marked the first election under the new system. The Federal government had forced San Antonio and Dallas to abandon at-large systems before 1987; however, the court could not show a racist pattern in Austin and upheld the city's at-large system during a 1984 lawsuit. In five elections between 1973 and 1994 Austin voters rejected single-member districts.[240]
   </div>
 
@@ -114,7 +123,7 @@
       to the current year's August 31. Thus, the FY 2015 dates from September 1,
       2014 through August 31, 2015.
     </p>
-  </div> -->
+  </div>
 
 
   <div *ngIf="location=='United States'">

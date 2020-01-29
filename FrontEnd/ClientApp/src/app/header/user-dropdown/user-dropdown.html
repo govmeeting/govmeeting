@@ -1,21 +1,29 @@
 <div class="dropdown__avatar" (click)="setDropdownActive()">
   <div class="dropdown {{dropdownActive}}">
     <ul class="dropdown__list">
-    <li class="dropdown__list-item">
-      <span class="dropdown__icon" (click)="signin()"><i class="fa fa-sign-in-alt"></i></span>
-      <span class="dropdown__title">log out</span>
+    <li class="dropdown__list-item"  *ngIf="!isLoggedIn">
+      <span class="dropdown__icon"><i class="fa fa-sign-in-alt"></i></span>
+      <span class="dropdown__title"  (click)="signin()">Log In</span>
     </li>
-    <li class="dropdown__list-item">
-      <span class="dropdown__icon" (click)="signout()"><i class="fa fa-sign-out-alt"></i></span>
-      <span class="dropdown__title">log out</span>
+    <li class="dropdown__list-item"  *ngIf="!isLoggedIn">
+      <span class="dropdown__icon"><i class="fas fa-users"></i></span>
+      <span class="dropdown__title" (click)="register()">Register</span>
     </li>
-    <li class="dropdown__list-item">
+    <li class="dropdown__list-item" *ngIf="isAdmin">
       <span class="dropdown__icon" (click)="myprofile()"><i class="fa fa-user"></i></span>
-      <span class="dropdown__title">my profile</span>
+      <span class="dropdown__title">Admin</span>
     </li>
-    <li class="dropdown__list-item">
+    <li class="dropdown__list-item" *ngIf="isLoggedIn">
+      <span class="dropdown__icon" (click)="myprofile()"><i class="fa fa-user"></i></span>
+      <span class="dropdown__title">My Profile</span>
+    </li>
+    <li class="dropdown__list-item" *ngIf="isLoggedIn">
       <span class="dropdown__icon" (click)="myaccount()"><i class="far fa-folder-open"></i></span>
-      <span class="dropdown__title">my account</span>
+      <span class="dropdown__title">My Account</span>
+    </li>
+    <li class="dropdown__list-item" *ngIf="isLoggedIn">
+      <span class="dropdown__icon" (click)="signout()"><i class="fa fa-sign-out-alt"></i></span>
+      <span class="dropdown__title">Log Out</span>
     </li>
   </ul>
 </div>

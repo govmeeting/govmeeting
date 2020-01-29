@@ -8,10 +8,10 @@ import { PurposeComponent } from './purpose/purpose';
 import { VolunteerComponent } from './volunteer/volunteer';
 import { AboutTemplateComponent } from './about-template/about-template';
 import { OverviewComponent } from './overview/overview';
-import { RegisterOrganizationComponent } from './register-organization/register-organization';
 import { AutoProcessingComponent } from './auto-processing/auto-processing';
 import { ManualProcessingComponent } from './manual-processing/manual-processing';
 import { WorkflowComponent } from './workflow/workflow';
+import { ExtendGovmeetingComponent } from './extend-govmeeting/extend-govmeeting'
 
 @NgModule({
   declarations: [
@@ -20,10 +20,10 @@ import { WorkflowComponent } from './workflow/workflow';
     VolunteerComponent,
     AboutTemplateComponent,
     OverviewComponent,
-    RegisterOrganizationComponent,
     AutoProcessingComponent,
     ManualProcessingComponent,
-    WorkflowComponent
+    WorkflowComponent,
+	ExtendGovmeetingComponent
   ],
   imports: [
     CommonModule,

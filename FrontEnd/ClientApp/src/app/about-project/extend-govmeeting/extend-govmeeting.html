@@ -1,0 +1,54 @@
+ <mat-card>
+ <mat-card-title *ngIf="showtitle">Extend Govmeeting</mat-card-title>
+
+<h3>Re-arrange cards on the dashboard</h3>
+
+Open the file: FrontEnd/ClientApp/src/app/dash-main/dash-main.html
+<p>
+You can change the position of any of the small cards or large card by
+changing the position of the gm-small-card or gm-large-card elements in this file.
+</p>
+
+<h3> Add a new feature to a new card on the dashboard </h3>
+
+<ul>
+  <li>
+    At a terminal prompt, move to the folder: FrontEnd/ClientApp
+  </li>
+  <li>
+    Enter: ng generate component your-feature
+  </li>
+  <li>
+    Add your functionality to the files in : FrontEnd/ClientApp/src/app/your-feature
+  </li>
+  <li>
+    Insert a new gm-small-card or gm-large-card element in dash-main.html.
+  </li>
+  <li>
+    Insert the gm-your-feature element into the content area of the new card element.
+  </li>
+  <li>
+    Modify the icon, iconcolor, title and tooltip input attributes on the card element.
+  </li>
+  <li>
+    If you want the name of the currently selected location and agency in your controller:
+    <ul>
+      <li>
+        Add the location and agency input attributes to your element
+      </li>
+      <li>
+        Add location and agency @Input properties in your controller. (See the other samples on dash-main.html)
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3> Add a new Web API's </h3>
+
+<h3> Add a new table to the database </h3>
+
+</mat-card>
+
+
+
+

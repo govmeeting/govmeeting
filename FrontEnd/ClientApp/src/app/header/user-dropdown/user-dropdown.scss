@@ -17,11 +17,12 @@ $color-java: #1BBAE1; // blue text
 .dropdown {
   position: absolute;
   top: 54px;
-  right: -16px;
+  right: 25px;
+  // right: -16px;
   width: 150px;
   //width: 110;
   height: auto;
-  z-index: 99;
+  // z-index: 1;
   background-color: #fff;
   border-radius: 4px;
   visibility: hidden;
@@ -30,7 +31,7 @@ $color-java: #1BBAE1; // blue text
   transition: all .3s;
   @include box-shadow;
   font-size: 14px;
-  overflow: visible;
+  // overflow: visible;
 
 
   &__avatar {
@@ -68,7 +69,8 @@ $color-java: #1BBAE1; // blue text
   }
 
   &__list-item {
-    padding: 6px 12px;
+    // padding: 6px 12px;
+    padding: 0px 12px;
     color: $color-abbey;
     text-transform: capitalize;
 

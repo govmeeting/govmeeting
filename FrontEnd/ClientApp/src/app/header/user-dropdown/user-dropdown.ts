@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'gm-user-dropdown',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-dropdown.scss']
 })
 export class UserDropdownComponent implements OnInit {
+  dropdownActive = "";
+  isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
 
-  dropdownActive = ""
-
-  constructor() { }
+  constructor(@Inject(DOCUMENT) private document: Document,
+  private router: Router) { }
 
   ngOnInit() {
   }
@@ -22,6 +27,20 @@ export class UserDropdownComponent implements OnInit {
     return (value == value1) ? value2 : value1;
   }
 
+  signin(){
+    window.location.href='account/login';
+    // window.open('account/login');    // opens in new tab
+
+  }
+
+  register(){
+    window.location.href='account/register';
+  }
+
+  admin() {
+    window.location.href='admin';
+  }
+
   myprofile(){
 
   }
@@ -30,11 +49,9 @@ export class UserDropdownComponent implements OnInit {
 
   }
 
-  signin(){
-
-  }
-
   signout(){
 
   }
+
+
 }
