@@ -10,6 +10,7 @@ import { PurposeComponent } from './about-project/purpose/purpose';
 import { OverviewComponent } from './about-project/overview/overview';
 import { WorkflowComponent } from './about-project/workflow/workflow';
 import { AutoProcessingComponent } from './about-project/auto-processing/auto-processing';
+import { ManualProcessingComponent } from './about-project/manual-processing/manual-processing';
 
 // import { GovInfoComponent } from './gov-info/gov-info.component';
 // import { BillsComponent } from './bills/bills.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
     { path: 'overview', component: OverviewComponent},
     { path: 'workflow', component: WorkflowComponent},
     { path: 'autoprocessing', component: AutoProcessingComponent},
+    { path: 'manualprocessing', component: ManualProcessingComponent},
     { path: '**', redirectTo: 'about' }
 
 ];

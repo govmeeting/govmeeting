@@ -70,9 +70,13 @@ namespace GM.Workflow
 
         public void doWork(string filename)
         {
+            // alternate way of setting MeetingInfo instance and checking if it's valid
+            // _meetingInfo = new MeetingInfo(filename);
+            // if (!_meetingInfo.valid)
+
+            // Create a MeetingInfo instance. This takes the info in the filename string, for example,
+            // "USA_TX_TravisCounty_Austin_CityCouncil_en/2017-12-14" and puts it into a strongly typed object.
             if (!_meetingFolder.SetFields(filename))
-            //_meetingInfo = new MeetingInfo(filename);
-            //if (!_meetingInfo.valid)
             {
                 Console.WriteLine($"ProcessIncomingFiles.cs - filename is invalid: {filename}");
                 return;

@@ -18,7 +18,7 @@
     <!-- <mat-card-content [style.overflow]="'auto'" [style.height.px]="'300'"> -->
 
  <mat-card>
- <mat-card-title>Purpose</mat-card-title>
+ <mat-card-title *ngIf="showtitle">Purpose</mat-card-title>
   <p>
     Meetings are the heart and soul of democracy.
     They are where people of different opinions listen to each other and present their points of view.
@@ -66,7 +66,7 @@
      </p>
   <p>
     The purpose of Govmeeting is to build software that will enable many more people to participate in their governments.
-    The goal is to build something generic enough that it can be used in any country and in any form of participative government.
+    The goal is to build something generic enough that it can be used in any country on any leveland and in any form of participative government.
   </p>
 
   <p>
@@ -74,6 +74,19 @@
     It will use government data if available. But if government can't or won't supply the needed
     data, it provides a way for citizens themselves to create the data that it needs to monitor government actions.
   </p>
+
+  <p>
+    The workings of democracy need to be learned first at the grassroot level - in towns, villages and small cities.
+     That is also where it is easier for it to work as first envisioned. It is only if democracy can
+     succeed at the grassroots level, that there is any hope of it succeeding at much higher levels.
+  </p>
+
+  <p>
+    Govmeeting's initial primary focus is on tools that work the best at the local level. Lessons learned there
+    can help us fashion the tools we need at the state and country level.
+  </p>
+
+
 
   <p>
     Govmeeting is  an  <a href="https://github.com/govmeeting/govmeeting"> open source project on Github. </a>

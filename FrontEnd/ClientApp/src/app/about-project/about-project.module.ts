@@ -11,7 +11,6 @@ import { OverviewComponent } from './overview/overview';
 import { RegisterOrganizationComponent } from './register-organization/register-organization';
 import { AutoProcessingComponent } from './auto-processing/auto-processing';
 import { ManualProcessingComponent } from './manual-processing/manual-processing';
-import { MovedComponent } from './moved/moved.component';
 import { WorkflowComponent } from './workflow/workflow';
 
 @NgModule({
@@ -24,8 +23,7 @@ import { WorkflowComponent } from './workflow/workflow';
     RegisterOrganizationComponent,
     AutoProcessingComponent,
     ManualProcessingComponent,
-    WorkflowComponent,
-    MovedComponent
+    WorkflowComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'gm-auto-processing',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auto-processing.scss']
 })
 export class AutoProcessingComponent implements OnInit {
+  @Input() showtitle: boolean = true;
 
   constructor() { }
 

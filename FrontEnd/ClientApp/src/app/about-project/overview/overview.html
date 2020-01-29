@@ -1,24 +1,40 @@
 <mat-card>
-  <mat-card-title>Overview</mat-card-title>
+  <mat-card-title *ngIf="showtitle">Overview</mat-card-title>
 
-<p>
-  To keep imformed of local town or city government activities, attending regular Council meetings is the primary first step.
-  It is here where bills are introduced, debated and ultimately voted on. Here is where new issues are introduced. Here
-  formal reports from the department heads are read and discussed.
-</p>
+  Knowing what occurred at government public meetings gives us a very good overview of government activities.
+  It is here where:
+  <ul>
+  <li> legislation is introduced</li>
+  <li> bills are voted on </li>
+  <li> formal department and committee reports are presented </li>
+  <li> issues are discussed </li>
+  <li> public comment occurs </li>
+  </ul>
 
+  <p>
+    The debate and public comment can be the most instructive of all. Instead of reading all 500 pages of a new bill ourselves, it may be
+    sufficient to hear the comments from those who have. Those in favor of the bill will present their most important reasons for favoring it.
+    And those opposed will present their most important reasons for opposing it.
+  </p>
 <h2>Current Access </h2>
 
-But getting access to this information is not easy:
+Getting access to this information is not easy:
 
-<p>Perhaps some of have time to attend or watch all of two to three hour meetings But usually only a few minutes of each may be relevant to us.</p>
-<p>Sometimes there are meeting minutes on government websites. But these are missing the important discusssions.</p>
-<p>If this is a large city, perhaps there are transcripts available.
-      But they are usually not user friendly.
-  <p>
+<p>Perhaps some people have time to attend or watch entire 2-3 hour meetings. -- and also do this for their city,
+  county, state and federal governments.</p>
+
+<p>Meeting minutes are very brief outlines without the substance, the discusssion and debate.</p>
+
+<p>
+  Newspaper reports depend on their resources, the bias of the reporting and the
+  space available to print it.
+</p>
+
+<p>
+  Large cities may have transcripts. But they are usually not user friendly.
   Here is a sample page from a Philadelphia transcript.
-  It is 154 pages of double-spaced lines, 10-words-per-line. It is also in PDF format,
-  making it unusable on small screens.
+  It's 154 pages of double-spaced lines, 10-words-per-line. It's in PDF format,
+  making it unusable on small screens, since it can't adjust its size.
   Click: <button (click)="ToggleTranscript()"> {{showhidetranscript}} Sample Transcript </button>
 <img [hidden]="!CheckShowTranscript()" (click)="ToggleTranscript()" src="/assets/images/Philly transcript page.png" width="900" alt="Philadelphia transcript page">
 </p>
@@ -29,11 +45,15 @@ But getting access to this information is not easy:
 <img [hidden]="!CheckShowIndex()" (click)="ToggleIndex()" src="/assets/images/Philly transcript index.png" width="900" alt="Philadelphia transcript index">
 </p>
 
+<p>
+  New York City is the largest city in the U.S. It produces transcripts of city council meetings. But trying to get them is not easy.
+  Their website states that you need to go in person to the city clerk's office and pay $1 per page or $20 for an electronic copy.
+</p>
 <h2> Desired Access </h2>
 
 
 <p>
-Govmeeting will generate transcipts of government meetings, extract the information and populate a relational database.
+Govmeeting will obtain or generate transcipts of government meetings, extract the information and populate a relational database.
 Then we will be able to do the following:
 </p>
 

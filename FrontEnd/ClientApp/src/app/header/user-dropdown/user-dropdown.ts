@@ -21,4 +21,20 @@ export class UserDropdownComponent implements OnInit {
   toggle(value: string, value1: string, value2: string){
     return (value == value1) ? value2 : value1;
   }
+
+  myprofile(){
+
+  }
+
+  myaccount(){
+
+  }
+
+  signin(){
+
+  }
+
+  signout(){
+
+  }
 }

@@ -2,16 +2,20 @@
   <div class="dropdown {{dropdownActive}}">
     <ul class="dropdown__list">
     <li class="dropdown__list-item">
-      <span class="dropdown__icon"><i class="fa fa-user"></i></span>
+      <span class="dropdown__icon" (click)="signin()"><i class="fa fa-sign-in-alt"></i></span>
+      <span class="dropdown__title">log out</span>
+    </li>
+    <li class="dropdown__list-item">
+      <span class="dropdown__icon" (click)="signout()"><i class="fa fa-sign-out-alt"></i></span>
+      <span class="dropdown__title">log out</span>
+    </li>
+    <li class="dropdown__list-item">
+      <span class="dropdown__icon" (click)="myprofile()"><i class="fa fa-user"></i></span>
       <span class="dropdown__title">my profile</span>
     </li>
     <li class="dropdown__list-item">
-      <span class="dropdown__icon"><i class="far fa-folder-open"></i></span>
+      <span class="dropdown__icon" (click)="myaccount()"><i class="far fa-folder-open"></i></span>
       <span class="dropdown__title">my account</span>
-    </li>
-    <li class="dropdown__list-item">
-      <span class="dropdown__icon"><i class="fa fa-sign-out-alt"></i></span>
-      <span class="dropdown__title">log out</span>
     </li>
   </ul>
 </div>

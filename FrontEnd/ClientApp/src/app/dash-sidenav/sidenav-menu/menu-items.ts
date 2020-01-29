@@ -15,10 +15,11 @@ export let navigationItems = [
 
   new NavItem('About', null, 0,
   [
-    new NavItem('Purpose', 'group', 1, 'info-city'),
+    new NavItem('Purpose', 'school', 1, 'info-city'),
     new NavItem('Overview', 'school', 1, 'info-city'),
     new NavItem('Workflow', 'school', 1, 'info-city'),
     new NavItem('Auto Processing', 'school', 1, 'info-city'),
+    new NavItem('Manual Processing', 'school', 1, 'info-city'),
     new NavItem('[All Pages]', 'school', 1, 'info-city')
   ]),
 

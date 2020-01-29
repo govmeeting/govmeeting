@@ -105,6 +105,10 @@ export class SidenavMenuComponent implements AfterViewInit {
             this.router.navigateByUrl('autoprocessing');
             break;
           }
+          case 'Manual Processing': {
+            this.router.navigateByUrl('manualprocessing');
+            break;
+          }
           case '[All Pages]': {
             this.router.navigateByUrl('about');
             break;

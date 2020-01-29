@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'gm-register-organization',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-organization.scss']
 })
 export class RegisterOrganizationComponent implements OnInit {
+  @Input() showtitle: boolean = true;
 
   constructor() { }
 

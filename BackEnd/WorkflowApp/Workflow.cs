@@ -29,8 +29,8 @@ namespace GM.Workflow
         private readonly AppSettings _config;
         private readonly ProcessIncomingFiles _processIncomingFiles;
         private readonly RetrieveOnlineFiles _retrieveOnlineFiles;
-        private readonly ProcessFixedAsr _processFixedTranscriptions;
-        private readonly ProcessTagged _processTaggedTranscriptions;
+        private readonly ProcessFixedAsr _processFixedAsr;
+        private readonly ProcessTagged _processTagged;
         private readonly LoadTranscript _loadTranscript;
 
         public WorkflowController(
@@ -39,8 +39,8 @@ namespace GM.Workflow
             ILogger<WorkflowController> logger,
             RetrieveOnlineFiles retrieveOnlineFiles,
             ProcessIncomingFiles processIncomingFiles,
-            ProcessFixedAsr processFixedTranscriptions,
-            ProcessTagged processTaggedTranscriptions,
+            ProcessFixedAsr processFixedAsr,
+            ProcessTagged processTagged,
             LoadTranscript loadTranscript
             )
         {
@@ -49,8 +49,8 @@ namespace GM.Workflow
             _config = config.Value;
             _retrieveOnlineFiles = retrieveOnlineFiles;
             _processIncomingFiles = processIncomingFiles;
-            _processFixedTranscriptions = processFixedTranscriptions;
-            _processTaggedTranscriptions = processTaggedTranscriptions;
+            _processFixedAsr = processFixedAsr;
+            _processTagged = processTagged;
             _loadTranscript = loadTranscript;
         }
 
@@ -66,10 +66,10 @@ namespace GM.Workflow
             _processIncomingFiles.Run();
 
             // Process the fixed transcripts to get ready for tagging
-            _processFixedTranscriptions.Run();
+            _processFixedAsr.Run();
 
             // Process tagged transcripts - Create browsable transcript and get ready for loading database
-            _processTaggedTranscriptions.Run();
+            _processTagged.Run();
 
             // Load completed transcript data into database
             _loadTranscript.Run();

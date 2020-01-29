@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'gm-manual-processing',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manual-processing.scss']
 })
 export class ManualProcessingComponent implements OnInit {
+  @Input() showtitle: boolean = true;
 
   constructor() { }
 

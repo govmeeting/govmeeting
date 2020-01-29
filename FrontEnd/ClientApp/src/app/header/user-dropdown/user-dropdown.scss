@@ -21,7 +21,7 @@ $color-java: #1BBAE1; // blue text
   width: 150px;
   //width: 110;
   height: auto;
-  z-index: 1;
+  z-index: 99;
   background-color: #fff;
   border-radius: 4px;
   visibility: hidden;
@@ -30,6 +30,7 @@ $color-java: #1BBAE1; // blue text
   transition: all .3s;
   @include box-shadow;
   font-size: 14px;
+  overflow: visible;
 
 
   &__avatar {

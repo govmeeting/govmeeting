@@ -29,10 +29,10 @@ namespace GM.Workflow
         // Normally the Run method will search the state of the work on fixing errors in voice recognition text.
         // If it finds that the work is completed for a meeting, it will convert the text into
         // the format needed for the next step in the process: tagging of the transcript.
+        // For now we will just convert a test file.
 
         public void Run()
         {
-            // For now we will just convert a test file.
             //FixasrView fixasr = _fixasrRepository.GetFinal(MEETINGID);
             string fisasrText = GMFileAccess.Readfile(@"C:\GOVMEETING\testdata - other\BBH Selectmen\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN\2016-10-11\Step 3 - transcript corrected for errors - 04-LAST.json");
             FixasrView fixasr = JsonConvert.DeserializeObject<FixasrView>(fisasrText);

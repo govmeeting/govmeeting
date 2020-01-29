@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'gm-overview',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./overview.scss']
 })
 export class OverviewComponent implements OnInit {
+  @Input() showtitle: boolean = true;
 
   constructor() { }
 
