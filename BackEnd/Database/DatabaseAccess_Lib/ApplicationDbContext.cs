@@ -20,6 +20,7 @@ namespace GM.DatabaseAccess
         {
         }
 
+        // TODO: OnModelCreating should be disabled fpr production 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

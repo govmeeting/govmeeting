@@ -104,10 +104,8 @@ namespace GM.Workflow
             switch (extension)
             {
                 case ".pdf":
-                    _processTranscript.ProcessPdf(filename, meetingFolder, language);
-                    break;
                 case ".txt":
-                    _processTranscript.ProcessTxt(filename, meetingFolder, language);
+                    _processTranscript.Process(filename, meetingFolder, language);
                     break;
                 case ".mp4":
                     _processRecording.Process(filename, meetingFolder, language);

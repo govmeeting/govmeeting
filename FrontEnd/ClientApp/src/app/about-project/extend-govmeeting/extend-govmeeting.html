@@ -47,6 +47,15 @@ changing the position of the gm-small-card or gm-large-card elements in this fil
 
 <h3> Add a new table to the database </h3>
 
+<h3> Add more fields to the database for the logged in user</h3>
+
+<p>
+  Add properties to the class "ApplicationUser" in the file BackEnd\Database\DatabaseAccess_Lib\ApplicationUser.
+  When the WebApp is restarted, new fields will be automatically generated in the database.
+  After these changes are made in development and tested, an SQL change script can then be generated to update
+  the production database.
+</p>
+
 </mat-card>
 
 

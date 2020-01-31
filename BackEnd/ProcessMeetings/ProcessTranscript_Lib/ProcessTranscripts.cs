@@ -16,15 +16,21 @@ namespace GM.ProcessTranscript
         const string WORK_FOLDER = "PreProcess";
         string workFolder;
 
-        public bool ProcessTxt(string filename, string meetingFolder, string language)
+        public bool Process(string filename, string meetingFolder, string language)
         {
-            CreateWorkFolder(meetingFolder);
+            workFolder = meetingFolder + "\\" + WORK_FOLDER + "\\";
+            Directory.CreateDirectory(workFolder);
+            if (filename.ToLower().EndsWith(".pdf"))
+            {
+                return ProcessPdf(filename, language);
+            }
             string workfile = workFolder + "2 plain-text.txt";
             File.Copy(filename, workfile);
             string text = File.ReadAllText(workfile);
             return TextFixes(text);
         }
-        public bool ProcessPdf(string filename, string meetingFolder, string language)
+
+        private bool ProcessPdf(string filename, string language)
         {
 
             // Step 1 - Copy PDF to meeting directory
@@ -46,8 +52,8 @@ namespace GM.ProcessTranscript
         {
             // Step 3 - Fix the transcript: Put in common format
 
-            //// Make the specific fixes to the philly data
-            //Specific_Philadelphia_PA_USA philly = new Specific_Philadelphia_PA_USA("2016-03-17", workFolder);
+            // Make the specific fixes to the philly data
+            //Specific_Philadelphia_PA_USA philly = new Specific_Philadelphia_PA_USA(workFolder);
             //string transcript = philly.Fix(text);
 
             TranscriptFixes transcriptFixes = new TranscriptFixes();

@@ -54,9 +54,11 @@ namespace GM.Workflow
             string[] files = new string[]
             {
                 "USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2017-12-07.pdf",
-                //"USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15.mp4"
                // TODO - This is about 58MB. Github prefers < 50.
-                "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4" //
+               //"USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4"
+
+               //"USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15.mp4"
+
             };
 
             foreach (string file in files)

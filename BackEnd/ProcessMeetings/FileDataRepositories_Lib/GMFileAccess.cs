@@ -85,21 +85,43 @@ namespace GM.FileDataRepositories
             }
         }
 
-        public static bool DeleteDirectoryAndContents(string folder)
-        {
-            if (Directory.Exists(folder))
-            {
-                DirectoryInfo di = new DirectoryInfo(folder);
+        //public static bool DeleteDirectoryAndContents(string folder)
+        //{
+        //    if (Directory.Exists(folder))
+        //    {
+        //        DirectoryInfo di = new DirectoryInfo(folder);
 
-                di.Delete(true);
-                return true;
-            }
-            else
+        //        di.Delete(true);
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+
+        //}
+
+        public static bool DeleteDirectoryAndContents(string FolderName)
+        {
+            if (!Directory.Exists(FolderName))
             {
                 return false;
             }
+                DirectoryInfo dir = new DirectoryInfo(FolderName);
 
+            foreach (FileInfo fi in dir.GetFiles())
+            {
+                fi.Delete();
+            }
+
+            foreach (DirectoryInfo di in dir.GetDirectories())
+            {
+                DeleteDirectoryAndContents(di.FullName);
+                di.Delete();
+            }
+            return true;
         }
+
         public static void DeleteAndCreateDirectory(string folder)
         {
             if (Directory.Exists(folder))

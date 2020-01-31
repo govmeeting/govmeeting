@@ -8,7 +8,7 @@ using GM.FileDataRepositories;
 using GM.ViewModels;
 
 
-namespace GM.Workflow
+namespace XTestDI
 {
     public class ProcessFixedAsr
     {
@@ -44,3 +44,4 @@ namespace GM.Workflow
         }
     }
 }
+

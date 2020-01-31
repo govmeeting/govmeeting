@@ -63,7 +63,7 @@ namespace GM.Workflow
 
             // Process the retrieved files - auto speech recognition of recordings and
             // pre-process transcript files
-            _processIncomingFiles.Run();
+//            _processIncomingFiles.Run();
 
             // Process the fixed transcripts to get ready for tagging
             _processFixedAsr.Run();
