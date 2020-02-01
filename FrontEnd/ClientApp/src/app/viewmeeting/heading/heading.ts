@@ -24,7 +24,7 @@ export class HeadingComponent implements OnInit {
   ngOnInit() {this.getMeeting();}
 
   getMeeting() {
-    this._viewMeetingService.getMeeting()
+    this._viewMeetingService.getMeeting(null)
     .subscribe(
     (viewMeeting: any) => {
         this.meeting = viewMeeting.meeting;

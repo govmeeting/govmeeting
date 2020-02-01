@@ -22,7 +22,7 @@ export class SpeakersComponent implements OnInit {
 }
 
   getSpeakerNames() {
-    this._viewMeetingService.getMeeting()
+    this._viewMeetingService.getMeeting(null)
     .subscribe(
     meeting => {
         this.speakerNames = meeting.speakerNames;

@@ -24,7 +24,7 @@ export class TopicsComponent implements OnInit {
   }
 
   getNames() {
-    this._meetingService.getMeeting()
+    this._meetingService.getMeeting(null)
     .subscribe(
     t => {
         this.Names = t.topicNames;

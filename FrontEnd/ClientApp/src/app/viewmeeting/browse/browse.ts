@@ -32,7 +32,7 @@ export class BrowseComponent implements OnInit {
   ngOnInit() {this.getTopicDiscussions();}
 
   getTopicDiscussions() {
-      this._viewMeetingService.getMeeting()
+      this._viewMeetingService.getMeeting(null)
       .subscribe(
       t => {
           this.topicDiscussions = t.topicDiscussions;

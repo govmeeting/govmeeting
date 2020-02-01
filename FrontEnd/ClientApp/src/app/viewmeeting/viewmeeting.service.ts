@@ -6,6 +6,8 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { ViewMeeting } from '../models/viewmeeting-view';
+import { viewmeetingSample } from './viewmeeting-sample';
+
 
 import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 
@@ -17,26 +19,21 @@ export class ViewMeetingService {
     // private requestComplete = false;
     private errorMessage: string;
 
-    // Normally the meetingId will be passed to the getMeeting method.
-    // But we did not yet write the component for the user to select a meeting.
-    // We will use id "1" for now. This maps to a meeting of BBH on the server.
-    // On the server, we will get information about this meeting from the database via the meetingId.
-    // For development, this means calling a routine in DatabaseRepsitories_Lib/MeetingRepository_Stub.cs.
-    // If you look at this file, you will see that meetingId "1" maps to a meeting of the
-    // Boothbay Harbor Selectmen on 9/8/2014.
-    private meetingId = 1;
 
     constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
       console.log('ViewMeetingService - constructor');
     }
 
-    getMeeting(): Observable<ViewMeeting> {
+    getMeeting(meetingId: number): Observable<ViewMeeting> {
         if (this.observable != null) {
             return this.observable;
         }
-        // See notes above for "meetingId".
+        if (meetingId == null) {
+          return this.observable;
+      }
+      // See notes above for "meetingId".
         let url: string = this.meetingUrl;
-        url = url + '/' + this.meetingId;
+        url = url + '/' + meetingId;
          this.observable = this.http.get<ViewMeeting>(url)
             .pipe(catchError(this.errHandling.handleError))
             .share();     // make it shared so more than one subscriber can get the same result.
