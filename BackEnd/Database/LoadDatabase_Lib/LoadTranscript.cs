@@ -21,12 +21,15 @@ namespace GM.LoadDatabase
     public class LoadTranscript
     {
         private readonly AppSettings _config;
+        private dBOperations dbOps;
 
         public LoadTranscript(
-            IOptions<AppSettings> config
+            IOptions<AppSettings> config,
+            dBOperations _dbOps
             )
         {
             _config = config.Value;
+            dbOps = _dbOps;
         }
 
         // This method would load transcripts for which the Addtags processing has completed.
@@ -44,31 +47,42 @@ namespace GM.LoadDatabase
         /// <param name="readTranscript">The load transcript.</param>
         public void LoadAndSave(ReadTranscriptFile readTranscript)
         {
-            using (dBOperations dbOps = new dBOperations())
-            {
+            //using (dBOperations dbOps = new dBOperations())
+            //{
                 List<Category> categories = dbOps.GetCategories();
 
+                // Get the governent body info from the transcipt header
                 GovernmentBody govBody = readTranscript.LoadHeadingInfo();
                 if (govBody != null)
                 {
-                    GovernmentBody gBody = null;
+                    GovernmentBody gBody;
                     List<Topic> topics;
+                    // See if that government body already exists in the database
+                    // If it is present, get the existing topics
                     if ((gBody = dbOps.GetOrAddGovernmentBody(govBody)) != null)
                     {
                         topics = dbOps.GetExistingTopics(govBody.Id);
                     }
+                    // otherwise create a new empty list of topics
                     else
                     {
                         topics = new List<Topic>();
                     }
+
+                    // Add new topics from new transcript to the topic list
+
+                    // Get the meeting body info from the transcript
                     Meeting meeting = readTranscript.LoadMeetingData(categories, topics);
                     if (meeting != null)
                     {
+                        // Add the meeting to the database
                         govBody.Meetings.Add(meeting);
-                        dbOps.WriteChanges();
                     }
-                }
+
+                    dbOps.WriteChanges();
+
             }
+            //}
         }
     }
 }

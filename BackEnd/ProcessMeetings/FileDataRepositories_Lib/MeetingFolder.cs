@@ -11,6 +11,8 @@ namespace GM.FileDataRepositories
 {
     // Work folders under Datafiles are named as follows:
     //    <country>_<state>_<county>_<town-or-city>_<gov-entity>_<language>/<date>
+    // THe purpose of this class is to build this name from it parts or to extact the parts from a folder name.
+    // If a meeting ID is passed to GetPathFromId, it will first look up the  meeting info in the database and then build the path.
     // For example:
     //      country = "USA"
     //      state = "PA"
@@ -52,7 +54,7 @@ namespace GM.FileDataRepositories
             valid = false;
         }
 
-        public string GetPathFromId(long meetingId)
+        public string GetNameFromId(long meetingId)
         {
             SetFields(meetingId);
             return path;
@@ -112,5 +114,17 @@ namespace GM.FileDataRepositories
             valid = true;
             return valid;
         }
+
+        //public string GetPartFolder(long meetingId, int part, string workfolderName, string datafiles)
+        //{
+        //    string meetingFolderPath = GetNameFromId(meetingId);
+
+        //    string workFolder = meetingFolderPath + "\\" + workfolderName;
+        //    string partFolder = workFolder + $"\\part{part:D2}";
+        //    string partFolderPath = Path.Combine(datafiles, partFolder);
+
+        //    return partFolderPath;
+        //}
+
     }
 }

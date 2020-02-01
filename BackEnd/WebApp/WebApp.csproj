@@ -36,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="..\..\Frontend\ClientApp\src\**" />
     <None Remove="ClientApp\src\**" />
   </ItemGroup>
 

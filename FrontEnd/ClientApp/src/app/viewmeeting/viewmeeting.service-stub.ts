@@ -88,12 +88,12 @@ export class ViewMeetingServiceStub {
 
 
     public getMeeting(): Observable<ViewMeeting> {
-    if (this.observable != null) {
-        return this.observable;
-    }
+      if (this.observable != null) {
+          return this.observable;
+      }
 
-    // If null is passed for http, return static data
-    if (this.http == null) {
+      // If null is passed for http, return static data
+      if (this.http == null) {
         this.observable = Observable.of(this.viewMeeting);
         return this.observable;
       }

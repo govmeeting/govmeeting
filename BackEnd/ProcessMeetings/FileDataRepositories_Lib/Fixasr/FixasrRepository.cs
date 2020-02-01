@@ -10,52 +10,63 @@ namespace GM.FileDataRepositories
 {
     public class FixasrRepository : IFixasrRepository
     {
-        const string WORK_FOLDER = "Fixasr";
-        const string WORK_FILE = "ToFix.json";
+        // We use a "circular buffer" to store the work files. The base name of the WORK_FILE will
+        // be appended with a sequence number each time a new revision is stored.
+        // The GetLatest and WriteLatest methods on on this buffer will return or store the latest revision.
 
-        private readonly AppSettings _config;
-        private readonly MeetingFolder _meetingFolder;
+        const string WORK_FOLDER_NAME = "Fixasr";
+        const string WORK_FILE_NAME = "ToFix.json";
+
+        private readonly AppSettings config;
+        private readonly MeetingFolder meetingFolder;
+        private readonly string datafiles;
 
         public FixasrRepository(
-            IOptions<AppSettings> config,
-            MeetingFolder meetingFolder
+            IOptions<AppSettings> _config,
+            MeetingFolder _meetingFolder
             )
         {
-            _config = config.Value;
-            _meetingFolder = meetingFolder;
+            config = _config.Value;
+            meetingFolder = _meetingFolder;
+            datafiles = config.DatafilesPath;
         }
 
         public FixasrView Get(long meetingId, int part)
         {
-            string meetingFolder = _meetingFolder.GetPathFromId(meetingId);
-
-            string workFolder = meetingFolder + "\\" + WORK_FOLDER;
-            string partFolder = workFolder + $"\\part{part:D2}";
-
-
             // TODO - Remove later - for development: If the data is not in Datafiles folder, copy it from testdata.
             // UseTestData.CopyIfNeeded(workFolder, _config.DatafilesPath, _config.TestfilesPath);
 
-            string partFolderPath = Path.Combine(_config.DatafilesPath, partFolder);
+            string partFolder = GetPartFolder(meetingId, part);
 
-            CircularBuffer cb = new CircularBuffer(partFolderPath, WORK_FILE, _config.MaxWorkFileBackups);
-
+            CircularBuffer cb = new CircularBuffer(partFolder, WORK_FILE_NAME, config.MaxWorkFileBackups);
             string latestFixes = cb.GetLatest();
+
             FixasrView fixasr = JsonConvert.DeserializeObject<FixasrView>(latestFixes);
             return fixasr;
         }
 
         public bool Put(FixasrView value, long meetingId, int part)
         {
-            string meetingFolder = _meetingFolder.GetPathFromId(meetingId);
-
-            string meetingSegmentFolder = System.IO.Path.Combine(_config.DatafilesPath, meetingFolder);
-
+            string partFolder = GetPartFolder(meetingId, part);
             string stringValue = JsonConvert.SerializeObject(value, Formatting.Indented);
 
-            CircularBuffer cb = new CircularBuffer(meetingSegmentFolder, WORK_FILE, _config.MaxWorkFileBackups);
+            CircularBuffer cb = new CircularBuffer(partFolder, WORK_FILE_NAME, config.MaxWorkFileBackups);
             bool success = cb.WriteLatest(stringValue);
+
             return success;
         }
+
+        private string GetPartFolder(long meetingId, int part)
+        {
+            string meetingFolderPath = meetingFolder.GetNameFromId(meetingId);
+
+            string workFolder = meetingFolderPath + "\\" + WORK_FOLDER_NAME;
+            string partFolder = workFolder + $"\\part{part:D2}";
+            string partFolderPath = Path.Combine(datafiles, partFolder);
+
+            return partFolderPath;
+        }
+
+
     }
 }
