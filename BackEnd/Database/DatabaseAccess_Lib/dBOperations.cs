@@ -9,7 +9,8 @@ namespace GM.DatabaseAccess
     /// <summary>
     /// Routines for accessing the database
     /// </summary>
-    public class dBOperations : IDisposable
+    //public class dBOperations : IDisposable
+    public class dBOperations
     {
         /// <summary>
         /// The meeting context
@@ -19,18 +20,19 @@ namespace GM.DatabaseAccess
         /// <summary>
         /// Initializes a new instance of the <see cref="dBOperations" /> class.
         /// </summary>
-        public dBOperations()
+        public dBOperations(ApplicationDbContext _applicationDbContext)
         {
-            applicationDbContext = new ApplicationDbContext();
+            applicationDbContext = _applicationDbContext;
+            //applicationDbContext = new ApplicationDbContext();
         }
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public void Dispose()
-        {
-            applicationDbContext.Dispose();
-        }
+        //public void Dispose()
+        //{
+        //    applicationDbContext.Dispose();
+        //}
 
         /// <summary>
         /// Create the database.

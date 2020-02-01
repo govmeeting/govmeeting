@@ -20,7 +20,7 @@ namespace GM.DatabaseAccess
         {
         }
 
-        // TODO: OnModelCreating should be disabled fpr production 
+        // TODO: OnModelCreating should be disabled for production 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

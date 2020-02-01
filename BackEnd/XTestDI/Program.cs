@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using GM.Configuration;
 using GM.FileDataRepositories;
 using GM.DatabaseRepositories;
+using GM.DatabaseAccess;
+using Microsoft.EntityFrameworkCore;
 
 //using GM.ProcessRecording;
 //using GM.ProcessTranscript;
@@ -32,7 +34,11 @@ namespace XTestDI
 
             // entry to run app
             //serviceProvider.GetService<WorkflowController>().Run();
+            //serviceProvider.GetService<ProcessFixedAsr>().Run();
+
+            //ApplicationDbContext ap = serviceProvider.GetService< ApplicationDbContext>();
             serviceProvider.GetService<ProcessFixedAsr>().Run();
+
         }
         private static void ConfigureServices(IServiceCollection services)
         {
@@ -61,6 +67,10 @@ namespace XTestDI
                 myOptions.GoogleApplicationCredentials = GMFileAccess.GetFullPath(myOptions.GoogleApplicationCredentials);
             });
 
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(configuration["Data:DefaultConnection:ConnectionString"]));
+
+
             // add services
             //services.AddTransient<RetrieveOnlineFiles>();
             //services.AddTransient<ProcessIncomingFiles>();
@@ -70,6 +80,8 @@ namespace XTestDI
             //services.AddTransient<LoadTranscript>();
             //services.AddTransient<ProcessTagged>();
 
+            services.AddTransient<dBOperations>();
+            //services.AddTransient<ApplicationDbContext>();
             services.AddTransient<ProcessFixedAsr>();
             services.AddTransient<AddtagsRepository>();
             services.AddTransient<FixasrRepository>();

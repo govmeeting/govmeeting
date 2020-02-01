@@ -68,6 +68,9 @@ namespace GM.WebApp
             });
 
             _logger.LogTrace("GM: Add ApplicationDbContext");
+
+            services.AddTransient<dBOperations>();
+
             // We will be able to access ApplicationDbContext in a controller with:
             //    public MyController(ApplicationDbContext context) { ... }
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -194,7 +197,7 @@ namespace GM.WebApp
             app.UseAuthentication();
 
             _logger.LogTrace("GM: Initialize database");
-            //Create seed data
+            //Run migrations and create seed data
             dbInitializer.Initialize().Wait();
 
 

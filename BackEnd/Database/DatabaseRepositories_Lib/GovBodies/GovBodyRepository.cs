@@ -8,10 +8,16 @@ namespace GM.DatabaseRepositories
 {
     public class GovBodyRepository : IGovBodyRepository
     {
+        dBOperations dBOperations;
+
+        public GovBodyRepository(dBOperations _dBOperations)
+        {
+            dBOperations = _dBOperations;
+        }
+
         public GovernmentBody Get(long governmentBodyId)
         {
-            dBOperations dbo = new dBOperations();
-            GovernmentBody govBody = dbo.GetGovernmentBody(governmentBodyId);
+            GovernmentBody govBody = dBOperations.GetGovernmentBody(governmentBodyId);
             return govBody;
         }
     }
