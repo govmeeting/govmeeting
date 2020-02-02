@@ -10,9 +10,15 @@ import { ErrorHandlingService } from '../shared/error-handling/error-handling.se
 import { Addtags, Talk } from '../models/addtags-view';
 
 
+console.log = function() {}  // comment this out for console logging
+
 @Injectable()
 export class AddtagsService {
+  private ClassName: string = this.constructor.name;
+
     private addtagsUrl = 'api/addtags';
+    private postId;
+
     private addtags: Addtags;
     private observable: Observable<Addtags>;
 
@@ -22,7 +28,7 @@ export class AddtagsService {
     private meetingId = 2;
 
     constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
-        console.log('TalksService - constructor');
+        console.log(this.ClassName +'constructor');
     }
 
     getTalks(): Observable<Addtags> {
@@ -39,23 +45,72 @@ export class AddtagsService {
         return this.observable;
     }
 
-    postChanges(addtags: Addtags): Observable<any> {
-        console.log('postChanges in talks.service');
-        // return Observable.of(this.addtags);
-        return this.postData(this.addtagsUrl, addtags);
+    // postChanges(addtags: Addtags) {
+    //   // postChanges(addtags: Addtags): Observable<any> {
+    //     console.log(this.ClassName +'postChanges');
+    //     // return Observable.of(this.addtags);
+    //     // return this.postData(this.addtagsUrl, addtags);
+    //     this.postData(this.addtagsUrl, addtags);
+    // }
+
+    public postChanges(addtags: Addtags) {
+    console.log(this.ClassName +'postChanges');
+    const headers = { 'Content-Type': 'application/json' }
+      this.http.post<any>(this.addtagsUrl, addtags, { headers }).subscribe({
+        next: data => this.postId = data.id,
+        error: error => console.error('There was an error!', error)
+      })
     }
 
-    private postData(url: string, addtags: Addtags): Observable<Addtags> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-            })
-        };
-        console.log('postData in fixasr.service');
-        // TODO - handle null return. Here we just cast to the correct object type.
-        return <Observable<Addtags>> this.http.post<Addtags>(url, addtags, httpOptions)
-            .pipe(catchError(this.errHandling.handleError));
-    }
+  }
+
+      // private postData(url: string, addtags: Addtags): Observable<Addtags> {
+        // const httpOptions = {
+        //     headers: new HttpHeaders({
+        //         'Content-Type': 'application/json',
+        //     })
+        // };
+        // console.log(this.ClassName +'postData');
+        // // TODO - handle null return. Here we just cast to the correct object type.
+        // return <Observable<Addtags>> this.http.post<Addtags>(url, addtags, httpOptions)
+        //     .pipe(catchError(this.errHandling.handleError));
+    // }
+
+
+    // postData(url: string, addtags: Addtags) {
+    //   const headers = new HttpHeaders()
+    //       .set("Content-Type", "application/json");
+
+    //   this.http.put(
+
+    //     url, addtags, {headers}
+
+    //     // "/courses/-KgVwECOnlc-LHb_B0cQ.json",
+    //     //   {
+    //     //       "courseListIcon": ".../main-page-logo-small-hat.png",
+    //     //       "description": "Angular Tutorial For Beginners TEST",
+    //     //       "iconUrl": ".../angular2-for-beginners.jpg",
+    //     //       "longDescription": "...",
+    //     //       "url": "new-value-for-url"
+    //     //   },
+    //     //   {headers}
+
+    //       )
+    //       .subscribe(
+    //           val => {
+    //               console.log(this.ClassName +"PUT call successful value returned in body",
+    //                           val);
+    //           },
+    //           response => {
+    //               console.log(this.ClassName +"PUT call in error", response);
+    //           },
+    //           () => {
+    //               console.log(this.ClassName +"The PUT observable is now completed.");
+    //           }
+    //       );
+    //   }
+
+
 
     // TODO - This needs to call the WebApi for the data.
     // getSections(): Observable<string[]> {
@@ -76,7 +131,6 @@ export class AddtagsService {
   //  ];
 
     // private sections: string[] = [
-    //    'Invocation',
     //    'Approval of Journal',
     //    'Leaves of Absense',
     //    'Presentations',
@@ -95,4 +149,3 @@ export class AddtagsService {
     //    http://andrewlock.net/model‐binding‐json‐posts‐in‐asp‐net‐core/
     //    https://docs.asp.net/en/latest/mvc/models/model-binding.html
     //    https://lbadri.wordpress.com/2014/11/23/web-api-model-binding-in-asp-net-mvc-6-asp-net-5/
-}

@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AddtagsService } from '../addtags.service';
 import { Addtags, Talk } from '../../models/addtags-view';
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   selector: 'gm-talks',
   templateUrl: './talks.html',
   styleUrls: ['./talks.css']
 })
 export class TalksComponent implements OnInit {
-
+  private ClassName: string = this.constructor.name;
   errorMessage: string;
   talks: Talk[] | null;
   gotTalks: boolean = false;
@@ -26,7 +28,7 @@ export class TalksComponent implements OnInit {
 ///////////////////////////////////////////////////////////////
 
   ngOnInit() {
-    console.log('talks.component.ts ngOnInit');
+    console.log(this.ClassName +'ngOnInit');
     this.getTalks();
 
       // The following would get the list in memory.
@@ -38,7 +40,7 @@ export class TalksComponent implements OnInit {
   getTalks() {
     if (! this.gotTalks) {
       this.gotTalks = true;
-      console.log('getTalks');
+      console.log(this.ClassName +'getTalks');
       this._addtagsService.getTalks()
       .subscribe(
       addtags => (this.addtags = addtags, this.talks = addtags.talks),
@@ -47,11 +49,11 @@ export class TalksComponent implements OnInit {
   }
 
   saveChanges() {
-      console.log('saveTranscript');
-      this._addtagsService.postChanges(this.addtags)
-          .subscribe(
-          t => t
-          );
+      console.log(this.ClassName +'saveTranscript');
+      this._addtagsService.postChanges(this.addtags);
+          // .subscribe(
+          // t => t
+          // );
       //error => this.errorMessage = <any>error);
   }
 
@@ -62,7 +64,7 @@ export class TalksComponent implements OnInit {
 
  // Capture the "topicSelect" event and set the new topic.
   onTopicSelect(newTopic: string, talk: Talk) {
-      console.log('talks.component--OnTopicSelect ' + newTopic);
+      console.log(this.ClassName +'OnTopicSelect ' + newTopic);
       if (newTopic === '') {
           talk.topic = null;
       } else {
@@ -73,7 +75,7 @@ export class TalksComponent implements OnInit {
 
  // Capture the "textSelected" event and set the input box to the new data.
   handleTextSelected(highlighted: string) {
-      console.log('talks.component--handleTextSelected: ' + highlighted);
+      console.log(this.ClassName +'handleTextSelected: ' + highlighted);
       this.highlightedTopic = highlighted;
   }
 
@@ -133,4 +135,5 @@ export class TalksComponent implements OnInit {
           }
       }
   }
+
 }

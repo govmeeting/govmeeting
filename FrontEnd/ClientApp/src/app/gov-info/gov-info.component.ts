@@ -1,24 +1,29 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   selector: 'gm-gov-info',
   templateUrl: './gov-info.component.html',
   styleUrls: ['./gov-info.component.scss']
 })
 export class GovInfoComponent implements OnInit {
+  private ClassName: string = this.constructor.name;
   public _location = '';
   public _agency = '';
 
   @Input()
     set location(location: string) {
       this._location = location;
-      console.log("bills set location=" + location)}
+      console.log(this.ClassName +"set location=" + location)
+    }
     get location(): string { return this._location; }
 
     @Input()
     set agency(agency: string) {
       this._agency = agency;
-      console.log("bills set agency=" + agency)}
+      console.log(this.ClassName +"set agency=" + agency)
+    }
     get agency(): string { return this._agency; }
 
   constructor() { }
@@ -46,7 +51,7 @@ export class GovInfoComponent implements OnInit {
 //       this.location = params['location'];
 //       this.agency = params['agency'];
 
-//       console.log("gov-info:location="+this.location+"agency="+this.agency)
+//       console.log(this.ClassName +"gov-info:location="+this.location+"agency="+this.agency)
 
 //       // In a real app: dispatch action to load the details here.
 

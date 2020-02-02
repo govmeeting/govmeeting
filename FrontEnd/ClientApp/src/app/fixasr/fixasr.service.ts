@@ -8,8 +8,11 @@ import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 
+console.log = function() {}  // comment this out for console logging
+
 @Injectable()
 export class FixasrService {
+  private ClassName: string = this.constructor.name;
     private fixasrUrl = 'api/fixasr';
     private asrtext: FixasrText;
     private error = { message: 'not defined yet' };
@@ -22,7 +25,7 @@ export class FixasrService {
     private part = 1;
 
     constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
-        console.log('FixasrService - constructor');
+        console.log(this.ClassName +'constructor');
     }
 
     getAsr(): Observable<FixasrText> {
@@ -30,7 +33,7 @@ export class FixasrService {
         let url: string = this.fixasrUrl;
         url = url + '/' + this.meetingId + '/' + this.part;
 
-        console.log('get data from ' + url);
+        console.log(this.ClassName +'get data from ' + url);
         // TODO - handle null return. Here we just cast to the correct object type.
         return <Observable<FixasrText>> this.http.get<FixasrText>(url)
             .pipe(catchError(this.errHandling.handleError));
@@ -41,7 +44,7 @@ export class FixasrService {
         let url: string = this.fixasrUrl;
         url = url + '/' + this.meetingId + '/' + this.part;
 
-        console.log('postChanges in fixasr.service  ' + url);
+        console.log(this.ClassName +'postChanges  ' + url);
         return this.postData(url, asrtext);
     }
 
@@ -51,10 +54,11 @@ export class FixasrService {
                 'Content-Type': 'application/json',
             })
         };
-        console.log('postData in fixasr.service');
+        console.log(this.ClassName +'postData');
         // TODO - handle null return. Here we just cast to the correct object type.
         return <Observable<FixasrText>> this.http.post<FixasrText>(url, asrtext, httpOptions)
             .pipe(catchError(this.errHandling.handleError));
     }
-}
+
+  }
 

@@ -15,19 +15,22 @@ class videoSource {
 // https://www.npmjs.com/package/videogular2
 // https://videogular.github.io/videogular2/docs/getting-started/
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   selector: 'gm-video',
   templateUrl: 'video.html',
   styleUrls: ['video.css']
 })
 export class VideoComponent {
+  private ClassName: string = this.constructor.name;
     sources: Array<videoSource>;
     api: VgAPI;
 
 
     onPlayerReady(api: VgAPI) {
         this.api = api;
-        console.log('In video OnPlayerReady');
+        console.log(this.ClassName +'OnPlayerReady');
         // api.play();
     }
 
@@ -35,23 +38,22 @@ export class VideoComponent {
 
         let location: string;
 
-        console.log('VideoComponent constructor');
-        // console.log('AppData=' + appData);
-        // console.log('appData.isAspServerRunning=' + appData.isAspServerRunning);
+        console.log(this.ClassName +'constructor');
+        console.log(this.ClassName +'AppData=' + appData);
+        console.log(this.ClassName +'appData.isAspServerRunning=' + appData.isAspServerRunning);
         // TODO - Use the server API to return the video. Until then we need to specify the full path of the video file.
         // var location: string = 'api/video/3/1';  // This would be for MeetingID=3 Part=1
 
-        // If WebApp is running, return from solutions's Datafiles folder
-
+        // If WebApp is running, use Datafiles folder
         if (appData.isAspServerRunning) {
 
-                    //location = 'datafiles/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part01/';
+          //location = 'datafiles/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part01/';
           location = 'datafiles/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part01/';
-       // else return from ClientApp stubdata folder
+       // else use ClientApp stubdata folder
         } else {
           location = 'assets/stubdata/';
         }
-        console.log('location=' + location);
+        console.log(this.ClassName +'location=' + location);
         const fileBasename = 'ToFix';
 
         this.sources = [
@@ -74,13 +76,14 @@ export class VideoComponent {
     }
 
     playPhrase(start: number, duration: number) {
-        console.log('In video playPhrase, start=' + start + ' duration=' + duration);
+        console.log(this.ClassName +'playPhrase, start=' + start + ' duration=' + duration);
         // const timer = Observable.timer(duration * 1000);
         const timerx = timer(100);   // yield for 100 milliseconds
         timerx.subscribe(t => this.api.pause());
-        // timer.subscribe(t=>console.log('done with timeout'));
+        // timer.subscribe(t=>console.log(this.ClassName +'done with timeout'));
         this.api.seekTime(start);
         this.api.play();
-        console.log('exiting video playPhrase');
+        console.log(this.ClassName +'exiting playPhrase');
     }
- }
+
+  }

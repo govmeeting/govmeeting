@@ -7,6 +7,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { HttpClientModule } from '@angular/common/http';
+
 
 /////////////////// Modules - internal ///////////////////////////////////
 import { AppRoutingModule } from './app-routing.module';
@@ -56,6 +58,7 @@ import { AppData } from './appdata';
 import { CalendarComponent } from './calendar/calendar.component';
 import { NewFeatureComponent } from './new-feature/new-feature.component';
 // import { CalendarComponent } from './calendar/calendar';
+
 const _isAspServerRunning = false;
 
 //////// for testing/////////////////////////////////
@@ -76,6 +79,7 @@ const _isAspServerRunning = false;
     FormsModule,
     ReactiveFormsModule,
     NgMaterialMultilevelMenuModule,
+    HttpClientModule,
 
     /////////////// internal //////////////
     ViewMeetingModule,
@@ -136,6 +140,7 @@ const _isAspServerRunning = false;
     // server , but will instead return static data.
     { provide: ViewMeetingService, useClass: _isAspServerRunning ? ViewMeetingService : ViewMeetingServiceStub },
     { provide: AddtagsService, useClass: _isAspServerRunning ? AddtagsService : AddtagsServiceStub },
+    // { provide: AddtagsService, useClass: AddtagsService },
     { provide: FixasrService, useClass: _isAspServerRunning ? FixasrService : FixasrServiceStub },
 
     ChatService,

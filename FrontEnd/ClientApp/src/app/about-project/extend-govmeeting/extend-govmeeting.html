@@ -56,6 +56,30 @@ changing the position of the gm-small-card or gm-large-card elements in this fil
   the production database.
 </p>
 
+<h3> Developer Tips</h3>
+
+<ul>
+  <li>
+    Dependency Injection - This is used throughout all projects. It allows components
+    and subsystems to be stubbed out easily for develpment and testing.
+    For example, in Frontend/ClientApp/src/app/app.module.ts,
+    the services that call the Web API's in WebApp are currently replaced
+    with stubs using DI. This allow the CLientApp to be developed without running
+    WebApp. If you change the property "_isAspServerRunning" in this file from false to true,
+    ClientApp will then call the Web API's to get data.
+  </li>
+  <li>
+    The log files for WebApp and WorkflowApp are in the folder "logs" at the root of the solution.
+    The file nlog-all-(date).log contain all the log messages including system.
+    The file nlog-own-(date).log contain only the application messages.
+  </li>
+  <li>
+    At the top of many of the ClientApp components, a method "consolelog" is defined.
+    Change the "if" condition from false to true to turn on console logging for that component.
+    Seeing these log messages is helpful in understandng how this component is used.
+  </li>
+</ul>
+
 </mat-card>
 
 

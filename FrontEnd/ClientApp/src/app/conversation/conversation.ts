@@ -6,12 +6,15 @@ import 'rxjs/add/operator/map';
 
 import { MessagingService } from './messaging.service';
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   selector: 'gm-conversation',
   templateUrl: './conversation.html',
   styleUrls: ['./conversation.scss']
 })
 export class ConversationComponent implements OnInit {
+  private ClassName: string = this.constructor.name;
 
   constructor(private ms: MessagingService, private router: Router) { }
 
@@ -49,7 +52,7 @@ export class ConversationComponent implements OnInit {
   //       this.events.push(message)
   //     })
 
-  //     console.log("Selected Conversation", this.selectedConversation)
+  //     console.log(this.ClassName +"Selected", this.selectedConversation)
   //   }
   //   )
   // }
@@ -87,4 +90,6 @@ export class ConversationComponent implements OnInit {
   selectedConversation: any
   text: string
   events: Array<any> = []
+
+
 }

@@ -4,6 +4,8 @@ import { DropdownValue } from './value';
 import { FormBuilder, Validators } from '@angular/forms';
 //import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   //moduleId: module.id,
   selector: 'gm-dropdown',
@@ -11,7 +13,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./dropdown.css']
 })
 export class DropdownComponent implements OnInit {
-
+  private ClassName: string = this.constructor.name;
   @Input()
   values: DropdownValue[];
 
@@ -34,17 +36,17 @@ export class DropdownComponent implements OnInit {
   }
 
   onSelectChange(i: number) {
-    // console.log("DropdownComponent - selected index=" + i);
+    console.log(this.ClassName +"selected index=" + i);
     this.selectSpeaker.emit(i);
   }
 
   onNewEntry(event: any) {
-    //console.log(event);
-    //console.log(this.loginForm.value);
+    console.log(this.ClassName +event);
     var value = this.newOptionForm.value.newOption;
     this.newOptionForm.reset();
     this.addSpeaker.emit(value);
   }
+
 }
 
 /**
@@ -57,6 +59,6 @@ Note that dropdownvalues and the action method are on the parent component (not 
     {'value': 'value3', 'label': 'label3'}
   ];
   action(d: any){
-    console.log("selected=" + d.label);
+    console.log(this.ClassName +"selected=" + d.label);
   }
 **/

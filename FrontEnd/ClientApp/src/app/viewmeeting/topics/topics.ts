@@ -3,13 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { ViewMeetingService } from '../viewmeeting.service';
 import { UserchoiceService } from '../userchoice.service';
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   selector: 'gm-topics',
   templateUrl: './topics.html',
   styleUrls: ['./topics.css']
 })
 export class TopicsComponent implements OnInit {
-
+  private ClassName: string = this.constructor.name;
   nameType: string = 'topicNames';
   Names: string[];
   errorMessage: string;
@@ -28,7 +30,7 @@ export class TopicsComponent implements OnInit {
     .subscribe(
     t => {
         this.Names = t.topicNames;
-        // console.log(this.topicNames);
+        console.log(this.ClassName +this.Names);
     },
     error => this.errorMessage = <any>error);
   }
@@ -41,4 +43,5 @@ export class TopicsComponent implements OnInit {
       this.selected = i;
       this._userChoice.setTopic(this.Names[i]);
   }
+
 }

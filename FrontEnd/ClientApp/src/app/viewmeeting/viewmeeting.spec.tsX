@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ViewMeetingComponent } from './viewmeeting';
 import { ViewMeetingServiceStub } from './viewmeeting.service-stub';
 
+
 describe('ViewMeetingComponent', () => {
   let component: ViewMeetingComponent;
   let fixture: ComponentFixture<ViewMeetingComponent>;
@@ -108,8 +109,8 @@ describe('Client_Utilities_backEnd', function () {
 
         $httpBackend.flush();
 
-//        console.log("heading ===============================");
-//        console.log(heading);
+//        console.log(this.ClassName +"heading ===============================");
+//        console.log(this.ClassName +heading);
 
         expect(heading.name).toEqual(headingResponse.name)
 
@@ -180,22 +181,22 @@ describe('Client_SingleMeeting_backEnd', function () {
 
         $httpBackend.expectGET('testdata\\BBH-2014-09-08.json').respond(headingResponse);
 
-        console.log("TEST1===============================");
+        console.log(this.ClassName +"TEST1===============================");
 
         var deferredResponse = backEnd.getMeetingInfo();
 
-        console.log("TEST2===============================");
+        console.log(this.ClassName +"TEST2===============================");
 
         var heading;
         deferredResponse.then(function (response) {
             heading = response.data;
         });
 
-        console.log("TEST3===============================");
+        console.log(this.ClassName +"TEST3===============================");
 
         // backEnd.getMeetingInfo(this);
 
-        console.log("TEST3===============================");
+        console.log(this.ClassName +"TEST3===============================");
 
         $httpBackend.flush();
 

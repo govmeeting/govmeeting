@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AddtagsService } from '../addtags.service';
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   selector: 'gm-sections',
   templateUrl: './sections.html',
   styleUrls: ['./sections.css'],
 })
 export class SectionsComponent implements OnInit {
+  private ClassName: string = this.constructor.name;
     errorMessage: string;
     sections: string[];
     gotSections: boolean = false;
@@ -19,19 +22,19 @@ export class SectionsComponent implements OnInit {
 getSections() {
   if (! this.gotSections) {
     this.gotSections = true;
-    console.log('getSections');
+    console.log(this.ClassName +'getSections');
     this._addtagsService.getTalks()
         .subscribe(
         addtags => {
             this.sections = addtags.sections;
-             console.log(this.sections);
+            console.log(this.ClassName +this.sections);
         },
         error => this.errorMessage = <any>error);
       }
     }
 
  OnChange(newValue: any) {
-      console.log(newValue);
+  console.log(this.ClassName +newValue);
   }
 
   isEmptyObject(obj) {

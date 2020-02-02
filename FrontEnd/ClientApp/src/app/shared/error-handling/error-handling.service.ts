@@ -7,10 +7,13 @@ import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 
 
+console.log = function() {}  // comment this out for console logging
+
 @Injectable()
 export class ErrorHandlingService {
+  private ClassName: string = this.constructor.name;
     constructor(private http: HttpClient) {
-        // console.log('ViewMeetingService - constructor');
+        console.log(this.ClassName +'constructor');
     }
 
     // This method is copied from https://angular.io/guide/http
@@ -30,5 +33,6 @@ export class ErrorHandlingService {
         // return new ErrorObservable(
         //    'Something bad happened; please try again later.');
     }
-}
+
+  }
 

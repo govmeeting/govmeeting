@@ -7,21 +7,22 @@ import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { ViewMeeting } from '../models/viewmeeting-view';
 import { viewmeetingSample } from './viewmeeting-sample';
-
-
 import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
+
+console.log = function() {}  // comment this out for console logging
 
 @Injectable()
 export class ViewMeetingService {
+  private ClassName: string = this.constructor.name;
     private meetingUrl = 'api/viewmeeting';
     private observable: Observable<ViewMeeting>;
     // private requestInProgress = false;
     // private requestComplete = false;
     private errorMessage: string;
-
+    viewMeeting: ViewMeeting = viewmeetingSample;
 
     constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
-      console.log('ViewMeetingService - constructor');
+      console.log(this.ClassName +'constructor');
     }
 
     getMeeting(meetingId: number): Observable<ViewMeeting> {
@@ -31,7 +32,6 @@ export class ViewMeetingService {
         if (meetingId == null) {
           return this.observable;
       }
-      // See notes above for "meetingId".
         let url: string = this.meetingUrl;
         url = url + '/' + meetingId;
          this.observable = this.http.get<ViewMeeting>(url)
@@ -40,7 +40,9 @@ export class ViewMeetingService {
         return this.observable;
    }
 
-    //// This method is copied from https://angular.io/guide/http
+}
+
+//// This method is copied from https://angular.io/guide/http
     // private handleError(error: HttpErrorResponse) {
     //    if (error.error instanceof ErrorEvent) {
     //        // A client-side or network error occurred. Handle it accordingly.
@@ -56,5 +58,4 @@ export class ViewMeetingService {
     //    return new ErrorObservable(
     //        'Something bad happened; please try again later.');
     // };
-}
 

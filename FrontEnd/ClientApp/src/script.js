@@ -1,4 +1,5 @@
 /* Scripts for css grid dashboard */
+function consolelog(msg){ if (false) { console.log(this.constructor.name + ': ' + msg) }  } // change to true for console log
 
 $(document).ready(() => {
   // addResizeListeners();
@@ -25,7 +26,8 @@ function toggleClass(el, className) {
 // make sure scrolling is enabled again and that sidenav active class is removed
 function addResizeListeners() {
   $(window).resize(function(e) {
-    const width = window.innerWidth; console.log('width: ', width);
+    const width = window.innerWidth;
+    console.log(this.ClassName +'width: ', width);
 
     if (width > 750) {
       sidenavEl.removeClass(SIDENAV_ACTIVE_CLASS);
@@ -36,7 +38,8 @@ function addResizeListeners() {
 
 // Menu open sidenav icon, shown only on mobile
 function setMenuClickListener() {
-  $('.header__menu').on('click', function(e) { console.log('clicked menu icon');
+  $('.header__menu').on('click', function(e) {
+    console.log(this.ClassName +'clicked menu icon');
     toggleClass(sidenavEl, SIDENAV_ACTIVE_CLASS);
     toggleClass(gridEl, GRID_NO_SCROLL_CLASS);
   });
@@ -54,7 +57,7 @@ function setSidenavCloseListener() {
  // Sidenav list sliding functionality
  function setSidenavListeners() {
   const subHeadings = $('.navList__subheading');
-   console.log('subHeadings: ', subHeadings);
+  console.log(this.ClassName +'subHeadings: ', subHeadings);
   const SUBHEADING_OPEN_CLASS = 'navList__subheading--open';
   const SUBLIST_HIDDEN_CLASS = 'subList--hidden';
 

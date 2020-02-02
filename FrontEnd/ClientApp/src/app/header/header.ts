@@ -4,12 +4,15 @@ import { Subscription } from 'rxjs';
 import { NavService } from '../dash-sidenav/sidenav-menu/service';
 import { MessageService } from '../message.service';
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   selector: 'gm-header',
   templateUrl: './header.html',
   styleUrls: ['./header.scss']
 })
 export class HeaderComponent implements OnInit {
+  private ClassName: string = this.constructor.name;
   messages: any[] = [];
   subscription: Subscription;
   location: string;
@@ -20,8 +23,8 @@ export class HeaderComponent implements OnInit {
     this.subscription = this.messageService.getMessage().subscribe(message => {
       if (message) {
         this.messages.push(message);
-        console.log("header: message=")
-        console.log(message.text);
+        console.log(this.ClassName +"header: message=")
+        console.log(this.ClassName +message.text);
         this.parseMessage(message.text);
       } else {
         // clear messages when empty message received
@@ -45,7 +48,7 @@ export class HeaderComponent implements OnInit {
       if (this.location == "Non-Government") {
         this.location = mes[2];
       }
-      console.log("location:" + this.location);
+      console.log(this.ClassName +"location:" + this.location);
       this.changeBackground(this.location)
     }
   }
@@ -73,4 +76,5 @@ export class HeaderComponent implements OnInit {
 
     this.backgroundStyle = { 'background-image': background };
   }
+
 }

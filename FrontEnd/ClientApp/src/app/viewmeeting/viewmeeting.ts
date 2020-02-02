@@ -4,6 +4,8 @@ import { ViewMeetingService } from './viewmeeting.service';
 import { TopicDiscussion } from '../models/viewmeeting-view'
 
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   selector: 'gm-viewmeeting',
   templateUrl: './viewmeeting.html',
@@ -13,6 +15,7 @@ import { TopicDiscussion } from '../models/viewmeeting-view'
   ]
 })
 export class ViewMeetingComponent implements OnInit {
+  private ClassName: string = this.constructor.name;
     showhelp: boolean = true;
     showhidehelp: string = "Hide";
     topicDiscussions: TopicDiscussion[];
@@ -27,7 +30,8 @@ export class ViewMeetingComponent implements OnInit {
     // For development, this means calling a routine in DatabaseRepsitories_Lib/MeetingRepository_Stub.cs.
     // If you look at this file, you will see that meetingId "1" maps to a meeting of the
     // Boothbay Harbor Selectmen on 9/8/2014.
-    private meetingId = 1;
+    // private meetingId = 1;
+    private meetingId = 1; // -1 means use sample data
 
     ngOnInit() {this.getTopicDiscussions();}
 
@@ -36,7 +40,7 @@ export class ViewMeetingComponent implements OnInit {
         .subscribe(
         t => {
             this.topicDiscussions = t.topicDiscussions;
-             console.log(this.topicDiscussions);
+            console.log(this.ClassName +this.topicDiscussions);
         },
         error => this.errorMessage = <any>error);
     }
@@ -49,4 +53,5 @@ export class ViewMeetingComponent implements OnInit {
         this.showhidehelp = this.showhelp ? "Show" : "Hide";
         this.showhelp = !this.showhelp;
     }
-}
+
+ }

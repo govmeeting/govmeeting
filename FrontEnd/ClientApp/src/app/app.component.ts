@@ -9,12 +9,15 @@ import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 import { NavService } from './dash-sidenav/sidenav-menu/service';
 import { MediaQueryService } from './media-query.service';
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
+  private ClassName: string = this.constructor.name;
   @ViewChild('sidenav', {static: false}) sidenav: ElementRef;
 
   // setMode(value) {
@@ -24,6 +27,8 @@ export class AppComponent implements AfterViewInit {
   options: FormGroup;
   mediaQueryList: MediaQueryList;
   private mediaQueryListener: () => void;
+
+
 
   constructor(
     public navService: NavService,
@@ -43,8 +48,8 @@ export class AppComponent implements AfterViewInit {
     this.mediaQueryList = media.matchMedia('(max-width: 600px)');
     this.mediaQueryListener = () => {
       changeDetectorRef.detectChanges();
-      console.log("mediaQueryListener:" + this.mediaQueryList.matches);
-      this.checkDeviceType();
+      console.log(this.ClassName +"mediaQueryListener:" + this.mediaQueryList.matches);
+      // this.checkDeviceType();
     }
     this.mediaQueryList.addListener(this.mediaQueryListener);
   }
@@ -65,11 +70,12 @@ export class AppComponent implements AfterViewInit {
   checkDeviceType() {
     var width = window.innerWidth;
     if (width <= 768) {
-      console.log('mobile device detected')
+      console.log(this.ClassName +'mobile device detected')
     } else if (width > 768 && width <= 992) {
-      console.log('tablet detected')
+      console.log(this.ClassName +'tablet detected')
     } else {
-      console.log('desktop detected')
+      console.log(this.ClassName +'desktop detected')
     }
   }
+
 }

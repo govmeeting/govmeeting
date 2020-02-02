@@ -27,11 +27,13 @@ enum randomDistributionType {
 }
 
 
+console.log = function() {}  // comment this out for console logging
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataFakeService {
-
+  private ClassName: string = this.constructor.name;
   constructor() { }
 
   standard: any = null;   // will contain a standard mean diaviation function
@@ -109,7 +111,8 @@ export class DataFakeService {
       s = s + " " + this.randomInteger(mean, stdev, type);
       i--;
     }
-    console.log(s);
+    console.log(this.ClassName +s);
   }
+
 
 }

@@ -6,6 +6,8 @@ import { MediaMatcher } from '@angular/cdk/layout';
   providedIn: 'root'
 })
 export class MediaQueryService  {
+  private ClassName: string = this.constructor.name;
+
   mediaQueryList: MediaQueryList;
   private mediaQueryListener:() => void;
 
@@ -16,7 +18,7 @@ export class MediaQueryService  {
     this.mediaQueryList = media.matchMedia('(max-width: 992px)');
     this.mediaQueryListener = () => {
       changeDetectorRef.detectChanges();
-      console.log("Match?: ", this.mediaQueryList.matches)
+      console.log(this.ClassName +"Match?: " + this.mediaQueryList.matches)
       }
     this.mediaQueryList.addListener(this.mediaQueryListener);
   }
@@ -47,7 +49,7 @@ export class MediaQueryService  {
 //     this.mediaQueryList = media.matchMedia('(max-width: 992px)');
 //     this.mediaQueryListener = () => {
 //       changeDetectorRef.detectChanges();
-//       console.log("Match?: ", this.mediaQueryList.matches)
+//       console.log(this.ClassName +"Match?: ", this.mediaQueryList.matches)
 //       }
 //     this.mediaQueryList.addListener(this.mediaQueryListener);
 //   }

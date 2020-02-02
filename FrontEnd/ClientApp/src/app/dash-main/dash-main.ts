@@ -4,12 +4,15 @@ import { Subscription } from 'rxjs';
 
 import { MessageService } from '../message.service';
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   selector: 'gm-dash-main',
   templateUrl: './dash-main.html',
   styleUrls: ['./dash-main.scss']
 })
 export class DashMainComponent implements OnInit, OnDestroy {
+  private ClassName: string = this.constructor.name;
   messages: any[] = [];
   subscription: Subscription;
 
@@ -35,8 +38,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
     this.subscription = this.messageService.getMessage().subscribe(message => {
       if (message) {
         this.messages.push(message);
-        console.log("dash-main: message=")
-        console.log(message.text);
+        console.log(this.ClassName +"message=" + message.text)
         this.parseMessage(message.text);
         this.setTitles();
       } else {
@@ -59,7 +61,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
     if (mes[0] == 'AgencySelected') {
       this.location = mes[1];
       this.agency = mes[2];
-      console.log("location:" + this.location);
+      console.log(this.ClassName +"location:" + this.location);
     }
   }
 
@@ -87,4 +89,5 @@ export class DashMainComponent implements OnInit, OnDestroy {
     }
 
   }
+
 }

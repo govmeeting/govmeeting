@@ -15,6 +15,8 @@ enum DeviceType{
   mobile
 }
 
+console.log = function() {}  // comment this out for console logging
+
 @Component({
   selector: 'gm-sidenav-menu',
   templateUrl: 'sidenav-menu.html',
@@ -22,6 +24,7 @@ enum DeviceType{
   encapsulation: ViewEncapsulation.None
 })
 export class SidenavMenuComponent implements AfterViewInit {
+  private ClassName: string = this.constructor.name;
   @ViewChild('appDrawer', {static: false})
   sidenav: ElementRef;
   version = VERSION;
@@ -40,15 +43,15 @@ export class SidenavMenuComponent implements AfterViewInit {
     if (width <= 768) {
       deviceType = DeviceType.mobile;
       this.deviceType = "Mobile";
-      console.log('mobile device detected')
+      console.log(this.ClassName +'mobile device detected')
     } else if (width > 768 && width <= 992) {
       deviceType = DeviceType.tablet;
       this.deviceType = "Tablet";
-      console.log('tablet detected')
+      console.log(this.ClassName +'tablet detected')
     } else {
       deviceType = DeviceType.desktop;
       this.deviceType = "Desktop";
-      console.log('desktop detected')
+      console.log(this.ClassName +'desktop detected')
     }
     return deviceType;
   }
@@ -63,9 +66,9 @@ export class SidenavMenuComponent implements AfterViewInit {
   }
 
   OnFinalSelection(items: Array<NavItem>){
-    console.log("====OnEmitted(sidenav): ");
-    console.log(items);
-    console.log("org:" + this.navigationItems[0].displayName)
+    console.log(this.ClassName +"====OnEmitted(sidenav): ");
+    console.log(this.ClassName +items);
+    console.log(this.ClassName +"org:" + this.navigationItems[0].displayName)
 
     // this.navService.closeOrgMenu(0);
 
@@ -77,7 +80,7 @@ export class SidenavMenuComponent implements AfterViewInit {
           this.router.navigate(['dashboard']);
           let agency = items[0].displayName;
           let location = items[1].displayName;
-          console.log("location=" + location + " agency="+agency)
+          console.log(this.ClassName +"location=" + location + " agency="+agency)
           this.messageService.sendMessage('AgencySelected:' + location + ':' + agency);
           break;
         }
@@ -127,5 +130,6 @@ export class SidenavMenuComponent implements AfterViewInit {
       this.navService.closeNav();
     }
 }
+
 
 }

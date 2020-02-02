@@ -11,22 +11,30 @@ using Microsoft.Extensions.Options;
 using System.IO;
 using GM.FileDataRepositories;
 using GM.ViewModels;
+using Microsoft.Extensions.Logging;
+
 
 namespace GM.WebApp.Features.Addtags
 {
+
     [Route("api/[controller]")]
     public class AddtagsController : Controller
     {
+        private readonly ILogger<AddtagsController> logger;
+
         public IAddtagsRepository addtags { get; set; }
 
-        public AddtagsController(IAddtagsRepository addtags)
+        public AddtagsController(IAddtagsRepository addtags, ILogger<AddtagsController> _logger)
         {
             this.addtags = addtags;
+            logger = _logger;
         }
-        
+
         [HttpGet("{meetingId}")]        // GET: api/addtags
         public AddtagsView Get(int meetingId)
         {
+            logger.LogTrace("Get AddtagsView by meeting Id");
+
             AddtagsView ret = addtags.Get(meetingId);
             return ret;
         }
