@@ -41,11 +41,11 @@ namespace GM.WebApp.Features.Addtags
 
         //TODO Add authorization check that user's location matches that of the government entity.
         // We need to read the location from the user's claims.
-        [Authorize(Policy = "Editor")]
+        //[Authorize(Policy = "Editor")]
         [HttpPost("{meetingId}")]          // POST api/addtags
-        public void Post([FromBody]AddtagsView value, int meetingId)
+        public bool Post([FromBody]AddtagsView value, int meetingId)
         //public void Post(Addtags value)
         {
-            addtags.Put(value, meetingId);        }
+            return addtags.Put(value, meetingId);        }
         }
     }

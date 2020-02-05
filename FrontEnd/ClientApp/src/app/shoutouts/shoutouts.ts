@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataFactoryService } from '../testing/data-factory.service';
 import { DataFakeService } from '../testing/data-fake.service';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-shoutouts',
@@ -10,7 +10,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./shoutouts.scss']
 })
 export class ShoutoutsComponent implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   // personFactory: any;
   // personFake: any;
 
@@ -42,7 +42,7 @@ export class ShoutoutsComponent implements OnInit {
     this.theBradyBunch2 = this.personFactory.buildList(8, { lastName: "Brady" });
  */
     this.b = this._fake.person();
-    console.log(this.ClassName +this.b);
+    NoLog || console.log(this.ClassName, this.b);
     this.c = this._fake.person();
   }
 

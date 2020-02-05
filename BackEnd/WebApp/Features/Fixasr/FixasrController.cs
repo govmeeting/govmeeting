@@ -38,11 +38,12 @@ namespace GM.WebApp.Features.Fixasr
         }
 
         // POST api/fixasr
-        [Authorize(Policy = "Proofreader")]
+        // TODO Add next line back when working
+        //[Authorize(Policy = "Proofreader")]
         [HttpPost("{meetingId}/{part}")]
-        public void Post([FromBody]FixasrView value, int meetingId, int part)
+        public bool Post([FromBody]FixasrView value, int meetingId, int part)
         {
-            bool success = fixasr.Put(value, meetingId, part);
+            return fixasr.Put(value, meetingId, part);
         }
     }
 }

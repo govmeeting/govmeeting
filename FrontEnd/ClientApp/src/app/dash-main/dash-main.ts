@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { MessageService } from '../message.service';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-dash-main',
@@ -12,7 +12,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./dash-main.scss']
 })
 export class DashMainComponent implements OnInit, OnDestroy {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   messages: any[] = [];
   subscription: Subscription;
 
@@ -38,7 +38,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
     this.subscription = this.messageService.getMessage().subscribe(message => {
       if (message) {
         this.messages.push(message);
-        console.log(this.ClassName +"message=" + message.text)
+        NoLog || console.log(this.ClassName + "message=" + message.text)
         this.parseMessage(message.text);
         this.setTitles();
       } else {
@@ -61,7 +61,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
     if (mes[0] == 'AgencySelected') {
       this.location = mes[1];
       this.agency = mes[2];
-      console.log(this.ClassName +"location:" + this.location);
+      NoLog || console.log(this.ClassName + "location:" + this.location);
     }
   }
 

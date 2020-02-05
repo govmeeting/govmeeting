@@ -10,7 +10,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
     I am not sure what the advantage is. I was not able to get a chart working in the component's html doing this.
 */
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-gauge',
@@ -18,7 +18,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./gauge.scss']
 })
 export class AmgaugeComponent {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   //private chart: am4charts.GaugeChart;
   //private hand: { showValue: (arg0: number, arg1: number, arg2: (t: number) => number) => void; };
 
@@ -70,14 +70,14 @@ export class AmgaugeComponent {
 
     let hand = chart.hands.push(new am4charts.ClockHand());
 
-    console.log(this.ClassName +"this is hand: ")
-    console.log(this.ClassName +hand)
+    NoLog || console.log(this.ClassName + "this is hand: ")
+    NoLog || console.log(this.ClassName, hand)
     // using chart.setTimeout method as the timeout will be disposed together with a chart
     chart.setTimeout(randomValue, 2000);
 
     function randomValue() {
-      console.log(this.ClassName +"this is hand in randomValue: ")
-      console.log(this.ClassName +hand)
+      NoLog || console.log(this.ClassName + "this is hand in randomValue: ")
+      NoLog || console.log(this.ClassName + hand)
       hand.showValue(Math.random() * 100, 1000, am4core.ease.cubicOut);
       chart.setTimeout(randomValue, 2000);
     }

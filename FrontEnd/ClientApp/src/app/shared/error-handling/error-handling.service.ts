@@ -7,13 +7,13 @@ import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Injectable()
 export class ErrorHandlingService {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
     constructor(private http: HttpClient) {
-        console.log(this.ClassName +'constructor');
+        NoLog || console.log(this.ClassName + 'constructor');
     }
 
     // This method is copied from https://angular.io/guide/http

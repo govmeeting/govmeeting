@@ -10,11 +10,11 @@ import { ErrorHandlingService } from '../shared/error-handling/error-handling.se
 import { Addtags, Talk } from '../models/addtags-view';
 
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Injectable()
 export class AddtagsService {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
 
     private addtagsUrl = 'api/addtags';
     private postId;
@@ -28,7 +28,7 @@ export class AddtagsService {
     private meetingId = 2;
 
     constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
-        console.log(this.ClassName +'constructor');
+        NoLog || console.log(this.ClassName + 'constructor');
     }
 
     getTalks(): Observable<Addtags> {
@@ -47,17 +47,26 @@ export class AddtagsService {
 
     // postChanges(addtags: Addtags) {
     //   // postChanges(addtags: Addtags): Observable<any> {
-    //     console.log(this.ClassName +'postChanges');
+    //     NoLog || console.log(this.ClassName + 'postChanges');
     //     // return Observable.of(this.addtags);
     //     // return this.postData(this.addtagsUrl, addtags);
     //     this.postData(this.addtagsUrl, addtags);
     // }
 
     public postChanges(addtags: Addtags) {
-    console.log(this.ClassName +'postChanges');
+    NoLog || console.log(this.ClassName + 'postChanges');
+    let url = this.addtagsUrl + '/' + this.meetingId;
+
     const headers = { 'Content-Type': 'application/json' }
-      this.http.post<any>(this.addtagsUrl, addtags, { headers }).subscribe({
-        next: data => this.postId = data.id,
+      this.http.post<any>(url, addtags, { headers }).subscribe({
+        //next: data => this.postId = data.id,
+        next: success => {
+          NoLog || console.log(this.ClassName, success);
+          if (!success) {
+             // TODO handle errs here and below - tell user their save did not succeed.
+             NoLog || console.log(this.ClassName, "false was returned from Post")
+          }
+        },
         error: error => console.error('There was an error!', error)
       })
     }
@@ -70,7 +79,7 @@ export class AddtagsService {
         //         'Content-Type': 'application/json',
         //     })
         // };
-        // console.log(this.ClassName +'postData');
+        // NoLog || console.log(this.ClassName + 'postData');
         // // TODO - handle null return. Here we just cast to the correct object type.
         // return <Observable<Addtags>> this.http.post<Addtags>(url, addtags, httpOptions)
         //     .pipe(catchError(this.errHandling.handleError));
@@ -98,14 +107,14 @@ export class AddtagsService {
     //       )
     //       .subscribe(
     //           val => {
-    //               console.log(this.ClassName +"PUT call successful value returned in body",
+    //               NoLog || console.log(this.ClassName + "PUT call successful value returned in body",
     //                           val);
     //           },
     //           response => {
-    //               console.log(this.ClassName +"PUT call in error", response);
+    //               NoLog || console.log(this.ClassName + "PUT call in error", response);
     //           },
     //           () => {
-    //               console.log(this.ClassName +"The PUT observable is now completed.");
+    //               NoLog || console.log(this.ClassName + "The PUT observable is now completed.");
     //           }
     //       );
     //   }

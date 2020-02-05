@@ -9,11 +9,11 @@ import { ViewMeeting } from '../models/viewmeeting-view';
 import { viewmeetingSample } from './viewmeeting-sample';
 import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Injectable()
 export class ViewMeetingService {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
     private meetingUrl = 'api/viewmeeting';
     private observable: Observable<ViewMeeting>;
     // private requestInProgress = false;
@@ -22,7 +22,7 @@ export class ViewMeetingService {
     viewMeeting: ViewMeeting = viewmeetingSample;
 
     constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
-      console.log(this.ClassName +'constructor');
+      NoLog || console.log(this.ClassName + 'constructor');
     }
 
     getMeeting(meetingId: number): Observable<ViewMeeting> {

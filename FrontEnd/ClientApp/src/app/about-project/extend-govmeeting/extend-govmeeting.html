@@ -74,9 +74,13 @@ changing the position of the gm-small-card or gm-large-card elements in this fil
     The file nlog-own-(date).log contain only the application messages.
   </li>
   <li>
-    At the top of many of the ClientApp components, a method "consolelog" is defined.
-    Change the "if" condition from false to true to turn on console logging for that component.
-    Seeing these log messages is helpful in understandng how this component is used.
+    At the top of many of the component files in ClientApp, a const "NoLog" is defined.
+    Change its value from true to false to turn on console logging for only that component.
+    <br/>
+    Log message are written in the form: "NoLog || console.log(this.ClassName + ...your.message....."
+    "this.ClassName" displays the name of the component's class at the start of the message.
+    If we were to put this boilerplate code in a wrapper function, the browser developer tools would always
+    display the line number of the wrapper function as the line where the log message occurred.
   </li>
 </ul>
 

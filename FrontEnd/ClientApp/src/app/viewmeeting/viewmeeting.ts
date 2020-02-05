@@ -4,7 +4,7 @@ import { ViewMeetingService } from './viewmeeting.service';
 import { TopicDiscussion } from '../models/viewmeeting-view'
 
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-viewmeeting',
@@ -15,7 +15,7 @@ console.log = function() {}  // comment this out for console logging
   ]
 })
 export class ViewMeetingComponent implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
     showhelp: boolean = true;
     showhidehelp: string = "Hide";
     topicDiscussions: TopicDiscussion[];
@@ -40,7 +40,7 @@ export class ViewMeetingComponent implements OnInit {
         .subscribe(
         t => {
             this.topicDiscussions = t.topicDiscussions;
-            console.log(this.ClassName +this.topicDiscussions);
+            NoLog || console.log(this.ClassName + this.topicDiscussions);
         },
         error => this.errorMessage = <any>error);
     }

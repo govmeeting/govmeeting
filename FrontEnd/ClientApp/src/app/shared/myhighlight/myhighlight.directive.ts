@@ -14,13 +14,13 @@ import { HostListener } from '@angular/core';
  */
 
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Directive({
   selector: '[myhighlight]'
 })
 export class MyhighlightDirective {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
     //@Input('myHighlight') highlightColor: string;
     @Input() highlightColor: string;
 
@@ -33,26 +33,26 @@ export class MyhighlightDirective {
     private selection: Selection;
 
     constructor(el: ElementRef) {
-      console.log(this.ClassName +'constructor');
+      NoLog || console.log(this.ClassName + 'constructor');
       this.textSelected = new EventEmitter<string>();
       this._el = el.nativeElement;
     }
 
     @HostListener('mouseenter')
     onMouseEnter() {
-        console.log(this.ClassName +'onMouseEnter');
+        NoLog || console.log(this.ClassName + 'onMouseEnter');
         this._highlight(this.highlightColor || this._defaultColor);
     }
 
     @HostListener('mouseleave')
     onMouseLeave() {
-        console.log(this.ClassName +'onMouseLeave');
+        NoLog || console.log(this.ClassName + 'onMouseLeave');
         this._highlight('transparent');
     }
 
     @HostListener('mouseup')
     onMouseUp() {
-        console.log(this.ClassName +window.getSelection());
+        NoLog || console.log(this.ClassName, window.getSelection());
         this.selection = window.getSelection();
 
         var sel = {
@@ -68,20 +68,20 @@ export class MyhighlightDirective {
         }
 
         this.fullText = this.selection.anchorNode.textContent;
-        console.log(this.ClassName +"FULL TEXT: " + this.fullText);
+        NoLog || console.log(this.ClassName + "FULL TEXT: " + this.fullText);
 
         this.selectedText = this.fullText.substring(this.selection.anchorOffset,
           this.selection.focusOffset);
 */
         this.selectedText = sel.text;
 
-        console.log(this.ClassName +'SELECTED TEXT: ' + this.selectedText);
+        NoLog || console.log(this.ClassName + 'SELECTED TEXT: ' + this.selectedText);
         this.textSelected.emit(this.selectedText);
     }
 
 
     private _highlight(color: string) {
-        console.log(this.ClassName +'color is ' + color);
+        NoLog || console.log(this.ClassName + 'color is ' + color);
         this._el.style.backgroundColor = color;
     }
 
@@ -94,15 +94,15 @@ export class MyhighlightDirective {
 
         var start = selection.range.startOffset;
         var end = selection.range.endOffset;
-        console.log(this.ClassName +'start=' + start);
-        console.log(this.ClassName +'end=' + end);
+        NoLog || console.log(this.ClassName + 'start=' + start);
+        NoLog || console.log(this.ClassName + 'end=' + end);
         // If start = end, then they just clicked and didn't select.
         if (start === end) return;
 
         end = end -1; // last character selected is one less.
 
         var startNode = selection.range.startContainer;
-        console.log(this.ClassName +'startNode=' + startNode);
+        NoLog || console.log(this.ClassName + 'startNode=', startNode);
 
         //while (startNode.textContent.charAt(start) != ' ' && start > 0) {
         while (this.IsAlphaNum(startNode.textContent.charAt(start)) && start > 0) {

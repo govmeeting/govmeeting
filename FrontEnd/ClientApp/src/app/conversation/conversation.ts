@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 import { MessagingService } from './messaging.service';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-conversation',
@@ -14,7 +14,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./conversation.scss']
 })
 export class ConversationComponent implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
 
   constructor(private ms: MessagingService, private router: Router) { }
 
@@ -52,7 +52,7 @@ export class ConversationComponent implements OnInit {
   //       this.events.push(message)
   //     })
 
-  //     console.log(this.ClassName +"Selected", this.selectedConversation)
+  //     NoLog || console.log(this.ClassName + "Selected", this.selectedConversation)
   //   }
   //   )
   // }

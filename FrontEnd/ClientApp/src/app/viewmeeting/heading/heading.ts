@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewMeetingService } from '../viewmeeting.service';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-heading',
@@ -9,7 +9,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./heading.css']
 })
 export class HeadingComponent implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
     meeting: any = {
         meetingId: 0,
         locationId: 0,
@@ -30,7 +30,7 @@ export class HeadingComponent implements OnInit {
     .subscribe(
     (viewMeeting: any) => {
         this.meeting = viewMeeting.meeting;
-        console.log(this.ClassName +this.meeting);
+        NoLog || console.log(this.ClassName, this.meeting);
     },
     (error: any) => this.errorMessage = <any>error);
 }

@@ -15,7 +15,7 @@ class videoSource {
 // https://www.npmjs.com/package/videogular2
 // https://videogular.github.io/videogular2/docs/getting-started/
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-video',
@@ -23,14 +23,14 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['video.css']
 })
 export class VideoComponent {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
     sources: Array<videoSource>;
     api: VgAPI;
 
 
     onPlayerReady(api: VgAPI) {
         this.api = api;
-        console.log(this.ClassName +'OnPlayerReady');
+        NoLog || console.log(this.ClassName + 'OnPlayerReady');
         // api.play();
     }
 
@@ -38,9 +38,9 @@ export class VideoComponent {
 
         let location: string;
 
-        console.log(this.ClassName +'constructor');
-        console.log(this.ClassName +'AppData=' + appData);
-        console.log(this.ClassName +'appData.isAspServerRunning=' + appData.isAspServerRunning);
+        NoLog || console.log(this.ClassName + 'constructor');
+        NoLog || console.log(this.ClassName + 'AppData=', appData);
+        NoLog || console.log(this.ClassName + 'appData.isAspServerRunning=' + appData.isAspServerRunning);
         // TODO - Use the server API to return the video. Until then we need to specify the full path of the video file.
         // var location: string = 'api/video/3/1';  // This would be for MeetingID=3 Part=1
 
@@ -53,7 +53,7 @@ export class VideoComponent {
         } else {
           location = 'assets/stubdata/';
         }
-        console.log(this.ClassName +'location=' + location);
+        NoLog || console.log(this.ClassName + 'location=' + location);
         const fileBasename = 'ToFix';
 
         this.sources = [
@@ -76,14 +76,14 @@ export class VideoComponent {
     }
 
     playPhrase(start: number, duration: number) {
-        console.log(this.ClassName +'playPhrase, start=' + start + ' duration=' + duration);
+        NoLog || console.log(this.ClassName + 'playPhrase, start=' + start + ' duration=' + duration);
         // const timer = Observable.timer(duration * 1000);
         const timerx = timer(100);   // yield for 100 milliseconds
         timerx.subscribe(t => this.api.pause());
-        // timer.subscribe(t=>console.log(this.ClassName +'done with timeout'));
+        // timer.subscribe(t=>NoLog || console.log(this.ClassName + 'done with timeout'));
         this.api.seekTime(start);
         this.api.play();
-        console.log(this.ClassName +'exiting playPhrase');
+        NoLog || console.log(this.ClassName + 'exiting playPhrase');
     }
 
   }

@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 //import { TopicsService } from './topics.service';
 import { AddtagsService } from '../addtags.service';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
     selector: 'gm-topicset',
@@ -10,7 +10,7 @@ console.log = function() {}  // comment this out for console logging
     styleUrls: ['topicset.component.css']
 })
 export class TopicsComponent implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
     topics: string[];
     errorMessage: string;
 
@@ -33,7 +33,7 @@ export class TopicsComponent implements OnInit {
         .subscribe(
             addtags => {
                 this.topics = addtags.topics;
-                console.log(this.ClassName +this.topics);
+                NoLog || console.log(this.ClassName, this.topics);
             },
         error => this.errorMessage = <any>error);
     }
@@ -42,14 +42,14 @@ export class TopicsComponent implements OnInit {
     // The parent component (TalksComponent) can then capture this event.
     OnChange(newValue: string) {
         this.topicSelect.emit(newValue);
-        console.log(this.ClassName +'topicSelect ' + newValue);
+        NoLog || console.log(this.ClassName + 'topicSelect ', newValue);
     }
 
     // When the user enters a new topic, we again raise the "topicSelect" event.
     // We get the new topic name from the bound "newTopicName" property.
     OnEnter() {
         this.topicSelect.emit(this.newTopicName);
-        console.log(this.ClassName +'topicSelect ' + this.newTopicName);
+        NoLog || console.log(this.ClassName + 'topicSelect ', this.newTopicName);
     }
 
 }

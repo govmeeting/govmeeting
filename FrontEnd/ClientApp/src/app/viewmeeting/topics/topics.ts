@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewMeetingService } from '../viewmeeting.service';
 import { UserchoiceService } from '../userchoice.service';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-topics',
@@ -11,7 +11,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./topics.css']
 })
 export class TopicsComponent implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   nameType: string = 'topicNames';
   Names: string[];
   errorMessage: string;
@@ -30,7 +30,7 @@ export class TopicsComponent implements OnInit {
     .subscribe(
     t => {
         this.Names = t.topicNames;
-        console.log(this.ClassName +this.Names);
+        NoLog || console.log(this.ClassName, this.Names);
     },
     error => this.errorMessage = <any>error);
   }

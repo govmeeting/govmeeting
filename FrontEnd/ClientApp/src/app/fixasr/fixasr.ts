@@ -21,6 +21,8 @@ import { ElementRef } from '@angular/core';
 // This is the "Fix ASR" component for fixing the "Automatic Speech Recognition" errors.
 // This component is way too long. Code needs to be factored out.
 
+const NoLog = false;  // set to false for console logging
+
 @Component({
   selector: 'gm-fixasr',
   templateUrl: './fixasr.html',
@@ -31,7 +33,7 @@ import { ElementRef } from '@angular/core';
     ]
 })
 export class FixasrComponent  implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
     errorMessage: string;
     lastPhrasePlayed = 0;
     currentIndex = -1;
@@ -87,7 +89,7 @@ export class FixasrComponent  implements OnInit {
         this.getAsr();
         // We cast to avoid a compiler error. It should never be null.
         this._scrollList = <HTMLElement>document.getElementById('scroll-text');
-        console.log(this.ClassName +'currentIndex = ' + this.currentIndex);
+        NoLog || console.log(this.ClassName + 'currentIndex = ' + this.currentIndex);
     }
 
     CheckShowHelp(): boolean {
@@ -127,12 +129,12 @@ export class FixasrComponent  implements OnInit {
 // ########  Handle speaker selection
 
     selectSpeaker(index: any) {
-      console.log(this.ClassName +'selected index=' + index);
+      NoLog || console.log(this.ClassName + 'selected index=' + index);
         this._Utilities.insertAtStartCurrentWord(this.currentElement, '[' + this.speakers[index].abbreviation + '] ');
     }
 
     addSpeaker(speaker: any) {
-      console.log(this.ClassName +'new speaker=' + speaker);
+      NoLog || console.log(this.ClassName + 'new speaker=', speaker);
         const abbrev = this.createSpeakerAbbrev(speaker);
         this._Utilities.insertAtStartCurrentWord(this.currentElement, '[' + abbrev + '] ');
         const newSpeaker = new Speaker(speaker, abbrev);
@@ -175,7 +177,7 @@ export class FixasrComponent  implements OnInit {
     // ########
 
     onFocus(event: any, i: number) {
-      console.log(this.ClassName +'onFocus index=' + i + '  size=' + this.asrsegments.length);
+      NoLog || console.log(this.ClassName + 'onFocus index=' + i + '  size=' + this.asrsegments.length);
         this.currentIndex = i;
         this.currentElement = (<HTMLInputElement>event.target);
         // this.isSpeakerSelectVisible = true;
@@ -187,8 +189,8 @@ export class FixasrComponent  implements OnInit {
         if (this.isInsertMode) { return; }
 
         const ele: HTMLInputElement = (<HTMLInputElement>event.target);
-        console.log(this.ClassName +'onMouseup index=' + i + '   start=' + ele.selectionStart + '   end=' + ele.selectionEnd);
-        console.log(this.ClassName +'onMouseup value=' + ele.value);
+        NoLog || console.log(this.ClassName + 'onMouseup index=' + i + '   start=' + ele.selectionStart + '   end=' + ele.selectionEnd);
+        NoLog || console.log(this.ClassName + 'onMouseup value=', ele.value);
         this._Utilities.selectWord(ele);
     }
 
@@ -244,8 +246,8 @@ export class FixasrComponent  implements OnInit {
         const end: number = ele.selectionEnd;
 
 
-        console.log(this.ClassName +'doKey: key=' + key + '   isTyping=' + this.isTyping);
-        console.log(this.ClassName +'1 doKey index=' + i + '   start=' + start + '   end=' + end);
+        NoLog || console.log(this.ClassName + 'doKey: key=' + key + '   isTyping=' + this.isTyping);
+        NoLog || console.log(this.ClassName + '1 doKey index=' + i + '   start=' + start + '   end=' + end);
 
         // Handle the arrow keys
         switch (key) {
@@ -305,19 +307,19 @@ export class FixasrComponent  implements OnInit {
         // 1. They typed a second space after typing some text.
         // 2. They typed a space when a word was selected.
         // First remove the space they just typed
-        console.log(this.ClassName +'2 left=' + value.substr(0, start - 1));
-        console.log(this.ClassName +'2 right=' + value.substr(start));
+        NoLog || console.log(this.ClassName + '2 left=' + value.substr(0, start - 1));
+        NoLog || console.log(this.ClassName + '2 right=' + value.substr(start));
         value = value.substr(0, start - 1) + value.substr(start);
         start--;
-        console.log(this.ClassName +'2 doKey start=' + start + '   value=' + value);
+        NoLog || console.log(this.ClassName + '2 doKey start=' + start + '   value=' + value);
 
         // If there is a space right after the one they typed, remove that also.
         if (value.charAt(start) === ' ') {
-          console.log(this.ClassName +'3 left=' + value.substr(0, start - 1));
-          console.log(this.ClassName +'3 right=' + value.substr(start));
+          NoLog || console.log(this.ClassName + '3 left=' + value.substr(0, start - 1));
+          NoLog || console.log(this.ClassName + '3 right=' + value.substr(start));
           value = value.substr(0, start - 1) + value.substr(start);
           start--;
-          console.log(this.ClassName +'3 doKey start=' + start + '   value=' + value);
+          NoLog || console.log(this.ClassName + '3 doKey start=' + start + '   value=' + value);
         }
 
         // Select the correct word
@@ -326,12 +328,12 @@ export class FixasrComponent  implements OnInit {
         if (start === value.length) {
             if (value.charAt(start - 1) === ' ') {
                 value = value.substr(0, start - 1);
-                console.log(this.ClassName +'4 doKey start=' + start + '   value=' + value);
+                NoLog || console.log(this.ClassName + '4 doKey start=' + start + '   value=' + value);
             }
         }
         ele.value = value;
         ele.setSelectionRange(start + 2, start + 2);
-        console.log(this.ClassName +'start=' + ele.selectionStart + '   end=' + ele.selectionEnd);
+        NoLog || console.log(this.ClassName + 'start=' + ele.selectionStart + '   end=' + ele.selectionEnd);
         this._Utilities.selectWord(ele);
 
     }
@@ -348,7 +350,7 @@ export class FixasrComponent  implements OnInit {
                 // causes an error (It says asrtext is null).
                 this.asrsegments = asrtext.asrsegments;
                 this.lastedit = asrtext.lastedit;
-                console.log(this.ClassName +'getAsr lastedit=' + this.lastedit);
+                NoLog || console.log(this.ClassName + 'getAsr lastedit=' + this.lastedit);
 
                 // We want to scroll the list to the last stored position.
                 // But Angular will not yet have updated the list. We need
@@ -362,14 +364,15 @@ export class FixasrComponent  implements OnInit {
     }
 
     saveChanges() {
-        // let asrtext: FixasrText;
-        const lastedit = this.getScrollPosition();
-        console.log(this.ClassName +'saveTranscript');
+      const lastedit = this.getScrollPosition();
+      let fixasrtext: FixasrText = { 'lastedit': lastedit, 'asrsegments': this.asrsegments };
+        NoLog || console.log(this.ClassName + 'saveTranscript');
         // TODO - See notes under getAsr().
         // asrtext.lastedit = this.getScrollPosition();
         // asrtext.asrsegments = this.asrsegments;
         // this._asrService.postChanges(asrtext)
-        this._fixasrService.postChanges({ 'lastedit': lastedit, 'asrsegments': this.asrsegments });
+        // this._fixasrService.postChanges({ 'lastedit': lastedit, 'asrsegments': this.asrsegments });
+        this._fixasrService.postChanges(fixasrtext);
             // .subscribe (
             //     t => t
             // );
@@ -399,7 +402,7 @@ export class FixasrComponent  implements OnInit {
         const afterTime = 3;   // and after selected phrase
         const startTime  = this.asrsegments[toPlay].startTime;
 
-        console.log(this.ClassName +'playPhrase, index=' + toPlay);
+        NoLog || console.log(this.ClassName + 'playPhrase, index=' + toPlay);
 
         // Play for contextTime seconds before selected phrase
         let start = this.convertToSeconds(startTime) - beforeTime;
@@ -423,7 +426,7 @@ export class FixasrComponent  implements OnInit {
        let seconds = 0;
        while (count > 0) {
            seconds = seconds + Number(array[count - 1]) * Math.pow(60, array.length - count);
-           console.log(this.ClassName +'In convertToSeconds, seconds=' + seconds);
+           NoLog || console.log(this.ClassName + 'In convertToSeconds, seconds=' + seconds);
            count--;
        }
        return seconds;

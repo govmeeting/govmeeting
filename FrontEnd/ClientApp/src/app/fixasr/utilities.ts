@@ -10,24 +10,24 @@ import { Injectable } from '@angular/core';
 //      getEndCurrentWord
 //      insertIntoString
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Injectable()
 export class FixasrUtilities {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
     public selectWord(ele: HTMLInputElement) {
         var start = ele.selectionStart;
         var end = ele.selectionEnd;
         var content = ele.value;
         var contentLen = content.length;
-        console.log(this.ClassName +'selectWord start=' + start + '   end=' + end);
+        NoLog || console.log(this.ClassName + 'selectWord start=' + start + '   end=' + end);
 
         // If they actually selected some text, ignore
         // This also ignores a prior select that we set here. This has
         // the effect of toggling the select on a word by clicking
         // on it multiple times.
         if (start !== end) {
-          console.log(this.ClassName +'selectWord ignore if current select');
+          NoLog || console.log(this.ClassName + 'selectWord ignore if current select');
            return;
         }
 
@@ -44,13 +44,13 @@ export class FixasrUtilities {
         //if (start + 1 != end) {
         //    if ((start == 0) || (start == contentLen) ||
         //        (content.charAt(start) == " ") || (content.charAt(start - 1) == " ")) {
-        //        console.log(this.ClassName +'selectWord ignore if start or end of word');
+        //        NoLog || console.log(this.ClassName + 'selectWord ignore if start or end of word');
         //        return;
         //    }
         //}
 
         ele.setSelectionRange(start, end);
-        console.log(this.ClassName +'selectWord newstart=' + start + '   newend=' + end);
+        NoLog || console.log(this.ClassName + 'selectWord newstart=' + start + '   newend=' + end);
    }
 
     public selectFirstWord(ele: HTMLInputElement) {
@@ -125,7 +125,7 @@ export class FixasrUtilities {
          // cast to HTMLElement because  we trust it is never null.
        let nextSibling = <Element> (<HTMLElement>ele.parentElement).nextSibling;
         var next : HTMLInputElement = <HTMLInputElement>(nextSibling.children[0]);
-        console.log(this.ClassName +next.value);
+        NoLog || console.log(this.ClassName, next.value);
 
         if (typeof next.setSelectionRange !== 'undefined') {
             this.selectFirstWord(next);

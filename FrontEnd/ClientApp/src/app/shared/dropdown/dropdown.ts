@@ -4,7 +4,7 @@ import { DropdownValue } from './value';
 import { FormBuilder, Validators } from '@angular/forms';
 //import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   //moduleId: module.id,
@@ -13,7 +13,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./dropdown.css']
 })
 export class DropdownComponent implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   @Input()
   values: DropdownValue[];
 
@@ -36,12 +36,12 @@ export class DropdownComponent implements OnInit {
   }
 
   onSelectChange(i: number) {
-    console.log(this.ClassName +"selected index=" + i);
+    NoLog || console.log(this.ClassName + "selected index=" + i);
     this.selectSpeaker.emit(i);
   }
 
   onNewEntry(event: any) {
-    console.log(this.ClassName +event);
+    NoLog || console.log(this.ClassName, event);
     var value = this.newOptionForm.value.newOption;
     this.newOptionForm.reset();
     this.addSpeaker.emit(value);
@@ -59,6 +59,6 @@ Note that dropdownvalues and the action method are on the parent component (not 
     {'value': 'value3', 'label': 'label3'}
   ];
   action(d: any){
-    console.log(this.ClassName +"selected=" + d.label);
+    NoLog || console.log(this.ClassName + "selected=" + d.label);
   }
 **/

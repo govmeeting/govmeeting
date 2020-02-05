@@ -15,7 +15,7 @@ enum DeviceType{
   mobile
 }
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-sidenav-menu',
@@ -24,7 +24,7 @@ console.log = function() {}  // comment this out for console logging
   encapsulation: ViewEncapsulation.None
 })
 export class SidenavMenuComponent implements AfterViewInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   @ViewChild('appDrawer', {static: false})
   sidenav: ElementRef;
   version = VERSION;
@@ -43,15 +43,15 @@ export class SidenavMenuComponent implements AfterViewInit {
     if (width <= 768) {
       deviceType = DeviceType.mobile;
       this.deviceType = "Mobile";
-      console.log(this.ClassName +'mobile device detected')
+      NoLog || console.log(this.ClassName + 'mobile device detected')
     } else if (width > 768 && width <= 992) {
       deviceType = DeviceType.tablet;
       this.deviceType = "Tablet";
-      console.log(this.ClassName +'tablet detected')
+      NoLog || console.log(this.ClassName + 'tablet detected')
     } else {
       deviceType = DeviceType.desktop;
       this.deviceType = "Desktop";
-      console.log(this.ClassName +'desktop detected')
+      NoLog || console.log(this.ClassName + 'desktop detected')
     }
     return deviceType;
   }
@@ -66,9 +66,9 @@ export class SidenavMenuComponent implements AfterViewInit {
   }
 
   OnFinalSelection(items: Array<NavItem>){
-    console.log(this.ClassName +"====OnEmitted(sidenav): ");
-    console.log(this.ClassName +items);
-    console.log(this.ClassName +"org:" + this.navigationItems[0].displayName)
+    NoLog || console.log(this.ClassName + "====OnEmitted(sidenav): ");
+    NoLog || console.log(this.ClassName, items);
+    NoLog || console.log(this.ClassName + "org:" + this.navigationItems[0].displayName)
 
     // this.navService.closeOrgMenu(0);
 
@@ -80,7 +80,7 @@ export class SidenavMenuComponent implements AfterViewInit {
           this.router.navigate(['dashboard']);
           let agency = items[0].displayName;
           let location = items[1].displayName;
-          console.log(this.ClassName +"location=" + location + " agency="+agency)
+          NoLog || console.log(this.ClassName + "location=" + location + " agency="+agency)
           this.messageService.sendMessage('AgencySelected:' + location + ':' + agency);
           break;
         }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-news',
@@ -8,7 +8,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   public _location = '';
   public _agency = '';
   public datetime;
@@ -16,14 +16,14 @@ export class NewsComponent implements OnInit {
   @Input()
     set location(location: string) {
       this._location = location;
-      console.log(this.ClassName +"set location=" + location)
+      NoLog || console.log(this.ClassName + "set location=" + location)
     }
     get location(): string { return this._location; }
 
     @Input()
     set agency(agency: string) {
       this._agency = agency;
-      console.log(this.ClassName +"set agency=" + agency)
+      NoLog || console.log(this.ClassName + "set agency=" + agency)
     }
     get agency(): string { return this._agency; }
 

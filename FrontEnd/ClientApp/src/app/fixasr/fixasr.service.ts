@@ -8,11 +8,11 @@ import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = false;  // set to false for console logging
 
 @Injectable()
 export class FixasrService {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
     private fixasrUrl = 'api/fixasr';
     private asrtext: FixasrText;
     private error = { message: 'not defined yet' };
@@ -25,7 +25,7 @@ export class FixasrService {
     private part = 1;
 
     constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
-        console.log(this.ClassName +'constructor');
+        NoLog || console.log(this.ClassName + 'constructor');
     }
 
     getAsr(): Observable<FixasrText> {
@@ -33,32 +33,50 @@ export class FixasrService {
         let url: string = this.fixasrUrl;
         url = url + '/' + this.meetingId + '/' + this.part;
 
-        console.log(this.ClassName +'get data from ' + url);
+        NoLog || console.log(this.ClassName + 'get data from ' + url);
         // TODO - handle null return. Here we just cast to the correct object type.
         return <Observable<FixasrText>> this.http.get<FixasrText>(url)
             .pipe(catchError(this.errHandling.handleError));
     }
 
-    postChanges(asrtext: FixasrText): Observable < any > {
-        // See notes above for meetingId & part.
-        let url: string = this.fixasrUrl;
-        url = url + '/' + this.meetingId + '/' + this.part;
+    // postChanges(asrtext: FixasrText): Observable < any > {
+    //     // See notes above for meetingId & part.
+    //     let url: string = this.fixasrUrl;
+    //     url = url + '/' + this.meetingId + '/' + this.part;
+    //     NoLog || console.log(this.ClassName + 'postChanges  ' + url);
+    //     return this.postData(url, asrtext);
+    // }
 
-        console.log(this.ClassName +'postChanges  ' + url);
-        return this.postData(url, asrtext);
-    }
+    // private postData(url: string, asrtext: FixasrText): Observable<FixasrText> {
+    //     const httpOptions = {
+    //         headers: new HttpHeaders({
+    //             'Content-Type': 'application/json',
+    //         })
+    //     };
+    //     NoLog || console.log(this.ClassName + 'postData');
+    //     // TODO - handle null return. Here we just cast to the correct object type.
+    //     return <Observable<FixasrText>> this.http.post<FixasrText>(url, asrtext, httpOptions)
+    //         .pipe(catchError(this.errHandling.handleError));
+    // }
 
-    private postData(url: string, asrtext: FixasrText): Observable<FixasrText> {
-        const httpOptions = {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-            })
-        };
-        console.log(this.ClassName +'postData');
-        // TODO - handle null return. Here we just cast to the correct object type.
-        return <Observable<FixasrText>> this.http.post<FixasrText>(url, asrtext, httpOptions)
-            .pipe(catchError(this.errHandling.handleError));
-    }
+    public postChanges(asrtext: FixasrText) {
+      NoLog || console.log(this.ClassName + 'postChanges');
+      let url = this.fixasrUrl + '/' + this.meetingId + '/' + this.part;
+      NoLog || console.log(this.ClassName + 'postChanges  ' + url);
+    const headers = { 'Content-Type': 'application/json' }
+        this.http.post<any>(url, asrtext, { headers }).subscribe({
+          //next: data => this.postId = data.id,
+          next: success => {
+            NoLog || console.log(this.ClassName, success);
+            if (!success) {
+               // TODO handle errs here and below - tell user their save did not succeed.
+               NoLog || console.log(this.ClassName, "false was returned from Post")
+            }
+          },
+          error: error => console.error('There was an error!', error)
+        })
+      }
+
 
   }
 

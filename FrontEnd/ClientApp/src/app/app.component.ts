@@ -9,7 +9,7 @@ import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 import { NavService } from './dash-sidenav/sidenav-menu/service';
 import { MediaQueryService } from './media-query.service';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   @ViewChild('sidenav', {static: false}) sidenav: ElementRef;
 
   // setMode(value) {
@@ -48,7 +48,7 @@ export class AppComponent implements AfterViewInit {
     this.mediaQueryList = media.matchMedia('(max-width: 600px)');
     this.mediaQueryListener = () => {
       changeDetectorRef.detectChanges();
-      console.log(this.ClassName +"mediaQueryListener:" + this.mediaQueryList.matches);
+      NoLog || console.log(this.ClassName + "mediaQueryListener:" + this.mediaQueryList.matches);
       // this.checkDeviceType();
     }
     this.mediaQueryList.addListener(this.mediaQueryListener);
@@ -70,11 +70,12 @@ export class AppComponent implements AfterViewInit {
   checkDeviceType() {
     var width = window.innerWidth;
     if (width <= 768) {
-      console.log(this.ClassName +'mobile device detected')
+    // TODO Remove "NoLog || ..." statements during pre-build of prod
+      NoLog || console.log(this.ClassName + 'mobile device detected')
     } else if (width > 768 && width <= 992) {
-      console.log(this.ClassName +'tablet detected')
+      NoLog || console.log(this.ClassName + 'tablet detected')
     } else {
-      console.log(this.ClassName +'desktop detected')
+      NoLog || console.log(this.ClassName + 'desktop detected')
     }
   }
 

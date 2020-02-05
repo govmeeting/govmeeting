@@ -136,12 +136,16 @@ const _isAspServerRunning = false;
       useValue: { isAspServerRunning: _isAspServerRunning },
     },
 
-    // If you use the stubs for these services, it will not call the Asp.Net
-    // server , but will instead return static data.
-    { provide: ViewMeetingService, useClass: _isAspServerRunning ? ViewMeetingService : ViewMeetingServiceStub },
-    { provide: AddtagsService, useClass: _isAspServerRunning ? AddtagsService : AddtagsServiceStub },
-    // { provide: AddtagsService, useClass: AddtagsService },
-    { provide: FixasrService, useClass: _isAspServerRunning ? FixasrService : FixasrServiceStub },
+    // If you use the stubs for these services, they will not call the Asp.Net server,
+    // but will instead return static data.
+    // { provide: ViewMeetingService, useClass: _isAspServerRunning ? ViewMeetingService : ViewMeetingServiceStub },
+    // { provide: AddtagsService, useClass: _isAspServerRunning ? AddtagsService : AddtagsServiceStub },
+    // { provide: FixasrService, useClass: _isAspServerRunning ? FixasrService : FixasrServiceStub },
+
+    { provide: ViewMeetingService, useClass: ViewMeetingServiceStub },
+    { provide: AddtagsService, useClass: AddtagsServiceStub },
+    { provide: FixasrService, useClass: FixasrService },
+
 
     ChatService,
     MessagingService,

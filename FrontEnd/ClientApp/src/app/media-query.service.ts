@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
+const NoLog = true;  // set to false for console logging
+
 @Injectable({
   providedIn: 'root'
 })
 export class MediaQueryService  {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
 
   mediaQueryList: MediaQueryList;
   private mediaQueryListener:() => void;
@@ -18,7 +20,7 @@ export class MediaQueryService  {
     this.mediaQueryList = media.matchMedia('(max-width: 992px)');
     this.mediaQueryListener = () => {
       changeDetectorRef.detectChanges();
-      console.log(this.ClassName +"Match?: " + this.mediaQueryList.matches)
+      NoLog || console.log(this.ClassName + "Match?: " + this.mediaQueryList.matches)
       }
     this.mediaQueryList.addListener(this.mediaQueryListener);
   }
@@ -49,7 +51,7 @@ export class MediaQueryService  {
 //     this.mediaQueryList = media.matchMedia('(max-width: 992px)');
 //     this.mediaQueryListener = () => {
 //       changeDetectorRef.detectChanges();
-//       console.log(this.ClassName +"Match?: ", this.mediaQueryList.matches)
+//       NoLog || console.log(this.ClassName + "Match?: ", this.mediaQueryList.matches)
 //       }
 //     this.mediaQueryList.addListener(this.mediaQueryListener);
 //   }

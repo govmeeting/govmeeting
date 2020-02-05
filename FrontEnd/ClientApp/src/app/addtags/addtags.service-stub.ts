@@ -7,29 +7,29 @@ import { Addtags, Talk } from '../models/addtags-view';
   // Use the jsonplaceholder service to test post requests
   const addtagsUrl = 'https://jsonplaceholder.typicode.com/posts'
 
-  console.log = function() {}  // comment this out for console logging
+  const NoLog = true;  // set to false for console logging
 
   @Injectable()
 export class AddtagsServiceStub {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   private postId;
 
   public constructor(private http: HttpClient) {
-    console.log(this.ClassName +'constructor');
+    NoLog || console.log(this.ClassName + 'constructor');
   }
 
   public getTalks(): Observable<Addtags> {
-        console.log(this.ClassName +'getTalks from memory');
+        NoLog || console.log(this.ClassName + 'getTalks from memory');
         return of(this.addtags);
     }
 
   public postChanges(addtags: Addtags) {
-    console.log(this.ClassName +'postChanges');
+    NoLog || console.log(this.ClassName + 'postChanges');
     const headers = { 'Content-Type': 'application/json' }
       this.http.post<any>(addtagsUrl, addtags, { headers }).subscribe({
         next: data => {
           this.postId = data.id;
-          console.log(this.ClassName +data);
+          NoLog || console.log(this.ClassName + data);
         },
         error: error => console.error('There was an error!', error)
       })
@@ -37,7 +37,7 @@ export class AddtagsServiceStub {
 
 
     // postChanges(addtags: Addtags): Observable<Addtags> {
-    //     console.log(this.ClassName +'postChanges in talks.service stub');
+    //     NoLog || console.log(this.ClassName + 'postChanges in talks.service stub');
     //     return of(this.addtags);
     // }
 

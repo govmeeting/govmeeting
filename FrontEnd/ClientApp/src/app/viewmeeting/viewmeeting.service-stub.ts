@@ -14,11 +14,11 @@ import { viewmeetingSample } from './viewmeeting-sample';
   const url = 'assets/stubdata/tagged.json';
 
 
-  console.log = function() {}  // comment this out for console logging
+  const NoLog = true;  // set to false for console logging
 
 @Injectable()
 export class ViewMeetingServiceStub {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   viewMeeting: ViewMeeting = viewmeetingSample;
 
   private observable: Observable<ViewMeeting>;
@@ -27,32 +27,32 @@ export class ViewMeetingServiceStub {
   private postId;
 
   constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
-    console.log(this.ClassName +'constructor');
+    NoLog || console.log(this.ClassName + 'constructor');
   }
 
   public getMeeting(meetingId: number): Observable<ViewMeeting> {
     if (this.observable != null) {
-      console.log(this.ClassName +"getMeeting observable not null")
+      NoLog || console.log(this.ClassName + "getMeeting observable not null")
       return this.observable;
     }
     if (meetingId == null) {
-      console.log(this.ClassName +"getMeeting meetingId null")
+      NoLog || console.log(this.ClassName + "getMeeting meetingId null")
       return this.observable;
   }
     if (this.http == null) {
-      console.log(this.ClassName +"getMeeting http null")
+      NoLog || console.log(this.ClassName + "getMeeting http null")
       this.observable = Observable.of(this.viewMeeting);
       return this.observable;
     }
     // else get data from file.
     else {
-      console.log(this.ClassName +"getMeeting getMeetingFromFile")
+      NoLog || console.log(this.ClassName + "getMeeting getMeetingFromFile")
       return this.getMeetingFromFile();
     }
   }
 
   public getMeetingFromFile(): Observable<ViewMeeting> {
-    console.log(this.ClassName +'getMeeting from memory');
+    NoLog || console.log(this.ClassName + 'getMeeting from memory');
     // return Observable.of(this.viewMeeting);
 
     // TODO - handle null return. Here we just cast to the correct object type.
@@ -63,12 +63,12 @@ export class ViewMeetingServiceStub {
   }
 
   public postChanges(viewmeeting: ViewMeeting) {
-    console.log(this.ClassName +'postChanges');
+    NoLog || console.log(this.ClassName + 'postChanges');
     const headers = { 'Content-Type': 'application/json' }
       this.http.post<any>(viewmeetingUrl, viewmeeting, { headers }).subscribe({
         next: data => {
           this.postId = data.id;
-          console.log(this.ClassName +data);
+          NoLog || console.log(this.ClassName, data);
         },
         error: error => console.error('There was an error!', error)
       })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AddtagsService } from '../addtags.service';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-sections',
@@ -9,7 +9,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./sections.css'],
 })
 export class SectionsComponent implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
     errorMessage: string;
     sections: string[];
     gotSections: boolean = false;
@@ -22,19 +22,19 @@ export class SectionsComponent implements OnInit {
 getSections() {
   if (! this.gotSections) {
     this.gotSections = true;
-    console.log(this.ClassName +'getSections');
+    NoLog || console.log(this.ClassName + 'getSections');
     this._addtagsService.getTalks()
         .subscribe(
         addtags => {
             this.sections = addtags.sections;
-            console.log(this.ClassName +this.sections);
+            NoLog || console.log(this.ClassName, this.sections);
         },
         error => this.errorMessage = <any>error);
       }
     }
 
  OnChange(newValue: any) {
-  console.log(this.ClassName +newValue);
+  NoLog || console.log(this.ClassName, newValue);
   }
 
   isEmptyObject(obj) {

@@ -5,7 +5,7 @@ import { ViewMeetingService } from '../viewmeeting.service';
 import { UserchoiceService } from '../userchoice.service';
 import { TopicDiscussion } from '../../models/viewmeeting-view'
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-browse',
@@ -13,7 +13,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./browse.css']
 })
 export class BrowseComponent implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   topicDiscussions: TopicDiscussion[];
   topics: string[];
   errorMessage: string;
@@ -38,7 +38,7 @@ export class BrowseComponent implements OnInit {
       .subscribe(
       t => {
           this.topicDiscussions = t.topicDiscussions;
-          console.log(this.ClassName +this.topicDiscussions);
+          NoLog || console.log(this.ClassName + this.topicDiscussions);
       },
       error => this.errorMessage = <any>error);
   }
@@ -54,7 +54,7 @@ export class BrowseComponent implements OnInit {
     **/
     CheckShowTopic(topicName: string) {
       var _topic = this._userChoice.getTopic();
-      console.log(this.ClassName +"CheckShowTopic " + topicName + " " + _topic);
+      NoLog || console.log(this.ClassName + "CheckShowTopic " + topicName + " " + _topic);
       return ((_topic === 'SHOW ALL') || (_topic === topicName));
   }
 
@@ -69,7 +69,7 @@ export class BrowseComponent implements OnInit {
   **/
   CheckShowSpeaker(speakerName: string) {
       var _speaker = this._userChoice.getSpeaker();
-      console.log(this.ClassName +"CheckShowSpeaker " + speakerName + " " + _speaker);
+      NoLog || console.log(this.ClassName + "CheckShowSpeaker " + speakerName + " " + _speaker);
       return ((_speaker === 'SHOW ALL') || (_speaker === speakerName));
   }
 

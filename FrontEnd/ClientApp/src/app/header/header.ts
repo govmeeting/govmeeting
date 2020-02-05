@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { NavService } from '../dash-sidenav/sidenav-menu/service';
 import { MessageService } from '../message.service';
 
-console.log = function() {}  // comment this out for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-header',
@@ -12,7 +12,7 @@ console.log = function() {}  // comment this out for console logging
   styleUrls: ['./header.scss']
 })
 export class HeaderComponent implements OnInit {
-  private ClassName: string = this.constructor.name;
+  private ClassName: string = this.constructor.name + ": ";
   messages: any[] = [];
   subscription: Subscription;
   location: string;
@@ -23,8 +23,8 @@ export class HeaderComponent implements OnInit {
     this.subscription = this.messageService.getMessage().subscribe(message => {
       if (message) {
         this.messages.push(message);
-        console.log(this.ClassName +"header: message=")
-        console.log(this.ClassName +message.text);
+        NoLog || console.log(this.ClassName + "header: message=")
+        NoLog || console.log(this.ClassName + message.text);
         this.parseMessage(message.text);
       } else {
         // clear messages when empty message received
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
       if (this.location == "Non-Government") {
         this.location = mes[2];
       }
-      console.log(this.ClassName +"location:" + this.location);
+      NoLog || console.log(this.ClassName + "location:" + this.location);
       this.changeBackground(this.location)
     }
   }
