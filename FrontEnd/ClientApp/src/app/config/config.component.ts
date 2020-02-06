@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Config, ConfigService } from './config.service';
 import { MessageService } from '../message.service';
 
-import { FixasrText, AsrSegment } from '../models/fixasr-view'
+import { FixasrView, AsrSegment } from '../models/fixasr-view'
 
 @Component({
   selector: 'app-config',
@@ -14,7 +14,7 @@ export class ConfigComponent {
   error: any;
   headers: string[];
   config: Config;
-  fixasr: FixasrText;
+  fixasr: FixasrView;
   x: number;
 
   constructor(private configService: ConfigService) {}
@@ -29,7 +29,7 @@ export class ConfigComponent {
   showFixasr() {
     this.configService.getFixasr()
       .subscribe(
-        (data: FixasrText) =>
+        (data: FixasrView) =>
         //  this.fixasr = { ...data }, // success path
         this.handleData(data),
         error =>

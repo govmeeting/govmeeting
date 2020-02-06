@@ -1,7 +1,7 @@
-import { FixasrText, AsrSegment } from '../models/fixasr-view';
+import { FixasrView, AsrSegment } from '../models/fixasr-view';
 
 
-export let fixasrShortSample: FixasrText = {
+export let fixasrShortSample: FixasrView = {
   'lastedit': 0,
   'asrsegments':     [
   { startTime: '0:00', said: 'the tuesday october $YEAR 11 selectmen' },
@@ -18,7 +18,7 @@ export let fixasrShortSample: FixasrText = {
   { startTime: '0:30', said: 'Trish Warren wendy wolf myself Denise' }
 ]};
 
-export let fixasrSample: FixasrText = {  "lastedit": 0.0,
+export let fixasrSample: FixasrView = {  "lastedit": 0.0,
   "asrsegments": [
     {
       "startTime": "00:00:00",

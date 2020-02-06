@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
-import { FixasrText, AsrSegment } from '../models/fixasr-view';
+import { FixasrView, AsrSegment } from '../models/fixasr-view';
 import { FixasrService } from './fixasr.service';
 import { VideoComponent } from '../video/video';
 import { FixasrUtilities } from './utilities';
@@ -365,7 +365,7 @@ export class FixasrComponent  implements OnInit {
 
     saveChanges() {
       const lastedit = this.getScrollPosition();
-      let fixasrtext: FixasrText = { 'lastedit': lastedit, 'asrsegments': this.asrsegments };
+      let fixasrtext: FixasrView = { 'lastedit': lastedit, 'asrsegments': this.asrsegments };
         NoLog || console.log(this.ClassName + 'saveTranscript');
         // TODO - See notes under getAsr().
         // asrtext.lastedit = this.getScrollPosition();

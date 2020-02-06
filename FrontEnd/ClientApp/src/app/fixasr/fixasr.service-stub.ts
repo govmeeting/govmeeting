@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FixasrText, AsrSegment } from '../models/fixasr-view';
+import { FixasrView, AsrSegment } from '../models/fixasr-view';
 import { Observable } from 'rxjs';
 import 'rxjs/add/observable/of';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -15,25 +15,25 @@ const NoLog = true;  // set to false for console logging {}
   @Injectable()
 export class FixasrServiceStub {
   private ClassName: string = this.constructor.name + ": ";
-  private asrtext: FixasrText = fixasrSample;
+  private asrtext: FixasrView = fixasrSample;
   private postId;
 
   public constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
     NoLog || console.log(this.ClassName + 'constructor');
   }
 
-  public getAsr(): Observable<FixasrText> {
+  public getAsr(): Observable<FixasrView> {
         NoLog || console.log(this.ClassName + 'getAsr from memory');
         // console.trace('trace: getAsr from memory')
         // return Observable.of(this.asrtext);
         const url = 'assets/stubdata/ToFix.json';
         // TODO - handle null return. Here we just cast to the correct object type.
-        return <Observable<FixasrText>> this.http.get<FixasrText>(url)
+        return <Observable<FixasrView>> this.http.get<FixasrView>(url)
             .pipe(catchError(this.errHandling.handleError));
     }
 
 
-  public postChanges(fixasr: FixasrText) {
+  public postChanges(fixasr: FixasrView) {
     NoLog || console.log(this.ClassName + 'postChanges');
     const headers = { 'Content-Type': 'application/json' }
       this.http.post<any>(fixasrUrl, fixasr, { headers }).subscribe({
@@ -46,7 +46,7 @@ export class FixasrServiceStub {
     }
 
 
-  // postChanges(asrtext: FixasrText): Observable<any> {
+  // postChanges(asrtext: FixasrView): Observable<any> {
   //     NoLog || console.log(this.ClassName + 'postChanges in fixasr.service stub');
   //     return Observable.of(this.asrtext);
   // }

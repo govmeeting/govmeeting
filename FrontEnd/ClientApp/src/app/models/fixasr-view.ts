@@ -1,6 +1,6 @@
 // This is the JSON format of the text to be fixed.
 
-export class FixasrText {
+export class FixasrView {
     lastedit: number;
     asrsegments: AsrSegment[];
 }

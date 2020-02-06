@@ -5,7 +5,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
-import { FixasrText, AsrSegment } from '../models/fixasr-view'
+import { FixasrView, AsrSegment } from '../models/fixasr-view'
 
 export interface Config {
   heroesUrl: string;
@@ -20,7 +20,7 @@ export class ConfigService {
   constructor(private http: HttpClient) { }
 
   getFixasr() {
-    return this.http.get<FixasrText>(this.fixasrUrl)
+    return this.http.get<FixasrView>(this.fixasrUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
