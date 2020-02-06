@@ -18,7 +18,7 @@ namespace GM.WebApp.Services
     {
         //Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
         //    RoleManager<IdentityRole> roleManager, IConfiguration configuration);
-        Task Initialize();
+        Task<bool> Initialize();
     }
 
     // Class to inialize the database with the first admin user. See:
@@ -40,7 +40,7 @@ namespace GM.WebApp.Services
 
         //public async Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
         //    RoleManager<IdentityRole> roleManager, IConfiguration configuration)
-        public async Task Initialize()
+        public async Task<bool> Initialize()
         {
             // Ensure that the database exists and all pending migrations are applied.
             // TODO - Remove this when we have real data and use SQL scripts instead.
@@ -66,11 +66,14 @@ namespace GM.WebApp.Services
                 await _userManager.CreateAsync(new ApplicationUser() { UserName = admin_username, Email = admin_email }, admin_password);
             }
 
-            // Confirm the admin's email
             ApplicationUser admin_user;
             admin_user = await _userManager.FindByEmailAsync(admin_email);
-            var emailConfirmationCode = await _userManager.GenerateEmailConfirmationTokenAsync(admin_user);
-            var confirmResult = await _userManager.ConfirmEmailAsync(admin_user, emailConfirmationCode);
+
+            // TODO WE need to set the admin's email as confirmed. The following code awaits confirmation from the user.
+            // We should just stet the bit directly.
+            //// Confirm the admin's email
+            //var emailConfirmationCode = await _userManager.GenerateEmailConfirmationTokenAsync(admin_user);
+            //var confirmResult = await _userManager.ConfirmEmailAsync(admin_user, emailConfirmationCode);
 
             // The following was from before we switch to using claims.
             //// assign admin privileges. This adds and enty in table dbo.AspNetUserRoles
@@ -80,13 +83,16 @@ namespace GM.WebApp.Services
             //    await userManager.AddToRoleAsync(admin, role);
             //}
 
-            // assign admin privileges. This adds and enty in table AspNetUserClaims
+            // assign admin privileges. This adds an entry in table AspNetUserClaims
             var claims = await _userManager.GetClaimsAsync(admin_user);
             var jobClaim = claims.FirstOrDefault(c => c.Type == "role");
             if (jobClaim == null)
             {
                 await _userManager.AddClaimAsync(admin_user, new Claim("role", "Administrator"));
             }
+
+            // TODO add error handling and return success/fail
+            return true;
         }
     }
 }

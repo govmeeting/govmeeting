@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Web;
+using GM.WebApp.Services;
+using Microsoft.Extensions.DependencyInjection;
+using GM.DatabaseAccess;
 
 namespace GM.WebApp
 {
@@ -36,7 +39,29 @@ namespace GM.WebApp
                 logger.Error(ex, "Stopped program because of exception");
                 throw;
             }
-            CreateWebHostBuilder(args).Build().Run();
+
+            //CreateWebHostBuilder(args).Build().Run();
+            var host = CreateWebHostBuilder(args).Build();
+
+            //using (var scope = host.Services.CreateScope())
+            //{
+            //    var services = scope.ServiceProvider;
+            //    try
+            //    {
+            //        //var context = services.GetRequiredService<SchoolContext>();
+            //        //DbInitializer.Initialize(context);
+            //        var initializer = services.GetRequiredService<DbInitializer>();
+            //        _ = initializer.Initialize();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        //var logger = services.GetRequiredService<ILogger<Program>>();
+            //        logger.Error(ex, "An error occurred while seeding the database.");
+            //    }
+            //}
+
+            host.Run();
+
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
