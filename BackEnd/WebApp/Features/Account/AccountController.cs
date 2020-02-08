@@ -53,6 +53,7 @@ namespace GM.WebApp.Controllers
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
         {
+            _logger.LogInformation(11, "Show login screen.");
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }

@@ -9,6 +9,7 @@ namespace GM.Configuration
 {
     public class AppSettings
     {
+        public string LogfilesPath { get; set; }
         public string DatafilesPath {get; set; }
         public string TestfilesPath { get; set; }
         public bool IsDevelopment { get; set; }
