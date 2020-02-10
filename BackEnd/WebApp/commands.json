@@ -18,7 +18,7 @@
     "Run-PublishedWebApp": {
       "fileName": "powershell.exe",
       "workingDirectory": ".",
-      "arguments": "-ExecutionPolicy Bypass -NonInteractive -File PsScripts\\RunProduction.ps1"
+      "arguments": "-ExecutionPolicy Bypass -NonInteractive -File PsScripts\\Run-PublishedWebApp.ps1"
     },
     "Run-ClientApp": {
       "fileName": "powershell.exe",

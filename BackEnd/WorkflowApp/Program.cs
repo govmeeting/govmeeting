@@ -24,15 +24,8 @@ namespace GM.Workflow
     {
         public static void Main(string[] args)
         {
-            //string en = Environment.CurrentDirectory;
-            //string dr = Directory.GetCurrentDirectory();
-            //string ad = AppDomain.CurrentDomain.BaseDirectory;
-            //string sa = System.AppContext.BaseDirectory;
-            //string cd = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-            //System.Reflection.Assembly sra = System.Reflection.Assembly.GetExecutingAssembly();
-            //string rootDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-
             // https://pioneercode.com/post/dependency-injection-logging-and-configuration-in-a-dot-net-core-console-app
+
 
             // create service collection
             var services = new ServiceCollection();
@@ -46,6 +39,9 @@ namespace GM.Workflow
         }
         private static void ConfigureServices(IServiceCollection services)
         {
+
+            var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
             // add configured instance of logging
             services.AddSingleton(new LoggerFactory()
                 .AddConsole()
@@ -64,6 +60,8 @@ namespace GM.Workflow
                 // TODO - The following path will only work in development.
                 // It isn't yet decided how Workflow_App will be run in production.
                 // Will it be a separate .EXE or a .LIB loaded by WebApp?
+                // TODO ** Move environment specific appsettings to build folder
+                .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
                 .SetBasePath(appsettingsdir)
                 .AddJsonFile("appsettings.json", false)
                 .Build();

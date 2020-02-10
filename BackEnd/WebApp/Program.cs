@@ -58,6 +58,8 @@ namespace GM.WebApp
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            // CreateDefaultBuilder actually adds in both appsettings.json and the appsettings for our current environment.
+            // But our appsettings.development.json is in the secrets folder.
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .ConfigureAppConfiguration((hostingContext, config) =>

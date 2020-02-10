@@ -17,12 +17,17 @@ export class FixasrServiceStub {
   private ClassName: string = this.constructor.name + ": ";
   private asrtext: FixasrView = fixasrSample;
   private postId;
+  private observable: Observable<FixasrView>;
 
   public constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
     NoLog || console.log(this.ClassName + 'constructor');
   }
 
   public getAsr(): Observable<FixasrView> {
+        // Another way to return the stub data
+        // this.observable = Observable.of(fixasrSample);
+        // return this.observable;
+
         NoLog || console.log(this.ClassName + 'getAsr from memory');
         // console.trace('trace: getAsr from memory')
         // return Observable.of(this.asrtext);

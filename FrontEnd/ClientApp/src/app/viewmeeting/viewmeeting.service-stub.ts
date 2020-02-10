@@ -8,12 +8,10 @@ import { ViewMeeting } from '../models/viewmeeting-view';
 import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 import { viewmeetingSample } from './viewmeeting-sample';
 
+  const fromFile = true;
+  const url = 'assets/stubdata/ToView.json';
   // Use the jsonplaceholder service to test post requests
   const viewmeetingUrl = 'https://jsonplaceholder.typicode.com/posts'
-  // For Get requests
-  const url = 'assets/stubdata/tagged.json';
-
-
   const NoLog = true;  // set to false for console logging
 
 @Injectable()
@@ -52,14 +50,17 @@ export class ViewMeetingServiceStub {
   }
 
   public getMeetingFromFile(): Observable<ViewMeeting> {
-    NoLog || console.log(this.ClassName + 'getMeeting from memory');
-    // return Observable.of(this.viewMeeting);
-
-    // TODO - handle null return. Here we just cast to the correct object type.
-    this.observable = <Observable<ViewMeeting>> this.http.get<ViewMeeting>(url)
-        .pipe(catchError(this.errHandling.handleError))
-        .share();     // make it shared so more than one subscriber can get the same result.
-    return this.observable;
+    if (fromFile) {
+      NoLog || console.log(this.ClassName + 'get from file');
+      // TODO - handle null return. Here we just cast to the correct object type.
+      this.observable = <Observable<ViewMeeting>> this.http.get<ViewMeeting>(url)
+          .pipe(catchError(this.errHandling.handleError))
+          .share();     // make it shared so more than one subscriber can get the same result.
+      return this.observable;
+    } else {
+      NoLog || console.log(this.ClassName + 'get from memory');
+      return Observable.of(this.viewMeeting);
+    }
   }
 
   public postChanges(viewmeeting: ViewMeeting) {

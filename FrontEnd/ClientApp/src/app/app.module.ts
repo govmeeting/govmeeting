@@ -144,7 +144,7 @@ const _isAspServerRunning = false;
 
     { provide: ViewMeetingService, useClass: ViewMeetingServiceStub },
     { provide: AddtagsService, useClass: AddtagsServiceStub },
-    { provide: FixasrService, useClass: FixasrService },
+    { provide: FixasrService, useClass: FixasrServiceStub },
 
 
     ChatService,

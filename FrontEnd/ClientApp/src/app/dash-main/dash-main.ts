@@ -65,14 +65,12 @@ export class DashMainComponent implements OnInit, OnDestroy {
     }
   }
 
-  // These titles need to be set from within the individual components (gov-info, bills, calendar, etc)
+  // TODO These titles need to be set from within the individual components (gov-info, bills, calendar, etc)
   setTitles() {
     this.govinfoTitle = this.location + " Politics"
     this.billsTitle = this.location + " Legislation"
     this.meetingsTitle = this.agency + " Calendar"
     this.newsTitle = "Govmeeting News";
-    this.fixasrTitle = "Proof 2/14 " + this.agency + " transcript";
-    this.addtagsTitle = "Add tags to 2/21 " + this.agency + " transcript";
     this.viewMeetingTitle = "View " + this.agency + " meetings";
     this.issuesTitle = this.agency + " Issues";
     this.officialsTitle = this.agency + " Officials";
@@ -84,8 +82,8 @@ export class DashMainComponent implements OnInit, OnDestroy {
       this.addtagsTitle = "Add Tags to Transcripts";
     } else {
       // These titles need to be set to the current transcript being worked on.
-      this.fixasrTitle = "Proof 2/14 " + this.agency + " transcript";
-      this.addtagsTitle = "Add tags to 2/21 " + this.agency + " transcript";
+      this.fixasrTitle = "Proof " + this.agency + " transcript";
+      this.addtagsTitle = "Add tags to " + this.agency + " transcript";
     }
 
   }

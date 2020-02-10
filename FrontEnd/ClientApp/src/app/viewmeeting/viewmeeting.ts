@@ -27,11 +27,10 @@ export class ViewMeetingComponent implements OnInit {
     // But we did not yet write the component for the user to select a meeting.
     // We will use id "1" for now. This maps to a meeting of BBH on the server.
     // On the server, we will get information about this meeting from the database via the meetingId.
-    // For development, this means calling a routine in DatabaseRepsitories_Lib/MeetingRepository_Stub.cs.
+    // For development, this means calling a routine in DatabaseRepositories_Lib/MeetingRepository_Stub.cs.
     // If you look at this file, you will see that meetingId "1" maps to a meeting of the
     // Boothbay Harbor Selectmen on 9/8/2014.
-    // private meetingId = 1;
-    private meetingId = 1; // -1 means use sample data
+    private meetingId = 1;
 
     ngOnInit() {this.getTopicDiscussions();}
 
