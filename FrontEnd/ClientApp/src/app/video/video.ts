@@ -47,8 +47,8 @@ export class VideoComponent {
         // If WebApp is running, use Datafiles folder
         if (appData.isAspServerRunning) {
 
-          //location = 'datafiles/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part01/';
-          location = 'datafiles/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part01/';
+          location = 'datafiles/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part01/';
+          //location = 'datafiles/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part01/';
        // else use ClientApp stubdata folder
         } else {
           location = 'assets/stubdata/';

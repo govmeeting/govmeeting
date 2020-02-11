@@ -19,9 +19,9 @@ import { ElementRef } from '@angular/core';
 
 
 // This is the "Fix ASR" component for fixing the "Automatic Speech Recognition" errors.
-// This component is way too long. Code needs to be factored out.
+// TODO This component is way too long. Code needs to be factored out.
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-fixasr',

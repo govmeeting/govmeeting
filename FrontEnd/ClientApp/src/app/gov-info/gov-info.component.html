@@ -4,12 +4,12 @@
 <div class="container">
 
   <div  [hidden]="location" class="subhead">
-    Select Location in menu<br/><br/>
+    First: Select Location<br/><br/>
   </div>
 
   <span *ngIf="location=='Boothbay Harbor'">
 
-   <div class="subhead">Boards and Committees</div>
+   <div class="subhead">BBH Boards and Committees</div>
     <ul>
       <li>Board of Appeals</li>
       <li>Board of Selectmen</li>
@@ -25,7 +25,7 @@
       <li>Shellfish Committee</li>
     </ul>
 
-    <br/><div class="subhead">Board of Selectmen</div>
+    <div class="subhead">Board of Selectmen</div>
     <table>
       <tr> <td>Till year</td> <td>Name</td> <td>Position</td> </tr>
       <tr> <td>2020</td> <td>Denise Griffin</td> <td></td> </tr>
@@ -42,9 +42,9 @@
 
 <div *ngIf="location=='Lincoln County'">
   <div class="subhead">Board of Commissioners</div>
-  <p>
+  <span>
   The Board of Commissioners meets on the first and third Tuesdays of each Month starting at 9:00 A.M. in the Hearing Room at the Courthouse in Wiscasset.  Additional Meetings are held when needed and during the preparation of the Budget.
-  </p>
+  </span><br/><br/>
   ​
   District One: Commissioner Hamilton Meserve<br/>
   (Term Expires 12-31-2020)<br/>

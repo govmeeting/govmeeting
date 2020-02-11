@@ -14,7 +14,7 @@ namespace GM.Workflow
     public class ProcessIncomingFiles
     {
 
-        /*   ProcessIncomingFiles watches the "INCOMING" folder for new files and processes them.
+        /*   ProcessIncomingFiles watches the "TO_PROCESS" folder for new files and processes them.
          *   Currently the file types can be either PDF or MP4.
          *   The names of the files must be in the format: <country>_<state>_<county>_<town-or-city>_<gov-entity>_<language>_<date>.<extension>
          *   For example:  USA_TX_TravisCounty_Austin_CityCouncil_en_2017-12-14.pdf
@@ -53,7 +53,7 @@ namespace GM.Workflow
         // Watch the incoming folder and process new files as they arrive.
         public void Run()
         {
-            string incomingPath = _config.DatafilesPath + @"\INCOMING";
+            string incomingPath = _config.DatafilesPath + @"\TO_PROCESS";
             Directory.CreateDirectory(incomingPath);
 
             // Process any existing files in the folder
@@ -112,7 +112,7 @@ namespace GM.Workflow
                     break;
             }
 
-            // Move the original file to "PROCESSED" folder
+            // Move the original file to "COMPLETED" folder
             if (_config.MoveIncomingFileAfterProcessing)
             {
                 MoveFileToProcessedFolder(filename);
@@ -121,7 +121,7 @@ namespace GM.Workflow
 
         private void MoveFileToProcessedFolder(string filename)
         {
-            string processedPath = _config.DatafilesPath + @"\PROCESSED";
+            string processedPath = _config.DatafilesPath + @"\COMPLETED";
             string newFile = processedPath + "\\" + Path.GetFileName(filename);
             File.Move(filename, newFile);
         }

@@ -1,5 +1,7 @@
 import {NavItem} from './nav-item';
 
+// Each menu item has: DisplayName, iconName, Depth, children array or route
+
 let aboutpages = new NavItem('About', null, 0,
 [
   new NavItem('Purpose', 'info', 1, 'info-city'),
@@ -13,30 +15,32 @@ let aboutpages = new NavItem('About', null, 0,
 
 let boothbayharbor = new NavItem('Select Location', null, 0,
 [
-  new NavItem('Boothbay Harbor', 'location_city', 1,
-  [
-    new NavItem('City Council', null, 2, 'dashboard/govinfo'),
-    new NavItem('Board of Education', null, 2, 'dashboard/govinfo'),
-    new NavItem('Planning Board', null, 2, 'dashboard/govinfo'),
-    new NavItem('All Depts.', null, 2, 'dashboard/govinfo'),
-  ]),
-  new NavItem('Lincoln County', 'landscape', 1,
-  [
-    new NavItem('Commissioners', null, 2, 'dashboard/infocounty'),
-    new NavItem('Transportation', null, 2, 'dashboard/infocounty'),
-    new NavItem('Both Depts.', null, 2, 'dashboard/infocounty'),
-  ]),
+  new NavItem('Boothbay Harbor', 'location_city', 1, null
+  // [
+  //   new NavItem('Selectmen', null, 2, 'dashboard/govinfo'),
+  //   new NavItem('Board of Ed.', null, 2, 'dashboard/govinfo'),
+  //   new NavItem('Planning Board', null, 2, 'dashboard/govinfo'),
+  //   new NavItem('All Depts.', null, 2, 'dashboard/govinfo'),
+  // ]
+  ),
+  new NavItem('Lincoln County', 'landscape', 1, null
+  // [
+  //   new NavItem('Commissioners', null, 2, 'dashboard/infocounty'),
+  //   new NavItem('Transportation', null, 2, 'dashboard/infocounty'),
+  //   new NavItem('Both Depts.', null, 2, 'dashboard/infocounty'),
+  // ]
+  ),
   new NavItem('State of Maine', 'star', 1,
   [
     new NavItem('Senate', null, 2, 'info-state'),
-    new NavItem('House', null, 2, 'info-state'),
-    new NavItem('Both chambers', null, 2, 'info-state')
+    new NavItem('House', null, 2, 'info-state')
+    // new NavItem('Both chambers', null, 2, 'info-state')
   ]),
   new NavItem('United States', 'flag', 1,
   [
     new NavItem('Senate', null, 2, 'info-federal'),
-    new NavItem('House', null, 2, 'info-federal'),
-    new NavItem('Both chambers', null, 2, 'info-federal')
+    new NavItem('House', null, 2, 'info-federal')
+    // new NavItem('Both chambers', null, 2, 'info-federal')
   ]),
   new NavItem('Non-Government', 'group', 1,
   [

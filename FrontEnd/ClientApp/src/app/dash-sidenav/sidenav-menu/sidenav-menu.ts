@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit, Input} from '@angular/core';
 import {VERSION} from '@angular/material';
 import {Router} from '@angular/router';
 
@@ -15,7 +15,7 @@ enum DeviceType{
   mobile
 }
 
-const NoLog = true;  // set to false for console logging
+const NoLog = false;  // set to false for console logging
 
 @Component({
   selector: 'gm-sidenav-menu',
@@ -26,6 +26,9 @@ const NoLog = true;  // set to false for console logging
 export class SidenavMenuComponent implements AfterViewInit {
   private ClassName: string = this.constructor.name + ": ";
   @ViewChild('appDrawer', {static: false})
+  @Input() defaultLocation: string = null;
+  @Input() defaultAgency: string = null;
+
   sidenav: ElementRef;
   version = VERSION;
 
@@ -73,14 +76,21 @@ export class SidenavMenuComponent implements AfterViewInit {
     // this.navService.closeOrgMenu(0);
 
     let submenu = items[items.length -1].displayName;
+    let location;
+    let agency;
     switch (submenu){
 
       // If the user selected a new location, send a message to the components that need to be updated.
       case 'Select Location': {
           this.router.navigate(['dashboard']);
-          let agency = items[0].displayName;
-          let location = items[1].displayName;
-          NoLog || console.log(this.ClassName + "location=" + location + " agency="+agency)
+          location = items[1].displayName;
+          if (location == 'Select Location') {
+            location = items[0].displayName;
+            agency = null;
+          } else {
+            agency = items[0].displayName;
+          }
+          NoLog || console.log(this.ClassName + "location=" + location + " agency="+ agency)
           this.messageService.sendMessage('AgencySelected:' + location + ':' + agency);
           break;
         }

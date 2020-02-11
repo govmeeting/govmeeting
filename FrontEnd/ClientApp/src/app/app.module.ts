@@ -59,7 +59,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { NewFeatureComponent } from './new-feature/new-feature.component';
 // import { CalendarComponent } from './calendar/calendar';
 
-const _isAspServerRunning = false;
+const _isAspServerRunning = true;
 
 //////// for testing/////////////////////////////////
 
@@ -138,13 +138,13 @@ const _isAspServerRunning = false;
 
     // If you use the stubs for these services, they will not call the Asp.Net server,
     // but will instead return static data.
-    // { provide: ViewMeetingService, useClass: _isAspServerRunning ? ViewMeetingService : ViewMeetingServiceStub },
-    // { provide: AddtagsService, useClass: _isAspServerRunning ? AddtagsService : AddtagsServiceStub },
-    // { provide: FixasrService, useClass: _isAspServerRunning ? FixasrService : FixasrServiceStub },
+    { provide: ViewMeetingService, useClass: _isAspServerRunning ? ViewMeetingService : ViewMeetingServiceStub },
+    { provide: AddtagsService, useClass: _isAspServerRunning ? AddtagsService : AddtagsServiceStub },
+    { provide: FixasrService, useClass: _isAspServerRunning ? FixasrService : FixasrServiceStub },
 
-    { provide: ViewMeetingService, useClass: ViewMeetingServiceStub },
-    { provide: AddtagsService, useClass: AddtagsServiceStub },
-    { provide: FixasrService, useClass: FixasrServiceStub },
+    // { provide: ViewMeetingService, useClass: ViewMeetingServiceStub },
+    // { provide: AddtagsService, useClass: AddtagsServiceStub },
+    // { provide: FixasrService, useClass: FixasrServiceStub },
 
 
     ChatService,

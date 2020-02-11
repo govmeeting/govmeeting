@@ -109,7 +109,7 @@ In the folder "src/ClientApp", run the following command:
 
 The first time that Workflow_App is run, it will copy test data 
 
-* Copy (don't move) either the either sample MP4 recording or PDF transcript files from testdata to Datafiles/INCOMING.
+* Copy (don't move) either the either sample MP4 recording or PDF transcript files from testdata to Datafiles/TO_PROCESS.
 
 The program will recognize that a new file has appeared and start processing it.
 The results will appear in a new subdirectory in the Datafiles folder.

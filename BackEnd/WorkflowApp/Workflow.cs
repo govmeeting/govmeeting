@@ -13,8 +13,8 @@ namespace GM.Workflow
     {
         /*  WorkflowController is the "controller" for the Govmeeting processing steps:
          *  (1) It reads the schedule from the database for retrieving new transcripts or recordings
-         *      from online sites. It retrieves new files and stores them in the INCOMING folder.
-         *  (2) It watches for new recordings and transcript files that appear in the INCOMING folder and 
+         *      from online sites. It retrieves new files and stores them in the TO_PROCESS folder.
+         *  (2) It watches for new recordings and transcript files that appear in the TO_PROCESS folder and 
          *      performs pre-processing on them. Files can appear because of step 1 above and also
          *      if a user uploads a file via the website or via the phone app for recording a meeting.
          *  (3) When the corrections are completed of the auto voice recognition text,

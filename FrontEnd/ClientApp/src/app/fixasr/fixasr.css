@@ -12,6 +12,13 @@
 }
 */
 
+.subhead {
+  text-align: center;
+  font-weight: bold;
+  font-size: 200%;
+  margin: 10px;
+}
+
 .edit-region {
   display: flex;
 }

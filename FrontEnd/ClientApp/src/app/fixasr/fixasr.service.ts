@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Injectable()
 export class FixasrService {
@@ -21,7 +21,7 @@ export class FixasrService {
     // But we did not yet write the component for the user to select a meeting.
     // Meeting "3" is BBH 2/15/2017.
     // Meeting "5" is BBH 1/09/2017..
-    private meetingId = 5;
+    private meetingId = 3;
     private part = 1;
 
     constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {

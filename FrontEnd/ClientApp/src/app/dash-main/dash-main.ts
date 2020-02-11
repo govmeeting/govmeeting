@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { MessageService } from '../message.service';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = false;  // set to false for console logging
 
 @Component({
   selector: 'gm-dash-main',
@@ -19,17 +19,18 @@ export class DashMainComponent implements OnInit, OnDestroy {
   location: string;
   agency: string;
 
+  // TODO These titles need to be set from within the individual components (gov-info, bills, calendar, etc)
   govinfoTitle: string = "Politics";
   billsTitle: string = "Legislation";
-  meetingsTitle: string = "Calendar";
+  meetingsTitle: string = "Meetings";
   newsTitle: string = "Govmeeting News";
-  fixasrTitle: string = "Proofread Transcripts";
-  addtagsTitle: string = "Add Tags to Transcripts"
-  viewMeetingTitle: string = "View Meetings";
+  fixasrTitle: string = "Proofread Transcript";
+  addtagsTitle: string = "Add Tags to Transcript"
+  viewMeetingTitle: string = "View Latest Meeting";
   issuesTitle: string = "Issues";
   officialsTitle: string = "Officials";
   virtualMeetingTitle: string = "Virtual Meeting";
-  chatTitle: string = "Chat Meeting";
+  chatTitle: string = "Chat";
   chartsTitle: string = "Charts Meeting";
 
   constructor(public router: Router, private messageService: MessageService) {
@@ -40,7 +41,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
         this.messages.push(message);
         NoLog || console.log(this.ClassName + "message=" + message.text)
         this.parseMessage(message.text);
-        this.setTitles();
+        // this.setTitles();
       } else {
         // clear messages when empty message received
         this.messages = [];
@@ -48,8 +49,8 @@ export class DashMainComponent implements OnInit, OnDestroy {
     });
    }
 
-  ngOnInit() {
-  }
+   ngOnInit() {
+    }
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
@@ -66,26 +67,27 @@ export class DashMainComponent implements OnInit, OnDestroy {
   }
 
   // TODO These titles need to be set from within the individual components (gov-info, bills, calendar, etc)
-  setTitles() {
-    this.govinfoTitle = this.location + " Politics"
-    this.billsTitle = this.location + " Legislation"
-    this.meetingsTitle = this.agency + " Calendar"
-    this.newsTitle = "Govmeeting News";
-    this.viewMeetingTitle = "View " + this.agency + " meetings";
-    this.issuesTitle = this.agency + " Issues";
-    this.officialsTitle = this.agency + " Officials";
-    this.virtualMeetingTitle = "Virtual Meeting";
-    this.chatTitle = "Chat";
-    this.chartsTitle = this.agency + " Charts";
-    if ((this.agency.startsWith("All") || (this.agency.startsWith("Both")))) {
-      this.fixasrTitle = "Proofread Transcripts";
-      this.addtagsTitle = "Add Tags to Transcripts";
-    } else {
-      // These titles need to be set to the current transcript being worked on.
-      this.fixasrTitle = "Proof " + this.agency + " transcript";
-      this.addtagsTitle = "Add tags to " + this.agency + " transcript";
-    }
-
-  }
+  // setTitles() {
+  //   // this.govinfoTitle = this.location + " Politics"
+  //   // this.billsTitle = this.location + " Legislation"
+  //   this.govinfoTitle = "Politics"
+  //   this.billsTitle =  "Legislation"
+  //   this.meetingsTitle = this.agency + " Meetings"
+  //   this.newsTitle = "Govmeeting News";
+  //   this.viewMeetingTitle = "View " + this.agency + " meetings";
+  //   this.issuesTitle = this.agency + " Issues";
+  //   this.officialsTitle = this.agency + " Officials";
+  //   this.virtualMeetingTitle = "Virtual Meeting";
+  //   this.chatTitle = "Chat";
+  //   this.chartsTitle = this.agency + " Charts";
+  //   if ((this.agency.startsWith("All") || (this.agency.startsWith("Both")))) {
+  //     this.fixasrTitle = "Proofread Transcripts";
+  //     this.addtagsTitle = "Add Tags to Transcripts";
+  //   } else {
+  //     // These titles need to be set to the current transcript being worked on.
+  //     this.fixasrTitle = "Proof " + this.agency + " transcript";
+  //     this.addtagsTitle = "Add tags to " + this.agency + " transcript";
+  //   }
+  // }
 
 }

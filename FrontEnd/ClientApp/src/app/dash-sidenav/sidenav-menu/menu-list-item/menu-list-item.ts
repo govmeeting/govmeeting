@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {NavService} from '../service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = false;  // set to false for console logging
 
 @Component({
   selector: 'app-menu-list-item',

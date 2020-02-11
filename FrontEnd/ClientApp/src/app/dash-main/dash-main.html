@@ -22,7 +22,7 @@
       <app-config></app-config>
     </gm-small-card>
  -->
-    <gm-small-card
+    <gm-small-card class="top1"
       icon="fas fa-sitemap"
       iconcolor="color-mail-icon"
       title={{govinfoTitle}}
@@ -33,7 +33,7 @@
       </gm-gov-info>
     </gm-small-card>
 
-    <gm-small-card
+    <gm-small-card class="top2"
       icon="far fa-file-alt"
       iconcolor="color-document-icon"
       title={{billsTitle}}
@@ -44,7 +44,7 @@
       </gm-bills>
     </gm-small-card>
 
-    <gm-small-card
+    <gm-small-card class="top3"
       icon="fas fa-users"
       iconcolor="color-calendar-icon"
       title={{meetingsTitle}}
@@ -55,16 +55,15 @@
       </gm-meetings>
     </gm-small-card>
 
-    <gm-small-card
+    <gm-small-card class="top4"
       icon="far fa-newspaper"
       iconcolor="color-photo-icon"
       title={{newsTitle}}
       tooltip="Displays current news.">
       <gm-news
-      [location]="location"
-      [agency]="agency">
-    </gm-news
-        >
+        [location]="location"
+        [agency]="agency">
+      </gm-news>
     </gm-small-card>
 
   </gm-small-cards>

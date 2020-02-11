@@ -13,7 +13,7 @@ namespace GM.Workflow
     {
         // TODO - IMPLEMENT THIS CLASS
         // Instead of retrieving online files, we currently just copy some test files into
-        // the INCOMING folder. The next step in the workflow, ProcessIncomingFiles, will
+        // the TO_PROCESS folder. The next step in the workflow, ProcessIncomingFiles, will
         // then see the new files and start to process them.
 
         /* RetrieveOnlineFiles will:
@@ -23,7 +23,7 @@ namespace GM.Workflow
          *    If found it will:
          * 2. Create a "meeting" record in the database for this meeting and set the WorkStatus field to "Retrieving".
          * 3. Start the file retrieval.
-         * 4. Store the retieved file in the "Datafiles/INCOMING" folder.
+         * 4. Store the retieved file in the "Datafiles/TO_PROCESS" folder.
          * 5. Set the Workstatus on the meeting record to "Retrieved".
          * Repeat for each government body.
          */
@@ -47,8 +47,8 @@ namespace GM.Workflow
             string testfilesPath = _config.TestfilesPath;
             string datafilesPath = _config.DatafilesPath;
 
-            Directory.CreateDirectory(datafilesPath + "\\" + "INCOMING");
-            Directory.CreateDirectory(datafilesPath + "\\" + "PROCESSED");
+            Directory.CreateDirectory(datafilesPath + "\\" + "TO_PROCESS");
+            Directory.CreateDirectory(datafilesPath + "\\" + "COMPLETED");
 
             // These are the test files that we will copy.
             string[] files = new string[]
@@ -63,7 +63,7 @@ namespace GM.Workflow
 
             foreach (string file in files)
             {
-                string destination = datafilesPath + "\\" + "INCOMING" + "\\" + file;
+                string destination = datafilesPath + "\\" + "TO_PROCESS" + "\\" + file;
                 if (!File.Exists(destination))
                 {
                     string source = testfilesPath + "\\" + file;
