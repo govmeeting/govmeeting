@@ -1,10 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
-
 import { MessageService } from '../message.service';
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-dash-main',
@@ -15,9 +14,10 @@ export class DashMainComponent implements OnInit, OnDestroy {
   private ClassName: string = this.constructor.name + ": ";
   messages: any[] = [];
   subscription: Subscription;
-
-  location: string;
+  defaultLocation: string = "Boothbay Harbor";
+  location: string = this.defaultLocation;
   agency: string;
+  isCounty: boolean;
 
   // TODO These titles need to be set from within the individual components (gov-info, bills, calendar, etc)
   govinfoTitle: string = "Politics";
@@ -31,7 +31,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
   officialsTitle: string = "Officials";
   virtualMeetingTitle: string = "Virtual Meeting";
   chatTitle: string = "Chat";
-  chartsTitle: string = "Charts Meeting";
+  chartsTitle: string = "Charts";
 
   constructor(public router: Router, private messageService: MessageService) {
     // constructor(private messageService: MessageService) {
@@ -39,7 +39,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
     this.subscription = this.messageService.getMessage().subscribe(message => {
       if (message) {
         this.messages.push(message);
-        NoLog || console.log(this.ClassName + "message=" + message.text)
+        NoLog || console.log(this.ClassName + "receive location message=" + message.text)
         this.parseMessage(message.text);
         // this.setTitles();
       } else {
@@ -50,6 +50,8 @@ export class DashMainComponent implements OnInit, OnDestroy {
    }
 
    ngOnInit() {
+    NoLog || console.log(this.ClassName + "ngOnInit send location message")
+    // this.messageService.sendMessage('AgencySelected:' + this.defaultLocation + ':x');
     }
 
   ngOnDestroy() {
@@ -62,6 +64,8 @@ export class DashMainComponent implements OnInit, OnDestroy {
     if (mes[0] == 'AgencySelected') {
       this.location = mes[1];
       this.agency = mes[2];
+
+      this.isCounty = (this.location == "Lincoln County")
       NoLog || console.log(this.ClassName + "location:" + this.location);
     }
   }

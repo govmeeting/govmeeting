@@ -3,6 +3,7 @@ import {NavItem} from '../nav-item';
 import {Router} from '@angular/router';
 import {NavService} from '../service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { MessageService } from '../../../message.service';
 
 const NoLog = false;  // set to false for console logging
 
@@ -31,7 +32,9 @@ export class MenuListItemComponent {
   navItems: Array<NavItem> = new Array<NavItem>();
 
   constructor(public navService: NavService,
-              public router: Router) {
+              public router: Router,
+              private messageService: MessageService
+              ) {
     // if (this.depth === undefined) {
     //   this.depth = 0;
     // }
@@ -40,17 +43,14 @@ export class MenuListItemComponent {
   ngOnInit() {
     // this.item.depth = this.depth;
     this.displayNameClass = 'depth' + this.item.depth;
-    NoLog || console.log(this.ClassName, this.item.displayName),
-    NoLog || console.log(this.ClassName + "route=", this.item.route);
-    NoLog || console.log(this.ClassName, this.router.isActive(this.item.route, true))
+    NoLog || console.log(this.ClassName, "NgOnInit DisplayName=" + this.item.displayName);
+    // NoLog || console.log(this.ClassName + "NgOnInit route=", this.item.route);
+    // NoLog || console.log(this.ClassName, "NgOnInit route-active=" + this.router.isActive(this.item.route, true));
   }
 
   OnFinalSelection(items: Array<NavItem> ){
-    NoLog || console.log(this.ClassName + "====OnEmitted(menulist):");
-    NoLog || console.log(this.ClassName + 'my item');
-    NoLog || console.log(this.ClassName, this.item);
-    NoLog || console.log(this.ClassName + 'received emitted item');
-    NoLog || console.log(this.ClassName, items);
+    NoLog || console.log(this.ClassName + "OnFinalSelection item=", this.item);
+    NoLog || console.log(this.ClassName + "OnFinalSelection items=", items);
 
     // Some descendent was selected. Append myself to the
     // item array and send it to my parent.
@@ -59,31 +59,27 @@ export class MenuListItemComponent {
 }
 
   onItemSelected(item: NavItem) {
+    NoLog || console.log(this.ClassName + "OnItemSelected selectedItem=", item);
+    NoLog || console.log(this.ClassName + "OnItemSelected myself=", this.item);
 
     if (item.displayName == "Select Location"){
+      NoLog || console.log(this.ClassName + "navigate to dashboard");
       this.router.navigate(['dashboard']);
     }
 
     if (item.children && item.children.length) {
+      NoLog || console.log(this.ClassName + "item has children");
       if (item.expanded) {
+        NoLog || console.log(this.ClassName + "item expanded: close it");
         item.expanded = false;
       } else {
-      this.navService.closeOrgMenu(1);
-      item.expanded = true;
+        NoLog || console.log(this.ClassName + "item not expanded: close menu & expand it");
+        this.navService.closeOrgMenu(1);
+        item.expanded = true;
       }
 
     // Otherwise, the user has made the final selection.
     } else {
-      // Display info on selection in sidenav
-      // this.router.navigate([item.route]);
-      // this.router.navigate([{outlets: {sidenav: item.route}}]);
-
-      NoLog || console.log(this.ClassName + "====OnItemSelected(before emit):");
-      NoLog || console.log(this.ClassName + 'my item');
-      NoLog || console.log(this.ClassName, this.item);
-      NoLog || console.log(this.ClassName + 'sending emitted item');
-      NoLog || console.log(this.ClassName, item);
-
       // Put myself onto the navItems array.
       // Since I was just selected, I am the only entry so far
       this.navItems.push(item);

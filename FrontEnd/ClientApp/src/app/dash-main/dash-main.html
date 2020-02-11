@@ -22,7 +22,8 @@
       <app-config></app-config>
     </gm-small-card>
  -->
-    <gm-small-card class="top1"
+    <gm-small-card
+      class="top1"
       icon="fas fa-sitemap"
       iconcolor="color-mail-icon"
       title={{govinfoTitle}}
@@ -33,7 +34,7 @@
       </gm-gov-info>
     </gm-small-card>
 
-    <gm-small-card class="top2"
+    <gm-small-card *ngIf="!isCounty" class="top2"
       icon="far fa-file-alt"
       iconcolor="color-document-icon"
       title={{billsTitle}}
@@ -70,16 +71,16 @@
 
   <gm-large-cards>
 
-    <gm-large-card
-      icon="fas fa-exclamation"
+    <gm-large-card *ngIf="!isCounty"
+      icon="fas fa-edit"
       iconcolor="color-calendar-icon"
       title={{fixasrTitle}}
       tooltip="Proofread speech recognition text.">
       <gm-fixasr></gm-fixasr>
     </gm-large-card>
 
-    <gm-large-card
-      icon="fas fa-exclamation"
+    <gm-large-card *ngIf="!isCounty"
+      icon="fas fa-hand-point-right"
       iconcolor="color-calendar-icon"
       title={{addtagsTitle}}
       tooltip="Add tags to text.">
@@ -87,7 +88,7 @@
     </gm-large-card>
 
     <gm-large-card
-      icon="fas fa-exclamation"
+      icon="fas fa-book-open"
       iconcolor="color-calendar-icon"
       title={{viewMeetingTitle}}
       tooltip="Browse or search latest meeting.">

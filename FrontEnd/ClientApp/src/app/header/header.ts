@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   private ClassName: string = this.constructor.name + ": ";
   messages: any[] = [];
   subscription: Subscription;
-  location: string;
+  location: string ="Boothbay Harbor";
   backgroundStyle: any;
 
   constructor(public navService: NavService, private messageService: MessageService) {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-gov-info',
