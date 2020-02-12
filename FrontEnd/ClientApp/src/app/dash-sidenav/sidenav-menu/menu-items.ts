@@ -2,85 +2,62 @@ import {NavItem} from './nav-item';
 
 // Each menu item has: DisplayName, iconName, Depth, children array or route
 
-let aboutpages = new NavItem('About', null, 0,
+let aboutpages = new NavItem('About', null,
 [
-  new NavItem('Purpose', 'info', 1, 'info-city'),
-  new NavItem('Overview', 'toc', 1, 'info-city'),
-  new NavItem('Workflow', 'trending_up', 1, 'info-city'),
-  new NavItem('Auto Processing', 'directions_boat', 1, 'info-city'),
-  new NavItem('Manual Processing', 'rowing', 1, 'info-city'),
-  new NavItem('Extend Govmeeting', 'build', 1, 'info-city'),
-  new NavItem('[All Pages]', 'school', 1, 'info-city')
+  new NavItem('Purpose', 'info'),
+  new NavItem('Overview', 'toc'),
+  new NavItem('Workflow', 'trending_up'),
+  new NavItem('Auto Processing', 'directions_boat'),
+  new NavItem('Manual Processing', 'rowing'),
+  new NavItem('Extend Govmeeting', 'build'),
+  new NavItem('[All Pages]', 'school')
 ])
 
-let boothbayharbor = new NavItem('Select Location', null, 0,
+let boothbayharbor = new NavItem('Select Location', null,
 [
-  new NavItem('Boothbay Harbor', 'location_city', 1, null
-  // [
-  //   new NavItem('Selectmen', null, 2, 'dashboard/govinfo'),
-  //   new NavItem('Board of Ed.', null, 2, 'dashboard/govinfo'),
-  //   new NavItem('Planning Board', null, 2, 'dashboard/govinfo'),
-  //   new NavItem('All Depts.', null, 2, 'dashboard/govinfo'),
-  // ]
-  ),
-  new NavItem('Lincoln County', 'landscape', 1, null
-  // [
-  //   new NavItem('Commissioners', null, 2, 'dashboard/infocounty'),
-  //   new NavItem('Transportation', null, 2, 'dashboard/infocounty'),
-  //   new NavItem('Both Depts.', null, 2, 'dashboard/infocounty'),
-  // ]
-  ),
-  new NavItem('State of Maine', 'star', 1,
+  new NavItem('Boothbay Harbor', 'location_city', null),
+  new NavItem('Lincoln County', 'landscape', null),
+  new NavItem('State of Maine', 'star',
   [
-    new NavItem('Senate', null, 2, 'info-state'),
-    new NavItem('House', null, 2, 'info-state')
-    // new NavItem('Both chambers', null, 2, 'info-state')
+    new NavItem('Senate', null),
+    new NavItem('House', null)
   ]),
-  new NavItem('United States', 'flag', 1,
+  new NavItem('United States', 'flag',
   [
-    new NavItem('Senate', null, 2, 'info-federal'),
-    new NavItem('House', null, 2, 'info-federal')
-    // new NavItem('Both chambers', null, 2, 'info-federal')
+    new NavItem('Senate', null),
+    new NavItem('House', null)
   ]),
-  new NavItem('Non-Government', 'group', 1,
+  new NavItem('Non-Government', 'group',
   [
-    new NavItem('Glendale HOA', null, 2, 'info-HOA'),
+    new NavItem('Glendale HOA', null),
   ])
 ]);
 
 // ];
 
 
-export let austin = new NavItem('Select Location', null, 0,
+export let austin = new NavItem('Select Location', null,
 [
-  new NavItem('Austin', 'location_city', 1,
+  new NavItem('Austin', 'location_city',
   [
-    new NavItem('City Council', 'group', 2, 'dashboard/govinfo'),
-    new NavItem('Board of Education', 'school', 2, 'dashboard/govinfo'),
-    new NavItem('Planning Board', 'group', 2, 'dashboard/govinfo'),
-    new NavItem('All Depts.', 'group', 2, 'dashboard/govinfo'),
+    new NavItem('City Council', 'group'),
+    new NavItem('Board of Education', 'school'),
+    new NavItem('Planning Board', 'group')
   ]),
-  new NavItem('Travis County', 'group', 1,
+  new NavItem('Travis County', 'group'),
+  new NavItem('State of Texas', 'star',
   [
-    new NavItem('Commissioners', 'group', 2, 'dashboard/infocounty'),
-    new NavItem('Transportation', 'group', 2, 'dashboard/infocounty'),
-    new NavItem('Both Depts.', 'group', 2, 'dashboard/infocounty'),
+    new NavItem('Senate', 'group'),
+    new NavItem('House', 'group')
   ]),
-  new NavItem('State of Texas', 'star', 1,
+  new NavItem('United States', 'flag',
   [
-    new NavItem('Senate', 'group', 2, 'info-state'),
-    new NavItem('House', 'group', 2, 'info-state'),
-    new NavItem('Both chambers', 'group', 2, 'info-state')
+    new NavItem('Senate', 'group'),
+    new NavItem('House', 'group')
   ]),
-  new NavItem('United States', 'flag', 1,
+  new NavItem('Non-Government', 'group',
   [
-    new NavItem('Senate', 'group', 2, 'info-federal'),
-    new NavItem('House', 'group', 2, 'info-federal'),
-    new NavItem('Both chambers', 'group', 2, 'info-federal')
-  ]),
-  new NavItem('Non-Government', 'group', 1,
-  [
-    new NavItem('Glendale HOA', 'group', 2, 'info-HOA'),
+    new NavItem('Glendale HOA', 'group'),
   ])
 ]);
 

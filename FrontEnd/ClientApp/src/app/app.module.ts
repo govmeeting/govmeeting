@@ -59,7 +59,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { NewFeatureComponent } from './new-feature/new-feature.component';
 // import { CalendarComponent } from './calendar/calendar';
 
-const _isAspServerRunning = true;
+const _isAspServerRunning = false;
 
 //////// for testing/////////////////////////////////
 

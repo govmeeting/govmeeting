@@ -8,6 +8,7 @@ import { MessageService } from '../../message.service';
 import { string } from '@amcharts/amcharts4/core';
 
 import { navigationItems } from './menu-items';
+import { MenuTreeArray } from './menu-tree-array'
 
 enum DeviceType{
   desktop,
@@ -40,6 +41,7 @@ export class SidenavMenuComponent implements AfterViewInit {
 
   itemSelected: string = '';
   navigationItems: NavItem[] = navigationItems;
+  menuTreeArray: MenuTreeArray;
 
   deviceType: string;
 
@@ -47,6 +49,11 @@ export class SidenavMenuComponent implements AfterViewInit {
     private navService: NavService,
     public router: Router,
     private messageService: MessageService) {
+      this.menuTreeArray = new MenuTreeArray();
+      this.menuTreeArray.assignPositions(navigationItems);
+      console.log(this.ClassName + "navigationItems=", this.navigationItems);
+      // let item: NavItem = this.menuTreeArray.getItem([1,3,1], this.navigationItems);
+      // NoLog || console.log(this.ClassName + "selectedItem=", item);
   }
 
   ngAfterViewInit() {
