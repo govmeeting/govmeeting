@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { NavService } from '../dash-sidenav/sidenav-menu/service';
-import { MessageService } from '../message.service';
+import { LocationService } from '../location.service';
 
 const NoLog = true;  // set to false for console logging
 
@@ -18,9 +18,9 @@ export class HeaderComponent implements OnInit {
   location: string ="Boothbay Harbor";
   backgroundStyle: any;
 
-  constructor(public navService: NavService, private messageService: MessageService) {
+  constructor(public navService: NavService, private LocationService: LocationService) {
 
-    this.subscription = this.messageService.getMessage().subscribe(message => {
+    this.subscription = this.LocationService.getLocation().subscribe(message => {
       if (message) {
         this.messages.push(message);
         NoLog || console.log(this.ClassName + "header: message=")
@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
 
   parseMessage(message: string) {
     let mes = message.split(':');
-    if (mes[0] == 'AgencySelected') {
+    if (mes[0] == 'LocationSelected') {
       this.location = mes[1];
       if (this.location == "Non-Government") {
         this.location = mes[2];

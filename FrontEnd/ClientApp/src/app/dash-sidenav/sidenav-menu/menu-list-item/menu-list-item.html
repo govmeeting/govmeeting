@@ -13,7 +13,8 @@
   </span>
 </a>
 <div *ngIf="item.expanded">
-  <app-menu-list-item *ngFor="let child of item.children" [item]="child" (finalSelection)=OnFinalSelection($event)>
-    <!-- <app-menu-list-item *ngFor="let child of item.children" [item]="child" [depth]="depth+1" (finalSelection)=OnFinalSelection($event)> -->
+  <!-- <app-menu-list-item *ngFor="let child of item.children" [item]="child" (finalSelection)=OnFinalSelection($event)> -->
+    <app-menu-list-item *ngFor="let child of item.children" [item]="child">
+      <!-- <app-menu-list-item *ngFor="let child of item.children" [item]="child" [depth]="depth+1" (finalSelection)=OnFinalSelection($event)> -->
     </app-menu-list-item>
 </div>

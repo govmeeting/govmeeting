@@ -1,4 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { NavItem } from './nav-item'
 
 const NoLog = true;  // set to false for console logging
@@ -9,6 +10,7 @@ export class NavService {
 
   public sidenav: any;
   public navigationItems: NavItem[];
+  private subject = new Subject<NavItem>();
 
   constructor() {
   }
@@ -21,19 +23,32 @@ export class NavService {
     this.sidenav.open();
   }
 
-  public closeOrgMenu(
+  public closeMenu(
     startDepth: number,
     maxDepth: number = 99  // unspecified means all depths
     ) {
-    this.closeMenu(this.navigationItems, startDepth, maxDepth)
+    this._closeMenu(this.navigationItems, startDepth, maxDepth)
   }
 
-  private closeMenu(
+  sendMenuSelection(item: NavItem) {
+    this.subject.next( item );
+  }
+
+  clearMenuSelections() {
+      this.subject.next();
+  }
+
+  getMenuSelection(): Observable<NavItem> {
+      return this.subject.asObservable();
+  }
+
+
+  private _closeMenu(
     items: NavItem[],
     startDepth: number,
     maxDepth: number
     ) {
-    NoLog || console.log(this.ClassName + "closeMenux startDepth=" + startDepth + " maxDepth=" + maxDepth)
+    NoLog || console.log(this.ClassName + "_closeMenu startDepth=" + startDepth + " maxDepth=" + maxDepth)
     items.forEach(item => {
       NoLog || console.log(this.ClassName + "item=" + item.displayName + " depth=" + item.depth)
       if (item.depth >= startDepth) {
@@ -41,7 +56,7 @@ export class NavService {
       }
       if ((item.children !== null) && (item.children !== undefined)){
         if (item.depth + 1 <= maxDepth) {
-          this.closeMenu(item.children, item.depth + 1, maxDepth)
+          this._closeMenu(item.children, item.depth + 1, maxDepth)
         }
       }
     })

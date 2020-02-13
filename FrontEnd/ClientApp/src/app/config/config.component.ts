@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Config, ConfigService } from './config.service';
-import { MessageService } from '../message.service';
 
 import { FixasrView, AsrSegment } from '../models/fixasr-view'
 

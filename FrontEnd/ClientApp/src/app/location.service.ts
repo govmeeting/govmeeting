@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class MessageService {
+export class LocationService {
     private subject = new Subject<any>();
 
-    sendMessage(message: string) {
+    sendLocation(message: string) {
         this.subject.next({ text: message });
     }
 
@@ -13,7 +13,7 @@ export class MessageService {
         this.subject.next();
     }
 
-    getMessage(): Observable<any> {
+    getLocation(): Observable<any> {
         return this.subject.asObservable();
     }
 }

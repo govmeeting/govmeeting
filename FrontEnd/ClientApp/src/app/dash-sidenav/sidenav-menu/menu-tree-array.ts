@@ -2,7 +2,7 @@ import { NavItem } from './nav-item';
 import { navigationItems } from './menu-items';
 
 export class MenuTreeArray {
-
+  private ClassName: string = this.constructor.name + ": ";
   positions: number[];
   //navItems: NavItem[];
 
@@ -55,16 +55,23 @@ export class MenuTreeArray {
     }
   }
 
-
   public getItem(position: number[], items: NavItem[]): NavItem {
-    // If the first index in position array points to a childless item, that's the one.
     let item: NavItem = items[position[0]];
-    if (!item.children) {
+    // On last postion entry, this is the item
+    if (position.length == 1) {
       return item;
     }
-    // Remove the first index from the position array and do it again.
+    if (!item.children) {
+      // TOTO - write to log
+      console.log(this.ClassName + "ERROR Invalid call to getItem");
+    }
     let newPosition: number[] = position.slice(1);
-    let selectedItem = this.getItem(newPosition, item.children);
-    return selectedItem;
+    return this.getItem(newPosition, item.children);
+  }
+
+
+  public getParent(item: NavItem, items: NavItem[]): NavItem {
+    let position = item.position.slice(0, item.position.length - 1);
+    return this.getItem(position, items);
   }
 }

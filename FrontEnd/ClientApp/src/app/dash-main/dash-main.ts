@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
-import { MessageService } from '../message.service';
+import { LocationService } from '../location.service';
 
 const NoLog = true;  // set to false for console logging
 
@@ -33,10 +33,10 @@ export class DashMainComponent implements OnInit, OnDestroy {
   chatTitle: string = "Chat";
   chartsTitle: string = "Charts";
 
-  constructor(public router: Router, private messageService: MessageService) {
-    // constructor(private messageService: MessageService) {
+  constructor(public router: Router, private LocationService: LocationService) {
+    // constructor(private LocationService: LocationService) {
 
-    this.subscription = this.messageService.getMessage().subscribe(message => {
+    this.subscription = this.LocationService.getLocation().subscribe(message => {
       if (message) {
         this.messages.push(message);
         NoLog || console.log(this.ClassName + "receive location message=" + message.text)
@@ -51,7 +51,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
 
    ngOnInit() {
     NoLog || console.log(this.ClassName + "ngOnInit send location message")
-    // this.messageService.sendMessage('AgencySelected:' + this.defaultLocation + ':x');
+    // this.LocationService.sendMessage('LocationSelected:' + this.defaultLocation + ':x');
     }
 
   ngOnDestroy() {
@@ -61,7 +61,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
 
   parseMessage(message: string) {
     let mes = message.split(':');
-    if (mes[0] == 'AgencySelected') {
+    if (mes[0] == 'LocationSelected') {
       this.location = mes[1];
       this.agency = mes[2];
 

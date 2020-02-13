@@ -1,5 +1,10 @@
-
+export enum EntryType{
+  location,
+  agency,
+  link
+}
 export class NavItem {
+  entryType: EntryType;
   displayName: string;
   disabled?: boolean;
   iconName: string;
@@ -8,7 +13,8 @@ export class NavItem {
   depth: number;
   position: number[]; // position within the tree object
 
-  constructor(displayName, iconName, children?: NavItem[]) {
+  constructor(type: EntryType, displayName: string, iconName: string, children?: NavItem[]) {
+    this.entryType = type;
     this.displayName = displayName;
     this.iconName = iconName;
     this.expanded = false;
