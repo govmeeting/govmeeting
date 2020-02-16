@@ -74,10 +74,11 @@ export class SidenavMenuComponent implements AfterViewInit {
   HandleSelection(item: NavItem){
     let location: string;
     let agency: string;
-    let userSettings: UserSettings = new UserSettings();
+    //let userSettings: UserSettings = new UserSettings();
 
-    if (item.entryType != EntryType.link) {
+    if (item.displayName == "Select Location") {
       this.router.navigate(['dashboard']);
+      return;
     }
 
     switch (item.entryType) {

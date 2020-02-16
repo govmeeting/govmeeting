@@ -29,45 +29,29 @@ export class MenuListItemComponent {
   //@Output() finalSelection = new EventEmitter();
 
   displayNameClass: string;
-  //navItems: Array<NavItem> = new Array<NavItem>();
 
   constructor(public navService: NavService,
               public router: Router,
               private userSettingsService: UserSettingsService
-              ) {
-    // if (this.depth === undefined) {
-    //   this.depth = 0;
-    // }
-  }
+              )
+  { }
 
   ngOnInit() {
     // this.item.depth = this.depth;
     this.displayNameClass = 'depth' + this.item.depth;
     NoLog || console.log(this.ClassName, "NgOnInit DisplayName=" + this.item.displayName);
-    // NoLog || console.log(this.ClassName + "NgOnInit route=", this.item.route);
-    // NoLog || console.log(this.ClassName, "NgOnInit route-active=" + this.router.isActive(this.item.route, true));
   }
-
-  OnFinalSelection(items: Array<NavItem> ){
-    NoLog || console.log(this.ClassName + "OnFinalSelection item=", this.item);
-    NoLog || console.log(this.ClassName + "OnFinalSelection items=", items);
-
-    // Some descendent was selected. Append myself to the
-    // item array and send it to my parent.
-    //items.push(this.item);    // add my item to the array.
-    //this.finalSelection.emit(items);
-}
 
   onItemSelected(item: NavItem) {
     NoLog || console.log(this.ClassName + "OnItemSelected selectedItem=", item);
     NoLog || console.log(this.ClassName + "OnItemSelected myself=", this.item);
 
     if (item.displayName == "Select Location"){
-      NoLog || console.log(this.ClassName + "navigate to dashboard");
-      this.router.navigate(['dashboard']);
+      this.navService.sendMenuSelection(item);
     }
 
     if (item.children && item.children.length) {
+      // If this item has children, toggle expansion of child items.
       NoLog || console.log(this.ClassName + "item has children");
       if (item.expanded) {
         NoLog || console.log(this.ClassName + "item expanded: close it");
@@ -77,17 +61,8 @@ export class MenuListItemComponent {
         this.navService.closeMenu(1);
         item.expanded = true;
       }
-
-    // Otherwise, the user has made the final selection.
     } else {
-      // Put myself onto the navItems array.
-      // Since I was just selected, I am the only entry so far
-      //this.navItems.push(item);
-
-      // Tell my parent that the user made a selection and
-      // send the navItems array. This calls "OnEmitted()" on my parent.
-      // My parent will append herself and send the array to their parent.
-      //this.finalSelection.emit(this.navItems);
+      // Otherwise, the user has made the final selection.
       this.navService.sendMenuSelection(item);
     }
   }

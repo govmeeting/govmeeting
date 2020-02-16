@@ -14,9 +14,10 @@ const NoLog = false;  // set to false for console logging
 export class HeaderComponent implements OnInit {
   private ClassName: string = this.constructor.name + ": ";
   messages: any[] = [];
-  locSubscription: Subscription;
+  //locSubscription: Subscription;
   usSubscription: Subscription;
-  location: string ="Boothbay Harbor";
+  location: string;
+  //location: string ="Boothbay Harbor";
   backgroundStyle: any;
 
   constructor(public navService: NavService, private userSettingsService: UserSettingsService) {

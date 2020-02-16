@@ -13,7 +13,7 @@ const NoLog = false;  // set to false for console logging
 export class DashMainComponent implements OnInit, OnDestroy {
   private ClassName: string = this.constructor.name + ": ";
   messages: any[] = [];
-  locSubsription: Subscription;
+  //locSubsription: Subscription;
   usSubscription: Subscription;
   defaultLocation: string = "Boothbay Harbor";
   location: string = this.defaultLocation;
@@ -42,13 +42,17 @@ export class DashMainComponent implements OnInit, OnDestroy {
    }
 
    ngOnInit() {
+
     NoLog || console.log(this.ClassName + "ngOnInit send location message")
+    let userSettings: UserSettings = new UserSettings('en', "Boothbay Harbor", null);
+    this.changeLocation(userSettings);
+    this.userSettingsService.sendSettings(userSettings)
     // this.LocationService.sendMessage('LocationSelected:' + this.defaultLocation + ':x');
     }
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
-    this.locSubsription.unsubscribe();
+    this.usSubscription.unsubscribe();
   }
 
   private changeLocation(item: UserSettings) {

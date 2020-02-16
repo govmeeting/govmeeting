@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { UserSettingsService } from './user-settings.service';
 
-describe('LocationService', () => {
+describe('UserSettingsService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {

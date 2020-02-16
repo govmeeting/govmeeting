@@ -6,11 +6,11 @@ export { UserSettings };
 
 @Injectable({ providedIn: 'root' })
 export class UserSettingsService {
-  private subject = new Subject<any>();
+  //private subject = new Subject<any>();
   private settingsSubject = new Subject<UserSettings>();
 
   clearMessages() {
-      this.subject.next();
+      this.settingsSubject.next();
   }
 
   sendSettings(settings: UserSettings) {
