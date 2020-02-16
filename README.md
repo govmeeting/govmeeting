@@ -53,7 +53,7 @@ For a detailed system design, see: [System Design](https://github.com/govmeeting
 * Clone the repo: `git clone https://github.com/govmeeting/govmeeting.git`
 or download zip file:`https://github.com/govmeeting/govmeeting/archive/master.zip`
 
-If you only want to develop the front-end Angular / Typeacript code, there are stub routines for the Asp.Net WebApi calls, see [Develop Angular Frontend Only](#develop-angular-frontend-only).
+If you only want to develop the front-end Angular / Typeacript code, there are stub routines for the Asp.Net WebApi calls, see [Develop Angular FrontEnd Only](#develop-angular-frontend-only).
 
 To develop both the Angular front-end and the Asp.Net backend, you can use either Visual Studio or Visual Studio Code.
 
@@ -81,7 +81,7 @@ Open the repository folder in VS Code.
 
 In the debug panel, set the launch configuration to "Web_App & Chrome". Press F5. This configuration enables debugging both Typescript & C# in the same session. See: https://github.com/Microsoft/vscode-recipes/tree/master/Angular-SpaTemplates
 
-#### Develop Angular Frontend Only
+#### Develop Angular FrontEnd Only
 
 Open the "src/ClientApp" folder in your favorite editor (Sublime, VSCode, etc).
 

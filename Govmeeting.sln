@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29521.150
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{89601BB8-30AA-4591-9332-20EB76B1C5F4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{89601BB8-30AA-4591-9332-20EB76B1C5F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{6B15424B-85AE-44A7-BDB0-A964CC25188E}"
 	ProjectSection(SolutionItems) = preProject

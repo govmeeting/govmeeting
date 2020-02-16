@@ -9,7 +9,7 @@
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:4200",
-            "webRoot": "${workspaceRoot}/Frontend/ClientApp"
+            "webRoot": "${workspaceRoot}/FrontEnd/ClientApp"
         },
 		{
 			"name": "WebApp",
