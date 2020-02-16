@@ -42,7 +42,6 @@ export class NavService {
       return this.subject.asObservable();
   }
 
-
   private _closeMenu(
     items: NavItem[],
     startDepth: number,

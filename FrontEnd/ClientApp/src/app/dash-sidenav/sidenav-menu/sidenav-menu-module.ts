@@ -19,7 +19,7 @@ import { DemoMaterialModule } from '../../material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MenuListItemComponent} from './menu-list-item/menu-list-item';
 import {SidenavMenuComponent} from './sidenav-menu';
-import { NavService } from './service';
+import { NavService } from './nav.service';
 import { TopNavComponent } from '../sidenav-header/sidenav-header';
 
 @NgModule({

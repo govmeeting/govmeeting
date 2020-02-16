@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { NavService } from '../dash-sidenav/sidenav-menu/service';
-import { LocationService } from '../location.service';
+import { NavService } from '../dash-sidenav/sidenav-menu/nav.service';
+import { UserSettingsService } from '../user-settings.service';
 
 const NoLog = true;  // set to false for console logging
 
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   location: string ="Boothbay Harbor";
   backgroundStyle: any;
 
-  constructor(public navService: NavService, private LocationService: LocationService) {
+  constructor(public navService: NavService, private LocationService: UserSettingsService) {
 
     this.subscription = this.LocationService.getLocation().subscribe(message => {
       if (message) {

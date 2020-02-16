@@ -1,11 +1,11 @@
 import {Component, HostBinding, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import {NavItem} from '../nav-item';
 import {Router} from '@angular/router';
-import {NavService} from '../service';
+import {NavService} from '../nav.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import { LocationService } from '../../../location.service';
+import { UserSettingsService } from '../../../user-settings.service';
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'app-menu-list-item',
@@ -33,7 +33,7 @@ export class MenuListItemComponent {
 
   constructor(public navService: NavService,
               public router: Router,
-              private LocationService: LocationService
+              private userSettngsService: UserSettingsService
               ) {
     // if (this.depth === undefined) {
     //   this.depth = 0;

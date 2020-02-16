@@ -6,7 +6,7 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 // import {ApplicationRef} from '@angular/core';
 
-import { NavService } from './dash-sidenav/sidenav-menu/service';
+import { NavService } from './dash-sidenav/sidenav-menu/nav.service';
 import { MediaQueryService } from './media-query.service';
 
 const NoLog = true;  // set to false for console logging

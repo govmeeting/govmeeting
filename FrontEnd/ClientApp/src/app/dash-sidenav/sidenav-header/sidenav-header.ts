@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NavService} from '../sidenav-menu/service';
+import {NavService} from '../sidenav-menu/nav.service';
 
 @Component({
   selector: 'gm-sidenav-header',
@@ -8,6 +8,7 @@ import {NavService} from '../sidenav-menu/service';
 })
 export class TopNavComponent implements OnInit {
 
+  // NavService is used in the template for the button to close the menu.
   constructor(public navService: NavService) { }
 
   ngOnInit() {

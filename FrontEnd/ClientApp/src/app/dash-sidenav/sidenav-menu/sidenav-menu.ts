@@ -3,8 +3,8 @@ import { VERSION } from '@angular/material';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NavItem, EntryType } from './nav-item';
-import { NavService } from './service';
-import { LocationService } from '../../location.service';
+import { NavService } from './nav.service';
+import { UserSettingsService, UserSettings } from '../../user-settings.service';
 //import { string } from '@amcharts/amcharts4/core';
 
 import { navigationItems } from './menu-items';
@@ -44,7 +44,7 @@ export class SidenavMenuComponent implements AfterViewInit {
   constructor(
     private navService: NavService,
     public router: Router,
-    private LocationService: LocationService)
+    private LocationService: UserSettingsService)
   {
       this.menuTreeArray = new MenuTreeArray();
       this.menuTreeArray.assignPositions(navigationItems);

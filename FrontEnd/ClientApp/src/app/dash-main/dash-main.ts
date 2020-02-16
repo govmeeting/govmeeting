@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LocationService } from '../location.service';
+import { UserSettingsService } from '../user-settings.service';
 
 const NoLog = false;  // set to false for console logging
 
@@ -33,7 +33,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
   chatTitle: string = "Chat";
   chartsTitle: string = "Charts";
 
-  constructor(public router: Router, private LocationService: LocationService) {
+  constructor(public router: Router, private LocationService: UserSettingsService) {
     // constructor(private LocationService: LocationService) {
 
     this.subscription = this.LocationService.getLocation().subscribe(message => {
