@@ -33,7 +33,7 @@ export class MenuListItemComponent {
 
   constructor(public navService: NavService,
               public router: Router,
-              private userSettngsService: UserSettingsService
+              private userSettingsService: UserSettingsService
               ) {
     // if (this.depth === undefined) {
     //   this.depth = 0;

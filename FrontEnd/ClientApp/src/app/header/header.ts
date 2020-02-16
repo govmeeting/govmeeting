@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { NavService } from '../dash-sidenav/sidenav-menu/nav.service';
-import { UserSettingsService } from '../user-settings.service';
+import { UserSettingsService, UserSettings } from '../user-settings.service';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = false;  // set to false for console logging
 
 @Component({
   selector: 'gm-header',
@@ -14,23 +14,16 @@ const NoLog = true;  // set to false for console logging
 export class HeaderComponent implements OnInit {
   private ClassName: string = this.constructor.name + ": ";
   messages: any[] = [];
-  subscription: Subscription;
+  locSubscription: Subscription;
+  usSubscription: Subscription;
   location: string ="Boothbay Harbor";
   backgroundStyle: any;
 
-  constructor(public navService: NavService, private LocationService: UserSettingsService) {
-
-    this.subscription = this.LocationService.getLocation().subscribe(message => {
-      if (message) {
-        this.messages.push(message);
-        NoLog || console.log(this.ClassName + "header: message=")
-        NoLog || console.log(this.ClassName + message.text);
-        this.parseMessage(message.text);
-      } else {
-        // clear messages when empty message received
-        this.messages = [];
-      }
-    });
+  constructor(public navService: NavService, private userSettingsService: UserSettingsService) {
+    this.usSubscription = this.userSettingsService.getSettings().subscribe(settings => {
+      NoLog || console.log(this.ClassName + "receive settings=", settings);
+      this.changeLocation(settings);
+    })
   }
 
   ngOnInit() {
@@ -41,17 +34,11 @@ export class HeaderComponent implements OnInit {
     this.navService.openNav();
   }
 
-  parseMessage(message: string) {
-    let mes = message.split(':');
-    if (mes[0] == 'LocationSelected') {
-      this.location = mes[1];
-      if (this.location == "Non-Government") {
-        this.location = mes[2];
-      }
-      NoLog || console.log(this.ClassName + "location:" + this.location);
-      this.changeBackground(this.location)
-    }
-  }
+  private changeLocation(item: UserSettings) {
+    this.location = item.location;
+    NoLog || console.log(this.ClassName + "location:" + this.location);
+    this.changeBackground(this.location)
+}
 
   changeBackground(location: string) {
     let background;

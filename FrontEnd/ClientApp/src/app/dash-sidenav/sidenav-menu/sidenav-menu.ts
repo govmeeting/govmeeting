@@ -35,6 +35,7 @@ export class SidenavMenuComponent implements AfterViewInit {
   navigationItems: NavItem[] = navigationItems;
   menuTreeArray: MenuTreeArray;
   deviceType: string;
+  userSettingsService: UserSettingsService;
 
   // Sending an 'LocationSelected' message with default values did not work because
   // the listening components are not yet loaded.
@@ -44,8 +45,10 @@ export class SidenavMenuComponent implements AfterViewInit {
   constructor(
     private navService: NavService,
     public router: Router,
-    private LocationService: UserSettingsService)
+    private _userSettingsService: UserSettingsService)
   {
+      this.userSettingsService = _userSettingsService;
+
       this.menuTreeArray = new MenuTreeArray();
       this.menuTreeArray.assignPositions(navigationItems);
       console.log(this.ClassName + "navigationItems=", this.navigationItems);
@@ -71,6 +74,7 @@ export class SidenavMenuComponent implements AfterViewInit {
   HandleSelection(item: NavItem){
     let location: string;
     let agency: string;
+    let userSettings: UserSettings = new UserSettings();
 
     if (item.entryType != EntryType.link) {
       this.router.navigate(['dashboard']);
@@ -79,14 +83,16 @@ export class SidenavMenuComponent implements AfterViewInit {
     switch (item.entryType) {
       case EntryType.location: {
         location = item.displayName;
-        this.LocationService.sendLocation('LocationSelected:' + location + ':' + agency);
+        let userSettings: UserSettings = new UserSettings('en', location, null);
+        this.userSettingsService.sendSettings(userSettings)
         break;
       }
       case EntryType.agency: {
         agency = item.displayName;
         let parent = this.menuTreeArray.getParent(item, this.navigationItems);
         location = parent.displayName;
-        this.LocationService.sendLocation('LocationSelected:' + location + ':' + agency);
+        let userSettings: UserSettings = new UserSettings('en', location, agency);
+        this.userSettingsService.sendSettings(userSettings)
         break;
       }
       case EntryType.link: {
