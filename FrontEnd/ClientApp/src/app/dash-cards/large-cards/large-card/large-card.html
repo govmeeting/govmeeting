@@ -1,21 +1,29 @@
 <div class="card">
+
   <div class="card__header"
     matTooltip={{tooltip}} matTooltipClass="headertip">
+
     <div class="card__header-icon {{iconcolor}}">
       <i class={{icon}}></i>
     </div>
+
     <div class="card__header-title text-light"><strong>{{title}} </strong>
       <i *ngIf="!example.expanded" class="fa fa-angle-down custom" (click)="example.open()" ></i>
       <i *ngIf="example.expanded" class="fa fa-angle-up custom" (click)="example.close()"  ></i>
     </div>
-     <mat-icon class="help-icon"
-        matTooltip={{tooltip}} matTooltipClass="tooltip">help</mat-icon>
-    </div>
-  <div>
 
-  <mat-expansion-panel (opened)="panelOpenState = true"
-    (closed)="panelOpenState = false" #example>
-    <ng-content></ng-content>
-  </mat-expansion-panel>
+    <!-- <div> -->
+      <div class="card__header-nodata"> No Data Available </div>
+      <mat-icon class="help-icon" matTooltip={{tooltip}} matTooltipClass="tooltip">help</mat-icon>
+    <!-- </div> -->
+
   </div>
+
+  <div>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false" #example>
+      <ng-content></ng-content>
+    </mat-expansion-panel>
+  </div>
+
 </div>

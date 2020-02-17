@@ -12,9 +12,7 @@ const NoLog = false;  // set to false for console logging
 })
 export class DashMainComponent implements OnInit, OnDestroy {
   private ClassName: string = this.constructor.name + ": ";
-  messages: any[] = [];
-  //locSubsription: Subscription;
-  usSubscription: Subscription;
+  subscription: Subscription;
   defaultLocation: string = "Boothbay Harbor";
   location: string = this.defaultLocation;
   agency: string;
@@ -35,7 +33,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
   chartsTitle: string = "Charts";
 
   constructor(public router: Router, private userSettingsService: UserSettingsService) {
-    this.usSubscription = this.userSettingsService.getSettings().subscribe(settings => {
+    this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
       NoLog || console.log(this.ClassName + "receive settings=", settings);
       this.changeLocation(settings);
     })
@@ -52,7 +50,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
-    this.usSubscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   private changeLocation(item: UserSettings) {
