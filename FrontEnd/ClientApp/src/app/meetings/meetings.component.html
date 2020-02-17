@@ -2,7 +2,11 @@
   First: Select Location <br/><br/>
 </div>
 
-<span *ngIf ="location=='Boothbay Harbor'">
+<ng-template #notShow>
+  <div class="subhead"> (No Data Available) <br/> <br/> .</div>
+</ng-template>
+
+<span *ngIf ="location=='Boothbay Harbor'; else notShow">
   <div class="subhead">BBH Meetings</div>
 
   <table style="width:100%">

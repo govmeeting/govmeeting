@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { UserSettings } from './models/user-settings';
+import { UserSettings, LocationType } from './models/user-settings';
 
-export { UserSettings };
+export { UserSettings, LocationType };
 
 @Injectable({ providedIn: 'root' })
 export class UserSettingsService {

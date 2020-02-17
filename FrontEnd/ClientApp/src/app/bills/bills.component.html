@@ -1,8 +1,8 @@
-<div  [hidden]="location" class="subhead">
-  First: Select Location<br/><br/>
-</div>
+<ng-template #notShow>
+  <div class="subhead"> (No Data Available) <br/> <br/> .</div>
+</ng-template>
 
-<span *ngIf="location=='Boothbay Harbor'">
+<span *ngIf="location=='Boothbay Harbor'; else notShow">
 
   <div class="subhead">Subdivision Ordinance</div>
   "If the proposed subdivision is located on a lake, pond, river, saltwater body or stream,

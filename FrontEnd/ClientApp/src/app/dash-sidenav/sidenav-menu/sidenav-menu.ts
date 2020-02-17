@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NavItem, EntryType } from './nav-item';
 import { NavService } from './nav.service';
-import { UserSettingsService, UserSettings } from '../../user-settings.service';
+import { UserSettingsService, UserSettings, LocationType } from '../../user-settings.service';
 //import { string } from '@amcharts/amcharts4/core';
 
 import { navigationItems } from './menu-items';
@@ -95,7 +95,7 @@ export class SidenavMenuComponent implements AfterViewInit {
     switch (item.entryType) {
       case EntryType.location: {
         location = item.displayName;
-        let userSettings: UserSettings = new UserSettings('en', location, null);
+        let userSettings: UserSettings = new UserSettings('en', location, this.getLocationType(location), null);
         this.userSettingsService.sendSettings(userSettings)
         break;
       }
@@ -103,7 +103,7 @@ export class SidenavMenuComponent implements AfterViewInit {
         agency = item.displayName;
         let parent = this.menuTreeArray.getParent(item, this.navigationItems);
         location = parent.displayName;
-        let userSettings: UserSettings = new UserSettings('en', location, agency);
+        let userSettings: UserSettings = new UserSettings('en', location,  this.getLocationType(location), agency);
         this.userSettingsService.sendSettings(userSettings)
         break;
       }
@@ -168,5 +168,30 @@ export class SidenavMenuComponent implements AfterViewInit {
   private isMobile() {
     return (this.checkDeviceType() == DeviceType.mobile)
   }
+
+  // This routine is a kludge. We need to have a location type that includes the
+  // displayName, locationType, etc. This should be used in the menu items
+  // and user settings.
+  private getLocationType(location: string): LocationType  {
+    switch (location) {
+      case "Boothbay Harbor": {
+        return LocationType.municipal;
+      }
+      case "Lincoln County": {
+        return LocationType.county;
+      }
+      case "State of Maine": {
+        return LocationType.state;
+      }
+      case "United States": {
+        return LocationType.federal;
+      }
+      case "Glendale HOA": {
+        return LocationType.nongovernment;
+      }
+    }
+    return null;
+  }
+
 
 }

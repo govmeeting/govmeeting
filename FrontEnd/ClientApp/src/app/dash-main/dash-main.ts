@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UserSettingsService, UserSettings } from '../user-settings.service';
+import { UserSettingsService, UserSettings, LocationType } from '../user-settings.service';
 
 const NoLog = false;  // set to false for console logging
 
@@ -42,10 +42,9 @@ export class DashMainComponent implements OnInit, OnDestroy {
    ngOnInit() {
 
     NoLog || console.log(this.ClassName + "ngOnInit send location message")
-    let userSettings: UserSettings = new UserSettings('en', "Boothbay Harbor", null);
+    let userSettings: UserSettings = new UserSettings('en', "Boothbay Harbor", LocationType.municipal, null);
     this.changeLocation(userSettings);
     this.userSettingsService.sendSettings(userSettings)
-    // this.LocationService.sendMessage('LocationSelected:' + this.defaultLocation + ':x');
     }
 
   ngOnDestroy() {

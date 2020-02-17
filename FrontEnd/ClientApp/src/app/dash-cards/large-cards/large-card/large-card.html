@@ -8,12 +8,12 @@
     </div>
 
     <div class="card__header-title text-light"><strong>{{title}} </strong>
-      <i *ngIf="!example.expanded" class="fa fa-angle-down custom" (click)="example.open()" ></i>
+      <i *ngIf="!example.expanded && enabled" class="fa fa-angle-down custom" (click)="example.open()" ></i>
       <i *ngIf="example.expanded" class="fa fa-angle-up custom" (click)="example.close()"  ></i>
     </div>
 
     <!-- <div> -->
-      <div class="card__header-nodata"> No Data Available </div>
+      <div *ngIf="!enabled" class="card__header-nodata"> (No Data Available) </div>
       <mat-icon class="help-icon" matTooltip={{tooltip}} matTooltipClass="tooltip">help</mat-icon>
     <!-- </div> -->
 
