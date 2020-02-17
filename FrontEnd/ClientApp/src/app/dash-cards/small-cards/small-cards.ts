@@ -12,7 +12,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SmallCardsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+  ) {
+
+   }
 
   ngOnInit() {
   }

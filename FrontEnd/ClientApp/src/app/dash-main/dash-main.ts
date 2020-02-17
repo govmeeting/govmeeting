@@ -20,7 +20,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
   agency: string;
   isCounty: boolean;
 
-  // TODO These titles need to be set from within the individual components (gov-info, bills, calendar, etc)
+  // TODO These titles should be set from within the individual components (gov-info, bills, calendar, etc)
   govinfoTitle: string = "Politics";
   billsTitle: string = "Legislation";
   meetingsTitle: string = "Meetings";

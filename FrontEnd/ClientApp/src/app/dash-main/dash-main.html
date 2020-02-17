@@ -1,16 +1,10 @@
 <main class="main">
 
-  <!-- Icon colors defined in src/styles.scss  -->
-  <!-- <a [routerLink]="['infocity']">InfoCity</a> <br/> -->
-
 <!-- <button (click)="CallBills()">Call Bills</button><br/> -->
 
 <!-- <a [routerLink]="[{ outlets: { 'bills': ['bills'] } }]">Link Bills</a><br/>
 <a [routerLink]="[{ outlets: { 'meetings': ['meetings'] } }]">Link meetings</a><br/>
 <a [routerLink]="[{ outlets: { 'bills': ['bills'],'meetings': ['meetings'] } }]">Link bills & meetings</a> -->
-
-<!-- <a [routerLink]="[{ outlets: { 'primary': ['govinfo'] } }]">Link govinfo</a><br/>
-<a [routerLink]="[{ outlets: { primary: ['govinfo'],bills: ['bills'] } }]">Link govinfo & bills</a> -->
 
   <gm-small-cards>
 
@@ -70,8 +64,6 @@
   </gm-small-cards>
 
   <gm-large-cards>
-
-    <!-- <div class="helpcard"> div before the large cards </div> -->
 
     <gm-large-card *ngIf="!isCounty"
       icon="fas fa-edit"
