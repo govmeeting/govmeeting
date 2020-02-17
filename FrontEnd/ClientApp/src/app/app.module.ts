@@ -57,6 +57,7 @@ import { ConfigComponent } from './config/config.component';
 import { AppData } from './appdata';
 import { CalendarComponent } from './calendar/calendar.component';
 import { NewFeatureComponent } from './new-feature/new-feature.component';
+import { PopupComponent } from './popup/popup.component';
 // import { CalendarComponent } from './calendar/calendar';
 
 const _isAspServerRunning = false;
@@ -111,7 +112,8 @@ const _isAspServerRunning = false;
     NewsComponent,
     ConfigComponent,
     CalendarComponent,
-    NewFeatureComponent
+    NewFeatureComponent,
+    PopupComponent
     // CalendarComponent
   ],
   exports: [

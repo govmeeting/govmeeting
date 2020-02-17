@@ -10,6 +10,9 @@ import { UserSettingsService, UserSettings } from '../../user-settings.service';
 import { navigationItems } from './menu-items';
 import { MenuTreeArray } from './menu-tree-array'
 
+import { MatDialog, MatDialogRef } from  '@angular/material';
+import { PopupComponent } from '../../popup/popup.component';
+
 enum DeviceType{
   desktop,
   tablet,
@@ -45,7 +48,8 @@ export class SidenavMenuComponent implements AfterViewInit {
   constructor(
     private navService: NavService,
     public router: Router,
-    private _userSettingsService: UserSettingsService)
+    private _userSettingsService: UserSettingsService,
+    private  dialog:  MatDialog)
   {
       this.userSettingsService = _userSettingsService;
 
@@ -70,6 +74,13 @@ export class SidenavMenuComponent implements AfterViewInit {
     this.navService.sidenav = this.sidenav;
     this.navService.navigationItems = this.navigationItems;
   }
+
+  openDialog(){
+    this.dialog.open(PopupComponent,{ data: {
+      message:  "Error!!!"
+    }});
+  }
+
 
   HandleSelection(item: NavItem){
     let location: string;
