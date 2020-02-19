@@ -88,14 +88,15 @@ export class SidenavMenuComponent implements AfterViewInit {
     //let userSettings: UserSettings = new UserSettings();
 
     if (item.displayName == "Select Location") {
-      this.router.navigate(['dashboard']);
+      // this.router.navigate(['dashboard']);
       return;
     }
 
     switch (item.entryType) {
       case EntryType.location: {
+        this.router.navigate(['dashboard']);
         location = item.displayName;
-        let userSettings: UserSettings = new UserSettings('en', location, this.getLocationType(location), null);
+        let userSettings: UserSettings = new UserSettings('en', location,  null);
         this.userSettingsService.sendSettings(userSettings)
         break;
       }
@@ -103,7 +104,7 @@ export class SidenavMenuComponent implements AfterViewInit {
         agency = item.displayName;
         let parent = this.menuTreeArray.getParent(item, this.navigationItems);
         location = parent.displayName;
-        let userSettings: UserSettings = new UserSettings('en', location,  this.getLocationType(location), agency);
+        let userSettings: UserSettings = new UserSettings('en', location,  agency);
         this.userSettingsService.sendSettings(userSettings)
         break;
       }
@@ -169,29 +170,6 @@ export class SidenavMenuComponent implements AfterViewInit {
     return (this.checkDeviceType() == DeviceType.mobile)
   }
 
-  // This routine is a kludge. We need to have a location type that includes the
-  // displayName, locationType, etc. This should be used in the menu items
-  // and user settings.
-  private getLocationType(location: string): LocationType  {
-    switch (location) {
-      case "Boothbay Harbor": {
-        return LocationType.municipal;
-      }
-      case "Lincoln County": {
-        return LocationType.county;
-      }
-      case "State of Maine": {
-        return LocationType.state;
-      }
-      case "United States": {
-        return LocationType.federal;
-      }
-      case "Glendale HOA": {
-        return LocationType.nongovernment;
-      }
-    }
-    return null;
-  }
 
 
 }

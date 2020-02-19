@@ -65,12 +65,21 @@
 
   <gm-large-cards>
 
+    <gm-large-card
+      icon="fas fa-edit"
+      iconcolor="color-calendar-icon"
+      title={{notesTitle}}
+      tooltip="Proofread speech recognition text."
+      [disableMunicipal]=true>
+      <gm-notes></gm-notes>
+    </gm-large-card>
+
     <gm-large-card *ngIf="!isCounty"
       icon="fas fa-edit"
       iconcolor="color-calendar-icon"
       title={{fixasrTitle}}
       tooltip="Proofread speech recognition text."
-      [enableNonLocal]=false>
+      [disableCounty]=true>
       <gm-fixasr></gm-fixasr>
     </gm-large-card>
 
@@ -79,7 +88,7 @@
       iconcolor="color-calendar-icon"
       title={{addtagsTitle}}
       tooltip="Add tags to text."
-      [enableNonLocal]=false>
+      [disableCounty]=true>
       <gm-addtags></gm-addtags>
     </gm-large-card>
 
@@ -87,8 +96,7 @@
       icon="fas fa-book-open"
       iconcolor="color-calendar-icon"
       title={{viewMeetingTitle}}
-      tooltip="Browse or search latest meeting."
-      [enableNonLocal]=false>
+      tooltip="Browse or search latest meeting.">
       <gm-viewmeeting></gm-viewmeeting>
     </gm-large-card>
 
@@ -96,8 +104,7 @@
       icon="fas fa-exclamation"
       iconcolor="color-calendar-icon"
       title={{issuesTitle}}
-      tooltip="Displays information about current issues."
-      [enableNonLocal]=false>
+      tooltip="Displays information about current issues.">
      Recent<br/>
      Most active<br/>
      Those I am following<br/>
@@ -107,8 +114,7 @@
       icon="fas fa-user-friends"
       iconcolor="color-calendar-icon"
       title={{officialsTitle}}
-      tooltip="Displays information about current governing officials."
-      [enableNonLocal]=false>
+      tooltip="Displays information about current governing officials.">
     </gm-large-card>
 
     <gm-large-card
@@ -123,17 +129,16 @@
       icon="fas fa-comments"
       iconcolor="color-mail-icon"
       title={{chatTitle}}
-      tooltip="This is a chat window for discussing current issue.">
-      <!-- <gm-chat></gm-chat> -->
-      Temporarily removed gm=chat elementin dash-main.html
+      tooltip="This is a chat window for discussing issues or the project.">
+      <gm-chat></gm-chat>
+      <!-- Temporarily removed gm=chat elementin dash-main.html -->
     </gm-large-card>
 
     <gm-large-card
       icon="far fa-calendar-check"
       iconcolor="color-calendar-icon"
       title={{chartsTitle}}
-      tooltip="Displays information about issues, bills, officials, etc, in graphical form."
-      [enableNonLocal]=false>
+      tooltip="Displays information about issues, bills, officials, etc, in graphical form.">
       <!-- <gm-pie-chart></gm-pie-chart> -->
       <!-- <gm-bar-chart></gm-bar-chart> -->
       <!-- <gm-gauge></gm-gauge> -->

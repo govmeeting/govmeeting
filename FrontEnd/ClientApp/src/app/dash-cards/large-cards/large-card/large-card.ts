@@ -16,7 +16,11 @@ export class LargeCardComponent implements OnInit {
   @Input() icon: string;
   @Input() iconcolor: string;
   @Input() tooltip: string;
-  @Input() enableNonLocal: boolean;
+  @Input() disableMunicipal: boolean = false;
+  @Input() disableCounty: boolean = false;
+  @Input() disableState: boolean = false;
+  @Input() disableFederal: boolean = false;
+  @Input() disableNonGovernment: boolean = false;
   subscription: Subscription;
   enabled: boolean = true;
 
@@ -32,17 +36,21 @@ export class LargeCardComponent implements OnInit {
   }
 
   customizeHeader(settings: UserSettings) {
-    if (this.enableNonLocal == false) {
-      switch (settings.locationType) {
-        case LocationType.state:
-        case LocationType.federal:
-        case LocationType.nongovernment: {
-          this.enabled = false;
-          break;
-        }
-        default: {
-          this.enabled = true;
-        }
+    switch (settings.locationType) {
+      case LocationType.municipal:{
+        if (this.disableMunicipal) this.enabled = false; break;
+      }
+      case LocationType.state:{
+        if (this.disableState) this.enabled = false; break;
+      }
+      case LocationType.federal:{
+        if (this.disableFederal) this.enabled = false; break;
+      }
+      case LocationType.nongovernment: {
+        if (this.disableFederal) this.enabled = false; break;
+      }
+      default: {
+        this.enabled = true;
       }
     }
   }

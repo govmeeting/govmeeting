@@ -12,7 +12,7 @@ Function Main
     $usage = "@
     Usage: Copy-ClientAssets <source-folder>
     #    <source-folder> - Angular ClientApp folder relative to the WebApp
-    # Copy assets from ClientApp dist folder to WebApp wwwroot.
+    # Copy contents of ClientApp/dist/ClientApp to WebApp/wwwroot.
 @"
     $me = "Copy-ClientAssets: "
 

@@ -26,13 +26,12 @@ export class MenuListItemComponent {
   @Input() item: NavItem;
   // @HostBinding('attr.aria-expanded') ariaExpanded = this.item.expanded;
   @Input() depth: number;
-  //@Output() finalSelection = new EventEmitter();
-
   displayNameClass: string;
+  disabled: boolean = false;
+  grayout: string = "";
 
   constructor(public navService: NavService,
               public router: Router,
-              private userSettingsService: UserSettingsService
               )
   { }
 
@@ -40,6 +39,17 @@ export class MenuListItemComponent {
     // this.item.depth = this.depth;
     this.displayNameClass = 'depth' + this.item.depth;
     NoLog || console.log(this.ClassName, "NgOnInit DisplayName=" + this.item.displayName);
+    this.disableStateFederalNongov(this.item);
+  }
+
+  disableStateFederalNongov(item: NavItem) {
+    if (["State of Maine", "United States", "Glendale HOA"]
+      .includes(item.displayName))
+    {
+      this.disabled = true;
+      this.grayout = "grayed-out";
+      // this.displayNameClass = this.displayNameClass + " grayed-out"
+    }
   }
 
   onItemSelected(item: NavItem) {

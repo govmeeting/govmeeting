@@ -13,8 +13,8 @@ const NoLog = false;  // set to false for console logging
 export class DashMainComponent implements OnInit, OnDestroy {
   private ClassName: string = this.constructor.name + ": ";
   subscription: Subscription;
-  defaultLocation: string = "Boothbay Harbor";
-  location: string = this.defaultLocation;
+  //defaultLocation: string = "Boothbay Harbor";
+  location: string;
   agency: string;
   isCounty: boolean;
 
@@ -31,6 +31,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
   virtualMeetingTitle: string = "Virtual Meeting";
   chatTitle: string = "Chat";
   chartsTitle: string = "Charts";
+  notesTitle: string = "Notes";
 
   constructor(public router: Router, private userSettingsService: UserSettingsService) {
     this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
@@ -42,7 +43,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
    ngOnInit() {
 
     NoLog || console.log(this.ClassName + "ngOnInit send location message")
-    let userSettings: UserSettings = new UserSettings('en', "Boothbay Harbor", LocationType.municipal, null);
+    let userSettings: UserSettings = new UserSettings('en', "Boothbay Harbor", null);
     this.changeLocation(userSettings);
     this.userSettingsService.sendSettings(userSettings)
     }

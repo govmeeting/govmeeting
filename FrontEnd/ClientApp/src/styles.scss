@@ -107,3 +107,12 @@ position: relative;
 .mat-drawer-content{
    overflow-x: hidden !important;
 }
+
+.grayscale {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+}

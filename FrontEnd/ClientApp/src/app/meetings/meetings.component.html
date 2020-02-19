@@ -6,7 +6,7 @@
   <div class="subhead"> (No Data Available) <br/> <br/> .</div>
 </ng-template>
 
-<span *ngIf ="location=='Boothbay Harbor'; else notShow">
+<span *ngIf ="location=='Boothbay Harbor'; else ShowCounty">
   <div class="subhead">BBH Meetings</div>
 
   <table style="width:100%">
@@ -51,7 +51,10 @@
 
 </span>
 
-<span *ngIf ="location=='Lincoln County'">
+
+<ng-template #ShowCounty>
+
+<span *ngIf ="location=='Lincoln County'; else notShow">
 
   <div class="subhead">Lincoln Cty. Meetings</div>
 
@@ -82,12 +85,16 @@
   </tr>
 </table>
 
+</span>
+
+</ng-template>
+
 <div class="subhead">NOTE</div>
 
 Users will be able to click a meeting link to go to  an easily
 browsable and searchable transcript of that meeting.
 
-</span>
+
 
 
 

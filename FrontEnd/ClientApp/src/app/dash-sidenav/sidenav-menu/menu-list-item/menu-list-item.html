@@ -1,7 +1,8 @@
 <!-- <a mat-list-item [ngStyle]="{'padding-left': (item.depth * 10) + 'px'}" (click)="onItemSelected(item)"
     [ngClass]="{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}"> -->
 
-<a mat-list-item [ngStyle]="{'padding-left': (item.depth * 10) + 'px'}" (click)="onItemSelected(item)"
+<!-- <div class="grayed-out"> -->
+<a mat-list-item class="{{grayout}}" [ngStyle]="{'padding-left': (item.depth * 10) + 'px'}" (click)="onItemSelected(item)"
   [ngClass]="{'active': item.route ? router.isActive(item.route, true): false}">
   <mat-icon class="routeIcon">{{item.iconName}}</mat-icon>
   <span class="{{displayNameClass}}">{{item.displayName}}</span>
@@ -12,6 +13,8 @@
     </mat-icon>
   </span>
 </a>
+<!-- </div> -->
+
 <div *ngIf="item.expanded">
     <app-menu-list-item *ngFor="let child of item.children" [item]="child">
     </app-menu-list-item>
