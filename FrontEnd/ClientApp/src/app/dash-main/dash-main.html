@@ -70,24 +70,27 @@
       iconcolor="color-calendar-icon"
       title={{notesTitle}}
       tooltip="Proofread speech recognition text."
-      [disableMunicipal]=true>
+      [disableMunicipal]=true
+      [disableCounty]=false>
       <gm-notes></gm-notes>
     </gm-large-card>
 
-    <gm-large-card *ngIf="!isCounty"
+    <gm-large-card
       icon="fas fa-edit"
       iconcolor="color-calendar-icon"
       title={{fixasrTitle}}
       tooltip="Proofread speech recognition text."
+      [disableMunicipal]=false
       [disableCounty]=true>
       <gm-fixasr></gm-fixasr>
     </gm-large-card>
 
-    <gm-large-card *ngIf="!isCounty"
+    <gm-large-card
       icon="fas fa-hand-point-right"
       iconcolor="color-calendar-icon"
       title={{addtagsTitle}}
       tooltip="Add tags to text."
+      [disableMunicipal]=false
       [disableCounty]=true>
       <gm-addtags></gm-addtags>
     </gm-large-card>

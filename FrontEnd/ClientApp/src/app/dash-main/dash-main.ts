@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserSettingsService, UserSettings, LocationType } from '../user-settings.service';
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-dash-main',

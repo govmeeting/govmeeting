@@ -21,18 +21,21 @@ export class LargeCardComponent implements OnInit {
   @Input() disableState: boolean = false;
   @Input() disableFederal: boolean = false;
   @Input() disableNonGovernment: boolean = false;
+  userSettingsService: UserSettingsService;
   subscription: Subscription;
   enabled: boolean = true;
 
 
-  constructor(private userSettingsService: UserSettingsService) {
-    this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
-      NoLog || console.log(this.ClassName + "receive settings=", settings);
-      this.customizeHeader(settings);
-    })
+  constructor(private _userSettingsService: UserSettingsService) {
+    this.userSettingsService = _userSettingsService;
    }
 
   ngOnInit() {
+    this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
+      //NoLog || console.log(this.ClassName + "receive settings=", settings);
+      NoLog || console.log(this.ClassName + "settings:inputs:"+this.title+":"+this.disableMunicipal);
+      this.customizeHeader(settings);
+    })
   }
 
   customizeHeader(settings: UserSettings) {

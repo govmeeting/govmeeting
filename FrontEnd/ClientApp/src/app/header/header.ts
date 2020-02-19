@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { NavService } from '../dash-sidenav/sidenav-menu/nav.service';
 import { UserSettingsService, UserSettings } from '../user-settings.service';
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-header',

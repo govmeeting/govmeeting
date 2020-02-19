@@ -31,10 +31,9 @@ export class SidenavMenuComponent implements AfterViewInit {
   private ClassName: string = this.constructor.name + ": ";
   @ViewChild('appDrawer', {static: false})
   subscription: Subscription;
-  messages: any[] = [];
+  navItems: any[] = [];
   sidenav: ElementRef;
   version = VERSION;
-  itemSelected: string = '';
   navigationItems: NavItem[] = navigationItems;
   menuTreeArray: MenuTreeArray;
   deviceType: string;
@@ -55,7 +54,7 @@ export class SidenavMenuComponent implements AfterViewInit {
 
       this.menuTreeArray = new MenuTreeArray();
       this.menuTreeArray.assignPositions(navigationItems);
-      console.log(this.ClassName + "navigationItems=", this.navigationItems);
+      NoLog || console.log(this.ClassName + "navigationItems=", this.navigationItems);
       // let item: NavItem = this.menuTreeArray.getItem([1,3,1], this.navigationItems);
       // NoLog || console.log(this.ClassName + "selectedItem=", item);
 
@@ -65,7 +64,7 @@ export class SidenavMenuComponent implements AfterViewInit {
           this.HandleSelection(message);
         } else {
           // clear messages when empty message received
-          this.messages = [];
+          this.navItems = [];
         }
       });
     }
@@ -94,10 +93,10 @@ export class SidenavMenuComponent implements AfterViewInit {
 
     switch (item.entryType) {
       case EntryType.location: {
-        this.router.navigate(['dashboard']);
         location = item.displayName;
         let userSettings: UserSettings = new UserSettings('en', location,  null);
         this.userSettingsService.sendSettings(userSettings)
+        this.router.navigate(['dashboard']);
         break;
       }
       case EntryType.agency: {
