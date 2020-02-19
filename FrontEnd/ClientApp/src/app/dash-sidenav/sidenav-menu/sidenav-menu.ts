@@ -19,7 +19,7 @@ enum DeviceType{
   mobile
 }
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-sidenav-menu',
@@ -93,10 +93,12 @@ export class SidenavMenuComponent implements AfterViewInit {
 
     switch (item.entryType) {
       case EntryType.location: {
+        console.log("sidenav navigate to dashboard and then send settings");
+        this.router.navigate(['dashboard']);
         location = item.displayName;
         let userSettings: UserSettings = new UserSettings('en', location,  null);
-        this.userSettingsService.sendSettings(userSettings)
-        this.router.navigate(['dashboard']);
+        this.userSettingsService.sendSettings(userSettings);
+        this.userSettingsService.sendBSubject(userSettings);
         break;
       }
       case EntryType.agency: {

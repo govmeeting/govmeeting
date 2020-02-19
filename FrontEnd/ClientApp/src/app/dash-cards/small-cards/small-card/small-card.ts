@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { DashCardsService } from '../../dash-cards.service';
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-small-card',

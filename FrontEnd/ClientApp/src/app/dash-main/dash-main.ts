@@ -13,6 +13,7 @@ const NoLog = true;  // set to false for console logging
 export class DashMainComponent implements OnInit, OnDestroy {
   private ClassName: string = this.constructor.name + ": ";
   subscription: Subscription;
+  userSettingsService: UserSettingsService;
   //defaultLocation: string = "Boothbay Harbor";
   location: string;
   agency: string;
@@ -33,19 +34,39 @@ export class DashMainComponent implements OnInit, OnDestroy {
   chartsTitle: string = "Charts";
   notesTitle: string = "Notes";
 
-  constructor(public router: Router, private userSettingsService: UserSettingsService) {
-    this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
-      NoLog || console.log(this.ClassName + "receive settings=", settings);
-      this.changeLocation(settings);
-    })
+  constructor(private _userSettingsService: UserSettingsService) {
+    this.userSettingsService = _userSettingsService;
+
    }
+
+
+  // constructor(public router: Router, private userSettingsService: UserSettingsService) {
+  //   this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
+  //     NoLog || console.log(this.ClassName + "receive settings=", settings);
+  //     this.changeLocation(settings);
+  //   })
+  //  }
 
    ngOnInit() {
 
-    NoLog || console.log(this.ClassName + "ngOnInit send location message")
-    let userSettings: UserSettings = new UserSettings('en', "Boothbay Harbor", null);
-    this.changeLocation(userSettings);
-    this.userSettingsService.sendSettings(userSettings)
+    console.log("dashmain subscribe to settings");
+    // this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
+    //   console.log("dashmain receive settings")
+    //   NoLog || console.log(this.ClassName + "receive settings=", settings);
+    //   this.changeLocation(settings);
+    // })
+
+    this.userSettingsService.getBSubject().subscribe(settings => {
+      console.log("dashmain receive bsubject ", settings);
+      this.location = settings.location;
+      this.agency = settings.agency;
+    })
+
+
+    // NoLog || console.log(this.ClassName + "ngOnInit send location message")
+    // let userSettings: UserSettings = new UserSettings('en', "Boothbay Harbor", null);
+    // this.changeLocation(userSettings);
+    // this.userSettingsService.sendSettings(userSettings)
     }
 
   ngOnDestroy() {
@@ -58,7 +79,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
     this.agency = item.agency;
     NoLog || console.log(this.ClassName + "location:" + this.location);
 
-    this.isCounty = (this.location == "Lincoln County")
+    // this.isCounty = (this.location == "Lincoln County")
   }
 
 }

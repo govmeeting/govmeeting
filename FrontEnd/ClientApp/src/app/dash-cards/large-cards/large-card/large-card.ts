@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserSettingsService, UserSettings, LocationType } from '../../../user-settings.service';
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-large-card',
@@ -31,11 +31,19 @@ export class LargeCardComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
-      //NoLog || console.log(this.ClassName + "receive settings=", settings);
-      NoLog || console.log(this.ClassName + "settings:inputs:"+this.title+":"+this.disableMunicipal);
+    console.log("large-card subscribe to settings")
+    // this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
+    //   console.log("large-card receive settings");
+    //   //NoLog || console.log(this.ClassName + "receive settings=", settings);
+    //   NoLog || console.log(this.ClassName + "settings:inputs:"+this.title+":"+this.disableMunicipal);
+    //   this.customizeHeader(settings);
+    // })
+
+    this.userSettingsService.getBSubject().subscribe(settings => {
+      console.log("large-card receive bsubject ", settings)
       this.customizeHeader(settings);
     })
+
   }
 
   customizeHeader(settings: UserSettings) {
