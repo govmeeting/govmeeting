@@ -20,15 +20,15 @@
 
 <br /> <button md-raised-button class="show-help-button" (click)="ToggleHelp()"> {{showhidehelp}} Help </button>
        <div class="edit-help" [hidden]="!CheckShowHelp()" (click)="ToggleHelp()">
-         This is a first try at a component to display the meeting.
+         This is the start of a component to display the meeting.
          <ul>
            <li> Click on a topic and see only what was said about that topic. </li>
            <li> Click on a speaker name and see only what that person said. </li>
          </ul>
-         To be more useful, it should
+         Additional features to be added are:
          <ul>
            <li> Display  surrounding context to what a speaker said.</li>
-           <li> Have options for both topic and section. </li>
+           <li> Filter by any combination of section, topic or speaker. </li>
          </ul>
        </div>
 

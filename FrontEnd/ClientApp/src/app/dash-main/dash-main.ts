@@ -33,6 +33,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
   chatTitle: string = "Chat";
   chartsTitle: string = "Charts";
   notesTitle: string = "Notes";
+  minutesTitle: string = "Meeting Minutes"
 
   constructor(private _userSettingsService: UserSettingsService) {
     this.userSettingsService = _userSettingsService;

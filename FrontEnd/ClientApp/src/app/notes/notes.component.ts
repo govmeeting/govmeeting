@@ -10,7 +10,7 @@ import { UserSettingsService, UserSettings, LocationType } from '../user-setting
 })
 export class NotesComponent implements OnInit {
   subscription: Subscription;
-  location: string;
+  location: string = "Lincoln County";
 
   constructor(private userSettingsService: UserSettingsService) {
     this.subscription = this.userSettingsService.getSettings().subscribe(settings => {

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserSettingsService, UserSettings, LocationType } from '../../../user-settings.service';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = false;  // set to false for console logging
 
 @Component({
   selector: 'gm-large-card',
@@ -40,28 +40,47 @@ export class LargeCardComponent implements OnInit {
     // })
 
     this.userSettingsService.getBSubject().subscribe(settings => {
-      console.log("large-card receive bsubject ", settings)
+      console.log("large-card: ", this.title, settings);
+      console.log("large-card: disable muni/cty:", this.disableMunicipal, this.disableCounty);
       this.customizeHeader(settings);
+      console.log("large-card enabled: ", this.enabled)
     })
 
   }
 
   customizeHeader(settings: UserSettings) {
+    this.enabled = true;
+
     switch (settings.locationType) {
-      case LocationType.municipal:{
-        if (this.disableMunicipal) this.enabled = false; break;
+      case LocationType.municipal: {
+        if (this.disableMunicipal) {
+        this.enabled = false;
+        }
+        break;
+      }
+      case LocationType.county: {
+        if (this.disableCounty) {
+        this.enabled = false;
+        }
+        break;
       }
       case LocationType.state:{
-        if (this.disableState) this.enabled = false; break;
+        if (this.disableState) {
+          this.enabled = false;
+        }
+        break;
       }
       case LocationType.federal:{
-        if (this.disableFederal) this.enabled = false; break;
+        if (this.disableFederal) {
+          this.enabled = false;
+        }
+        break;
       }
       case LocationType.nongovernment: {
-        if (this.disableFederal) this.enabled = false; break;
-      }
-      default: {
-        this.enabled = true;
+        if (this.disableFederal) {
+          this.enabled = false;
+        }
+        break;
       }
     }
   }

@@ -69,10 +69,20 @@
       icon="fas fa-edit"
       iconcolor="color-calendar-icon"
       title={{notesTitle}}
-      tooltip="Proofread speech recognition text."
+      tooltip="Notes about this location"
       [disableMunicipal]=true
       [disableCounty]=false>
       <gm-notes></gm-notes>
+    </gm-large-card>
+
+    <gm-large-card
+      icon="fas fa-book-ope"
+      iconcolor="color-calendar-icon"
+      title={{minutesTitle}}
+      tooltip="Meeting Minutes"
+      [disableMunicipal]=true
+      [disableCounty]=false>
+      <gm-minutes></gm-minutes>
     </gm-large-card>
 
     <gm-large-card
@@ -99,7 +109,9 @@
       icon="fas fa-book-open"
       iconcolor="color-calendar-icon"
       title={{viewMeetingTitle}}
-      tooltip="Browse or search latest meeting.">
+      tooltip="Browse or search latest meeting."
+      [disableMunicipal]=false
+      [disableCounty]=true>
       <gm-viewmeeting></gm-viewmeeting>
     </gm-large-card>
 

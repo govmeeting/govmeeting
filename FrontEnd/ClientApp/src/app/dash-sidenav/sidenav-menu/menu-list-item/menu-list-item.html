@@ -1,9 +1,7 @@
-<!-- <a mat-list-item [ngStyle]="{'padding-left': (item.depth * 10) + 'px'}" (click)="onItemSelected(item)"
-    [ngClass]="{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}"> -->
 
-<!-- <div class="grayed-out"> -->
 <a mat-list-item class="{{grayout}}" [ngStyle]="{'padding-left': (item.depth * 10) + 'px'}" (click)="onItemSelected(item)"
-  [ngClass]="{'active': item.route ? router.isActive(item.route, true): false}">
+  [ngClass]="'x'">
+  <!-- Why does removing the ngClass from above remove the ngStyle settings ???!!!-->
   <mat-icon class="routeIcon">{{item.iconName}}</mat-icon>
   <span class="{{displayNameClass}}">{{item.displayName}}</span>
   <span fxFlex *ngIf="item.children && item.children.length">
@@ -13,7 +11,6 @@
     </mat-icon>
   </span>
 </a>
-<!-- </div> -->
 
 <div *ngIf="item.expanded">
     <app-menu-list-item *ngFor="let child of item.children" [item]="child">

@@ -59,6 +59,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { NewFeatureComponent } from './new-feature/new-feature.component';
 import { PopupComponent } from './popup/popup.component';
 import { NotesComponent } from './notes/notes.component';
+import { MinutesComponent } from './minutes/minutes.component';
 // import { CalendarComponent } from './calendar/calendar';
 
 const _isAspServerRunning = false;
@@ -115,7 +116,8 @@ const _isAspServerRunning = false;
     CalendarComponent,
     NewFeatureComponent,
     PopupComponent,
-    NotesComponent
+    NotesComponent,
+    MinutesComponent
     // CalendarComponent
   ],
   exports: [
