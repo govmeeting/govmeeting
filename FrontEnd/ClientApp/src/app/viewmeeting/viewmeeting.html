@@ -1,26 +1,11 @@
-<style>
-  .nopadding {
-     padding: 0;
-     /* margin: 0; */
-  }
 
-  .tinypadding {
-     padding: 1px;
-     /* margin: 1; */
-  }
-    .edit-help {
-      border: 2px solid red;
-      padding: 4px;
-    }
-  </style>
+<div class="subhead">Board of Selectmen - Sept. 8</div>
 
-<p>
-    <br /><h1> View meeting (sample meeting)</h1>
-<p>
+
 
 <br /> <button md-raised-button class="show-help-button" (click)="ToggleHelp()"> {{showhidehelp}} Help </button>
        <div class="edit-help" [hidden]="!CheckShowHelp()" (click)="ToggleHelp()">
-         This is the start of a component to display the meeting.
+         This is the start of a component for viewing the final processed transcript.
          <ul>
            <li> Click on a topic and see only what was said about that topic. </li>
            <li> Click on a speaker name and see only what that person said. </li>

@@ -9,7 +9,7 @@ const NoLog = true;  // set to false for console logging
 @Component({
   selector: 'gm-viewmeeting',
   templateUrl: './viewmeeting.html',
-  styleUrls: ['./viewmeeting.css'],
+  styleUrls: ['./viewmeeting.scss'],
   providers: [
     UserchoiceService
   ]
