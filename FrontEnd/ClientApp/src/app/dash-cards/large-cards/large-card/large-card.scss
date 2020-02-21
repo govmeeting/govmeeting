@@ -16,7 +16,6 @@
     height: 50px;
     background-color: $color-fiord;
     color: $color-white;
-    // border: 3px dashed lightgreen;
 
     &-icon {
       display: flex;
@@ -37,22 +36,10 @@
     }
 
     &-nodata {
-      //position: relative;
-      //right: 16px;
-      //top: -6px;
       color: lightblue;
     }
   }
 }
-
-// .help-icon {
-//   position: relative;
-//     // position: fixed;
-//     right: 8px;
-//     top: -6px;
-//     color: lightblue;
-//   }
-
 
 
 
