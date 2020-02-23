@@ -31,14 +31,14 @@ const routes: Routes = [
     { path: 'addtags', component: AddtagsComponent },
     { path: 'fixasr', component: FixasrComponent },
     { path: 'dashboard', component: DashMainComponent},
-    { path: 'about', component: AboutProjectComponent},
     { path: 'purpose', component: PurposeComponent},
     { path: 'overview', component: OverviewComponent},
     { path: 'workflow', component: WorkflowComponent},
     { path: 'autoprocessing', component: AutoProcessingComponent},
     { path: 'manualprocessing', component: ManualProcessingComponent},
     { path: 'extendgovmeeting', component: ExtendGovmeetingComponent},
-    { path: '**', redirectTo: 'about' }
+    { path: 'about', component: AboutProjectComponent},
+    { path: '**', redirectTo: 'purpose' }
 
 ];
 

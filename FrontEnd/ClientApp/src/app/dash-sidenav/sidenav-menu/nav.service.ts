@@ -30,19 +30,23 @@ export class NavService {
     this._closeMenu(this.navigationItems, startDepth, maxDepth)
   }
 
-  sendMenuSelection(item: NavItem) {
+  public sendMenuSelection(item: NavItem) {
     this.subject.next( item );
   }
 
-  clearMenuSelections() {
-      this.subject.next();
-  }
-
-  getMenuSelection(): Observable<NavItem> {
+  public getMenuSelection(): Observable<NavItem> {
       return this.subject.asObservable();
   }
 
-  private _closeMenu(
+  public openFirstSubmenu(){
+    this.navigationItems[0].expanded = true;
+  }
+
+  clearMenuSelections() {
+    this.subject.next();
+  }
+
+private _closeMenu(
     items: NavItem[],
     startDepth: number,
     maxDepth: number

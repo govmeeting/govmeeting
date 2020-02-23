@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
       <ng-content></ng-content>
     </div>
 `,
-  // templateUrl: './small-cards/small-cards.component.html',
   styleUrls: ['./small-cards.scss']
 })
 export class SmallCardsComponent implements OnInit {

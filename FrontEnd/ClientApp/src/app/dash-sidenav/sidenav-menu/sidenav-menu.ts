@@ -72,6 +72,7 @@ export class SidenavMenuComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.navService.sidenav = this.sidenav;
     this.navService.navigationItems = this.navigationItems;
+    this.navService.openFirstSubmenu();
   }
 
   openDialog(){
