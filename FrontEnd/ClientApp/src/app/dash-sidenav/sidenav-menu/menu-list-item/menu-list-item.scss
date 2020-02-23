@@ -57,5 +57,15 @@
 
 .grayed-out {
   opacity: 0.4;
+  -webkit-opacity:0.4;
+  -khtml-opacity: 0.4;
   pointer-events: none;
 }
+
+.blur-me {
+  filter: blur(20px);
+}
+.do-more-things {
+  filter: blur(20px) grayscale(20%);
+}
+

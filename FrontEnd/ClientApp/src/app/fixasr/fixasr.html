@@ -7,31 +7,32 @@
 
     <div id="scroll-text" class="scroll-text">
       <div *ngFor="let a of asrsegments; let i = index">
-        <input #myInput type="text" [(ngModel)]="a.said" (mouseup)="onMouseup($event, i)"
+        <input #myInput type="text" size="36" [(ngModel)]="a.said" (mouseup)="onMouseup($event, i)"
                  (focus)="onFocus($event, i)" (keyup)="onKey($event, i)" (keydown)="onKeyDown($event, i)" />
       </div>
     </div>
 
     <div class="controls-and-help">
+
       <div class="edit-controls">
           <button md-raised-button class="mode-button" color="primary" (click)="toggleInsertMode()">MODE ({{modeButtonText}})</button>
           <button md-raised-button class="play-button" color="primary" (click)="playPhrase()">PLAY </button>
           <button md-raised-button class="save-button" color="primary" (click)="saveChanges()">SAVE</button>
       </div>
 
-      <p *ngIf="isSpeakerSelectVisible" class="speaker-input">
+      <!-- <p *ngIf="isSpeakerSelectVisible" class="speaker-input">
               <label> Speaker </label>
               <gm-dropdown [values]="speakers" (selectSpeaker)="selectSpeaker($event)" (addSpeaker)="addSpeaker($event)"></gm-dropdown>
-      </p>
+      </p> -->
 
-      <style>
+      <!-- <style>
         .edit-help {
           border: 2px solid red;
           padding: 4px;
         }
-      </style>
+      </style> -->
 
-      <br /> <button md-raised-button class="show-help-button" (click)="ToggleHelp()"> {{showhidehelp}} Help </button>
+      <!-- <br /> <button md-raised-button class="show-help-button" (click)="ToggleHelp()"> {{showhidehelp}} Help </button>
       <div class="edit-help" [hidden]="!CheckShowHelp()" (click)="ToggleHelp()" >
         <p>
           The text was transcribed from the video using Google's Speech API.
@@ -46,7 +47,7 @@
         </ul>
         Press "PLAY" (or 'enter') to play recording at cursor.<br />
         Select or enter new speaker at cursor position.
-      </div>
+      </div> -->
 
          <!--For testing
          <button (click)="getpos()"> GETPOS </button> pos={{lastedit}}
@@ -55,5 +56,6 @@
          <!--{{asrtext.lastedit}}   Why does it think asrtext is null? -->
 
     </div>
+
   </div>
 </div>

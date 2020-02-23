@@ -24,39 +24,48 @@
 }
 
 .scroll-text {
-  flex: initial;
+  /* flex: 2; */
+  /* flex: initial; */
   height: 405px;
-  width: 310px;
+  /* width: 310px; */
+  /* width: 30px; */
   overflow-y: auto;
   overflow-x: hidden;
 }
 
-.scroll-text input {
+/* .scroll-text input {
   width: 310px;
-}
+  width: 400px;
+} */
 
 .controls-and-help {
   flex: 1;
 }
 
-.edit-controls {
+/* .edit-controls {
   flex: 1;
-}
+} */
+
+/* .edit-help {
+    margin: 10px 10px 0 10px;
+} */
 
 .edit-help {
-    margin: 10px 10px 0 10px;
+  border: 2px solid red;
+  padding: 4px;
 }
+
 
 .mode-button {
   margin: 10px 20px 0 20px;
 }
 
 .play-button {
-  margin: 10px 10px 0 20px;
+  margin: 5px 5px 0 5px;
 }
 
 .save-button {
-  margin: 10px 10px 0 20px;
+  margin: 5px 5px 0 5px;
 }
 
 .show-help-button {
