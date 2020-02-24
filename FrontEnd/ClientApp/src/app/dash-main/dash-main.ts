@@ -60,7 +60,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   private changeLocation(item: UserSettings) {

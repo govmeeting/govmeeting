@@ -27,7 +27,8 @@ const NoLog = false;  // set to false for console logging
   styleUrls: ['sidenav-menu.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class SidenavMenuComponent implements AfterViewInit {
+// export class SidenavMenuComponent implements AfterViewInit {
+  export class SidenavMenuComponent {
   private ClassName: string = this.constructor.name + ": ";
   @ViewChild('appDrawer', {static: false})
   subscription: Subscription;
