@@ -27,9 +27,9 @@ const routes: Routes = [
       redirectTo: 'account/login'
     },
 
-    { path: 'viewmeeting', component: ViewMeetingComponent },
-    { path: 'addtags', component: AddtagsComponent },
-    { path: 'fixasr', component: FixasrComponent },
+    // { path: 'viewmeeting', component: ViewMeetingComponent },
+    // { path: 'addtags', component: AddtagsComponent },
+    // { path: 'fixasr', component: FixasrComponent },
     { path: 'dashboard', component: DashMainComponent},
     { path: 'purpose', component: PurposeComponent},
     { path: 'overview', component: OverviewComponent},

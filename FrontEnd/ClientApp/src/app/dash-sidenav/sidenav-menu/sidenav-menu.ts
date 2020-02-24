@@ -19,7 +19,7 @@ enum DeviceType{
   mobile
 }
 
-const NoLog = true;  // set to false for console logging
+const NoLog = false;  // set to false for console logging
 
 @Component({
   selector: 'gm-sidenav-menu',
@@ -69,11 +69,17 @@ export class SidenavMenuComponent implements AfterViewInit {
       });
     }
 
-  ngAfterViewInit() {
-    this.navService.sidenav = this.sidenav;
-    this.navService.navigationItems = this.navigationItems;
-    this.navService.openFirstSubmenu();
-  }
+    ngOnInit() {
+      this.navService.sidenav = this.sidenav;
+      this.navService.navigationItems = this.navigationItems;
+      this.navService.openFirstMenuLevels();
+    }
+
+  //   ngAfterViewInit() {
+  //   this.navService.sidenav = this.sidenav;
+  //   this.navService.navigationItems = this.navigationItems;
+  //   this.navService.openFirstMenuLevels();
+  // }
 
   openDialog(){
     this.dialog.open(PopupComponent,{ data: {

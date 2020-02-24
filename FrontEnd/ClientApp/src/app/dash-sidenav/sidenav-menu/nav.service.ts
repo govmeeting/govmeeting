@@ -38,8 +38,9 @@ export class NavService {
       return this.subject.asObservable();
   }
 
-  public openFirstSubmenu(){
+  public openFirstMenuLevels(){
     this.navigationItems[0].expanded = true;
+    this.navigationItems[1].expanded = true;
   }
 
   clearMenuSelections() {

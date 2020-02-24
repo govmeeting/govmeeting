@@ -50,25 +50,13 @@ export class DashMainComponent implements OnInit, OnDestroy {
 
    ngOnInit() {
 
-    console.log("dashmain subscribe to settings");
-    // this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
-    //   console.log("dashmain receive settings")
-    //   NoLog || console.log(this.ClassName + "receive settings=", settings);
-    //   this.changeLocation(settings);
-    // })
-
+    NoLog || console.log(this.ClassName + "subscribe to settings");
     this.userSettingsService.getBSubject().subscribe(settings => {
-      console.log("dashmain receive bsubject ", settings);
+      NoLog || console.log(this.ClassName + "bsubject ", settings);
       this.location = settings.location;
       this.agency = settings.agency;
     })
-
-
-    // NoLog || console.log(this.ClassName + "ngOnInit send location message")
-    // let userSettings: UserSettings = new UserSettings('en', "Boothbay Harbor", null);
-    // this.changeLocation(userSettings);
-    // this.userSettingsService.sendSettings(userSettings)
-    }
+  }
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
