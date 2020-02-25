@@ -16,8 +16,7 @@
       class="top1"
       icon="fas fa-sitemap"
       iconcolor="color-mail-icon"
-      title={{govinfoTitle}}
-      tooltip="Displays information on governing political structure.">
+      title={{govinfoTitle}}>
       <gm-gov-info>
       </gm-gov-info>
     </gm-small-card>
@@ -25,8 +24,7 @@
     <gm-small-card *ngIf="!isCounty" class="top2"
       icon="far fa-file-alt"
       iconcolor="color-document-icon"
-      title={{billsTitle}}
-      tooltip="Displays information on bills, proclamations, etc and their status.">
+      title={{billsTitle}}>
       <gm-bills>
       </gm-bills>
     </gm-small-card>
@@ -34,8 +32,7 @@
     <gm-small-card class="top3"
       icon="fas fa-users"
       iconcolor="color-calendar-icon"
-      title={{meetingsTitle}}
-      tooltip="Displays a calendar of past and future meetings.">
+      title={{meetingsTitle}}>
       <gm-meetings>
       </gm-meetings>
     </gm-small-card>
@@ -43,8 +40,7 @@
     <gm-small-card class="top4"
       icon="far fa-newspaper"
       iconcolor="color-photo-icon"
-      title={{newsTitle}}
-      tooltip="Displays current news.">
+      title={{newsTitle}}>
       <gm-news>
       </gm-news>
     </gm-small-card>
@@ -56,96 +52,84 @@
     <gm-large-card *ngIf="isCounty"
       icon="fas fa-edit"
       iconcolor="color-calendar-icon"
-      title={{notesTitle}}
-      tooltip="Notes about this location">
+      title={{notesTitle}}>
       <gm-notes></gm-notes>
     </gm-large-card>
 
     <gm-large-card *ngIf="isCounty"
       icon="fas fa-book-ope"
       iconcolor="color-calendar-icon"
-      title={{minutesTitle}}
-      tooltip="Meeting Minutes">
+      title={{minutesTitle}}>
       <gm-minutes></gm-minutes>
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-edit"
       iconcolor="color-calendar-icon"
-      title={{fixasrTitle}}
-      tooltip="Proofread speech recognition text.">
+      title={{fixasrTitle}}>
       <gm-fixasr></gm-fixasr>
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-hand-point-right"
       iconcolor="color-calendar-icon"
-      title={{addtagsTitle}}
-      tooltip="Add tags to text.">
+      title={{addtagsTitle}}>
       <gm-addtags></gm-addtags>
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-book-open"
       iconcolor="color-calendar-icon"
-      title={{viewMeetingTitle}}
-      tooltip="Browse or search latest meeting.">
+      title={{viewMeetingTitle}}>
       <gm-viewmeeting></gm-viewmeeting>
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-hammer"
       iconcolor="color-calendar-icon"
-      title={{workitemsTitle}}
-      tooltip="Browse and select available work items.">
+      title={{workitemsTitle}}>
       <gm-workitems></gm-workitems>
     </gm-large-card>
 
     <gm-large-card
       icon="fas fa-exclamation"
       iconcolor="color-calendar-icon"
-      title={{issuesTitle}}
-      tooltip="Displays information about current issues.">
+      title={{issuesTitle}}>
      <gm-issues></gm-issues>
     </gm-large-card>
 
     <gm-large-card
       icon="fas fa-user-friends"
       iconcolor="color-calendar-icon"
-      title={{officialsTitle}}
-      tooltip="Displays information about activities of and statements by officials.">
+      title={{officialsTitle}}>
       <gm-officials></gm-officials>
     </gm-large-card>
 
     <gm-large-card
       icon="far fa-calendar-check"
       iconcolor="color-mail-icon"
-      title={{virtualMeetingTitle}}
-      tooltip="Displays information about past and future virtual meetings.">
+      title={{virtualMeetingTitle}}>
       <gm-virtual-meeting></gm-virtual-meeting>
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-exclamation"
       iconcolor="color-calendar-icon"
-      title={{alertsTitle}}
-      tooltip="Display all the current user's personal alerts and allow them to be managed.">
+      title={{alertsTitle}}>
       <gm-alerts></gm-alerts>
     </gm-large-card>
 
     <gm-large-card
       icon="fas fa-comments"
       iconcolor="color-mail-icon"
-      title={{chatTitle}}
-      tooltip="This is a chat window for discussing issues or the project.">
+      title={{chatTitle}}>
       <gm-chat></gm-chat>
     </gm-large-card>
 
     <!-- <gm-large-card
       icon="far fa-calendar-check"
       iconcolor="color-calendar-icon"
-      title={{chartsTitle}}
-      tooltip="Displays information about issues, bills, officials, etc, in graphical form.">
+      title={{chartsTitle}}>
       [ The software uses the  <a href="https://www.amcharts.com/"> "amcharts" </a> plugin for
        displaying graphical information. Check back for working examples. ] -->
       <!-- <gm-pie-chart></gm-pie-chart> -->

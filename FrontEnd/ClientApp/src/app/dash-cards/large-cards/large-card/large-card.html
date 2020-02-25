@@ -9,8 +9,8 @@
 
     <div class="card__header-title text-light">
       <strong>{{title}} </strong>
-      <i *ngIf="!example.expanded" class="fa fa-angle-down custom" (click)="example.open()" ></i>
-      <i *ngIf="example.expanded" class="fa fa-angle-up custom" (click)="example.close()"  ></i>
+      <i *ngIf="!panel.expanded" class="fa fa-angle-down custom" (click)="panel.open()" ></i>
+      <i *ngIf="panel.expanded" class="fa fa-angle-up custom" (click)="panel.close()"  ></i>
     </div>
 
       <!-- <div *ngIf="!enabled" class="card__header-nodata"> (No Data Available) </div> -->
@@ -22,7 +22,7 @@
 
   <div>
     <mat-expansion-panel (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false" #example>
+      (closed)="panelOpenState = false" #panel>
       <ng-content></ng-content>
     </mat-expansion-panel>
   </div>

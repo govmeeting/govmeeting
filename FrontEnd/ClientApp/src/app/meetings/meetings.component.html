@@ -1,9 +1,9 @@
 <div  [hidden]="location" class="subhead">
-  First: Select Location <br/><br/>
+  (Select Location) <br/><br/>
 </div>
 
 <ng-template #notShow>
-  <div class="subhead"> (No Data Available) <br/> <br/> .</div>
+  <div class="subhead"> (Select Location) <br/> <br/> .</div>
 </ng-template>
 
 <span *ngIf ="location=='Boothbay Harbor'; else ShowCounty">
