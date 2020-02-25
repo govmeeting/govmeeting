@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserSettingsService, UserSettings, LocationType } from '../user-settings.service';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = false;  // set to false for console logging
 
 @Component({
   selector: 'gm-dash-main',
@@ -14,7 +14,6 @@ export class DashMainComponent implements OnInit, OnDestroy {
   private ClassName: string = this.constructor.name + ": ";
   subscription: Subscription;
   userSettingsService: UserSettingsService;
-  //defaultLocation: string = "Boothbay Harbor";
   location: string;
   agency: string;
   isCounty: boolean;
@@ -40,26 +39,27 @@ export class DashMainComponent implements OnInit, OnDestroy {
 
    }
 
-
-  // constructor(public router: Router, private userSettingsService: UserSettingsService) {
-  //   this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
-  //     NoLog || console.log(this.ClassName + "receive settings=", settings);
-  //     this.changeLocation(settings);
-  //   })
-  //  }
-
    ngOnInit() {
 
-    NoLog || console.log(this.ClassName + "subscribe to settings");
-    this.userSettingsService.getBSubject().subscribe(settings => {
-      NoLog || console.log(this.ClassName + "bsubject ", settings);
-      this.location = settings.location;
-      this.agency = settings.agency;
-    })
+    // NoLog || console.log(this.ClassName + "subscribe to settings");
+    // this.userSettingsService.getBSubject().subscribe(settings => {
+    //   NoLog || console.log(this.ClassName + "bsubject ", settings);
+    //   this.location = settings.location;
+    //   this.agency = settings.agency;
+    // })
+
+    this.userSettingsService.SettingsChangeAsObservable().subscribe(message => {
+      // NoLog || console.log(this.ClassName + "receive message: " + message)
+      let newSettings = this.userSettingsService.settings;
+      NoLog || console.log(this.ClassName + "SCAO ", newSettings);
+      this.location = newSettings.location;
+      this.agency = newSettings.agency;
+  })
+
   }
 
   ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
+    // TODO - unsubscribe to ensure no memory leaks
     // this.subscription.unsubscribe();
   }
 

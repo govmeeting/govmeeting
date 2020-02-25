@@ -9,7 +9,18 @@ export { UserSettings, LocationType };
 export class UserSettingsService {
   //private subject = new Subject<any>();
   private settingsSubject = new Subject<UserSettings>();
-  private bSubject = new BehaviorSubject<UserSettings>(new UserSettings());
+  // private bSubject = new BehaviorSubject<UserSettings>(new UserSettings());
+  private settingsChange = new BehaviorSubject<string>("Initial");
+
+  private _settings: UserSettings;
+  public get settings(): UserSettings {
+    let copy = Object.assign({}, this._settings);
+    return copy;
+  }
+  public set settings(value: UserSettings) {
+    this._settings = Object.assign({}, value);
+    this.sendSettingsChange();
+  }
 
   clearMessages() {
       this.settingsSubject.next();
@@ -23,12 +34,20 @@ export class UserSettingsService {
     return this.settingsSubject.asObservable();
   }
 
-  sendBSubject(settings: UserSettings){
-    this.bSubject.next(settings);
+  // sendBSubject(settings: UserSettings){
+  //   this.bSubject.next(settings);
+  // }
+
+  // getBSubject() {
+  //   return this.bSubject;
+  // }
+
+  sendSettingsChange(){
+    this.settingsChange.next("SettingsChange");
   }
 
-  getBSubject() {
-    return this.bSubject;
+  SettingsChangeAsObservable() {
+    return this.settingsChange.asObservable();
   }
 
 

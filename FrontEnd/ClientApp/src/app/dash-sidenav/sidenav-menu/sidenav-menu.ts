@@ -106,7 +106,10 @@ const NoLog = false;  // set to false for console logging
         location = item.displayName;
         let userSettings: UserSettings = new UserSettings('en', location,  null);
         this.userSettingsService.sendSettings(userSettings);
-        this.userSettingsService.sendBSubject(userSettings);
+        // this.userSettingsService.sendBSubject(userSettings);
+        this.userSettingsService.settings = userSettings;
+        // this.userSettingsService.sendSettingsChange();
+
         break;
       }
       case EntryType.agency: {

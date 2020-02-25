@@ -11,14 +11,21 @@ import { UserSettingsService, UserSettings, LocationType } from '../user-setting
 export class NotesComponent implements OnInit {
   subscription: Subscription;
   location: string = "Lincoln County";
+  userSettingsService: UserSettingsService;
 
-  constructor(private userSettingsService: UserSettingsService) {
-    this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
-      this.changeLocation(settings);
-    })
+  constructor(private _userSettingsService: UserSettingsService) {
+    this.userSettingsService = _userSettingsService;
+    // this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
+    //   this.changeLocation(settings);
+    // })
    }
 
   ngOnInit() {
+    this.userSettingsService.SettingsChangeAsObservable().subscribe(message => {
+      console.log("notes: mesage=" + message);
+      this.location = this.userSettingsService.settings.location;
+    })
+
   }
 
   private changeLocation(item: UserSettings) {

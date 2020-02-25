@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserSettingsService, UserSettings, LocationType } from '../../../user-settings.service';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = false;  // set to false for console logging
 
 @Component({
   selector: 'gm-large-card',
@@ -31,12 +31,20 @@ export class LargeCardComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.userSettingsService.getBSubject().subscribe(settings => {
-      NoLog || console.log(this.ClassName + this.title, settings);
-      NoLog || console.log(this.ClassName +  "disable muni/cty:", this.disableMunicipal, this.disableCounty);
-      this.customizeHeader(settings);
-      NoLog || console.log(this.ClassName +  "enabled: ", this.enabled)
+    // this.userSettingsService.getBSubject().subscribe(settings => {
+    //   NoLog || console.log(this.ClassName + this.title, settings);
+    //   // NoLog || console.log(this.ClassName +  "disable muni/cty:", this.disableMunicipal, this.disableCounty);
+    //   this.customizeHeader(settings);
+    //   // NoLog || console.log(this.ClassName +  "enabled: ", this.enabled)
+    // })
+
+    this.userSettingsService.SettingsChangeAsObservable().subscribe(message => {
+      // NoLog || console.log(this.ClassName + "receive message: " + message)
+      let newSettings = this.userSettingsService.settings;
+      NoLog || console.log(this.ClassName + "SCAO " + this.title, newSettings);
+      this.customizeHeader(newSettings);
     })
+
 
   }
 
