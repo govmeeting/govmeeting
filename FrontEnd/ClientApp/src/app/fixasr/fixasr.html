@@ -20,19 +20,19 @@
           <button md-raised-button class="save-button" color="primary" (click)="saveChanges()">SAVE</button>
       </div>
 
-      <!-- <p *ngIf="isSpeakerSelectVisible" class="speaker-input">
+      <p *ngIf="isSpeakerSelectVisible" class="speaker-input">
               <label> Speaker </label>
               <gm-dropdown [values]="speakers" (selectSpeaker)="selectSpeaker($event)" (addSpeaker)="addSpeaker($event)"></gm-dropdown>
-      </p> -->
+      </p>
 
-      <!-- <style>
+      <style>
         .edit-help {
           border: 2px solid red;
           padding: 4px;
         }
-      </style> -->
+      </style>
 
-      <!-- <br /> <button md-raised-button class="show-help-button" (click)="ToggleHelp()"> {{showhidehelp}} Help </button>
+      <br /> <button md-raised-button class="show-help-button" (click)="ToggleHelp()"> {{showhidehelp}} Help </button>
       <div class="edit-help" [hidden]="!CheckShowHelp()" (click)="ToggleHelp()" >
         <p>
           The text was transcribed from the video using Google's Speech API.
@@ -47,7 +47,7 @@
         </ul>
         Press "PLAY" (or 'enter') to play recording at cursor.<br />
         Select or enter new speaker at cursor position.
-      </div> -->
+      </div>
 
          <!--For testing
          <button (click)="getpos()"> GETPOS </button> pos={{lastedit}}

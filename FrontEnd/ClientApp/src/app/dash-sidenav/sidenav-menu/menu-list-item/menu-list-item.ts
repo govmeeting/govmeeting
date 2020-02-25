@@ -43,7 +43,7 @@ export class MenuListItemComponent {
   }
 
   // THese are temporarily disabled. It's less confusing than clicking on these links,
-  // only to find that none of the cards have appropriate data. We need sample data for
+  // only to find that none of the cards have meaningful data. We need sample data for
   // these locations.
   disableStateFederalNongov(item: NavItem) {
     if (["State of Maine", "United States", "Glendale HOA"]

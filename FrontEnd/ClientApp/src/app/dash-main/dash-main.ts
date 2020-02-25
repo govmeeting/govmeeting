@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserSettingsService, UserSettings, LocationType } from '../user-settings.service';
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-dash-main',
@@ -35,7 +35,9 @@ export class DashMainComponent implements OnInit, OnDestroy {
   chatTitle: string = "Chat";
   chartsTitle: string = "Charts";
   notesTitle: string = "Notes";
-  minutesTitle: string = "Meeting Minutes"
+  minutesTitle: string = "Meeting Minutes";
+  workitemsTitle: string = "Work Items";
+  alertsTitle: string = "Alerts";
 
   constructor(private _userSettingsService: UserSettingsService) {
     this.userSettingsService = _userSettingsService;

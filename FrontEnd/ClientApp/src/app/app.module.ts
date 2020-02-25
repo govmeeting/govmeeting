@@ -60,6 +60,10 @@ import { NewFeatureComponent } from './new-feature/new-feature.component';
 import { PopupComponent } from './popup/popup.component';
 import { NotesComponent } from './notes/notes.component';
 import { MinutesComponent } from './minutes/minutes.component';
+import { AlertsComponent } from './alerts/alerts.component';
+import { WorkitemsComponent } from './workitems/workitems.component';
+import { IssuesComponent } from './issues/issues.component';
+import { OfficialsComponent } from './officials/officials.component';
 // import { CalendarComponent } from './calendar/calendar';
 
 const _isAspServerRunning = false;
@@ -117,7 +121,11 @@ const _isAspServerRunning = false;
     NewFeatureComponent,
     PopupComponent,
     NotesComponent,
-    MinutesComponent
+    MinutesComponent,
+    AlertsComponent,
+    WorkitemsComponent,
+    IssuesComponent,
+    OfficialsComponent
     // CalendarComponent
   ],
   exports: [

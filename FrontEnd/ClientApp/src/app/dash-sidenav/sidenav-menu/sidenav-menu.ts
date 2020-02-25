@@ -19,7 +19,7 @@ enum DeviceType{
   mobile
 }
 
-const NoLog = false;  // set to false for console logging
+const NoLog = true;  // set to false for console logging
 
 @Component({
   selector: 'gm-sidenav-menu',
@@ -89,14 +89,14 @@ const NoLog = false;  // set to false for console logging
     let agency: string;
     //let userSettings: UserSettings = new UserSettings();
 
-    if (item.displayName == "Select Location") {
-      // this.router.navigate(['dashboard']);
-      return;
-    }
+    // if (item.displayName == "Select Location") {
+    //   // this.router.navigate(['dashboard']);
+    //   return;
+    // }
 
     switch (item.entryType) {
       case EntryType.location: {
-        console.log("sidenav navigate to dashboard and then send settings");
+        NoLog || console.log(this.ClassName + "Selected location. Navigate to dashboard and set settings");
         this.router.navigate(['dashboard']);
         location = item.displayName;
         let userSettings: UserSettings = new UserSettings('en', location,  null);
@@ -105,6 +105,7 @@ const NoLog = false;  // set to false for console logging
         break;
       }
       case EntryType.agency: {
+        NoLog || console.log(this.ClassName + "Selected agency. Set new settings");
         agency = item.displayName;
         let parent = this.menuTreeArray.getParent(item, this.navigationItems);
         location = parent.displayName;
@@ -113,6 +114,7 @@ const NoLog = false;  // set to false for console logging
         break;
       }
       case EntryType.link: {
+        NoLog || console.log(this.ClassName + "Selected a link");
         switch (item.displayName) {
           case 'Purpose': {
             this.router.navigateByUrl('purpose');

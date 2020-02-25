@@ -2,10 +2,6 @@
 
 <!-- <button (click)="CallBills()">Call Bills</button><br/> -->
 
-<!-- <a [routerLink]="[{ outlets: { 'bills': ['bills'] } }]">Link Bills</a><br/>
-<a [routerLink]="[{ outlets: { 'meetings': ['meetings'] } }]">Link meetings</a><br/>
-<a [routerLink]="[{ outlets: { 'bills': ['bills'],'meetings': ['meetings'] } }]">Link bills & meetings</a> -->
-
   <gm-small-cards>
 
     <!-- <gm-small-card
@@ -97,20 +93,28 @@
       <gm-viewmeeting></gm-viewmeeting>
     </gm-large-card>
 
+    <gm-large-card  *ngIf="!isCounty"
+      icon="fas fa-hammer"
+      iconcolor="color-calendar-icon"
+      title={{workitemsTitle}}
+      tooltip="Browse and select available work items.">
+      <gm-workitems></gm-workitems>
+    </gm-large-card>
+
     <gm-large-card
       icon="fas fa-exclamation"
       iconcolor="color-calendar-icon"
       title={{issuesTitle}}
       tooltip="Displays information about current issues.">
-     [ No Data Available ]
+     <gm-issues></gm-issues>
     </gm-large-card>
 
     <gm-large-card
       icon="fas fa-user-friends"
       iconcolor="color-calendar-icon"
       title={{officialsTitle}}
-      tooltip="Displays information about current governing officials.">
-      [ No Data Available ]
+      tooltip="Displays information about activities of and statements by officials.">
+      <gm-officials></gm-officials>
     </gm-large-card>
 
     <gm-large-card
@@ -121,6 +125,14 @@
       <gm-virtual-meeting></gm-virtual-meeting>
     </gm-large-card>
 
+    <gm-large-card  *ngIf="!isCounty"
+      icon="fas fa-exclamation"
+      iconcolor="color-calendar-icon"
+      title={{alertsTitle}}
+      tooltip="Display all the current user's personal alerts and allow them to be managed.">
+      <gm-alerts></gm-alerts>
+    </gm-large-card>
+
     <gm-large-card
       icon="fas fa-comments"
       iconcolor="color-mail-icon"
@@ -129,17 +141,17 @@
       <gm-chat></gm-chat>
     </gm-large-card>
 
-    <gm-large-card
+    <!-- <gm-large-card
       icon="far fa-calendar-check"
       iconcolor="color-calendar-icon"
       title={{chartsTitle}}
       tooltip="Displays information about issues, bills, officials, etc, in graphical form.">
       [ The software uses the  <a href="https://www.amcharts.com/"> "amcharts" </a> plugin for
-       displaying graphical information. Check back for working examples. ]
+       displaying graphical information. Check back for working examples. ] -->
       <!-- <gm-pie-chart></gm-pie-chart> -->
       <!-- <gm-bar-chart></gm-bar-chart> -->
       <!-- <gm-gauge></gm-gauge> -->
-    </gm-large-card>
+    <!-- </gm-large-card> -->
 
   </gm-large-cards>
 

@@ -16,20 +16,6 @@ export class BillsComponent implements OnInit {
   subscription: Subscription;
   userSettingsService: UserSettingsService;
 
-  // @Input()
-  //   set location(location: string) {
-  //     this._location = location;
-  //     NoLog || console.log(this.ClassName + "set location=" + location)
-  //   }
-  //   get location(): string { return this._location; }
-
-  //   @Input()
-  //   set agency(agency: string) {
-  //     this._agency = agency;
-  //     NoLog || console.log(this.ClassName + "set agency=" + agency)
-  //   }
-  //   get agency(): string { return this._agency; }
-
     constructor(private _userSettingsService: UserSettingsService) {
       this.userSettingsService = _userSettingsService;
      }
