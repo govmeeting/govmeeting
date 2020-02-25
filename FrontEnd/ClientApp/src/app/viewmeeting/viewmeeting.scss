@@ -5,6 +5,12 @@
   margin: 10px;
 }
 
+@media only screen and (max-width: 46.875em) {
+  .subhead {
+    font-size: 150%;
+  }
+}
+
 .nopadding {
   padding: 0;
   /* margin: 0; */
