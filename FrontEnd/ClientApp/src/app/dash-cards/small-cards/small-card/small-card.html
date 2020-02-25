@@ -1,22 +1,18 @@
 <div class="card" [ngStyle]="currentStyles">
 
-  <div class="card__header"
-   matTooltip={{tooltip}} matTooltipClass="headertip">
+  <div class="card__header">
+   <!-- matTooltip={{tooltip}} matTooltipClass="headertip"> -->
 
     <div class="card__header-icon {{iconcolor}}">
       <i class={{icon}}></i>
     </div>
 
     <div class="card__header-title text-light">
-      <strong>{{title}} </strong>
-      <!-- <i *ngIf="collapsed" class="fa fa-angle-down custom"></i>
-      <i *ngIf="!collapsed" class="fa fa-angle-up custom"></i> -->
+      <span (click)="toggleCollapsed()"><strong> {{title}} </strong></span>
       <i *ngIf="collapsed" class="fa fa-angle-down custom" (click)="toggleCollapsed()" ></i>
       <i *ngIf="!collapsed" class="fa fa-angle-up custom" (click)="toggleCollapsed()"  ></i>
     </div>
 
-    <!-- <mat-icon class="help-icon"
-      matTooltip={{tooltip}} matTooltipClass="tooltip">help</mat-icon> -->
       <div></div>
 
   </div>

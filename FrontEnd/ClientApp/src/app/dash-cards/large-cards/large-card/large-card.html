@@ -1,30 +1,27 @@
 <div class="card">
 
-  <div class="card__header"
-    matTooltip={{tooltip}} matTooltipClass="headertip">
+  <div class="card__header">
 
     <div class="card__header-icon {{iconcolor}}">
       <i class={{icon}}></i>
     </div>
 
     <div class="card__header-title text-light">
-      <strong>{{title}} </strong>
-      <i *ngIf="!panel.expanded" class="fa fa-angle-down custom" (click)="panel.open()" ></i>
-      <i *ngIf="panel.expanded" class="fa fa-angle-up custom" (click)="panel.close()"  ></i>
+      <span (click)="togglePanel()"><strong>{{title}} </strong></span>
+      <i *ngIf="!panelOpenState" class="fa fa-angle-down custom" (click)="togglePanel()" ></i>
+      <i *ngIf="panelOpenState" class="fa fa-angle-up custom" (click)="togglePanel()"  ></i>
     </div>
 
-      <!-- <div *ngIf="!enabled" class="card__header-nodata"> (No Data Available) </div> -->
-      <!-- <mat-icon class="help-icon"
-        matTooltip={{tooltip}} matTooltipClass="tooltip">help</mat-icon> -->
-        <div></div>
+    <div></div>
 
   </div>
 
   <div>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-      (closed)="panelOpenState = false" #panel>
+
+    <mat-expansion-panel [expanded]="panelOpenState">
       <ng-content></ng-content>
     </mat-expansion-panel>
+
   </div>
 
 </div>
