@@ -16,11 +16,11 @@ export class LargeCardComponent implements OnInit {
   @Input() icon: string;
   @Input() iconcolor: string;
   @Input() tooltip: string;
-  @Input() disableMunicipal: boolean = false;
-  @Input() disableCounty: boolean = false;
-  @Input() disableState: boolean = false;
-  @Input() disableFederal: boolean = false;
-  @Input() disableNonGovernment: boolean = false;
+  // @Input() disableMunicipal: boolean = false;
+  // @Input() disableCounty: boolean = false;
+  // @Input() disableState: boolean = false;
+  // @Input() disableFederal: boolean = false;
+  // @Input() disableNonGovernment: boolean = false;
   userSettingsService: UserSettingsService;
   subscription: Subscription;
   enabled: boolean = true;
@@ -31,57 +31,48 @@ export class LargeCardComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.userSettingsService.getBSubject().subscribe(settings => {
-    //   NoLog || console.log(this.ClassName + this.title, settings);
-    //   // NoLog || console.log(this.ClassName +  "disable muni/cty:", this.disableMunicipal, this.disableCounty);
-    //   this.customizeHeader(settings);
-    //   // NoLog || console.log(this.ClassName +  "enabled: ", this.enabled)
-    // })
-
     this.userSettingsService.SettingsChangeAsObservable().subscribe(message => {
       // NoLog || console.log(this.ClassName + "receive message: " + message)
-      let newSettings = this.userSettingsService.settings;
-      NoLog || console.log(this.ClassName + "SCAO " + this.title, newSettings);
-      this.customizeHeader(newSettings);
+      // let newSettings = this.userSettingsService.settings;
+      // NoLog || console.log(this.ClassName + "SCAO " + this.title, newSettings);
+      // this.customizeHeader(newSettings);
     })
-
-
   }
 
-  customizeHeader(settings: UserSettings) {
-    this.enabled = true;
+  // customizeHeader(settings: UserSettings) {
+  //   this.enabled = true;
 
-    switch (settings.locationType) {
-      case LocationType.municipal: {
-        if (this.disableMunicipal) {
-        this.enabled = false;
-        }
-        break;
-      }
-      case LocationType.county: {
-        if (this.disableCounty) {
-        this.enabled = false;
-        }
-        break;
-      }
-      case LocationType.state:{
-        if (this.disableState) {
-          this.enabled = false;
-        }
-        break;
-      }
-      case LocationType.federal:{
-        if (this.disableFederal) {
-          this.enabled = false;
-        }
-        break;
-      }
-      case LocationType.nongovernment: {
-        if (this.disableFederal) {
-          this.enabled = false;
-        }
-        break;
-      }
-    }
-  }
+  //   switch (settings.locationType) {
+  //     case LocationType.municipal: {
+  //       if (this.disableMunicipal) {
+  //       this.enabled = false;
+  //       }
+  //       break;
+  //     }
+  //     case LocationType.county: {
+  //       if (this.disableCounty) {
+  //       this.enabled = false;
+  //       }
+  //       break;
+  //     }
+  //     case LocationType.state:{
+  //       if (this.disableState) {
+  //         this.enabled = false;
+  //       }
+  //       break;
+  //     }
+  //     case LocationType.federal:{
+  //       if (this.disableFederal) {
+  //         this.enabled = false;
+  //       }
+  //       break;
+  //     }
+  //     case LocationType.nongovernment: {
+  //       if (this.disableFederal) {
+  //         this.enabled = false;
+  //       }
+  //       break;
+  //     }
+  //   }
+  // }
 }

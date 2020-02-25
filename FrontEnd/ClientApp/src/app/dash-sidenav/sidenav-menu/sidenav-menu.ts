@@ -40,11 +40,6 @@ const NoLog = false;  // set to false for console logging
   deviceType: string;
   userSettingsService: UserSettingsService;
 
-  // Sending an 'LocationSelected' message with default values did not work because
-  // the listening components are not yet loaded.
-  // @Input() defaultLocation: string = null;
-  // @Input() defaultAgency: string = null;
-
   constructor(
     private navService: NavService,
     public router: Router,
@@ -105,10 +100,7 @@ const NoLog = false;  // set to false for console logging
         this.router.navigate(['dashboard']);
         location = item.displayName;
         let userSettings: UserSettings = new UserSettings('en', location,  null);
-        this.userSettingsService.sendSettings(userSettings);
-        // this.userSettingsService.sendBSubject(userSettings);
         this.userSettingsService.settings = userSettings;
-        // this.userSettingsService.sendSettingsChange();
 
         break;
       }
@@ -117,7 +109,7 @@ const NoLog = false;  // set to false for console logging
         let parent = this.menuTreeArray.getParent(item, this.navigationItems);
         location = parent.displayName;
         let userSettings: UserSettings = new UserSettings('en', location,  agency);
-        this.userSettingsService.sendSettings(userSettings)
+        this.userSettingsService.settings = userSettings;
         break;
       }
       case EntryType.link: {

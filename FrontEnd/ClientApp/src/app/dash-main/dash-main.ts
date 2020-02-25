@@ -16,7 +16,10 @@ export class DashMainComponent implements OnInit, OnDestroy {
   userSettingsService: UserSettingsService;
   location: string;
   agency: string;
+  isMunicipal: boolean;
   isCounty: boolean;
+  isState: boolean;
+  isCountry: boolean;
 
   // TODO These titles should be set from within the individual components (gov-info, bills, calendar, etc)
   govinfoTitle: string = "Politics";
@@ -36,26 +39,15 @@ export class DashMainComponent implements OnInit, OnDestroy {
 
   constructor(private _userSettingsService: UserSettingsService) {
     this.userSettingsService = _userSettingsService;
-
    }
 
    ngOnInit() {
-
-    // NoLog || console.log(this.ClassName + "subscribe to settings");
-    // this.userSettingsService.getBSubject().subscribe(settings => {
-    //   NoLog || console.log(this.ClassName + "bsubject ", settings);
-    //   this.location = settings.location;
-    //   this.agency = settings.agency;
-    // })
-
     this.userSettingsService.SettingsChangeAsObservable().subscribe(message => {
       // NoLog || console.log(this.ClassName + "receive message: " + message)
       let newSettings = this.userSettingsService.settings;
       NoLog || console.log(this.ClassName + "SCAO ", newSettings);
-      this.location = newSettings.location;
-      this.agency = newSettings.agency;
-  })
-
+      this.changeLocation(newSettings);
+    })
   }
 
   ngOnDestroy() {
@@ -68,7 +60,7 @@ export class DashMainComponent implements OnInit, OnDestroy {
     this.agency = item.agency;
     NoLog || console.log(this.ClassName + "location:" + this.location);
 
-    // this.isCounty = (this.location == "Lincoln County")
+    this.isCounty = (this.location == "Lincoln County")
   }
 
 }

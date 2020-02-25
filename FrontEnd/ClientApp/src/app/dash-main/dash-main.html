@@ -22,9 +22,7 @@
       iconcolor="color-mail-icon"
       title={{govinfoTitle}}
       tooltip="Displays information on governing political structure.">
-      <gm-gov-info
-        [location]="location"
-        [agency]="agency" >
+      <gm-gov-info>
       </gm-gov-info>
     </gm-small-card>
 
@@ -33,9 +31,7 @@
       iconcolor="color-document-icon"
       title={{billsTitle}}
       tooltip="Displays information on bills, proclamations, etc and their status.">
-      <gm-bills
-        [location]="location"
-        [agency]="agency" >
+      <gm-bills>
       </gm-bills>
     </gm-small-card>
 
@@ -44,9 +40,7 @@
       iconcolor="color-calendar-icon"
       title={{meetingsTitle}}
       tooltip="Displays a calendar of past and future meetings.">
-      <gm-meetings
-        [location]="location"
-        [agency]="agency">
+      <gm-meetings>
       </gm-meetings>
     </gm-small-card>
 
@@ -55,9 +49,7 @@
       iconcolor="color-photo-icon"
       title={{newsTitle}}
       tooltip="Displays current news.">
-      <gm-news
-        [location]="location"
-        [agency]="agency">
+      <gm-news>
       </gm-news>
     </gm-small-card>
 
@@ -65,53 +57,43 @@
 
   <gm-large-cards>
 
-    <gm-large-card
+    <gm-large-card *ngIf="isCounty"
       icon="fas fa-edit"
       iconcolor="color-calendar-icon"
       title={{notesTitle}}
-      tooltip="Notes about this location"
-      [disableMunicipal]=true
-      [disableCounty]=false>
+      tooltip="Notes about this location">
       <gm-notes></gm-notes>
     </gm-large-card>
 
-    <gm-large-card
+    <gm-large-card *ngIf="isCounty"
       icon="fas fa-book-ope"
       iconcolor="color-calendar-icon"
       title={{minutesTitle}}
-      tooltip="Meeting Minutes"
-      [disableMunicipal]=true
-      [disableCounty]=false>
+      tooltip="Meeting Minutes">
       <gm-minutes></gm-minutes>
     </gm-large-card>
 
-    <gm-large-card
+    <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-edit"
       iconcolor="color-calendar-icon"
       title={{fixasrTitle}}
-      tooltip="Proofread speech recognition text."
-      [disableMunicipal]=false
-      [disableCounty]=true>
+      tooltip="Proofread speech recognition text.">
       <gm-fixasr></gm-fixasr>
     </gm-large-card>
 
-    <gm-large-card
+    <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-hand-point-right"
       iconcolor="color-calendar-icon"
       title={{addtagsTitle}}
-      tooltip="Add tags to text."
-      [disableMunicipal]=false
-      [disableCounty]=true>
+      tooltip="Add tags to text.">
       <gm-addtags></gm-addtags>
     </gm-large-card>
 
-    <gm-large-card
+    <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-book-open"
       iconcolor="color-calendar-icon"
       title={{viewMeetingTitle}}
-      tooltip="Browse or search latest meeting."
-      [disableMunicipal]=false
-      [disableCounty]=true>
+      tooltip="Browse or search latest meeting.">
       <gm-viewmeeting></gm-viewmeeting>
     </gm-large-card>
 
@@ -145,7 +127,6 @@
       title={{chatTitle}}
       tooltip="This is a chat window for discussing issues or the project.">
       <gm-chat></gm-chat>
-      <!-- Temporarily removed gm=chat elementin dash-main.html -->
     </gm-large-card>
 
     <gm-large-card

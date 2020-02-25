@@ -7,9 +7,6 @@ export { UserSettings, LocationType };
 
 @Injectable({ providedIn: 'root' })
 export class UserSettingsService {
-  //private subject = new Subject<any>();
-  private settingsSubject = new Subject<UserSettings>();
-  // private bSubject = new BehaviorSubject<UserSettings>(new UserSettings());
   private settingsChange = new BehaviorSubject<string>("Initial");
 
   private _settings: UserSettings;
@@ -18,29 +15,10 @@ export class UserSettingsService {
     return copy;
   }
   public set settings(value: UserSettings) {
+    // TODO return private value read-only?
     this._settings = Object.assign({}, value);
     this.sendSettingsChange();
   }
-
-  clearMessages() {
-      this.settingsSubject.next();
-  }
-
-  sendSettings(settings: UserSettings) {
-    this.settingsSubject.next(settings);
-  }
-
-  getSettings(): Observable<UserSettings> {
-    return this.settingsSubject.asObservable();
-  }
-
-  // sendBSubject(settings: UserSettings){
-  //   this.bSubject.next(settings);
-  // }
-
-  // getBSubject() {
-  //   return this.bSubject;
-  // }
 
   sendSettingsChange(){
     this.settingsChange.next("SettingsChange");

@@ -14,20 +14,21 @@ const NoLog = true;  // set to false for console logging
 export class HeaderComponent implements OnInit {
   private ClassName: string = this.constructor.name + ": ";
   messages: any[] = [];
-  //locSubscription: Subscription;
   usSubscription: Subscription;
   location: string;
-  //location: string ="Boothbay Harbor";
   backgroundStyle: any;
 
   constructor(public navService: NavService, private userSettingsService: UserSettingsService) {
-    this.usSubscription = this.userSettingsService.getSettings().subscribe(settings => {
-      NoLog || console.log(this.ClassName + "receive settings=", settings);
-      this.changeLocation(settings);
-    })
   }
 
   ngOnInit() {
+
+    this.userSettingsService.SettingsChangeAsObservable().subscribe(message => {
+      // NoLog || console.log(this.ClassName + "receive message: " + message)
+      let newSettings = this.userSettingsService.settings;
+      NoLog || console.log(this.ClassName + "SCAO ", newSettings);
+      this.changeLocation(newSettings);
+    })
     this.changeBackground("generic");
   }
 

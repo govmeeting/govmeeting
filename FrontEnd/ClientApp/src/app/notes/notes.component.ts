@@ -15,9 +15,6 @@ export class NotesComponent implements OnInit {
 
   constructor(private _userSettingsService: UserSettingsService) {
     this.userSettingsService = _userSettingsService;
-    // this.subscription = this.userSettingsService.getSettings().subscribe(settings => {
-    //   this.changeLocation(settings);
-    // })
    }
 
   ngOnInit() {
