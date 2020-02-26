@@ -6,7 +6,7 @@
 
     <!-- <gm-small-card
       icon="far fa-envelope"
-      iconcolor="color-mail-icon"
+      iconcolor="icon-color-red"
       title="Configure"
       tooltip="This is the help for ConfigService.">
       <app-config></app-config>
@@ -15,7 +15,7 @@
     <gm-small-card
       class="top1"
       icon="fas fa-sitemap"
-      iconcolor="color-mail-icon"
+      iconcolor="icon-color-red"
       title={{govinfoTitle}}>
       <gm-gov-info>
       </gm-gov-info>
@@ -23,7 +23,7 @@
 
     <gm-small-card *ngIf="!isCounty" class="top2"
       icon="far fa-file-alt"
-      iconcolor="color-document-icon"
+      iconcolor="icon-color-orange"
       title={{billsTitle}}>
       <gm-bills>
       </gm-bills>
@@ -31,7 +31,7 @@
 
     <gm-small-card class="top3"
       icon="fas fa-users"
-      iconcolor="color-calendar-icon"
+      iconcolor="icon-color-green"
       title={{meetingsTitle}}>
       <gm-meetings>
       </gm-meetings>
@@ -39,7 +39,7 @@
 
     <gm-small-card class="top4"
       icon="far fa-newspaper"
-      iconcolor="color-photo-icon"
+      iconcolor="icon-color-purple"
       title={{newsTitle}}>
       <gm-news>
       </gm-news>
@@ -51,84 +51,84 @@
 
     <gm-large-card *ngIf="isCounty"
       icon="fas fa-edit"
-      iconcolor="color-calendar-icon"
+      iconcolor="icon-color-green"
       title={{notesTitle}}>
       <gm-notes></gm-notes>
     </gm-large-card>
 
     <gm-large-card *ngIf="isCounty"
-      icon="fas fa-book-ope"
-      iconcolor="color-calendar-icon"
+      icon="fas fa-book-open"
+      iconcolor="icon-color-green"
       title={{minutesTitle}}>
       <gm-minutes></gm-minutes>
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-edit"
-      iconcolor="color-calendar-icon"
+      iconcolor="icon-color-green"
       title={{fixasrTitle}}>
       <gm-fixasr></gm-fixasr>
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-hand-point-right"
-      iconcolor="color-calendar-icon"
+      iconcolor="icon-color-green"
       title={{addtagsTitle}}>
       <gm-addtags></gm-addtags>
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-book-open"
-      iconcolor="color-calendar-icon"
+      iconcolor="icon-color-green"
       title={{viewMeetingTitle}}>
       <gm-viewmeeting></gm-viewmeeting>
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-hammer"
-      iconcolor="color-calendar-icon"
+      iconcolor="icon-color-green"
       title={{workitemsTitle}}>
       <gm-workitems></gm-workitems>
     </gm-large-card>
 
     <gm-large-card
       icon="fas fa-exclamation"
-      iconcolor="color-calendar-icon"
+      iconcolor="icon-color-green"
       title={{issuesTitle}}>
      <gm-issues></gm-issues>
     </gm-large-card>
 
     <gm-large-card
       icon="fas fa-user-friends"
-      iconcolor="color-calendar-icon"
+      iconcolor="icon-color-green"
       title={{officialsTitle}}>
       <gm-officials></gm-officials>
     </gm-large-card>
 
     <gm-large-card
       icon="far fa-calendar-check"
-      iconcolor="color-mail-icon"
+      iconcolor="icon-color-red"
       title={{virtualMeetingTitle}}>
       <gm-virtual-meeting></gm-virtual-meeting>
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-exclamation"
-      iconcolor="color-calendar-icon"
+      iconcolor="icon-color-green"
       title={{alertsTitle}}>
       <gm-alerts></gm-alerts>
     </gm-large-card>
 
     <gm-large-card
       icon="fas fa-comments"
-      iconcolor="color-mail-icon"
+      iconcolor="icon-color-red"
       title={{chatTitle}}>
       <gm-chat></gm-chat>
     </gm-large-card>
 
     <!-- <gm-large-card
       icon="far fa-calendar-check"
-      iconcolor="color-calendar-icon"
+      iconcolor="icon-color-green"
       title={{chartsTitle}}>
       [ The software uses the  <a href="https://www.amcharts.com/"> "amcharts" </a> plugin for
        displaying graphical information. Check back for working examples. ] -->

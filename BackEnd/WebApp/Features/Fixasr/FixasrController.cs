@@ -11,9 +11,8 @@ using Microsoft.AspNetCore.Hosting;
 using GM.FileDataRepositories;
 using GM.ViewModels;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+// $define NOAUTH       // uncomment this to disable auth. You can also define NOAUTH in project properties.
 
-// TODO #### Change all namespace names from "Models", "Controllers", etc to feature name.
 namespace GM.WebApp.Features.Fixasr
 {
     [Route("api/[controller]")]
@@ -39,7 +38,9 @@ namespace GM.WebApp.Features.Fixasr
 
         // POST api/fixasr
         // TODO Add next line back when working
-        //[Authorize(Policy = "Proofreader")]
+#if NOAUTH
+        [Authorize(Policy = "Proofreader")]
+#endif
         [HttpPost("{meetingId}/{part}")]
         public bool Post([FromBody]FixasrView value, int meetingId, int part)
         {

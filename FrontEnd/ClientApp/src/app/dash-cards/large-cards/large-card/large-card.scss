@@ -1,4 +1,6 @@
-@import "../../../../styles.scss";
+@import "../../../../colors.scss";
+
+$color-jungle: #27ae60;
 
 .card {
   display: flex;
@@ -14,7 +16,7 @@
     align-items: center;
     justify-content: space-between;
     height: 50px;
-    background-color: $color-fiord;
+    background-color: $color-deep-blue;
     color: $color-white;
 
     &-icon {

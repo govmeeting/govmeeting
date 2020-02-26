@@ -13,6 +13,8 @@ using GM.FileDataRepositories;
 using GM.ViewModels;
 using Microsoft.Extensions.Logging;
 
+// $define NOAUTH       // uncomment this to disable auth. You can also define NOAUTH in project properties.
+
 
 namespace GM.WebApp.Features.Addtags
 {
@@ -41,7 +43,9 @@ namespace GM.WebApp.Features.Addtags
 
         //TODO Add authorization check that user's location matches that of the government entity.
         // We need to read the location from the user's claims.
-        //[Authorize(Policy = "Editor")]
+#if NOAUTH
+        [Authorize(Policy = "Editor")]
+#endif
         [HttpPost("{meetingId}")]          // POST api/addtags
         public bool Post([FromBody]AddtagsView value, int meetingId)
         //public void Post(Addtags value)

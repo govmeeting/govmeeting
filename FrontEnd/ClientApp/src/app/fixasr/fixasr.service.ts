@@ -39,26 +39,6 @@ export class FixasrService {
             .pipe(catchError(this.errHandling.handleError));
     }
 
-    // postChanges(asrtext: FixasrView): Observable < any > {
-    //     // See notes above for meetingId & part.
-    //     let url: string = this.fixasrUrl;
-    //     url = url + '/' + this.meetingId + '/' + this.part;
-    //     NoLog || console.log(this.ClassName + 'postChanges  ' + url);
-    //     return this.postData(url, asrtext);
-    // }
-
-    // private postData(url: string, asrtext: FixasrView): Observable<FixasrView> {
-    //     const httpOptions = {
-    //         headers: new HttpHeaders({
-    //             'Content-Type': 'application/json',
-    //         })
-    //     };
-    //     NoLog || console.log(this.ClassName + 'postData');
-    //     // TODO - handle null return. Here we just cast to the correct object type.
-    //     return <Observable<FixasrView>> this.http.post<FixasrView>(url, asrtext, httpOptions)
-    //         .pipe(catchError(this.errHandling.handleError));
-    // }
-
     public postChanges(asrtext: FixasrView) {
       NoLog || console.log(this.ClassName + 'postChanges');
       let url = this.fixasrUrl + '/' + this.meetingId + '/' + this.part;

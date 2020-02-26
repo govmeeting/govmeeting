@@ -1,7 +1,7 @@
 // for debug
 //.card  { border: 3px dashed red; }
 
- @import "../../../../styles.scss";
+ @import "../../../../colors.scss";
 
 .card {
   position: relative;
@@ -12,7 +12,7 @@
   background-color: #fff;
   margin-bottom: 20px;
   -webkit-column-break-inside: avoid;
-  border: 2px solid $color-fiord;
+  border: 2px solid $color-deep-blue;
 
   &__content {
     background-color: PaleGoldenRod ;
@@ -34,7 +34,7 @@
     align-items: center;
     justify-content: space-between;
     height: 50px;
-    background-color: $color-fiord;
+    background-color: $color-deep-blue;
     color: $color-white;
 
     &-icon {

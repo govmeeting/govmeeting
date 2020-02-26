@@ -1,3 +1,6 @@
+@import "../../colors.scss";
+
+
 .main-header {
   position: fixed;
   display: flex;
@@ -21,14 +24,15 @@
 
   &-button {
 
-    // background-color: $color-mischka;
-    background-color: lightblue;
+    background-color: $color-header-items;
+    //background-color: lightblue;
     border-radius: 50%;
     margin-top: 5px;
   }
   &-govmeeting {
     // background-color: $color-mischka;
-    background-color: lightblue;
+    background-color: $color-header-items;
+    // background-color: lightblue;
     border-radius: 20%;
     margin-left: 20px;
     margin-top: 5px;
@@ -37,8 +41,9 @@
   }
   &-location {
     // background-color: $color-mischka;
+    background-color: $color-header-items;
     margin-top: 5px;
-    background-color: lightblue;
+    // background-color: lightblue;
     border-radius: 20%;
     font-size: 120%;
     font-weight: bold;
