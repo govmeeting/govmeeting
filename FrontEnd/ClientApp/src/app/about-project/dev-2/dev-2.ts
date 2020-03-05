@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'gm-manual-processing',
-  templateUrl: './manual-processing.html',
-  styleUrls: ['./manual-processing.scss']
+  templateUrl: './dev-2.html',
+  styleUrls: ['./dev-2.scss']
 })
-export class ManualProcessingComponent implements OnInit {
+export class Dev2Component implements OnInit {
   @Input() showtitle: boolean = true;
 
   constructor() { }

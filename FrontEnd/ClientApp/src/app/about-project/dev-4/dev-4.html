@@ -1,32 +1,10 @@
-<mat-card>
-  <!-- <mat-card-title>Manual Processing</mat-card-title> -->
-  <mat-card-title *ngIf="showtitle"> Page 1 - Setup</mat-card-title>
+ <mat-card>
+ <mat-card-title *ngIf="showtitle"> Workflow Application </mat-card-title>
 
-  <h2> Improve speech Recognition</h2>
 
   <p>
-    The more accurate the speech recognition, the less manual proofreading must be done.
-    The software use the Google Speech API. Multi-speaker conversational speech is challanging.
-    But the accuracy of the engine keeps improving.
-  </p>
-  <p>There are ways that we can improve the accuracy. </p>
-  <ul>
-    <li>
-      We do not need to transcribe in real time. We can pre-process the audo to clirify it, remove extraneous sounds, etc.
-    </li>
-    <li>
-      There are a number of techniques that Google provides to increase accuracy:
-      speech adaptation, custom dictionaries, phrase collections, etc.
-    </li>
-  </ul>
-
-
-
-
-  <h2> Workflow Application </h2>
-
-  <p>
-    The  project "Workflow" in folder "BackEnd/Workflow" does all the auto-processing of recordings and transcripts.
+    The  project "WorkflowApp" in folder "BackEnd/WorkflowApp" does all the auto-processing of recordings and transcripts.
+    It also co-ordinates manual processing with auto-processing.
     When you run this project, it will watch for new files to arrive into the folder "Datafiles/TO_PROCESS". If it is a video file,
     it will process the file an produce a transcript". The transcript can be found in the "Datafiles/WORK" folder in a subfolder named after
     the government agency whose meeting it is for. This transcript must still be further processed as described in
@@ -45,5 +23,26 @@
   </p>
 
 
+  <h3> Improve speech Recognition</h3>
+
+  <p>
+    The more accurate the speech recognition, the less manual proofreading must be done.
+    The software use the Google Speech API. Multi-speaker conversational speech is challanging.
+    But the accuracy of the engine keeps improving.
+  </p>
+  <p>There are ways that we can improve the accuracy. </p>
+  <ul>
+    <li>
+      We do not need to transcribe in real time. We can pre-process the audo to clirify it, remove extraneous sounds, etc.
+    </li>
+    <li>
+      There are a number of techniques that Google provides to increase accuracy:
+      speech adaptation, custom dictionaries, phrase collections, etc.
+    </li>
+  </ul>
+
 </mat-card>
+
+
+
 

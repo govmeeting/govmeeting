@@ -47,9 +47,11 @@ let aboutpagesMenu = new NavItem(null, 'About', null,
   new NavItem(EntryType.link, 'Workflow', 'trending_up', 'workflow'),
   new NavItem(null, 'Developer Notes', 'school',
   [
-    new NavItem(EntryType.link, 'Page 1 - Setup', 'directions_boat', 'autoprocessing'),
-    new NavItem(EntryType.link, 'Page 2', 'rowing', 'manualprocessing'),
-    new NavItem(EntryType.link, 'Page 3', 'build', 'developernotes'),
+    new NavItem(EntryType.link, 'Setup', 'build', 'dev1'),
+    new NavItem(EntryType.link, 'ClientApp', 'computer', 'dev2'),
+    new NavItem(EntryType.link, 'WebApi', 'wifi', 'dev3'),
+    new NavItem(EntryType.link, 'WorkflowApp', 'trending_up', 'dev4'),
+    new NavItem(EntryType.link, 'Other Apps', 'smartphone', 'dev5'),
   ])
 ])
 

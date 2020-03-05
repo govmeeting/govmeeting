@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'gm-developer-notes',
-  templateUrl: './developer-notes.html',
-  styleUrls: ['./developer-notes.scss']
+  templateUrl: './dev-3.html',
+  styleUrls: ['./dev-3.scss']
 })
-export class DeveloperNotesComponent implements OnInit {
+export class Dev3Component implements OnInit {
   @Input() showtitle: boolean = true;
 
   constructor() { }

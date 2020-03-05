@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'gm-auto-processing',
-  templateUrl: './auto-processing.html',
-  styleUrls: ['./auto-processing.scss']
+  templateUrl: './dev-1.html',
+  styleUrls: ['./dev-1.scss']
 })
-export class AutoProcessingComponent implements OnInit {
+export class Dev1Component implements OnInit {
   @Input() showtitle: boolean = true;
 
   constructor() { }

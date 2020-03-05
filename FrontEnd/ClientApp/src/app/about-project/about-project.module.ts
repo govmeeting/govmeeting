@@ -6,20 +6,24 @@ import { DemoMaterialModule } from '../material';
 import { PurposeComponent } from './purpose/purpose';
 import { VolunteerComponent } from './volunteer/volunteer';
 import { OverviewComponent } from './overview/overview';
-import { AutoProcessingComponent } from './auto-processing/auto-processing';
-import { ManualProcessingComponent } from './manual-processing/manual-processing';
 import { WorkflowComponent } from './workflow/workflow';
-import { DeveloperNotesComponent } from './developer-notes/developer-notes'
+import { Dev1Component } from './dev-1/dev-1';
+import { Dev2Component } from './dev-2/dev-2';
+import { Dev3Component } from './dev-3/dev-3'
+import { Dev4Component } from './dev-4/dev-4'
+import { Dev5Component } from './dev-5/dev-5'
 
 @NgModule({
   declarations: [
     PurposeComponent,
     VolunteerComponent,
     OverviewComponent,
-    AutoProcessingComponent,
-    ManualProcessingComponent,
     WorkflowComponent,
-    DeveloperNotesComponent
+    Dev1Component,
+    Dev2Component,
+    Dev3Component,
+    Dev4Component,
+    Dev5Component
   ],
   imports: [
     CommonModule,

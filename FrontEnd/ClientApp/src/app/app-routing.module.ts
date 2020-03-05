@@ -8,9 +8,11 @@ import { DashMainComponent } from './dash-main/dash-main';
 import { PurposeComponent } from './about-project/purpose/purpose';
 import { OverviewComponent } from './about-project/overview/overview';
 import { WorkflowComponent } from './about-project/workflow/workflow';
-import { AutoProcessingComponent } from './about-project/auto-processing/auto-processing';
-import { ManualProcessingComponent } from './about-project/manual-processing/manual-processing';
-import { DeveloperNotesComponent } from './about-project/developer-notes/developer-notes';
+import { Dev1Component } from './about-project/dev-1/dev-1';
+import { Dev2Component } from './about-project/dev-2/dev-2';
+import { Dev3Component } from './about-project/dev-3/dev-3';
+import { Dev4Component } from './about-project/dev-4/dev-4';
+import { Dev5Component } from './about-project/dev-5/dev-5';
 
 const routes: Routes = [
     {
@@ -24,9 +26,11 @@ const routes: Routes = [
     { path: 'purpose', component: PurposeComponent},
     { path: 'overview', component: OverviewComponent},
     { path: 'workflow', component: WorkflowComponent},
-    { path: 'autoprocessing', component: AutoProcessingComponent},
-    { path: 'manualprocessing', component: ManualProcessingComponent},
-    { path: 'developernotes', component: DeveloperNotesComponent},
+    { path: 'dev1', component: Dev1Component},
+    { path: 'dev2', component: Dev2Component},
+    { path: 'dev3', component: Dev3Component},
+    { path: 'dev4', component: Dev4Component},
+    { path: 'dev5', component: Dev5Component},
     { path: '**', redirectTo: 'purpose' }
 
 ];
