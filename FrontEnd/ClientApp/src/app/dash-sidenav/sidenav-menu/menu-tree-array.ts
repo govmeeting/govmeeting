@@ -1,6 +1,8 @@
 import { NavItem } from './nav-item';
 import { navigationItems } from './menu-items';
 
+const NoLog = true;  // set to false for console logging
+
 export class MenuTreeArray {
   private ClassName: string = this.constructor.name + ": ";
   positions: number[];
@@ -44,12 +46,15 @@ export class MenuTreeArray {
       // We now know this item's depth in the tree, from the length of the position array.
       item.depth = item.position.length -1 ;
 
+      NoLog || console.log(this.ClassName + "Position of '" + item.displayName + "' = " + item.position.toString());
+
       if (item.children) {
         // If this item has children, we push its location onto this.positions and process the children
         this.positions.push(pos);
         this.assignPositions(item.children)
         // When finished with the children, we remove its location from this.positions.
         this.positions.pop();
+      } else {
       }
       pos = pos + 1;
     }

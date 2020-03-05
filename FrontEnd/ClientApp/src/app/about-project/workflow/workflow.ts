@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./workflow.scss']
 })
 export class WorkflowComponent implements OnInit {
-  @Input() showtitle: boolean = true;
+  // @Input() showtitle: boolean = true;
 
   constructor() { }
 

@@ -45,13 +45,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="..\..\FrontEnd\ClientApp\.vscode\**" />
+    <None Remove="..\..\FrontEnd\ClientApp\dist\ClientApp\**" />
+    <None Remove="..\..\FrontEnd\ClientApp\e2e\**" />
     <None Remove="..\..\FrontEnd\ClientApp\src\**" />
     <None Remove="ClientApp\src\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="..\..\FrontEnd\ClientApp\.editorconfig" />
+    <None Remove="..\..\FrontEnd\ClientApp\.gitignore" />
+    <None Remove="..\..\FrontEnd\ClientApp\angular.json" />
+    <None Remove="..\..\FrontEnd\ClientApp\browserslist" />
+    <None Remove="..\..\FrontEnd\ClientApp\karma.conf.js" />
     <None Remove="..\..\FrontEnd\ClientApp\package-lock.json" />
     <None Remove="..\..\FrontEnd\ClientApp\package.json" />
+    <None Remove="..\..\FrontEnd\ClientApp\README.md" />
+    <None Remove="..\..\FrontEnd\ClientApp\TODO.ts" />
+    <None Remove="..\..\FrontEnd\ClientApp\tsconfig.app.json" />
+    <None Remove="..\..\FrontEnd\ClientApp\tsconfig.json" />
+    <None Remove="..\..\FrontEnd\ClientApp\tsconfig.spec.json" />
+    <None Remove="..\..\FrontEnd\ClientApp\tslint.json" />
   </ItemGroup>
 
   <ItemGroup>

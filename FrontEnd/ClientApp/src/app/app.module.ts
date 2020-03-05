@@ -56,7 +56,7 @@ import { ConfigComponent } from './config/config.component';
 
 import { AppData } from './appdata';
 import { CalendarComponent } from './calendar/calendar.component';
-import { NewFeatureComponent } from './new-feature/new-feature.component';
+// import { NewFeatureComponent } from './new-feature/new-feature.component';
 import { PopupComponent } from './popup/popup.component';
 import { NotesComponent } from './notes/notes.component';
 import { MinutesComponent } from './minutes/minutes.component';
@@ -66,7 +66,7 @@ import { IssuesComponent } from './issues/issues.component';
 import { OfficialsComponent } from './officials/officials.component';
 // import { CalendarComponent } from './calendar/calendar';
 
-const _isAspServerRunning = false;
+const isAspServerRunning = false;
 
 //////// for testing/////////////////////////////////
 
@@ -118,7 +118,7 @@ const _isAspServerRunning = false;
     NewsComponent,
     ConfigComponent,
     CalendarComponent,
-    NewFeatureComponent,
+    // NewFeatureComponent,
     PopupComponent,
     NotesComponent,
     MinutesComponent,
@@ -147,14 +147,14 @@ const _isAspServerRunning = false;
       provide: AppData,
       // TODO - Read APP_DATA from the html.
       // useValue: window['APP_DATA']    // Get settings from html
-      useValue: { isAspServerRunning: _isAspServerRunning },
+      useValue: { isAspServerRunning: isAspServerRunning },
     },
 
     // If you use the stubs for these services, they will not call the Asp.Net server,
     // but will instead return static data.
-    { provide: ViewMeetingService, useClass: _isAspServerRunning ? ViewMeetingService : ViewMeetingServiceStub },
-    { provide: AddtagsService, useClass: _isAspServerRunning ? AddtagsService : AddtagsServiceStub },
-    { provide: FixasrService, useClass: _isAspServerRunning ? FixasrService : FixasrServiceStub },
+    { provide: ViewMeetingService, useClass: isAspServerRunning ? ViewMeetingService : ViewMeetingServiceStub },
+    { provide: AddtagsService, useClass: isAspServerRunning ? AddtagsService : AddtagsServiceStub },
+    { provide: FixasrService, useClass: isAspServerRunning ? FixasrService : FixasrServiceStub },
 
     // { provide: ViewMeetingService, useClass: ViewMeetingServiceStub },
     // { provide: AddtagsService, useClass: AddtagsServiceStub },

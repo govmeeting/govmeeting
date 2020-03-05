@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./overview.scss']
 })
 export class OverviewComponent implements OnInit {
-  @Input() showtitle: boolean = true;
+  // @Input() showtitle: boolean = true;
 
   constructor() { }
 

@@ -83,7 +83,6 @@ const NoLog = true;  // set to false for console logging
     }});
   }
 
-
   HandleSelection(item: NavItem){
     let location: string;
     let agency: string;
@@ -115,37 +114,7 @@ const NoLog = true;  // set to false for console logging
       }
       case EntryType.link: {
         NoLog || console.log(this.ClassName + "Selected a link");
-        switch (item.displayName) {
-          case 'Purpose': {
-            this.router.navigateByUrl('purpose');
-            break;
-          }
-          case 'Overview': {
-            this.router.navigateByUrl('overview');
-            break;
-          }
-          case 'Workflow': {
-            this.router.navigateByUrl('workflow');
-            break;
-          }
-          case 'Auto Processing': {
-            this.router.navigateByUrl('autoprocessing');
-            break;
-          }
-          case 'Manual Processing': {
-            this.router.navigateByUrl('manualprocessing');
-            break;
-          }
-          case 'Extend Govmeeting': {
-            this.router.navigateByUrl('extendgovmeeting');
-            break;
-          }
-          case '[All Pages]': {
-            this.router.navigateByUrl('about');
-            break;
-          }
-        }
-        break;
+        this.router.navigateByUrl(item.route);
       }
     }
     if (this.isMobile()) {

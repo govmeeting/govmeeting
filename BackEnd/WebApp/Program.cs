@@ -33,27 +33,10 @@ namespace GM.WebApp
                 throw;
             }
 
-            //CreateWebHostBuilder(args).Build().Run();
-            var host = CreateWebHostBuilder(args).Build();
-
-            //using (var scope = host.Services.CreateScope())
-            //{
-            //    var services = scope.ServiceProvider;
-            //    try
-            //    {
-            //        //var context = services.GetRequiredService<SchoolContext>();
-            //        //DbInitializer.Initialize(context);
-            //        var initializer = services.GetRequiredService<DbInitializer>();
-            //        _ = initializer.Initialize();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        //var logger = services.GetRequiredService<ILogger<Program>>();
-            //        logger.Error(ex, "An error occurred while seeding the database.");
-            //    }
-            //}
-
-            host.Run();
+            CreateWebHostBuilder(args)
+            .Build()
+            //.MigrateDatabase()
+            .Run();
 
         }
 
@@ -82,7 +65,6 @@ namespace GM.WebApp
                     logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
                 })
                 .UseNLog();  // NLog: setup NLog for Dependency injection
-                //.Build();
     
     }
 }

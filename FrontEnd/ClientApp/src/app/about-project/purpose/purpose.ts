@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./purpose.scss']
 })
 export class PurposeComponent implements OnInit {
-  @Input() showtitle: boolean = true;
+  // @Input() showtitle: boolean = true;
 
   constructor() { }
 

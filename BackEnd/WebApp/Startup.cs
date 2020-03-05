@@ -60,7 +60,6 @@ namespace GM.WebApp
 
             _logger.LogTrace("In Startup ConfigureServices");
 
-
             // Set a variable in the gdc which is be used in NLog.config for the
             // base path of our app: ${gdc:item=appbasepath} 
             _logger.LogTrace("Set value in GDC for NLog");
@@ -88,7 +87,11 @@ namespace GM.WebApp
             // We will be able to access ApplicationDbContext in a controller with:
             //    public MyController(ApplicationDbContext context) { ... }
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+                options.UseSqlServer(
+                    Configuration["AppSettings:ConnectionString"]
+                    //sqlServerOptions => sqlServerOptions.MigrationsAssembly("DatabaseAccess_Lib")
+                    //sqlServerOptions => sqlServerOptions.MigrationsAssembly("WebApp")
+                    ));
 
             _logger.LogTrace("Add Add Authentication");
             //ConfigureAuthenticationServices(services);
@@ -142,18 +145,10 @@ namespace GM.WebApp
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                try
-                {
-                    // db.Database.Migrate();
-                }
-                catch {
-                    _logger.LogDebug("db.Database.Migrate() failed");
-                }
-
-            }
+            //else
+            //{
+            //    app.UseExceptionHandler("/Home/Error");
+            //}
 
             _logger.LogTrace("Use static files & spa static files");
             app.UseStaticFiles();
@@ -216,7 +211,7 @@ namespace GM.WebApp
 
             _logger.LogTrace("Initialize database");
             //Run migrations and create seed data
-            dbInitializer.Initialize().Wait();
+            //dbInitializer.Initialize().Wait();
 
 
             _logger.LogTrace("Copy test data to Datafiles folder");

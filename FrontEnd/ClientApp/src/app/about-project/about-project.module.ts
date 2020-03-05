@@ -11,7 +11,7 @@ import { OverviewComponent } from './overview/overview';
 import { AutoProcessingComponent } from './auto-processing/auto-processing';
 import { ManualProcessingComponent } from './manual-processing/manual-processing';
 import { WorkflowComponent } from './workflow/workflow';
-import { ExtendGovmeetingComponent } from './extend-govmeeting/extend-govmeeting'
+import { DeveloperNotesComponent } from './developer-notes/developer-notes'
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { ExtendGovmeetingComponent } from './extend-govmeeting/extend-govmeeting
     AutoProcessingComponent,
     ManualProcessingComponent,
     WorkflowComponent,
-	ExtendGovmeetingComponent
+    DeveloperNotesComponent
   ],
   imports: [
     CommonModule,

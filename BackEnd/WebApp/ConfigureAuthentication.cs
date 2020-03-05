@@ -13,6 +13,8 @@ namespace GM.WebApp
 {
     public partial class Startup
     {
+        // TODO - see: Migrate authentication and Identity to ASP.NET Core 2.0;  06/21/2019
+
         public void ConfigureAuthenticationServices(
             IServiceCollection services,
             StartupLogger _logger

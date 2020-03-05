@@ -42,13 +42,15 @@ let nonGovernment = new NavItem(null, 'Non-Government', 'group',
 
 let aboutpagesMenu = new NavItem(null, 'About', null,
 [
-  new NavItem(EntryType.link, 'Purpose', 'info'),
-  new NavItem(EntryType.link, 'Overview', 'toc'),
-  new NavItem(EntryType.link, 'Workflow', 'trending_up'),
-  new NavItem(EntryType.link, 'Auto Processing', 'directions_boat'),
-  new NavItem(EntryType.link, 'Manual Processing', 'rowing'),
-  new NavItem(EntryType.link, 'Extend Govmeeting', 'build'),
-  new NavItem(EntryType.link, '[All Pages]', 'school')
+  new NavItem(EntryType.link, 'Purpose', 'info', 'purpose'),
+  new NavItem(EntryType.link, 'Overview', 'toc', 'overview'),
+  new NavItem(EntryType.link, 'Workflow', 'trending_up', 'workflow'),
+  new NavItem(null, 'Developer Notes', 'school',
+  [
+    new NavItem(EntryType.link, 'Page 1 - Setup', 'directions_boat', 'autoprocessing'),
+    new NavItem(EntryType.link, 'Page 2', 'rowing', 'manualprocessing'),
+    new NavItem(EntryType.link, 'Page 3', 'build', 'developernotes'),
+  ])
 ])
 
 
