@@ -71,12 +71,6 @@ const NoLog = true;  // set to false for console logging
       this.navService.openFirstMenuLevels();
     }
 
-  //   ngAfterViewInit() {
-  //   this.navService.sidenav = this.sidenav;
-  //   this.navService.navigationItems = this.navigationItems;
-  //   this.navService.openFirstMenuLevels();
-  // }
-
   openDialog(){
     this.dialog.open(PopupComponent,{ data: {
       message:  "Error!!!"

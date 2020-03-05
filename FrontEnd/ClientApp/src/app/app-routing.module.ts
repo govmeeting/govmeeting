@@ -5,7 +5,6 @@ import { ViewMeetingComponent } from './viewmeeting/viewmeeting'
 import { AddtagsComponent } from './addtags/addtags'
 import { FixasrComponent } from './fixasr/fixasr'
 import { DashMainComponent } from './dash-main/dash-main';
-import { AboutProjectComponent } from './about-project/about-project';
 import { PurposeComponent } from './about-project/purpose/purpose';
 import { OverviewComponent } from './about-project/overview/overview';
 import { WorkflowComponent } from './about-project/workflow/workflow';
@@ -14,13 +13,10 @@ import { ManualProcessingComponent } from './about-project/manual-processing/man
 import { DeveloperNotesComponent } from './about-project/developer-notes/developer-notes';
 
 const routes: Routes = [
-
-    // { path: '', redirectTo: 'about' },
     {
       path: 'login',
       redirectTo: 'account/login'
     },
-
     // { path: 'viewmeeting', component: ViewMeetingComponent },
     // { path: 'addtags', component: AddtagsComponent },
     // { path: 'fixasr', component: FixasrComponent },
@@ -31,7 +27,6 @@ const routes: Routes = [
     { path: 'autoprocessing', component: AutoProcessingComponent},
     { path: 'manualprocessing', component: ManualProcessingComponent},
     { path: 'developernotes', component: DeveloperNotesComponent},
-    { path: 'about', component: AboutProjectComponent},
     { path: '**', redirectTo: 'purpose' }
 
 ];
