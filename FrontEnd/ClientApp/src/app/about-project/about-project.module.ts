@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DemoMaterialModule } from '../material';
+import { HttpClientModule } from '@angular/common/http'
+import { NgxMdModule } from 'ngx-md';
+
 
 import { PurposeComponent } from './purpose/purpose';
 import { VolunteerComponent } from './volunteer/volunteer';
@@ -28,7 +31,9 @@ import { Dev5Component } from './dev-5/dev-5'
   imports: [
     CommonModule,
     RouterModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    HttpClientModule,
+    NgxMdModule.forRoot()
   ],
   exports: [
     DemoMaterialModule,

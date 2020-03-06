@@ -125,7 +125,7 @@ const isAspServerRunning = false;
     AlertsComponent,
     WorkitemsComponent,
     IssuesComponent,
-    OfficialsComponent
+    OfficialsComponent,
     // CalendarComponent
   ],
   exports: [
