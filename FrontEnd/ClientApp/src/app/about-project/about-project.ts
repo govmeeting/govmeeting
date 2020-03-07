@@ -1,23 +1,30 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+const defaultDocument = "assets/docs/purpose.md"
+const defaultTitle = "Purpose";
 @Component({
   selector: 'gm-auto-processing',
   templateUrl: './about-project.html',
   styleUrls: ['./about-project.scss']
 })
 export class AboutComponent implements OnInit {
-  title = "Developer Setup";
-  document: string = "assets/docs/setup.md";
+  title: string;
+  document: string;
 
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     // https://stackblitz.com/edit/angular-3fkg6e?file=src%2Fapp%2Fcomponent-a.component.ts
     this.activeRoute.queryParams.subscribe(params => {
-      let pageid = params.id;
-      this.title = this.docPages[pageid];
-      this.document = "assets/docs/" + pageid + ".md"
+      if (params.id == undefined) {
+        this.title = defaultTitle;
+        this.document = defaultDocument;
+      } else {
+        let pageid = params.id;
+        this.title = this.docPages[pageid];
+        this.document = "assets/docs/" + pageid + ".md"
+      }
       console.log(params.id);
     })
   }
@@ -29,6 +36,9 @@ export class AboutComponent implements OnInit {
   }
 
   docPages = {
+    "purpose": "Purpose",
+    "overview": "Overview",
+    "workflow": "Workflow",
     "dev-setup": "Developer Setup",
     "dev-client-app": "Client App",
     "dev-webapi": "WebApi",

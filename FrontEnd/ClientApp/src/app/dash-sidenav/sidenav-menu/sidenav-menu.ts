@@ -108,10 +108,16 @@ const NoLog = true;  // set to false for console logging
       }
       case EntryType.link: {
         NoLog || console.log(this.ClassName + "Selected a link");
-        // this.router.navigateByUrl(item.route);
 
-        let url = "/about?id=" + item.route;
-        this.router.navigateByUrl(url);
+        // The overview page is the only one that we did not yet rewrite as a markdown page.
+        // This is because it has some functionality in its controller.
+        if (item.route == "overview") {
+          this.router.navigateByUrl("overview");
+        } else {
+          // The rest of the pages are handled by AboutProjectComponent which loads the markdown file.
+          let url = "/about?id=" + item.route;
+          this.router.navigateByUrl(url);
+        }
 
         // Alternate using navigate
         // this.router.navigate(['about'], {
