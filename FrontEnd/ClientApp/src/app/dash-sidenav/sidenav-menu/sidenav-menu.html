@@ -4,6 +4,10 @@
   <app-menu-list-item *ngFor="let item of navigationItems" [item]="item"></app-menu-list-item>
 </mat-nav-list>
 
+<a [routerLink]="['about','CategoryA']">
+  Category A
+  </a><br/>
+  <a [routerLink]="['about']" [queryParams]="{id: 'abc'}">Main Link</a>
 
 <!-- <button (click)="openDialog()"> Open Dialog</button> -->
 

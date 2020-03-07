@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DemoMaterialModule } from '../material';
 import { HttpClientModule } from '@angular/common/http'
-import { NgxMdModule } from 'ngx-md';
+// import { NgxMdModule } from 'ngx-md';
+import { MarkdownModule } from 'ngx-markdown';
 
-
+import { AboutComponent } from './about-project';
 import { PurposeComponent } from './purpose/purpose';
 import { VolunteerComponent } from './volunteer/volunteer';
 import { OverviewComponent } from './overview/overview';
@@ -18,6 +19,7 @@ import { Dev5Component } from './dev-5/dev-5'
 
 @NgModule({
   declarations: [
+    AboutComponent,
     PurposeComponent,
     VolunteerComponent,
     OverviewComponent,
@@ -33,7 +35,8 @@ import { Dev5Component } from './dev-5/dev-5'
     RouterModule,
     DemoMaterialModule,
     HttpClientModule,
-    NgxMdModule.forRoot()
+    MarkdownModule.forRoot()
+    // NgxMdModule.forRoot()
   ],
   exports: [
     DemoMaterialModule,

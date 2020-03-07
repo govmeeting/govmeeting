@@ -108,8 +108,18 @@ const NoLog = true;  // set to false for console logging
       }
       case EntryType.link: {
         NoLog || console.log(this.ClassName + "Selected a link");
-        this.router.navigateByUrl(item.route);
-      }
+        // this.router.navigateByUrl(item.route);
+
+        let url = "/about?id=" + item.route;
+        this.router.navigateByUrl(url);
+
+        // Alternate using navigate
+        // this.router.navigate(['about'], {
+        //   queryParams: {
+        //     id: '123' //pass whatever here
+        //   }
+        // });
+     }
     }
     if (this.isMobile()) {
       this.navService.closeNav();

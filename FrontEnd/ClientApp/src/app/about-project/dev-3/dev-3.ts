@@ -13,4 +13,12 @@ export class Dev3Component implements OnInit {
   ngOnInit() {
   }
 
+  errorHandler(ev) {
+    console.log("in errorHandler")
+  }
+  loadedHandler(ev) {
+    console.log("in loadedHandler")
+  }
+
+
 }

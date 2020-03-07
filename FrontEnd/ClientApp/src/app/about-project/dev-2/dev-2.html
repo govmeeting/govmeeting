@@ -4,10 +4,10 @@
     <mat-card-title *ngIf="showtitle"> ClientApp </mat-card-title>
 
 
-    <div NgxMd [path]="'assets/docs/dev-2.md'"
+    <markdown [src]="'assets/docs/client-app.md'"
     (error)="errorHandler($event)"
     (loaded)="loadedHandler($event)">
-   </div>
+  </markdown>
 
 
   </mat-card>

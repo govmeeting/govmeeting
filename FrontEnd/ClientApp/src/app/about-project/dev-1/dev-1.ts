@@ -6,8 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./dev-1.scss']
 })
 export class Dev1Component implements OnInit {
-  @Input() showtitle: boolean = true;
-
+  title = "Developer Setup";
+  document: string = "assets/docs/setup.md";
   constructor() { }
 
   ngOnInit() {
