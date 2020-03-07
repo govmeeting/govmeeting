@@ -15,6 +15,9 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
     // https://stackblitz.com/edit/angular-3fkg6e?file=src%2Fapp%2Fcomponent-a.component.ts
     this.activeRoute.queryParams.subscribe(params => {
+      let pageid = params.id;
+      this.title = this.docPages[pageid];
+      this.document = "assets/docs/" + pageid + ".md"
       console.log(params.id);
     })
   }
@@ -23,6 +26,14 @@ export class AboutComponent implements OnInit {
   }
   loadedHandler(ev) {
     console.log("in loadedHandler")
+  }
+
+  docPages = {
+    "dev-setup": "Developer Setup",
+    "dev-client-app": "Client App",
+    "dev-webapi": "WebApi",
+    "dev-workflow-app": "Workflow App",
+    "dev-other-apps": "Other Apps"
   }
 
 }
