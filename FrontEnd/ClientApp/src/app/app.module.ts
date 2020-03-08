@@ -1,4 +1,5 @@
 /////////////////// Modules - external ///////////////////////////////////
+import { APP_INITIALIZER } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -7,8 +8,10 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+// import { map } from 'rxjs/operators';
+// import { Observable, ObservableInput, of } from 'rxjs';
+// import { catchError } from 'rxjs/operators/catchError.js';
 
 /////////////////// Modules - internal ///////////////////////////////////
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +26,7 @@ import { AddtagsModule } from './addtags/addtags.module';
 import { FixasrModule } from './fixasr/fixasr.module';
 import { SharedModule } from './shared/shared.module';
 import { TestingModule } from './testing/testing.module';
-import { SidenavMenuModule } from './dash-sidenav/sidenav-menu/sidenav-menu-module';
+import { SidenavMenuModule } from './sidenav/sidenav-menu-module';
 import { HeaderModule } from './header/header.module';
 // import { AmchartsModule } from './amcharts/amcharts.module';
 
@@ -40,6 +43,7 @@ import { ChatService } from './chat/chat.service';
 import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from './testing/data-factory.service';
 import { DataFakeService } from './testing/data-fake.service';
+import { ConfigService } from './configuration/config.service';
 
 /////////////////// Components ///////////////////////////////////
 
@@ -52,11 +56,9 @@ import { GovInfoComponent } from './gov-info/gov-info.component';
 import { BillsComponent } from './bills/bills.component';
 import { MeetingsComponent } from './meetings/meetings.component';
 import { NewsComponent } from './news/news.component';
-import { ConfigComponent } from './config/config.component';
 
 import { AppData } from './appdata';
 import { CalendarComponent } from './calendar/calendar.component';
-// import { NewFeatureComponent } from './new-feature/new-feature.component';
 import { PopupComponent } from './popup/popup.component';
 import { NotesComponent } from './notes/notes.component';
 import { MinutesComponent } from './minutes/minutes.component';
@@ -66,13 +68,39 @@ import { IssuesComponent } from './issues/issues.component';
 import { OfficialsComponent } from './officials/officials.component';
 // import { CalendarComponent } from './calendar/calendar';
 
-const isAspServerRunning = false;
+import { loadConfiguration } from './configuration/loadConfiguration';
+
+let isAspServerRunning = false;
 
 //////// for testing/////////////////////////////////
 
 // import { PieChartComponent } from './amcharts/pie-chart/pie-chart';
 // import { BarChartComponent } from './amcharts/bar-chart/bar-chart';
 
+//   // https://davembush.github.io/where-to-store-angular-configurations/
+//   function loadConfiguration(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
+//   return (): Promise<boolean> => {
+//     return new Promise<boolean>((resolve: (a: boolean) => void): void => {
+//       // resolve(true);
+//       http.get('./assets/config.json')
+//       .pipe(
+//         map((x: ConfigService) => {
+//           config.baseUrl = x.baseUrl;
+//           console.log("baseUrl=" + config.baseUrl);
+//           resolve(true);
+//         }),
+//         catchError((x: { status: number }, caught: Observable<void>): ObservableInput<{}> => {
+//           if (x.status !== 404) {
+//             resolve(false);
+//           }
+//           config.baseUrl = 'http://localhost:8080/api';
+//           resolve(true);
+//           return of({});
+//         })
+//       ).subscribe();
+//     });
+//   };
+// }
 
 @NgModule({
   imports: [
@@ -116,7 +144,6 @@ const isAspServerRunning = false;
     BillsComponent,
     MeetingsComponent,
     NewsComponent,
-    ConfigComponent,
     CalendarComponent,
     // NewFeatureComponent,
     PopupComponent,
@@ -141,6 +168,17 @@ const isAspServerRunning = false;
     // BarChartComponent
   ],
   providers: [
+    {
+      // This loads the ConfigureService with the contents of assets/config.json
+      // Uses APP_INITIALIZER forces the app to wait until the loading is complete.
+      provide: APP_INITIALIZER,
+      useFactory: loadConfiguration,
+      deps: [
+        HttpClient,
+        ConfigService
+      ],
+      multi: true
+    },
     ErrorHandlingService,
     AppData,
     {
@@ -168,4 +206,6 @@ const isAspServerRunning = false;
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }

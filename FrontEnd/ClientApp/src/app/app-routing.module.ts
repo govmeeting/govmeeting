@@ -7,9 +7,9 @@ import { FixasrComponent } from './fixasr/fixasr'
 import { DashMainComponent } from './dash-main/dash-main';
 
 import { AboutComponent } from './about-project/about-project';
-import { PurposeComponent } from './about-project/purpose/purpose';
+// import { PurposeComponent } from './about-project/purpose/purpose';
 import { OverviewComponent } from './about-project/overview/overview';
-import { WorkflowComponent } from './about-project/workflow/workflow';
+// import { WorkflowComponent } from './about-project/workflow/workflow';
 
 // "Routing in Angular using Routerlink, Navigate and NavigateByUrl"
 // https://www.codecompiled.com/angular/routing-in-angular-using-routerlink-navigate-and-navigatebyurl/

@@ -25,7 +25,7 @@ export class AboutComponent implements OnInit {
         this.title = this.docPages[pageid];
         this.document = "assets/docs/" + pageid + ".md"
       }
-      console.log(params.id);
+      //console.log(params.id);
     })
   }
   errorHandler(ev) {
@@ -35,15 +35,20 @@ export class AboutComponent implements OnInit {
     console.log("in loadedHandler")
   }
 
+  // doc filenames (less .md") and titles
   docPages = {
     "purpose": "Purpose",
     "overview": "Overview",
     "workflow": "Workflow",
-    "dev-setup": "Developer Setup",
+    "dev-setup": "Setup & General Info",
     "dev-client-app": "Client App",
     "dev-webapi": "WebApi",
     "dev-workflow-app": "Workflow App",
-    "dev-other-apps": "Other Apps"
+    "dev-other-apps": "Other Apps",
+    "database-design": "Database",
+    "functional-design": "Functional Design",
+    "system-design": "System Design",
+    "home": "Home"
   }
 
 }

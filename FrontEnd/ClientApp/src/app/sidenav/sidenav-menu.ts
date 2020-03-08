@@ -4,14 +4,14 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NavItem, EntryType } from './nav-item';
 import { NavService } from './nav.service';
-import { UserSettingsService, UserSettings, LocationType } from '../../user-settings.service';
+import { UserSettingsService, UserSettings, LocationType } from '../user-settings.service';
 //import { string } from '@amcharts/amcharts4/core';
 
 import { navigationItems } from './menu-items';
 import { MenuTreeArray } from './menu-tree-array'
 
 import { MatDialog, MatDialogRef } from  '@angular/material';
-import { PopupComponent } from '../../popup/popup.component';
+import { PopupComponent } from '../popup/popup.component';
 
 enum DeviceType{
   desktop,

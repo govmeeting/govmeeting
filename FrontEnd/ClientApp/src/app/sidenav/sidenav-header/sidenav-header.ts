@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NavService} from '../sidenav-menu/nav.service';
+import {NavService} from '../nav.service';
 
 @Component({
   selector: 'gm-sidenav-header',
