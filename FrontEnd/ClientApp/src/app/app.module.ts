@@ -20,7 +20,7 @@ import { ChatModule } from './chat/chat.module';
 import { ConversationModule } from './conversation/conversation.module';
 import { AboutProjectModule } from './about-project/about-project.module';
 import { VirtualMeetingModule } from './virtual-meeting/virtual-meeting-module';
-import { DashCardsModule } from './dash-cards/dash-cards.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { ViewMeetingModule } from './viewmeeting/viewmeeting.module';
 import { AddtagsModule } from './addtags/addtags.module';
 import { FixasrModule } from './fixasr/fixasr.module';
@@ -48,9 +48,9 @@ import { ConfigService } from './configuration/config.service';
 /////////////////// Components ///////////////////////////////////
 
 import { AppComponent } from './app.component';
-import { DashMainComponent } from './dash-main/dash-main';
+import { DashMainComponent } from './dashboard/dash-main/dash-main';
 import { ShoutoutsComponent } from './shoutouts/shoutouts';
-import { DashFooterComponent } from './dash-footer/dash-footer';
+// import { DashFooterComponent } from './dash-footer/dash-footer';
 import { RegisterComponent } from './register/register';
 import { GovInfoComponent } from './gov-info/gov-info.component';
 import { BillsComponent } from './bills/bills.component';
@@ -71,36 +71,6 @@ import { OfficialsComponent } from './officials/officials.component';
 import { loadConfiguration } from './configuration/loadConfiguration';
 
 let isAspServerRunning = false;
-
-//////// for testing/////////////////////////////////
-
-// import { PieChartComponent } from './amcharts/pie-chart/pie-chart';
-// import { BarChartComponent } from './amcharts/bar-chart/bar-chart';
-
-//   // https://davembush.github.io/where-to-store-angular-configurations/
-//   function loadConfiguration(http: HttpClient, config: ConfigService): (() => Promise<boolean>) {
-//   return (): Promise<boolean> => {
-//     return new Promise<boolean>((resolve: (a: boolean) => void): void => {
-//       // resolve(true);
-//       http.get('./assets/config.json')
-//       .pipe(
-//         map((x: ConfigService) => {
-//           config.baseUrl = x.baseUrl;
-//           console.log("baseUrl=" + config.baseUrl);
-//           resolve(true);
-//         }),
-//         catchError((x: { status: number }, caught: Observable<void>): ObservableInput<{}> => {
-//           if (x.status !== 404) {
-//             resolve(false);
-//           }
-//           config.baseUrl = 'http://localhost:8080/api';
-//           resolve(true);
-//           return of({});
-//         })
-//       ).subscribe();
-//     });
-//   };
-// }
 
 @NgModule({
   imports: [
@@ -124,7 +94,7 @@ let isAspServerRunning = false;
     FlexLayoutModule,
     AboutProjectModule,
     AppRoutingModule,
-    DashCardsModule,
+    DashboardModule,
     ChatModule,
     ConversationModule,
     AboutProjectModule,
@@ -137,7 +107,7 @@ let isAspServerRunning = false;
   declarations: [
     AppComponent,
     DashMainComponent,
-    DashFooterComponent,
+    // DashFooterComponent,
     ShoutoutsComponent,
     RegisterComponent,
     GovInfoComponent,
@@ -145,7 +115,6 @@ let isAspServerRunning = false;
     MeetingsComponent,
     NewsComponent,
     CalendarComponent,
-    // NewFeatureComponent,
     PopupComponent,
     NotesComponent,
     MinutesComponent,

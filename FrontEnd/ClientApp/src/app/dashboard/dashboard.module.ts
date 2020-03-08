@@ -10,6 +10,9 @@ import { SmallCardComponent } from './small-cards/small-card/small-card';
 import { LargeCardsComponent } from './large-cards/large-cards';
 import { LargeCardComponent } from './large-cards/large-card/large-card';
 
+// import { DashMainComponent } from './dash-main/dash-main';
+import { DashFooterComponent } from './dash-footer/dash-footer';
+
 
 
 @NgModule({
@@ -17,7 +20,9 @@ import { LargeCardComponent } from './large-cards/large-card/large-card';
     SmallCardsComponent,
     SmallCardComponent,
     LargeCardsComponent,
-    LargeCardComponent
+    LargeCardComponent,
+    // DashMainComponent,
+    DashFooterComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +32,9 @@ import { LargeCardComponent } from './large-cards/large-card/large-card';
     SmallCardsComponent,
     SmallCardComponent,
     LargeCardsComponent,
-    LargeCardComponent
+    LargeCardComponent,
+    // DashMainComponent,
+    DashFooterComponent
   ]
 })
-export class DashCardsModule { }
+export class DashboardModule { }
