@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DocumentPages } from './document-pages';
 
 const defaultDocument = "assets/docs/purpose.md"
 const defaultTitle = "Purpose";
@@ -22,7 +23,7 @@ export class AboutComponent implements OnInit {
         this.document = defaultDocument;
       } else {
         let pageid = params.id;
-        this.title = this.docPages[pageid];
+        this.title = DocumentPages[pageid];
         this.document = "assets/docs/" + pageid + ".md"
       }
       //console.log(params.id);
@@ -34,21 +35,4 @@ export class AboutComponent implements OnInit {
   loadedHandler(ev) {
     console.log("in loadedHandler")
   }
-
-  // doc filenames (less .md") and titles
-  docPages = {
-    "purpose": "Purpose",
-    "overview": "Overview",
-    "workflow": "Workflow",
-    "dev-setup": "Setup & General Info",
-    "dev-client-app": "Client App",
-    "dev-webapi": "WebApi",
-    "dev-workflow-app": "Workflow App",
-    "dev-other-apps": "Other Apps",
-    "database-design": "Database",
-    "functional-design": "Functional Design",
-    "system-design": "System Design",
-    "home": "Home"
-  }
-
 }

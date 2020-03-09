@@ -54,8 +54,7 @@ let aboutpagesMenu = new NavItem(null, 'About', null,
     new NavItem(EntryType.link, 'Other Apps', 'smartphone', 'dev-other-apps'),
     new NavItem(EntryType.link, 'Functional Design', 'smartphone', 'functional-design'),
     new NavItem(EntryType.link, 'System Design', 'smartphone', 'system-design'),
-    new NavItem(EntryType.link, 'Database', 'smartphone', 'database-design'),
-    new NavItem(EntryType.link, 'Home', 'smartphone', 'home'),
+    new NavItem(EntryType.link, 'Database', 'smartphone', 'database-design')
   ])
 ])
 
