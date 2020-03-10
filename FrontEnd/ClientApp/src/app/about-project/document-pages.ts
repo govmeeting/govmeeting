@@ -1,7 +1,6 @@
  // doc filenames (less .md") and titles
  export let DocumentPages = {
   "purpose": "Purpose",
-  "overview": "Overview",
   "workflow": "Workflow",
   "dev-setup": "Setup & General Info",
   "dev-client-app": "Client App",

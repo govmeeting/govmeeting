@@ -1,7 +1,8 @@
 export enum EntryType{
   location,
   agency,
-  link
+  link,
+  docId
 }
 export class NavItem {
   entryType: EntryType;

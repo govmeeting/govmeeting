@@ -1,21 +1,22 @@
 ## Individual Registration
 
 * During registration, users specify their home location (town, city, village, postal code, etc).
-* Based on their location, the system
-        determines each of their governing entities (country, state, county, town/city etc)
+* Based on their location, the system determines the governing entities to which they belong. (country, state, county, town/city etc)
 
 ## Government Body Registration
-* An user may complete the registration for their local governing entities: (town, city, village, county, state, etc).
-* When another user registers for the same location, they will see the data already entered. They can vote on the accuracy of any data items and specify alternate values.
-* Votes will accumulate for each data value and the values
-with the most votes become the values that are on the official registration form that is used by the system.
+* A user can register any of the governing entities to which they belong.
+* Information entered will include:
+  * Website URL
+  * Names of governing officials
+  * URL's where transcripts or meeting recordings can be found
+* Other users for this location will see data already entered. They can vote on the accuracy of any data items and enter alternate values.
+* Votes will accumulate for each data value. The values with the most votes become the official values.
 <a href="https://github.com/govmeeting/govmeeting/issues/62">Github issue #62</a>
 
 
 ## Import Recordings or Transcripts
-* The system will download existing online recordings or transcripts on a regular schedule from
-        the locations specified in the Government Body Registration.
-* Users have the option to upload recordings or transcripts.
+* The system will download existing online recordings or transcripts on a regular schedule from the locations specified in the Government Body Registration.
+* Users also have the option to upload recordings or transcripts.
 * Many places neither provide transcripts nor recordings of their meetings.
 Govmeeting will provide a smartphome app that users can use to
 personally record and upload a meeting recording.
@@ -32,9 +33,8 @@ personally record and upload a meeting recording.
 * Extract and merge audio tracks if more than one.
 * Upload the audio file to Google Cloud storage to prepare for transcription.
 * Call the asynchronous Google Speech API to do auto voice recognition.
-* Perform speaker change recognition. This is a Google API for this.
-* Add speaker identification. This uses speech processing software on the server.
-
+* Perform speaker change recognition. There is a Google API for this.
+* Add speaker identification. This will use speech processing software on the server.
 
 ## Process Transcribed Text
 * Split the video, audio and trancript files into 3 minute work segments, so that multiple volunteers can work simultaneously.

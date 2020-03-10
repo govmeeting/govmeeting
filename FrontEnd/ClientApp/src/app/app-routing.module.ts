@@ -8,6 +8,7 @@ import { FixasrComponent } from './fixasr/fixasr'
 import { AboutComponent } from './about-project/about-project';
 // import { PurposeComponent } from './about-project/purpose/purpose';
 import { OverviewComponent } from './about-project/overview/overview';
+import { FlowchartsComponent } from './about-project/flowcharts/flowcharts';
 import { DashMainComponent } from './dashboard/dash-main/dash-main';
 // import { WorkflowComponent } from './about-project/workflow/workflow';
 
@@ -25,6 +26,7 @@ const routes: Routes = [
     { path: 'dashboard', component: DashMainComponent},
     { path: 'about', component: AboutComponent},
     { path: 'overview', component: OverviewComponent},
+    { path: 'flowcharts', component: FlowchartsComponent},
     { path: '**', redirectTo: 'about' }
 
 ];

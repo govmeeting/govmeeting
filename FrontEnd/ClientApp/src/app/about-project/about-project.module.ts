@@ -9,6 +9,7 @@ import { AboutComponent } from './about-project';
 // import { PurposeComponent } from './purpose/purpose';
 import { VolunteerComponent } from './volunteer/volunteer';
 import { OverviewComponent } from './overview/overview';
+import { FlowchartsComponent } from './flowcharts/flowcharts'
 // import { WorkflowComponent } from './workflow/workflow';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { OverviewComponent } from './overview/overview';
     // PurposeComponent,
     VolunteerComponent,
     OverviewComponent,
+    FlowchartsComponent
     // WorkflowComponent
   ],
   imports: [

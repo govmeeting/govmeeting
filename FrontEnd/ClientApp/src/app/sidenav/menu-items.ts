@@ -42,19 +42,20 @@ let nonGovernment = new NavItem(null, 'Non-Government', 'group',
 
 let aboutpagesMenu = new NavItem(null, 'About', null,
 [
-  new NavItem(EntryType.link, 'Purpose', 'info', 'purpose'),
+  new NavItem(EntryType.docId, 'Purpose', 'info', 'purpose'),
   new NavItem(EntryType.link, 'Overview', 'toc', 'overview'),
-  new NavItem(EntryType.link, 'Workflow', 'trending_up', 'workflow'),
+  new NavItem(EntryType.docId, 'Workflow', 'trending_up', 'workflow'),
   new NavItem(null, 'Developer Notes', 'school',
   [
-    new NavItem(EntryType.link, 'Setup', 'build', 'dev-setup'),
-    new NavItem(EntryType.link, 'ClientApp', 'computer', 'dev-client-app'),
-    new NavItem(EntryType.link, 'WebApi', 'wifi', 'dev-webapi'),
-    new NavItem(EntryType.link, 'WorkflowApp', 'trending_up', 'dev-workflow-app'),
-    new NavItem(EntryType.link, 'Other Apps', 'smartphone', 'dev-other-apps'),
-    new NavItem(EntryType.link, 'Functional Design', 'smartphone', 'functional-design'),
-    new NavItem(EntryType.link, 'System Design', 'smartphone', 'system-design'),
-    new NavItem(EntryType.link, 'Database', 'smartphone', 'database-design')
+    new NavItem(EntryType.docId, 'Setup', 'build', 'dev-setup'),
+    new NavItem(EntryType.docId, 'ClientApp', 'computer', 'dev-client-app'),
+    new NavItem(EntryType.docId, 'WebApi', 'wifi', 'dev-webapi'),
+    new NavItem(EntryType.docId, 'WorkflowApp', 'trending_up', 'dev-workflow-app'),
+    new NavItem(EntryType.docId, 'Other Apps', 'smartphone', 'dev-other-apps'),
+    new NavItem(EntryType.docId, 'Functional Design', 'smartphone', 'functional-design'),
+    new NavItem(EntryType.docId, 'System Design', 'smartphone', 'system-design'),
+    new NavItem(EntryType.docId, 'Database', 'smartphone', 'database-design'),
+    new NavItem(EntryType.link, 'Flowcharts', 'bubble_chart', 'flowcharts')
   ])
 ])
 
