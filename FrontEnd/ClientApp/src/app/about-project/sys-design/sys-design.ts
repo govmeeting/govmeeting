@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'gm-flowcharts',
-  templateUrl: './flowcharts.html',
-  styleUrls: ['./flowcharts.scss']
+  templateUrl: './sys-design.md',
+  styleUrls: ['./sys-design.scss']
 })
-export class FlowchartsComponent implements OnInit {
+export class SysDesignComponent implements OnInit {
 
   constructor() { }
 

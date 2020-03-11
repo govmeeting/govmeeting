@@ -6,20 +6,14 @@ import { HttpClientModule } from '@angular/common/http'
 import { MarkdownModule } from 'ngx-markdown';
 
 import { AboutComponent } from './about-project';
-// import { PurposeComponent } from './purpose/purpose';
-import { VolunteerComponent } from './volunteer/volunteer';
 import { OverviewComponent } from './overview/overview';
-import { FlowchartsComponent } from './flowcharts/flowcharts'
-// import { WorkflowComponent } from './workflow/workflow';
+import { SysDesignComponent } from './sys-design/sys-design'
 
 @NgModule({
   declarations: [
     AboutComponent,
-    // PurposeComponent,
-    VolunteerComponent,
     OverviewComponent,
-    FlowchartsComponent
-    // WorkflowComponent
+    SysDesignComponent
   ],
   imports: [
     CommonModule,

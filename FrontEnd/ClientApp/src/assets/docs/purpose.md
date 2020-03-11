@@ -1,3 +1,5 @@
+## Democracy's Early Days
+
 Meetings are the heart and soul of democracy.
 They are where people of different opinions listen to each other,
 present their points of view and try to work together toward common goals.
@@ -6,7 +8,11 @@ In the Athenian Assembly of 500 BC, a quorum of 6,000 of the 43,000 citizens was
 In the 10th century, the Icelandic Althing was held in a natural outdoor amphitheater and all citizens could attend.
 
 Today it is rare to see more than a dozen attendees at a council meeting in a town of 30,000 people.
-Is this still democracy? Meetings today may be broadcast on local TV. But how many actually watch?
+Is this still democracy?
+
+## Challanges Today
+
+Meetings today may be broadcast on local TV. But how many actually watch?
 And of course, it is impossible to participate this way.
 
 If we don't attend or watch, how do we find out what happened at them?
@@ -19,8 +25,9 @@ Disenchantment with democracy starts at the small local  level.
   For democracy to work, the majority of citizens need to be involved on a continual basis.
 
 Democracy is never easy. But it was easier 2,000 years ago when only 50,000 needed to work together.
-Today, hundreds of millions need to work together. Each of us needs to participate at multiple goverment levels: for our town, our region,
-our state and our country.
+Today, hundreds of millions need to work together. Each of us needs to participate at multiple goverment levels: for our town, our region,our state and our country.
+
+## Solutions 
 
 The tools for democarcy haven't changed much in 2,000 years. But today with technolgy, we finally are able to
 create tools that can can allow hundreds of millions to work together.

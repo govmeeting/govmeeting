@@ -137,17 +137,17 @@ let isAspServerRunning = false;
     // BarChartComponent
   ],
   providers: [
-    {
+    // {
       // This loads the ConfigureService with the contents of assets/config.json
       // Uses APP_INITIALIZER forces the app to wait until the loading is complete.
-      provide: APP_INITIALIZER,
-      useFactory: loadConfiguration,
-      deps: [
-        HttpClient,
-        ConfigService
-      ],
-      multi: true
-    },
+    //   provide: APP_INITIALIZER,
+    //   useFactory: loadConfiguration,
+    //   deps: [
+    //     HttpClient,
+    //     ConfigService
+    //   ],
+    //   multi: true
+    // },
     ErrorHandlingService,
     AppData,
     {

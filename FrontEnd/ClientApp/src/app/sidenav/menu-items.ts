@@ -45,17 +45,16 @@ let aboutpagesMenu = new NavItem(null, 'About', null,
   new NavItem(EntryType.docId, 'Purpose', 'info', 'purpose'),
   new NavItem(EntryType.link, 'Overview', 'toc', 'overview'),
   new NavItem(EntryType.docId, 'Workflow', 'trending_up', 'workflow'),
+  new NavItem(EntryType.docId, 'Project Status', 'check_circle_outline', 'project-status'),
   new NavItem(null, 'Developer Notes', 'school',
   [
     new NavItem(EntryType.docId, 'Setup', 'build', 'dev-setup'),
+    new NavItem(EntryType.link, 'System Design', 'bubble_chart', 'sysdesign'),
     new NavItem(EntryType.docId, 'ClientApp', 'computer', 'dev-client-app'),
     new NavItem(EntryType.docId, 'WebApi', 'wifi', 'dev-webapi'),
     new NavItem(EntryType.docId, 'WorkflowApp', 'trending_up', 'dev-workflow-app'),
     new NavItem(EntryType.docId, 'Other Apps', 'smartphone', 'dev-other-apps'),
-    new NavItem(EntryType.docId, 'Functional Design', 'smartphone', 'functional-design'),
-    new NavItem(EntryType.docId, 'System Design', 'smartphone', 'system-design'),
     new NavItem(EntryType.docId, 'Database', 'smartphone', 'database-design'),
-    new NavItem(EntryType.link, 'Flowcharts', 'bubble_chart', 'flowcharts')
   ])
 ])
 

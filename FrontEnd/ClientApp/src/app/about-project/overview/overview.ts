@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'gm-overview',
-  templateUrl: './overview.html',
+  templateUrl: './overview.md',
   styleUrls: ['./overview.scss']
 })
 export class OverviewComponent implements OnInit {

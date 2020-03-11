@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ViewMeetingComponent } from './viewmeeting/viewmeeting'
-import { AddtagsComponent } from './addtags/addtags'
-import { FixasrComponent } from './fixasr/fixasr'
+// For testing without the dashboard
+// import { ViewMeetingComponent } from './viewmeeting/viewmeeting'
+// import { AddtagsComponent } from './addtags/addtags'
+// import { FixasrComponent } from './fixasr/fixasr'
 
 import { AboutComponent } from './about-project/about-project';
-// import { PurposeComponent } from './about-project/purpose/purpose';
 import { OverviewComponent } from './about-project/overview/overview';
-import { FlowchartsComponent } from './about-project/flowcharts/flowcharts';
+import { SysDesignComponent } from './about-project/sys-design/sys-design';
 import { DashMainComponent } from './dashboard/dash-main/dash-main';
-// import { WorkflowComponent } from './about-project/workflow/workflow';
 
 // "Routing in Angular using Routerlink, Navigate and NavigateByUrl"
 // https://www.codecompiled.com/angular/routing-in-angular-using-routerlink-navigate-and-navigatebyurl/
@@ -26,7 +25,7 @@ const routes: Routes = [
     { path: 'dashboard', component: DashMainComponent},
     { path: 'about', component: AboutComponent},
     { path: 'overview', component: OverviewComponent},
-    { path: 'flowcharts', component: FlowchartsComponent},
+    { path: 'sysdesign', component: SysDesignComponent},
     { path: '**', redirectTo: 'about' }
 
 ];
