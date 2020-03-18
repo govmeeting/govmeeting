@@ -2,6 +2,17 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "build-clientapp",
+            "command": "C:/Program Files/nodejs/npm",
+            "type": "process",
+            "args": [
+                "start",
+                "--prefix",
+                "${workspaceFolder}/FrontEnd/ClientApp"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
             "label": "build-webapp",
             "command": "dotnet",
             "type": "process",

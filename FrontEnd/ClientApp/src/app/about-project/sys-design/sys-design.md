@@ -127,12 +127,6 @@ TranscribeAudio.json contains the Google Cloud Platform credentials. Each of oth
 If you want your local machine to have access to the Google services, you need to create a local folder "../_SECRETS in relation to where the repository is located. Then, for example, you can add a file "appsettings.Development.json" to it, which contains keys that you obtain from Google. See: [Google API Keys](home#google-api-keys)
 
 
-## extra info - to add somewhere
-
-Continuing improvement in the software can make the manual steps as minimal as possible.
-
-But democracy also needs to be something people participate in. The manual steps can help to bring people together in their community to achieve a common goal.
-
 
 </markdown>
 

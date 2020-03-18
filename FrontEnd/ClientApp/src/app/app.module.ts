@@ -70,7 +70,7 @@ import { OfficialsComponent } from './officials/officials.component';
 
 import { loadConfiguration } from './configuration/loadConfiguration';
 
-let isAspServerRunning = false;
+let isAspServerRunning = true;
 
 @NgModule({
   imports: [

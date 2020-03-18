@@ -5,7 +5,7 @@
    "version": "0.2.0",
    "configurations": [
         {
-            "name": "Chrome",
+            "name": "ClientApp",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:4200",
@@ -16,7 +16,7 @@
 			"type": "coreclr",
 			"request": "launch",
 			"preLaunchTask": "build-webapp",
-			"program": "${workspaceFolder}/Backend/WebApp/bin/Debug/netcoreapp2.0/WebApp.dll",
+			"program": "${workspaceFolder}/Backend/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
 			"args": [],
 			"cwd": "${workspaceFolder}/Backend/WebApp",
 			"stopAtEntry": false,
@@ -34,7 +34,7 @@
             "request": "launch",
             "preLaunchTask": "build-webapp",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Backend/WebApp/bin/Debug/netcoreapp2.0/WebApp.dll",
+            "program": "${workspaceFolder}/Backend/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Backend/WebApp",
             "stopAtEntry": false,
@@ -83,8 +83,8 @@
     ],
     "compounds": [
         {
-            "name": "WebApp & Chrome",
-            "configurations": ["WebApp", "Chrome"]
+            "name": "WebApp & ClientApp",
+            "configurations": ["WebApp", "ClientApp"]
         }
     ]
 }
