@@ -29,7 +29,7 @@ Today, hundreds of millions need to work together. Each of us needs to participa
 
 ## Solutions 
 
-The tools for democarcy haven't changed much in 2,000 years. But today with technolgy, we finally are able to
+The tools for democarcy haven't changed much in 2,000 years. But today with technolgy, we may finally are able to
 create tools that can can allow hundreds of millions to work together.
 
 The purpose of Govmeeting is to build software that enables everyone to actively participate in government.

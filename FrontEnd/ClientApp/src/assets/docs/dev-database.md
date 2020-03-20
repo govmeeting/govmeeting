@@ -30,9 +30,9 @@ The tables in the database consist of:
 
 These were created automatically by Microsoft Identity Service when "Authentication = Individual User Accounts" was checked when the project was first built.
 
-2. Tables for data extracted from processed transcripts.
+2. Tables for the Govmeeting data model classes.
 
-This was created by the "Code First" feature of Entity Framework. The C# classes in the "Database/Model" project library were first written. Then EF automatically generated the database schema and tables.
+These were created by the "Code First" feature of Entity Framework. The C# classes in the "Database/Model" project library were first written. Then EF automatically generated the database schema and tables.
 
 Since the projects were first created in Visual Studio, they were created as SQL Server LocalDb databases. If you have [SQL Server Data Tools](https://docs.microsoft.com/en-us/sql/ssdt/download-sql-server-data-tools-ssdt) installed, you can open and view the database contents by accssing them in this way:
 

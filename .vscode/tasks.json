@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "build-clientapp",
-            "command": "C:/Program Files/nodejs/npm",
+            "command": "c:/nodejs/npm",
             "type": "process",
             "args": [
                 "start",

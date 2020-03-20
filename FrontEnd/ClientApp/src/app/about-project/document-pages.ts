@@ -8,6 +8,6 @@
   "dev-webapi": "WebApi",
   "dev-workflow-app": "Workflow App",
   "dev-other-apps": "Other Apps",
-  "database-design": "Database",
+  "dev-database": "Database",
   "system-design": "System Design"
 }

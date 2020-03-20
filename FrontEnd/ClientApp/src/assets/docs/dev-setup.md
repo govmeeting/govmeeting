@@ -1,149 +1,164 @@
-## Clone the repository
+[ All these instructions were tested so far on Windows only. If you install elsewhere, or if there are errors or ommissions in this document, please edit the file FrontEnd/ClientApp/src/app/assets/docs/dev-setup.md and issue
+a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub </a> ]
 
-* Install git
+---
+## Requirements
 
-There are many options for this. The author uses: <a href="https://gitforwindows.org"> Git for Windows </a>
-
-
-Then in a terminal window, execute:
-```
-    > git clone https://github.com/govmeeting/govmeeting.git
-    > mkdir _SECRETS
-```
-
-The "_SECRETS" folder is for keys and passwords that are not stored in the public repository.
-
-## All development environments
-
+* Install git. There are many options for this. EG: <a href="https://gitforwindows.org"> Git for Windows </a>
 * Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
 * Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. <a>
 
-## Developing with VsCode
+---
+## Clone the repository
+
+Execute:
+* git clone https://github.com/govmeeting/govmeeting.git
+* mkdir _SECRETS
+
+The "_SECRETS" folder is for keys and passwords that are not stored in the public repository.
+
+---
+## Develop with VsCode
 
 ### Installation
 * Install <a href="https://code.visualstudio.com/download"> Visual Studio Code <a>
-* Open the root folder of Govmeeting in VsCode
+* Open the Govmeeting folder in VsCode
 * Install extensions:
   * “Debugger for Chrome” by Microsoft
   * "C# for Visual Studio Code" by Microsoft
   * "SQL Server (mssql)" by Microsoft
   * "Todo Tree" by Gruntfuggly - shows TODO lines in code (optional)
 
-### Run in debug mode
+### Build & start ClientApp
+* In a terminal pane, execute:
+ - cd FrontEnd/ClientApp
+ - npm start
+
+### Debug ClientApp & WebApp together
+* (do above: "Build & start ClientApp")
 * Open the debug panel.
-* Set the launch configuration to the app(s) that you want to debug:
-  * "WebApp & ClientApp" - debug both simultaneously
-  * "WorkflowApp", "ClientApp" or "WebApp" - debug single app 
-* Click the run icon.
+* Set launch configuration "WebApp & ClientApp"
+* Press F5
 
-### Run in non-debug mode
-* Open a terminal panel
+WebApp responds to Web API calls. But it proxies internal client requests to the dev server started with "npm start".
 
-* Open a Chrome browser to: "locahost:4200"
+### Debug ClientApp standalone
+* In app.module.ts, change "isAspServerRunning" from true to false.
+* (do above: "Build & start ClientApp")
+* Open the debug panel.
+* Set launch configuration "ClientApp"
+* Press F5
 
-## Developing with Visual Studio
+### Debug WorkflowApp
+* Open the debug panel.
+* Set launch configuration "WorkflowApp"
+* Press F5
+
+### Notes
+* You can also press Shift-F5 to run without debug.
+* We could change the "WebApp & ClientApp" configuration
+ so that we don't need to manually run "npm start" first.
+ But there is an advantage to not doing this. ClientApp
+gets live updates when we change code. But WebApp does not.
+Forcing the ClientApp server to start & stop, whenever WebApp starts & stops, would slow down development.
+
+
+---
+## Develop with Visual Studio
 
 * Install  the free <a href="https://visualstudio.microsoft.com/free-developer-offers/"> Visual Studio Community Edition. </a>
-  During installation, select both the "ASP.NET" and the ".NET desktop" workloads.
+*  During installation, select both the "ASP.NET" and the ".NET desktop" workloads.
 * Install extensions:  (all by Mads Kristensen)
   * "NPM Task Runner"
   * "Command Task Runner"
   * "Markdown Editor"
 * Open the solution file "govmeeting.sln"
-* Set the start-up project to WebApp.
-* In Task Runner Explorer for WebApp, execute "Run-ClientApp".
-* Press F5 to start debugging.
 
-WebApp will start running and a browser will open, displaying the ClientApp.
+### Build & start ClientApp
+* Open terminal pane and execute:
+ - cd FrontEnd/ClientApp
+ - npm start
+* OR in Task Runner Explorer (WebApp) run "Run-ClientApp"
+* OR in Task Runner Explorer (ClientApp) run "start"
 
-To run WorkflowApp, set it as the startup project and press F5.
+### Debug ClientApp & WebApp together
+* (do above: "Build & start ClientApp")
+* Set startup project to "WebApp"
+* Click F5
+* WebApp will run and a browser will open, displaying the ClientApp.
 
-NOTE: There is an issue with debugging ClientApp in Visual Studio. See:
- <a href="https://github.com/govmeeting/govmeeting/issues/80"> Github issue #80 <a>
+NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Visual Studio. See: <a href="https://github.com/govmeeting/govmeeting/issues/80"> Github issue #80 <a>
 
-## Standalone Development
+### Debug WorkflowApp
+* Open the debug panel.
+* Set startup project to "WorkflowApp"
+* Click F5
 
-Setup is divided into four parts: ClientApp, WebApp, WorkflowApp and Database.
-
-If you want to work only on the Angular/Typescript ClientApp, you can just build and run ClientApp.
- It will use test data, instead of making API calls to WebApp.
-
-If you want to work on the C# ASP.NET Core Web API, you can build and run WebApp.
-
-If you want to work on the C# .NET Core app for transcipt processing, you can build and run WorkflowApp.
-
-If you want WebApp and/or WorkflowApp to use the database for data, you need to install and build the database.
-
-## Build and run ClientApp
-
-* Install node
-
-```
-    > cd govmeeting/Frontend/ClientApp
-    > npm install
-    > npm start
-```
-Go to localhost:4200 in your browser. The client app will load. (as from govmeeting.org).
-
-By default, ClientApp uses local test data.
+### Notes - see notes for Visual Studio Code
 
 
-## Build and run WebApp
+---
+## Develop - outside an IDE
 
-* Install .Net Core
+### Build and run ClientApp
 
-To tell ClientApp to call the Web API, instead of using test data, in ClientApp/app/src/app.module.ts,  change:
-```
-    let isAspServerRunning = false;
-  to:
-    let isAspServerRunning = true;
-```
-Then execute:
-```
-    > cd govmeeting/Frontend/ClientApp
-    > npm start
-    > cd ../../Backend/WebApp
-    > dotnet build webapp.csproj
-    > dotnet run bin/debug/dotnet2.0/webapp.dll
-```
+Execute:
+- cd Frontend/ClientApp
+- npm install
+- npm start
+
+Go to localhost:4200 in your browser. The client app will load.
+Some features will not work until WebApp is running.
+
+### Build and run WebApp with ClientApp
+
+Execute:
+* (do above: "Build & start ClientApp")
+* cd ../../Backend/WebApp
+* dotnet build webapp.csproj
+* dotnet run bin/debug/dotnet2.2/webapp.dll
+
 Go to localhost:5000 in your browser. The client app will load.
 
-WebApp responds to Web API calls. But it proxies internal client requests to the dev server started with "npm start".
+### Build and run ClientApp standalone
 
-## Build and run WorkflowApp
-```
-    > cd govmeeting/Backend/WorkflowApp
-    > dotnet build workflowapp.csproj
-    > dotnet run bin/debug/dotnet2.0/workflowapp.dll
-```
+* In app.module.ts, change "isAspServerRunning" from true to false.
+* (do above: "Build & start ClientApp")
 
-## Install database provider
+### Build and run WorkflowApp
 
+Execute:
+* cd Backend/WorkflowApp
+* dotnet build workflowapp.csproj
+* dotnet run bin/debug/dotnet2.0/workflowapp.dll
 
-### [stand-alone installation]
+---
+## Create database 
+
+If you are using Visual Studio or Visual Studio Code, the Sql Server Express LocalDb provider is already installed. Otherwise do 
+"LocalDb Provider Installation" below.
+
+### LocalDb Provider Installation
 
 Go to <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads"> Sql Server Express. </a>
 For Windows, download the "Express" specialized edition of SQL Server. During installation, choose "Custom" and select "LocalDb".
 
-LocalDb is available also for MacOs and Linux. If you install it for either platform, please update this document and do a Pull Request. 
+LocalDb is available also for MacOs and Linux. If you install it for either platform, please update this document with the steps and do a Pull Request. 
 
-### Other options
+### Other Providers
 
-EF Core supports <a href= "https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli"> other providers besides LocalDb </a> that you can use, including SqlLite. You will need to modify the DbContext setup in startup.cs -> 
+Besides LocalSb, EF Core supports <a href= "https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli"> other providers, </a> which you can use for development, including SqlLite. You will need to modify the DbContext setup in startup.cs and the connection string in
+ appsettings.json. 
 
 
 ##  Build database schema
-```
-    > cd govmeeting/Backend/WebApp
-    > dotnet ef migrations add initial --project ..\Database\DatabaseAccess_Lib 
-    > dotnet ef database update --project ..\Database\DatabaseAccess_Lib
-```
+* cd Backend/WebApp
+* dotnet ef migrations add initial --project ..\Database\DatabaseAccess_Lib 
+* dotnet ef database update --project ..\Database\DatabaseAccess_Lib
 
 All calls to the database are done through Entity Framework Core. EF uses the "code first" approach to build the database schema. It examines the C# classes in the data model and automatically creates the database tables and their relations.
 
-
-
-
+---
 # Documentation
 
 Originally this documentation was kept in the Github Wiki pages.
@@ -156,10 +171,10 @@ changes associated with it.
 
 The documentation is written in Markdown and located in Frontend/ClientApp/src/app/assets/docs. 
  
-
+---
  # Google Cloud Platform account
 
-If you want call the Google Speech APIs locally from your own computer, you need a Google Cloud Platform (GCP) account. Google was providing developers with a free account which includes a credit. For this project, you will just be using the Speech API and not per-cost servies like App Engine or Compute engines. Therefore, you will most likely not even accrue charges that you would need your credit for.
+To work with the Google Speech APIs locally from your own computer, you need a Google Cloud Platform (GCP) account. Google was providing developers with a free account which includes a credit. For this project, you will only9 be using the Speech API and not per-cost servies like App Engine or Compute engines. Therefore, you will most likely not even accrue charges that you would need your credit for.
 
   * Open an account with [Google Cloud Platform](https://cloud.google.com/free/)
 
@@ -183,10 +198,10 @@ If you want call the Google Speech APIs locally from your own computer, you need
 
 NOTE: The above steps may have changed slightly. If so, please update this document.
 
-
+---
 ## Test GCP setup
 
-  * Set the startup project in Visual Studio to `govmeeting/Backend/WorkflowApp`. Press F5.
+  * Set the startup project in Visual Studio to `Backend/WorkflowApp`. Press F5.
 
 
   * Copy (don't move) one of the sample MP4 files from testdata to Datafiles/INCOMING.
@@ -195,6 +210,7 @@ NOTE: The above steps may have changed slightly. If so, please update this docum
   The MP4 file will be moved to "COMPLETED" when done. You will see the results in
   sufolders, which were created in the "Datafiles" directory.
 
+---
 # Google API Keys
 
 You will need these keys if you want to use or work on certain features of the registration and login process.
@@ -216,12 +232,14 @@ Create a file named "appsettings.Development.json" in the "_SECRETS" folder. It 
       "ReCaptcha:Secret": "your-secret"
     }
 
+---
 ## Test reCaptcha
 
 * Run the WebApp project.
 * Click on "Register" in the upper right.
 * The reCaptcha option should appear.
 
+---
 ## Test Google Authentication
 
 * Run the WebApp project.
