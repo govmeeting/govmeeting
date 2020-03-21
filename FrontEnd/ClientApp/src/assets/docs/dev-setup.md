@@ -1,14 +1,14 @@
 [ All these instructions were tested so far on Windows only. If you install elsewhere, or if there are errors or ommissions in this document, please edit the file FrontEnd/ClientApp/src/app/assets/docs/dev-setup.md and issue
 a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub </a> ]
 
----
+--------------------------------------------------------------
 ## Requirements
 
 * Install git. There are many options for this. EG: <a href="https://gitforwindows.org"> Git for Windows </a>
 * Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
 * Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. <a>
 
----
+--------------------------------------------------------------
 ## Clone the repository
 
 Execute:
@@ -17,7 +17,7 @@ Execute:
 
 The "_SECRETS" folder is for keys and passwords that are not stored in the public repository.
 
----
+--------------------------------------------------------------
 ## Develop with VsCode
 
 ### Installation
@@ -63,7 +63,7 @@ gets live updates when we change code. But WebApp does not.
 Forcing the ClientApp server to start & stop, whenever WebApp starts & stops, would slow down development.
 
 
----
+--------------------------------------------------------------
 ## Develop with Visual Studio
 
 * Install  the free <a href="https://visualstudio.microsoft.com/free-developer-offers/"> Visual Studio Community Edition. </a>
@@ -97,8 +97,8 @@ NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Vis
 ### Notes - see notes for Visual Studio Code
 
 
----
-## Develop - outside an IDE
+--------------------------------------------------------------
+## Develop - other platforms
 
 ### Build and run ClientApp
 
@@ -132,8 +132,8 @@ Execute:
 * dotnet build workflowapp.csproj
 * dotnet run bin/debug/dotnet2.0/workflowapp.dll
 
----
-## Create database 
+--------------------------------------------------------------
+## Database
 
 If you are using Visual Studio or Visual Studio Code, the Sql Server Express LocalDb provider is already installed. Otherwise do 
 "LocalDb Provider Installation" below.
@@ -151,27 +151,50 @@ Besides LocalSb, EF Core supports <a href= "https://docs.microsoft.com/en-us/ef/
  appsettings.json. 
 
 
-##  Build database schema
+###  Build schema
 * cd Backend/WebApp
 * dotnet ef migrations add initial --project ..\Database\DatabaseAccess_Lib 
 * dotnet ef database update --project ..\Database\DatabaseAccess_Lib
 
 All calls to the database are done through Entity Framework Core. EF uses the "code first" approach to build the database schema. It examines the C# classes in the data model and automatically creates the database tables and their relations.
 
----
-# Documentation
+### Explore database in VsCode
 
-Originally this documentation was kept in the Github Wiki pages.
-But it was decided to move the pages into the main project itself, for two reasons:
-* You cannot do a Pull Request for changes on Github Wiki pages. This makes it difficult
-for members of the community to change the documentation.
-* The documentation will more likely stay in sync with the code if it is together with the
-code in the same repository. A single PR for code changes can include the documentation 
-changes associated with it.
+Add the following to your user settings.json in VsCode:
+```
+    "mssql.connections": [
+        {
+          "server": "(localdb)\\mssqllocaldb",
+          "database": "Govmeeting",
+          "authenticationType": "Integrated",
+          "profileName": "GMProfile",
+          "password": ""
+        }
+      ],    
 
-The documentation is written in Markdown and located in Frontend/ClientApp/src/app/assets/docs. 
+```
+* Press ctrl-alt-D or press the Sql Server icon on left margin.
+* Open the GMProfile connection to view & work with database objects.
+* Open "Tables". You should see all tables created when you
+built the schema above. This includes the AspNetxxxx tables 
+for authorizaton and the tables for the Govmeeting data model.
+
+### Explore database in Visual Studio
+
+* Go to menu item: View -> SQL Server Object Explorer.
+* Expand SQL Server -> (localdb)\MSSQLLocalDb -> Databases -> Govmeeting
+* Open "Tables". You should see all tables created when you
+built the schema above. This includes the AspNetxxxx tables 
+for authorizaton and the tables for the Govmeeting data model.
+
+### Explore database on other platforms
+
+There is the cross-platform and open source <a href="https://github.com/Microsoft/sqlopsstudio?WT.mc_id=-blog-scottha"> SQL Operations Studio,</a> "a data management tool that enables working with SQL Server, Azure SQL DB and SQL DW from Windows, macOS and Linux." You can download <a href="https://docs.microsoft.com/en-us/sql/sql-operations-studio/download?view=sql-server-2017&WT.mc_id=-blog-scottha"> SQL Operations Studio free here.</a> 
+
+If you use this, or another tool, for exploring SQL Server databases, please update these instructions.
+
  
----
+--------------------------------------------------------------
  # Google Cloud Platform account
 
 To work with the Google Speech APIs locally from your own computer, you need a Google Cloud Platform (GCP) account. Google was providing developers with a free account which includes a credit. For this project, you will only9 be using the Speech API and not per-cost servies like App Engine or Compute engines. Therefore, you will most likely not even accrue charges that you would need your credit for.
@@ -198,7 +221,7 @@ To work with the Google Speech APIs locally from your own computer, you need a G
 
 NOTE: The above steps may have changed slightly. If so, please update this document.
 
----
+--------------------------------------------------------------
 ## Test GCP setup
 
   * Set the startup project in Visual Studio to `Backend/WorkflowApp`. Press F5.
@@ -210,7 +233,7 @@ NOTE: The above steps may have changed slightly. If so, please update this docum
   The MP4 file will be moved to "COMPLETED" when done. You will see the results in
   sufolders, which were created in the "Datafiles" directory.
 
----
+--------------------------------------------------------------
 # Google API Keys
 
 You will need these keys if you want to use or work on certain features of the registration and login process.
@@ -232,14 +255,15 @@ Create a file named "appsettings.Development.json" in the "_SECRETS" folder. It 
       "ReCaptcha:Secret": "your-secret"
     }
 
----
+--------------------------------------------------------------
 ## Test reCaptcha
 
 * Run the WebApp project.
 * Click on "Register" in the upper right.
 * The reCaptcha option should appear.
 
----
+--------------------------------------------------------------
+
 ## Test Google Authentication
 
 * Run the WebApp project.

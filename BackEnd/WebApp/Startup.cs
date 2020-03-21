@@ -67,7 +67,6 @@ namespace GM.WebApp
             //GlobalDiagnosticsContext.Set("appbasepath", appBasePath);
             GlobalDiagnosticsContext.Set("logfilesPath", logfilesPath);
 
-
             _logger.LogTrace("Modify some AppSettings");
             services.AddOptions();
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
@@ -122,7 +121,8 @@ namespace GM.WebApp
             //});
 
             _logger.LogTrace("Add Application services");
-            AddApplicationServices(services, _logger);
+            bool UseDatabaseStubs = (Configuration["AppSettings:UseDatabaseStubs"] == "True") ? true : false;
+            AddApplicationServices(services, _logger, UseDatabaseStubs);
 
             services.AddSingleton(Configuration);
         }
@@ -235,18 +235,25 @@ namespace GM.WebApp
         //    }
         //}
 
-        private void AddApplicationServices(IServiceCollection services, StartupLogger _logger)
+        private void AddApplicationServices(IServiceCollection services, StartupLogger _logger, bool UseDatabaseStubs)
         {
-            // Add repositories
-            services.AddSingleton<IGovBodyRepository, GovBodyRepositoryStub>();     // use stub
-            services.AddSingleton<IMeetingRepository, MeetingRepositoryStub>();     // use stub
+            // database repositories
+            if (UseDatabaseStubs) {
+                services.AddSingleton<IGovBodyRepository, GovBodyRepositoryStub>(); 
+                services.AddSingleton<IMeetingRepository, MeetingRepositoryStub>();
+            } else {
+                services.AddSingleton<IGovBodyRepository, GovBodyRepository>(); 
+                services.AddSingleton<IMeetingRepository, MeetingRepository>();
+            }
+
+            // file data repositories
             services.AddSingleton<IViewMeetingRepository, ViewMeetingRepository>();
             services.AddSingleton<IAddtagsRepository, AddtagsRepository>();
             services.AddSingleton<IFixasrRepository, FixasrRepository>();
 
             _logger.LogTrace("Add Application services");
 
-            // Add application services.
+            // application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 

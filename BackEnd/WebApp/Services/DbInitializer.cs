@@ -68,9 +68,9 @@ namespace GM.WebApp.Services
             //}
 
             // Create admin user. This adds it to the table dbo.AspNetUsers
-            string admin_username = _config.AdminUser.Username;
-            string admin_password = _config.AdminUser.Password;
-            string admin_email = _config.AdminUser.Email;
+            string admin_username = _config.DbAdmin.Username;
+            string admin_password = _config.DbAdmin.Password;
+            string admin_email = _config.DbAdmin.Email;
             if (!_context.Users.Any())
             {
                 await _userManager.CreateAsync(new ApplicationUser() { UserName = admin_username, Email = admin_email }, admin_password);

@@ -20,8 +20,8 @@ namespace GM.Configuration
         public int MaxWorkFileBackups { get; set; }
         public bool MoveIncomingFileAfterProcessing { get; set; }
         public string GoogleApplicationCredentials { get; set; }
-        public EmailSettings Email { get; set; }
-        public AdminUserSettings AdminUser { get; set; }
+        public bool UseDatabaseStubs { get; set; }
+        public DbAdminSettings DbAdmin { get; set; }
     }
 
     public class EmailSettings
@@ -33,7 +33,7 @@ namespace GM.Configuration
         public string Username { get; set; }
         public string Password { get; set; }
     }
-    public class AdminUserSettings
+    public class DbAdminSettings
     {
         public string Username  { get; set; }
         public string Password { get; set; }
