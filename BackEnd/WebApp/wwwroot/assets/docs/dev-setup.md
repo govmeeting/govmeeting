@@ -78,6 +78,7 @@ Forcing the ClientApp server to start & stop, whenever WebApp starts & stops, wo
 * Open terminal pane and execute:
  - cd FrontEnd/ClientApp
  - npm start
+* OR in Task Runner Explorer (WebApp) run "Run-ClientApp"
 * OR in Task Runner Explorer (ClientApp) run "start"
 
 ### Debug ClientApp & WebApp together

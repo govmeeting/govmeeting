@@ -79,7 +79,28 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
-        }
+        },
+        {
+            "name": "PowerShell Launch (current file)",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${file}",
+            "args": [],
+            "cwd": "${file}"
+        },
+        {
+            "name": "PowerShell Attach to Host Process",
+            "type": "PowerShell",
+            "request": "attach",
+            "processId": "${command:PickPSHostProcess}",
+            "runspaceId": 1
+        },
+        {
+            "name": "PowerShell Interactive Session",
+            "type": "PowerShell",
+            "request": "launch",
+            "cwd": "${workspaceRoot}"
+        }  
     ],
     "compounds": [
         {

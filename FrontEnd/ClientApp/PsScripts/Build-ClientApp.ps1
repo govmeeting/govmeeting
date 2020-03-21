@@ -46,7 +46,7 @@ Function Main
     # When this command is run, we should already be in Backend\WebApp
     if (!($destination.ToLower().EndsWith($webapp)))
     {
-        echo "$me ERROR Current location should end with $webapp"
+        Write-Output "$me ERROR Current location should end with $webapp"
         exit
     }
 
@@ -54,21 +54,24 @@ Function Main
     ##################   Check ClientApp location   ########################
 
 
-    echo "$me ClientApp is $source"
+    Write-Output "$me ClientApp is $source"
     if (!(Test-Path $source -pathType container))
     {
-        echo "$me ERROR $source does not exist"
+        Write-Output "$me ERROR $source does not exist"
         exit
     } 
 
 
     ##################  Build ClientApp   ########################
 
-    cd $source
+    Push-Location $source
+
     npm run build
 
+    Pop-Location
 }
 
+Write-Host "############################ Build-ClientApp.ps1 ############################"
 
 # Execute Main function. This is excecuted first.
 # Main @args

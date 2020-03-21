@@ -1,4 +1,4 @@
 {
-  "heroesUrl": "api/heroes",
-  "textfile": "assets/textfile.txt"
+  "baseUrl": "localhost:4200",
+  "isAspServerRunning": true
 }
