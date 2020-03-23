@@ -89,18 +89,4 @@ There needs to be a way to elevate the rights of one or more of a location's reg
 * Managers would be notified whenever a decision is pending in the workflow.
 * A manager could then log in and give or deny approval for the workflow to continue.
 
-## Govmeeting.org
-
-Anyone can download the Govmeeting software and run it on their own servers.
- But it would be helpful if a public site was available for those who
- don't want to run their sever. Could a non-profit be formed to provide such a site?
-
-If we hosted only the data representing the meeting transcripts, the cost should be quite small.
-It is another matter is we want to host the video/audio of the meetings.
-This would be needed if we want to allow playback of selected sections of the meeting.
-The stored transcript data contains the start/end time of every speakers' comments.
-So that is a do-able feature and perhaps it is very useful.  
-
-Currently "govmeeting.org" is run on a low-cost shared host. But if many municipalities elect to use this site, it will need to be run on a cloud service like AWS or Azure, in order to dynamically increase capacity.
-
 

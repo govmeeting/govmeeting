@@ -61,18 +61,21 @@
             }
         },
         {
-            "name": "Workflow_App",
+            "name": "WorkflowApp",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-workflowapp",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Backend/Workflow_App/bin/Debug/netcoreapp2.0/Workflow_App.dll",
+            "program": "${workspaceFolder}/Backend/WorkflowApp/bin/Debug/netcoreapp2.0/WorkflowApp.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Backend/Workflow_App",
+            "cwd": "${workspaceFolder}/Backend/WorkflowApp",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
             "console": "internalConsole",
             "stopAtEntry": false,
-            "internalConsoleOptions": "openOnSessionStart"
+            "internalConsoleOptions": "openOnSessionStart",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
         },
        {
             "name": ".NET Core Attach",

@@ -28,7 +28,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/BackEnd/Workflow_App/Workflow_App.csproj"
+                "${workspaceFolder}/BackEnd/WorkflowApp/WorkflowApp.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

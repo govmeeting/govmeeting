@@ -48,13 +48,10 @@ let aboutpagesMenu = new NavItem(null, 'About', null,
   new NavItem(EntryType.docId, 'Project Status', 'check_circle_outline', 'project-status'),
   new NavItem(null, 'Developer Notes', 'school',
   [
-    new NavItem(EntryType.docId, 'Setup', 'build', 'dev-setup'),
+    new NavItem(EntryType.docId, 'Setup', 'build', 'setup'),
     new NavItem(EntryType.link, 'System Design', 'bubble_chart', 'sysdesign'),
-    new NavItem(EntryType.docId, 'ClientApp', 'computer', 'dev-client-app'),
-    new NavItem(EntryType.docId, 'WebApi', 'wifi', 'dev-webapi'),
-    new NavItem(EntryType.docId, 'WorkflowApp', 'trending_up', 'dev-workflow-app'),
-    new NavItem(EntryType.docId, 'Other Apps', 'smartphone', 'dev-other-apps'),
-    new NavItem(EntryType.docId, 'Database', 'smartphone', 'dev-database'),
+    new NavItem(EntryType.docId, 'Design Notes', 'notes', 'design-notes'),
+    new NavItem(EntryType.docId, 'Database', 'archive', 'database'),
   ])
 ])
 

@@ -26,7 +26,6 @@ namespace GM.Workflow
         {
             // https://pioneercode.com/post/dependency-injection-logging-and-configuration-in-a-dot-net-core-console-app
 
-
             // create service collection
             var services = new ServiceCollection();
             ConfigureServices(services);

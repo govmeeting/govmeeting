@@ -13,6 +13,7 @@ using GM.FileDataRepositories;
 using GM.ViewModels;
 using Microsoft.Extensions.Logging;
 
+// TODO There is probably an easier, standard, way to disable authentication in Asp.Net Core.
 // $define NOAUTH       // uncomment this to disable auth. You can also define NOAUTH in project properties.
 
 

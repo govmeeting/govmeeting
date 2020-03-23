@@ -180,4 +180,4 @@ ___
 
 ## Size of Data
 
-The size of the final meeting database is very small. Let's assume a transcript of 20,000 words and average word size of 6 characters (the average for English). An entire year of monthly town council meetings can fit into 1.5 meg of storage. This is a trivial amount of data for today's computers or smart phones. This will enable us to build applications where much of the data is be stored locally on a user's computer or smartphone -- for high performance and the ability to run the application off-line.
+The size of the final meeting database is very small. This will enable us to build applications where much of the data is be stored locally on a user's computer or smartphone -- for high performance and the ability to run the application off-line.
