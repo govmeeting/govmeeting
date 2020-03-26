@@ -30,9 +30,6 @@ namespace GM.FileDataRepositories
 
         public ViewmeetingView Get(long meetingId)
         {
-            // TODO - Remove later - For development: If the data is not in Datafiles folder, copy it from testdata.
-            // UseTestData.CopyIfNeeded(meetingFolder, _config.DatafilesPath, _config.TestfilesPath);
-
             string workFolderPath = GetWorkFolderPath(meetingId);
 
             CircularBuffer cb = new CircularBuffer(workFolderPath, WORK_FILE_NAME, _config.MaxWorkFileBackups);

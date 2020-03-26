@@ -87,6 +87,7 @@ namespace GM.Workflow
             services.AddTransient<AddtagsRepository>();
             services.AddTransient<FixasrRepository>();
             services.AddTransient<MeetingFolder>();
+            // services.AddTransient<INotifyManager, NotifyManager_Stub>();
             services.AddTransient<IMeetingRepository, MeetingRepository>();
             services.AddTransient<IGovBodyRepository, GovBodyRepository>();
 

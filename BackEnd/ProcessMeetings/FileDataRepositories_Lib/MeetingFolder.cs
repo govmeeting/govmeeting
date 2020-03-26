@@ -11,7 +11,7 @@ namespace GM.FileDataRepositories
 {
     // Work folders under Datafiles are named as follows:
     //    <country>_<state>_<county>_<town-or-city>_<gov-entity>_<language>/<date>
-    // THe purpose of this class is to build this name from it parts or to extact the parts from a folder name.
+    // THe purpose of this class is to build this name from its parts or to extact the parts from a folder name.
     // If a meeting ID is passed to GetPathFromId, it will first look up the  meeting info in the database and then build the path.
     // For example:
     //      country = "USA"

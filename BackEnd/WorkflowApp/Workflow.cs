@@ -11,27 +11,16 @@ namespace GM.Workflow
 
     public class WorkflowController
     {
-        /*  WorkflowController is the "controller" for the Govmeeting processing steps:
-         *  (1) It reads the schedule from the database for retrieving new transcripts or recordings
-         *      from online sites. It retrieves new files and stores them in the TO_PROCESS folder.
-         *  (2) It watches for new recordings and transcript files that appear in the TO_PROCESS folder and 
-         *      performs pre-processing on them. Files can appear because of step 1 above and also
-         *      if a user uploads a file via the website or via the phone app for recording a meeting.
-         *  (3) When the corrections are completed of the auto voice recognition text,
-         *      it transforms the JSON format for the next step in the process: adding tags.
-         *  (4) When the addition of tags is completed, it creates a viewable transcript and also
-         *      it loads the completed transcript into the database.
-         */
-
-
         //private readonly ITestService _testService;
         private readonly ILogger<WorkflowController> _logger;
         private readonly AppSettings _config;
-        private readonly ProcessIncomingFiles _processIncomingFiles;
         private readonly RetrieveOnlineFiles _retrieveOnlineFiles;
+        private readonly ProcessIncomingFiles _processNewFiles;
         private readonly ProcessFixedAsr _processFixedAsr;
         private readonly ProcessTagged _processTagged;
         private readonly LoadTranscript _loadTranscript;
+        private readonly NotifyManager _notifyManager;
+
 
         public WorkflowController(
             //ITestService testService,
@@ -41,14 +30,15 @@ namespace GM.Workflow
             ProcessIncomingFiles processIncomingFiles,
             ProcessFixedAsr processFixedAsr,
             ProcessTagged processTagged,
-            LoadTranscript loadTranscript
+            LoadTranscript loadTranscript,
+            NotifyManager notifyManager
             )
         {
             //_testService = testService;
             _logger = logger;
             _config = config.Value;
             _retrieveOnlineFiles = retrieveOnlineFiles;
-            _processIncomingFiles = processIncomingFiles;
+            _processNewFiles = processIncomingFiles;
             _processFixedAsr = processFixedAsr;
             _processTagged = processTagged;
             _loadTranscript = loadTranscript;
@@ -58,12 +48,16 @@ namespace GM.Workflow
         {
             _logger.LogInformation($"Start Workflow - datafilesPath = {_config.DatafilesPath}");
 
-            // Retrieve online recordings and transcripts
+            string testfilesPath = _config.TestfilesPath;
+            string datafilesPath = _config.DatafilesPath;
+            InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);
+
+            // Retreive online transcripts or recordings
             _retrieveOnlineFiles.Run();
 
-            // Process the retrieved files - auto speech recognition of recordings and
-            // pre-process transcript files
-//            _processIncomingFiles.Run();
+            // Process new files - auto speech recognition of recordings and
+            // pre-processing of transcript files
+            _processNewFiles.Run();
 
             // Process the fixed transcripts to get ready for tagging
             _processFixedAsr.Run();
@@ -73,6 +67,9 @@ namespace GM.Workflow
 
             // Load completed transcript data into database
             _loadTranscript.Run();
+
+            // Nnotify manager(s) if approval is needed.
+            _notifyManager.Run();
 
             System.Console.ReadKey();
         }

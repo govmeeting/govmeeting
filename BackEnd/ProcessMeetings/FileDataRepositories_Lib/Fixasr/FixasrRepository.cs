@@ -33,9 +33,6 @@ namespace GM.FileDataRepositories
 
         public FixasrView Get(long meetingId, int part)
         {
-            // TODO - Remove later - for development: If the data is not in Datafiles folder, copy it from testdata.
-            // UseTestData.CopyIfNeeded(workFolder, _config.DatafilesPath, _config.TestfilesPath);
-
             string partFolder = GetPartFolder(meetingId, part);
 
             CircularBuffer cb = new CircularBuffer(partFolder, WORK_FILE_NAME, config.MaxWorkFileBackups);

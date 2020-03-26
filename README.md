@@ -105,9 +105,9 @@ In the folder "src/ClientApp", run the following command:
 * Set startup project to `WorkFlow_App`. Press F5.
 
 #### In VSCode
-* Set the Launch Configuration to `Workflow_App`. Press F5.
+* Set the Launch Configuration to `WorkflowApp`. Press F5.
 
-The first time that Workflow_App is run, it will copy test data 
+The first time that WorkflowApp is run, it will copy test data 
 
 * Copy (don't move) either the either sample MP4 recording or PDF transcript files from testdata to Datafiles/TO_PROCESS.
 

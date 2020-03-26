@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GM.FileDataRepositories;
 
-namespace WebApp.Data
+namespace GM.WebApp
 {
     public static class InitializeFileTestData
     {
