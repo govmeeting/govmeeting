@@ -18,9 +18,7 @@ namespace GM.Workflow
         private readonly ProcessIncomingFiles _processNewFiles;
         private readonly ProcessFixedAsr _processFixedAsr;
         private readonly ProcessTagged _processTagged;
-        private readonly LoadTranscript _loadTranscript;
-        private readonly NotifyManager _notifyManager;
-
+        private readonly ILoadTranscript _loadTranscript;
 
         public WorkflowController(
             //ITestService testService,
@@ -30,8 +28,7 @@ namespace GM.Workflow
             ProcessIncomingFiles processIncomingFiles,
             ProcessFixedAsr processFixedAsr,
             ProcessTagged processTagged,
-            LoadTranscript loadTranscript,
-            NotifyManager notifyManager
+            ILoadTranscript loadTranscript
             )
         {
             //_testService = testService;

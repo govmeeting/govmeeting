@@ -6,11 +6,11 @@ using GM.DatabaseModel;
 
 namespace GM.DatabaseRepositories
 {
-    public class MeetingRepositoryStub : IMeetingRepository
+    public class MeetingRepository_Stub : IMeetingRepository
     {
         IGovBodyRepository _govBodyRepository;
 
-        public MeetingRepositoryStub(IGovBodyRepository govBodyRepository)
+        public MeetingRepository_Stub(IGovBodyRepository govBodyRepository)
         {
             _govBodyRepository = govBodyRepository;
         }

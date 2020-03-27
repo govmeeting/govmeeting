@@ -10,7 +10,8 @@ using Microsoft.Extensions.Options;
 using GM.Configuration;
 
 /*    This is old code that needs to be re-done. Originally, the format of the transcript file
- *    that was being read and loaded into the database was in a different format.
+ *    that was being read and loaded into the database was very different.
+ *    THis code is just here for examples of using dBOperations.
  */
 
 namespace GM.LoadDatabase
@@ -18,12 +19,12 @@ namespace GM.LoadDatabase
     /// <summary>
     /// load and parse a trancript into memory and write the data to the database.
     /// </summary>
-    public class LoadTranscript
+    public class LoadTranscript_X : ILoadTranscript
     {
         private readonly AppSettings _config;
         private dBOperations dbOps;
 
-        public LoadTranscript(
+        public LoadTranscript_X(
             IOptions<AppSettings> config,
             dBOperations _dbOps
             )
@@ -84,5 +85,16 @@ namespace GM.LoadDatabase
             }
             //}
         }
+    }
+    public interface ILoadTranscript
+    {
+        void Run();
+        void LoadAndSave(ReadTranscriptFile readTranscript);
+    }
+
+    public class LoadTranscript_Stub : ILoadTranscript
+    {
+        public void Run() { }
+        public void LoadAndSave(ReadTranscriptFile readTranscript)  { }
     }
 }

@@ -237,8 +237,8 @@ namespace GM.WebApp
         {
             // database repositories
             if (UseDatabaseStubs) {
-                services.AddSingleton<IGovBodyRepository, GovBodyRepositoryStub>(); 
-                services.AddSingleton<IMeetingRepository, MeetingRepositoryStub>();
+                services.AddSingleton<IGovBodyRepository, GovBodyRepository_Stub>(); 
+                services.AddSingleton<IMeetingRepository, MeetingRepository_Stub>();
             } else {
                 services.AddSingleton<IGovBodyRepository, GovBodyRepository>(); 
                 services.AddSingleton<IMeetingRepository, MeetingRepository>();

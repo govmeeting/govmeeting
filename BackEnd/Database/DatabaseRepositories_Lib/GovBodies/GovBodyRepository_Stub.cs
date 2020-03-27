@@ -5,7 +5,7 @@ using GM.DatabaseModel;
 
 namespace GM.DatabaseRepositories
 {
-    public class GovBodyRepositoryStub : IGovBodyRepository
+    public class GovBodyRepository_Stub : IGovBodyRepository
     {
     public GovernmentBody Get(long governmentBodyId)
     {
