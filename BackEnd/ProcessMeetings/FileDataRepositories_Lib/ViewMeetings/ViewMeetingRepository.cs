@@ -5,6 +5,8 @@ using Microsoft.Extensions.Options;
 //using GM.DatabaseRepositories;
 using GM.ViewModels;
 using GM.Configuration;
+using GM.DatabaseRepositories;
+using GM.DatabaseModel;
 
 namespace GM.FileDataRepositories
 {
@@ -17,15 +19,21 @@ namespace GM.FileDataRepositories
         const string WORK_FILE_NAME = "ToView.json";
 
         private readonly AppSettings _config;
-        private readonly MeetingFolder _meetingFolder;
+        private readonly MeetingFolder meetingFolder;
+        IMeetingRepository meetingRepository;          // database meeting repository
+        IGovBodyRepository govBodyRepository;          // database govbody repository
 
         public ViewMeetingRepository(
             IOptions<AppSettings> config,
-            MeetingFolder meetingFolder
+            MeetingFolder _meetingFolder,
+            IMeetingRepository _meetingRepository,
+            IGovBodyRepository _govBodyRepository
             )
         {
             _config = config.Value;
-            _meetingFolder = meetingFolder;
+            meetingFolder = _meetingFolder;
+            meetingRepository = _meetingRepository;
+            govBodyRepository = _govBodyRepository;
         }
 
         public ViewmeetingView Get(long meetingId)
@@ -65,11 +73,16 @@ namespace GM.FileDataRepositories
         }
         private string GetWorkFolderPath(long meetingId)
         {
-            // We need to get the work path that is used for this meeting.
-            // GetPathFromId will first get the information about the meeting from the database.
-            // Then it will build the path name of the work folder.
-            string meetingFolder = _meetingFolder.GetNameFromId(meetingId);
-            string workFolder = meetingFolder + "\\" + WORK_FOLDER_NAME;
+            Meeting meeting = meetingRepository.Get(meetingId);
+            GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
+
+            string language = g.Languages[0].Name;
+
+            meetingFolder.SetFields(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
+            string meetingFolderPath = meetingFolder.path;
+
+
+            string workFolder = meetingFolderPath + "\\PROCESSING\\" + WORK_FOLDER_NAME;
             string workFolderPath = Path.Combine(_config.DatafilesPath, workFolder);
             return workFolderPath;
         }

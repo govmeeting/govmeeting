@@ -35,21 +35,13 @@ namespace GM.Workflow
             // create service provider
             var serviceProvider = services.BuildServiceProvider();
 
-            //var a = serviceProvider.GetService<RetrieveOnlineFiles>();
-            //var b = serviceProvider.GetService<RetrieveOnlineFiles>();
-            //var c = serviceProvider.GetService<ProcessIncomingFiles>();
-            //var d = serviceProvider.GetService<RecordingProcess>();
-            //var e = serviceProvider.GetService<TranscribeAudio>();
-            //var f = serviceProvider.GetService<TranscriptProcess>();
-            //var g = serviceProvider.GetService<ILoadTranscript>();
-            //var h = serviceProvider.GetService<ProcessTagged>();
-            //var i = serviceProvider.GetService<ProcessFixedAsr>();
-            //var j = serviceProvider.GetService<AddtagsRepository>();
-            //var k = serviceProvider.GetService<FixasrRepository>();
-            //var l = serviceProvider.GetService<MeetingFolder>();
+            //var m = serviceProvider.GetService<IMeetingRepository>();
 
-            var m = serviceProvider.GetService<IOptions<AppSettings>>();
-
+            // Copy test data to Datafiles
+            var config = serviceProvider.GetService<IOptions<AppSettings>>().Value;
+            string testfilesPath = config.TestfilesPath;
+            string datafilesPath = config.DatafilesPath;
+            InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);
 
             // entry to run app
             serviceProvider.GetService<WorkflowController>().Run();
@@ -98,16 +90,19 @@ namespace GM.Workflow
             services.AddTransient<ApplicationDbContext>();
             services.AddTransient<dBOperations>();
             services.AddTransient<RetrieveOnlineFiles>();
-            services.AddTransient<ProcessIncomingFiles>();
+            services.AddTransient<ProcessReceivedFiles>();
+            services.AddTransient<ProcessRecordings>();
+            services.AddTransient<ProcessTranscripts>();
             services.AddTransient<RecordingProcess>();
             services.AddTransient<TranscribeAudio>();
             services.AddTransient<TranscriptProcess>();
             services.AddTransient<ILoadTranscript, LoadTranscript_Stub>();
             services.AddTransient<ProcessTagged>();
-            services.AddTransient<ProcessFixedAsr>();
+            services.AddTransient<ProcessProofread>();
             services.AddTransient<AddtagsRepository>();
             services.AddTransient<FixasrRepository>();
             services.AddTransient<MeetingFolder>();
+            services.AddTransient<ILoadTranscript, LoadTranscript_Stub>();
             services.AddTransient<IMeetingRepository, MeetingRepository_Stub>();
             services.AddTransient<IGovBodyRepository, GovBodyRepository_Stub>();
 

@@ -7,25 +7,35 @@ using System.Threading.Tasks;
 namespace GM.DatabaseModel
 {
     public enum WorkStatus {
-        Retrieving, Retrieved,
-        Preprocessing, Preprocessed,
+        Receiving, Received,
+        Processing, Processed,
         Transcribing, Transcribed,
-        FixingAsr, FixedAsr,
+        Proofreading, Proofread,
         Tagging, Tagged,
-        Viewing, Viewed};
+        Viewing, Viewed,
+        Loading, Loaded};
+    public enum SourceType
+    {
+        Recording,
+        Transcript
+    }
 
     /// <summary>
-    /// The meeting object is all the data associated with one specific meeting.
+    /// The Meeting object is all the data associated with one specific meeting.
     /// </summary>
     public class Meeting
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public int Length { get; set; }
         public List<TopicDiscussion> TopicDiscussions { get; set; }
-        public int GovernmentBodyId { get; set; }
+        public long GovernmentBodyId { get; set; }
+        public string Language { get; set; }
+        public string SourceFilename { get; set; }
+        public SourceType SourceType { get; set; }
         public WorkStatus WorkStatus { get; set; }
+        public bool Approved { get; set; }
 
         /*
          * If we were to say: public virtual List<Talk> ....

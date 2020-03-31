@@ -20,5 +20,10 @@ namespace GM.DatabaseRepositories
             GovernmentBody govBody = dBOperations.GetGovernmentBody(governmentBodyId);
             return govBody;
         }
+        public long GetId(string country, string state, string county, string municipality)
+        {
+            // TODO - implement - return ID of body based on country, state, county & municipality.
+            return -1;
+        }
     }
 }

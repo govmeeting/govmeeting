@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { TopicsComponent } from './topics.component';
+import { TopicsComponent } from './topics';
 import { FormsModule } from '@angular/forms';
 
 describe('TopicsComponent', () => {

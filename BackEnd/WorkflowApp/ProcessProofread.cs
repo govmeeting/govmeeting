@@ -10,14 +10,14 @@ using GM.ViewModels;
 
 namespace GM.Workflow
 {
-    public class ProcessFixedAsr
+    public class ProcessProofread
     {
         int MEETINGID = 1;      // FOR DEVELOPMENT
 
         AddtagsRepository _addtagsRepository;
         FixasrRepository _fixasrRepository;
 
-        public ProcessFixedAsr(
+        public ProcessProofread(
             AddtagsRepository addtagsRepository,
             FixasrRepository fixasrRepository
             )

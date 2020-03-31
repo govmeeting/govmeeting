@@ -8,13 +8,15 @@ using GM.ViewModels;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 using GM.FileDataRepositories;
+using GM.DatabaseRepositories;
+using GM.DatabaseModel;
 
 namespace GM.Workflow
 {
-    public class ProcessIncomingFiles
+    public class ProcessRecordings
     {
 
-        /*   ProcessIncomingFiles watches the "TO_PROCESS" folder for new files and processes them.
+        /*   ProcessIncomingFiles watches the "RECEIVED" folder for files to be processed.
          *   Currently the file types can be either PDF or MP4.
          *   The names of the files must be in the format: <country>_<state>_<county>_<town-or-city>_<gov-entity>_<language>_<date>.<extension>
          *   For example:  USA_TX_TravisCounty_Austin_CityCouncil_en_2017-12-14.pdf
@@ -25,16 +27,19 @@ namespace GM.Workflow
         */
 
         AppSettings _config;
-        //MeetingInfo _meetingInfo;
         MeetingFolder _meetingFolder;
         TranscriptProcess _processTranscript;
         RecordingProcess _processRecording;
+        IMeetingRepository _meetingRepository;
+        IGovBodyRepository _govBodyRepository;
 
-        public ProcessIncomingFiles(
+        public ProcessRecordings(
             IOptions<AppSettings> config,
             TranscriptProcess processTranscript,
             RecordingProcess processRecording,
-            MeetingFolder meetingFolder
+            MeetingFolder meetingFolder,
+            IMeetingRepository meetingRepository,
+            IGovBodyRepository govBodyRepository
            )
         {
             _config = config.Value;
@@ -48,12 +53,14 @@ namespace GM.Workflow
             _meetingFolder = meetingFolder;
             _processTranscript = processTranscript;
             _processRecording = processRecording;
+            _meetingRepository = meetingRepository;
+            _govBodyRepository = govBodyRepository;
         }
 
         // Watch the incoming folder and process new files as they arrive.
         public void Run()
         {
-            string incomingPath = _config.DatafilesPath + @"\TO_PROCESS";
+            string incomingPath = _config.DatafilesPath + @"\RECEIVED";
             Directory.CreateDirectory(incomingPath);
 
             // Process any existing files in the folder
@@ -70,26 +77,36 @@ namespace GM.Workflow
 
         public void doWork(string filename)
         {
-            // alternate way of setting MeetingInfo instance and checking if it's valid
-            // _meetingInfo = new MeetingInfo(filename);
-            // if (!_meetingInfo.valid)
-
             // Create a MeetingInfo instance. This takes the info in the filename string, for example,
             // "USA_TX_TravisCounty_Austin_CityCouncil_en/2017-12-14" and puts it into a strongly typed object.
             if (!_meetingFolder.SetFields(filename))
             {
+                // If this is not a valid name, skip it.
                 Console.WriteLine($"ProcessIncomingFiles.cs - filename is invalid: {filename}");
                 return;
             }
-            string meetingFolder = _config.DatafilesPath + "\\" +_meetingFolder.path;
+
+            // Check if there is a database record for this government body.
+            long govBodyId = _govBodyRepository.GetId(
+                _meetingFolder.country,
+                _meetingFolder.state,
+                _meetingFolder.county,
+                _meetingFolder.municipality);
+
+            // Check if there is database record for this meeting.
+            //long Id = _meetingFolder.GetId();
+            Meeting meeting = _meetingRepository.Get(govBodyId, DateTime.Parse(_meetingFolder.date));
+
+
+            string meetingFolder = _config.DatafilesPath + "\\PROCESSING\\" + _meetingFolder.path;
             string language = _meetingFolder.language;
 
             // FOR DEVELOPMENT: WE DELETE PRIOR MEETING FOLDER IF IT EXISTS.
-            if (_config.IsDevelopment)
-            {
-                FileDataRepositories.GMFileAccess.DeleteDirectoryAndContents(meetingFolder);
+            //if (_config.IsDevelopment)
+            //{
+            //    FileDataRepositories.GMFileAccess.DeleteDirectoryAndContents(meetingFolder);
 
-            }
+            //}
 
             if (!FileDataRepositories.GMFileAccess.CreateDirectory(meetingFolder))
             {

@@ -4,6 +4,8 @@ using System.IO;
 using Microsoft.Extensions.Options;
 using GM.ViewModels;
 using GM.Configuration;
+using GM.DatabaseModel;
+using GM.DatabaseRepositories;
 
 namespace GM.FileDataRepositories
 {
@@ -17,15 +19,22 @@ namespace GM.FileDataRepositories
         const string WORK_FILE_NAME = "ToTag.json";
 
         private readonly AppSettings _config;
-        private readonly MeetingFolder _meetingFolder;
+        private readonly MeetingFolder meetingFolder;
+        IMeetingRepository meetingRepository;          // database meeting repository
+        IGovBodyRepository govBodyRepository;          // database govbody repository
+
 
         public AddtagsRepository(
             IOptions<AppSettings> config,
-            MeetingFolder meetingFolder
-            )
+            MeetingFolder _meetingFolder,
+            IMeetingRepository _meetingRepository,
+            IGovBodyRepository _govBodyRepository
+           )
         {
             _config = config.Value;
-            _meetingFolder = meetingFolder;
+            meetingFolder = _meetingFolder;
+            meetingRepository = _meetingRepository;
+            govBodyRepository = _govBodyRepository;
         }
 
         public AddtagsView Get(long meetingId)
@@ -54,9 +63,18 @@ namespace GM.FileDataRepositories
 
         public string GetWorkFolderPath(long meetingId)
         {
-            string meetingFolder = _meetingFolder.GetNameFromId(meetingId);
-            string workFolder = meetingFolder + "\\" + WORK_FOLDER_NAME;
-            string workFolderPath = Path.Combine(_config.DatafilesPath, workFolder);
+            Meeting meeting = meetingRepository.Get(meetingId);
+            GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
+            string language = g.Languages[0].Name;
+
+            meetingFolder.SetFields(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
+
+            //string meetingFolder = _meetingFolder.GetPath();
+            string meetingFolderPath = meetingFolder.path;
+
+
+            string workFolder = meetingFolderPath + "\\" + WORK_FOLDER_NAME;
+            string workFolderPath = Path.Combine(_config.DatafilesPath, "PROCESSING", workFolder);
             return workFolderPath;
         }
     }

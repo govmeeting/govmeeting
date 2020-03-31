@@ -26,7 +26,7 @@ using GM.DatabaseAccess;
 using GM.FileDataRepositories;
 using GM.WebApp.Services;
 using Microsoft.EntityFrameworkCore.Design;
-.
+
 namespace GM.WebApp
 {
     public partial class Startup
@@ -212,7 +212,7 @@ namespace GM.WebApp
             //Run migrations and create seed data
             //dbInitializer.Initialize().Wait();
 
-.            _logger.LogTrace("Copy test data to Datafiles folder");
+            _logger.LogTrace("Copy test data to Datafiles folder");
             string testfilesPath = config.Value.TestfilesPath;
             InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);
 

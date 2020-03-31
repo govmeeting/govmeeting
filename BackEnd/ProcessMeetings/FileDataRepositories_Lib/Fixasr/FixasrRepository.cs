@@ -4,6 +4,8 @@ using System.IO;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 using GM.ViewModels;
+using GM.DatabaseRepositories;
+using GM.DatabaseModel;
 //using GM.DatabaseRepositories;
 
 namespace GM.FileDataRepositories
@@ -20,15 +22,21 @@ namespace GM.FileDataRepositories
         private readonly AppSettings config;
         private readonly MeetingFolder meetingFolder;
         private readonly string datafiles;
+        IMeetingRepository meetingRepository;          // database meeting repository
+        IGovBodyRepository govBodyRepository;          // database govbody repository
 
         public FixasrRepository(
             IOptions<AppSettings> _config,
-            MeetingFolder _meetingFolder
+            MeetingFolder _meetingFolder,
+            IMeetingRepository _meetingRepository,
+            IGovBodyRepository _govBodyRepository
             )
         {
             config = _config.Value;
             meetingFolder = _meetingFolder;
             datafiles = config.DatafilesPath;
+            meetingRepository = _meetingRepository;
+            govBodyRepository = _govBodyRepository;
         }
 
         public FixasrView Get(long meetingId, int part)
@@ -55,9 +63,14 @@ namespace GM.FileDataRepositories
 
         private string GetPartFolder(long meetingId, int part)
         {
-            string meetingFolderPath = meetingFolder.GetNameFromId(meetingId);
+            Meeting meeting = meetingRepository.Get(meetingId);
+            GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
+            string language = g.Languages[0].Name;
 
-            string workFolder = meetingFolderPath + "\\" + WORK_FOLDER_NAME;
+            meetingFolder.SetFields(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
+            string meetingFolderPath = meetingFolder.path;
+
+            string workFolder = meetingFolderPath + "\\PROCESSING\\" + WORK_FOLDER_NAME;
             string partFolder = workFolder + $"\\part{part:D2}";
             string partFolderPath = Path.Combine(datafiles, partFolder);
 

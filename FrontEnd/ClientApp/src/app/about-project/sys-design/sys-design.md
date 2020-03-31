@@ -4,15 +4,15 @@
 <markdown ngPreserveWhitespaces>
 
 The diagrams below show the interaction between software components.
- The ClientApp is the Angular Single Page Application that runs in the browser. The other components run on the server.
 
-Each server component is a  separate Visual Studio project. WorkflowApp and WebApp are console applications.
- The others are C# libraries.
+ The ClientApp is an Angular (2+) /Typescript single page application that runs in the browser. 
+ 
+The web server and other server components are in C# using [DotNet Core](https://github.com/dotnet/core)  and [Asp.Net Core](https://github.com/aspnet/home)
 
-There are separate diagrams for the WebApp and ClientApp internals.
+Each server component is a separate dotnet project. WorkflowApp and WebApp are console applications. The other components are C# libraries.
 
 ___
-## System  Flowchart
+## System  Design
 </markdown>
 <img src="assets/images/FlowchartSystem.png">
 <markdown ngPreserveWhitespaces>
@@ -37,7 +37,7 @@ The components in the above diagram are:
 </table>
 
 ___
-## ClientApp Flowchart
+## ClientApp Design
 </markdown>
 <img src="assets/images/FlowchartClientApp.png">
 <markdown ngPreserveWhitespaces>
@@ -45,30 +45,26 @@ ___
 The structure of the ClientApp is best shown by its Angular Component structure
 
 <table style="width:100%">
-<tr><th colspan="2">Main App Components</th></tr>
+<tr><th colspan="2">App Components</th></tr>
 <tr><td>Header</td><td>Header</td></tr>
 <tr><td>Sidenav</td><td>Sidebar Navigation</td></tr>
-<tr><td>(router-outlet)</td><td>Where other component will be placed</td></tr>
-<tr><th colspan="2"> Documentation components</th></tr>
-<tr><td>About</td><td>Returns Markdown pages in assets/docs</td></tr>
-<tr><td>Overview/SysDesign</td><td>Doc pages that have their own components</td></tr>
-<tr><th colspan="2"> Dashboard components</th></tr>
 <tr><td>Dashboard</td><td>Container for dashboard components</td></tr>
+<tr><td>Documentation</td><td>Container for documentation pages</td></tr>
+<tr><th colspan="2"> Dashboard components</th></tr>
 <tr><td>Fixasr</td><td>Fix Auto Speech Recognition text</td></tr>
 <tr><td>Addtags</td><td>Add tags to transcripts</td></tr>
 <tr><td>ViewMeeting</td><td>View completed transcripts</td></tr>
 <tr><td>Issues</td><td>View information on issues</td></tr>
 <tr><td>Alerts</td><td>View and set information on alerts</td></tr>
 <tr><td>Officials</td><td>View information on officials</td></tr>
+<tr><td>(Others))</td><td>Other components to be implemented</td></tr>
 <tr><th colspan="2"> Services</th></tr>
 <tr><td>VirtualMeeting</td><td>Run virtual meeting</td></tr>
 <tr><td>Chat</td><td>User chat component</td></tr>
 </table>
 
-
-
 ___
-## WebApp Flowchart
+## WebApp Design
 </markdown>
 <img src="assets/images/FlowchartWebApp.png">
 <markdown ngPreserveWhitespaces>
@@ -92,21 +88,64 @@ Each of the Web API's are small and call the repositories to put or get data fro
 </table>
 
 ___
-## Frameworks
+## WorkflowApp Design
+</markdown>
+<img src="assets/images/FlowchartWorkflowApp.png">
+<markdown ngPreserveWhitespaces>
 
-The Front-end is written in Typescript using Angular (2+).
-The web server and backend are in C# using [DotNet Core](https://github.com/dotnet/core)  and [Asp.Net Core](https://github.com/aspnet/home)
+The status of the workflow for a specific meeting is kept in its Meeting record in the database. Each of the workflow components operates independently. They are each called in turn to check for available work. Each component will query the database for meetings matching their criteria for available work. If work is found, they will perform it and update the meeting's status in the database. 
 
-___
-## Application Environment
+In order to build a robust system, that can recover from failures, we need to treat steps in the workflow as "transactions". A transaction either completes fully or not at all. If there are  unrecoverable failures during a processing step, the state for that meeting rolls back to the last valid state. 
 
-ASP.NET Core references a particular environment variable, ASPNETCORE_ENVIRONMENT to describe the environment the application is currently running in. This variable can be set to any value you like, but three values are used by convention: Development, Staging, and Production.
+Pseudo code is given below for the components
 
-In Visual Studio, the value is set in the project properties under the Debug tab.
-
-In Visual Studio, the value is defined in .vscode/launch.json
-
-In other setups, you will need to set it as an environment variable.
+* RetreiveOnlineFiles
+  * Check schedule(s) for meeting(s) to retrieve
+  * For each file to be retreived
+    * Create database record for new meeting
+    * set status=receiving, approved=false
+  * When file(s) received:
+    * set status=received, approved=false
+    * Send manager(s) message: "Received"
+* TranscribeRecordings
+  * For recordings with sourcetype=recording, status=received, approved=true
+    * Create work folder
+    * set status=transcribing, approved=false
+    * Transcribe recording
+    * set status=transcribed, approved=false
+    * Send manager(s) message: "Transcribed"
+* ProcessTranscripts
+  * For transcripts with sourcetype=transcript, status=received, approved=true
+    * Create work folder
+    * set status=processing, approved=false
+    * Process transcript
+    * set status=processed, approved=false
+    * Send manager(s) message: "Processed"
+* ProofreadRecording
+  * For recordings with status=transcribed/approved=true
+    * Create work folder
+    * set status=proofreading, approved=false
+    * Manual proofreading will now take place
+  * For recordings with status=proofreading, approved=false
+    * Check if proofreading appears complete. If so:
+      * set status=proofread, approved = false
+      * send manager(s) message: "Proofread"
+* AddTagsToTranscript
+  * For recordings with status=proofread, approved=true
+  OR for transcripts with status=processed, approved=true
+    * Create work folder
+    * set status=tagging, approved=false
+    * Manual tagging will now take place
+  * For transcripts with status=tagging, approved=false
+    * Check if tagging appears complete. If so:
+      * set status=tagged, approved = false
+      * send manager(s) message: "Tagged"
+* LoadTranscript
+  * for meetings with status=tagged, approved=true
+    * set status=loading, approved=false
+    * load contents of meeting into database
+    * set status=loaded, approved=false
+    * Send manager(s) message: "Loaded"
 
 ___
 ## User Secrets

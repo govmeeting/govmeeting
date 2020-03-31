@@ -15,7 +15,7 @@ namespace GM.WebApp
             string[] dirs = new string[]
             {
                 // This data is for a meeting that we transcribed from an .mp4 file and we are currently
-                // on the step of fixing the transcription. When you run WebApp and click on "Fixasr",
+                // proofreading the transcription. When you run WebApp and click on "Fixasr",
                 // this is the data that you will see.
                 @"USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15",     // For Fixasr
                 //@"USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-01-09",     // For Fixasr
@@ -33,7 +33,7 @@ namespace GM.WebApp
             foreach (string dir in dirs)
             {
                 string source = testfilesPath + "\\" + dir;
-                string destination = datafilesPath + "\\" + dir;
+                string destination = datafilesPath + "\\PROCESSING\\" + dir;
                 if (!Directory.Exists(destination))
                 {
                     Directory.CreateDirectory(destination);

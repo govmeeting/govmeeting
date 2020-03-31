@@ -33,7 +33,7 @@ Change its value from true to false to turn on console logging for only that com
 The  project "WorkflowApp" in folder "govmeeting/BackEnd/WorkflowApp" does all the auto-processing of recordings and transcripts.
 It also co-ordinates manual processing with auto-processing.
 
-When the project runs, it watches for new files to arrive into the folder "Datafiles/TO_PROCESS".
+When the project runs, it watches for new files to arrive into the folder "Datafiles/RECEIVED".
 
 If the new file is a video,
 it does speech recognition to produce a transcript. The transcript can be found in the "Datafiles/WORK" folder in a subfolder named after

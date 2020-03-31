@@ -1,3 +1,6 @@
+* To build software that enables eveyone to participate more in government at the local, regional, state and federal levels. 
+* To design it so that it can be used in any country or language.
+
 ## Democracy's Early Days
 
 Meetings are the heart and soul of democracy.
@@ -12,25 +15,25 @@ In the 10th century, the Icelandic Althing was held in a natural outdoor amphith
 Today it is rare to see more than a dozen attendees at a council meeting in a town of 30,000 people.
 Is this still democracy?
 
-Meetings today may be broadcast on local TV. But how many actually watch?
-And of course, it is impossible to participate this way.
+Meetings today may be broadcast on local TV. But how many watch? Of those, how many watch the entire meeting?.
 
-If we don't attend or watch, how do we find out what happened at them?
-Sometimes minutes are available. But minutes don't record the most important part --
-the passionate debate for and against proposed legislature. Sometimes a news reporter may be present.
-But does he/she report on everything? And how accurate and unbiased are their reporting?
+If we don't attend or watch, how do we find out what happened?
+Sometimes minutes are available. But minutes don't record what's most important --
+debate for and against proposed legislature.
 
-Disenchantment with democracy starts at the small local  level.
-  Even small town politicians know that an extremely small pecent of their voters are watching what they do.
-  For democracy to work, the majority of citizens need to be involved on a continual basis.
+Sometimes a news reporter is present.
+But what parts does he/she report on? How accurate and unbiased is the reporting? How many people buy and read that newspaper.
 
-Democracy is never easy. But it was easier 2,000 years ago when only 50,000 needed to work together.
-Today, hundreds of millions need to work together. Each of us needs to participate at multiple goverment levels: for our town, our region,our state and our country.
+Disenchantment with democracy starts at the local  level.
+Even small town politicians know that an extremely small pecent of voters know what they are doing.
+For democracy to work, the majority of citizens need to be involved on a continual basis.
+
+Democracy is never easy. But it was easier 2,000 years ago, when only 50,000 needed to work together.
+Today, hundreds of millions need to work together. 
 
 ## Solutions 
 
-The tools for democarcy haven't changed much in 2,000 years. But with today's technolgy, we may finally be able to
-create tools we need.
+The tools for democarcy haven't changed much in 2,000 years. But with today's technolgy, we may finally be able to create the tools we need.
 
 The purpose of Govmeeting is to build software so all can participate more in government.
 The goal is to build something that can be used in any country on any level of government.

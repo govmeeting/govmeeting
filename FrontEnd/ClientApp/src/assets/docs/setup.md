@@ -247,7 +247,7 @@ NOTE: The above steps may have changed slightly. If so, please update this docum
 
   * Set the startup project in Visual Studio to `Backend/WorkflowApp`. Press F5.
 
-  * Copy (don't move) one of the sample MP4 files from testdata to Datafiles/INCOMING.
+  * Copy (don't move) one of the sample MP4 files from testdata to Datafiles/RECEIVED.
 
   The program will now recognize that a new file has appeared and start processing it.
   The MP4 file will be moved to "COMPLETED" when done. You will see the results in
@@ -292,3 +292,15 @@ Create a file named "appsettings.Development.json" in the "_SECRETS" folder. It 
 * Run the WebApp project.
 * Click on "Login" in the upper right.
 * Under "Use another service to log in", choose "Google".
+
+___
+## Application Environment
+
+ASP.NET Core references a particular environment variable, ASPNETCORE_ENVIRONMENT to describe the environment the application is currently running in. This variable can be set to any value you like, but three values are used by convention: Development, Staging, and Production.
+
+In Visual Studio, the value is set in the project properties under the Debug tab.
+
+In Visual Studio, the value is defined in .vscode/launch.json
+
+In other setups, you will need to set it as an environment variable.
+

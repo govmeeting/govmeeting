@@ -13,6 +13,39 @@ namespace GM.DatabaseRepositories
         return location;
     }
 
+    // Return ID of government body, if it exists
+    //public long GetId(GovernmentBody body)
+    //{
+    //    GovernmentBody g = testGovBodies.Find(element =>
+    //        (element.Country == body.Country) &&
+    //        (element.County == body.County) &&
+    //        (element.State == body.State) &&
+    //        (element.Municipality == body.Municipality)
+    //    );
+    //    return g.Id;
+    //}
+    public long GetId(string country, string state, string county, string municipality)
+    {
+        GovernmentBody g = testGovBodies.Find(element =>
+            (element.Country == country) &&
+            (element.County == county) &&
+            (element.State == state) &&
+            (element.Municipality == municipality)
+        );
+        return g.Id;
+    }
+
+    public GovernmentBody Get(string country, string state, string county, string municipality)
+    {
+        GovernmentBody g = testGovBodies.Find(element =>
+            (element.Country == country) &&
+            (element.County == county) &&
+            (element.State == state) &&
+            (element.Municipality == municipality)
+        );
+        return g;
+    }
+
     private GovernmentBody GetTestMeeting(long govBodyId)
     {
         GovernmentBody govBody = testGovBodies.Single(m => m.Id == govBodyId);

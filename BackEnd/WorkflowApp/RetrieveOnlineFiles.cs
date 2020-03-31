@@ -2,6 +2,9 @@
 using System.IO;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
+using GM.FileDataRepositories;
+using GM.DatabaseRepositories;
+using GM.DatabaseModel;
 
 namespace GM.Workflow
 {
@@ -14,10 +17,8 @@ namespace GM.Workflow
          * 1. If a current meeting may have taken place, it will:
          *    Check the website where either its transcript or a recording may be found.
          *    If found it will:
-         * 2. Create a "meeting" record in the database for this meeting and set the WorkStatus field to "Retrieving".
-         * 3. Start the file retrieval.
-         * 4. Store the retieved file in the "Datafiles/RECEIVED" folder.
-         * 5. Set the Workstatus on the meeting record to "Retrieved".
+         * 2. Start the file retrieval.
+         * 3. Store the retieved file in the "Datafiles/RECEIVED" folder.
          * Repeat for each government body.
          *
          *  Files can also be placed in the RECEIVED folder by the phone app for recording a meeting.
@@ -25,15 +26,32 @@ namespace GM.Workflow
          */
 
         AppSettings _config;
+        IGovBodyRepository _govBodyRepository;
+        IMeetingRepository _meetingRepository;
 
         public RetrieveOnlineFiles(
-           IOptions<AppSettings> config
-        )
+            IOptions<AppSettings> config,
+            IGovBodyRepository govBodyRepository,
+            IMeetingRepository meetingRepository
+           )
         {
             _config = config.Value;
+            _govBodyRepository = govBodyRepository;
+            _meetingRepository = meetingRepository;
         }
-       public void Run()
+        public void Run()
         {
+            string incomingPath = _config.DatafilesPath + @"\RECEIVED";
+            Directory.CreateDirectory(incomingPath);
+            
+            RetrieveNewFiles(incomingPath);
+
+        }
+
+        public void RetrieveNewFiles(string incomingPath)
+        {
+            // TODO - read schedules in database and check for new files to retrieve.
+            // throw new NotImplementedException();
         }
     }
 }

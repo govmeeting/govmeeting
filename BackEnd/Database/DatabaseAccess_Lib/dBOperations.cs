@@ -178,7 +178,7 @@ namespace GM.DatabaseAccess
         /// </summary>
         /// <param name="govBodyId">The gov body identifier.</param>
         /// <returns>existing topics associated with specific govenrment body.</returns>
-        public List<Topic> GetExistingTopics(int govBodyId)
+        public List<Topic> GetExistingTopics(long govBodyId)
         {
             var query = from t in applicationDbContext.Topics
                         where t.GovernmentBodyId == govBodyId

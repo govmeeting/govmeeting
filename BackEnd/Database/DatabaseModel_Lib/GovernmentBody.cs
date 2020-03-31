@@ -11,7 +11,7 @@ namespace GM.DatabaseModel
     /// </summary>
     public class GovernmentBody
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string Country { get; set; }
         public string State { get; set; }

@@ -23,5 +23,30 @@ namespace GM.DatabaseRepositories
             Meeting meeting = dBOps.GetMeeting(meetingId);
             return meeting;
         }
+
+        public long GetId(Meeting meeting)
+        {
+            // TODO - implement - return id of meeting that has same governmentBody and datetime
+            return -1;
+        }
+
+        //public long GetId(long govBodyId, DateTime datetime)
+        //{
+        //    // TODO - implement - return meetingId of governmentBody and datetime
+        //    return -1;
+        //}
+
+        public Meeting Get(long govBodyId, DateTime datetime)
+        {
+            // TODO - implement - return meeting of governmentBody and datetime
+            return null;
+        }
+
+        public List<Meeting> FindAll(SourceType? sourceType, WorkStatus? workStatus, bool? approved)
+        {
+            // TODO - implement
+            return null;
+        }
+
     }
 }
