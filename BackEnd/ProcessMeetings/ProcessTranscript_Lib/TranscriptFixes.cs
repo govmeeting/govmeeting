@@ -15,16 +15,24 @@ namespace GM.ProcessTranscript
 
     public class TranscriptFixes
     {
-        public string Fix( string meetingDate, string logDirectory, string text)
+        public string Fix(string workfolder, string text, string location)
         {
             string transcript;
-            if (true)
-            {
-                //// Make the specific fixes to the philly data
-                Specific_Philadelphia_PA_USA philly = new Specific_Philadelphia_PA_USA(logDirectory);
-                transcript = philly.Fix(text);
 
+            ISpecificFix specificFix;
+            switch (location)
+            {
+                case "USA_PA_Philadelphia_Philadelphia_CityCouncil_en":
+                    specificFix = new Specific_Philadelphia_PA_USA(workfolder);
+                    break;
+                case "USA_TX_TravisCounty_Austin_CityCouncil_en":
+                    specificFix = new Specific_Austin_TX_USA(workfolder);
+                    break;
+                default:
+                    specificFix = new Specific_Philadelphia_PA_USA(workfolder);
+                    break;
             }
+            transcript = specificFix.Fix(text);
             return transcript;
         }
     }

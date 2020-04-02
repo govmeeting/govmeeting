@@ -1,36 +1,27 @@
 ﻿using System.IO;
+using ProcessTranscript_Lib;
 
 namespace GM.ProcessTranscript
 {
-    class Specific_Austin_TX_USA
+    class Specific_Austin_TX_USA : ISpecificFix
     {
-        TranscriptFixes tf = new TranscriptFixes();
-        string basefilename;
-        string filename;
-        string officersNames = "";
-        string meetingInfo = "";
-        string transcript = "";
+        private string transcriptText;
+        private string officersNames = "";
+        private string meetingInfo = "";
+        CommonFixes cf = new CommonFixes();
+        LogProgress lp;
 
-        int step = 1;
-
-        public string Fix(string _transcript, string _filename)
+        public Specific_Austin_TX_USA(string logDirectory)
         {
-            transcript = _transcript;
-            filename = _filename;
-            basefilename = filename.Substring(filename.LastIndexOf("\\") + 1);
-
-            LOGPROGRESS("Start");
-
-            return transcript;
-        }
-        void LOGPROGRESS(string fix_step)
-        {
-            string outputFile = filename + "_step" + step + "_" + fix_step + ".txt";
-            step++;
-
-            File.WriteAllText(outputFile, meetingInfo + "-----------------------------\n" + officersNames + "-----------------------------\n" + transcript);
+            lp = new LogProgress(logDirectory);
         }
 
+        public string Fix(string _transcript)
+        {
+            lp.Log("Start", _transcript);
+
+            return _transcript;
+        }
 
     }
 }

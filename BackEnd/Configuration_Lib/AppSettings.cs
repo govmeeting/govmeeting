@@ -13,6 +13,7 @@ namespace GM.Configuration
         public string LogfilesPath { get; set; }
         public string DatafilesPath {get; set; }
         public string TestfilesPath { get; set; }
+        public bool DeleteProcessingFolderOnStartup { get; set; }
         public bool IsDevelopment { get; set; }
         public int FixasrSegmentSize { get; set; }
         public int FixasrSegmentOverlap { get; set; }

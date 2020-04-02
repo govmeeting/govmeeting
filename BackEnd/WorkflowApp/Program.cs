@@ -37,10 +37,17 @@ namespace GM.Workflow
 
             //var m = serviceProvider.GetService<IMeetingRepository>();
 
-            // Copy test data to Datafiles
             var config = serviceProvider.GetService<IOptions<AppSettings>>().Value;
             string testfilesPath = config.TestfilesPath;
             string datafilesPath = config.DatafilesPath;
+
+            // Delete PROCESSING folder?
+            if (config.DeleteProcessingFolderOnStartup)
+            {
+                GMFileAccess.DeleteDirectoryAndContents(datafilesPath + @"\PROCESSING");
+            }
+
+            // Copy test data to Datafiles
             InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);
 
             // entry to run app

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GM.FileDataRepositories;
+using System;
 using System.IO;
 
 namespace GM.ProcessTranscript
@@ -15,11 +16,16 @@ namespace GM.ProcessTranscript
 
         const string WORK_FOLDER = "PreProcess";
         string workFolder;
+        string location;
 
         public bool Process(string filename, string meetingFolder, string language)
         {
+            MeetingFolder mf = new MeetingFolder();
+            mf.SetFields(filename);
+            location = mf.location;
+
             workFolder = meetingFolder + "\\" + WORK_FOLDER + "\\";
-            Directory.CreateDirectory(workFolder);
+            Directory.CreateDirectory(workFolder);  
             if (filename.ToLower().EndsWith(".pdf"))
             {
                 return ProcessPdf(filename, language);
@@ -33,9 +39,8 @@ namespace GM.ProcessTranscript
         private bool ProcessPdf(string filename, string language)
         {
 
-            // Step 1 - Copy PDF to meeting directory
+            // Step 1 - Copy PDF to meeting workfolder
 
-            FileInfo infile = new FileInfo(filename);
             string outfile = workFolder + "1 original.pdf";
             File.Copy(filename, outfile);
 
@@ -50,14 +55,10 @@ namespace GM.ProcessTranscript
 
         private bool TextFixes(string text)
         {
-            // Step 3 - Fix the transcript: Put in common format
-
-            // Make the specific fixes to the philly data
-            //Specific_Philadelphia_PA_USA philly = new Specific_Philadelphia_PA_USA(workFolder);
-            //string transcript = philly.Fix(text);
+            // Step 3 - Fix the transcript text: Put in common format
 
             TranscriptFixes transcriptFixes = new TranscriptFixes();
-            string transcript = transcriptFixes.Fix("2016-03-17", workFolder, text);
+            string transcript = transcriptFixes.Fix(workFolder, text, location);
 
             // Convert the fixed transcript to JSON
             ConvertToJson.Convert(ref transcript);
@@ -67,20 +68,11 @@ namespace GM.ProcessTranscript
             return true;
         }
 
-        private void CreateWorkFolder(string meetingFolder)
-        {
-            //bool created;
-            //MeetingInfo mi = new MeetingInfo(filename);
-            //string meetingFolder = mi.MeetingFolder(datafiles);
-            //if (!(created = FileSystem.CreateDirectory(meetingFolder)))
-            //{
-            //    Console.WriteLine("ProcessTranscripts.cs - ERROR: Could not create meeting folder. It may already exist.");
-            //    return false;
-            //}
-
-            workFolder = meetingFolder + "\\" + WORK_FOLDER + "\\";
-            Directory.CreateDirectory(workFolder);
-        }
+        //private void CreateWorkFolder(string meetingFolder)
+        //{
+        //    workFolder = meetingFolder + "\\" + WORK_FOLDER + "\\";
+        //    Directory.CreateDirectory(workFolder);
+        //}
 
     }
 }
