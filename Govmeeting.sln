@@ -30,16 +30,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Oneline", "Oneline", "{0CBE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProcessMeetings", "ProcessMeetings", "{C5D796A1-3CBE-49F5-BD47-3BB29027F878}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testdata", "Testdata", "{343DC6DF-F370-46AC-BC6C-0C907DDD90BA}"
-	ProjectSection(SolutionItems) = preProject
-		BackEnd\Testdata\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4 = BackEnd\Testdata\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4
-		BackEnd\Testdata\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15.mp4 = BackEnd\Testdata\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15.mp4
-		BackEnd\Testdata\USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2016-03-17.pdf = BackEnd\Testdata\USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2016-03-17.pdf
-		BackEnd\Testdata\USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2017-11-30.pdf = BackEnd\Testdata\USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2017-11-30.pdf
-		BackEnd\Testdata\USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2017-12-07.pdf = BackEnd\Testdata\USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2017-12-07.pdf
-		BackEnd\Testdata\USA_TX_TravisCounty_Austin_CityCouncil_en_2017-12-14.pdf = BackEnd\Testdata\USA_TX_TravisCounty_Austin_CityCouncil_en_2017-12-14.pdf
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "BackEnd\WebApp\WebApp.csproj", "{1242549D-3EEF-4127-943D-9DED99CC32E9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowApp", "BackEnd\WorkflowApp\WorkflowApp.csproj", "{AC8924F1-E7F0-4184-ADDF-4934ED1AF66C}"
@@ -187,7 +177,6 @@ Global
 		{22F19757-4172-4C0A-8B4C-D5059022F7E4} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{0CBEFF1D-C0B1-453F-89C2-023983B4E721} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{C5D796A1-3CBE-49F5-BD47-3BB29027F878} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
-		{343DC6DF-F370-46AC-BC6C-0C907DDD90BA} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{1242549D-3EEF-4127-943D-9DED99CC32E9} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{AC8924F1-E7F0-4184-ADDF-4934ED1AF66C} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{0D6AE633-E06A-45AB-869D-7CE0DD7E67BF} = {22F19757-4172-4C0A-8B4C-D5059022F7E4}

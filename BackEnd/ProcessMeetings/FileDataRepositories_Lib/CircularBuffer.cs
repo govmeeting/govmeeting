@@ -43,7 +43,7 @@ namespace GM.FileDataRepositories
             meetingSegmentFolder = _meetingSegmentFolder;
             basename = Path.GetFileNameWithoutExtension(workfile);
             extension = Path.GetExtension(workfile);
-            baseNameCorrected = basename + "-corrected";    // Base name of the file which has corrections.
+            baseNameCorrected = basename + "-v";    // Base name of the file which has corrections.
             maxBackups = _maxBackups;
         }
         public string GetLatest()
