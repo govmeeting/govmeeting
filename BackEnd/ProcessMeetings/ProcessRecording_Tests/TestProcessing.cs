@@ -56,7 +56,7 @@ namespace GM.ProcessRecording_Tests
             //DeleteAndCreateDirectory(outputFolder);
 
             string outputFolder = @"C:\GOVMEETING\_SOURCECODE\src\Datafiles\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN\2017-01-09";
-            string videoFile = outputFolder + "\\" + "R0-Video.mp4";
+            string videoFile = outputFolder + "\\" + "01-Video.mp4";
             string transcriptFile = outputFolder + "\\" + "R3-ToBeFixed.json";
             int segmentSize = 180;
             int overlap = 5;

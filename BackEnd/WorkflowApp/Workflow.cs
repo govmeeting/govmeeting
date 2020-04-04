@@ -51,10 +51,6 @@ namespace GM.Workflow
         {
             _logger.LogInformation($"Start Workflow - datafilesPath = {_config.DatafilesPath}");
 
-            //string testfilesPath = _config.TestfilesPath;
-            //string datafilesPath = _config.DatafilesPath;
-            //InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);
-
             // Retreive online transcripts or recordings
             _retrieveOnlineFiles.Run();
 
@@ -62,7 +58,7 @@ namespace GM.Workflow
             _processReceivedFiles.Run();
 
             // Process new recordings - auto speech recognition
-//            _processRecordings.Run();
+            _processRecordings.Run();
 
             // Processing new transcript files
             _processTranscripts.Run();

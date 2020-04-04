@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 using GM.FileDataRepositories;
@@ -11,31 +12,31 @@ namespace GM.Workflow
     public class ProcessReceivedFiles
     {
         // TODO - IMPLEMENT THIS CLASS
-        
-         /* ProcessReceivedFiles - For each new file, create database record and send message to manager(s)
-          * 
-          * This processes files in the Datafiles\RECEIVED folder.
-          * It will create a "Meeting" record in the database for those which do not yet have one.
-          *  Files can be placed in the RECEIVED folder by:
-          *      the RetrieveOnlineFile component
-          *      the phone app for recording a meeting.
-          *      being uploaded by a registered user
-          */
 
+        /* ProcessReceivedFiles - For each new file, create database record and send message to manager(s)
+         * 
+         * This processes files in the Datafiles\RECEIVED folder.
+         * It will create a "Meeting" record in the database for those which do not yet have one.
+         *  Files can be placed in the RECEIVED folder by:
+         *      the RetrieveOnlineFile component
+         *      the phone app for recording a meeting.
+         *      being uploaded by a registered user
+         */
+
+        ILogger<ProcessReceivedFiles> _logger;
         AppSettings _config;
-        MeetingFolder _meetingFolder;
         IGovBodyRepository _govBodyRepository;
         IMeetingRepository _meetingRepository;
 
         public ProcessReceivedFiles(
+            ILogger<ProcessReceivedFiles> logger,
             IOptions<AppSettings> config,
-            MeetingFolder meetingFolder,
             IGovBodyRepository govBodyRepository,
             IMeetingRepository meetingRepository
            )
         {
+            _logger = logger;
             _config = config.Value;
-            _meetingFolder = meetingFolder;
             _govBodyRepository = govBodyRepository;
             _meetingRepository = meetingRepository;
         }
@@ -63,22 +64,25 @@ namespace GM.Workflow
             //   If not, create a record
             // check if it's already been approved. If not, send manager(s) a message
 
-            if (!_meetingFolder.SetFields(filename))
+            MeetingFolder meetingFolder = new MeetingFolder();
+            if (!meetingFolder.SetFields(filename))
             {
                 // If this is not a valid name, skip it.
-                Console.WriteLine($"ProcessIncomingFiles.cs - filename is invalid: {filename}");
+                string errmsg = $"ProcessIncomingFiles.cs - filename is invalid: {filename}";
+                Console.WriteLine(errmsg);
+                _logger.LogError(errmsg);
                 return;
             }
 
             // Check if there is a database record for this government body.
             long govBodyId = _govBodyRepository.GetId(
-                _meetingFolder.country,
-                _meetingFolder.state,
-                _meetingFolder.county,
-                _meetingFolder.municipality);
+                meetingFolder.country,
+                meetingFolder.state,
+                meetingFolder.county,
+                meetingFolder.municipality);
 
             // Check if there is database record for this meeting.
-            Meeting meeting = _meetingRepository.Get(govBodyId, DateTime.Parse(_meetingFolder.date));
+            Meeting meeting = _meetingRepository.Get(govBodyId, DateTime.Parse(meetingFolder.date));
 
             if (!meeting.Approved)
             {

@@ -19,19 +19,16 @@ namespace GM.FileDataRepositories
         const string WORK_FILE_NAME = "ToView.json";
 
         private readonly AppSettings _config;
-        private readonly MeetingFolder meetingFolder;
         IMeetingRepository meetingRepository;          // database meeting repository
         IGovBodyRepository govBodyRepository;          // database govbody repository
 
         public ViewMeetingRepository(
             IOptions<AppSettings> config,
-            MeetingFolder _meetingFolder,
             IMeetingRepository _meetingRepository,
             IGovBodyRepository _govBodyRepository
             )
         {
             _config = config.Value;
-            meetingFolder = _meetingFolder;
             meetingRepository = _meetingRepository;
             govBodyRepository = _govBodyRepository;
         }
@@ -78,6 +75,7 @@ namespace GM.FileDataRepositories
 
             string language = g.Languages[0].Name;
 
+            MeetingFolder meetingFolder = new MeetingFolder();
             meetingFolder.SetFields(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
             string meetingFolderPath = meetingFolder.path;
 

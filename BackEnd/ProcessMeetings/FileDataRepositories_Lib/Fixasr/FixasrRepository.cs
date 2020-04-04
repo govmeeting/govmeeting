@@ -20,20 +20,17 @@ namespace GM.FileDataRepositories
         const string WORK_FILE_NAME = "ToFix.json";
 
         private readonly AppSettings config;
-        private readonly MeetingFolder meetingFolder;
         private readonly string datafiles;
         IMeetingRepository meetingRepository;          // database meeting repository
         IGovBodyRepository govBodyRepository;          // database govbody repository
 
         public FixasrRepository(
             IOptions<AppSettings> _config,
-            MeetingFolder _meetingFolder,
             IMeetingRepository _meetingRepository,
             IGovBodyRepository _govBodyRepository
             )
         {
             config = _config.Value;
-            meetingFolder = _meetingFolder;
             datafiles = config.DatafilesPath;
             meetingRepository = _meetingRepository;
             govBodyRepository = _govBodyRepository;
@@ -67,6 +64,7 @@ namespace GM.FileDataRepositories
             GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
             string language = g.Languages[0].Name;
 
+            MeetingFolder meetingFolder = new MeetingFolder();
             meetingFolder.SetFields(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
             string meetingFolderPath = meetingFolder.path;
 

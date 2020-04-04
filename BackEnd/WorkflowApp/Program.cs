@@ -44,7 +44,7 @@ namespace GM.Workflow
             // Delete PROCESSING folder?
             if (config.DeleteProcessingFolderOnStartup)
             {
-                GMFileAccess.DeleteDirectoryAndContents(datafilesPath + @"\PROCESSING");
+                GMFileAccess.DeleteDirectoryContents(datafilesPath + @"\PROCESSING");
             }
 
             // Copy test data to Datafiles
@@ -108,7 +108,7 @@ namespace GM.Workflow
             services.AddTransient<ProcessProofread>();
             services.AddTransient<AddtagsRepository>();
             services.AddTransient<FixasrRepository>();
-            services.AddTransient<MeetingFolder>();
+            //services.AddTransient<MeetingFolder>();
             services.AddTransient<ILoadTranscript, LoadTranscript_Stub>();
             services.AddTransient<IMeetingRepository, MeetingRepository_Stub>();
             services.AddTransient<IGovBodyRepository, GovBodyRepository_Stub>();

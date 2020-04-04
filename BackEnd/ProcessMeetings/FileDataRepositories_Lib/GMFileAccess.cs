@@ -101,26 +101,55 @@ namespace GM.FileDataRepositories
 
         //}
 
-        public static bool DeleteDirectoryAndContents(string FolderName)
+        public static bool DeleteDirectoryAndContents(string folderName)
         {
-            if (!Directory.Exists(FolderName))
+            if (DeleteDirectoryContents(folderName))
             {
-                return false;
+                Directory.Delete(folderName);
+                return true;
             }
-                DirectoryInfo dir = new DirectoryInfo(FolderName);
+            return false;
+        }
 
-            foreach (FileInfo fi in dir.GetFiles())
+        public static bool DeleteDirectoryContents(string folderName)
+        {
+            if (!Directory.Exists(folderName)) { return false; }
+
+            DeleteAllFilesInDirectory(folderName);
+            DeleteAllFoldersInDirectory(folderName);
+            return true;
+        }
+
+        public static bool DeleteAllFilesInDirectory(string folderName)
+        {
+            if (!Directory.Exists(folderName)) { return false; }
+
+            DirectoryInfo directory = new DirectoryInfo(folderName);
+            foreach (FileInfo file in directory.GetFiles())
             {
-                fi.Delete();
+                file.Delete();
             }
-
-            foreach (DirectoryInfo di in dir.GetDirectories())
+            foreach (DirectoryInfo dir in directory.GetDirectories())
             {
-                DeleteDirectoryAndContents(di.FullName);
-                di.Delete();
+                DeleteAllFilesInDirectory(dir.FullName);
             }
             return true;
         }
+
+        public static bool DeleteAllFoldersInDirectory(string folderName)
+        {
+            if (!Directory.Exists(folderName)) { return false; }
+
+            DirectoryInfo directory = new DirectoryInfo(folderName);
+
+            foreach (DirectoryInfo dir in directory.GetDirectories())
+            {
+                DeleteAllFoldersInDirectory(dir.FullName);
+            }
+            Directory.Delete(folderName);
+            return true;
+        }
+
 
         public static void DeleteAndCreateDirectory(string folder)
         {

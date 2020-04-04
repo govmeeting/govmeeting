@@ -21,16 +21,16 @@ namespace GM.ProcessRecording
          *          segments can then be worked on separately by multiple volunteers.
          */
 
-        private readonly AppSettings _config;
-        private readonly TranscribeAudio _transcribeAudio;
+        private readonly AppSettings config;
+        private readonly TranscribeAudio transcribeAudio;
 
         public RecordingProcess(
-            IOptions<AppSettings> config,
-            TranscribeAudio transcribeAudio
+            IOptions<AppSettings> _config,
+            TranscribeAudio _transcribeAudio
             )
         {
-            _config = config.Value;
-            _transcribeAudio = transcribeAudio;
+            config = _config.Value;
+            transcribeAudio = _transcribeAudio;
         }
 
         public void Process(string videoFile, string meetingFolder, string language)
@@ -38,41 +38,48 @@ namespace GM.ProcessRecording
             /////// Copy video to meeting folder  /////////
 
             FileInfo infile = new FileInfo(videoFile);
-            string videofileCopy = meetingFolder + "\\" + "R0-Video.mp4";
+            string videofileCopy = meetingFolder + "\\" + "01-Video.mp4";
 
-            if (!_config.IsDevelopment)
+            if (!config.IsDevelopment)
             {
                 File.Copy(videoFile, videofileCopy);
             } else {
                 // #### FOR DEVELOPMENT: WE SHORTEN THE RECORDING FILE. ####
                 SplitRecording splitRecording = new SplitRecording();
-                splitRecording.ExtractPart(videoFile, videofileCopy, 0, _config.RecordingSizeForDevelopment);
+                splitRecording.ExtractPart(videoFile, videofileCopy, 0, config.RecordingSizeForDevelopment);
             }
 
             /////// Extract the audio. ////////////////////////
 
             ExtractAudio extract = new ExtractAudio();
-            string audioFile = meetingFolder + "\\" + "R1-Audio.flac";
+            string audioFile = meetingFolder + "\\" + "02-Audio.flac";
             extract.Extract(videofileCopy, audioFile);
 
             /////// Transcribe the audio file. /////////////
 
             // We want the object name in the cloud to be the original video file name with ".flac" extension.
             string objectName = Path.GetFileNameWithoutExtension(videoFile) + ".flac";
-            //TranscribeAudio transcribe = new TranscribeAudio(language);
 
-            TranscribeResponse transcript = _transcribeAudio.MoveToCloudAndTranscribe(audioFile, objectName, language);
-            // For development and it's already in cloud
-            //TranscribeResponse transcript = _transcribeAudio.TranscribeInCloud(objectName, language);
+            TranscribeResponse transcript;
+            if (!config.UseAudioFileAlreadyInCloud)
+            {
+                // Move audio file to cloud and transcribe
+                transcript = transcribeAudio.MoveToCloudAndTranscribe(audioFile, objectName, language);
+            } else
+            {
+                // For development and it's already in cloud
+                // TODO - check if it is already in cloud
+                transcript = transcribeAudio.TranscribeInCloud(objectName, language);
+            }
 
             string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
-            string outputJsonFile = meetingFolder + "\\" + "R2-Transcribed.json";
+            string outputJsonFile = meetingFolder + "\\" + "03-Transcribed.json";
             File.WriteAllText(outputJsonFile, stringValue);
 
             /////// Reformat the JSON transcript to match what the fixasr routine will use.
 
             ModifyTranscriptJson convert = new ModifyTranscriptJson();
-            outputJsonFile = meetingFolder + "\\" + "R3-ToBeFixed.json";
+            outputJsonFile = meetingFolder + "\\" + "04-ToFix.json";
             FixasrView fixasr = convert.Modify(transcript);
             stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);
             File.WriteAllText(outputJsonFile, stringValue);
@@ -80,8 +87,8 @@ namespace GM.ProcessRecording
             /////// Split the video, audio and transcript into multiple work segments
 
             SplitIntoWorkSegments split = new SplitIntoWorkSegments();
-            split.Split(meetingFolder, videofileCopy, outputJsonFile, _config.FixasrSegmentSize,
-                _config.FixasrSegmentOverlap);
+            split.Split(meetingFolder, videofileCopy, outputJsonFile, config.FixasrSegmentSize,
+                config.FixasrSegmentOverlap);
         }
 
 

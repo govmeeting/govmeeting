@@ -19,20 +19,17 @@ namespace GM.FileDataRepositories
         const string WORK_FILE_NAME = "ToTag.json";
 
         private readonly AppSettings _config;
-        private readonly MeetingFolder meetingFolder;
         IMeetingRepository meetingRepository;          // database meeting repository
         IGovBodyRepository govBodyRepository;          // database govbody repository
 
 
         public AddtagsRepository(
             IOptions<AppSettings> config,
-            MeetingFolder _meetingFolder,
             IMeetingRepository _meetingRepository,
             IGovBodyRepository _govBodyRepository
            )
         {
             _config = config.Value;
-            meetingFolder = _meetingFolder;
             meetingRepository = _meetingRepository;
             govBodyRepository = _govBodyRepository;
         }
@@ -67,6 +64,7 @@ namespace GM.FileDataRepositories
             GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
             string language = g.Languages[0].Name;
 
+            MeetingFolder meetingFolder = new MeetingFolder();
             meetingFolder.SetFields(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
 
             //string meetingFolder = _meetingFolder.GetPath();

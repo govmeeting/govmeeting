@@ -27,7 +27,6 @@ namespace GM.Workflow
         */
 
         AppSettings _config;
-        MeetingFolder meetingFolder;
         TranscriptProcess transcriptProcess;
         IMeetingRepository meetingRepository;
         IGovBodyRepository govBodyRepository;
@@ -35,13 +34,11 @@ namespace GM.Workflow
         public ProcessTranscripts(
             IOptions<AppSettings> config,
             TranscriptProcess _transcriptProcess,
-            MeetingFolder _meetingFolder,
             IMeetingRepository _meetingRepository,
             IGovBodyRepository _govBodyRepository
            )
         {
             _config = config.Value;
-            meetingFolder = _meetingFolder;
             transcriptProcess = _transcriptProcess;
             meetingRepository = _meetingRepository;
             govBodyRepository = _govBodyRepository;
@@ -65,16 +62,12 @@ namespace GM.Workflow
 
             GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
             string language = g.Languages[0].Name;
+
+            MeetingFolder meetingFolder = new MeetingFolder();
             meetingFolder.SetFields(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
 
             string workFolderPath = _config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
 
-            // FOR DEVELOPMENT: WE DELETE PRIOR MEETING FOLDER IF IT EXISTS.
-            //if (_config.IsDevelopment)
-            //{
-            //    FileDataRepositories.GMFileAccess.DeleteDirectoryAndContents(meetingFolder);
-
-            //}
 
             if (!FileDataRepositories.GMFileAccess.CreateDirectory(workFolderPath))
             {
