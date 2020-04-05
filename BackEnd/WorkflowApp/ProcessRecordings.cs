@@ -40,7 +40,7 @@ namespace GM.Workflow
             govBodyRepository = _govBodyRepository;
         }
 
-        // Watch the incoming folder and process new files as they arrive.
+        // Find all new received meetings whose source is a recording and approved status is true.
         public void Run()
         {
 
@@ -53,13 +53,13 @@ namespace GM.Workflow
 
         }
 
+        // Create a work folder in Datafiles/PROCESSING and process the recording
         public void doWork(Meeting meeting)
         {
             GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
             string language = g.Languages[0].Name;
 
-            MeetingFolder meetingFolder = new MeetingFolder();
-            meetingFolder.SetFields(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
+            MeetingFolder meetingFolder = new MeetingFolder(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
 
             string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
 

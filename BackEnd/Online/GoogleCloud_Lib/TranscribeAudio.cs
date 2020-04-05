@@ -18,15 +18,17 @@ namespace GM.ProcessRecordings
 {
     public class TranscribeAudio
     {
-        private AppSettings _config;
+        private AppSettings config;
+        private string GoogleCloudBucketName;
+
 
         public TranscribeAudio(
              //AppSettings config
-             IOptions<AppSettings> config
+             IOptions<AppSettings> _config
         )
         {
-            //_config = config;
-            _config = config.Value;
+            config = _config.Value;
+            GoogleCloudBucketName = config.GoogleCloudBucketName;
         }
 
         /// <param name="language">Language of the audio. This is the ISO 639 code</param>
@@ -36,7 +38,15 @@ namespace GM.ProcessRecordings
         {
             string objectName = Path.GetFileNameWithoutExtension(videoFileName) + ".flac";
             GoogleBucket gb = new GoogleBucket();
-            gb.UploadFile("govmeeting-transcribe", audiofilePath, objectName, "audio/x-flac");
+
+            if (config.UseAudioFileAlreadyInCloud)
+            {
+                // Only upload if not in cloud
+                if (!gb.IsObjectInBucket(GoogleCloudBucketName, objectName))
+                {
+                    gb.UploadFile(GoogleCloudBucketName, audiofilePath, objectName, "audio /x-flac");
+                }
+            }
             TranscribeResponse transcript = TranscribeInCloud(objectName, language);
             return transcript;
         }
@@ -45,7 +55,7 @@ namespace GM.ProcessRecordings
         {
             var speech = SpeechClient.Create();
 
-                string fileOnCloudStorage = "gs://govmeeting-transcribe/" + objectName;
+                string fileOnCloudStorage = "gs://" + GoogleCloudBucketName + "/" + objectName;
                 RecognitionAudio recogAudio = RecognitionAudio.FromStorageUri(fileOnCloudStorage);
 
                 var longOperation = speech.LongRunningRecognize(new RecognitionConfig()
@@ -173,7 +183,7 @@ namespace GM.ProcessRecordings
         // automatically use that value.
         SpeechClient GetSpeechClient()
         {
-            string credentialsFilePath = _config.GoogleApplicationCredentials;
+            string credentialsFilePath = config.GoogleApplicationCredentials;
 
             GoogleCredential googleCredential;
             using (Stream m = new FileStream(credentialsFilePath, FileMode.Open))

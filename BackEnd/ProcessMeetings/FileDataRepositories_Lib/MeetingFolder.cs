@@ -1,4 +1,5 @@
-﻿using GM.DatabaseRepositories;
+﻿using GM.DatabaseModel;
+using GM.DatabaseRepositories;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,13 +37,62 @@ namespace GM.FileDataRepositories
         public bool valid { get; private set; }
 
 
-        public string MeetingFolderFullPath(string datafiles)
+        public MeetingFolder(IGovBodyRepository govBodyRepository, Meeting meeting)
         {
-            return datafiles + "\\" + location + "\\" + date;
+            try
+            {
+                GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
+                language = g.Languages[0].Name;
+                country = g.Country;
+                state = g.State;
+                county = g.County;
+                municipality = g.Municipality;
+                date = date = string.Format("{0:yyyy-MM-dd}", meeting.Date);
+                SetCalculatedFields();
+                valid = true;
+            }
+            catch
+            {
+                valid = false;
+            }
         }
 
-        public bool SetFields(string filename)
+        public MeetingFolder(
+            string _country, string _state, string _county, string _municipality,
+            DateTime _date, string _governmentBody, string _language)
         {
+            try
+            {
+                date = string.Format("{0:yyyy-MM-dd}", _date);
+
+                country = _country;
+                state = _state;
+                county = _county;
+                municipality = _municipality;
+                governmentBody = _governmentBody;
+                language = _language;
+
+                //location = country + "_" + state + "_" + county + "_" + municipality + "_" + governmentBody + "_" + language;
+                //filename = location + "_" + date;
+                //path = location + "\\" + date;
+                SetCalculatedFields();
+                valid = true;
+            }
+            catch
+            {
+                valid = false;
+            }
+        }
+
+        private void SetCalculatedFields()
+        {
+            location = country + "_" + state + "_" + county + "_" + municipality + "_" + governmentBody + "_" + language;
+            filename = location + "_" + date;
+            path = location + "\\" + date;
+        }
+
+        public MeetingFolder(string filename)
+        { 
             try
             {
                 string name = Path.GetFileNameWithoutExtension(filename);
@@ -56,39 +106,28 @@ namespace GM.FileDataRepositories
                 language = parts[5];
                 date = parts[6];
 
-                location = name.Substring(0, name.Length - 11);
-                path = location + "\\" + date;
+                SetCalculatedFields();
+                //location = name.Substring(0, name.Length - 11);
+                //path = location + "\\" + date;
+                valid = true;
             }
             catch
             {
-                return false;
+                valid = false;
             }
-            valid = true;
-            return true;
         }
-        public bool SetFields(string _country, string _state, string _county, string _municipality, DateTime _date, string _governmentBody, string _language)
+
+        public string MeetingFolderFullPath(string datafiles)
         {
-            try
-            {
-                date = string.Format("{0:yyyy-MM-dd}", _date);
-
-                country = _country;
-                state = _state;
-                county = _county;
-                municipality = _municipality;
-                governmentBody = _governmentBody;
-                language = _language;
-
-                location = country + "_" + state + "_" + county + "_" + municipality + "_" + governmentBody + "_" + language;
-                filename = location + "_" + date;
-                path = location + "\\" + date;
-            }
-            catch
-            {
-                return false;
-            }
-            valid = true;
-            return true;
+            return datafiles + "\\" + location + "\\" + date;
         }
+
+        //public MeetingFolder MeetingToMeetingFolder(Meeting meeting)
+        //{
+        //    GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
+        //    string language = g.Languages[0].Name;
+        //    MeetingFolder meetingFolder = new MeetingFolder(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
+        //    return meetingFolder;
+        //}
     }
 }

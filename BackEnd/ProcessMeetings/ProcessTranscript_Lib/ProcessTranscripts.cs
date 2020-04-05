@@ -20,8 +20,8 @@ namespace GM.ProcessTranscript
 
         public bool Process(string filename, string meetingFolder, string language)
         {
-            MeetingFolder mf = new MeetingFolder();
-            mf.SetFields(filename);
+            MeetingFolder mf = new MeetingFolder(filename);
+            //mf.SetFields(filename);
             location = mf.location;
 
             workFolder = meetingFolder + "\\" + WORK_FOLDER + "\\";

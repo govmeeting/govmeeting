@@ -19,6 +19,7 @@ namespace GM.Configuration
         public int FixasrSegmentOverlap { get; set; }
         public int RecordingSizeForDevelopment { get; set; }
         public bool UseAudioFileAlreadyInCloud { get; set; }
+        public string GoogleCloudBucketName { get; set; }
         public int MaxWorkFileBackups { get; set; }
         public bool MoveIncomingFileAfterProcessing { get; set; }
         public string GoogleApplicationCredentials { get; set; }

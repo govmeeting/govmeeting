@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace GM.GoogleCLoud
 {
@@ -56,6 +58,26 @@ namespace GM.GoogleCLoud
             }
         }
 
+        // Check if object of this name is the bucket.
+        public bool IsObjectInBucket(string bucketName, string filename)
+        {
+            return IsObjectInBucket(bucketName, filename, filename);
+        }
 
+        // Check if object which starts with this prefix and matches the regular expression is in the bucket.
+        public bool IsObjectInBucket(string bucketName, string prefix, string regex)
+        // prefix -	Prefix to match. Only objects with names that start with this string will be returned from cloud.
+        // regex - Regular Expression to match with those objects returned.
+        {
+            var storage = StorageClient.Create();
+            var listFiles = storage.ListObjects(bucketName,
+                prefix).Where(p => Regex.IsMatch(p.Name, regex));
+                // IsMatch(String, String) 	- Indicates if regular expression finds match in input string.
+            if (listFiles.Any())
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

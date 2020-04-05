@@ -64,10 +64,11 @@ namespace GM.Workflow
             //   If not, create a record
             // check if it's already been approved. If not, send manager(s) a message
 
-            MeetingFolder meetingFolder = new MeetingFolder();
-            if (!meetingFolder.SetFields(filename))
+            MeetingFolder meetingFolder = new MeetingFolder(filename);
+            //if (!meetingFolder.SetFields(filename))
+            if (!meetingFolder.valid)
             {
-                // If this is not a valid name, skip it.
+                // This is not a valid name, skip it.
                 string errmsg = $"ProcessIncomingFiles.cs - filename is invalid: {filename}";
                 Console.WriteLine(errmsg);
                 _logger.LogError(errmsg);

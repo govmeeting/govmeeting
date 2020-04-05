@@ -59,13 +59,8 @@ namespace GM.Workflow
 
         public void doWork(Meeting meeting)
         {
-
-            GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
-            string language = g.Languages[0].Name;
-
-            MeetingFolder meetingFolder = new MeetingFolder();
-            meetingFolder.SetFields(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
-
+            // Create the work folder
+            MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
             string workFolderPath = _config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
 
 
@@ -78,7 +73,7 @@ namespace GM.Workflow
             }
 
             string sourceFilePath = _config.DatafilesPath + "\\RECEIVED\\" + meeting.SourceFilename;
-            transcriptProcess.Process(sourceFilePath, workFolderPath, language);
+            transcriptProcess.Process(sourceFilePath, workFolderPath, meetingFolder.language);
         }
 
         //private void MoveFileToProcessedFolder(string filename)

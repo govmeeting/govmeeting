@@ -61,16 +61,18 @@ namespace GM.ProcessRecording
             string objectName = Path.GetFileNameWithoutExtension(videoFile) + ".flac";
 
             TranscribeResponse transcript;
-            if (!config.UseAudioFileAlreadyInCloud)
-            {
-                // Move audio file to cloud and transcribe
-                transcript = transcribeAudio.MoveToCloudAndTranscribe(audioFile, objectName, language);
-            } else
-            {
-                // For development and it's already in cloud
-                // TODO - check if it is already in cloud
-                transcript = transcribeAudio.TranscribeInCloud(objectName, language);
-            }
+            //if (!config.UseAudioFileAlreadyInCloud)
+            //{
+
+            // Move audio file to cloud and transcribe
+            transcript = transcribeAudio.MoveToCloudAndTranscribe(audioFile, objectName, language);
+
+            //} else
+            //{
+            //    // For development and it's already in cloud
+            //    // TODO - check if it is already in cloud
+            //    transcript = transcribeAudio.TranscribeInCloud(objectName, language);
+            //}
 
             string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
             string outputJsonFile = meetingFolder + "\\" + "03-Transcribed.json";
