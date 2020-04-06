@@ -31,18 +31,18 @@ namespace GM.WebApp
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
-        // Govmeeting: Set options for cookie expiration.
-        // TODO - While upgrading to .NET SDK 2.0, I was getting an error on the next two line so
-        // I commented them out. Error = "IdentityOptions does not contain a definition for Cookies"
-        //options.Cookies.ApplicationCookie.SlidingExpiration = true;
-        //options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromHours(1);
+                // TODO - While upgrading to .NET SDK 2.0, I was getting an error seting these options, so
+                // I commented them out. Error = "IdentityOptions does not contain a definition for Cookies"
+                // Govmeeting: Set options for cookie expiration.
+                //options.Cookies.ApplicationCookie.SlidingExpiration = true;
+                //options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromHours(1);
 
-        options.Password.RequiredLength = 8;
-                options.Lockout.MaxFailedAccessAttempts = 5;
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // amount of time they are locked out
-        options.Lockout.AllowedForNewUsers = true;
-        // TODO We should send the admin an email if someone is locked out.
-        options.SignIn.RequireConfirmedEmail = true;
+                options.Password.RequiredLength = 8;
+                        options.Lockout.MaxFailedAccessAttempts = 5;
+                        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // amount of time they are locked out
+                options.Lockout.AllowedForNewUsers = true;
+                // TODO We should send the admin an email if someone is locked out.
+                options.SignIn.RequireConfirmedEmail = true;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -59,6 +59,9 @@ namespace GM.WebApp
             // https://docs.asp.net/en/latest/security/authorization/claims.html
             services.AddAuthorization(options =>
             {
+                // In DbInitializer, the admin user and administrator role is created.
+                // The password and email is read from appsettings.
+                // The methods in Features/Admin/AdminController.cs require: Policy = "Administrator" 
                 options.AddPolicy("Administrator", policy =>
                 { policy.RequireClaim("role", "administrator"); });
 

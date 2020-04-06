@@ -32,6 +32,7 @@ namespace GM.WebApp
                 logger.Error(ex, "Stopped program because of exception");
                 throw;
             }
+            //var builder = CreateWebHostBuilder(args);
 
             CreateWebHostBuilder(args)
             .Build()
@@ -52,10 +53,11 @@ namespace GM.WebApp
                     {
                         // If development, include _SECRETS/appsettings.Development.json in the configuration.
                         // This file contains the keys for using reCaptcha and Google external authorization.
-                        string devSettingFile = Environment.CurrentDirectory + @"\..\..\..\..\_SECRETS\" + $"appsettings.{env.EnvironmentName}.json";
+                        string devSettingFile = Environment.CurrentDirectory + @"\..\..\..\_SECRETS\" + $"appsettings.{env.EnvironmentName}.json";
                         if (File.Exists(devSettingFile))
                         {
                             config.AddJsonFile(devSettingFile, optional: true, reloadOnChange: true);
+                            //config.AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true);
                         }
                     }
                 })

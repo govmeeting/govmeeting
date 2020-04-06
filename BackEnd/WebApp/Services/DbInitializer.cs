@@ -20,7 +20,7 @@ namespace GM.WebApp.Services
     {
         //Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
         //    RoleManager<IdentityRole> roleManager, IConfiguration configuration);
-        Task<bool> Initialize();
+        Task<bool> Initialize(bool migrateDatabase);
     }
 
     // Class to inialize the database with the first admin user. See:
@@ -49,23 +49,15 @@ namespace GM.WebApp.Services
 
         //public async Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
         //    RoleManager<IdentityRole> roleManager, IConfiguration configuration)
-        public async Task<bool> Initialize()
+        public async Task<bool> Initialize(bool migrateDatabase)
         {
             // Ensure that the database exists and all pending migrations are applied.
-            // TODO - Remove this when we have real data and use SQL scripts instead.
-            // REMOVED MIGRATE
-            _context.Database.Migrate();
+            if (migrateDatabase)
+            {
+                _context.Database.Migrate();
+            }
 
-            // The following was from before we switch to using claims.
-            //// Create roles. This adds them to the table dbo.AspNetRoles.
-            //string[] roles = new string[] { "UserManager", "StaffManager" };
-            //foreach (string role in roles)
-            //{
-            //    if (!await roleManager.RoleExistsAsync(role))
-            //    {
-            //        await roleManager.CreateAsync(new IdentityRole(role));
-            //    }
-            //}
+            /// REMOVED PRIOR CODE 1 - See below
 
             // Create admin user. This adds it to the table dbo.AspNetUsers
             string admin_username = _config.DbAdmin.Username;
@@ -85,13 +77,7 @@ namespace GM.WebApp.Services
             //var emailConfirmationCode = await _userManager.GenerateEmailConfirmationTokenAsync(admin_user);
             //var confirmResult = await _userManager.ConfirmEmailAsync(admin_user, emailConfirmationCode);
 
-            // The following was from before we switch to using claims.
-            //// assign admin privileges. This adds and enty in table dbo.AspNetUserRoles
-            //ApplicationUser admin = await userManager.FindByEmailAsync("info@example.com");
-            //foreach (string role in roles)
-            //{
-            //    await userManager.AddToRoleAsync(admin, role);
-            //}
+            /// REMOVED PRIOR CODE 2 - See below
 
             // assign admin privileges. This adds an entry in table AspNetUserClaims
             var claims = await _userManager.GetClaimsAsync(admin_user);
@@ -107,7 +93,30 @@ namespace GM.WebApp.Services
     }
 }
 
-/*                                                SUMMARY
+/// REMOVED PRIOR CODE 1
+// The following was from before we switch to using claims.
+//// Create roles. This adds them to the table dbo.AspNetRoles.
+//string[] roles = new string[] { "UserManager", "StaffManager" };
+//foreach (string role in roles)
+//{
+//    if (!await roleManager.RoleExistsAsync(role))
+//    {
+//        await roleManager.CreateAsync(new IdentityRole(role));
+//    }
+//}
+
+/// REMOVED PRIOR CODE 2
+// The following was from before we switch to using claims.
+//// assign admin privileges. This adds and enty in table dbo.AspNetUserRoles
+//ApplicationUser admin = await userManager.FindByEmailAsync("info@example.com");
+//foreach (string role in roles)
+//{
+//    await userManager.AddToRoleAsync(admin, role);
+//}
+
+
+
+/*      SUMMARY OF CALLS TO CREATE ENTRIES IN AUTHENTICATION TABLES
  *                   CALL                                    CREATES ENTRY IN TABLE
  * roleManager.CreateAsync(new IdentityRole( ... ))          dbo.AspNetRoles
  * userManager.CreateAsync(new ApplicationUser() { ... }     dbo.AspNetUsers

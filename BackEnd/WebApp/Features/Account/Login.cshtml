@@ -48,7 +48,13 @@
           </div>
         </div>
 
-        <div class="g-recaptcha" data-sitekey="@(configuration["ReCaptcha:SiteKey"])"></div>
+        @{
+          if (!(configuration["IncludeReCaptcha"] == "false"))
+          {
+            <div class="g-recaptcha" data-sitekey="@(configuration["ReCaptcha:SiteKey"])"></div>
+          }
+        }
+
         <br>
 
         <div class="form-group">
@@ -56,10 +62,10 @@
             <!--  Disable login except for development, until we are ready. -->
             <!-- TODO - remove this when ready -->
             <environment names="Development">
-              <button type="submit" class="btn btn-default">Log in</button>
+              <button type="submit" class="btn btn-default AccountButton">Log in</button>
             </environment>
             <environment names="Staging,Production">
-              <button disabled type="submit" class="btn btn-default">Log in</button>
+              <button disabled type="submit" class="btn btn-default AccountButton">Log in</button>
             </environment>
           </div>
         </div>
@@ -77,29 +83,29 @@
       <h4>Use another login service</h4>
       <hr />
       @{
-        // Upgrade to SDK 2.0: Use GetExternalAuthenticationSchemesAsync
-        var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        // var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
-        if (loginProviders.Count == 0)
-        {
+                // Upgrade to SDK 2.0: Use GetExternalAuthenticationSchemesAsync
+                var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+                // var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
+                if (loginProviders.Count == 0)
+                {
           <div>
             <p>
               There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-              for details on setting up this ASP.NET application to support logging in via external services.
+                      for details on setting up this ASP.NET application to support logging in via external services.
             </p>
           </div>
-        }
-        else
-        {
+                }
+                else
+                {
           <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
             <div>
               <p>
                 @foreach (var provider in loginProviders)
-                {
+              {
                   <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                  // Upgrade to SDK 2.0
-                  // <button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
-                }
+              // Upgrade to SDK 2.0
+              // <button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
+            }
               </p>
             </div>
           </form>
@@ -109,9 +115,11 @@
   </div>
 </div>
 
-@await Html.PartialAsync("_DevNotePartial")
+@* @await Html.PartialAsync("_DevNotePartial") *@
 
 @section Scripts {
   @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
   <script src='https://www.google.com/recaptcha/api.js'></script>
 }
+
+@*<script src="https://www.google.com/recaptcha/api.js" async defer></script>*@

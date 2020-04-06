@@ -43,6 +43,7 @@ namespace GM.WebApp
             // CurrentDirectoryHelpers.SetCurrentDirectory();
 
             Configuration = configuration;
+
             logfilesPath = GMFileAccess.GetFullPath(Configuration["AppSettings:LogfilesPath"]);
             _logger = new StartupLogger(logfilesPath);
         }
@@ -210,28 +211,14 @@ namespace GM.WebApp
 
             _logger.LogTrace("Initialize database");
             //Run migrations and create seed data
-            //dbInitializer.Initialize().Wait();
+            bool migrateDatabase = false;
+            dbInitializer.Initialize(migrateDatabase).Wait();
 
             _logger.LogTrace("Copy test data to Datafiles folder");
             string testfilesPath = config.Value.TestfilesPath;
             InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);
 
         }
-
-        //public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
-        //{
-        //    public ApplicationDbContext CreateDbContext(string[] args)
-        //    {
-        //        IConfigurationRoot configuration = new ConfigurationBuilder()
-        //            .SetBasePath(Directory.GetCurrentDirectory())
-        //            .AddJsonFile("appsettings.json")
-        //            .Build();
-        //        var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
-        //        var connectionString = configuration.GetConnectionString("DefaultConnection");
-        //        builder.UseSqlServer(connectionString);
-        //        return new ApplicationDbContext(builder.Options);
-        //    }
-        //}
 
         private void AddApplicationServices(IServiceCollection services, StartupLogger _logger, bool UseDatabaseStubs)
         {
@@ -261,6 +248,19 @@ namespace GM.WebApp
             services.AddScoped<ValidateReCaptchaAttribute>();
         }
 
-
+        //public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
+        //{
+        //    public ApplicationDbContext CreateDbContext(string[] args)
+        //    {
+        //        IConfigurationRoot configuration = new ConfigurationBuilder()
+        //            .SetBasePath(Directory.GetCurrentDirectory())
+        //            .AddJsonFile("appsettings.json")
+        //            .Build();
+        //        var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
+        //        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        //        builder.UseSqlServer(connectionString);
+        //        return new ApplicationDbContext(builder.Options);
+        //    }
+        //}
     }
 }
