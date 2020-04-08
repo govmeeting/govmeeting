@@ -22,6 +22,7 @@ namespace GM.Configuration
         public string GoogleCloudBucketName { get; set; }
         public int MaxWorkFileBackups { get; set; }
         public bool MoveIncomingFileAfterProcessing { get; set; }
+        public bool ExitAfterOnceThroughWorkflow { get; set; }
         public string GoogleApplicationCredentials { get; set; }
         public bool UseDatabaseStubs { get; set; }
         public DbAdminSettings DbAdmin { get; set; }

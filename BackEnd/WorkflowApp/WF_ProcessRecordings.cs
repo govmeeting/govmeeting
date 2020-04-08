@@ -10,17 +10,20 @@ using GM.Configuration;
 using GM.FileDataRepositories;
 using GM.DatabaseRepositories;
 using GM.DatabaseModel;
+using Microsoft.Extensions.Logging;
 
 namespace GM.Workflow
 {
-    public class ProcessRecordings
+    public class WF_ProcessRecordings
     {
         AppSettings config;
         RecordingProcess processRecording;
         IGovBodyRepository govBodyRepository;
         IMeetingRepository meetingRepository;
+        ILogger<WF_ProcessReceivedFiles> logger;
 
-        public ProcessRecordings(
+        public WF_ProcessRecordings(
+            ILogger<WF_ProcessReceivedFiles> _logger,
             IOptions<AppSettings> _config,
             RecordingProcess _processRecording,
             IGovBodyRepository _govBodyRepository,
@@ -35,6 +38,7 @@ namespace GM.Workflow
             string credentialsFilePath = config.GoogleApplicationCredentials;
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
 
+            logger = _logger;
             processRecording = _processRecording;
             meetingRepository = _meetingRepository;
             govBodyRepository = _govBodyRepository;
@@ -56,11 +60,8 @@ namespace GM.Workflow
         // Create a work folder in Datafiles/PROCESSING and process the recording
         public void doWork(Meeting meeting)
         {
-            GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
-            string language = g.Languages[0].Name;
-
-            MeetingFolder meetingFolder = new MeetingFolder(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
-
+            // Get the work folder path
+            MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
             string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
 
             if (!FileDataRepositories.GMFileAccess.CreateDirectory(workFolderPath))
@@ -69,16 +70,19 @@ namespace GM.Workflow
                 return;
             }
 
+            // Move source file to the PROCESSING folder
             string sourceFilePath = config.DatafilesPath + "\\RECEIVED\\" + meeting.SourceFilename;
-            processRecording.Process(sourceFilePath, workFolderPath, language);
+            string destFilePath = config.DatafilesPath + "\\PROCESSING\\" + meeting.SourceFilename;
+            if (File.Exists(destFilePath))
+            {
+                logger.LogError("File already exists: ${destFilePath}");
+            }
+            else {
+                File.Move(sourceFilePath, destFilePath);
+            }
+
+            processRecording.Process(destFilePath, workFolderPath, meetingFolder.language);
 
         }
-
-        //private void MoveFileToProcessedFolder(string filename)
-        //{
-        //    string processedPath = _config.DatafilesPath + @"\COMPLETED";
-        //    string newFile = processedPath + "\\" + Path.GetFileName(filename);
-        //    File.Move(filename, newFile);
-        //}
     }
 }

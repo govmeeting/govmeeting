@@ -9,8 +9,8 @@ using GM.ViewModels;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 
-/*    This is old code that needs to be re-done. Originally, the format of the transcript file
- *    that was being read and loaded into the database was very different.
+/*    This is old code that needs to be re-done. Originally, the format of the 
+ *    transcribed and tagged transcript file was very different.
  *    THis code is just here for examples of using dBOperations.
  */
 
@@ -19,12 +19,12 @@ namespace GM.LoadDatabase
     /// <summary>
     /// load and parse a trancript into memory and write the data to the database.
     /// </summary>
-    public class LoadTranscript_X : ILoadTranscript
+    public class LoadDatabase : ILoadDatabase
     {
         private readonly AppSettings _config;
         private dBOperations dbOps;
 
-        public LoadTranscript_X(
+        public LoadDatabase(
             IOptions<AppSettings> config,
             dBOperations _dbOps
             )
@@ -34,7 +34,7 @@ namespace GM.LoadDatabase
         }
 
         // This method would load transcripts for which the Addtags processing has completed.
-        public void Run()
+        public void Process()
         {
             // For now we will use a single test transcript.
             AddtagsView addtags = new AddtagsView(); 
@@ -86,15 +86,15 @@ namespace GM.LoadDatabase
             //}
         }
     }
-    public interface ILoadTranscript
+    public interface ILoadDatabase
     {
-        void Run();
+        void Process();
         void LoadAndSave(ReadTranscriptFile readTranscript);
     }
 
-    public class LoadTranscript_Stub : ILoadTranscript
+    public class LoadDatabase_Stub : ILoadDatabase
     {
-        public void Run() { }
+        public void Process() { }
         public void LoadAndSave(ReadTranscriptFile readTranscript)  { }
     }
 }

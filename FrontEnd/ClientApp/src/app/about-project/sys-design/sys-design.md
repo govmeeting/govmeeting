@@ -95,7 +95,7 @@ ___
 
 The status of the workflow for a specific meeting is kept in its Meeting record in the database. Each of the workflow components operates independently. They are each called in turn to check for available work. Each component will query the database for meetings matching their criteria for available work. If work is found, they will perform it and update the meeting's status in the database. 
 
-In order to build a robust system, that can recover from failures, we need to treat steps in the workflow as "transactions". A transaction either completes fully or not at all. If there are  unrecoverable failures during a processing step, the state for that meeting rolls back to the last valid state. 
+In order to build a robust system, that can recover from failures, we need to treat steps in the workflow as "transactions". A transaction either completes fully or not at all. If there are  unrecoverable failures during a processing step, the state for that meeting rolls back to the last valid state.  
 
 Pseudo code is given below for the components
 
@@ -126,17 +126,17 @@ Pseudo code is given below for the components
     * Create work folder
     * set status=proofreading, approved=false
     * Manual proofreading will now take place
-  * For recordings with status=proofreading, approved=false
+  * For recordings with status=proofreading
     * Check if proofreading appears complete. If so:
       * set status=proofread, approved = false
       * send manager(s) message: "Proofread"
 * AddTagsToTranscript
   * For recordings with status=proofread, approved=true
-  OR for transcripts with status=processed, approved=true
+      OR for transcripts with status=processed, approved=true
     * Create work folder
     * set status=tagging, approved=false
     * Manual tagging will now take place
-  * For transcripts with status=tagging, approved=false
+  * For transcripts with status=tagging
     * Check if tagging appears complete. If so:
       * set status=tagged, approved = false
       * send manager(s) message: "Tagged"

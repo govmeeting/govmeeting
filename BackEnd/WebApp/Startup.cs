@@ -60,14 +60,16 @@ namespace GM.WebApp
 
             _logger.LogTrace("In Startup ConfigureServices");
 
+            _logger.LogTrace("Set value in GDC for NLog");
+
             // Set a variable in the gdc which is be used in NLog.config for the
             // base path of our app: ${gdc:item=appbasepath} 
-            _logger.LogTrace("Set value in GDC for NLog");
             //var appBasePath = System.IO.Directory.GetCurrentDirectory();
             //GlobalDiagnosticsContext.Set("appbasepath", appBasePath);
             GlobalDiagnosticsContext.Set("logfilesPath", logfilesPath);
 
             _logger.LogTrace("Modify some AppSettings");
+
             services.AddOptions();
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<AppSettings>(myOptions =>
@@ -93,10 +95,12 @@ namespace GM.WebApp
                     ));
 
             _logger.LogTrace("Add Add Authentication");
+
             //ConfigureAuthenticationServices(services);
             ConfigureAuthenticationServices(services, _logger);
 
             _logger.LogTrace("Add MVC");
+
             services.AddMvc()
 				// The ContractResolver option is to prevent the case of Json field names 
 				// being changed when retrieved by client.
@@ -104,7 +108,8 @@ namespace GM.WebApp
                 .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
                 .AddXmlSerializerFormatters();
 
-            _logger.LogTrace("Add Feature Folders");
+            _logger.LogTrace("Enable Feature Folders");
+
             // This enables the use of "Feature Folders".
             // https://scottsauber.com/2016/04/25/feature-folder-structure-in-asp-net-core/
             services.Configure<RazorViewEngineOptions>(options =>
@@ -121,6 +126,7 @@ namespace GM.WebApp
             //});
 
             _logger.LogTrace("Add Application services");
+
             bool UseDatabaseStubs = (Configuration["AppSettings:UseDatabaseStubs"] == "True") ? true : false;
             AddApplicationServices(services, _logger, UseDatabaseStubs);
 
@@ -141,6 +147,7 @@ namespace GM.WebApp
             // So we are using StartupLogger here also.
 
             _logger.LogTrace("Configure exception handler");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -151,10 +158,12 @@ namespace GM.WebApp
             //}
 
             _logger.LogTrace("Use static files & spa static files");
+
             app.UseStaticFiles();
             //app.UseSpaStaticFiles();
 
             _logger.LogTrace("Configure datafiles PhysicalFileProvider");
+
             // Add a PhysicalFileProvider for the Datafiles folder. Until we have a way to serve video files to 
             // videogular via the API, we need to allow these to be accessed as static files.
             string datafilesPath = config.Value.DatafilesPath;
@@ -167,6 +176,7 @@ namespace GM.WebApp
             });
 
             _logger.LogTrace("Configure routes");
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -174,7 +184,8 @@ namespace GM.WebApp
                     template: "{controller}/{action=Index}/{id?}");
             });
 
-            _logger.LogTrace("Use SPA");
+            _logger.LogTrace("Use SPA - Proxy to SPA dev server");
+
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
@@ -207,17 +218,19 @@ namespace GM.WebApp
             //app.UseStaticFiles();
 
             _logger.LogTrace("Use Authenitication");
+
             app.UseAuthentication();
 
             _logger.LogTrace("Initialize database");
+
             //Run migrations and create seed data
             bool migrateDatabase = false;
             dbInitializer.Initialize(migrateDatabase).Wait();
 
             _logger.LogTrace("Copy test data to Datafiles folder");
+
             string testfilesPath = config.Value.TestfilesPath;
             InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);
-
         }
 
         private void AddApplicationServices(IServiceCollection services, StartupLogger _logger, bool UseDatabaseStubs)

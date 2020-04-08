@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
-using GM.LoadDatabase;
+//using GM.LoadDatabase;
 
 namespace GM.Workflow
 {
@@ -12,67 +12,73 @@ namespace GM.Workflow
     public class WorkflowController
     {
         //private readonly ITestService _testService;
-        private readonly ILogger<WorkflowController> _logger;
-        private readonly AppSettings _config;
-        private readonly RetrieveOnlineFiles _retrieveOnlineFiles;
-        private readonly ProcessReceivedFiles _processReceivedFiles;
-        private readonly ProcessRecordings _processRecordings;
-        private readonly ProcessTranscripts _processTranscripts;
-        private readonly ProcessProofread _processFixedAsr;
-        private readonly ProcessTagged _processTagged;
-        private readonly ILoadTranscript _loadTranscript;
+        private readonly ILogger<WorkflowController> logger;
+        private readonly AppSettings config;
+        private readonly WF_RetrieveOnlineFiles wf_retrieveOnlineFiles;
+        private readonly WF_ProcessReceivedFiles wf_processReceivedFiles;
+        private readonly WF_ProcessRecordings wf_processRecordings;
+        private readonly WF_ProcessTranscripts wf_processTranscripts;
+        private readonly WF_ProcessProofread wf_processFixedAsr;
+        private readonly WF_ProcessTagged wf_processTagged;
+        private readonly WF_LoadDatabase wf_loadDatabase;
 
         public WorkflowController(
             //ITestService testService,
-            IOptions<AppSettings> config,
-            ILogger<WorkflowController> logger,
-            RetrieveOnlineFiles retrieveOnlineFiles,
-            ProcessReceivedFiles processReceivedFiles,
-            ProcessRecordings processRecordings,
-            ProcessTranscripts processTranscripts,
-            ProcessProofread processFixedAsr,
-            ProcessTagged processTagged,
-            ILoadTranscript loadTranscript
+            IOptions<AppSettings> _config,
+            ILogger<WorkflowController> _logger,
+            WF_RetrieveOnlineFiles _wf_retrieveOnlineFiles,
+            WF_ProcessReceivedFiles _wf_processReceivedFiles,
+            WF_ProcessRecordings _wf_processRecordings,
+            WF_ProcessTranscripts _wf_processTranscripts,
+            WF_ProcessProofread _wf_processProofread,
+            WF_ProcessTagged _wf_processTagged,
+            WF_LoadDatabase _wf_loadDatabase
             )
         {
             //_testService = testService;
-            _logger = logger;
-            _config = config.Value;
-            _retrieveOnlineFiles = retrieveOnlineFiles;
-            _processReceivedFiles = processReceivedFiles;
-            _processRecordings = processRecordings;
-            _processTranscripts = processTranscripts;
-            _processFixedAsr = processFixedAsr;
-            _processTagged = processTagged;
-            _loadTranscript = loadTranscript;
+            logger = _logger;
+            config = _config.Value;
+            wf_retrieveOnlineFiles = _wf_retrieveOnlineFiles;
+            wf_processReceivedFiles = _wf_processReceivedFiles;
+            wf_processRecordings = _wf_processRecordings;
+            wf_processTranscripts = _wf_processTranscripts;
+            wf_processFixedAsr = _wf_processProofread;
+            wf_processTagged = _wf_processTagged;
+            wf_loadDatabase = _wf_loadDatabase;
         }
 
         public void Run()
         {
-            _logger.LogInformation($"Start Workflow - datafilesPath = {_config.DatafilesPath}");
+            logger.LogInformation($"Start Workflow - datafilesPath = {config.DatafilesPath}");
 
             // Retreive online transcripts or recordings
-            _retrieveOnlineFiles.Run();
+            wf_retrieveOnlineFiles.Run();
 
             // Process received files
-            _processReceivedFiles.Run();
+            wf_processReceivedFiles.Run();
 
             // Process new recordings - auto speech recognition
-            _processRecordings.Run();
+            wf_processRecordings.Run();
 
             // Processing new transcript files
-            _processTranscripts.Run();
+            wf_processTranscripts.Run();
 
             // Process the proofread transcripts to get ready for tagging
-            _processFixedAsr.Run();
+            wf_processFixedAsr.Run();
 
             // Process tagged transcripts to be ready for viewing
-            _processTagged.Run();
+            wf_processTagged.Run();
 
             // Load completed transcript data into database
-            _loadTranscript.Run();
+            wf_loadDatabase.Run();
 
-            System.Console.ReadKey();
+            if (config.ExitAfterOnceThroughWorkflow)
+            {
+                // For Debugging
+                System.Console.ReadKey();
+
+                return;
+            }
         }
     }
 }

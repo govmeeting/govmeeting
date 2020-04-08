@@ -49,6 +49,7 @@
         </div>
 
         @{
+          <!-- We use "false" as a string because there is an error if the check is for a boolean.-->
           if (!(configuration["IncludeReCaptcha"] == "false"))
           {
             <div class="g-recaptcha" data-sitekey="@(configuration["ReCaptcha:SiteKey"])"></div>

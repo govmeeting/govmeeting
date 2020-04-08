@@ -31,6 +31,12 @@ namespace GM.WebApp.Services
         }
         private async Task DoReCaptchaValidation(ActionExecutingContext context)
         {
+            // We use "false" as a string because in the Razor page for Login, etc, there is an error if the check is for a boolean.
+            if (m_configuration["IncludeReCaptcha"] == "false")
+            {
+                return;
+            }
+
             if (!context.HttpContext.Request.HasFormContentType)
             {
                 // Get request? 

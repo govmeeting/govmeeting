@@ -9,7 +9,7 @@ using GM.DatabaseModel;
 
 namespace GM.Workflow
 {
-    public class ProcessReceivedFiles
+    public class WF_ProcessReceivedFiles
     {
         // TODO - IMPLEMENT THIS CLASS
 
@@ -23,26 +23,26 @@ namespace GM.Workflow
          *      being uploaded by a registered user
          */
 
-        ILogger<ProcessReceivedFiles> _logger;
-        AppSettings _config;
-        IGovBodyRepository _govBodyRepository;
-        IMeetingRepository _meetingRepository;
+        ILogger<WF_ProcessReceivedFiles> logger;
+        AppSettings config;
+        IGovBodyRepository govBodyRepository;
+        IMeetingRepository meetingRepository;
 
-        public ProcessReceivedFiles(
-            ILogger<ProcessReceivedFiles> logger,
-            IOptions<AppSettings> config,
-            IGovBodyRepository govBodyRepository,
-            IMeetingRepository meetingRepository
+        public WF_ProcessReceivedFiles(
+            ILogger<WF_ProcessReceivedFiles> _logger,
+            IOptions<AppSettings> _config,
+            IGovBodyRepository _govBodyRepository,
+            IMeetingRepository _meetingRepository
            )
         {
-            _logger = logger;
-            _config = config.Value;
-            _govBodyRepository = govBodyRepository;
-            _meetingRepository = meetingRepository;
+            logger = _logger;
+            config = _config.Value;
+            govBodyRepository = _govBodyRepository;
+            meetingRepository = _meetingRepository;
         }
         public void Run()
         {
-            string incomingPath = _config.DatafilesPath + @"\RECEIVED";
+            string incomingPath = config.DatafilesPath + @"\RECEIVED";
             Directory.CreateDirectory(incomingPath);
             
             // Process any existing files in the folder
@@ -52,38 +52,32 @@ namespace GM.Workflow
             }
 
             DirectoryWatcher watcher = new DirectoryWatcher();
-            
-            // Call "doWork" for new file.
             // TODO - uncomment next line
             //watcher.watch(incomingPath, "", CheckFile);
         }
 
         public void CheckFile(string filename)
         {
-            // TODO - check if a database record was already created for this meeting.
-            //   If not, create a record
-            // check if it's already been approved. If not, send manager(s) a message
-
+            // Obtain the meeting work folder path from the input filename.
             MeetingFolder meetingFolder = new MeetingFolder(filename);
-            //if (!meetingFolder.SetFields(filename))
             if (!meetingFolder.valid)
             {
                 // This is not a valid name, skip it.
                 string errmsg = $"ProcessIncomingFiles.cs - filename is invalid: {filename}";
                 Console.WriteLine(errmsg);
-                _logger.LogError(errmsg);
+                logger.LogError(errmsg);
                 return;
             }
 
             // Check if there is a database record for this government body.
-            long govBodyId = _govBodyRepository.GetId(
+            long govBodyId = govBodyRepository.GetId(
                 meetingFolder.country,
                 meetingFolder.state,
                 meetingFolder.county,
                 meetingFolder.municipality);
 
             // Check if there is database record for this meeting.
-            Meeting meeting = _meetingRepository.Get(govBodyId, DateTime.Parse(meetingFolder.date));
+            Meeting meeting = meetingRepository.Get(govBodyId, DateTime.Parse(meetingFolder.date));
 
             if (!meeting.Approved)
             {
@@ -93,7 +87,7 @@ namespace GM.Workflow
 
         public void SendMangerMessage(string message)
         {
-
+            // TODO - Implement
         }
 
     }

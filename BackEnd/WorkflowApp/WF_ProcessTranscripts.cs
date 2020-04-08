@@ -10,10 +10,11 @@ using GM.Configuration;
 using GM.FileDataRepositories;
 using GM.DatabaseRepositories;
 using GM.DatabaseModel;
+using Microsoft.Extensions.Logging;
 
 namespace GM.Workflow
 {
-    public class ProcessTranscripts
+    public class WF_ProcessTranscripts
     {
 
         /*   ProcessIncomingFiles watches the "RECEIVED" folder for files to be processed.
@@ -26,19 +27,22 @@ namespace GM.Workflow
          * For new PDF files, it calls: ProcessTranscript
         */
 
-        AppSettings _config;
+        AppSettings config;
         TranscriptProcess transcriptProcess;
         IMeetingRepository meetingRepository;
         IGovBodyRepository govBodyRepository;
+        ILogger<WF_ProcessReceivedFiles> logger;
 
-        public ProcessTranscripts(
-            IOptions<AppSettings> config,
+        public WF_ProcessTranscripts(
+            ILogger<WF_ProcessReceivedFiles> _logger,
+            IOptions<AppSettings> _config,
             TranscriptProcess _transcriptProcess,
             IMeetingRepository _meetingRepository,
             IGovBodyRepository _govBodyRepository
            )
         {
-            _config = config.Value;
+            logger = _logger;
+            config = _config.Value;
             transcriptProcess = _transcriptProcess;
             meetingRepository = _meetingRepository;
             govBodyRepository = _govBodyRepository;
@@ -59,9 +63,9 @@ namespace GM.Workflow
 
         public void doWork(Meeting meeting)
         {
-            // Create the work folder
+            // Get the work folder path
             MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
-            string workFolderPath = _config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
+            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
 
 
             if (!FileDataRepositories.GMFileAccess.CreateDirectory(workFolderPath))
@@ -72,15 +76,19 @@ namespace GM.Workflow
                 return;
             }
 
-            string sourceFilePath = _config.DatafilesPath + "\\RECEIVED\\" + meeting.SourceFilename;
-            transcriptProcess.Process(sourceFilePath, workFolderPath, meetingFolder.language);
-        }
+            string sourceFilePath = config.DatafilesPath + "\\RECEIVED\\" + meeting.SourceFilename;
+            string destFilePath = config.DatafilesPath + "\\PROCESSING\\" + meeting.SourceFilename;
+            if (File.Exists(destFilePath))
+            {
+                logger.LogError("File already exists: ${destFilePath}");
+            }
+            else
+            {
+                File.Move(sourceFilePath, destFilePath);
+            }
 
-        //private void MoveFileToProcessedFolder(string filename)
-        //{
-        //    string processedPath = _config.DatafilesPath + @"\COMPLETED";
-        //    string newFile = processedPath + "\\" + Path.GetFileName(filename);
-        //    File.Move(filename, newFile);
-        //}
+
+            transcriptProcess.Process(destFilePath, workFolderPath, meetingFolder.language);
+        }
     }
 }

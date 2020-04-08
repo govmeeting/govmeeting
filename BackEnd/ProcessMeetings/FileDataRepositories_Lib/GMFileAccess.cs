@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GM.FileDataRepositories
@@ -103,7 +104,7 @@ namespace GM.FileDataRepositories
 
         public static bool DeleteDirectoryAndContents(string folderName)
         {
-            if (DeleteDirectoryContents(folderName))
+            if (DeleteDirectoryContents(folderName, true))
             {
                 Directory.Delete(folderName);
                 return true;
@@ -111,14 +112,58 @@ namespace GM.FileDataRepositories
             return false;
         }
 
-        public static bool DeleteDirectoryContents(string folderName)
-        {
-            if (!Directory.Exists(folderName)) { return false; }
 
-            DeleteAllFilesInDirectory(folderName);
-            DeleteAllFoldersInDirectory(folderName);
+
+        public static bool DeleteDirectoryContents(string folderName, bool deleteSelf = false)
+        {
+            System.IO.DirectoryInfo di = new DirectoryInfo(folderName);
+
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (DirectoryInfo dir in di.GetDirectories())
+            {
+                if (!DeleteAndMaybeSleep(dir))
+                {
+                    return false;
+                }
+            }
+            if (deleteSelf)
+            {
+                return DeleteAndMaybeSleep(di);
+            }
             return true;
         }
+
+        // When Windows deletes folder recursively, it does so asynchronously.
+        // We may try to delete a containing folder before one of it's contents finishes being deleted.
+        // This routine does up to a few millisecond pauses if there we get an exception.
+        private static bool DeleteAndMaybeSleep(DirectoryInfo dir)
+        {
+            int maxTries = 3;
+            while (maxTries-- > 0)
+            {
+                try
+                {
+                    dir.Delete(true);
+                }
+                catch
+                {
+                    Thread.Sleep(1);
+                }
+            }
+            return (maxTries > 0);
+        }
+
+        //public static bool DeleteDirectoryContents(string folderName, bool deleteSelf = false)
+        //{
+        //    if (!Directory.Exists(folderName)) { return false; }
+
+        //    DeleteAllFilesInDirectory(folderName);
+        //    DeleteAllFoldersInDirectory(folderName, deleteSelf);
+        //    return true;
+        //}
 
         public static bool DeleteAllFilesInDirectory(string folderName)
         {
@@ -136,7 +181,7 @@ namespace GM.FileDataRepositories
             return true;
         }
 
-        public static bool DeleteAllFoldersInDirectory(string folderName)
+        public static bool DeleteAllFoldersInDirectory(string folderName, bool deleteSelf)
         {
             if (!Directory.Exists(folderName)) { return false; }
 
@@ -144,9 +189,12 @@ namespace GM.FileDataRepositories
 
             foreach (DirectoryInfo dir in directory.GetDirectories())
             {
-                DeleteAllFoldersInDirectory(dir.FullName);
+                DeleteAllFoldersInDirectory(dir.FullName, true);
             }
-            Directory.Delete(folderName);
+            if (deleteSelf)
+            {
+                Directory.Delete(folderName);
+            }
             return true;
         }
 

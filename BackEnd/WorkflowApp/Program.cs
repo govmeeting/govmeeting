@@ -96,22 +96,21 @@ namespace GM.Workflow
             //services.AddTransient<IOptions<AppSettings>>();
             services.AddTransient<ApplicationDbContext>();
             services.AddTransient<dBOperations>();
-            services.AddTransient<RetrieveOnlineFiles>();
-            services.AddTransient<ProcessReceivedFiles>();
-            services.AddTransient<ProcessRecordings>();
-            services.AddTransient<ProcessTranscripts>();
             services.AddTransient<RecordingProcess>();
             services.AddTransient<TranscribeAudio>();
             services.AddTransient<TranscriptProcess>();
-            services.AddTransient<ILoadTranscript, LoadTranscript_Stub>();
-            services.AddTransient<ProcessTagged>();
-            services.AddTransient<ProcessProofread>();
+            //services.AddTransient<ILoadTranscript, LoadTranscript_Stub>();
             services.AddTransient<AddtagsRepository>();
             services.AddTransient<FixasrRepository>();
-            //services.AddTransient<MeetingFolder>();
-            services.AddTransient<ILoadTranscript, LoadTranscript_Stub>();
             services.AddTransient<IMeetingRepository, MeetingRepository_Stub>();
             services.AddTransient<IGovBodyRepository, GovBodyRepository_Stub>();
+            services.AddTransient<WF_RetrieveOnlineFiles>();
+            services.AddTransient<WF_ProcessReceivedFiles>();
+            services.AddTransient<WF_ProcessRecordings>();
+            services.AddTransient<WF_ProcessTranscripts>();
+            services.AddTransient<WF_ProcessTagged>();
+            services.AddTransient<WF_ProcessProofread>();
+            services.AddTransient<WF_LoadDatabase>();
 
             // add app
             services.AddTransient<WorkflowController>();
