@@ -42,15 +42,15 @@ let nonGovernment = new NavItem(null, 'Non-Government', 'group',
 
 let aboutpagesMenu = new NavItem(null, 'About', null,
 [
-  new NavItem(EntryType.docId, 'Purpose', 'info', 'purpose'),
+  // new NavItem(EntryType.docId, 'Purpose', 'info', 'purpose'),
   new NavItem(EntryType.link, 'Overview', 'toc', 'overview'),
   new NavItem(EntryType.docId, 'Workflow', 'trending_up', 'workflow'),
   new NavItem(EntryType.docId, 'Project Status', 'check_circle_outline', 'project-status'),
-  new NavItem(null, 'Developer Notes', 'school',
+  new NavItem(null, 'Developer', 'school',
   [
     new NavItem(EntryType.docId, 'Setup', 'build', 'setup'),
-    new NavItem(EntryType.link, 'System Design', 'bubble_chart', 'sysdesign'),
-    new NavItem(EntryType.docId, 'Design Notes', 'notes', 'design-notes'),
+    new NavItem(EntryType.link, 'Design', 'bubble_chart', 'sysdesign'),
+    new NavItem(EntryType.docId, 'Dev Notes', 'notes', 'dev-notes'),
     new NavItem(EntryType.docId, 'Database', 'archive', 'database'),
   ])
 ])

@@ -20,31 +20,19 @@ th {
 }
 </style>
 
-# Overview
-
-
-
 The tables in the database consist of:
 
 1. Authentication tables.
 
 These were created automatically by Microsoft Identity Service when "Authentication = Individual User Accounts" was checked when the project was first built.
 
-2. Tables for the Govmeeting data model classes.
+2. Govmeeting tables.
 
-These were created by the "Code First" feature of Entity Framework. The C# classes in the "Database/Model" project library were first written. Then EF automatically generated the database schema and tables.
+These are created by the "Code First" feature of Entity Framework. EF reads the C# classes in the "Database/Model" project library and automatically generates the database schema and tables.
 
-Since the projects were first created in Visual Studio, they were created as SQL Server LocalDb databases. If you have [SQL Server Data Tools](https://docs.microsoft.com/en-us/sql/ssdt/download-sql-server-data-tools-ssdt) installed, you can open and view the database contents by accssing them in this way:
+See the "Setup" document page for creating and working with the database.
 
-* Open SQL Server Object Explorer
-* Right-click on "SQL Server" and select "Add SQL Server".
-* Enter "(localdb)\MSSQLLocalDB" as the server name.
-* Click "Select". A new server will appear under "SQL Server".
-
-Entity Framework supports other database providers. The choice for development and testing is up to you.
-See the "Setup" document page for how to use other providers.
-
-# Transcript Database Schema
+# Schema
 
 ## "Government Entity" table
 

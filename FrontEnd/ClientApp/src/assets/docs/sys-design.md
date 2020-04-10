@@ -1,5 +1,7 @@
+<!-- Note the controller for this page is app/about-project/sys-desigh/sys-design.ts -->
+
 <mat-card>
-  <mat-card-title class="cardtitle">System Design</mat-card-title>
+  <mat-card-title class="cardtitle">Design</mat-card-title>
 
 <markdown ngPreserveWhitespaces>
 
@@ -100,12 +102,18 @@ In order to build a robust system, that can recover from failures, we need to tr
 Pseudo code is given below for the components
 
 * RetreiveOnlineFiles
-  * Check schedule(s) for meeting(s) to retrieve
-  * For each file to be retreived
-    * Create database record for new meeting
-    * set status=receiving, approved=false
-  * When file(s) received:
-    * set status=received, approved=false
+  * For all government entities in the system
+    * Check schedule(s) for meeting(s) to retrieve
+    * Retrieve either recording or transcript file
+    * Put file in Datafiles\Received folder
+  * Files may also be placed in the Received folder by user upload.
+* ProcessReceivedFiles
+  * For files in Datafiles\Received
+    * If database record does not exist
+      * Determine file type
+      * Determine if data looks valid. If so:
+      * Create database record 
+      * set status=received, approved=false
     * Send manager(s) message: "Received"
 * TranscribeRecordings
   * For recordings with sourcetype=recording, status=received, approved=true

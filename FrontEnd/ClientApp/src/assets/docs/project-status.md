@@ -1,4 +1,4 @@
-* A number of pieces of the software are implemented (but need improving).
+* A number of pieces of the software are implemented (but need improvement).
 * A number of critical pieces need to be implemented.
 
 # Implemented

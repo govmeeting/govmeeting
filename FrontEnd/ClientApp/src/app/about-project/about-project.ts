@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DocumentPages } from './document-pages';
+import { DocumentPageTitles } from './document-pages';
 
-const defaultDocument = "assets/docs/purpose.md"
-const defaultTitle = "Purpose";
+// const defaultDocument = "assets/docs/purpose.md"
+// const defaultTitle = "Purpose";
 @Component({
   selector: 'gm-auto-processing',
   templateUrl: './about-project.html',
@@ -18,14 +18,18 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
     // https://stackblitz.com/edit/angular-3fkg6e?file=src%2Fapp%2Fcomponent-a.component.ts
     this.activeRoute.queryParams.subscribe(params => {
-      if (params.id == undefined) {
-        this.title = defaultTitle;
-        this.document = defaultDocument;
-      } else {
+      // if (params.id == undefined) {
+      //   this.title = defaultTitle;
+      //   this.document = defaultDocument;
+      // } else {
         let pageid = params.id;
-        this.title = DocumentPages[pageid];
+        if (DocumentPageTitles[pageid] != null) {
+          this.title = DocumentPageTitles[pageid];
+        } else {
+          this.title = pageid;
+        }
         this.document = "assets/docs/" + pageid + ".md"
-      }
+      // }
       //console.log(params.id);
     })
   }

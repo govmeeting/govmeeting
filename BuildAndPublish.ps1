@@ -1,5 +1,6 @@
 Push-Location FrontEnd\ClientApp
 .\PsScripts\SetIsAspServerRunning.ps1 ".\src\app\app.module.ts" $false
+.\PsScripts\BuildProjectReadme.ps1
 npm run build
 .\PsScripts\SetIsAspServerRunning.ps1 ".\src\app\app.module.ts" $true
 Pop-Location

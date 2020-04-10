@@ -1,127 +1,175 @@
 # Govmeeting
 
-Meetings are the heart and soul of democracy. They are where people  present opposing opinions on important issues and formally make final decisions. 
+Public Meetings are the heart and soul of democracy. They are where citizens present opposing views and come to consensus on decisions that affect us all. 
 
 In the Athenian Assembly of 500 BC, a quorum of 6,000 of the 43,000 citizens was needed to conduct business. In the 10th century, the Icelandic Althing was held in a natural outdoor amphitheater and all citizens could attend.
 
-Today it is rare to see more than a dozen attendees at a council meeting in a town of 30,000 people. Is this still democracy?
+Today it is rare to see more than a dozen attendees at a council meeting in a town of 30,000 people. Is this still democracy? 
 
-Some public meetings are broadcast on local TV.  But a very small percent of people actually watch. Local newspaper report on some issues. But they choose what to report and a small percentage read their local paper.
+Meetings are sometimes broadcast on TV and some newspapers report on some issues. But still, most people know very litte about most of what goes on. 
 
-The few attending a meeting, including some council members, may strongly oppose a decision. But it is too easy for the council majority to totally ignore them. They know that less than one percent of the voters will ever hear what they said.
-
-The purpose of this project is to preserve those discussions and make them easily available to all. It uses a combination of intelligent software and community volunteer effort.
-
-Disillusion with government starts at the local level. Fixing this requires a grassroots effort at that level.
+The purpose of Govmeeting is give all citizens quick and easy access to what their politicians and opportunities to affect their decisions.
 
 ## Functional overview
 
-Shortly after a government meeting takes place, you will be able to:
-* Receive a summary of issues discussed via text message or email.
-* Optionally receive a full transcript of the meeting via email.
+Govmeeting will automatically:
 
-At any time, you can go online and:
-* Sign up to receive text alert or emails whenever a specific issue is discussed.
-* Use a more powerful tool to browse a specific meeting.
-* Search all past meetings for issues discussed.
-* See all that was said in the past on any specific issues.
-* See what any specific official said on any specific issue in all past meetings. This is especially helpful at election time.
+* Retrieve online transcripts or recordings of government meetings.
+* Transcribe the recordings using speech-to-text
+* Process the transcripts into a standard format. 
+* Load a relational database with the information in the transcripts
 
-For a detailed functional design, see: [Functional Design](https://github.com/govmeeting/govmeeting/wiki/functional-design)
+At this point, point will be able to do:
 
-<img src="images/mr-t-mrt-36834265-320-254-24kb.png" alt="Photo of Mr.T">
-<!--This also works: ![Photo of Mr.T](images/mr-t-mrt-36834265-320-254-24kb.png) -->
+Set preferences for receiving the following after each meeting:
 
- “Enough with the jibber-jabber, fool!
- Show me how it works!”
-
-Well, the work is in progress. But here you can find some [Demos of working code](http://govmeeting.org).
-
-## Technical overview
-
-* Client application in Typescript and Angular(5).
-* Server in C# and ASP.NET Core 2.0.
-* Google Cloud and Speech API for voice recognition
-* SQL database uses Entity Framework Core, code-first object model.
-
-The "Core"version of ASP.NET Core and Entity Framework is open-source and runs on Windows, Mac and Linux.
-
-For a detailed system design, see: [System Design](https://github.com/govmeeting/govmeeting/wiki/system-design)
-
-## Quickstart
-
-* Clone the repo: `git clone https://github.com/govmeeting/govmeeting.git`
-or download zip file:`https://github.com/govmeeting/govmeeting/archive/master.zip`
-
-If you only want to develop the front-end Angular / Typeacript code, there are stub routines for the Asp.Net WebApi calls, see [Develop Angular FrontEnd Only](#develop-angular-frontend-only).
-
-To develop both the Angular front-end and the Asp.Net backend, you can use either Visual Studio or Visual Studio Code.
-
-### Develop Angular front-end and/or Asp.Net server
-
-The front-end is what you see at [govmeeting.org](govmeeting.org).
-
-#### In Visual Studio
-
-  * Open solution "govmeeting.sln"
-  * Set startup project to `Web_App`. Press F5.
-    You will need to wait for Nuget and NPM packages to be downloaded
-    and all projects to be built. Your browser should open and display the front-end.
+* Full transcript of the meeting.
+* Summary of issues discussed.
+* Alerts on specific issues.
+* Alerts when a specific official speaks.
+* Alerts on new proposed legislation.
 
 
-#### In Visual Studio Code
-
-* Install Chrome
-
-Install the following VS Code extensions:
-* "Debugger for Chrome" by Microsoft
-* "C# for Visual Studio Code" by Microsoft
-
-Open the repository folder in VS Code.
-
-In the debug panel, set the launch configuration to "Web_App & Chrome". Press F5. This configuration enables debugging both Typescript & C# in the same session. See: https://github.com/Microsoft/vscode-recipes/tree/master/Angular-SpaTemplates
-
-#### Develop Angular FrontEnd Only
-
-Open the "src/ClientApp" folder in your favorite editor (Sublime, VSCode, etc).
-
-Change the following line in the file "src/ClientApp/src/app/app.module.ts" to use stub routines in place of the Asp.Net backend.
-
-    const _isAspServerRunning = true;
-to
-
-    const _isAspServerRunning = false;
-
-In the folder "src/ClientApp", run the following command:
-
-    npm serve --open
+At any time, people can go online and:
+* Browse current and past meetings.
+* Search meetings for issues discussed.
+* Search for what a specific official said on issues.
+* Search for voting results on legislation
 
 
-### Develop Backend / Google Cloud Process
+# Developer Setup
+[ All these instructions were tested so far on Windows only. If you install elsewhere, or if there are errors or ommissions in this document, please edit the file FrontEnd/ClientApp/src/app/assets/docs/dev-setup.md and issue
+a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub </a> ]
 
-"Workflow_App" is a separate process which runs on the backend. It retrieves online recordings and transcripts of meetings. It call the Google Speech API to transcribe recordings. To use Google Cloud services, you need to first:  [Create a GCP project](https://github.com/govmeeting/govmeeting/wiki). Then:
+--------------------------------------------------------------
+# Requirements
 
-#### In Visual Studio:
-* Set startup project to `WorkFlow_App`. Press F5.
+* Install git. There are many options for this. EG: <a href="https://gitforwindows.org"> Git for Windows </a>
+* Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
+* Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. <a>
 
-#### In VSCode
-* Set the Launch Configuration to `WorkflowApp`. Press F5.
+--------------------------------------------------------------
+# Clone the repository
 
-The first time that WorkflowApp is run, it will copy test data 
+Execute:
+* git clone https://github.com/govmeeting/govmeeting.git
+* mkdir _SECRETS
 
-* Copy (don't move) either the either sample MP4 recording or PDF transcript files from testdata to Datafiles/RECEIVED.
+The "_SECRETS" folder is for keys and passwords that are not stored in the public repository.
 
-The program will recognize that a new file has appeared and start processing it.
-The results will appear in a new subdirectory in the Datafiles folder.
+--------------------------------------------------------------
+# Develop with VsCode
+
+## Installation
+* Install <a href="https://code.visualstudio.com/download"> Visual Studio Code <a>
+* Open the Govmeeting folder in VsCode
+* Install extensions:
+  * “Debugger for Chrome” by Microsoft
+  * "C# for Visual Studio Code" by Microsoft
+  * "SQL Server (mssql)" by Microsoft
+  * "Todo Tree" by Gruntfuggly - shows TODO lines in code (optional)
+
+## Build & run ClientApp
+
+In a terminal pane, execute:
+ - cd FrontEnd/ClientApp
+ - npm install
+ - npm start
+
+## Debug ClientApp & WebApp together
+* Run: npm start
+* Open the debug panel.
+* Set launch configuration "WebApp & ClientApp"
+* Press F5
+
+WebApp responds to Web API calls. But it proxies internal client requests to the dev server started with "npm start".
+
+## Debug ClientApp standalone
+* In app.module.ts, change "isAspServerRunning" from true to false.
+* Run: npm start
+* Open the debug panel.
+* Set launch configuration "ClientApp"
+* Press F5
+
+## Debug WorkflowApp
+* Open the debug panel.
+* Set launch configuration "WorkflowApp"
+* Press F5
+
+## Notes
+
+We dont run "npm start" from the launch configuration ""WebApp & ClientApp" so that we can start or stop either one independently.
 
 
+--------------------------------------------------------------
+# Develop with Visual Studio
+
+* Install  the free <a href="https://visualstudio.microsoft.com/free-developer-offers/"> Visual Studio Community Edition. </a>
+*  During installation, select both the "ASP.NET" and the ".NET desktop" workloads.
+* Install extensions:  (all by Mads Kristensen)
+  * "NPM Task Runner"
+  * "Command Task Runner"
+  * "Markdown Editor"
+* Open the solution file "govmeeting.sln"
+
+## Build & start ClientApp
+* Open terminal pane and execute:
+ - cd FrontEnd/ClientApp
+ - npm start
+* OR in Task Runner Explorer (ClientApp) run "start"
+
+## Debug ClientApp & WebApp together
+* (do above: "Build & start ClientApp")
+* Set startup project to "WebApp"
+* Click F5
+* WebApp will run and a browser will open, displaying the ClientApp.
+
+NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Visual Studio. See: <a href="https://github.com/govmeeting/govmeeting/issues/80"> Github issue #80 <a>
+
+## Debug WorkflowApp
+* Open the debug panel.
+* Set startup project to "WorkflowApp"
+* Click F5
+
+## Notes - see notes for Visual Studio Code
 
 
+--------------------------------------------------------------
+# Develop - other platforms
+
+## Build and run ClientApp
+
+Execute:
+- cd Frontend/ClientApp
+- npm install
+- npm start
+
+Go to localhost:4200 in your browser. The client app will load.
+Some features will not work until WebApp is running.
+
+## Build and run WebApp with ClientApp
+
+Execute:
+* (do above: "Build & start ClientApp")
+* cd ../../Backend/WebApp
+* dotnet build webapp.csproj
+* dotnet run bin/debug/dotnet2.2/webapp.dll
+
+Go to localhost:5000 in your browser. The client app will load.
+
+## Build and run ClientApp standalone
+
+* In app.module.ts, change "isAspServerRunning" from true to false.
+* (do above: "Build & start ClientApp")
+
+## Build and run WorkflowApp
+
+Execute:
+* cd Backend/WorkflowApp
+* dotnet build workflowapp.csproj
+* dotnet run bin/debug/dotnet2.0/workflowapp.dll
 
 
-
-## Contacts
-[![Join the chat at https://gitter.im/govmeeting/govmeeting](https://badges.gitter.im/govmeeting/govmeeting.svg)](https://gitter.im/govmeeting/govmeeting?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-<info@govmeeting.org>
-
+Additional setup instructions can be found in the repository.
+You can view it when you run the ClientApp.
+World

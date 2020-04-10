@@ -67,11 +67,11 @@ namespace GM.FileDataRepositories
             MeetingFolder meetingFolder = new MeetingFolder(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
             string meetingFolderPath = meetingFolder.path;
 
-            string workFolder = meetingFolderPath + "\\PROCESSING\\" + WORK_FOLDER_NAME;
-            string partFolder = workFolder + $"\\part{part:D2}";
-            string partFolderPath = Path.Combine(datafiles, partFolder);
+            string workFolder = datafiles + @"\PROCESSING\" + meetingFolderPath +  @"\" + WORK_FOLDER_NAME + $"\\part{part:D2}";
+            //string partFolder = workFolder + $"\\part{part:D2}";
+            //string partFolderPath = Path.Combine(datafiles, partFolder);
 
-            return partFolderPath;
+            return workFolder;
         }
 
 

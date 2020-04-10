@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'gm-overview',
-  templateUrl: './overview.md',
-  styleUrls: ['./overview.scss']
+  templateUrl: '../../../assets/docs/overview.md',
+  styleUrls: ['../../../assets/docs/overview.scss']
 })
 export class OverviewComponent implements OnInit {
   // @Input() showtitle: boolean = true;

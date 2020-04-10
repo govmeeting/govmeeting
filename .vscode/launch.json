@@ -11,7 +11,14 @@
             "url": "http://localhost:4200",
             "webRoot": "${workspaceRoot}/FrontEnd/ClientApp"
         },
-		{
+        {
+            "name": "ClientApp-W",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:54843",
+            "webRoot": "${workspaceRoot}/FrontEnd/ClientApp"
+        },
+        {
 			"name": "WebApp",
 			"type": "coreclr",
 			"request": "launch",
@@ -107,8 +114,8 @@
     ],
     "compounds": [
         {
-            "name": "WebApp & ClientApp",
-            "configurations": ["WebApp", "ClientApp"]
+            "name": "WebApp & ClientApp-W",
+            "configurations": ["WebApp", "ClientApp-W"]
         }
     ]
 }

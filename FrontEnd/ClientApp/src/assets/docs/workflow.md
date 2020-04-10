@@ -1,3 +1,6 @@
+Below is a functional description of the main pieces of the software.
+
+
 ## Individual Registration
 
 * During registration, users specify their home location (town, city, village, postal code, etc).
@@ -77,7 +80,7 @@ The data is put in a relational database so that it can be quickly
 
 ## Workflow Management
 Some of the above workflow steps are done automatically by computer and some are done manually by volunteers. There are places in the workflow where a real person should verify that it is OK to proceed:
-* Verify that the URLs used to retrieve transcripts and recordings appear valid.
+* Verify that URLs for retrieving transcripts and recordings appear valid.
 * Verify that the content of the retrieved files appears valid.
 * Verify that the output from the preprocessing appears valid.
 * Verify that the speech to text conversion appears valid.

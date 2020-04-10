@@ -71,23 +71,16 @@ namespace GM.FileDataRepositories
         private string GetWorkFolderPath(long meetingId)
         {
             Meeting meeting = meetingRepository.Get(meetingId);
-
-            //// Create the work folder
-            //MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
-            //string workFolderPath = _config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
-
-
             GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
-
             string language = g.Languages[0].Name;
 
             MeetingFolder meetingFolder = new MeetingFolder(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
             string meetingFolderPath = meetingFolder.path;
 
 
-            string workFolder = meetingFolderPath + "\\PROCESSING\\" + WORK_FOLDER_NAME;
-            string workFolderPath = Path.Combine(_config.DatafilesPath, workFolder);
-            return workFolderPath;
+            string workFolder = _config.DatafilesPath + @"\PROCESSING\" + meetingFolderPath + @"\" + WORK_FOLDER_NAME;
+            //string workFolderPath = Path.Combine(_config.DatafilesPath, workFolder);
+            return workFolder;
         }
 
     }

@@ -1,14 +1,45 @@
-These documentation pages can be found in FrontEnd/ClientApp/src/app/assets/docs. Please make corrections there and issue
-a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub. </a>
+# Govmeeting
+
+Public Meetings are the heart and soul of democracy. They are where citizens present opposing views and come to consensus on decisions that affect us all. 
+
+In the Athenian Assembly of 500 BC, a quorum of 6,000 of the 43,000 citizens was needed to conduct business. In the 10th century, the Icelandic Althing was held in a natural outdoor amphitheater and all citizens could attend.
+
+Today it is rare to see more than a dozen attendees at a council meeting in a town of 30,000 people. Is this still democracy? 
+
+Meetings are sometimes broadcast on TV and some newspapers report on some issues. But still, most people know very litte about most of what goes on. 
+
+The purpose of Govmeeting is give all citizens quick and easy access to what their politicians and opportunities to affect their decisions.
+
+## Functional overview
+
+You will be able to choose to receive any of the following after each meeting:
+* Full transcript of the meeting.
+* Summary of issues discussed.
+* Alerts on specific issues.
+* Alerts when a specific official speaks.
+* Alerts on new proposed legislation.
+
+
+At any time, you can go online and:
+* Browse current and past meetings.
+* Search meetings for issues discussed.
+* Search for what a specific official said on issues.
+* Search for voting results on legislation
+
+[ All these instructions were tested so far on Windows only. If you install elsewhere, or if there are errors or ommissions in this document, please edit the file FrontEnd/ClientApp/src/app/assets/docs/dev-setup.md and issue
+a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub </a> ]
 
 --------------------------------------------------------------
-# Install tools and clone repository
+# Requirements
 
-* Install git.  <a href="https://gitforwindows.org"> Git for Windows </a>, <a href="https://git-scm.com/download/mac"> Git for Mac </a>
+* Install git. There are many options for this. EG: <a href="https://gitforwindows.org"> Git for Windows </a>
 * Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
 * Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. <a>
 
-Open a console (teminal) window
+--------------------------------------------------------------
+# Clone the repository
+
+Execute:
 * git clone https://github.com/govmeeting/govmeeting.git
 * mkdir _SECRETS
 
@@ -17,60 +48,46 @@ The "_SECRETS" folder is for keys and passwords that are not stored in the publi
 --------------------------------------------------------------
 # Develop with VsCode
 
-## Install VsCode
-* Install <a href="https://code.visualstudio.com/download"> Visual Studio Code <a> and start it.
-* Open extensions left side panel and install:
+## Installation
+* Install <a href="https://code.visualstudio.com/download"> Visual Studio Code <a>
+* Open the Govmeeting folder in VsCode
+* Install extensions:
   * “Debugger for Chrome” by Microsoft
   * "C# for Visual Studio Code" by Microsoft
   * "SQL Server (mssql)" by Microsoft
   * "Todo Tree" by Gruntfuggly - shows TODO lines in code (optional)
 
-## Debug/Run ClientApp & WebApp
+## Build & run ClientApp
 
-* Open the Govmeeting folder in VsCode
-* Open a terminal pane in VsCode
- * cd FrontEnd/ClientApp
- * npm install
- * npm start
-* In debug panel, set launch configuration "WebApp & ClientApp-W"
-* Press F5 (debug) or Ctrl-F5 (run without debugging)
+In a terminal pane, execute:
+ - cd FrontEnd/ClientApp
+ - npm install
+ - npm start
 
-The ClientApp will open in a browser.
+## Debug ClientApp & WebApp together
+* Run: npm start
+* Open the debug panel.
+* Set launch configuration "WebApp & ClientApp"
+* Press F5
 
-* Click any of the "About" menu items to see the documentation.
-* Click the location menu item "Boothbay Harbor". You will see the dashboard open for this location.
+WebApp responds to Web API calls. But it proxies internal client requests to the dev server started with "npm start".
 
-To verify that ClientApp is calling the WebApp API to retrieve data.
-
-* Click "Proofread Transcript". You will see a video pane and transcribed text. Click the video play button.
-* Click "Add Tags to Transcript". You will see a transcript of a meeting to be tagged.
-* Click "View Latest Meeting". You will see a completed transcript for viewing.
-
-Most of the other dashboard cards do not call WebApp but return test data.
-
-ClientApp is served by the webpack-dev-server started with "npm start". 
-WebApp uses the Kestrel server included in Asp.Net Core. The Kestrel server responds to Web API calls. But it proxies internal ClientApp requests to the webpack-dev-server.
-
-
-## Debug/Run ClientApp standalone
-
+## Debug ClientApp standalone
 * In app.module.ts, change "isAspServerRunning" from true to false.
- *  npm start
-* In debug panel, set launch configuration "ClientApp"
-* Press F5 (debug) or Ctrl-F5 (run without debugging)
+* Run: npm start
+* Open the debug panel.
+* Set launch configuration "ClientApp"
+* Press F5
 
-When "isAspServerRunning" is set to false, stub services are used, instead of calling the WebApp API. This is useful for when we are only modifying code in ClientApp.
+## Debug WorkflowApp
+* Open the debug panel.
+* Set launch configuration "WorkflowApp"
+* Press F5
 
-## Debug/Run WorkflowApp
-* In debug panel, set launch configuration "WorkflowApp"
-* Press F5 (debug) or Ctrl-F5 (run without debugging)
+## Notes
 
-When the WorkflowApp starts it:
-* Copies some test files into the Datafles/RECEIVED folder: a transcript PDF file and a recording MP4 file.
-* Processes the transcript PDF file and creates a JSON file ready to be tagged.
-* Process the recording MP4 file by transcribing it in the cloud and creates a JSON file ready to be proofread.
+We dont run "npm start" from the launch configuration ""WebApp & ClientApp" so that we can start or stop either one independently.
 
-The results can be found in Datafiles/PROCESSING. 
 
 --------------------------------------------------------------
 # Develop with Visual Studio
@@ -102,11 +119,11 @@ NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Vis
 * Set startup project to "WorkflowApp"
 * Click F5
 
-### Notes - see notes for Visual Studio Code
+## Notes - see notes for Visual Studio Code
 
 
 --------------------------------------------------------------
-# Develop on other platforms
+# Develop - other platforms
 
 ## Build and run ClientApp
 
@@ -139,8 +156,6 @@ Execute:
 * cd Backend/WorkflowApp
 * dotnet build workflowapp.csproj
 * dotnet run bin/debug/dotnet2.0/workflowapp.dll
-
-<!-- END OF README SECTION -->
 
 --------------------------------------------------------------
 # Database
@@ -314,4 +329,5 @@ In Visual Studio, the value is set in the project properties under the Debug tab
 In Visual Studio, the value is defined in .vscode/launch.json
 
 In other setups, you will need to set it as an environment variable.
+
 

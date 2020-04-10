@@ -1,10 +1,8 @@
  // doc filenames (less .md") and titles
- export let DocumentPages = {
-  "purpose": "Purpose",
-  "workflow": "Govmeeting Workflow",
+ export let DocumentPageTitles = {
+  "workflow": "Functional Workflow",
   "project-status": "Project Status",
   "setup": "Setup",
-  "design-notes": "Design Notes",
+  "dev-notes": "Dev Notes",
   "database": "Database",
-  "system-design": "System Design"
 }

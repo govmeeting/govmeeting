@@ -26,7 +26,7 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent},
     { path: 'overview', component: OverviewComponent},
     { path: 'sysdesign', component: SysDesignComponent},
-    { path: '**', redirectTo: 'about' }
+    { path: '**', redirectTo: 'overview' }
 
 ];
 

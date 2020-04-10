@@ -37,7 +37,7 @@ namespace GM.ProcessRecording_Tests
             string fixasrFile = @"C:\GOVMEETING\_SOURCECODE\src\Datafiles\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\R3-ToBeFixed.json";
             string stringValue = File.ReadAllText(fixasrFile);
             FixasrView fixasr = JsonConvert.DeserializeObject<FixasrView>(stringValue);
-            string outputFolder = @"C:\GOVMEETING\_SOURCECODE\src\Datafiles\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\R4-FixText";
+            string outputFolder = @"C:\GOVMEETING\_SOURCECODE\src\Datafiles\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\FixText";
             int sectionSize = 180;
             int overlap = 5;
             int parts = 4;
