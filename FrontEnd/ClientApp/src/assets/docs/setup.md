@@ -83,16 +83,12 @@ The results can be found in Datafiles/PROCESSING.
   * "Markdown Editor"
 * Open the solution file "govmeeting.sln"
 
-## Build & start ClientApp
-* Open terminal pane and execute:
- - cd FrontEnd/ClientApp
- - npm start
-* OR in Task Runner Explorer (ClientApp) run "start"
-
-## Debug ClientApp & WebApp together
-* (do above: "Build & start ClientApp")
+## Debug/Run ClientApp & WebApp
+* In Task Runner Explorer (ClientApp):
+  * run "install"
+  * run "start"
 * Set startup project to "WebApp"
-* Click F5
+* Press F5 (debug) or Ctrl-F5 (run without debugging)
 * WebApp will run and a browser will open, displaying the ClientApp.
 
 NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Visual Studio. See: <a href="https://github.com/govmeeting/govmeeting/issues/80"> Github issue #80 <a>
@@ -100,9 +96,9 @@ NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Vis
 ## Debug WorkflowApp
 * Open the debug panel.
 * Set startup project to "WorkflowApp"
-* Click F5
+* Press F5 (debug) or Ctrl-F5 (run without debugging)
 
-### Notes - see notes for Visual Studio Code
+Note: See notes for WorkflowApp under "Visual Studio Code"
 
 
 --------------------------------------------------------------
