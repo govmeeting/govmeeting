@@ -136,9 +136,12 @@ Execute:
 * dotnet build workflowapp.csproj
 * dotnet run bin/debug/dotnet2.0/workflowapp.dll
 
+Note: See notes for WorkflowApp under "Visual Studio Code"
+
 <!-- END OF README SECTION -->
 
 --------------------------------------------------------------
+
 # Database
 
 You may not need to install and setup the database. There are test stubs that substitute for calling database. See "Test Stubs" below.

@@ -4,39 +4,35 @@
 Function BuildReadme
 {
     $me = "BuildProjectReadme: "
+
 $preSetup =
 @"
-
-# Developer Setup
-
+`n# Developer Setup `n
 "@
 
 $postSetup =
 @"
-
-Additional setup instructions can be found in the repository.
-You can view it when you run the ClientApp.
-World
+`nWhen you install and run ClientApp, you will find additional setup instructions on its Setup documentation page.`n
 "@
 
     $loc = Get-Location
     $location = $loc.ToString()
     Write-Host "$me My location is $location"
-    $pushedLocation = false
+    $pushedLocation = $false
 
     # We want the location to be ClientApp
     if (!($location.EndsWith('ClientApp'))) {
       $index = $location.IndexOf('ClientApp')
       if ($index -lt 0) {
-        Write-Host "$location should be in ClientApp"
+        Write-Host Location is "$location It should be in ClientApp"
         exit
       }
       $location = $location.SubString(0, $index + 9)
       push-location $location
-      $pushedLocation = true
+      $pushedLocation = $true
     }
 
-    $purposeDoc = "src/assets/docs/purpose.md"
+    $purposeDoc = "src/assets/docs/overview.md"
     $setupDoc = "src/assets/docs/setup.md"
 
     $purpose = get-content -Raw $purposeDoc

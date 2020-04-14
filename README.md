@@ -1,4 +1,9 @@
-# Govmeeting
+<!-- Note the controller for this page is app/about-project/overview/overview.ts -->
+
+<mat-card>
+  <mat-card-title class="cardtitle">Overview</mat-card-title>
+
+<markdown ngPreserveWhitespaces>
 
 Public Meetings are the heart and soul of democracy. They are where citizens present opposing views and come to consensus on decisions that affect us all. 
 
@@ -8,9 +13,9 @@ Today it is rare to see more than a dozen attendees at a council meeting in a to
 
 Meetings are sometimes broadcast on TV and some newspapers report on some issues. But still, most people know very litte about most of what goes on. 
 
-The purpose of Govmeeting is give all citizens quick and easy access to what their politicians and opportunities to affect their decisions.
+The purpose of Govmeeting is give all citizens quick and easy access to what their politicians are doing and opportunities to affect their decisions.
 
-## Functional overview
+## Features
 
 Govmeeting will automatically:
 
@@ -19,39 +24,37 @@ Govmeeting will automatically:
 * Process the transcripts into a standard format. 
 * Load a relational database with the information in the transcripts
 
-At this point, point will be able to do:
+People will then be able to:
 
-Set preferences for receiving the following after each meeting:
+### Elect to receive after each meeting:
 
-* Full transcript of the meeting.
-* Summary of issues discussed.
+* A full transcript of the meeting.
+* A summary of issues discussed.
 * Alerts on specific issues.
 * Alerts when a specific official speaks.
 * Alerts on new proposed legislation.
 
+### Go online and:
 
-At any time, people can go online and:
 * Browse current and past meetings.
 * Search meetings for issues discussed.
 * Search for what a specific official said on issues.
 * Search for voting results on legislation
+* See statistics, graphs and charts on issues, legislature, etc.
 
 
-# Developer Setup
-[ All these instructions were tested so far on Windows only. If you install elsewhere, or if there are errors or ommissions in this document, please edit the file FrontEnd/ClientApp/src/app/assets/docs/dev-setup.md and issue
-a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub </a> ]
+# Developer Setup 
+These documentation pages can be found in FrontEnd/ClientApp/src/app/assets/docs. Please make corrections there and issue
+a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub. </a>
 
 --------------------------------------------------------------
-# Requirements
+# Install tools and clone repository
 
-* Install git. There are many options for this. EG: <a href="https://gitforwindows.org"> Git for Windows </a>
+* Install git.  <a href="https://gitforwindows.org"> Git for Windows </a>, <a href="https://git-scm.com/download/mac"> Git for Mac </a>
 * Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
 * Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. <a>
 
---------------------------------------------------------------
-# Clone the repository
-
-Execute:
+Open a console (teminal) window
 * git clone https://github.com/govmeeting/govmeeting.git
 * mkdir _SECRETS
 
@@ -60,46 +63,60 @@ The "_SECRETS" folder is for keys and passwords that are not stored in the publi
 --------------------------------------------------------------
 # Develop with VsCode
 
-## Installation
-* Install <a href="https://code.visualstudio.com/download"> Visual Studio Code <a>
-* Open the Govmeeting folder in VsCode
-* Install extensions:
+## Install VsCode
+* Install <a href="https://code.visualstudio.com/download"> Visual Studio Code <a> and start it.
+* Open extensions left side panel and install:
   * “Debugger for Chrome” by Microsoft
   * "C# for Visual Studio Code" by Microsoft
   * "SQL Server (mssql)" by Microsoft
   * "Todo Tree" by Gruntfuggly - shows TODO lines in code (optional)
 
-## Build & run ClientApp
+## Debug/Run ClientApp & WebApp
 
-In a terminal pane, execute:
- - cd FrontEnd/ClientApp
- - npm install
- - npm start
+* Open the Govmeeting folder in VsCode
+* Open a terminal pane in VsCode
+ * cd FrontEnd/ClientApp
+ * npm install
+ * npm start
+* In debug panel, set launch configuration "WebApp & ClientApp-W"
+* Press F5 (debug) or Ctrl-F5 (run without debugging)
 
-## Debug ClientApp & WebApp together
-* Run: npm start
-* Open the debug panel.
-* Set launch configuration "WebApp & ClientApp"
-* Press F5
+The ClientApp will open in a browser.
 
-WebApp responds to Web API calls. But it proxies internal client requests to the dev server started with "npm start".
+* Click any of the "About" menu items to see the documentation.
+* Click the location menu item "Boothbay Harbor". You will see the dashboard open for this location.
 
-## Debug ClientApp standalone
+To verify that ClientApp is calling the WebApp API to retrieve data.
+
+* Click "Proofread Transcript". You will see a video pane and transcribed text. Click the video play button.
+* Click "Add Tags to Transcript". You will see a transcript of a meeting to be tagged.
+* Click "View Latest Meeting". You will see a completed transcript for viewing.
+
+Most of the other dashboard cards do not call WebApp but return test data.
+
+ClientApp is served by the webpack-dev-server started with "npm start". 
+WebApp uses the Kestrel server included in Asp.Net Core. The Kestrel server responds to Web API calls. But it proxies internal ClientApp requests to the webpack-dev-server.
+
+
+## Debug/Run ClientApp standalone
+
 * In app.module.ts, change "isAspServerRunning" from true to false.
-* Run: npm start
-* Open the debug panel.
-* Set launch configuration "ClientApp"
-* Press F5
+ *  npm start
+* In debug panel, set launch configuration "ClientApp"
+* Press F5 (debug) or Ctrl-F5 (run without debugging)
 
-## Debug WorkflowApp
-* Open the debug panel.
-* Set launch configuration "WorkflowApp"
-* Press F5
+When "isAspServerRunning" is set to false, stub services are used, instead of calling the WebApp API. This is useful for when we are only modifying code in ClientApp.
 
-## Notes
+## Debug/Run WorkflowApp
+* In debug panel, set launch configuration "WorkflowApp"
+* Press F5 (debug) or Ctrl-F5 (run without debugging)
 
-We dont run "npm start" from the launch configuration ""WebApp & ClientApp" so that we can start or stop either one independently.
+When the WorkflowApp starts it:
+* Copies some test files into the Datafles/RECEIVED folder: a transcript PDF file and a recording MP4 file.
+* Processes the transcript PDF file and creates a JSON file ready to be tagged.
+* Process the recording MP4 file by transcribing it in the cloud and creates a JSON file ready to be proofread.
 
+The results can be found in Datafiles/PROCESSING. 
 
 --------------------------------------------------------------
 # Develop with Visual Studio
@@ -112,16 +129,12 @@ We dont run "npm start" from the launch configuration ""WebApp & ClientApp" so t
   * "Markdown Editor"
 * Open the solution file "govmeeting.sln"
 
-## Build & start ClientApp
-* Open terminal pane and execute:
- - cd FrontEnd/ClientApp
- - npm start
-* OR in Task Runner Explorer (ClientApp) run "start"
-
-## Debug ClientApp & WebApp together
-* (do above: "Build & start ClientApp")
+## Debug/Run ClientApp & WebApp
+* In Task Runner Explorer (ClientApp):
+  * run "install"
+  * run "start"
 * Set startup project to "WebApp"
-* Click F5
+* Press F5 (debug) or Ctrl-F5 (run without debugging)
 * WebApp will run and a browser will open, displaying the ClientApp.
 
 NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Visual Studio. See: <a href="https://github.com/govmeeting/govmeeting/issues/80"> Github issue #80 <a>
@@ -129,13 +142,13 @@ NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Vis
 ## Debug WorkflowApp
 * Open the debug panel.
 * Set startup project to "WorkflowApp"
-* Click F5
+* Press F5 (debug) or Ctrl-F5 (run without debugging)
 
-## Notes - see notes for Visual Studio Code
+Note: See notes for WorkflowApp under "Visual Studio Code"
 
 
 --------------------------------------------------------------
-# Develop - other platforms
+# Develop on other platforms
 
 ## Build and run ClientApp
 
@@ -169,7 +182,8 @@ Execute:
 * dotnet build workflowapp.csproj
 * dotnet run bin/debug/dotnet2.0/workflowapp.dll
 
+Note: See notes for WorkflowApp under "Visual Studio Code"
 
-Additional setup instructions can be found in the repository.
-You can view it when you run the ClientApp.
-World
+
+When you install and run ClientApp, you will find additional setup instructions on its Setup documentation page.
+

@@ -91,12 +91,31 @@
             "processId": "${command:pickProcess}"
         },
         {
-            "name": "PowerShell Launch (current file)",
+            "name": "PowerShell Launch Current File",
             "type": "PowerShell",
             "request": "launch",
             "script": "${file}",
             "args": [],
             "cwd": "${file}"
+        },
+        {
+            "name": "PowerShell Launch Current File with args prompt",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${file}",
+            "args": [
+                "$(command:SpecifyScriptArgs)"
+            ],
+            "cwd": "${file}"
+        },
+        {
+            "name": "PowerShell Launch Current File in Temporary Console",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${file}",
+            "args": [],
+            "cwd": "${file}",
+            "createTemporaryIntegratedConsole": true
         },
         {
             "name": "PowerShell Attach to Host Process",
