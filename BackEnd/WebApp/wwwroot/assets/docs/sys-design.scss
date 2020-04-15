@@ -1,0 +1,32 @@
+.cardtitle {
+  font-size: 250%;
+  font-weight: bold;
+}
+
+ul {
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+table {
+  font-size: 100%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-weight: normal;
+}
+th, td {
+  padding: 3px;
+}
+th {
+  text-align: left;
+}
+th[colspan="2"] {
+  text-align: center;
+  font-weight: bold;
+}

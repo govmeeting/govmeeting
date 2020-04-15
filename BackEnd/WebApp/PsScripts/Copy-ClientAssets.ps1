@@ -1,64 +1,38 @@
 ﻿# Copy-ClientAssets.ps1
-# This script is meant to be run from the WebApp folder as a pre-build step.
-# The location of the ClientApp relative to the WebApp is passed as "$source".
 
 Function Main
 {
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory = $true, Position = 1)] [string] $source
+        [Parameter(Position = 1)] [string] $clientapp,
+        [Parameter(Position = 2)] [string] $webapp
     )
 
-    $usage = "@
-    Usage: Copy-ClientAssets <source-folder>
-    #    <source-folder> - Angular ClientApp folder relative to the WebApp
-    # Copy contents of ClientApp/dist/ClientApp to WebApp/wwwroot.
-@"
-    $me = "Copy-ClientAssets: "
+#     $usage = "@
+#     Usage: Copy-ClientAssets <source-folder>
+#     #    <source-folder> - Angular ClientApp folder relative to the WebApp
+#     # Copy contents of ClientApp/dist/ClientApp to WebApp/wwwroot.
+# @"
 
-    $GOVMEETING = $true
+    $me = "Copy-ClientAssets: "
+    Write-Host "$me Running pre-build script Copy-ClientAssets.ps1 " -NoNewline
+    Write-Host @args
+
+    # For development
+    if ($clientapp -eq "") { $clientapp = "C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp" }
+    if ($webapp -eq ""){ $webApp = "C:\GOVMEETING\_SOURCECODE\BackEnd\WebApp" }
 
     # Uncomment the notice you want to get.
     #[void][Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
     #[void][System.Windows.Forms.MessageBox]::Show("It works.")
     #[Console]::Beep(600, 800)
 
-    Write-Host "$me Running pre-build script Copy-ClientAssets.ps1 " -NoNewline
-    Write-Host @args
+    $sourceAssets = [IO.Path]::Combine($clientapp, "dist\ClientApp")
+    $destAssets = [IO.Path]::Combine($webapp, "wwwroot") 
 
-    $location = Get-Location
-    Write-Host "$me My location is $location"
-
-    $destination = $location.Path
-    $_sourceAssets = "dist\ClientApp"
-    $_destAssets = "wwwroot"
+    ##################   test assets destination   ########################
 
 
-    if ($GOVMEETING)
-    {
-        $webapp = "BackEnd\WebApp".ToLower()
-        $source = join-path $destination $source
-
-    } else {
-        $webapp = "WebApp".ToLower()
-        $source = "C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp"
-    }
-
-    ##################   Check Web App location   ########################
-
-    # When this command is run, we should already be in Backend\WebApp
-    # But we want to make absolutely sure. We will be deleting the contents of this folder.
-    if (!($destination.ToLower().EndsWith($webapp)))
-    {
-        Write-Output "$me ERROR Current location should end with $webapp"
-        exit
-    }
-
-
-    ##################   set assets destination   ########################
-
-
-    $destAssets = join-path $destination $_destAssets
     Write-Output "$me destAssets is $destAssets"
     if (!(Test-Path $destAssets -pathType container))
     {
@@ -66,9 +40,8 @@ Function Main
         exit
     } 
 
-    ##################   set assets source   ########################
+    ##################   test assets source   ########################
     
-    $sourceAssets = [IO.Path]::GetFullPath( (join-path $source $_sourceAssets) )
     Write-Output "$me sourceAssets is $sourceAssets"
     if (!(Test-Path $sourceAssets -pathType container))
     {
@@ -168,12 +141,6 @@ Function CopyFolderContents($source, $destination)
 Write-Host "############################ Copy-ClientAssets.ps1 ############################"
 
 # Execute Main function. This is excecuted first.
-# Main @args
 
-# Pass location of ClientApp relative to the WebApp
-$source = "..\..\FrontEnd\ClientApp"
+Main @args
 
-Main $source
-
-
-#DeleteClientAssets c:\tmp\wwwroot

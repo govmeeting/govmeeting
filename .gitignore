@@ -22,10 +22,18 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+
+
 /Properties/launchSettings.json
 
 # Govmeeting
-/src/Web_App/wwwroot/lib/
+# track the subfolders but not the files in WebApp/wwwroot
+**/WebApp/wwwroot/*
+!**/WebApp/wwwroot/css/
+!**/WebApp/wwwroot/js/
+!**/WebApp/wwwroot/lib/
+!**/WebApp/wwwroot/assets/
+
 .synkron.syncdb
 desktop.ini
 Datafiles/
@@ -33,7 +41,6 @@ src/logs/
 **/wwwroot/dist/
 **/ClientApp/dist/
 DebugLog*
-xyzxyz/
 
 # Visual Studio 2015 cache/options directory
 .vs/

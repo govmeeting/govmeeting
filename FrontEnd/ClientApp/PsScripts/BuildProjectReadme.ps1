@@ -1,9 +1,10 @@
 # BuildProjectReadme.ps1
-# Build the project's Readme.md from tpurpose.md and startup.md in ClientApp/src/assets/docs.
+# Build the project's Readme.md from overview.md and setup.md in ClientApp/src/assets/docs.
 
 Function BuildReadme
 {
     $me = "BuildProjectReadme: "
+    $useAllofSetup = $true
 
 $preSetup =
 @"
@@ -12,7 +13,12 @@ $preSetup =
 
 $postSetup =
 @"
-`nWhen you install and run ClientApp, you will find additional setup instructions on its Setup documentation page.`n
+`n<a href="http://www.govmeeting.org/about?id=setup#continue">Setup Continued</a>`n
+"@
+
+$postOverview =
+@"
+`n<a href="http://www.govmeeting.org/overview#continue">Overview Continued</a>`n
 "@
 
     $loc = Get-Location
@@ -32,22 +38,26 @@ $postSetup =
       $pushedLocation = $true
     }
 
-    $purposeDoc = "src/assets/docs/overview.md"
+    $overviewDoc = "src/assets/docs/overview.md"
     $setupDoc = "src/assets/docs/setup.md"
 
-    $purpose = get-content -Raw $purposeDoc
-    $index = $purpose.IndexOf('<!-- END OF README SECTION -->')
+    $overview = get-content -Raw $overviewDoc
+    $index = $overview.IndexOf('<!-- END OF README SECTION -->')
     if ($index -gt 0) {
-      $purpose = $purpose.Substring(0, $index)
+      $overview = $overview.Substring(0, $index) + $postOverview
     }
 
     $setup = get-content -Raw $setupDoc
-    $index = $setup.IndexOf('<!-- END OF README SECTION -->')
-    if ($index -gt 0) {
-      $setup = $preSetup + $setup.Substring(0, $index) + $postSetup
+    if ($useAllOfSetup){
+      $setup = $preSetup + $setup
+    } else {
+      $index = $setup.IndexOf('<!-- END OF README SECTION -->')
+      if ($index -gt 0) {
+        $setup = $preSetup + $setup.Substring(0, $index) + $postSetup
+      }
     }
 
-    $purpose + $setup | set-content ../../README.MD
+    $overview + $setup | set-content ../../README.MD
 
     if ($pushedLocation){
       pop-location

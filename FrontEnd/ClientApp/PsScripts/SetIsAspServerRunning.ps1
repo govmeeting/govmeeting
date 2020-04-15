@@ -6,11 +6,11 @@ Function ChangeisAspServerRunning
         [Parameter(Mandatory = $true, Position = 2)] [bool] $setTrue
     )
 
-    $usage = "@
-    Usage: .ps1 <file> <setTrue>
-    #    <file> - file to edit SetIsAspServerRunning- app.module.ts
-    #    <setTrue> - if true, set to true; false otherwise
-@"
+#     $usage = "@
+#     Usage: .ps1 <file> <setTrue>
+#     #    <file> - file to edit SetIsAspServerRunning- app.module.ts
+#     #    <setTrue> - if true, set to true; false otherwise
+# @"
     $me = "SetIsAspServerRunning: "
 
     $location = Get-Location
