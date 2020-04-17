@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace GM.WebApp
 {
-    // During Startup ConfigureServices, we need to use a separate logging method,
-    // since we don't get the DI logger yet.
+    // This is a basic alternative to NLog.
     public class StartupLogger
     {
         StreamWriter stream;

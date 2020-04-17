@@ -33,19 +33,13 @@ namespace GM.WebApp
 
     {
         // https://github.com/NLog/NLog/wiki/Getting-started-with-ASP.NET-Core-2
-
-        StartupLogger _logger;
-        string logfilesPath;
+        // https://github.com/NLog/NLog/wiki/Configuration-file#log-levels
+        NLog.Logger logger;
 
         // public Startup(IConfiguration configuration, ILogger<Startup> logger)
         public Startup(IConfiguration configuration)
         {
-            // CurrentDirectoryHelpers.SetCurrentDirectory();
-
             Configuration = configuration;
-
-            logfilesPath = GMFileAccess.GetFullPath(Configuration["AppSettings:LogfilesPath"]);
-            _logger = new StartupLogger(logfilesPath);
         }
 
         public IConfiguration Configuration { get; }
@@ -53,22 +47,18 @@ namespace GM.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // During Startup ConfigureServices, we need to use a separate logging method,
-            // since we don't get the DI logger yet.
-            // It is especially important in production to get these messages,
-            // since it may be the only to know why the app won't start.
-
-            _logger.LogTrace("In Startup ConfigureServices");
-
-            _logger.LogTrace("Set value in GDC for NLog");
-
             // Set a variable in the gdc which is be used in NLog.config for the
             // base path of our app: ${gdc:item=appbasepath} 
-            //var appBasePath = System.IO.Directory.GetCurrentDirectory();
-            //GlobalDiagnosticsContext.Set("appbasepath", appBasePath);
+            string logfilesPath = GMFileAccess.GetFullPath(Configuration["AppSettings:LogfilesPath"]);
             GlobalDiagnosticsContext.Set("logfilesPath", logfilesPath);
 
-            _logger.LogTrace("Modify some AppSettings");
+            // Create an instance of NLog.Logger manually here since it is not available
+            // from dependency injection yet.
+            logger = LogManager.LoadConfiguration("nlog.config").GetCurrentClassLogger();
+
+            logger.Info("Just set value in GDC for NLog and created NLog.Logger instance");
+
+            logger.Info("Modify some AppSettings");
 
             services.AddOptions();
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
@@ -81,7 +71,7 @@ namespace GM.WebApp
                 Console.WriteLine("Datafile path = " + myOptions.DatafilesPath);
             });
 
-            _logger.LogTrace("Add ApplicationDbContext");
+            logger.Info("Add ApplicationDbContext");
 
             services.AddTransient<dBOperations>();
 
@@ -94,12 +84,12 @@ namespace GM.WebApp
                     //sqlServerOptions => sqlServerOptions.MigrationsAssembly("WebApp")
                     ));
 
-            _logger.LogTrace("Add Add Authentication");
+            logger.Info("Add Add Authentication");
 
             //ConfigureAuthenticationServices(services);
-            ConfigureAuthenticationServices(services, _logger);
+            ConfigureAuthenticationServices(services, logger);
 
-            _logger.LogTrace("Add MVC");
+            logger.Info("Add MVC");
 
             services.AddMvc()
 				// The ContractResolver option is to prevent the case of Json field names 
@@ -108,7 +98,7 @@ namespace GM.WebApp
                 .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
                 .AddXmlSerializerFormatters();
 
-            _logger.LogTrace("Enable Feature Folders");
+            logger.Info("Enable Feature Folders");
 
             // This enables the use of "Feature Folders".
             // https://scottsauber.com/2016/04/25/feature-folder-structure-in-asp-net-core/
@@ -117,7 +107,7 @@ namespace GM.WebApp
                 options.ViewLocationExpanders.Add(new FeatureLocationExpander());
             });
 
-            //_logger.LogTrace("Add SPA static files");
+            //logger.Info("Add SPA static files");
             //// In production, the Angular files will be served from this directory
             //services.AddSpaStaticFiles(configuration =>
             //{
@@ -125,10 +115,10 @@ namespace GM.WebApp
             //    //configuration.RootPath = "ClientApp/dist";
             //});
 
-            _logger.LogTrace("Add Application services");
+            logger.Info("Add Application services");
 
             bool UseDatabaseStubs = (Configuration["AppSettings:UseDatabaseStubs"] == "True") ? true : false;
-            AddApplicationServices(services, _logger, UseDatabaseStubs);
+            AddApplicationServices(services, logger, UseDatabaseStubs);
 
             services.AddSingleton(Configuration);
         }
@@ -142,11 +132,10 @@ namespace GM.WebApp
             IOptions<AppSettings> config
             )
         {
-            // This should work, but no messages get written.
-            // Microsoft.Extensions.Logging.ILogger _logger = loggerFactory.CreateLogger<Startup>();
-            // So we are using StartupLogger here also.
+            logger.Info("Environment is " + env.EnvironmentName);
+            logger.Info("WebRootPath is " + env.WebRootPath);
 
-            _logger.LogTrace("Configure exception handler");
+            logger.Info("Configure exception handler");
 
             if (env.IsDevelopment())
             {
@@ -157,17 +146,17 @@ namespace GM.WebApp
             //    app.UseExceptionHandler("/Home/Error");
             //}
 
-            _logger.LogTrace("Use static files & spa static files");
+            logger.Info("Use static files & spa static files");
 
             app.UseStaticFiles();
             //app.UseSpaStaticFiles();
 
-            _logger.LogTrace("Configure datafiles PhysicalFileProvider");
+            logger.Info("Configure datafiles PhysicalFileProvider");
 
             // Add a PhysicalFileProvider for the Datafiles folder. Until we have a way to serve video files to 
             // videogular via the API, we need to allow these to be accessed as static files.
             string datafilesPath = config.Value.DatafilesPath;
-            _logger.LogTrace("datafilesPath=" + datafilesPath);
+            logger.Info("datafilesPath=" + datafilesPath);
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
@@ -175,7 +164,7 @@ namespace GM.WebApp
                     RequestPath = "/datafiles"
             });
 
-            _logger.LogTrace("Configure routes");
+            logger.Info("Configure routes");
 
             app.UseMvc(routes =>
             {
@@ -184,7 +173,7 @@ namespace GM.WebApp
                     template: "{controller}/{action=Index}/{id?}");
             });
 
-            _logger.LogTrace("Use SPA - Proxy to SPA dev server");
+            logger.Info("Use SPA - Proxy to SPA dev server");
 
             app.UseSpa(spa =>
             {
@@ -217,23 +206,23 @@ namespace GM.WebApp
 
             //app.UseStaticFiles();
 
-            _logger.LogTrace("Use Authenitication");
+            logger.Info("Use Authenitication");
 
             app.UseAuthentication();
 
-            _logger.LogTrace("Initialize database");
+            logger.Info("Initialize database");
 
             //Run migrations and create seed data
             bool migrateDatabase = false;
             dbInitializer.Initialize(migrateDatabase).Wait();
 
-            _logger.LogTrace("Copy test data to Datafiles folder");
+            logger.Info("Copy test data to Datafiles folder");
 
             string testfilesPath = config.Value.TestfilesPath;
             InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);
         }
 
-        private void AddApplicationServices(IServiceCollection services, StartupLogger _logger, bool UseDatabaseStubs)
+        private void AddApplicationServices(IServiceCollection services, NLog.Logger logger, bool UseDatabaseStubs)
         {
             // database repositories
             if (UseDatabaseStubs) {
@@ -249,7 +238,7 @@ namespace GM.WebApp
             services.AddSingleton<IAddtagsRepository, AddtagsRepository>();
             services.AddSingleton<IFixasrRepository, FixasrRepository>();
 
-            _logger.LogTrace("Add Application services");
+            logger.Info("Add Application services");
 
             // application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();

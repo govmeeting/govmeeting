@@ -19,31 +19,16 @@ namespace GM.WebApp
     {
         public static void Main(string[] args)
         {
-            // NLog: setup the logger first to catch all errors
-            var logger = LogManager.LoadConfiguration("nlog.config").GetCurrentClassLogger();
-            try
-            {
-                logger.Debug("init main");
-                //BuildWebHost(args).Run();
-            }
-            catch (Exception ex)
-            {
-                //NLog: catch setup errors
-                logger.Error(ex, "Stopped program because of exception");
-                throw;
-            }
-            //var builder = CreateWebHostBuilder(args);
-
             CreateWebHostBuilder(args)
             .Build()
             //.MigrateDatabase()
             .Run();
-
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             // CreateDefaultBuilder actually adds in both appsettings.json and the appsettings for our current environment.
-            // But our appsettings.development.json is in the secrets folder.
+            // But our appsettings.Development.json is in the secrets folder, so we need to specifically add it here.
+            // In production, we will copy appsettings.Production.json from the secrets folder to to the app folder.
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .ConfigureAppConfiguration((hostingContext, config) =>

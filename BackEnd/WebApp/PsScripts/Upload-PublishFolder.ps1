@@ -21,6 +21,8 @@ function Main
         [Parameter(Position = 3)] [string] $secrets
     )
 
+    Get-Location  | Write-Host
+    
     # For development. If no args are passed in, use some defaults. 
     if ($webapp -eq ""){ $webApp = "C:\GOVMEETING\_SOURCECODE\BackEnd\WebApp" }
     if ($publish -eq "") { $publish = GetFullPath ($webapp + "\bin\release\netcoreapp2.2\publish") }

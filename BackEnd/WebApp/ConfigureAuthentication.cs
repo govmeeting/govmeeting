@@ -17,7 +17,7 @@ namespace GM.WebApp
 
         public void ConfigureAuthenticationServices(
             IServiceCollection services,
-            StartupLogger _logger
+            NLog.Logger logger
             )
         {
             services.AddAuthentication()
@@ -27,7 +27,7 @@ namespace GM.WebApp
                 options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
             });
 
-            _logger.LogTrace("Add Identity");
+            logger.Info("Add Identity");
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
@@ -54,7 +54,7 @@ namespace GM.WebApp
             //    options.IterationCount = 20000;
             //});
 
-            _logger.LogTrace("Add Authorization");
+            logger.Info("Add Authorization");
 
             // https://docs.asp.net/en/latest/security/authorization/claims.html
             services.AddAuthorization(options =>

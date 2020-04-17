@@ -23,5 +23,5 @@ Push-Location $webapp
 Pop-Location
 
 BackEnd\WebApp\PsScripts\Copy-ClientAssets.ps1 $clientapp $webapp
-# BackEnd\WebApp\PsScripts\Upload-PublishFolder.ps1 $webapp $publish $secrets 
+BackEnd\WebApp\PsScripts\Upload-PublishFolder.ps1 $webapp $publish $secrets 
 
