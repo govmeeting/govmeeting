@@ -42,8 +42,19 @@ People will then be able to:
 * Search for voting results on legislation
 * See statistics, graphs and charts on issues, legislature, etc.
 
-
+<!-- 
 <a href="http://www.govmeeting.org/overview#continue">Overview Continued</a>
+ -->
+
+<img src="images/mr-t-mrt-36834265-320-254-24kb.png" alt="Photo of Mr.T">
+<!--This also works: ![Photo of Mr.T](images/mr-t-mrt-36834265-320-254-24kb.png) -->
+
+Enough with the jibber-jabber, fool!
+Show me how it works!
+
+Well, the work is in progress. But here you can find [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
+
+
 
 # Developer Setup 
 <a name="Contents"></a>

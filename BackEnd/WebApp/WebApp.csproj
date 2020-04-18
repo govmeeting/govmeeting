@@ -1,71 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <!--<TargetFramework>netcoreapp2.0</TargetFramework>-->
-    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
-    <IsPackable>false</IsPackable>
-    <SpaRoot>..\..\FrontEnd\ClientApp\</SpaRoot>
-    <!--<SpaRoot>ClientApp\</SpaRoot>-->
-    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
-
-    <!-- Set this to true if you enable server-side prerendering -->
-    <BuildServerSideRenderer>false</BuildServerSideRenderer> 
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>NOAUTH</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <!--<PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />-->
-    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.6.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="NLog" Version="4.6.6" />
-    <PackageReference Include="NLog.Web" Version="4.8.4" />
-    <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.4" />
-  </ItemGroup>
-
-  <!--<ItemGroup>-->
-    <!--<DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />-->
-    <!--<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />-->
-  <!--</ItemGroup>-->
-
-  <ItemGroup>
-    <!-- Don't publish the SPA source files, but do show them in the project files list -->
-    <Content Remove="$(SpaRoot)**" />
-    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\..\FrontEnd\ClientApp\.vscode\**" />
-    <None Remove="..\..\FrontEnd\ClientApp\dist\ClientApp\**" />
-    <None Remove="..\..\FrontEnd\ClientApp\e2e\**" />
-    <None Remove="..\..\FrontEnd\ClientApp\src\**" />
-    <None Remove="ClientApp\src\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\..\FrontEnd\ClientApp\.editorconfig" />
-    <None Remove="..\..\FrontEnd\ClientApp\.gitignore" />
-    <None Remove="..\..\FrontEnd\ClientApp\angular.json" />
-    <None Remove="..\..\FrontEnd\ClientApp\browserslist" />
-    <None Remove="..\..\FrontEnd\ClientApp\karma.conf.js" />
-    <None Remove="..\..\FrontEnd\ClientApp\package-lock.json" />
-    <None Remove="..\..\FrontEnd\ClientApp\package.json" />
-    <None Remove="..\..\FrontEnd\ClientApp\README.md" />
-    <None Remove="..\..\FrontEnd\ClientApp\TODO.ts" />
-    <None Remove="..\..\FrontEnd\ClientApp\tsconfig.app.json" />
-    <None Remove="..\..\FrontEnd\ClientApp\tsconfig.json" />
-    <None Remove="..\..\FrontEnd\ClientApp\tsconfig.spec.json" />
-    <None Remove="..\..\FrontEnd\ClientApp\tslint.json" />
+    <PackageReference Include="NLog" Version="4.7.0" />
+    <PackageReference Include="NLog.Web" Version="4.9.1" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -75,47 +20,4 @@
     <ProjectReference Include="..\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="nlog.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
-    <!-- Ensure Node.js is installed -->
-    <Exec Command="node --version" ContinueOnError="true">
-      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
-    </Exec>
-    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
-    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
-  </Target>
-
-  <Target Name="PublishRunWebpackPub" AfterTargets="ComputeFilesToPublish">
-    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
-
-    <!-- Include the newly-built files in the publish output -->
-    <ItemGroup>
-      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
-      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
-      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
-        <RelativePath>%(DistFiles.Identity)</RelativePath>
-        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      </ResolvedFileToPublish>
-    </ItemGroup>
-  </Target>
-
-<Target Name="DebugEnsureNodeEnv">
-   <Message Text="Skip DebugEnsureNodeEnv" />
-</Target>
-
-<Target Name="PublishRunWebpackPub">
-   <Message Text="Skip PublishRunWebpackPub" />
-</Target>
-
-
 </Project>
-

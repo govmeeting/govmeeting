@@ -16,17 +16,9 @@ function Main
 {
     [CmdletBinding()]
     param (
-        [Parameter(Position = 1)] [string] $webapp,
-        [Parameter(Position = 2)] [string] $publish,
-        [Parameter(Position = 3)] [string] $secrets
+        [Parameter(Position = 1)] [string] $publish,
+        [Parameter(Position = 2)] [string] $secrets
     )
-
-    Get-Location  | Write-Host
-    
-    # For development. If no args are passed in, use some defaults. 
-    if ($webapp -eq ""){ $webApp = "C:\GOVMEETING\_SOURCECODE\BackEnd\WebApp" }
-    if ($publish -eq "") { $publish = GetFullPath ($webapp + "\bin\release\netcoreapp2.2\publish") }
-    if ($secrets -eq "") { $secrets = "C:\GOVMEETING\_SECRETS" }
 
     $devSettings = GetFullPath ($secrets + "\appsettings.Development.json")
     $prodSettings = GetFullPath ($secrets + "\appsettings.Production.json")
@@ -79,7 +71,9 @@ function Main
             } catch {}
 
             # Upload appsettings.Production.json
-            $session.PutFiles($prodSettings, $remoteFolder)
+            if (!$basicTest) {
+                $session.PutFiles($prodSettings, $remoteFolder)
+            }
     
             # Throw on any error
             $putfilesResult.Check()
@@ -150,4 +144,4 @@ function FileTransferred
     }
 }
  
-Main
+Main @args

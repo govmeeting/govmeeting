@@ -1,55 +1,48 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Razor;
 
+
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Logging;
 using NLog;
-using NLog.Web;
-using NLog.Extensions.Logging;
-
-using System.IO;
 using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Serialization;
 using Microsoft.Extensions.Options;
-
 using GM.Configuration;
 using GM.WebApp.StartupCustomizations;
 using GM.DatabaseRepositories;
 using GM.DatabaseAccess;
 using GM.FileDataRepositories;
 using GM.WebApp.Services;
-using Microsoft.EntityFrameworkCore.Design;
+
 
 namespace GM.WebApp
 {
     public partial class Startup
-
     {
         // https://github.com/NLog/NLog/wiki/Getting-started-with-ASP.NET-Core-2
         // https://github.com/NLog/NLog/wiki/Configuration-file#log-levels
         NLog.Logger logger;
+        public IConfiguration configuration { get; }
 
-        // public Startup(IConfiguration configuration, ILogger<Startup> logger)
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration _configuration)
         {
-            Configuration = configuration;
+            configuration = _configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Set a variable in the gdc which is be used in NLog.config for the
             // base path of our app: ${gdc:item=appbasepath} 
-            string logfilesPath = GMFileAccess.GetFullPath(Configuration["AppSettings:LogfilesPath"]);
+            string logfilesPath = GMFileAccess.GetFullPath(configuration["AppSettings:LogfilesPath"]);
             GlobalDiagnosticsContext.Set("logfilesPath", logfilesPath);
 
             // Create an instance of NLog.Logger manually here since it is not available
@@ -57,11 +50,10 @@ namespace GM.WebApp
             logger = LogManager.LoadConfiguration("nlog.config").GetCurrentClassLogger();
 
             logger.Info("Just set value in GDC for NLog and created NLog.Logger instance");
-
             logger.Info("Modify some AppSettings");
 
             services.AddOptions();
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
             services.Configure<AppSettings>(myOptions =>
             {
                 // Modify the configuration path options to be full paths.
@@ -74,12 +66,12 @@ namespace GM.WebApp
             logger.Info("Add ApplicationDbContext");
 
             services.AddTransient<dBOperations>();
-
             // We will be able to access ApplicationDbContext in a controller with:
             //    public MyController(ApplicationDbContext context) { ... }
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration["AppSettings:ConnectionString"]
+                    configuration["AppSettings:ConnectionString"]
                     //sqlServerOptions => sqlServerOptions.MigrationsAssembly("DatabaseAccess_Lib")
                     //sqlServerOptions => sqlServerOptions.MigrationsAssembly("WebApp")
                     ));
@@ -92,8 +84,8 @@ namespace GM.WebApp
             logger.Info("Add MVC");
 
             services.AddMvc()
-				// The ContractResolver option is to prevent the case of Json field names 
-				// being changed when retrieved by client.
+                // The ContractResolver option is to prevent the case of Json field names 
+                // being changed when retrieved by client.
                 // https://codeopinion.com/asp-net-core-mvc-json-output-camelcase-pascalcase/
                 .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
                 .AddXmlSerializerFormatters();
@@ -117,13 +109,13 @@ namespace GM.WebApp
 
             logger.Info("Add Application services");
 
-            bool UseDatabaseStubs = (Configuration["AppSettings:UseDatabaseStubs"] == "True") ? true : false;
-            AddApplicationServices(services, logger, UseDatabaseStubs);
+                bool UseDatabaseStubs = (configuration["AppSettings:UseDatabaseStubs"] == "True") ? true : false;
+                AddApplicationServices(services, logger, UseDatabaseStubs);
 
-            services.AddSingleton(Configuration);
+                services.AddSingleton(configuration);
         }
 
-        // This method gets called by the runtime. Here we configure the HTTP request pipeline.
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(
             IApplicationBuilder app,
             IHostingEnvironment env,
@@ -146,10 +138,9 @@ namespace GM.WebApp
             //    app.UseExceptionHandler("/Home/Error");
             //}
 
-            logger.Info("Use static files & spa static files");
-
+            // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-3.1
+            app.UseDefaultFiles();
             app.UseStaticFiles();
-            //app.UseSpaStaticFiles();
 
             logger.Info("Configure datafiles PhysicalFileProvider");
 
@@ -161,7 +152,7 @@ namespace GM.WebApp
             {
                 FileProvider = new PhysicalFileProvider(
                     datafilesPath),
-                    RequestPath = "/datafiles"
+                RequestPath = "/datafiles"
             });
 
             logger.Info("Configure routes");
@@ -172,8 +163,6 @@ namespace GM.WebApp
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
             });
-
-            logger.Info("Use SPA - Proxy to SPA dev server");
 
             app.UseSpa(spa =>
             {
@@ -190,6 +179,7 @@ namespace GM.WebApp
                 }
             });
 
+            //// OLD CODE - Is this relevant?
             //// This sends all unhandled URLs to the static index.html page..
             //// The default HomeController/Index is already configured to send index.html.
             //// Can we remove the code below and handle this case in app.UseEndpoints?
@@ -203,8 +193,6 @@ namespace GM.WebApp
             //    // await next();
             //    await next().ConfigureAwait(true);
             //});
-
-            //app.UseStaticFiles();
 
             logger.Info("Use Authenitication");
 
@@ -222,14 +210,18 @@ namespace GM.WebApp
             InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);
         }
 
+
         private void AddApplicationServices(IServiceCollection services, NLog.Logger logger, bool UseDatabaseStubs)
         {
             // database repositories
-            if (UseDatabaseStubs) {
-                services.AddSingleton<IGovBodyRepository, GovBodyRepository_Stub>(); 
+            if (UseDatabaseStubs)
+            {
+                services.AddSingleton<IGovBodyRepository, GovBodyRepository_Stub>();
                 services.AddSingleton<IMeetingRepository, MeetingRepository_Stub>();
-            } else {
-                services.AddSingleton<IGovBodyRepository, GovBodyRepository>(); 
+            }
+            else
+            {
+                services.AddSingleton<IGovBodyRepository, GovBodyRepository>();
                 services.AddSingleton<IMeetingRepository, MeetingRepository>();
             }
 

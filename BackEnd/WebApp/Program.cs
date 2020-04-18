@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,11 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using NLog;
 using NLog.Web;
-using GM.WebApp.Services;
-using Microsoft.Extensions.DependencyInjection;
-using GM.DatabaseAccess;
 
 namespace GM.WebApp
 {
@@ -19,16 +15,13 @@ namespace GM.WebApp
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args)
-            .Build()
-            //.MigrateDatabase()
-            .Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
+        // CreateDefaultBuilder would normally add both appsettings.json and the appsettings for our current environment.
+        // But our appsettings.Development.json is in the secrets folder, so we need to specifically add it here.
+        // When we deploy to production, we upload appsettings.Production.json from the secrets folder.
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            // CreateDefaultBuilder actually adds in both appsettings.json and the appsettings for our current environment.
-            // But our appsettings.Development.json is in the secrets folder, so we need to specifically add it here.
-            // In production, we will copy appsettings.Production.json from the secrets folder to to the app folder.
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .ConfigureAppConfiguration((hostingContext, config) =>
@@ -42,7 +35,6 @@ namespace GM.WebApp
                         if (File.Exists(devSettingFile))
                         {
                             config.AddJsonFile(devSettingFile, optional: true, reloadOnChange: true);
-                            //config.AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true);
                         }
                     }
                 })
@@ -52,6 +44,6 @@ namespace GM.WebApp
                     logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
                 })
                 .UseNLog();  // NLog: setup NLog for Dependency injection
-    
+
     }
 }

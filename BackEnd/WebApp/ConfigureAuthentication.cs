@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 //using NLog.Web;
 using Microsoft.Extensions.Logging;
 using GM.DatabaseAccess;
+using GM.Configuration;
 
 
 namespace GM.WebApp
@@ -23,8 +24,8 @@ namespace GM.WebApp
             services.AddAuthentication()
             .AddGoogle(options =>
             {
-                options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
-                options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
+                options.ClientId = configuration["ExternalAuth:Google:ClientId"];
+                options.ClientSecret = configuration["ExternalAuth:Google:ClientSecret"];
             });
 
             logger.Info("Add Identity");

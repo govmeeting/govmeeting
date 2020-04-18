@@ -74,3 +74,36 @@ The log files for WebApp and WorkflowApp are in the folder "logs" at the root of
 At the top of many of the component files in ClientApp, a const "NoLog" is defined.
 Change its value from true to false to turn on console logging for only that component.
 
+# Build Scripts
+
+Powershell build scripts can be found in Utilities/PsScripts
+
+## BuildPublishAndDeploy.ps1 
+
+This script calls many of the other scripts to build a production release and deploys it.
+
+* Build-ClientApp.ps1 - Build production versions of ClientApp
+* Publish-WebApp.ps1 - Build a "publish" folder of WebApp
+* Copy-ClientAssets.ps1 - Copy ClientApp assets to WebApp wwwroot folder
+* Deploy-PublishFolder.ps1 - Deploy publish folder to a remote host
+* Create the README.md file for Gethub from the documentation files
+
+Deploy-PublishFolder.ps1 deploys the software to govmeeting.org, using FTP. The FTP login information is in the file appsettings.Development.json in the _SECRETS folder. It contains FTP and other secrets for use in development. Below is the format of this file:  
+
+    {
+      "ExternalAuth": {
+      "Google": {
+        "ClientId": "your-client-id",
+        "ClientSecret": "your-client-secret"
+        }
+      },
+      "ReCaptcha": {
+        "SiteKey": "your-site-key",
+        "Secret": "your-secret"
+      },
+      "Ftp": {
+        "username": "your-username",
+        "password": "your-password",
+        "domain": "your-domain"
+      }
+    }

@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using GM.DatabaseAccess;
 using GM.Configuration;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 
 namespace GM.WebApp.Services
 {
@@ -27,18 +28,23 @@ namespace GM.WebApp.Services
     // https://stackoverflow.com/questions/40027388/cannot-get-the-usermanager-class/40046290#40046290
     public class DbInitializer : IDbInitializer
     {
+        private readonly ILogger<DbInitializer> logger;
+
         public DbInitializer(
             ApplicationDbContext context, 
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
             //IConfiguration configuration,
-            IOptions<AppSettings> config)
+            IOptions<AppSettings> config,
+            ILogger<DbInitializer> _logger
+)
         {
             _context = context;
             _userManager = userManager;
             _roleManager = roleManager;
             //_configuration = configuration;
             _config = config.Value;
+            logger = _logger;
         }
 
         ApplicationDbContext _context;
@@ -54,37 +60,46 @@ namespace GM.WebApp.Services
             // Ensure that the database exists and all pending migrations are applied.
             if (migrateDatabase)
             {
+                logger.LogInformation("Migrate Database");
                 _context.Database.Migrate();
             }
 
             /// REMOVED PRIOR CODE 1 - See below
 
-            // Create admin user. This adds it to the table dbo.AspNetUsers
-            string admin_username = _config.DbAdmin.Username;
-            string admin_password = _config.DbAdmin.Password;
             string admin_email = _config.DbAdmin.Email;
+
+            // If there are no users, create admin user. This adds it to the table dbo.AspNetUsers
             if (!_context.Users.Any())
             {
-                await _userManager.CreateAsync(new ApplicationUser() { UserName = admin_username, Email = admin_email }, admin_password);
-            }
+                string admin_username = _config.DbAdmin.Username;
+                string admin_password = _config.DbAdmin.Password;
 
-            ApplicationUser admin_user;
-            admin_user = await _userManager.FindByEmailAsync(admin_email);
+                logger.LogInformation("No users in DB. Create admin user");
+                await _userManager.CreateAsync(new ApplicationUser() { UserName = admin_username, Email = admin_email, EmailConfirmed = true }, admin_password);
 
-            // TODO WE need to set the admin's email as confirmed. The following code awaits confirmation from the user.
-            // We should just set the bit directly.
-            //// Confirm the admin's email
-            //var emailConfirmationCode = await _userManager.GenerateEmailConfirmationTokenAsync(admin_user);
-            //var confirmResult = await _userManager.ConfirmEmailAsync(admin_user, emailConfirmationCode);
+                ApplicationUser admin_user;
+                admin_user = await _userManager.FindByEmailAsync(admin_email);
 
-            /// REMOVED PRIOR CODE 2 - See below
+                // REMOVED PRIOR CODE 2 - See below
 
-            // assign admin privileges. This adds an entry in table AspNetUserClaims
-            var claims = await _userManager.GetClaimsAsync(admin_user);
-            var jobClaim = claims.FirstOrDefault(c => c.Type == "role");
-            if (jobClaim == null)
+                // assign admin privileges. This adds an entry in table AspNetUserClaims
+                var claims = await _userManager.GetClaimsAsync(admin_user);
+                var jobClaim = claims.FirstOrDefault(c => c.Type == "role");
+                if (jobClaim == null)
+                {
+                    await _userManager.AddClaimAsync(admin_user, new Claim("role", "Administrator"));
+                }
+            } else
             {
-                await _userManager.AddClaimAsync(admin_user, new Claim("role", "Administrator"));
+                ApplicationUser admin_user;
+                admin_user = await _userManager.FindByEmailAsync(admin_email);
+                if (admin_user != null)
+                {
+                    logger.LogInformation("Found admin user, " + admin_user.UserName + ", by email=" + admin_email);
+                } else
+                {
+                    logger.LogWarning("admin user email=" + admin_email + " not found");
+                }
             }
 
             // TODO add error handling and return success/fail
