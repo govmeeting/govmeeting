@@ -19,7 +19,7 @@ a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub. </a
 
 * Install git.  <a href="https://gitforwindows.org"> Git for Windows </a>, <a href="https://git-scm.com/download/mac"> Git for Mac </a>
 * Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
-* Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. <a>
+* Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
 
 Open a console (teminal) window
 * git clone https://github.com/govmeeting/govmeeting.git
@@ -34,7 +34,7 @@ The "_SECRETS" folder is for keys and passwords that are not stored in the publi
 <a href="about?id=setup#Contents"> [Contents] </a>
 
 ## Install VsCode
-* Install <a href="https://code.visualstudio.com/download"> Visual Studio Code <a> and start it.
+* Install <a href="https://code.visualstudio.com/download"> Visual Studio Code </a> and start it.
 * Open extensions left side panel and install:
   * “Debugger for Chrome” by Microsoft
   * "C# for Visual Studio Code" by Microsoft
@@ -111,7 +111,7 @@ The results can be found in Datafiles/PROCESSING. However, you will first need t
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
 * WebApp will run and a browser will open, displaying the ClientApp.
 
-NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Visual Studio. See: <a href="https://github.com/govmeeting/govmeeting/issues/80"> Github issue #80 <a>
+NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Visual Studio. See: <a href="https://github.com/govmeeting/govmeeting/issues/80"> Github issue #80 </a>
 
 ## Debug WorkflowApp
 * Open the debug panel.

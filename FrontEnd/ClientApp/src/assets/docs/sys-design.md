@@ -7,11 +7,13 @@
 
 The diagrams below show the interaction between software components.
 
- The ClientApp is an Angular (2+) /Typescript single page application that runs in the browser. 
+* ClientApp is an Angular Typescript single page application that runs in the browser. It provides the user interface.
  
-The web server and other server components are in C# using [DotNet Core](https://github.com/dotnet/core)  and [Asp.Net Core](https://github.com/aspnet/home)
+* WebApp is an [Asp.Net Core](https://github.com/aspnet/home) C# application that runs on the server. It responds to WebApi calls.
 
-Each server component is a separate dotnet project. WorkflowApp and WebApp are console applications. The other components are C# libraries.
+* WorkflowApp is a [DotNet Core](https://github.com/dotnet/core) C# application that runs on the server. It does batch processing of recordings and Transcripts. It oould also be easily converted to a library that runs as part of the WebApp process.
+
+* The other server components are DotNet Core C# libraries. They are used by both WebApp & WorkflowApp.
 
 ___
 ## System  Design

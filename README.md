@@ -54,6 +54,8 @@ Show me how it works!
 
 Well, the work is in progress. But here you can find [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
 
+For more information: <img src="images/mr-t-mrt-36834265-320-254-24kb.png" alt="Govmeeting Email">
+
 
 
 # Developer Setup 

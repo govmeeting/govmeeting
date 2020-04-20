@@ -26,9 +26,9 @@ personally record and upload a meeting recording.
 <a href="https://github.com/govmeeting/govmeeting/issues/18">Github issue #18</a>
 
 
-## Pre-process Existing Transcripts</span>
+## Pre-process Existing Transcripts
 * Convert transcripts to plain text. Often existing transcripts are in other formats like PDF. These are converted to plain text so that it is more easily processed.
-* Extract information such as speaker and section names. </li>
+* Extract information such as speaker and section names.
 
 ## Transcribe Recordings Using Speech Recognition
 * Convert recordings to the primary web video formats (mp4, ogg and webm.) This make them more accessable on all types of devices.
@@ -37,7 +37,7 @@ personally record and upload a meeting recording.
 * Call the asynchronous Google Speech API to do auto voice recognition.
 * Perform speaker change recognition. There is a Google API for this.
 * Add speaker identification. This will use speech processing software on the server.
-* Put the information into a JSON format for further processing.</li>
+* Put the information into a JSON format for further processing.
 * Split the video, audio and trancript files into 3 minute work segments, so that multiple volunteers can work simultaneously on proofreading.
 
 ## Proofread Transcribed Text [Manual step]

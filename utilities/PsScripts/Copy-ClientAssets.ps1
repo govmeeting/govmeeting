@@ -5,14 +5,8 @@ Function Main
     [CmdletBinding()]
     param (
         [Parameter(Position = 1)] [string] $clientapp,
-        [Parameter(Position = 2)] [string] $webapp
+        [Parameter(Position = 2)] [string] $publish
     )
-
-#     $usage = "@
-#     Usage: Copy-ClientAssets <source-folder>
-#     #    <source-folder> - Angular ClientApp folder relative to the WebApp
-#     # Copy contents of ClientApp/dist/ClientApp to WebApp/wwwroot.
-# @"
 
     $me = "Copy-ClientAssets: "
     Write-Host "$me Running pre-build script Copy-ClientAssets.ps1 " -NoNewline
@@ -20,15 +14,10 @@ Function Main
 
     # For development
     if ($clientapp -eq "") { $clientapp = "C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp" }
-    if ($webapp -eq ""){ $webApp = "C:\GOVMEETING\_SOURCECODE\BackEnd\WebApp" }
-
-    # Uncomment the notice you want to get.
-    #[void][Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
-    #[void][System.Windows.Forms.MessageBox]::Show("It works.")
-    #[Console]::Beep(600, 800)
+    if ($publish -eq ""){ $publish = "C:\GOVMEETING\_SOURCECODE\BackEnd\WebApp\bin\release\netcoreapp2.2\publish" }
 
     $sourceAssets = [IO.Path]::Combine($clientapp, "dist\ClientApp")
-    $destAssets = [IO.Path]::Combine($webapp, "wwwroot") 
+    $destAssets = [IO.Path]::Combine($publish, "wwwroot") 
 
     ##################   test assets destination   ########################
 

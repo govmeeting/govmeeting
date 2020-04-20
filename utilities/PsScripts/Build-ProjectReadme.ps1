@@ -41,6 +41,7 @@ Show me how it works!
 
 Well, the work is in progress. But here you can find [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
 
+For more information: <img src="images/GovmeetingEmail.png" alt="Govmeeting Email">
 
 
 "@

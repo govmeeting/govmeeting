@@ -1,1 +1,1 @@
-These files are images displayed in the GitHub project pages.
+These are images displayed in the GitHub project pages.

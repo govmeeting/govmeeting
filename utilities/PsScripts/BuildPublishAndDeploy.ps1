@@ -28,7 +28,7 @@ function Main
 
     .\Publish-WebApp.ps1 $webapp
 
-    .\Copy-ClientAssets.ps1 $clientapp $webapp
+    .\Copy-ClientAssets.ps1 $clientapp $publish
     
     .\Deploy-PublishFolder.ps1 $publish $secrets 
 }
@@ -66,4 +66,10 @@ function GetFullPath($relativePath)
 
 
 Main
+
+# Uncomment the notice(s) you want to get.
+#[void][Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+[Console]::Beep(600, 800)
+[void][System.Windows.Forms.MessageBox]::Show("BuildPublishAndSeploy completed.")
+
 
