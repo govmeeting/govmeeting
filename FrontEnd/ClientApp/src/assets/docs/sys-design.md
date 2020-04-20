@@ -11,7 +11,7 @@ The diagrams below show the interaction between software components.
  
 * WebApp is an [Asp.Net Core](https://github.com/aspnet/home) C# application that runs on the server. It responds to WebApi calls.
 
-* WorkflowApp is a [DotNet Core](https://github.com/dotnet/core) C# application that runs on the server. It does batch processing of recordings and Transcripts. It oould also be easily converted to a library that runs as part of the WebApp process.
+* WorkflowApp is a [DotNet Core](https://github.com/dotnet/core) C# application that runs on the server. It does batch processing of recordings and Transcripts. It could also be converted to a library that runs as part of the WebApp process.
 
 * The other server components are DotNet Core C# libraries. They are used by both WebApp & WorkflowApp.
 
