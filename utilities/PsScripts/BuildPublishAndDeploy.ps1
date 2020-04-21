@@ -18,7 +18,7 @@ function Main
     $publish = $webapp + "\bin\release\netcoreapp2.2\publish"
     $appmodule = $clientapp + "\src\app\app.module.ts"
 
-    # .\Build-ProjectReadme.ps1 $clientapp $readme
+    .\Build-ProjectReadme.ps1 $clientapp $readme
 
     # # Set IsAspServerRunnning to false.
     # # The demo at govmeeting.org will use the client stubs for data

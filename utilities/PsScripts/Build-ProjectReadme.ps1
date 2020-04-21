@@ -29,6 +29,11 @@ $postSetup =
 `n<a href="http://www.govmeeting.org/about?id=setup#continue">Setup Continued</a>`n
 "@
 
+$preOverview =
+@"
+`n# Overview `n
+"@
+
 $postOverview =
 @"
 <!-- `n<a href="http://www.govmeeting.org/overview#continue">Overview Continued</a>`n -->
@@ -41,7 +46,7 @@ Show me how it works!
 
 Well, the work is in progress. But here you can find [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
 
-For more information: <img src="images/GovmeetingEmail.png" alt="Govmeeting Email">
+<img src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email">
 
 
 "@
@@ -50,20 +55,29 @@ For more information: <img src="images/GovmeetingEmail.png" alt="Govmeeting Emai
     $setupDoc = $clientapp + "\src\assets\docs\setup.md"
 
     $overview = get-content -Raw $overviewDoc
+
+    $starttext = '<!-- START OF README SECTION -->'
+    $index = $overview.IndexOf($starttext)
+    if ($index -gt 0) {
+      $overview = $overview.Substring($index + $starttext.Length)
+    }
+    $overview = $preOverview + $overview
+
     $index = $overview.IndexOf('<!-- END OF README SECTION -->')
     if ($index -gt 0) {
       $overview = $overview.Substring(0, $index) + $postOverview
     }
 
     $setup = get-content -Raw $setupDoc
-    if ($useAllOfSetup){
-      $setup = $preSetup + $setup
-    } else {
-      $index = $setup.IndexOf('<!-- END OF README SECTION -->')
-      if ($index -gt 0) {
-        $setup = $preSetup + $setup.Substring(0, $index) + $postSetup
-      }
-    }
+    # $starttext = '<!-- START OF README SECTION -->'
+    # $index = $setup.IndexOf($starttext)
+    # if ($index -gt 0) {
+    #   $setup = $setup.Substring($index + $starttext.Length)
+    # }
+
+    $setup = ModifyContentLinks $setup
+
+    $setup = $preSetup + $setup + $postSetup
 
     $overview + $setup | set-content $readme
 }
@@ -76,5 +90,12 @@ function GetFullPath($relativePath)
     return $q
 }
 
+function ModifyContentLinks($setup)
+{
+  $contentLink = "about?id=setup"
+  # $setup = $setup -replace $contentLink, ""
+  $setup = $setup.Replace($contentLink, "")
+  return $setup
+}
 
 BuildReadme @args

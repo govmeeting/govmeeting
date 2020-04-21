@@ -1,3 +1,5 @@
+
+# Overview 
 <!-- Note the controller for this page is app/about-project/overview/overview.ts -->
 
 <mat-card>
@@ -54,20 +56,19 @@ Show me how it works!
 
 Well, the work is in progress. But here you can find [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
 
-For more information: <img src="images/mr-t-mrt-36834265-320-254-24kb.png" alt="Govmeeting Email">
-
+<img src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email">
 
 
 # Developer Setup 
 <a name="Contents"></a>
 # Contents
-* <a href="about?id=setup#InstallTools"> Install tools and clone repository </a>
-* <a href="about?id=setup#DevelopVsCode"> Develop with VsCode </a>
-* <a href="about?id=setup#DevelopVS"> Develop with Visual Studio </a>
-* <a href="about?id=setup#DevelopOther"> Develop on other platforms </a>
-* <a href="about?id=setup#Database"> Database </a>
-* <a href="about?id=setup#GoogleCloud"> Google Cloud Platform account </a>
-* <a href="about?id=setup#GoogleApi"> Google API Keys </a>
+* <a href="#InstallTools"> Install tools and clone repository </a>
+* <a href="#DevelopVsCode"> Develop with VsCode </a>
+* <a href="#DevelopVS"> Develop with Visual Studio </a>
+* <a href="#DevelopOther"> Develop on other platforms </a>
+* <a href="#Database"> Database </a>
+* <a href="#GoogleCloud"> Google Cloud Platform account </a>
+* <a href="#GoogleApi"> Google API Keys </a>
 
 These documentation pages can be found in FrontEnd/ClientApp/src/app/assets/docs. Please make corrections there and issue
 a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub. </a>
@@ -76,11 +77,11 @@ a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub. </a
 <a name="InstallTools"></a>
 
 # Install tools and clone repository <br/>
-<a href="about?id=setup#Contents"> [Contents] </a>
+<a href="#Contents"> [Contents] </a>
 
 * Install git.  <a href="https://gitforwindows.org"> Git for Windows </a>, <a href="https://git-scm.com/download/mac"> Git for Mac </a>
 * Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
-* Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. <a>
+* Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
 
 Open a console (teminal) window
 * git clone https://github.com/govmeeting/govmeeting.git
@@ -92,10 +93,10 @@ The "_SECRETS" folder is for keys and passwords that are not stored in the publi
 <a name="DevelopVsCode"></a>
 
 # Develop with VsCode <br/>
-<a href="about?id=setup#Contents"> [Contents] </a>
+<a href="#Contents"> [Contents] </a>
 
 ## Install VsCode
-* Install <a href="https://code.visualstudio.com/download"> Visual Studio Code <a> and start it.
+* Install <a href="https://code.visualstudio.com/download"> Visual Studio Code </a> and start it.
 * Open extensions left side panel and install:
   * “Debugger for Chrome” by Microsoft
   * "C# for Visual Studio Code" by Microsoft
@@ -148,13 +149,13 @@ When the WorkflowApp starts it:
 * Processes the transcript PDF file and creates a JSON file ready to be tagged.
 * Process the recording MP4 file by transcribing it in the cloud and creates a JSON file ready to be proofread.
 
-The results can be found in Datafiles/PROCESSING. However, you will first need to  setup a <a href="about?id=setup#GoogleCloud">Google Cloud account </a>, for the recording to be transcribed.
+The results can be found in Datafiles/PROCESSING. However, you will first need to  setup a <a href="#GoogleCloud">Google Cloud account </a>, for the recording to be transcribed.
 
 --------------------------------------------------------------
 <a name="DevelopVS"></a>
 
 # Develop with Visual Studio <br/>
-<a href="about?id=setup#Contents"> [Contents] </a>
+<a href="#Contents"> [Contents] </a>
 
 * Install  the free <a href="https://visualstudio.microsoft.com/free-developer-offers/"> Visual Studio Community Edition. </a>
 *  During installation, select both the "ASP.NET" and the ".NET desktop" workloads.
@@ -172,7 +173,7 @@ The results can be found in Datafiles/PROCESSING. However, you will first need t
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
 * WebApp will run and a browser will open, displaying the ClientApp.
 
-NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Visual Studio. See: <a href="https://github.com/govmeeting/govmeeting/issues/80"> Github issue #80 <a>
+NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Visual Studio. See: <a href="https://github.com/govmeeting/govmeeting/issues/80"> Github issue #80 </a>
 
 ## Debug WorkflowApp
 * Open the debug panel.
@@ -186,7 +187,7 @@ Note: See notes for WorkflowApp under "Visual Studio Code"
 <a name="DevelopOther"></a>
 
 # Develop on other platforms <br/>
-<a href="about?id=setup#Contents"> [Contents] </a>
+<a href="#Contents"> [Contents] </a>
 
 In your profile, set the environment variable, ASPNETCORE_ENVIRONMENT, to "Development". This is used by WebApp and WorkflowApp.
 
@@ -231,7 +232,7 @@ Note: See notes for WorkflowApp under "Visual Studio Code"
 <a name="Database"></a>
 
 # Database <br/>
-<a href="about?id=setup#Contents"> [Contents] </a>
+<a href="#Contents"> [Contents] </a>
 
 You may not need to install and setup the database. There are test stubs that substitute for calling database. See "Test Stubs" below.
  
@@ -319,7 +320,7 @@ and enter NOAUTH in the "Conditional Compiliation Symbols" box.
 <a name="GoogleCloud"></a>
 
 # Google Cloud Platform account <br/>
-<a href="about?id=setup#Contents"> [Contents] </a>
+<a href="#Contents"> [Contents] </a>
 
 To use the Google Speech APIs for speech-to-text conversion, you need a Google Cloud Platform (GCP) account. For most development work in Govmeeting, you will not need this. You can use existing test data.
 To process new input, you will a GCP. The API recognizes more than 120 languages and variants.
@@ -362,7 +363,7 @@ NOTE: The above steps may have changed slightly. If so, please update this docum
 <a name="GoogleApi"></a>
 
 # Google API Keys <br/>
-<a href="about?id=setup#Contents"> [Contents] </a>
+<a href="#Contents"> [Contents] </a>
 
 You will need these keys if you want to use or work on certain features of the registration and login process.
 
@@ -397,4 +398,6 @@ Create a file named "appsettings.Development.json" in the "_SECRETS" folder. It 
 * Run the WebApp project.
 * Click on "Login" in the upper right.
 * Under "Use another service to log in", choose "Google".
+
+<a href="http://www.govmeeting.org/about?id=setup#continue">Setup Continued</a>
 
