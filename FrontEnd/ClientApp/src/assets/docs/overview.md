@@ -4,16 +4,16 @@
   <mat-card-title class="cardtitle">Overview</mat-card-title>
 
 <markdown ngPreserveWhitespaces>
-
+<!-- START OF README SECTION -->
 Public Meetings are the heart and soul of democracy. They are where citizens present opposing views and come to consensus on decisions that affect us all. 
 
 In the Athenian Assembly of 500 BC, a quorum of 6,000 of the 43,000 citizens was needed to conduct business. In the 10th century, the Icelandic Althing was held in a natural outdoor amphitheater and all citizens could attend.
 
 Today it is rare to see more than a dozen attendees at a council meeting in a town of 30,000 people. Is this still democracy? 
 
-Meetings are sometimes broadcast on TV and some newspapers report on some issues. But still, most people know very litte about most of what goes on. 
+Meetings are sometimes broadcast on TV, for the few who watch them. Some newspapers report on some issues. But few people know much of what occurs. 
 
-The purpose of Govmeeting is give all citizens quick and easy access to what their politicians are doing and opportunities to affect their decisions.
+The purpose of Govmeeting is give all citizens quick and easy access to what their public officials are doing and opportunities to affect their decisions.
 
 ## Features
 

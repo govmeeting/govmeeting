@@ -1,11 +1,5 @@
 
 # Overview 
-<!-- Note the controller for this page is app/about-project/overview/overview.ts -->
-
-<mat-card>
-  <mat-card-title class="cardtitle">Overview</mat-card-title>
-
-<markdown ngPreserveWhitespaces>
 
 Public Meetings are the heart and soul of democracy. They are where citizens present opposing views and come to consensus on decisions that affect us all. 
 
@@ -82,12 +76,11 @@ a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub. </a
 * Install git.  <a href="https://gitforwindows.org"> Git for Windows </a>, <a href="https://git-scm.com/download/mac"> Git for Mac </a>
 * Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
 * Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
+* "Fork" the the project on github
+* Clone the project locally
+* Create a sibling folder to the cloned repositiory named "_SECRETS"
 
-Open a console (teminal) window
-* git clone https://github.com/govmeeting/govmeeting.git
-* mkdir _SECRETS
-
-The "_SECRETS" folder is for keys and passwords that are not stored in the public repository.
+The "_SECRETS" folder is for keys and passwords that are not stored in the public repository. These would be needed to run Google API services.
 
 --------------------------------------------------------------
 <a name="DevelopVsCode"></a>

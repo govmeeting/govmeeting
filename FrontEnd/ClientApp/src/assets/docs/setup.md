@@ -20,12 +20,11 @@ a <a href="https://github.com/govmeeting/govmeeting"> pull request on Gitub. </a
 * Install git.  <a href="https://gitforwindows.org"> Git for Windows </a>, <a href="https://git-scm.com/download/mac"> Git for Mac </a>
 * Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
 * Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
+* "Fork" the the project on github
+* Clone the project locally
+* Create a sibling folder to the cloned repositiory named "_SECRETS"
 
-Open a console (teminal) window
-* git clone https://github.com/govmeeting/govmeeting.git
-* mkdir _SECRETS
-
-The "_SECRETS" folder is for keys and passwords that are not stored in the public repository.
+The "_SECRETS" folder is for keys and passwords that are not stored in the public repository. These would be needed to run Google API services.
 
 --------------------------------------------------------------
 <a name="DevelopVsCode"></a>
@@ -172,7 +171,7 @@ Note: See notes for WorkflowApp under "Visual Studio Code"
 # Database <br/>
 <a href="about?id=setup#Contents"> [Contents] </a>
 
-You may not need to install and setup the database. There are test stubs that substitute for calling database. See "Test Stubs" below.
+You may not need to install and setup the database in order to do development. There are test stubs that substitute for calling database. See "Test Stubs" below.
  
 ## Install Provider
 
@@ -260,8 +259,7 @@ and enter NOAUTH in the "Conditional Compiliation Symbols" box.
 # Google Cloud Platform account <br/>
 <a href="about?id=setup#Contents"> [Contents] </a>
 
-To use the Google Speech APIs for speech-to-text conversion, you need a Google Cloud Platform (GCP) account. For most development work in Govmeeting, you will not need this. You can use existing test data.
-To process new input, you will a GCP. The API recognizes more than 120 languages and variants.
+To use the Google Speech APIs for speech-to-text conversion, you need a Google Cloud Platform (GCP) account. For most development work in Govmeeting, you can use use existing test data. But if you want transcribe new recordings, you will a GCP. The Google API is able to transcribe recordings in more than 120 languages and variants.
 
 Google provides developers with a free account which includes a credit (currently $300). The current cost of using the Speech API is free for up 60 minutes of conversion per month. After that, the cost for the "enhanced model" (which is what we need) is $0.009 per 15 seconds. ($2.16 per hour)
 
