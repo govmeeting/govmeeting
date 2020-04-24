@@ -44,9 +44,9 @@ $postOverview =
 Enough with the jibber-jabber, fool!
 Show me how it works!
 
-Well, the work is in progress. But here you can find [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
+Well, the work is in progress. But here are:  [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
 
-<img src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email">
+<div style="pointer-events: none; cursor: default;"> <img src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
 
 
 "@

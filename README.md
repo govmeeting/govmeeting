@@ -48,9 +48,9 @@ People will then be able to:
 Enough with the jibber-jabber, fool!
 Show me how it works!
 
-Well, the work is in progress. But here you can find [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
+Well, the work is in progress. But click here for: [Demos of working parts and more documentation.](http://govmeeting.org/dashboard) 
 
-<img src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email">
+<div style="pointer-events: none; cursor: default;"> <img src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
 
 
 # Developer Setup 
