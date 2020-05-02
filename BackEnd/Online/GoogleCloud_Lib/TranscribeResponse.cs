@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GM.ProcessRecordings
+namespace GM.GoogleCLoud
 {
     public class TranscribeResponse
     {

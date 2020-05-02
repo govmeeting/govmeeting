@@ -29,16 +29,16 @@ const NoLog = true;  // set to false for console logging
 })
 // export class SidenavMenuComponent implements AfterViewInit {
   export class SidenavMenuComponent {
-  private ClassName: string = this.constructor.name + ": ";
-  @ViewChild('appDrawer', {static: false})
-  subscription: Subscription;
-  navItems: any[] = [];
-  sidenav: ElementRef;
-  version = VERSION;
-  navigationItems: NavItem[] = navigationItems;
-  menuTreeArray: MenuTreeArray;
-  deviceType: string;
-  userSettingsService: UserSettingsService;
+    private ClassName: string = this.constructor.name + ": ";
+    @ViewChild('appDrawer', {static: false})
+    subscription: Subscription;
+    navItems: any[] = [];
+    sidenav: ElementRef;
+    version = VERSION;
+    navigationItems: NavItem[] = navigationItems;
+    menuTreeArray: MenuTreeArray;
+    deviceType: string;
+    userSettingsService: UserSettingsService;
 
   constructor(
     private navService: NavService,
@@ -86,6 +86,12 @@ const NoLog = true;  // set to false for console logging
     //   // this.router.navigate(['dashboard']);
     //   return;
     // }
+
+    // let userSettings: UserSettings = new UserSettings('en', location,  agency);
+    // this.userSettingsService.settings = userSettings;
+
+    // this.userSettingsService.setLanguage("es");
+    // return;
 
     switch (item.entryType) {
       case EntryType.location: {

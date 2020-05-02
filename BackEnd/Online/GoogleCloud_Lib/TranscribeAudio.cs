@@ -14,7 +14,7 @@ using GM.GoogleCLoud;
 
 // This is in the process of being written.  
 
-namespace GM.ProcessRecordings
+namespace GM.GoogleCLoud
 {
     public class TranscribeAudio
     {

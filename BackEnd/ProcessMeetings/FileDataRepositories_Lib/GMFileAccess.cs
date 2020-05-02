@@ -219,6 +219,44 @@ namespace GM.FileDataRepositories
             return Path.GetFullPath(path);
         }
 
+        public static string FindParentFolderContaining(string file)
+        {
+            string current = Directory.GetCurrentDirectory();
+
+            do
+            {
+                string filePath = Path.Combine(current, file);
+                if (File.Exists(filePath))
+                {
+                    return current;
+                }
+                current = Path.GetDirectoryName(current);
+               //Write - Host("filePath=" + $filePath + " directory=" + $directory)
+
+            }
+            while (current != null);
+
+        return null;
+        }
+
+        public static string FindParentFolderWithName(string folder)
+        {
+            string current = Directory.GetCurrentDirectory();
+            current = Path.GetDirectoryName(current); // start with parent of current folder
+            string test;
+
+            while (current != null)
+            {              
+                test = Path.Combine(current, folder);
+                if (Directory.Exists(test))
+                {
+                    return test;
+                }
+                current = Path.GetDirectoryName(current);
+            }
+
+            return null;
+        }
 
     }
 }

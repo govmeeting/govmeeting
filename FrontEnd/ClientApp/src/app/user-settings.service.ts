@@ -20,6 +20,13 @@ export class UserSettingsService {
     this.sendSettingsChange();
   }
 
+  public setLanguage(language: string){
+    let copy = Object.assign({}, this._settings);
+    copy.language = language;
+    this._settings = Object.assign({}, copy);
+    this.sendSettingsChange();
+  }
+
   sendSettingsChange(){
     this.settingsChange.next("SettingsChange");
   }

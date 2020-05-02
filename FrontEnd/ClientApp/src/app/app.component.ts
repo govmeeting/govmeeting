@@ -9,6 +9,10 @@ import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 import { NavService } from './sidenav/nav.service';
 import { MediaQueryService } from './media-query.service';
 
+import { Router } from '@angular/router';
+import { UserSettingsService, UserSettings, LocationType } from './user-settings.service';
+
+
 const NoLog = true;  // set to false for console logging
 
 @Component({
@@ -19,6 +23,7 @@ const NoLog = true;  // set to false for console logging
 export class AppComponent implements AfterViewInit {
   private ClassName: string = this.constructor.name + ": ";
   @ViewChild('sidenav', {static: false}) sidenav: ElementRef;
+  userSettingsService: UserSettingsService;
 
   // setMode(value) {
   //   this.options.value.mode = value;
@@ -31,6 +36,8 @@ export class AppComponent implements AfterViewInit {
 
 
   constructor(
+    private _userSettingsService: UserSettingsService,
+    private router: Router,
     public navService: NavService,
     // public mediaQueryService: MediaQueryService,
     fb: FormBuilder,
@@ -52,6 +59,7 @@ export class AppComponent implements AfterViewInit {
       // this.checkDeviceType();
     }
     this.mediaQueryList.addListener(this.mediaQueryListener);
+    this.userSettingsService = _userSettingsService;
   }
 
   ngAfterViewInit() {
@@ -78,5 +86,22 @@ export class AppComponent implements AfterViewInit {
       NoLog || console.log(this.ClassName + 'desktop detected')
     }
   }
+
+  sendSettings(){
+    let userSettings: UserSettings = new UserSettings('en', "Totowa",  "Council");
+    this.userSettingsService.settings = userSettings;
+  }
+  setLanguage() {
+    this.userSettingsService.setLanguage("de");
+  }
+
+  routeAbout() {
+    this.router.navigateByUrl("about");
+  }
+
+  routeDash() {
+    this.router.navigateByUrl("dash");
+  }
+
 
 }

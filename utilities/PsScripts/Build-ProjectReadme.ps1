@@ -31,6 +31,7 @@ $postSetup =
 
 $preOverview =
 @"
+<!-- Do not edit README.md. This file is built by Utilities/PsScripts/Build-ProjectReadme.ps1 -->
 `n# Overview `n
 "@
 
@@ -44,15 +45,15 @@ $postOverview =
 Enough with the jibber-jabber, fool!
 Show me how it works!
 
-Well, the work is in progress. But here are:  [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
+Well, the work is in progress. But click here for:  [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
 
 <div style="pointer-events: none; cursor: default;"> <img src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
 
 
 "@
 
-    $overviewDoc = $clientapp + "\src\assets\docs\overview.md"
-    $setupDoc = $clientapp + "\src\assets\docs\setup.md"
+    $overviewDoc = $clientapp + "\src\assets\docs\overview.en.md"
+    $setupDoc = $clientapp + "\src\assets\docs\setup.en.md"
 
     $overview = get-content -Raw $overviewDoc
 

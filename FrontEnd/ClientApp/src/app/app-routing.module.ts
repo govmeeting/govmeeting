@@ -8,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './about-project/about-project';
 import { OverviewComponent } from './about-project/overview/overview';
-import { SysDesignComponent } from './about-project/sys-design/sys-design';
+// import { SysDesignComponent } from './about-project/sys-design/sys-design';
 import { DashMainComponent } from './dashboard/dash-main/dash-main';
 
 // "Routing in Angular using Routerlink, Navigate and NavigateByUrl"
@@ -25,7 +25,6 @@ const routes: Routes = [
     { path: 'dashboard', component: DashMainComponent},
     { path: 'about', component: AboutComponent},
     { path: 'overview', component: OverviewComponent},
-    { path: 'sysdesign', component: SysDesignComponent},
     { path: '**', redirectTo: 'overview' }
 
 ];

@@ -49,7 +49,7 @@ let aboutpagesMenu = new NavItem(null, 'About', null,
   new NavItem(null, 'Developer', 'school',
   [
     new NavItem(EntryType.docId, 'Setup', 'build', 'setup'),
-    new NavItem(EntryType.link, 'Design', 'bubble_chart', 'sysdesign'),
+    new NavItem(EntryType.docId, 'Design', 'bubble_chart', 'sys-design'),
     new NavItem(EntryType.docId, 'Dev Notes', 'notes', 'dev-notes'),
     new NavItem(EntryType.docId, 'Database', 'archive', 'database'),
   ])

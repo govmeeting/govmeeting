@@ -16,7 +16,7 @@ export class ChatService {
   constructor() {
     this.createConnection();
     this.registerOnServerEvents();
-    this.startConnection();
+    // this.startConnection();
   }
 
   sendMessage(message: Message) {
@@ -39,7 +39,7 @@ export class ChatService {
       })
       .catch(err => {
         NoLog || console.log(this.ClassName + 'Error while establishing connection, retrying...');
-        setTimeout(function () { this.startConnection(); }, 5000);
+        // setTimeout(function () { this.startConnection(); }, 5000);
       });
   }
 

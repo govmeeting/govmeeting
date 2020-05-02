@@ -326,7 +326,7 @@ ASP.NET Core references a particular environment variable, ASPNETCORE_ENVIRONMEN
 
 In Visual Studio, the value is set in the project properties under the Debug tab.
 
-In Visual Studio, the value is defined in .vscode/launch.json
+In Visual Studio Code, the value is defined in .vscode/launch.json
 
 In other setups, you will need to set it as an environment variable.
 

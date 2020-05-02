@@ -7,13 +7,13 @@ import { MarkdownModule } from 'ngx-markdown';
 
 import { AboutComponent } from './about-project';
 import { OverviewComponent } from './overview/overview';
-import { SysDesignComponent } from './sys-design/sys-design'
+// import { SysDesignComponent } from './sys-design/sys-design'
 
 @NgModule({
   declarations: [
     AboutComponent,
     OverviewComponent,
-    SysDesignComponent
+    // SysDesignComponent
   ],
   imports: [
     CommonModule,

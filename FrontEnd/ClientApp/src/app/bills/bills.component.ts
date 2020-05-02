@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { UserSettingsService, UserSettings, LocationType } from '../user-settings.service';
 
 const NoLog = true;  // set to false for console logging
@@ -13,7 +12,6 @@ export class BillsComponent implements OnInit {
   private ClassName: string = this.constructor.name + ": ";
   location = '';
   agency = '';
-  subscription: Subscription;
   userSettingsService: UserSettingsService;
 
     constructor(private _userSettingsService: UserSettingsService) {

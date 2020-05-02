@@ -7,11 +7,11 @@ using NLog;
 using NLog.Web;
 using GM.Configuration;
 using GM.ProcessRecording;
+using GM.GoogleCLoud;
 using GM.ProcessTranscript;
 using GM.FileDataRepositories;
 using GM.DatabaseRepositories;
 using GM.LoadDatabase;
-using GM.ProcessRecordings;
 using GM.DatabaseAccess;
 using Microsoft.Extensions.Options;
 
@@ -71,15 +71,26 @@ namespace GM.Workflow
             // appsettings.json is copied to the output folder during the build.
             // Otherwise, we would need to set appsettingsdir as follows:
             // string appsettingsdir = Directory.GetCurrentDirectory() + @"\..\..\..";
+
+            // Location of appsettings.json
             string appsettingsdir = Directory.GetCurrentDirectory();
+
+            string devSettingFile = $"appsettings.{environmentName}.json";
+            // Find path to the _SECRETS folder
+            string secrets = GMFileAccess.FindParentFolderWithName("_SECRETS");
+            // If it exists look there for environment settings file.
+            if (secrets != null)
+            {
+                devSettingFile = Path.Combine(secrets, $"appsettings.{environmentName}.json");
+            }
+
             var configuration = new ConfigurationBuilder()
                 // TODO - The following path will only work in development.
-                // It isn't yet decided how Workflow_App will be run in production.
+                // It isn't yet decided how WorkflowApp will run in production.
                 // Will it be a separate .EXE or a .LIB loaded by WebApp?
-                // TODO ** Move environment specific appsettings to build folder
-                .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
                 .SetBasePath(appsettingsdir)
                 .AddJsonFile("appsettings.json", false)
+                .AddJsonFile(devSettingFile, optional: true)
                 .Build();
 
             services.AddOptions();

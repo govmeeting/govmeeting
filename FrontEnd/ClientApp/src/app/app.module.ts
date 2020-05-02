@@ -44,6 +44,7 @@ import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from './testing/data-factory.service';
 import { DataFakeService } from './testing/data-fake.service';
 import { ConfigService } from './configuration/config.service';
+import { UserSettingsService, UserSettings, LocationType } from './user-settings.service';
 
 /////////////////// Components ///////////////////////////////////
 
@@ -70,7 +71,7 @@ import { OfficialsComponent } from './officials/officials.component';
 
 import { loadConfiguration } from './configuration/loadConfiguration';
 
-let isAspServerRunning = true;
+let isAspServerRunning = false;
 
 @NgModule({
   imports: [
@@ -121,8 +122,9 @@ let isAspServerRunning = true;
     AlertsComponent,
     WorkitemsComponent,
     IssuesComponent,
-    OfficialsComponent,
-    // CalendarComponent
+    OfficialsComponent
+    // CalendarComponent,
+
   ],
   exports: [
     DemoMaterialModule
@@ -171,7 +173,8 @@ let isAspServerRunning = true;
     ChatService,
     MessagingService,
     DataFactoryService,
-    DataFakeService
+    DataFakeService,
+    UserSettingsService
   ],
   bootstrap: [AppComponent]
 })
