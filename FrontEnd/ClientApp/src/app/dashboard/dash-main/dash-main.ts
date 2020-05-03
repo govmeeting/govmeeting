@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, Input} from '@angular/core';
-import {Router} from '@angular/router';
-import { Subscription } from 'rxjs';
+import { GetDashboardTitle } from '../dashboard-titles'
 import { UserSettingsService, UserSettings, LocationType } from '../../user-settings.service';
 
 const NoLog = true;  // set to false for console logging
@@ -10,9 +9,9 @@ const NoLog = true;  // set to false for console logging
   templateUrl: './dash-main.html',
   styleUrls: ['./dash-main.scss']
 })
-export class DashMainComponent implements OnInit, OnDestroy {
+export class DashMainComponent implements OnInit{
   private ClassName: string = this.constructor.name + ": ";
-  subscription: Subscription;
+  language: string = "en";
   location: string;
   agency: string;
   isMunicipal: boolean;
@@ -20,23 +19,23 @@ export class DashMainComponent implements OnInit, OnDestroy {
   isState: boolean;
   isCountry: boolean;
 
-  // TODO These titles should be set from within the individual components (gov-info, bills, calendar, etc)
-  govinfoTitle: string = "Politics";
-  billsTitle: string = "Legislation";
-  meetingsTitle: string = "Meetings";
-  newsTitle: string = "Govmeeting News";
-  fixasrTitle: string = "Proofread Transcript";
-  addtagsTitle: string = "Add Tags to Transcript"
-  viewMeetingTitle: string = "View Latest Meeting";
-  issuesTitle: string = "Issues";
-  officialsTitle: string = "Officials";
-  virtualMeetingTitle: string = "Virtual Meeting";
-  chatTitle: string = "Chat";
-  chartsTitle: string = "Charts";
-  notesTitle: string = "Notes";
-  minutesTitle: string = "Meeting Minutes";
-  workitemsTitle: string = "Work Items";
-  alertsTitle: string = "Alerts";
+  // page titles
+  govinfoTitle: string;
+  billsTitle: string;
+  meetingsTitle: string;
+  newsTitle: string;
+  fixasrTitle: string;
+  addtagsTitle: string;
+  viewMeetingTitle: string;
+  issuesTitle: string;
+  officialsTitle: string;
+  virtualMeetingTitle: string;
+  chatTitle: string;
+  chartsTitle: string;
+  notesTitle: string;
+  minutesTitle: string;
+  workitemsTitle: string;
+  alertsTitle: string;
 
   constructor(private userSettingsService: UserSettingsService) {
    }
@@ -48,11 +47,13 @@ export class DashMainComponent implements OnInit, OnDestroy {
       NoLog || console.log(this.ClassName + "SCAO ", newSettings);
       this.changeLocation(newSettings);
     })
-  }
 
-  ngOnDestroy() {
-    // TODO - unsubscribe to ensure no memory leaks
-    // this.subscription.unsubscribe();
+    this.userSettingsService.subscribeLanguage(language => {
+      this.language = language;
+      this.changeTitles();
+    })
+
+    this.changeTitles();
   }
 
   private changeLocation(item: UserSettings) {
@@ -62,5 +63,25 @@ export class DashMainComponent implements OnInit, OnDestroy {
 
     this.isCounty = (this.location == "Lincoln County")
   }
+
+  private changeTitles() {
+    this.govinfoTitle = GetDashboardTitle("Politics", this.language);
+    this.billsTitle = GetDashboardTitle("Legislation", this.language);
+    this.meetingsTitle = GetDashboardTitle("Meetings", this.language);
+    this.newsTitle = GetDashboardTitle("Govmeeting News", this.language);
+    this.fixasrTitle = GetDashboardTitle("Proofread Transcript", this.language);
+    this.addtagsTitle = GetDashboardTitle("Add Tags to Transcript", this.language);
+    this.viewMeetingTitle = GetDashboardTitle("View Latest Meeting", this.language);
+    this.issuesTitle = GetDashboardTitle("Issues", this.language);
+    this.officialsTitle = GetDashboardTitle("Officials", this.language);
+    this.virtualMeetingTitle = GetDashboardTitle("Virtual Meeting", this.language);
+    this.chatTitle = GetDashboardTitle("Chat", this.language);
+    this.chartsTitle = GetDashboardTitle("Charts", this.language);
+    this.notesTitle = GetDashboardTitle("Notes", this.language);
+    this.minutesTitle = GetDashboardTitle("Meeting Minutes", this.language);
+    this.workitemsTitle = GetDashboardTitle("Work Items", this.language);
+    this.alertsTitle = GetDashboardTitle("Alerts", this.language);
+  }
+
 
 }

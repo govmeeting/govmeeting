@@ -7,7 +7,7 @@ export { UserSettings, LocationType };
 @Injectable({ providedIn: 'root' })
 export class UserSettingsService {
 
-  private _settings: UserSettings;
+  private _settings: UserSettings = new UserSettings('en', "Boothbay Harbor",  null);
   private settingsChange = new BehaviorSubject<string>("Initial");
   public get settings(): UserSettings {
     let copy = Object.assign({}, this._settings);
@@ -25,7 +25,6 @@ export class UserSettingsService {
     this.settingsChange.next("SettingsChange");
   }
 
-
   private _language = "en";
   public bLanguage = new BehaviorSubject<string>(this.language);
   public get language(): string {
@@ -34,6 +33,8 @@ export class UserSettingsService {
   public set language(value: string) {
     this._language = value;
     this.bLanguage.next(this.language);
+    this._settings.language = value;
+    this.sendSettingsChange();
   }
   // subscribe to changes in language
   public subscribeLanguage(func: any){

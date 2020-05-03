@@ -13,6 +13,7 @@ namespace GM.Utilities.Translate
     class TranslateDocs
     {
         TranslateInCloud translateInCloud;
+        string folder = @"C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp\src\assets\docs";
 
         public TranslateDocs(TranslateInCloud _translateInCloud)
         {
@@ -21,9 +22,12 @@ namespace GM.Utilities.Translate
 
         public void Run(string[] args)
         {
+            //string folder = args[1];
+            //string language = args[2];
+
             List<string> languages = new List<string>()
-                //{ "fr", "hi", "de", "ar", "sw", "zh", "pt" , "bn" };
-            { "ic", "sw", "no" };
+                { "fr", "hi", "de", "ar", "sw", "zh", "pt" , "bn" };
+            //{ "ic", "sw", "no" };
 
             foreach (string lang in languages)
             {
@@ -31,15 +35,30 @@ namespace GM.Utilities.Translate
             };
         }
 
-
-
-        public void DoLanguage(string language)
+        public void DoSomethingToAllFiles(string lang)
         {
-            string folder = @"C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp\src\assets\docs";
-            //string language = "es";
 
-            //string folder = args[1];
-            //string language = args[2];
+            var files = from f in Directory.EnumerateFiles(folder)
+                        where f.EndsWith("." + lang + ".md")
+                        select f;
+            foreach (string file in files)
+            {
+                if (!File.Exists(file))
+                {
+                    Console.WriteLine("ERROR: file does not exist: " + file);
+                    continue;
+                } 
+
+                string contents = GMFileAccess.Readfile(file);
+
+                // Do something
+
+            }
+        }
+
+
+            public void DoLanguage(string language)
+        {
 
             //ParseMarkdown();
             //RenderMarkdown();
