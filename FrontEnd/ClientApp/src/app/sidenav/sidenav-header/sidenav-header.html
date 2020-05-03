@@ -13,8 +13,8 @@
     </mat-select>
   </mat-form-field> -->
 
-  <select id="language" #mySelect [(ngModel)]="language" (change)='setLanguage(mySelect.value)'>
-    <option *ngFor="let language of languages; let i = index" [value]="language.value" [selected]="i == 0"> {{language.viewValue}} </option>
+   <select id="language" #mySelect [(ngModel)]="language" (change)='setLanguage(mySelect.value)'>
+    <option *ngFor="let language of languages" [value]="language.value"> {{language.viewValue}} </option>
   </select>
 
   <span class = "filler" (click)="navService.closeNav()">

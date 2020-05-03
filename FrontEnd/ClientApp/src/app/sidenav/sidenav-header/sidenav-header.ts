@@ -20,17 +20,52 @@ export class TopNavComponent implements OnInit {
      {enname: 'English', value: 'en', viewValue: 'English'},
      {enname: 'French', value: 'fr', viewValue: 'Français'},
      {enname: 'German', value: 'de', viewValue: 'Deutsch'},
-    // {enname: 'Indonesian', value: 'id', viewValue: 'Indonesia'},
-    // {enname: 'Icelandic', value: 'ic', viewValue: 'Íslensku'},
      {enname: 'Portuguese', value: 'pt', viewValue: 'Português'},
      {enname: 'Spanish', value: 'es', viewValue: 'Español'},
+     {enname: 'Italian', value: 'it', viewValue: 'Italiano'},
+     {enname: 'Finish', value: 'fi', viewValue: 'Suomalainen'},
      {enname: 'Swahili', value: 'sw', viewValue: 'Kiswahili'},
-    // {enname: 'Russian', value: 'ru', viewValue: 'русский'},
-    // {enname: 'Turkish', value: 'tr', viewValue: 'Türk'},
      {enname: 'Hindi', value: 'hi', viewValue: 'हिन्दी'},
      {enname: 'Arabic', value: 'ar', viewValue: 'عربى'},
      {enname: 'Mandarin', value: 'zh', viewValue: '普通话'},
      {enname: 'Bengali', value: 'bn', viewValue: 'বাংলা'}
+    // {enname: 'Icelandic', value: 'ic', viewValue: 'Íslensku'},
+    // {enname: 'Norwegian', value: 'no', viewValue: ''},
+    // {enname: 'Swedish', value: 'sv', viewValue: ''},
+    // {enname: 'Danish', value: 'da', viewValue: ''},
+    // {enname: 'Serbian', value: 'sr', viewValue: ''},
+    // {enname: 'Croatian', value: 'hr', viewValue: ''},
+    // {enname: 'Greek', value: 'ic', viewValue: ''},
+    // {enname: 'Albanian', value: 'sq', viewValue: ''},
+    // {enname: 'Armenian', value: 'hy', viewValue: ''},
+    // {enname: 'Bosnian', value: 'bs', viewValue: ''},
+    // {enname: 'Bulgarian', value: 'bg', viewValue: ''},
+    // {enname: 'Czech', value: 'cs', viewValue: ''},
+    // {enname: 'Dutch', value: 'nl', viewValue: ''},
+    // {enname: 'Estonian', value: 'rt', viewValue: ''},
+    // {enname: 'Filipino', value: 'tl', viewValue: ''},
+    // {enname: 'Hebrew', value: 'iw', viewValue: ''},
+    // {enname: 'Hungarian', value: 'hu', viewValue: ''},
+    // {enname: 'Italian', value: 'it', viewValue: ''},
+    // {enname: 'Korean', value: 'ko', viewValue: ''},
+    // {enname: 'Lao', value: 'lo', viewValue: ''},
+    // {enname: 'Latvian', value: 'lv', viewValue: ''},
+    // {enname: 'Lithuanian', value: 'lt', viewValue: ''},
+    // {enname: 'Macedonian', value: 'mk', viewValue: ''},
+    // {enname: 'Polish', value: 'pl', viewValue: ''},
+    // {enname: 'Romanian', value: 'ro', viewValue: ''},
+    // {enname: 'Slovenian', value: 'sl', viewValue: ''},
+    // {enname: 'Ukrainian', value: 'uk', viewValue: ''},
+    // {enname: 'Javanese', value: 'jw', viewValue: ''},
+    // {enname: 'Vietnamese', value: 'vi', viewValue: ''},
+    // {enname: 'Telugu', value: 'te', viewValue: ''},
+    // {enname: 'Tamil', value: 'ta', viewValue: ''},
+    // {enname: 'Marathi', value: 'mr', viewValue: ''},
+    // {enname: 'Gujarati', value: 'gu', viewValue: ''},
+    // {enname: 'Telugu', value: 'te', viewValue: ''},
+    // {enname: 'Russian', value: 'ru', viewValue: 'русский'},
+    // {enname: 'Turkish', value: 'tr', viewValue: 'Türk'},
+    // {enname: 'Indonesian', value: 'id', viewValue: 'Indonesia'},
     // {enname: 'Urdu', value: 'ur', viewValue: 'اردو'},
     // {enname: 'Japanese', value: 'ja', viewValue: '日本語'},
     // {enname: 'Marathi', value: 'mr', viewValue: 'मराठी'},
@@ -46,9 +81,10 @@ export class TopNavComponent implements OnInit {
       this.userSettingsService = _userSettingsService;     }
 
   ngOnInit() {
+    this.language = "en";
   }
 
   setLanguage(language: string){
-    this.userSettingsService.setLanguage(language);
+    this.userSettingsService.changeLanguage(language);
   }
 }

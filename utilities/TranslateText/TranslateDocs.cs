@@ -22,7 +22,8 @@ namespace GM.Utilities.Translate
         public void Run(string[] args)
         {
             List<string> languages = new List<string>()
-                { "fr", "hi", "de", "ar", "sw", "zh", "pt" , "bn" };
+                //{ "fr", "hi", "de", "ar", "sw", "zh", "pt" , "bn" };
+            { "ic", "sw", "no" };
 
             foreach (string lang in languages)
             {
@@ -54,8 +55,8 @@ namespace GM.Utilities.Translate
                 {
                     string contents = GMFileAccess.Readfile(f);
                     var htmlContents = CommonMark.CommonMarkConverter.Convert(contents);
-                    string htmlFile = f.Replace(".en.md", ".en.html");
-                    File.WriteAllText(htmlFile, htmlContents);
+                    //string htmlFile = f.Replace(".en.md", ".en.html");
+                    //File.WriteAllText(htmlFile, htmlContents);
 
                     string translated = translateInCloud.TranslateHtml(htmlContents, language);
                     //string htmlNewFile = f.Replace(".en.md", "." + language + ".html");

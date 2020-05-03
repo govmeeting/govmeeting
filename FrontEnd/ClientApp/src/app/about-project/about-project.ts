@@ -35,13 +35,20 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     // We subscribe to changes in user settings - for language change.
-    this.userSettingsService.SettingsChangeAsObservable().subscribe(message => {
-      let newSettings = this.userSettingsService.settings;
-      if (newSettings.language != undefined) {
-        NoLog || console.log(this.ClassName + "message=" + message);
-        this.language = newSettings.language;
-        this.title = GetPageTitle(this.pageid, this.language)
-      }
+    // this.userSettingsService.SettingsChangeAsObservable().subscribe(message => {
+    //   let newSettings = this.userSettingsService.settings;
+    //   if (newSettings.language != undefined) {
+    //     NoLog || console.log(this.ClassName + "message=" + message);
+    //     this.language = newSettings.language;
+    //     this.title = GetPageTitle(this.pageid, this.language);
+    //     this.document = "assets/docs/" + this.pageid + "." + this.language + ".md"
+    //   }
+    // })
+
+    this.userSettingsService.bLanguage.subscribe(language => {
+      this.language = language;
+      this.title = GetPageTitle(this.pageid, this.language);
+      this.document = "assets/docs/" + this.pageid + "." + this.language + ".md"
     })
 
     // We subscribe to changes in the about page displayed.

@@ -27,14 +27,20 @@ export class UserSettingsService {
     this.sendSettingsChange();
   }
 
-  sendSettingsChange(){
-    this.settingsChange.next("SettingsChange");
-  }
-
-  SettingsChangeAsObservable() {
+  public SettingsChangeAsObservable() {
     return this.settingsChange.asObservable();
   }
 
+  private sendSettingsChange(){
+    this.settingsChange.next("SettingsChange");
+  }
 
+  private language = "en";
+  public bLanguage = new BehaviorSubject<string>(this.language);
+
+  public changeLanguage(language: string) {
+    this.language = language;
+    this.bLanguage.next(this.language);
+  }
 
 }
