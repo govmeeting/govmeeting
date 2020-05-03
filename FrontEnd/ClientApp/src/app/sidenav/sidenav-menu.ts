@@ -38,16 +38,13 @@ const NoLog = true;  // set to false for console logging
     navigationItems: NavItem[] = navigationItems;
     menuTreeArray: MenuTreeArray;
     deviceType: string;
-    userSettingsService: UserSettingsService;
 
   constructor(
     private navService: NavService,
     public router: Router,
-    private _userSettingsService: UserSettingsService,
+    private userSettingsService: UserSettingsService,
     private  dialog:  MatDialog)
   {
-      this.userSettingsService = _userSettingsService;
-
       this.menuTreeArray = new MenuTreeArray();
       this.menuTreeArray.assignPositions(navigationItems);
       NoLog || console.log(this.ClassName + "navigationItems=", this.navigationItems);
@@ -80,18 +77,6 @@ const NoLog = true;  // set to false for console logging
   HandleSelection(item: NavItem){
     let location: string;
     let agency: string;
-    //let userSettings: UserSettings = new UserSettings();
-
-    // if (item.displayName == "Select Location") {
-    //   // this.router.navigate(['dashboard']);
-    //   return;
-    // }
-
-    // let userSettings: UserSettings = new UserSettings('en', location,  agency);
-    // this.userSettingsService.settings = userSettings;
-
-    // this.userSettingsService.setLanguage("es");
-    // return;
 
     switch (item.entryType) {
       case EntryType.location: {
@@ -125,12 +110,6 @@ const NoLog = true;  // set to false for console logging
         break;
       }
 
-        // Alternate using navigate
-        // this.router.navigate(['about'], {
-        //   queryParams: {
-        //     id: '123' //pass whatever here
-        //   }
-        // });
     }
 
     if (this.isMobile()) {

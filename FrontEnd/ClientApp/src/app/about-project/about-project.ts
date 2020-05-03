@@ -6,8 +6,6 @@ import { UserSettingsService, UserSettings, LocationType } from '../user-setting
 
 const NoLog = true;  // set to false for console logging
 
-// const defaultDocument = "assets/docs/purpose.md"
-// const defaultTitle = "Purpose";
 @Component({
   selector: 'gm-auto-processing',
   templateUrl: './about-project.html',
@@ -27,15 +25,11 @@ export class AboutComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private userSettingsService: UserSettingsService
   ) {
-    // this.userSettingsService = _userSettingsService;
   }
-  // constructor(private _userSettingsService: UserSettingsService) {
-  //   this.userSettingsService = _userSettingsService;
-  //  }
 
   ngOnInit() {
     // We subscribe to changes in user settings - for language change.
-    // this.userSettingsService.SettingsChangeAsObservable().subscribe(message => {
+    // this.userSettingsService.SubscribeSettings(message => {
     //   let newSettings = this.userSettingsService.settings;
     //   if (newSettings.language != undefined) {
     //     NoLog || console.log(this.ClassName + "message=" + message);
@@ -45,10 +39,10 @@ export class AboutComponent implements OnInit {
     //   }
     // })
 
-    this.userSettingsService.bLanguage.subscribe(language => {
-      this.language = language;
-      this.title = GetPageTitle(this.pageid, this.language);
-      this.document = "assets/docs/" + this.pageid + "." + this.language + ".md"
+      this.userSettingsService.subscribeLanguage(language => {
+        this.language = language;
+        this.title = GetPageTitle(this.pageid, this.language);
+        this.document = "assets/docs/" + this.pageid + "." + this.language + ".md"
     })
 
     // We subscribe to changes in the about page displayed.
@@ -65,11 +59,5 @@ export class AboutComponent implements OnInit {
   loadedHandler(ev) {
     console.log("in loadedHandler")
   }
-
-    // xtranslateTitle(pageid: string, language: string) : string {
-    //   let i = PageIds.findIndex(x => x == pageid);
-    //   let j = PageTitles.findIndex(y => y[0] == language);
-    //   return PageTitles[j][i+1];
-    // }
 
 }

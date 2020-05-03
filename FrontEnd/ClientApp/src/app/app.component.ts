@@ -23,7 +23,6 @@ const NoLog = true;  // set to false for console logging
 export class AppComponent implements AfterViewInit {
   private ClassName: string = this.constructor.name + ": ";
   @ViewChild('sidenav', {static: false}) sidenav: ElementRef;
-  userSettingsService: UserSettingsService;
 
   // setMode(value) {
   //   this.options.value.mode = value;
@@ -36,7 +35,7 @@ export class AppComponent implements AfterViewInit {
 
 
   constructor(
-    private _userSettingsService: UserSettingsService,
+    private userSettingsService: UserSettingsService,
     private router: Router,
     public navService: NavService,
     // public mediaQueryService: MediaQueryService,
@@ -59,7 +58,6 @@ export class AppComponent implements AfterViewInit {
       // this.checkDeviceType();
     }
     this.mediaQueryList.addListener(this.mediaQueryListener);
-    this.userSettingsService = _userSettingsService;
   }
 
   ngAfterViewInit() {
@@ -87,12 +85,14 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
+  ///      For testng ///////
+
   sendSettings(){
     let userSettings: UserSettings = new UserSettings('en', "Totowa",  "Council");
     this.userSettingsService.settings = userSettings;
   }
   setLanguage() {
-    this.userSettingsService.setLanguage("de");
+    this.userSettingsService.language = "de";
   }
 
   routeAbout() {

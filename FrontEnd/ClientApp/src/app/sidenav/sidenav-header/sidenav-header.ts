@@ -13,7 +13,7 @@ interface Language {
   styleUrls: ['./sidenav-header.scss']
 })
 export class TopNavComponent implements OnInit {
-  userSettingsService: UserSettingsService;
+  // userSettingsService: UserSettingsService;
   language: string;
 
   languages: Language[] = [
@@ -76,15 +76,14 @@ export class TopNavComponent implements OnInit {
   // UserSettingsService is for changing the language
   constructor(
     public navService: NavService,
-    private _userSettingsService: UserSettingsService,
-    ) {
-      this.userSettingsService = _userSettingsService;     }
+    private userSettings: UserSettingsService
+    ) { }
 
   ngOnInit() {
     this.language = "en";
   }
 
   setLanguage(language: string){
-    this.userSettingsService.changeLanguage(language);
+    this.userSettings.language = language;
   }
 }

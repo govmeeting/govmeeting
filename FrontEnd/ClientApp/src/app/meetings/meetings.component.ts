@@ -14,14 +14,12 @@ export class MeetingsComponent implements OnInit {
   public location = '';
   public agency = '';
   subscription: Subscription;
-  userSettingsService: UserSettingsService;
 
-    constructor(private _userSettingsService: UserSettingsService) {
-      this.userSettingsService = _userSettingsService;
+    constructor(private userSettingsService: UserSettingsService) {
      }
 
      ngOnInit() {
-      this.userSettingsService.SettingsChangeAsObservable().subscribe(message => {
+      this.userSettingsService.subscribeSettings(message => {
         // NoLog || console.log(this.ClassName + "receive message: " + message)
         let newSettings = this.userSettingsService.settings;
         NoLog || console.log(this.ClassName + "SCAO ", newSettings);

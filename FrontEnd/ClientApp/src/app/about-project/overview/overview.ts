@@ -17,34 +17,13 @@ export class OverviewComponent implements OnInit {
   language: string;;
 
   constructor(private userSettingsService: UserSettingsService) {
-    // this.userSettingsService = _userSettingsService;
    }
   ngOnInit() {
-    this.changeLanguage("en");
+    this.changeLanguage("en");   // TODO - remove
 
-    // this.document1 = "assets/docs/overview1"+ "." + this.language + ".md";
-    // this.document2 = "assets/docs/overview2"+ "." + this.language + ".md";
-    // this.title = GetPageTitle("overview", this.language);
 
-    // We subscribe to changes in user settings - for language change.
-    // this.userSettingsService.SettingsChangeAsObservable().subscribe(message => {
-    //   let newSettings = this.userSettingsService.settings;
-    //   if (newSettings.language != undefined) {
-    //     this.language = newSettings.language;
-    //     this.title = GetPageTitle("overview", this.language);
-    //     this.document1 = "assets/docs/overview1"+ "." + this.language + ".md";
-    //     this.document2 = "assets/docs/overview2"+ "." + this.language + ".md";
-    //     } else {
-    //       console.error(" language not found");
-    //     }
-    // })
-
-    this.userSettingsService.bLanguage.subscribe(language => {
+    this.userSettingsService.subscribeLanguage(language => {
       this.changeLanguage(language);
-      // this.language = language;
-      // this.title = GetPageTitle("overview", this.language);
-      // this.document1 = "assets/docs/overview1"+ "." + this.language + ".md";
-      // this.document2 = "assets/docs/overview2"+ "." + this.language + ".md";
   })
 
   }
