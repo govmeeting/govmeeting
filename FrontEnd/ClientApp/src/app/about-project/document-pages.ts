@@ -6,7 +6,7 @@
     ["German", "de", "Überblick", "Funktionaler Workflow","Projektstatus", "Setup","Dev Notes","Datenbank", "Design"],
     ["Spanish", "es", "Visión general", "Flujo funcional","Estado del proyecto","Configuración","Dev Notes","Base de datos","Diseño"],
     ["French", "fr","Aperçu", "Flux de travail", "Statut du projet", "Configuration", "Notes de développement", "Base de données", "Conception Sys"],
-    ["Icelandic", "is", "Yfirlit", "Vinnuflæði", "Staða verkefnis", "Uppsetning", "Dev athugasemdir", "Gagnasafn", "Sys hönnun"],
+    //["Icelandic", "is", "Yfirlit", "Vinnuflæði", "Staða verkefnis", "Uppsetning", "Dev athugasemdir", "Gagnasafn", "Sys hönnun"],
     ["Italian", "it", "Panoramica", "Flusso di lavoro", "Stato del progetto", "Impostazione", "Note per gli sviluppatori", "Database", "Progettazione"],
     ["Finish", "fi", "Yleiskatsaus", "Työnkulku", "Projektin tila", "Asennus", "Kehittäjän muistiinpanot", "Tietokanta", "Suunnittelu"],
     ["Arabic", "ar", "نظرة عامة", "تدفق العمل", "حالة المشروع", "اقامة", "ملاحظات المطور", "قاعدة البيانات", "التصميم"],

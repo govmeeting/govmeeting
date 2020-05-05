@@ -7,7 +7,9 @@
 
 <p> Le riunioni vengono talvolta trasmesse in TV, per i pochi che le guardano. Alcuni giornali riportano alcuni problemi. Ma poche persone sanno molto di ciò che accade. </p>
 
-<p> Lo scopo di Govmeeting è fornire a tutti i cittadini un accesso rapido e facile a ciò che fanno i loro funzionari pubblici e alle opportunità di influenzare le loro decisioni. </p>
+<p> Ci sono molte brave persone che entrano negli uffici pubblici per migliorare le loro comunità. Ma l&#39;attuale sistema opaco rende troppo facile per gli altri usare il proprio ufficio per trarne beneficio. </p>
+
+<p> Lo scopo di Govmeeting è fornire un accesso rapido e facile alle decisioni quotidiane che i loro funzionari prendono e una visione più approfondita del significato di tali decisioni. </p>
 <h2> Caratteristiche </h2>
 <p> Govmeeting automaticamente: </p>
 

@@ -26,38 +26,23 @@ namespace GM.Utilities.Translate
             //string language = args[2];
 
             List<string> languages = new List<string>()
-                { "fr", "hi", "de", "ar", "sw", "zh", "pt" , "bn" };
-            //{ "ic", "sw", "no" };
+                { "de", "es", "fr", "it", "fi", "ar", "sw", "zh", "pt" , "bn", "hi" };
+                //{ "ic", "sw", "no" };
 
-            foreach (string lang in languages)
+            foreach (string language in languages)
             {
-                DoLanguage(lang);
+                // Translate all the documents to all languages
+                TranslateAllDocuments(language);
+
+                // Translate just one specific document to all languages.
+                // This is useful when edits are made to one document.
+                string file = Path.Combine(folder, "overview1.en.md");
+                TranslateOneDocument(file, language, true);
             };
         }
 
-        public void DoSomethingToAllFiles(string lang)
-        {
 
-            var files = from f in Directory.EnumerateFiles(folder)
-                        where f.EndsWith("." + lang + ".md")
-                        select f;
-            foreach (string file in files)
-            {
-                if (!File.Exists(file))
-                {
-                    Console.WriteLine("ERROR: file does not exist: " + file);
-                    continue;
-                } 
-
-                string contents = GMFileAccess.Readfile(file);
-
-                // Do something
-
-            }
-        }
-
-
-            public void DoLanguage(string language)
+        public void TranslateAllDocuments(string language)
         {
 
             //ParseMarkdown();
@@ -66,29 +51,44 @@ namespace GM.Utilities.Translate
             var files = from f in Directory.EnumerateFiles(folder)
                         where f.EndsWith(".en.md")
                         select f;
-            foreach (string f in files)
+
+            foreach (string file in files)
             {
-                string newFile = f.Replace(".en.md", "." + language + ".md");
-
-                if (!File.Exists(newFile))
-                {
-                    string contents = GMFileAccess.Readfile(f);
-                    var htmlContents = CommonMark.CommonMarkConverter.Convert(contents);
-                    //string htmlFile = f.Replace(".en.md", ".en.html");
-                    //File.WriteAllText(htmlFile, htmlContents);
-
-                    string translated = translateInCloud.TranslateHtml(htmlContents, language);
-                    //string htmlNewFile = f.Replace(".en.md", "." + language + ".html");
-                    //File.WriteAllText(htmlNewFile, translated);
-
-                    string replaced = ReplaceSomeStrings(translated);
-                    File.WriteAllText(newFile, replaced);
-
-                    // Wait 10 seconds. GCP didn't like me running a close loop.
-                    Task.Delay(10000).Wait();
-                }
+                TranslateOneDocument(file, language, false);
             }
         }
+
+        private void TranslateOneDocument(string file, string language, bool deletePrior)
+        {
+            string newFile = file.Replace(".en.md", "." + language + ".md");
+
+            if (File.Exists(newFile) && deletePrior)
+            {
+                File.Delete(newFile);
+            }
+
+
+            if (!File.Exists(newFile))
+            {
+                string contents = GMFileAccess.Readfile(file);
+                var htmlContents = CommonMark.CommonMarkConverter.Convert(contents);
+                //string htmlFile = f.Replace(".en.md", ".en.html");
+                //File.WriteAllText(htmlFile, htmlContents);
+
+                string translated = translateInCloud.TranslateHtml(htmlContents, language);
+                //string htmlNewFile = f.Replace(".en.md", "." + language + ".html");
+                //File.WriteAllText(htmlNewFile, translated);
+
+                string replaced = ReplaceSomeStrings(translated);
+                File.WriteAllText(newFile, replaced);
+
+                // Wait 10 seconds. GCP didn't like me running a close loop.
+                Task.Delay(10000).Wait();
+            }
+        }
+
+
+
 
         // The TranslateHtml method removes most newlines from the output. This makes it difficult to check for validity.
         // We try to put back newlines in appropriate places.
@@ -147,6 +147,28 @@ namespace GM.Utilities.Translate
         {
             var result = CommonMark.CommonMarkConverter.Convert("**Hello world!**");
         }
+
+        public void DoSomethingToAllFiles(string lang)
+        {
+
+            var files = from f in Directory.EnumerateFiles(folder)
+                        where f.EndsWith("." + lang + ".md")
+                        select f;
+            foreach (string file in files)
+            {
+                if (!File.Exists(file))
+                {
+                    Console.WriteLine("ERROR: file does not exist: " + file);
+                    continue;
+                }
+
+                string contents = GMFileAccess.Readfile(file);
+
+                // Do something
+
+            }
+        }
+
 
     }
 }

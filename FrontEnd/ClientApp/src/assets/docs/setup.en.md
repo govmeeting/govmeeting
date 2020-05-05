@@ -5,7 +5,7 @@
 * <a href="about?id=setup#DevelopVS"> Develop with Visual Studio </a>
 * <a href="about?id=setup#DevelopOther"> Develop on other platforms </a>
 * <a href="about?id=setup#Database"> Database </a>
-* <a href="about?id=setup#GoogleCloud"> Google Cloud Platform account </a>
+* <a href="about?id=setup#GoogleCloud"> Google Cloud Platform </a>
 * <a href="about?id=setup#GoogleApi"> Google API Keys </a>
 
 These documentation pages can be found in FrontEnd/ClientApp/src/app/assets/docs. Please make corrections there and issue
@@ -22,9 +22,16 @@ _______
 * Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
 * "Fork" the the project on github
 * Clone the project locally
-* Create a sibling folder to the cloned repositiory named "_SECRETS"
+* Create two sibling folders to the cloned repositiory:
+  * "TESTDATA" - This will contain video and audio files used for testing.
+  * "_SECRETS" - This will contain keys and passwords for Google services.
 
-The "_SECRETS" folder is for keys and passwords that are not stored in the public repository. These would be needed to run Google API services.
+The _TESTDATA and _SECRETS folders will contain files that we do not want published to Github. Therefore they need to be located outside of the repository folder.
+
+
+Sample test data is on <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> In order to run WebApp and WorkflowApp, you will need to download the contents of the Google Drive folder into _TESTDATA.
+
+Information on files needed in _SECRETS is in the setup instructions for <a href="about?id=setup#GoogleCloud"> Google Cloud Platform </a> and <a href="about?id=setup#GoogleApi"> Google API Keys. </a> You will only need these files if you are working on language transcription or user login.
 
 _____
 
@@ -259,7 +266,7 @@ and enter NOAUTH in the "Conditional Compiliation Symbols" box.
 __________
 <a name="GoogleCloud"></a>
 
-# Google Cloud Platform account <br/>
+# Google Cloud Platform <br/>
 <a href="about?id=setup#Contents"> [Contents] </a>
 
 To use the Google Speech APIs for speech-to-text conversion, you need a Google Cloud Platform (GCP) account. For most development work in Govmeeting, you can use use existing test data. But if you want transcribe new recordings, you will a GCP. The Google API is able to transcribe recordings in more than 120 languages and variants.

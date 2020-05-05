@@ -7,7 +7,9 @@
 
 <p> Às vezes, as reuniões são transmitidas na TV para os poucos que as assistem. Alguns jornais relatam algumas questões. Mas poucas pessoas sabem muito do que ocorre. </p>
 
-<p> O objetivo do Govmeeting é oferecer a todos os cidadãos acesso rápido e fácil ao que seus funcionários públicos estão fazendo e oportunidades para afetar suas decisões. </p>
+<p> Há muitas pessoas boas que entram em cargos públicos para melhorar suas comunidades. Mas o sistema opaco atual facilita demais o uso do escritório por outras pessoas. </p>
+
+<p> O objetivo do Govmeeting é fornecer acesso rápido e fácil às decisões do dia a dia que seus funcionários fazem e mais informações sobre o significado dessas decisões. </p>
 <h2> Recursos </h2>
 <p> O Govmeeting irá automaticamente: </p>
 

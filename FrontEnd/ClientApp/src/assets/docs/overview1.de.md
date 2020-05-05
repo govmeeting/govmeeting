@@ -7,7 +7,9 @@
 
 <p> Meetings werden manchmal im Fernsehen ausgestrahlt, für die wenigen, die sie sehen. Einige Zeitungen berichten über einige Themen. Aber nur wenige Menschen wissen viel darüber, was passiert. </p>
 
-<p> Der Zweck von Govmeeting ist es, allen Bürgern einen schnellen und einfachen Zugang zu den Tätigkeiten ihrer Beamten und Möglichkeiten zu geben, ihre Entscheidungen zu beeinflussen. </p>
+<p> Es gibt viele gute Leute, die öffentliche Ämter betreten, um ihre Gemeinschaften zu verbessern. Das derzeitige undurchsichtige System macht es anderen jedoch zu leicht, ihr Büro zu nutzen, um sich selbst zu nutzen. </p>
+
+<p> Der Zweck von Govmeeting besteht darin, einen schnellen und einfachen Zugang zu den täglichen Entscheidungen ihrer Beamten zu ermöglichen und einen besseren Einblick in die Bedeutung dieser Entscheidungen zu erhalten. </p>
 <h2> Eigenschaften </h2>
 <p> Govmeeting wird automatisch: </p>
 

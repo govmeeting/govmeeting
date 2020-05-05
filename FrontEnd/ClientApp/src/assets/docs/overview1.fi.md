@@ -7,7 +7,9 @@
 
 <p> Tapaamisia lähetetään joskus televisiossa harvoille, jotka katselevat niitä. Jotkut sanomalehdet raportoivat tietyistä aiheista. Mutta harvat ihmiset tietävät suuren osan tapahtumista. </p>
 
-<p> Govmeetingin tarkoituksena on antaa kaikille kansalaisille nopea ja helppo pääsy siihen, mitä heidän virkamiehensä tekevät, ja mahdollisuudet vaikuttaa päätöksentekoon. </p>
+<p> On monia hienoja ihmisiä, jotka tulevat julkiseen toimistoon parantaakseen yhteisöään. Mutta nykyisen läpinäkymättömän järjestelmän ansiosta muiden on liian helppoa käyttää toimistoaan itsensä hyväksi. </p>
+
+<p> Govmeetingin tarkoituksena on tarjota nopea ja helppo pääsy virkamiesten tekemiin päivittäisiin päätöksiin ja saada enemmän tietoa siitä, mitä nämä päätökset tarkoittavat. </p>
 <h2> ominaisuudet </h2>
 <p> Govmeeting automaattisesti: </p>
 

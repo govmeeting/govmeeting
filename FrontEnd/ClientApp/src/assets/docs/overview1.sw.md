@@ -7,7 +7,9 @@
 
 <p> Mikutano wakati mwingine hutangazwa kwenye Runinga, kwa wachache wanaowaangalia. Magazeti mengine yanaripoti juu ya maswala kadhaa. Lakini watu wachache wanajua mengi ya kile kinachotokea. </p>
 
-<p> Madhumuni ya Govmeeting ni kuwapa raia wote ufikiaji wa haraka na rahisi wa yale viongozi wa umma wanafanya na fursa za kuathiri maamuzi yao. </p>
+<p> Kuna watu wengi wazuri ambao huingia katika ofisi za umma ili kuboresha jamii zao. Lakini mfumo wa sasa wa opaque hufanya iwe rahisi sana kwa wengine kutumia ofisi zao kujinufaisha. </p>
+
+<p> Madhumuni ya Govmeeting ni kutoa ufikiaji wa haraka na rahisi katika siku kwa maamuzi ya siku ambayo maafisa wao hufanya na ufahamu zaidi juu ya nini maamuzi hayo yanamaanisha. </p>
 <h2> Vipengele </h2>
 <p> Govmeeting moja kwa moja: </p>
 

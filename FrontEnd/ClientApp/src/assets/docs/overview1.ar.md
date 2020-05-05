@@ -2,7 +2,8 @@
 <p style=";text-align:right;direction:rtl"> في الجمعية الأثينية عام 500 قبل الميلاد ، كان هناك حاجة إلى النصاب القانوني من 6000 من 43000 مواطن للقيام بالأعمال. في القرن العاشر ، تم عقد Althing الأيسلندي في مدرج طبيعي في الهواء الطلق ويمكن لجميع المواطنين الحضور. </p>
 <p style=";text-align:right;direction:rtl"> اليوم ، من النادر أن نرى أكثر من اثني عشر حاضراً في اجتماع المجلس في بلدة يسكنها 30.000 شخص. هل ما زالت هذه الديمقراطية؟ </p>
 <p style=";text-align:right;direction:rtl"> تُبث الاجتماعات أحيانًا على شاشة التلفزيون للقلة القليلة التي تشاهدها. بعض الصحف تتحدث عن بعض القضايا. لكن قلة من الناس يعرفون الكثير عما يحدث. </p>
-<p style=";text-align:right;direction:rtl"> الغرض من Govmeeting هو منح جميع المواطنين الوصول السريع والسهل إلى ما يفعله موظفوهم العامون والفرص للتأثير على قراراتهم. </p>
+<p style=";text-align:right;direction:rtl"> هناك العديد من الأشخاص الجيدين الذين يدخلون المناصب العامة من أجل تحسين مجتمعاتهم. لكن النظام المعتم الحالي يجعل من السهل للغاية على الآخرين استخدام مكاتبهم لإفادة أنفسهم. </p>
+<p style=";text-align:right;direction:rtl"> الغرض من Govmeeting هو توفير الوصول السريع والسهل إلى القرارات اليومية التي يتخذها مسؤولوهم والمزيد من التبصر فيما تعنيه هذه القرارات. </p>
 <h2 style=";text-align:right;direction:rtl"> الميزات </h2><p style=";text-align:right;direction:rtl"> سوف Govmeeting تلقائيا: </p>
 <ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"> استرداد نسخ أو تسجيلات الاجتماعات الحكومية عبر الإنترنت. </li><li style=";text-align:right;direction:rtl"> نسخ التسجيلات باستخدام تحويل الكلام إلى نص </li><li style=";text-align:right;direction:rtl"> معالجة النصوص إلى تنسيق قياسي. </li><li style=";text-align:right;direction:rtl"> تحميل قاعدة بيانات علائقية بالمعلومات الموجودة في النصوص </li>
 </ul><p style=";text-align:right;direction:rtl"> سيتمكن الأشخاص بعد ذلك من: </p>
