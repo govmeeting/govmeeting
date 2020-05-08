@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "build-clientapp",
-            "command": "c:/nodejs/npm",
+            "command": "npm.cmd",
             "type": "process",
             "args": [
                 "start",
@@ -21,6 +21,7 @@
                 "${workspaceFolder}/BackEnd/WebApp/WebApp.csproj"
             ],
             "problemMatcher": "$msCompile"
+
         },
         {
             "label": "build-workflowapp",
@@ -30,7 +31,62 @@
                 "build",
                 "${workspaceFolder}/BackEnd/WorkflowApp/WorkflowApp.csproj"
             ],
-            "problemMatcher": "$msCompile"
+            "problemMatcher": "$msCompile"       
+        },
+        {
+            "label": "build-TranslateText",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Utilities/TranslateText/TranslateText.csproj"
+            ],
+            "problemMatcher": "$msCompile"       
+        },
+        {
+            "label": "build-KeepWebsiteAlive",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Utilities/KeepWebsiteAlive_App/KeepWebsiteAlive_App.csproj"
+            ],
+            "problemMatcher": "$msCompile"       
+        },
+        {
+            "label": "build-DatabaseAccess_Tests",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/BackEnd/Database/DatabaseAccess_Tests/DatabaseAccess_Tests.csproj"
+            ],
+            "problemMatcher": "$msCompile"       
+        },
+        {
+            "label": "build-ProcessRecording_Tests",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/BackEnd/Online/ProcessMeetings/ProcessRecording_Tests/ProcessRecording_Tests.csproj"
+            ],
+            "problemMatcher": "$msCompile"       
+        },
+        {
+            "label": "Build All",
+            "type": "shell",
+            "command": "echo",
+            "args": [ "Build All has completed"],
+            "problemMatcher": [],
+            "dependsOn": [
+                "build-webapp",
+                "build-workflowapp",
+                "build-TranslateText",
+                "build-KeepWebsiteAlive",
+                "build-DatabaseAccess_Tests",
+                "build-ProcessRecording_Tests"
+            ]
         }
     ]
 }

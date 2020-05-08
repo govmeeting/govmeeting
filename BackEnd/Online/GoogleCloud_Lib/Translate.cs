@@ -19,8 +19,8 @@ namespace GM.GoogleCLoud
 {
     public class TranslateInCloud
     {
-        private AppSettings config;
-        private string GoogleCloudBucketName;
+        // private AppSettings config;
+        // private string GoogleCloudBucketName;
         TranslationClient translationClient;
 
 

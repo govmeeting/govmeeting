@@ -14,7 +14,7 @@ namespace GM.Workflow
 {
     public class WF_ProcessProofread
     {
-        int MEETINGID = 1;      // FOR DEVELOPMENT
+        //int MEETINGID = 1;      // FOR DEVELOPMENT
 
         AppSettings config;
         AddtagsRepository addtagsRepository;

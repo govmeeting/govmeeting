@@ -58,29 +58,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessRecording_Tests", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessTranscript_Lib", "BackEnd\ProcessMeetings\ProcessTranscript_Lib\ProcessTranscript_Lib.csproj", "{3025B04A-F491-4734-8CD1-E107BCF113BE}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ClientApp", "FrontEnd\ClientApp\", "{F49559D6-D6E7-43D9-8EB2-DE26496D5E63}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_63934"
-		Debug.AspNetCompiler.PhysicalPath = "FrontEnd\ClientApp\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63934\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_63934"
-		Release.AspNetCompiler.PhysicalPath = "FrontEnd\ClientApp\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_63934\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "63934"
-		SlnRelativePath = "FrontEnd\ClientApp\"
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ftp_App", "Utilities\Ftp_App\Ftp_App.csproj", "{F7B36B1E-D4B2-4225-82C1-5C0B92B11473}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeepWebsiteAlive_App", "Utilities\KeepWebsiteAlive_App\KeepWebsiteAlive_App.csproj", "{450595A5-421D-47B6-BA5C-5F9EFB9F46DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Configuration_Lib", "BackEnd\Configuration_Lib\Configuration_Lib.csproj", "{2E008A6B-E302-4D1C-AC12-A8616F24F2FC}"
@@ -99,6 +76,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PsScripts", "PsScripts", "{
 		Utilities\PsScripts\Publish-WebApp.ps1 = Utilities\PsScripts\Publish-WebApp.ps1
 		Utilities\PsScripts\Run-PublishedWebApp.ps1 = Utilities\PsScripts\Run-PublishedWebApp.ps1
 		Utilities\PsScripts\Set-IsAspServerRunning.ps1 = Utilities\PsScripts\Set-IsAspServerRunning.ps1
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ClientApp", "FrontEnd\ClientApp\", "{80191673-775A-4AA1-8C4D-F3022C08E4CE}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_56698"
+		Debug.AspNetCompiler.PhysicalPath = "FrontEnd\ClientApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56698\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_56698"
+		Release.AspNetCompiler.PhysicalPath = "FrontEnd\ClientApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56698\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "56698"
+		SlnRelativePath = "FrontEnd\ClientApp\"
 	EndProjectSection
 EndProject
 Global
@@ -163,14 +161,6 @@ Global
 		{3025B04A-F491-4734-8CD1-E107BCF113BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3025B04A-F491-4734-8CD1-E107BCF113BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3025B04A-F491-4734-8CD1-E107BCF113BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F49559D6-D6E7-43D9-8EB2-DE26496D5E63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F49559D6-D6E7-43D9-8EB2-DE26496D5E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F49559D6-D6E7-43D9-8EB2-DE26496D5E63}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{F49559D6-D6E7-43D9-8EB2-DE26496D5E63}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{F7B36B1E-D4B2-4225-82C1-5C0B92B11473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F7B36B1E-D4B2-4225-82C1-5C0B92B11473}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F7B36B1E-D4B2-4225-82C1-5C0B92B11473}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F7B36B1E-D4B2-4225-82C1-5C0B92B11473}.Release|Any CPU.Build.0 = Release|Any CPU
 		{450595A5-421D-47B6-BA5C-5F9EFB9F46DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{450595A5-421D-47B6-BA5C-5F9EFB9F46DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{450595A5-421D-47B6-BA5C-5F9EFB9F46DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -187,6 +177,10 @@ Global
 		{B6B21551-A7CD-46E7-8028-405B3BADCF2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6B21551-A7CD-46E7-8028-405B3BADCF2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6B21551-A7CD-46E7-8028-405B3BADCF2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80191673-775A-4AA1-8C4D-F3022C08E4CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80191673-775A-4AA1-8C4D-F3022C08E4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80191673-775A-4AA1-8C4D-F3022C08E4CE}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{80191673-775A-4AA1-8C4D-F3022C08E4CE}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -209,13 +203,12 @@ Global
 		{E157E2BD-AF03-4D41-8D43-52B3D6D10CC5} = {C5D796A1-3CBE-49F5-BD47-3BB29027F878}
 		{536C6D24-79F7-41A9-B7DD-363734BFB1D2} = {C5D796A1-3CBE-49F5-BD47-3BB29027F878}
 		{3025B04A-F491-4734-8CD1-E107BCF113BE} = {C5D796A1-3CBE-49F5-BD47-3BB29027F878}
-		{F49559D6-D6E7-43D9-8EB2-DE26496D5E63} = {89601BB8-30AA-4591-9332-20EB76B1C5F4}
-		{F7B36B1E-D4B2-4225-82C1-5C0B92B11473} = {6B15424B-85AE-44A7-BDB0-A964CC25188E}
 		{450595A5-421D-47B6-BA5C-5F9EFB9F46DB} = {6B15424B-85AE-44A7-BDB0-A964CC25188E}
 		{2E008A6B-E302-4D1C-AC12-A8616F24F2FC} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{2326AA87-FD84-4DC7-9ABF-27D5BACDEC8D} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{B6B21551-A7CD-46E7-8028-405B3BADCF2F} = {6B15424B-85AE-44A7-BDB0-A964CC25188E}
 		{2CD25487-0540-4D79-8269-68AD36CE6CBE} = {6B15424B-85AE-44A7-BDB0-A964CC25188E}
+		{80191673-775A-4AA1-8C4D-F3022C08E4CE} = {89601BB8-30AA-4591-9332-20EB76B1C5F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {577CF991-85C7-44E5-A640-AE87641C3A8D}
