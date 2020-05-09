@@ -12,7 +12,7 @@ function Main
     }
 
     $clientapp = CombinePaths $solutionFolder "FrontEnd\ClientApp"
-    $webapp = CombinePaths $solutionFolder  "BackEnd\WebAppNew"
+    $webapp = CombinePaths $solutionFolder  "BackEnd\WebApp"
     $secrets = CombinePaths $solutionFolder  "..\_SECRETS"
     $readme = CombinePaths $solutionFolder  "README.md"
     $publish = $webapp + "\bin\release\netcoreapp2.2\publish"
@@ -20,11 +20,11 @@ function Main
 
     .\Build-ProjectReadme.ps1 $clientapp $readme
 
-    # # Set IsAspServerRunnning to false.
-    # # The demo at govmeeting.org will use the client stubs for data
-    # .\Set-IsAspServerRunning.ps1 $appmodule $false
-    # .\Build-ClientApp.ps1 $clientapp
-    # .\Set-IsAspServerRunning.ps1 $appmodule $true
+    # Set IsAspServerRunnning to false.
+    # The demo at govmeeting.org will use the client stubs for data
+    .\Set-IsAspServerRunning.ps1 $appmodule $false
+    .\Build-ClientApp.ps1 $clientapp
+    .\Set-IsAspServerRunning.ps1 $appmodule $true
 
     .\Publish-WebApp.ps1 $webapp
 
@@ -70,6 +70,6 @@ Main
 # Uncomment the notice(s) you want to get.
 #[void][Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 [Console]::Beep(600, 800)
-[void][System.Windows.Forms.MessageBox]::Show("BuildPublishAndSeploy completed.")
+# [void][System.Windows.Forms.MessageBox]::Show("BuildPublishAndSeploy completed.")
 
 

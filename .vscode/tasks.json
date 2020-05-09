@@ -2,17 +2,18 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build-clientapp",
-            "command": "npm.cmd",
-            "type": "process",
-            "args": [
-                "start",
-                "--prefix",
-                "${workspaceFolder}/FrontEnd/ClientApp"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
+          "label": "start-clientapp",
+          "command": "npm.cmd",
+          "type": "process",
+          "args": [
+            "--prefix",
+            "${workspaceFolder}/FrontEnd/ClientApp",
+            "run",
+            "start"
+          ],
+        "problemMatcher": "$msCompile"
+      },
+      {
             "label": "build-webapp",
             "command": "dotnet",
             "type": "process",
@@ -69,7 +70,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/BackEnd/Online/ProcessMeetings/ProcessRecording_Tests/ProcessRecording_Tests.csproj"
+                "${workspaceFolder}/BackEnd/ProcessMeetings/ProcessRecording_Tests/ProcessRecording_Tests.csproj"
             ],
             "problemMatcher": "$msCompile"       
         },

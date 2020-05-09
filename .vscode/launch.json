@@ -5,14 +5,14 @@
    "version": "0.2.0",
    "configurations": [
         {
-            "name": "ClientApp",
+            "name": "ClientApp Standalone",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:4200",
             "webRoot": "${workspaceRoot}/FrontEnd/ClientApp"
         },
         {
-            "name": "ClientApp-W",
+            "name": "ClientApp",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:54843",
@@ -133,8 +133,8 @@
     ],
     "compounds": [
         {
-            "name": "WebApp & ClientApp-W",
-            "configurations": ["WebApp", "ClientApp-W"]
+            "name": "WebApp & ClientApp",
+            "configurations": ["WebApp", "ClientApp"]
         }
     ]
 }

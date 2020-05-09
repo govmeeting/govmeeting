@@ -41,9 +41,9 @@ Show me how it works!
 
 Well, the work is in progress. But click here for:  [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
 
-<div style="pointer-events: none; cursor: default;"> <img src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
+<div> <img style="pointer-events: none; cursor: default;" src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
 <div style="font-size: 125%">  
- <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-eavi8zwh-4t900JzP~WJCo2Z7Z2tk0A"> Govmeeting Slack <img src="images/Slack workspace_site_launch.png"> </a> </div>
+ <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-eavi8zwh-4t900JzP~WJCo2Z7Z2tk0A"> Govmeeting Slack <img src="images/logo_slack25p.png"> </a> </div>
 
 "@
 

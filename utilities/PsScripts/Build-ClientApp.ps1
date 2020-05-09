@@ -22,6 +22,7 @@ Function Main
       Push-Location $clientapp
     }
 
+    npm install
     npm run build
 
     if ($clientapp -ne "") {
