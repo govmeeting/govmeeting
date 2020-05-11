@@ -15,7 +15,7 @@ namespace GM.Workflow
 
         /* ProcessReceivedFiles - For each new file, create database record and send message to manager(s)
          * 
-         * This processes files in the Datafiles\RECEIVED folder.
+         * This processes files in the DATAFILES\RECEIVED folder.
          * It will create a "Meeting" record in the database for those which do not yet have one.
          *  Files can be placed in the RECEIVED folder by:
          *      the RetrieveOnlineFile component

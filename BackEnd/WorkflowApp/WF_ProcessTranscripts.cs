@@ -21,7 +21,7 @@ namespace GM.Workflow
          *   Currently the file types can be either PDF or MP4.
          *   The names of the files must be in the format: <country>_<state>_<county>_<town-or-city>_<gov-entity>_<language>_<date>.<extension>
          *   For example:  USA_TX_TravisCounty_Austin_CityCouncil_en_2017-12-14.pdf
-         * It creates a work folder in the Datafiles folder based on the name of the file.
+         * It creates a work folder in the DATAFILES folder based on the name of the file.
          *    For example: USA_TX_TravisCounty_Austin_CityCouncil_en/2017-12-14
          * For new MP4 files, it calls: ProcessRecording
          * For new PDF files, it calls: ProcessTranscript

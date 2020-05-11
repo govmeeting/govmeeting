@@ -24,9 +24,9 @@ namespace GM.Utilities.Translate
             // Get appsettings
             //var config = serviceProvider.GetService<IOptions<AppSettings>>().Value;
 
-            // Find path to the _SECRETS folder
+            // Find path to the SECRETS folder
             string credentialsFilePath;
-            string secrets = GMFileAccess.FindParentFolderWithName("_SECRETS");
+            string secrets = GMFileAccess.FindParentFolderWithName("SECRETS");
             // If it exists look there for Google Application Credentials.
             if (secrets != null)
             {
@@ -40,7 +40,7 @@ namespace GM.Utilities.Translate
 
             // Google Cloud libraries automatically use the environment variable GOOGLE_APPLICATION_CREDENTIALS
             // to authenticate to Google Cloud. Here we set this variable to the path of the credentials file,
-            // which is defined in appsettings.json in the _SECRETS folder
+            // which is defined in appsettings.json in the SECRETS folder
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
 
             serviceProvider.GetService<TranslateDocs>().Run(args);

@@ -13,7 +13,7 @@ function Main
 
     $clientapp = CombinePaths $solutionFolder "FrontEnd\ClientApp"
     $webapp = CombinePaths $solutionFolder  "BackEnd\WebApp"
-    $secrets = CombinePaths $solutionFolder  "..\_SECRETS"
+    $secrets = CombinePaths $solutionFolder  "..\SECRETS"
     $readme = CombinePaths $solutionFolder  "README.md"
     $publish = $webapp + "\bin\release\netcoreapp2.2\publish"
     $appmodule = $clientapp + "\src\app\app.module.ts"

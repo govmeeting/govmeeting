@@ -44,7 +44,7 @@ export class VideoComponent {
         // TODO - Use the server API to return the video. Until then we need to specify the full path of the video file.
         // var location: string = 'api/video/3/1';  // This would be for MeetingID=3 Part=1
 
-        // If WebApp is running, use Datafiles folder
+        // If WebApp is running, use DATAFILES folder
         if (appData.isAspServerRunning) {
 
           location = 'datafiles/PROCESSING/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part01/';

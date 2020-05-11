@@ -29,9 +29,9 @@ namespace GM.WebApp
                     var env = hostingContext.HostingEnvironment;
                     if (env.IsDevelopment())
                     {
-                        // If development, include _SECRETS/appsettings.Development.json in the configuration.
+                        // If development, include SECRETS/appsettings.Development.json in the configuration.
                         // This file contains the keys for using reCaptcha and Google external authorization.
-                        string devSettingFile = Environment.CurrentDirectory + @"\..\..\..\_SECRETS\" + $"appsettings.{env.EnvironmentName}.json";
+                        string devSettingFile = Environment.CurrentDirectory + @"\..\..\..\SECRETS\" + $"appsettings.{env.EnvironmentName}.json";
                         if (File.Exists(devSettingFile))
                         {
                             config.AddJsonFile(devSettingFile, optional: true, reloadOnChange: true);

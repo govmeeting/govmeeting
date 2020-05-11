@@ -9,7 +9,7 @@ namespace GM.WebApp
 {
     public static class InitializeFileTestData
     {
-        // Copy sample test data from the "testdata" folder to the "Datafiles" folder.
+        // Copy sample test data from the "testdata" folder to the "DATAFILES" folder.
         public static void CopyTestData(string testfilesPath, string datafilesPath)
         {
             string[] dirs = new string[]

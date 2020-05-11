@@ -34,10 +34,10 @@ namespace GM.ProcessRecording_Tests
 
         public void TestSplitTranscript()
         {
-            string fixasrFile = @"C:\GOVMEETING\_SOURCECODE\src\Datafiles\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\R3-ToBeFixed.json";
+            string fixasrFile = @"C:\GOVMEETING\_SOURCECODE\src\DATAFILES\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\R3-ToBeFixed.json";
             string stringValue = File.ReadAllText(fixasrFile);
             FixasrView fixasr = JsonConvert.DeserializeObject<FixasrView>(stringValue);
-            string outputFolder = @"C:\GOVMEETING\_SOURCECODE\src\Datafiles\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\FixText";
+            string outputFolder = @"C:\GOVMEETING\_SOURCECODE\src\DATAFILES\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\FixText";
             int sectionSize = 180;
             int overlap = 5;
             int parts = 4;
@@ -55,7 +55,7 @@ namespace GM.ProcessRecording_Tests
             //string outputFolder = testdata + "\\" + "TestSplitIntoWorkSegments";
             //DeleteAndCreateDirectory(outputFolder);
 
-            string outputFolder = @"C:\GOVMEETING\_SOURCECODE\src\Datafiles\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN\2017-01-09";
+            string outputFolder = @"C:\GOVMEETING\_SOURCECODE\src\DATAFILES\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN\2017-01-09";
             string videoFile = outputFolder + "\\" + "01-Video.mp4";
             string transcriptFile = outputFolder + "\\" + "R3-ToBeFixed.json";
             int segmentSize = 180;

@@ -67,7 +67,7 @@ namespace GM.Workflow
             }
         }
 
-        // Create a work folder in Datafiles/PROCESSING and process the recording
+        // Create a work folder in DATAFILES/PROCESSING and process the recording
         public void doWork(Meeting meeting)
         {
             // Get the work folder path

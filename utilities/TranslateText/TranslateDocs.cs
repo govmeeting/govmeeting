@@ -49,7 +49,7 @@ namespace GM.Utilities.Translate
             //RenderMarkdown();
 
             var files = from f in Directory.EnumerateFiles(folder)
-                        where f.EndsWith(".en.md")
+                        where f.EndsWith(".md")
                         select f;
 
             foreach (string file in files)
@@ -60,7 +60,7 @@ namespace GM.Utilities.Translate
 
         private void TranslateOneDocument(string file, string language, bool deletePrior)
         {
-            string newFile = file.Replace(".en.md", "." + language + ".md");
+            string newFile =  language.ToUpper() + "/" + file;
 
             if (File.Exists(newFile) && deletePrior)
             {
@@ -72,11 +72,11 @@ namespace GM.Utilities.Translate
             {
                 string contents = GMFileAccess.Readfile(file);
                 var htmlContents = CommonMark.CommonMarkConverter.Convert(contents);
-                //string htmlFile = f.Replace(".en.md", ".en.html");
+                //string htmlFile = file.Replace(".md", ".html");
                 //File.WriteAllText(htmlFile, htmlContents);
 
                 string translated = translateInCloud.TranslateHtml(htmlContents, language);
-                //string htmlNewFile = f.Replace(".en.md", "." + language + ".html");
+                //string htmlNewFile = newfile.Replace(".md", ".html");
                 //File.WriteAllText(htmlNewFile, translated);
 
                 string replaced = ReplaceSomeStrings(translated);

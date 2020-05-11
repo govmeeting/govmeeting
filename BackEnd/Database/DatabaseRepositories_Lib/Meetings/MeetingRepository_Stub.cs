@@ -65,11 +65,11 @@ namespace GM.DatabaseRepositories
         }
 
         // These are sample meetings for testing. When WebApp is started, test data for these meetings is
-        // copied into the Datafiles folder. Note that the WorkStatus is set appropriately to match the
-        // data that will be in Datafiles.
-        // For example, this means that if the status is "WorkStatus.Tagging", then Datafiles/PROCESSING
+        // copied into the DATAFILES folder. Note that the WorkStatus is set appropriately to match the
+        // data that will be in DATAFILES.
+        // For example, this means that if the status is "WorkStatus.Tagging", then DATAFILES/PROCESSING
         // will contain work files where the tagging for this meeting is being done.
-        // If the status is "WorkStatus.Received", then Datafiles/RECEIVED will contain the file.
+        // If the status is "WorkStatus.Received", then DATAFILES/RECEIVED will contain the file.
 
         private List<Meeting> testMeetings = new List<Meeting>
         {

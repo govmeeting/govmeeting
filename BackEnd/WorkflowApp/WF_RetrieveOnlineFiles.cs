@@ -18,7 +18,7 @@ namespace GM.Workflow
          *    Check the website where either its transcript or a recording may be found.
          *    If found it will:
          * 2. Start the file retrieval.
-         * 3. Store the retieved file in the "Datafiles/RECEIVED" folder.
+         * 3. Store the retieved file in the "DATAFILES/RECEIVED" folder.
          * Repeat for each government body.
          *
          *  Files can also be placed in the RECEIVED folder by the phone app for recording a meeting.

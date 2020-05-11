@@ -31,8 +31,10 @@ export class OverviewComponent implements OnInit {
   changeLanguage(language: string) {
     this.language = language;
     this.title = GetPageTitle("overview", this.language);
-    this.document1 = "assets/docs/overview1"+ "." + this.language + ".md";
-    this.document2 = "assets/docs/overview2"+ "." + this.language + ".md";
+    let folder = "TRANS/" + (this.language).toUpperCase() + "/";
+    if (this.language == "en") folder = "";
+    this.document1 = "assets/docs/" + folder + "overview1.md";
+    this.document2 = "assets/docs/" + folder + "overview1.md";
   }
 
   showtranscript: boolean = false;

@@ -36,7 +36,7 @@ bld/
 
 .synkron.syncdb
 desktop.ini
-Datafiles/
+DATAFILES/
 src/logs/
 **/wwwroot/dist/
 **/ClientApp/dist/

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 // This is preliminary work on a controller that will serve video files.
 // THis would allow us to:
-//   * not need to configure the Datafiles folder as a static file provider.
+//   * not need to configure the DATAFILES folder as a static file provider.
 //   * not require the ClientApp to know the exact file location of all video files that it requests.
 
 namespace GM.WebApp.Features.Video

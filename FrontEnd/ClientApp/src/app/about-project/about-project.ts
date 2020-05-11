@@ -31,18 +31,34 @@ export class AboutComponent implements OnInit {
     // We subscribe to changes in user settings language.
     this.userSettingsService.subscribeLanguage(language => {
       this.language = language;
-      this.title = GetPageTitle(this.pageid, this.language);
-      this.document = "assets/docs/" + this.pageid + "." + this.language + ".md"
+      // this.title = GetPageTitle(this.pageid, this.language);
+      this.setDocument(this.pageid, this.language);
+      // if (this.language == "en") {
+      //   this.document = "assets/docs/" + this.pageid  + ".md"
+      // } else {
+      //   this.document = "assets/docs/" + this.pageid + (this.language).toUpperCase() + "/" + this.pageid + ".md"
+      // }
     })
 
     // We subscribe to changes in the about page displayed.
     // https://stackblitz.com/edit/angular-3fkg6e?file=src%2Fapp%2Fcomponent-a.component.ts
     this.activeRoute.queryParams.subscribe(params => {
         this.pageid = params.id;
-        this.title = GetPageTitle(this.pageid, this.language);
-        this.document = "assets/docs/" + this.pageid + "." + this.language + ".md"
+        this.setDocument(this.pageid, this.language);
+        // this.title = GetPageTitle(this.pageid, this.language);
+        // this.document = "assets/docs/" + this.pageid + "." + this.language + ".md"
     })
   }
+
+  setDocument(pageid, language) {
+    this.title = GetPageTitle(pageid, language);
+    if (language == "en") {
+      this.document = "assets/docs/" + pageid  + ".md"
+    } else {
+      this.document = "assets/docs/TRANS/" + (language).toUpperCase() + "/" + this.pageid + ".md"
+    }
+}
+
   errorHandler(ev) {
     console.log("in errorHandler")
   }

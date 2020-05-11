@@ -145,7 +145,7 @@ namespace GM.WebApp
 
             logger.Info("Configure datafiles PhysicalFileProvider");
 
-            // Add a PhysicalFileProvider for the Datafiles folder. Until we have a way to serve video files to 
+            // Add a PhysicalFileProvider for the DATAFILES folder. Until we have a way to serve video files to 
             // videogular via the API, we need to allow these to be accessed as static files.
             string datafilesPath = config.Value.DatafilesPath;
             if (!Directory.Exists(datafilesPath))
@@ -212,7 +212,7 @@ namespace GM.WebApp
             bool migrateDatabase = false;
             dbInitializer.Initialize(migrateDatabase).Wait();
 
-            logger.Info("Copy test data to Datafiles folder");
+            logger.Info("Copy test data to DATAFILES folder");
 
             string testfilesPath = config.Value.TestfilesPath;
             InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);

@@ -33,7 +33,7 @@ namespace GM.ProcessRecording_Tests
             //_config.TestfilesPath = Environment.CurrentDirectory + @"\..\..\testdata";
             _config.DatafilesPath = Environment.CurrentDirectory + _config.DatafilesPath;
             _config.TestfilesPath = Environment.CurrentDirectory + _config.TestfilesPath;
-            _config.GoogleApplicationCredentials = Environment.CurrentDirectory + @"..\\..\\..\\..\\..\\..\\..\\..\\_SECRETS\\TranscribeAudio.json";
+            _config.GoogleApplicationCredentials = Environment.CurrentDirectory + @"..\\..\\..\\..\\..\\..\\..\\..\\SECRETS\\TranscribeAudio.json";
 
             TestMoveToCloudAndTranscribe(language);
             TestTranscriptionOfFileInCloud(language);

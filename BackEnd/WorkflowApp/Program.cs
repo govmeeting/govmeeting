@@ -76,8 +76,8 @@ namespace GM.Workflow
             string appsettingsdir = Directory.GetCurrentDirectory();
 
             string devSettingFile = $"appsettings.{environmentName}.json";
-            // Find path to the _SECRETS folder
-            string secrets = GMFileAccess.GetProjectSiblingFolder("_SECRETS");
+            // Find path to the SECRETS folder
+            string secrets = GMFileAccess.FindParentFolderWithName("SECRETS");
             // If it exists look there for environment settings file.
             if (secrets != null)
             {
