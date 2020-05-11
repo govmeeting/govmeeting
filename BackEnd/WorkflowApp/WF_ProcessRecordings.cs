@@ -22,6 +22,8 @@ namespace GM.Workflow
         IMeetingRepository meetingRepository;
         ILogger<WF_ProcessReceivedFiles> logger;
 
+        string credentialsFilePath;
+
         public WF_ProcessRecordings(
             ILogger<WF_ProcessReceivedFiles> _logger,
             IOptions<AppSettings> _config,
@@ -47,14 +49,22 @@ namespace GM.Workflow
         // Find all new received meetings whose source is a recording and approved status is true.
         public void Run()
         {
+            if (!File.Exists(credentialsFilePath)){
+                logger.LogError("Credentials File does not exists: ${credentialsFilePath}");
+                // return;
+            }
 
-            List<Meeting> meetings = meetingRepository.FindAll(SourceType.Recording, WorkStatus.Received, true);
+            // Do we need manager approval?
+            bool? approved = true;
+            if (!config.RequireManagerApproval) approved = null;
+
+            List<Meeting> meetings;
+            meetings = meetingRepository.FindAll(SourceType.Recording, WorkStatus.Received, approved);
 
             foreach (Meeting meeting in meetings)
             {
                 doWork(meeting);
             }
-
         }
 
         // Create a work folder in Datafiles/PROCESSING and process the recording
@@ -73,14 +83,20 @@ namespace GM.Workflow
             // Move source file to the PROCESSING folder
             string sourceFilePath = config.DatafilesPath + "\\RECEIVED\\" + meeting.SourceFilename;
             string destFilePath = config.DatafilesPath + "\\PROCESSING\\" + meeting.SourceFilename;
+
+            if (!File.Exists(sourceFilePath))
+            {
+                logger.LogError("File does not exist: ${sourceFilePath}");
+                return;
+            }
+
             if (File.Exists(destFilePath))
             {
                 logger.LogError("File already exists: ${destFilePath}");
-            }
-            else {
-                File.Move(sourceFilePath, destFilePath);
+                return;
             }
 
+            File.Move(sourceFilePath, destFilePath);
             processRecording.Process(destFilePath, workFolderPath, meetingFolder.language);
 
         }

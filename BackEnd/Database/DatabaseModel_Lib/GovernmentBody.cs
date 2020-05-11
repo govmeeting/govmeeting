@@ -20,5 +20,17 @@ namespace GM.DatabaseModel
         public List<Language> Languages { get; set; }
         public List<Meeting> Meetings { get; set; }
         public List<Topic> Topics { get; set; }
+
+        public GovernmentBody()
+        {
+        }
+        public GovernmentBody(string country, string state, string county, string municipality)
+        {
+            Country = country;
+            State = state;
+            County = county;
+            Municipality = municipality;
+        }
+
     }
 }

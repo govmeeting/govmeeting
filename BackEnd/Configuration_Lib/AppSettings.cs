@@ -24,6 +24,7 @@ namespace GM.Configuration
         public bool MoveIncomingFileAfterProcessing { get; set; }
         public bool ExitAfterOnceThroughWorkflow { get; set; }
         public string GoogleApplicationCredentials { get; set; }
+        public bool RequireManagerApproval { get; set; }
         public bool UseDatabaseStubs { get; set; }
         public DbAdminSettings DbAdmin { get; set; }
     }

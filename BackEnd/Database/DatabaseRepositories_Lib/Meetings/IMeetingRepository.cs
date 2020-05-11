@@ -12,6 +12,9 @@ namespace GM.DatabaseRepositories
         long GetId(Meeting meeting);
         //long GetId(long govBodyId, DateTime datetime);
         Meeting Get(long govBodyId, DateTime datetime);
+
+        long Add(Meeting m);
+
         List<Meeting> FindAll(SourceType? sourceType, WorkStatus? workStatus, bool? approved);
     }
 }

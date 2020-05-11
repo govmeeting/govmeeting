@@ -42,6 +42,12 @@ namespace GM.DatabaseRepositories
             return null;
         }
 
+        public long Add(Meeting m)
+        {
+            // TODO - implement
+            return -1;
+        }
+
         public List<Meeting> FindAll(SourceType? sourceType, WorkStatus? workStatus, bool? approved)
         {
             // TODO - implement

@@ -24,27 +24,52 @@ namespace GM.DatabaseRepositories
     //    );
     //    return g.Id;
     //}
-    public long GetId(string country, string state, string county, string municipality)
+
+
+    public long GetIdOfMatching(string country, string state, string county, string municipality)
     {
-        GovernmentBody g = testGovBodies.Find(element =>
-            (element.Country == country) &&
-            (element.County == county) &&
-            (element.State == state) &&
-            (element.Municipality == municipality)
-        );
-        return g.Id;
+        GovernmentBody govBody = new GovernmentBody(country, state, county, municipality);
+        return GetIdOfMatching(govBody);
     }
 
-    public GovernmentBody Get(string country, string state, string county, string municipality)
+    public long GetIdOfMatching(GovernmentBody g)
     {
-        GovernmentBody g = testGovBodies.Find(element =>
-            (element.Country == country) &&
-            (element.County == county) &&
-            (element.State == state) &&
-            (element.Municipality == municipality)
-        );
-        return g;
+        GovernmentBody govBody = GetMatching(g);
+
+        return (govBody == null) ? -1 : govBody.Id;
     }
+
+    public GovernmentBody GetMatching(string country, string state, string county, string municipality)
+    {
+        GovernmentBody govBody = new GovernmentBody(country, state, county, municipality);
+        return GetMatching(govBody);
+    }
+
+    public GovernmentBody GetMatching(GovernmentBody g)
+    {
+        GovernmentBody govBody = testGovBodies.Find(e =>
+            (e.Country == g.Country) &&
+            (e.County == g.County) &&
+            (e.State == g.State) &&
+            (e.Municipality == g.Municipality)
+        );
+        return govBody;
+    }
+
+    public long Add(string country, string state, string county, string municipality)
+    {
+        GovernmentBody g = new GovernmentBody(country, state, county, municipality);
+        return Add(g);
+    }
+
+    public long Add(GovernmentBody govBody )
+    {      
+        long id= testGovBodies.Count + 1;
+        govBody.Id = id;
+        testGovBodies.Add(govBody);
+        return id;
+    }
+
 
     private GovernmentBody GetTestMeeting(long govBodyId)
     {

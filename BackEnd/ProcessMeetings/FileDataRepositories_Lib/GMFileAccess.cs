@@ -219,6 +219,27 @@ namespace GM.FileDataRepositories
             return Path.GetFullPath(path);
         }
 
+        /* GetProjectSiblingFolder is for creating/finding sibling folders to the project.
+        * These include: _TESTDATA, DATAFILES, _SECRETS.
+        * These folders must be outside the project folder so that they are not 
+        * included in the code repository.
+        * The names are coming from appsettings.json. The name could be just
+        * the folder name in development. But in production, it will be a rooted path.
+        * In production, we just return the path.
+        */
+        public static string GetProjectSiblingFolder(string name)
+        {
+            if (Path.IsPathRooted(name))
+            {
+                return name;
+            }
+            string projectFolder = FindParentFolderContaining("govmeeting.sln");
+            string path = Path.Combine(projectFolder, "../" + name);
+            path = Path.GetFullPath(path);
+            return path;
+        }
+
+
         public static string FindParentFolderContaining(string file)
         {
             string current = Directory.GetCurrentDirectory();

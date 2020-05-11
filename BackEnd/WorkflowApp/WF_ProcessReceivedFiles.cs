@@ -70,14 +70,34 @@ namespace GM.Workflow
             }
 
             // Check if there is a database record for this government body.
-            long govBodyId = govBodyRepository.GetId(
+            GovernmentBody govBody = new GovernmentBody(
                 meetingFolder.country,
                 meetingFolder.state,
                 meetingFolder.county,
                 meetingFolder.municipality);
 
+            // If not, add one
+            long govBodyId = govBodyRepository.GetIdOfMatching(govBody);
+            if (govBodyId == -1)
+            {
+                govBodyId = govBodyRepository.Add(govBody);
+            };
+
             // Check if there is database record for this meeting.
             Meeting meeting = meetingRepository.Get(govBodyId, DateTime.Parse(meetingFolder.date));
+            // If not, add one
+            if (meeting == null)
+            {
+                meeting = new Meeting();
+                meeting.GovernmentBodyId = govBodyId;
+                meeting.Date = DateTime.Parse(meetingFolder.date);
+                meeting.SourceFilename = filename;
+                meeting.Language = meetingFolder.language;
+                meeting.SourceType = SourceType.Recording;
+                meeting.WorkStatus = WorkStatus.Received;
+                meeting.Approved = false;
+                meetingRepository.Add(meeting);
+            }
 
             if (!meeting.Approved)
             {

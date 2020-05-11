@@ -45,7 +45,6 @@ _____
   * cd FrontEnd/ClientApp
   * npm install
 * Complile and run ClientApp
-  * cd FrontEnd/ClientApp
   *  npm start
 * In the debug panel, set launch configuration "ClientApp Standalone"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
@@ -62,19 +61,24 @@ By default, ClientApp will call stub services instead of calling the WebApp API.
   * Ctrl-Shift-P
   * Select "Tasks: Run Task"
   * Select "build-webapp" or "Build All"
-* Start ClientApp
+* Start ClientApp (if it's not already running)
   * cd FrontEnd/ClientApp
   * npm start
 * In the debug panel, set launch configuration "WebApp & ClientApp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
+  * Chrome browser will open and after a brief wait, ClientApp will appear on localhost:5000.
 
-The sub-folders on Google drive are for testing WebApp. The PDF and MP4 files are for testing WorkflowApp. 
+NOTES:
+
+"Build All" builds all .Net components: (WorkflowApp, etc). When complete, check each terminal window for errors. Re-run if there is an error. There is a known race condition bug in restoring multiple NuGet packages aysnchronously.
+
+The sub-folders on Google drive are for testing WebApp. The files (.PDF and .MP4) are for testing WorkflowApp. 
 
 When "isAspServerRunning" is set to true, stub services are no longer used and ClientApp will call the WebApp API for data.
 
-"build-webapp" builds the WebApp. "Build All" builds all the .Net apps and libraries. They also download any required NuGet packages.
+"build-webapp" builds WebApp. "Build All" builds all the .Net apps and libraries. They both install required NuGet packages.
 
-ClientApp is served by the webpack-dev-server. WebApp uses the Kestrel server included in Asp.Net Core to respond to Web API calls. But it proxies internal ClientApp requests to the webpack-dev-server.
+ClientApp is served by the webpack-dev-server. WebApp runs the Kestrel server, included in Asp.Net Core. Kestrel responds to Web API requests, but proxies ClientApp requests to the webpack-dev-server.
 
 
 ## Run WorkflowApp
@@ -82,7 +86,16 @@ ClientApp is served by the webpack-dev-server. WebApp uses the Kestrel server in
 * In debug panel, set launch configuration "WorkflowApp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
 
-WorkflowApp processes the PDF and MP4 files in _TESTDATA. However, in order for it to transcribe MP4 files, you will need to first setup a <a href="about?id=setup#GoogleCloud">Google Cloud account. </a>
+WorkflowApp processes PDF and transcribes MP4 meeting files. However, in order for it to transcribe MP4 files, you need to first setup a <a href="about?id=setup#GoogleCloud">Google Cloud account. </a>
+
+Besides the test files on Google Drive, you can also use your own:
+* Download an MP4 recording from Youtube or elsewhere.
+* Name the file as follows: "country_state_county_municipality_agency_language-code_date.mp4".
+* For example: "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4".
+* Put the file in "TESTDATA"
+* Run WorkflowApp.
+
+If you have your Google Account set up, it will transcribe the recording. 
 
 _____
 

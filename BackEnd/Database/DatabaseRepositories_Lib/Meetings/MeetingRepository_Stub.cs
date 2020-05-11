@@ -56,6 +56,14 @@ namespace GM.DatabaseRepositories
             return meeting;
         }
 
+        public long Add(Meeting m)
+        {
+            long id = testMeetings.Count;
+            m.Id = id + 1;
+            testMeetings.Add(m);
+            return m.Id;
+        }
+
         // These are sample meetings for testing. When WebApp is started, test data for these meetings is
         // copied into the Datafiles folder. Note that the WorkStatus is set appropriately to match the
         // data that will be in Datafiles.
@@ -144,24 +152,26 @@ namespace GM.DatabaseRepositories
                 SourceType = SourceType.Recording,
                 WorkStatus = WorkStatus.Received,
                 Approved = true
-           },
-            // This meeting is a sample MP4 recording for WorkflowApp to process.
-            // Workstatus is set initially to Received, Approved to false
-            // This means it needs to be approved before ProcessRecordings will start to process it.
-            new Meeting()           // Boothbay Harbor 01/09/2017
-            {
-                Id = 5,
-                Name = "Monthly Regular",
-                Date = new DateTime(2017, 1, 09),
-                // Length = 192,
-                Length = -1,
-                TopicDiscussions = null,
-                GovernmentBodyId = 1,
-                SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4",
-                SourceType = SourceType.Recording,
-                WorkStatus = WorkStatus.Received,
-                Approved = false
            }
+
+        //     // This meeting is a sample MP4 recording for WorkflowApp to process.
+        //     // Workstatus is set initially to Received, Approved to false
+        //     // This means it needs to be approved before ProcessRecordings will start to process it.
+        //     new Meeting()           // Boothbay Harbor 01/09/2017
+        //     {
+        //         Id = 5,
+        //         Name = "Monthly Regular",
+        //         Date = new DateTime(2017, 1, 09),
+        //         // Length = 192,
+        //         Length = -1,
+        //         TopicDiscussions = null,
+        //         GovernmentBodyId = 1,
+        //         SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4",
+        //         SourceType = SourceType.Recording,
+        //         WorkStatus = WorkStatus.Received,
+        //         Approved = false
+        //    }
+
         };
     }
 }

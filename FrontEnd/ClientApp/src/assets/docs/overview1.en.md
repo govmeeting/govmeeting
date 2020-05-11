@@ -8,11 +8,11 @@ In the Athenian Assembly of 500 BC, a quorum of 6,000 of the 43,000 citizens was
 
 Today it is rare to see more than a dozen attendees at a council meeting in a town of 30,000 people. Is this still democracy? 
 
-Meetings are sometimes broadcast on TV, for the few who watch them. Some newspapers report on some issues. But few people know much of what occurs.
+Meetings are sometimes broadcast on TV, bit few watch them. Some newspapers report on some issues. But few people know most of what transacts during these meetings.
 
-There are many fine people who enter public office in order to improve their communities. But the current opaque system makes it too easy for others to use their office to benefit themselves. 
+There are many fine people who enter public office in order to improve their communities. But the current opaque system makes it too easy for others to use the office to benefit themselves. 
 
-The purpose of Govmeeting is provide quick and easy access into the day by day decisions that their officials make and more insight into what those decisions mean.
+The purpose of Govmeeting is provide quick and easy access into official decisions that their representatives make and insight into what they mean.
 
 ## Features
 
@@ -40,6 +40,8 @@ People will then be able to:
 * Search for what a specific official said on issues.
 * Search for voting results on legislation
 * See statistics, graphs and charts on issues, legislature, etc.
+
+A goal is for Govmeeting to work anywhere, in any language, for any form of representative government. The only requirement is that official meetings are open to the public or the transcripts are available. 
 
 <!-- END OF README SECTION -->
 

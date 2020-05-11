@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -147,6 +148,13 @@ namespace GM.WebApp
             // Add a PhysicalFileProvider for the Datafiles folder. Until we have a way to serve video files to 
             // videogular via the API, we need to allow these to be accessed as static files.
             string datafilesPath = config.Value.DatafilesPath;
+            if (!Directory.Exists(datafilesPath))
+            {
+                Directory.CreateDirectory(datafilesPath);
+                Directory.CreateDirectory(datafilesPath + "/RECEIVED");
+                Directory.CreateDirectory(datafilesPath + "/PROCESSING");
+                Directory.CreateDirectory(datafilesPath + "/COMPLETED");
+            }
             logger.Info("datafilesPath=" + datafilesPath);
             app.UseStaticFiles(new StaticFileOptions
             {

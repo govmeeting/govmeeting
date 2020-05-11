@@ -41,14 +41,14 @@ namespace GM.Workflow
             string testfilesPath = config.TestfilesPath;
             string datafilesPath = config.DatafilesPath;
 
-            // Delete PROCESSING folder?
-            if (config.DeleteProcessingFolderOnStartup)
-            {
-                GMFileAccess.DeleteDirectoryContents(datafilesPath + @"\PROCESSING");
-            }
+            var logger = serviceProvider.GetService<ILogger<Program>>();
 
             // Copy test data to Datafiles
-            InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);
+            string err = InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath, config.DeleteProcessingFolderOnStartup);
+            if (err != null)
+            {
+                logger.LogError(err);
+            }
 
             // entry to run app
             serviceProvider.GetService<WorkflowController>().Run();
@@ -77,7 +77,7 @@ namespace GM.Workflow
 
             string devSettingFile = $"appsettings.{environmentName}.json";
             // Find path to the _SECRETS folder
-            string secrets = GMFileAccess.FindParentFolderWithName("_SECRETS");
+            string secrets = GMFileAccess.GetProjectSiblingFolder("_SECRETS");
             // If it exists look there for environment settings file.
             if (secrets != null)
             {
@@ -98,9 +98,12 @@ namespace GM.Workflow
             services.Configure<AppSettings>(myOptions =>
             {
                 // Modify paths to be full paths.
-                myOptions.DatafilesPath = GMFileAccess.GetFullPath(myOptions.DatafilesPath);
-                myOptions.TestfilesPath = GMFileAccess.GetFullPath(myOptions.TestfilesPath);
-                myOptions.GoogleApplicationCredentials = GMFileAccess.GetFullPath(myOptions.GoogleApplicationCredentials);
+                myOptions.DatafilesPath = GMFileAccess.GetProjectSiblingFolder(myOptions.DatafilesPath);
+                myOptions.TestfilesPath = GMFileAccess.GetProjectSiblingFolder(myOptions.TestfilesPath);
+                myOptions.GoogleApplicationCredentials = GMFileAccess.GetProjectSiblingFolder(myOptions.GoogleApplicationCredentials);
+                // myOptions.DatafilesPath = GMFileAccess.GetFullPath(myOptions.DatafilesPath);
+                // myOptions.TestfilesPath = GMFileAccess.GetFullPath(myOptions.TestfilesPath);
+                // myOptions.GoogleApplicationCredentials = GMFileAccess.GetFullPath(myOptions.GoogleApplicationCredentials);
             });
 
             // add services
@@ -113,8 +116,12 @@ namespace GM.Workflow
             //services.AddTransient<ILoadTranscript, LoadTranscript_Stub>();
             services.AddTransient<AddtagsRepository>();
             services.AddTransient<FixasrRepository>();
-            services.AddTransient<IMeetingRepository, MeetingRepository_Stub>();
-            services.AddTransient<IGovBodyRepository, GovBodyRepository_Stub>();
+
+            // services.AddTransient<IMeetingRepository, MeetingRepository_Stub>();
+            // services.AddTransient<IGovBodyRepository, GovBodyRepository_Stub>();
+            services.AddSingleton<IMeetingRepository, MeetingRepository_Stub>();
+            services.AddSingleton<IGovBodyRepository, GovBodyRepository_Stub>();
+            
             services.AddTransient<WF_RetrieveOnlineFiles>();
             services.AddTransient<WF_ProcessReceivedFiles>();
             services.AddTransient<WF_ProcessRecordings>();

@@ -52,7 +52,11 @@ namespace GM.Workflow
         public void Run()
         {
 
-            List<Meeting> meetings = meetingRepository.FindAll(SourceType.Transcript, WorkStatus.Received, true);
+            // Do we need manager approval?
+            bool? approved = true;
+            if (!config.RequireManagerApproval) approved = null;
+
+            List<Meeting> meetings = meetingRepository.FindAll(SourceType.Transcript, WorkStatus.Received, approved);
 
             foreach (Meeting meeting in meetings)
             {
@@ -77,10 +81,15 @@ namespace GM.Workflow
             }
 
             string sourceFilePath = config.DatafilesPath + "\\RECEIVED\\" + meeting.SourceFilename;
+            if (!File.Exists(sourceFilePath)){
+                logger.LogError("Source file does not exist: ${sourceFilePath}");
+                return;
+            }
+
             string destFilePath = config.DatafilesPath + "\\PROCESSING\\" + meeting.SourceFilename;
             if (File.Exists(destFilePath))
             {
-                logger.LogError("File already exists: ${destFilePath}");
+                logger.LogError("Destination file already exists: ${destFilePath}");
             }
             else
             {
