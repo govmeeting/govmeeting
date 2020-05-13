@@ -1,3 +1,4 @@
+<! - Bearbeiten Sie diese Datei nicht. Es wurde von Google übersetzt. ->
 <!-- START OF README SECTION --><!-- Note the controller for this page is app/about-project/overview/overview.ts -->
 <p> Öffentliche Versammlungen sind das Herz und die Seele der Demokratie. Hier vertreten die Bürger gegensätzliche Ansichten und einigen sich auf Entscheidungen, die uns alle betreffen. </p>
 

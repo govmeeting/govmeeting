@@ -63,7 +63,7 @@ $postSetup =
     ###### Create overview portion of README.md
 
     # Read the overview doc
-    $overviewDoc = $clientapp + "\src\assets\docs\overview1.en.md"
+    $overviewDoc = $clientapp + "\src\assets\docs\overview1.md"
     $overview = get-content -Raw $overviewDoc
 
     # Take from start of readme section
@@ -86,7 +86,7 @@ $postSetup =
     ###### Create setup portion of README.md
 
     # read the setup doc
-    $setupDoc = $clientapp + "\src\assets\docs\setup.en.md"
+    $setupDoc = $clientapp + "\src\assets\docs\setup.md"
     $setup = get-content -Raw $setupDoc
 
     # $index = $setup.IndexOf('<!-- START OF README SECTION -->')
