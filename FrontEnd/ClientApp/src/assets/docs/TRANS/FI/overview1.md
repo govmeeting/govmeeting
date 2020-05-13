@@ -5,11 +5,11 @@
 
 <p> Nykyään on harvinaista nähdä yli tusina osallistujaa neuvoston kokouksessa 30 000 ihmisen kaupungissa. Onko tämä edelleen demokratiaa? </p>
 
-<p> Tapaamisia lähetetään joskus televisiossa harvoille, jotka katselevat niitä. Jotkut sanomalehdet raportoivat tietyistä aiheista. Mutta harvat ihmiset tietävät suuren osan tapahtumista. </p>
+<p> Kokouksia lähetetään joskus televisiosta, vähän harvat katsovat niitä. Jotkut sanomalehdet raportoivat tietyistä aiheista. Mutta harvat ihmiset tietävät suurimman osan siitä, mitä näiden kokousten aikana tapahtuu. </p>
 
-<p> On monia hienoja ihmisiä, jotka tulevat julkiseen toimistoon parantaakseen yhteisöään. Mutta nykyisen läpinäkymättömän järjestelmän ansiosta muiden on liian helppoa käyttää toimistoaan itsensä hyväksi. </p>
+<p> On monia hienoja ihmisiä, jotka tulevat julkiseen toimistoon parantaakseen yhteisöään. Mutta nykyisen läpinäkymättömän järjestelmän ansiosta muiden on liian helppoa käyttää toimistoa itsensä hyväksi. </p>
 
-<p> Govmeetingin tarkoituksena on tarjota nopea ja helppo pääsy virkamiesten tekemiin päivittäisiin päätöksiin ja saada enemmän tietoa siitä, mitä nämä päätökset tarkoittavat. </p>
+<p> Govmeetingin tarkoituksena on tarjota nopea ja helppo pääsy heidän edustajiensa tekemiin virallisiin päätöksiin ja käsitys heidän tarkoituksestaan. </p>
 <h2> ominaisuudet </h2>
 <p> Govmeeting automaattisesti: </p>
 
@@ -34,11 +34,13 @@
 <li> Etsi mitä tietty virkamies sanoi asioista. </li>
 <li> Etsi äänestystuloksia lainsäädännöstä </li>
 <li> Katso tilastoja, kaavioita ja kaavioita aiheista, lainsäätäjästä jne. </li>
-</ul><!-- END OF README SECTION -->
+</ul>
+<p> Tavoitteena on, että Govmeeting työskentelee missä tahansa, millä tahansa kielellä, minkä tahansa edustavan hallituksen muodossa. Ainoa vaatimus on, että viralliset kokoukset ovat avoimia yleisölle tai että tekstit ovat saatavilla. </p>
+
+<p> Demokratia on vaarassa kaikkialla maailmassa. Jotta se selviytyisi, siitä on tultava olennainen osa ihmisten elämää. Tämä voi alkaa vain paikallisella ruohonjuuritason tasolla. </p>
+<!-- END OF README SECTION -->
 <p><a name="continued"></a></p>
 <h2> Ongelmat nykyisessä käyttöoikeudessa </h2>
-<p> Tällaisen tiedon saaminen on nykyään vaikeaa. Vain muutamat suuret kaupungit antavat kokousten jäljennökset saataville. Ja näitä on usein vaikea hankkia ja käyttää. </p>
+<p> Hallituksen virkamiesten ei yleensä ole ensisijaista pitää äänestäjiä hyvin tietoisina toiminnastaan. Vain muutamat suuret kaupungit antavat kokousten jäljennökset saataville. Ja niitä on usein vaikea hankkia ja käyttää. </p>
 
-<p> Philadelphia on USA: n kuudenneksi suurin kaupunki. Tässä on näytesivu neuvoston tekstikirjoituksesta. Siinä on 154 sivua kaksijakoisia rivejä, 10 sanaa riviä kohti. Se on PDF-muodossa, joten se on käyttökelvoton pienillä näytöillä, koska kokoa ei voi säätää. Sisältöluetteloa ei myöskään ole. Ja hakemistoa voi käyttää juridinen tutkija, mutta ei keskimääräinen henkilö. </p>
-
-<p> Napsauta alla nähdäksesi näytekopion ja hakemiston. </p>
+<p> Philadelphia on Yhdysvaltojen 6. suurin kaupunki Napsauttamalla alla olevaa näytetään kaupunginvaltuuskunnan selosteen mallisivu. Siinä on 154 sivua kaksijakoisia rivejä, 10 sanaa riviä kohti. Sen PDF-muotoa ei voida käyttää pienillä näytöillä, koska kokoa ei voi säätää. Sisältöluetteloa ei ole. Hakemistoa voi käyttää juridinen tutkija, mutta ei keskimääräinen henkilö. </p>

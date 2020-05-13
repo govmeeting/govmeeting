@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NLog.Web;
+using GM.FileDataRepositories;
+
 
 namespace GM.WebApp
 {
@@ -31,7 +33,8 @@ namespace GM.WebApp
                     {
                         // If development, include SECRETS/appsettings.Development.json in the configuration.
                         // This file contains the keys for using reCaptcha and Google external authorization.
-                        string devSettingFile = Environment.CurrentDirectory + @"\..\..\..\SECRETS\" + $"appsettings.{env.EnvironmentName}.json";
+                        string secretsFolder = GMFileAccess.GetProjectSiblingFolder("SECRETS");
+                        string devSettingFile = secretsFolder + "/" + $"appsettings.{env.EnvironmentName}.json";
                         if (File.Exists(devSettingFile))
                         {
                             config.AddJsonFile(devSettingFile, optional: true, reloadOnChange: true);

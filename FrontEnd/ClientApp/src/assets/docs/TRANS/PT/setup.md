@@ -7,11 +7,9 @@
 <li> <a href="about?id=setup#DevelopVS">Desenvolver com o Visual Studio</a> </li>
 <li> <a href="about?id=setup#DevelopOther">Desenvolva em outras plataformas</a> </li>
 <li> <a href="about?id=setup#Database">Base de dados</a> </li>
-<li> <a href="about?id=setup#GoogleCloud">Conta do Google Cloud Platform</a> </li>
+<li> <a href="about?id=setup#GoogleCloud">Google Cloud Platform</a> </li>
 <li> <a href="about?id=setup#GoogleApi">Chaves da API do Google</a> </li>
-</ul>
-<p> Essas páginas de documentação podem ser encontradas em FrontEnd / ClientApp / src / app / assets / docs. Faça as correções lá e emita uma <a href="https://github.com/govmeeting/govmeeting">solicitação de recebimento no Gitub.</a> </p>
-<hr />
+</ul><hr />
 <p><a name="InstallTools"></a></p>
 <h1> Instalar ferramentas e clonar repositório <br/></h1>
 <p> <a href="about?id=setup#Contents">[Conteúdo]</a> </p>
@@ -20,19 +18,15 @@
 <li> Instale o git. <a href="https://gitforwindows.org">Git para Windows</a> , <a href="https://git-scm.com/download/mac">Git para Mac</a> </li>
 <li> Instale o <a href="https://nodejs.org/en/download/">Node.js.</a> </li>
 <li> Instale o <a href="https://dotnet.microsoft.com/download">.Net Core SDK.</a> </li>
-<li> "Fork" o projeto no github </li>
-<li> Clonar o projeto localmente </li>
-<li> Crie uma pasta para o repositório clonado chamado "SECRETS" </li>
-</ul>
-<p> A pasta "SECRETS" é para chaves e senhas que não são armazenadas no repositório público. Isso seria necessário para executar os serviços da API do Google. </p>
-<hr />
+<li> Clone ou faça o download do projeto no <a href="https://github.com/govmeeting/govmeeting">Github.</a> De preferência, bifurque o projeto e clone-o. </li>
+</ul><hr />
 <p><a name="DevelopVsCode"></a></p>
 <h1> Desenvolver com VsCode <br/></h1>
 <p> <a href="about?id=setup#Contents">[Conteúdo]</a> </p>
 <h2> Instale o VsCode </h2>
 <ul>
 <li> Instale o <a href="https://code.visualstudio.com/download">Visual Studio Code</a> e inicie-o. </li>
-<li> Abra as extensões no painel lateral esquerdo e instale: 
+<li> Instale essas extensões usando o painel de extensões à esquerda: 
 <ul>
 <li> "Depurador para Chrome" da Microsoft </li>
 <li> "C
@@ -41,53 +35,90 @@
 <li> "Todo Tree" de Gruntfuggly - mostra as linhas do TODO no código (opcional) </li>
 <li> "Powershell" da Microsoft - para depuração de scripts de construção do Powershell (opcional) </li>
 </ul></li>
-</ul><h2> Depurar / Executar ClientApp e WebApp </h2>
+</ul><h2> Execute o ClientApp autônomo </h2>
 <ul>
-<li> Abra a pasta Govmeeting no VsCode </li>
+<li> Abra a pasta do projeto no VsCode </li>
+<li> Instale os pacotes NPM: 
+<ul>
 <li> Abra um painel de terminal no VsCode </li>
 <li> cd FrontEnd / ClientApp </li>
 <li> instalação npm </li>
+</ul></li>
+<li> Conclua e execute o ClientApp 
+<ul>
 <li> início npm </li>
-<li> No painel de depuração, defina a configuração de inicialização "WebApp & ClientApp-W" </li>
-<li> Pressione F5 (depuração) ou Ctrl-F5 (executada sem depuração) </li>
-</ul>
-<p> O ClientApp será aberto em um navegador. </p>
-
+</ul></li>
+<li> No painel de depuração, defina a configuração de inicialização "ClientApp Independente" </li>
+<li> Pressione F5 (depuração) ou Ctrl-F5 (executada sem depuração) 
 <ul>
-<li> Clique em qualquer um dos itens de menu "Sobre" para ver a documentação. </li>
-<li> Clique no item do menu local "Boothbay Harbor". Você verá o painel aberto para este local. </li>
+<li> OU abra um navegador para o host local: 4200 </li>
+</ul></li>
 </ul>
-<p> Para verificar se o ClientApp está chamando a API WebApp para recuperar dados. </p>
-
+<p> Por padrão, o ClientApp chama serviços de stub em vez de chamar a API WebApp. </p>
+<h2> Execute ClientApp e WebApp </h2>
 <ul>
-<li> Clique em "Revisar Transcrição". Você verá um painel de vídeo e um texto transcrito. Clique no botão de reprodução de vídeo. </li>
-<li> Clique em "Adicionar tags à transcrição". Você verá uma transcrição de uma reunião a ser marcada. </li>
-<li> Clique em "Exibir última reunião". Você verá uma transcrição completa para visualização. </li>
-</ul>
-<p> A maioria dos outros cartões do painel não chama o WebApp, mas retorna dados de teste. </p>
-
-<p> O ClientApp é servido pelo servidor webpack-dev-iniciado com "npm start". O WebApp usa o servidor Kestrel incluído no Asp.Net Core. O servidor Kestrel responde às chamadas da API da Web. Mas proxies solicitações internas do ClientApp para o servidor webpack-dev. </p>
-<h2> Depurar / Executar ClientApp autônomo </h2>
+<li> Faça o download das subpastas do <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive.</a> Coloque-os em uma pasta irmã no projeto chamado "TESTDATA" </li>
+<li> No FrontEnd / ClientApp / app.module.ts, altere "isAspServerRunning" de false para true. </li>
+<li> Construir projetos: 
 <ul>
-<li> No app.module.ts, altere "isAspServerRunning" de true para false. </li>
+<li> Ctrl-Shift-P </li>
+<li> Selecione "Tarefas: Executar tarefa" </li>
+<li> Selecione "build-webapp" ou "Build All" </li>
+</ul></li>
+<li> Inicie o ClientApp (se ainda não estiver em execução) 
+<ul>
+<li> cd FrontEnd / ClientApp </li>
 <li> início npm </li>
-<li> No painel de depuração, defina a configuração de inicialização "ClientApp" </li>
-<li> Pressione F5 (depuração) ou Ctrl-F5 (executada sem depuração) </li>
-</ul>
-<p> Quando "isAspServerRunning" é definido como false, serviços de stub são usados, em vez de chamar a API WebApp. Isso é útil para quando estamos apenas modificando o código no ClientApp. </p>
-<h2> Depurar / Executar WorkflowApp </h2>
+</ul></li>
+<li> No painel de depuração, defina a configuração de inicialização "WebApp & ClientApp" </li>
+<li> Pressione F5 (depuração) ou Ctrl-F5 (executada sem depuração) 
 <ul>
+<li> O navegador Chrome será aberto e, após um breve atraso, o ClientApp aparecerá no host local: 5000. </li>
+</ul></li>
+</ul><h3> Notas </h3>
+<p> "build-webapp" cria WebApp. </p>
+
+<p> "Build All" cria todos os projetos. Como o build-webapp, ele instala os pacotes NuGet conforme necessário. Verifique se há erros em cada janela do terminal e execute novamente, se necessário. Existe um bug de condição de corrida conhecido na restauração de vários pacotes NuGet de forma assíncrona. </p>
+
+<p> Definir "isAspServerRunning" como true diz ao ClientApp para chamar a API WebApp em vez dos serviços de stub. </p>
+
+<p> As subpastas no Google drive são para testar o WebApp. Os arquivos são para testar o WorkflowApp. </p>
+
+<p> O ClientApp é servido pelo servidor webpack-dev. O WebApp usa o servidor Kestrel. Mas o Kestrel proxies solicitações do ClientApp para o servidor webpack-dev. </p>
+<h2> Execute o WorkflowApp </h2>
+<ul>
+<li> Faça o download dos arquivos de teste do <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive.</a> </li>
 <li> No painel de depuração, defina a configuração de inicialização "WorkflowApp" </li>
 <li> Pressione F5 (depuração) ou Ctrl-F5 (executada sem depuração) </li>
-</ul>
-<p> Quando o WorkflowApp o inicia: </p>
+</ul><h3> Notas </h3>
+<p> O WorkflowApp processa textos de transcrição e transcreve gravações. A transcrição de gravações requer uma <a href="about?id=setup#GoogleCloud">conta do Google Cloud.</a> </p>
+
+<p> O WorkflowApp cria uma pasta para a pasta do projeto (e TESTDATA), chamada "DATAFILES". Dentro de DATAFILES, existem 3 subpastas: </p>
 
 <ul>
-<li> Copia alguns arquivos de teste na pasta Datafles / RECEIVED: um arquivo PDF de transcrição e um arquivo MP4 de gravação. </li>
-<li> Processa o arquivo PDF de transcrição e cria um arquivo JSON pronto para ser marcado. </li>
-<li> Processe o arquivo MP4 de gravação, transcrevendo-o na nuvem e crie um arquivo JSON pronto para ser revisado. </li>
+<li> RECEBIDO - Todos os arquivos colocados nesta pasta serão processados automaticamente. </li>
+<li> PROCESSAMENTO - Contém pastas de trabalho para processamento. </li>
+<li> CONCLUÍDO - Os arquivos concluídos são colocados aqui. </li>
 </ul>
-<p> Os resultados podem ser encontrados em Arquivos de dados / PROCESSAMENTO. No entanto, você precisará primeiro configurar uma <a href="about?id=setup#GoogleCloud">conta do Google Cloud</a> para que a gravação seja transcrita. </p>
+<p> Para facilitar o teste, o WorkflowApp copia arquivos de TESTDATA para DATAFILES / RECEIVED quando é iniciado. </p>
+<h3> Processar novas gravações </h3>
+<p> Além dos arquivos de teste no Google Drive, você pode processar suas próprias gravações de reuniões: </p>
+
+<ul>
+<li> Obtenha uma gravação no formato mp4 de uma reunião do governo. </li>
+<li> Nomeie o arquivo da seguinte maneira: "country_state_county_municipality_agency_language-code_date.mp4". </li>
+<li> Por exemplo: "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4". </li>
+<li> Coloque o arquivo em "DATAFILES / RECEIVED" </li>
+<li> Em BackEnd / WorkflowApp / appsettings.json, defina os seguintes requisitos: 
+<ul>
+<li> "InitializeWithTestData": false </li>
+<li> "RequireManagerApproval": false </li>
+</ul></li>
+<li> Execute o WorkflowApp. </li>
+</ul>
+<p> Se você tiver uma Conta do Google configurada, ela transcreverá a gravação. </p>
+<h3> Processar novas transcrições </h3>
+<p> Além das transcrições de teste, você também pode processar por conta própria. Os arquivos de teste são transcrições das reuniões do conselho da cidade de Filadélfia, PA, EUA. Para lidar com outros formatos de transcrição, você precisará adicionar um método ao ProcessTranscript_Lib. Veja a <a href="https://github.com/govmeeting/govmeeting/issues/93">edição 93</a> . Eventualmente, o objetivo é escrever um código que manipule automaticamente todos ou a maioria dos formatos sem código personalizado. </p>
 <hr />
 <p><a name="DevelopVS"></a></p>
 <h1> Desenvolver com o Visual Studio <br/></h1>
@@ -103,10 +134,13 @@
 <li> "Editor de descontos" </li>
 </ul></li>
 <li> Abra o arquivo de solução "govmeeting.sln" </li>
-</ul><h2> Depurar / Executar ClientApp e WebApp </h2>
+</ul><h2> Execute ClientApp e WebApp </h2>
 <ul>
-<li> No Task Runner Explorer (ClientApp): 
+<li> Faça o download das subpastas do <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive.</a> Coloque-os em uma pasta irmã no projeto chamado "TESTDATA" </li>
+<li> No FrontEnd / ClientApp / app.module.ts, altere "isAspServerRunning" de false para true. </li>
+<li> No Gerenciador de tarefas 
 <ul>
+<li> Selecione: ClientApp </li>
 <li> execute "instalar" </li>
 <li> execute "start" </li>
 </ul></li>
@@ -116,8 +150,9 @@
 </ul>
 <p> NOTA: Há um problema com a definição de pontos de interrupção no Angular ClientApp no Visual Studio. Veja: <a href="https://github.com/govmeeting/govmeeting/issues/80">Edição
 # 80 do Github</a> </p>
-<h2> Depurar WorkflowApp </h2>
+<h2> Execute o WorkflowApp </h2>
 <ul>
+<li> Faça o download dos arquivos de teste do Google Drive (veja acima) </li>
 <li> Abra o painel de depuração. </li>
 <li> Defina o projeto de inicialização como "WorkflowApp" </li>
 <li> Pressione F5 (depuração) ou Ctrl-F5 (executada sem depuração) </li>
@@ -125,11 +160,11 @@
 <p> Nota: Veja as notas do WorkflowApp em "Código do Visual Studio" </p>
 <hr />
 <p><a name="DevelopOther"></a></p>
-<h1> Desenvolva em outras plataformas <br/></h1>
+<h1> Desenvolva com outras ferramentas <br/></h1>
 <p> <a href="about?id=setup#Contents">[Conteúdo]</a> </p>
 
 <p> No seu perfil, defina a variável de ambiente ASPNETCORE_ENVIRONMENT como "Desenvolvimento". Isso é usado pelo WebApp e WorkflowApp. </p>
-<h2> Construa e execute o ClientApp </h2>
+<h2> Execute ClientApp </h2>
 <p> Executar: </p>
 
 <ul>
@@ -138,7 +173,7 @@
 <li> início npm </li>
 </ul>
 <p> Vá para localhost: 4200 no seu navegador. O aplicativo cliente será carregado. Alguns recursos não funcionarão até que o WebApp esteja em execução. </p>
-<h2> Construa e execute o WebApp com ClientApp </h2>
+<h2> Execute o WebApp com ClientApp </h2>
 <p> Executar: </p>
 
 <ul>
@@ -148,11 +183,11 @@
 <li> bin de execução do dotnet / debug / dotnet2.2 / webapp.dll </li>
 </ul>
 <p> Vá para localhost: 5000 no seu navegador. O aplicativo cliente será carregado. </p>
-<h2> Construa e execute o ClientApp autônomo </h2>
+<h2> Execute o ClientApp autônomo </h2>
 <ul>
 <li> No app.module.ts, altere "isAspServerRunning" de true para false. </li>
 <li> (faça acima: "Crie e inicie o ClientApp") </li>
-</ul><h2> Crie e execute o WorkflowApp </h2>
+</ul><h2> Execute o WorkflowApp </h2>
 <p> Executar: </p>
 
 <ul>
@@ -213,7 +248,7 @@
 <li> No Visual Studio, acesse as páginas de propriedades do WebApp -&gt; Compilar -&gt; e digite NOAUTH na caixa "Símbolos de compilação condicional". </li>
 </ul><hr />
 <p><a name="GoogleCloud"></a></p>
-<h1> Conta do Google Cloud Platform <br/></h1>
+<h1> Google Cloud Platform <br/></h1>
 <p> <a href="about?id=setup#Contents">[Conteúdo]</a> </p>
 
 <p> Para usar as APIs do Google Speech para conversão de fala em texto, você precisa de uma conta do Google Cloud Platform (GCP). Para a maioria dos trabalhos de desenvolvimento no Govmeeting, você pode usar os dados de teste existentes. Mas se você deseja transcrever novas gravações, você fará um GCP. A API do Google pode transcrever gravações em mais de 120 idiomas e variantes. </p>
@@ -240,14 +275,12 @@
 <p> Faça o download do arquivo JSON da credencial. </p>
 </li>
 <li>
-<p> Coloque o arquivo na pasta <code>SECRETS</code> que você criou quando clonou o repositório. </p>
+<p> Crie uma pasta <code>SECRETS</code> como irmão na pasta de projeto clonada </p>
 </li>
 <li>
-<p> Renomeie o arquivo <code>TranscribeAudio.json</code> . </p>
+<p> Coloque o arquivo de credencial em SECRETS e renomeie-o como <code>TranscribeAudio.json</code> . </p>
 </li>
-</ul>
-<p> NOTA: As etapas acima podem ter sido ligeiramente alteradas. Em caso afirmativo, atualize este documento. </p>
-<h2> Teste da transcrição de fala em texto </h2>
+</ul><h2> Teste da transcrição de fala em texto </h2>
 <ul>
 <li>
 <p> Defina o projeto de inicialização no Visual Studio como <code>Backend/WorkflowApp</code> . Pressione F5. </p>
@@ -256,7 +289,7 @@
 <p> Copie (não mova) um dos arquivos MP4 de amostra de testdata para DATAFILES / RECEIVED. </p>
 </li>
 </ul>
-<p> O programa agora reconhecerá que um novo arquivo apareceu e começará a processá-lo. O arquivo MP4 será movido para "CONCLUÍDO" quando terminar. Você verá os resultados em suolders, que foram criados no diretório "Arquivos de dados". </p>
+<p> O programa agora reconhecerá que um novo arquivo apareceu e começará a processá-lo. O arquivo MP4 será movido para "CONCLUÍDO" quando terminar. Você verá os resultados em suolders, que foram criados no diretório "DATAFILES". </p>
 
 <p> No appsettings.json, há uma propriedade "RecordingSizeForDevelopment". Atualmente, está definido como "180". Isso faz com que a rotina de transcrição em ProcessRecording_Lib processe apenas os primeiros 180 segundos da gravação. </p>
 <hr />
@@ -270,8 +303,10 @@
 <li> As chaves do ReCaptcha são necessárias para usar o ReCaptcha durante o registro do usuário. Eles podem ser obtidos no <a href="https://developers.google.com/recaptcha/">Google reCaptcha</a> . </li>
 <li> As credenciais do OAuth 2.0 são usadas para fazer logon de usuário externo sem a necessidade de o usuário criar uma conta pessoal no site. Visite o <a href="https://console.developers.google.com/">Google API Console</a> para obter credenciais, como um ID e um segredo do cliente. </li>
 </ul>
-<p> Crie um arquivo chamado "appsettings.Development.json" na pasta "SECRETS". Ele deve conter as chaves que você acabou de obter: </p>
-<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-Id", "ClientSecret": "your-client-secret" } }, "ReCaptcha:SiteKey": "your-site-key", "ReCaptcha:Secret": "your-secret" }</code> </pre><hr /><h2> Teste reCaptcha </h2>
+<p> Crie uma pasta <code>SECRETS</code> como irmão da pasta do projeto clonada. Crie um arquivo chamado "appsettings.Development.json", com o seguinte formato. </p>
+<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-Id", "ClientSecret": "your-client-secret" } }, "ReCaptcha:SiteKey": "your-site-key", "ReCaptcha:Secret": "your-secret" }</code> </pre>
+<p> Edite-o para conter as chaves que você acabou de obter: </p>
+<hr /><h2> Teste reCaptcha </h2>
 <ul>
 <li> Execute o projeto WebApp. </li>
 <li> Clique em "Registrar" no canto superior direito. </li>

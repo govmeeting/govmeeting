@@ -1,50 +1,45 @@
-<h1> Behandeln Sie neue Transkripte </h1>
-<p> Einige Städte erstellen Abschriften von Versammlungen. Auf diese Weise können wir das Transkribieren des Meetings selbst überspringen. Aber es stellt ein anderes Problem dar. Transkripte werden nicht in einem Standardformat vorliegen. </p>
+<h1> Verarbeiten Sie neue Transkriptformate </h1>
+<p> Das ultimative Ziel ist es, Code zu schreiben, der jedes Transkriptformat verarbeitet. Bis dahin müssen wir jedoch benutzerdefinierten Code schreiben, um jedes neue Format zu verarbeiten. Wenn wir genügend Beispiele für verschiedene Formate haben, können wir den generischen Code besser schreiben. </p>
 
-<p> Unsere Software muss: </p>
-
-<ul>
-<li> Extrahieren Sie die Informationen. </li>
-<li> Fügen Sie Tags hinzu, mit denen die Informationen einfach verwendet werden können. </li>
-</ul>
-<p> Informationen, die normalerweise in einem Transkript enthalten sind und die wir extrahieren möchten, sind: </p>
+<p> Dies sind die Schritte zum Umgang mit neuen Transkriptformaten: </p>
 
 <ul>
-<li> Besprechungsinformationen: Zeit, Ort, ob es sich um eine besondere Besprechung handelt. </li>
+<li>
+<p> Erhalten Sie ein Beispielprotokoll einer Regierungssitzung als PDF- oder Textdatei. </p>
+</li>
+<li>
+<p> Benennen Sie die Datei wie folgt: "country_state_county_municipality_agency_language-code_date.pdf". (oder .txt) Zum Beispiel: </p>
+<pre> <code> "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.pdf".</code> </pre></li>
+<li>
+<p> Erstellen Sie im Projekt "ProcessTranscripts_Lib" eine neue Klasse mit der Schnittstelle "ISpecificFix". </p>
+</li>
+<li>
+<p> Nennen Sie die Klasse "country_state_county_municipality_agency_language-code". Zum Beispiel: </p>
+<pre> <code> public class USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en : ISpecificFix</code> </pre></li>
+<li>
+<p> Implementieren Sie die Klassenmethode: </p>
+<pre> <code> string Fix(string _transcript, string workfolder)</code> </pre></li>
+<li>
+<p> Fix () empfängt den vorhandenen Transkripttext und gibt den Text im folgenden Format zurück: </p>
+</li>
+</ul><pre> <code>Section: INVOCATION Speaker: COUNCIL PRESIDENT CLARKE Good morning. We&#39;re getting a very late start, so we&#39;d like to get moving. To give our invocation this morning, the Chair recognizes Pastor Mark Novales of the City Reach Philly in Tacony. I would ask all guests, members, and visitors to please rise. (Councilmembers, guests, and visitors rise.) Speaker: PASTOR NOVALES Good morning, City Council and guests and visitors. I pastor, as was mentioned, a powerful little church in -- a powerful church in Tacony called City Reach Philly. I&#39;m honored to stand in this great place of decision-making. ...</code> </pre>
+<p> Wenn diese Klasse abgeschlossen ist, verarbeitet WorkflowApp die neuen Transkripte, wenn sie in "DATAFILES / RECEIVED" angezeigt werden. </p>
+
+<p> Anmerkungen: </p>
+
+<p> Wir verwenden System.Reflection, um die richtige Klasse basierend auf dem Namen der zu verarbeitenden Datei zu instanziieren. </p>
+
+<p> Ein Beispiel finden Sie in der Klasse "USA_PA_Philadelphia_Philadelphia_CityCouncil_en" in ProcessTranscripts_Lib. Sie können besser verstehen, was diese Klasse tut, indem Sie sich die Protokolldateispuren im "Arbeitsordner" ansehen, der als Argument an Fix () übergeben wird. </p>
+
+<p> Wir extrahieren die folgenden Informationen jetzt nicht, aber wir werden dies eventuell tun wollen. </p>
+
+<ul>
 <li> Anwesende Beamte </li>
-<li> Abschnittsüberschriften </li>
-<li> Name jedes Sprechers und was sie gesagt haben. </li>
+<li> Gesetzentwürfe und Beschlüsse eingeführt </li>
+<li> Abstimmungsergebnisse </li>
 </ul>
-<p> Wenn keine Abschnittsüberschriften vorhanden sind, sollte die Software intelligent genug sein, um zu bestimmen, wo allgemeine Abschnitte beginnen: </p>
-
-<ul>
-<li> Rollenaufruf </li>
-<li> Aufruf </li>
-<li> Ausschussberichte </li>
-<li> Einführung von Rechnungen </li>
-<li> Beschlüsse </li>
-<li> Öffentlicher Kommentar </li>
-</ul>
-<p> Wir werden sehen müssen, wie gut wir auch Abstimmungsergebnisse zu Gesetzentwürfen und Beschlüssen extrahieren können. Manchmal werden die Ergebnisse durch Sätze wie "Die Ayes haben es" angezeigt. In anderen Fällen findet eine formelle Abstimmung statt, bei der der Name jedes Beamten vorgelesen wird und die Person mit "Ja" oder "Nein" antwortet. </p>
-
-<p> Überflüssige Informationen müssen entfernt werden. Zum Beispiel: Wiederholen von Kopf- oder Fußzeilen, Zeilennummern und Seitenzahlen. </p>
-
-<p> Es ist zu hoffen, dass allgemeiner Code geschrieben werden kann, der Informationen aus neuen Transkripten extrahieren kann, die es noch nie gegeben hat. Bis dahin muss jedoch neuer Code geschrieben werden, um bestimmte Fälle zu behandeln. </p>
-
-<p> Da normalerweise nur größere Städte Transkripte erstellen: </p>
-
-<ul>
-<li> Die meiste Zeit werden wir uns mit Aufzeichnungen von Besprechungen befassen. </li>
-<li> In einer größeren Stadt gibt es eher Computerprogrammierer, die in der Lage sind, solchen Code zu schreiben. </li>
-</ul>
-<p> Wir könnten einen Plug-In-Mechanismus erstellen, mit dem Module hinzugefügt werden können, die die Extraktion durchführen. Wir könnten zulassen, dass die Plugins in vielen verschiedenen Sprachen geschrieben werden: Python, Java, PHP, Ruby - zusätzlich zu den Sprachen, in denen das System derzeit geschrieben ist: Typescript und C #. </p>
-
-<p> Derzeit behandelt die Software nur einen Fall, Philadelphia, PA USA. Die Projektbibliothek "Backend \ ProcessMeetings \ ProcessTranscripts_lib" enthält Code zur Verarbeitung von Transkripten. </p>
-
-<p> Die Klasse "Specific_Philadelphia_PA_USA" ruft einige Allzweckroutinen auf, um Transkripte für Philadelphia zu verarbeiten. </p>
-
-<p> Es gibt eine Stub-Klasse "Specific_Austin_TX_USA", die für die Verarbeitung eines Transkripts in Austin, TX, vorgesehen ist. Vielleicht möchte jemand versuchen, diesen Code zu vervollständigen. Im Ordner Testdata befindet sich ein Testprotokoll. Aber es ist wahrscheinlich am besten, das Neueste von ihrer Website zu erhalten: <a href="https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm">Austin, TX City Council</a> </p>
-<h1> Ändern des Client-Dashboards </h1><h2> Fügen Sie eine Karte für eine neue Funktion hinzu </h2>
+<p> Austin, TX - USA hat auch Abschriften von öffentlichen Versammlungen online. In ProcessTranscripts_Lib wurde eine Klasse mit dem Namen "USA_TX_TravisCounty_Austin_CityCouncil_en" erstellt. Die Fix () -Methode wurde jedoch nicht implementiert. Transkripte können von ihrer Website bezogen werden: <a href="https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm">Austin, TX City Council</a> </p>
+<h1> Ändern Sie das Client-Dashboard </h1><h2> Fügen Sie eine Karte für eine neue Funktion hinzu </h2>
 <ul>
 <li> Wechseln Sie an einer Terminal-Eingabeaufforderung in den Ordner: FrontEnd / ClientApp </li>
 <li> Geben Sie Folgendes ein: ng Komponente Ihrer Funktion generieren </li>
@@ -67,18 +62,17 @@
 <li> "nlog-all- (date) .log" enthält alle Protokollmeldungen einschließlich des Systems. </li>
 <li> Die Datei "nlog-own- (date) .log" enthält nur die Anwendungsnachrichten. </li>
 </ul>
-<p> Am Anfang vieler Komponentendateien in ClientApp wird eine Konstante "NoLog" definiert. Ändern Sie den Wert von true in false, um die Konsolenprotokollierung nur für diese Komponente zu aktivieren. </p>
+<p> Oben in vielen Komponentendateien in ClientApp wird eine Konstante "NoLog" definiert. Ändern Sie den Wert von true in false, um die Konsolenprotokollierung nur für diese Komponente zu aktivieren. </p>
 <h1> Skripte erstellen </h1>
 <p> Powershell-Build-Skripte finden Sie in Utilities / PsScripts </p>
-<h2> BuildPublishAndDeploy.ps1 </h2>
-<p> Dieses Skript ruft viele der anderen Skripte auf, um eine Produktionsversion zu erstellen, und stellt sie bereit. </p>
 
 <ul>
+<li> BuildPublishAndDeploy.ps1 - Rufen Sie die anderen Skripts auf, um eine Version zu erstellen und bereitzustellen. </li>
 <li> Build-ClientApp.ps1 - Erstellen Sie Produktionsversionen von ClientApp </li>
 <li> Publish-WebApp.ps1 - Erstellen Sie einen "Publish" -Ordner von WebApp </li>
 <li> Copy-ClientAssets.ps1 - Kopieren Sie ClientApp-Assets in den WebApp-Ordner wwwroot </li>
 <li> Deploy-PublishFolder.ps1 - Stellen Sie den Veröffentlichungsordner auf einem Remote-Host bereit </li>
 <li> Erstellen Sie die Datei README.md für Gethub aus den Dokumentationsdateien </li>
 </ul>
-<p> Deploy-PublishFolder.ps1 stellt die Software über FTP auf govmeeting.org bereit. Die FTP-Anmeldeinformationen befinden sich in der Datei appsettings.Development.json im Ordner SECRETS. Es enthält FTP und andere Geheimnisse zur Verwendung in der Entwicklung. Unten ist das Format dieser Datei: </p>
-<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-id", "ClientSecret": "your-client-secret" } }, "ReCaptcha": { "SiteKey": "your-site-key", "Secret": "your-secret" }, "Ftp": { "username": "your-username", "password": "your-password", "domain": "your-domain" } }</code> </pre>
+<p> Deploy-PublishFolder.ps1 stellt die Software über FTP auf govmeeting.org bereit. Die FTP-Anmeldeinformationen befinden sich in der Datei appsettings.Development.json im Ordner SECRETS. Es enthält FTP und andere Geheimnisse zur Verwendung in der Entwicklung. Unten finden Sie den Abschnitt dieser Datei, der von FTP verwendet wird: </p>
+<pre> <code>{ ... "Ftp": { "username": "your-username", "password": "your-password", "domain": "your-domain" } ... }</code> </pre>

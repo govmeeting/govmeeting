@@ -34,7 +34,7 @@ export class OverviewComponent implements OnInit {
     let folder = "TRANS/" + (this.language).toUpperCase() + "/";
     if (this.language == "en") folder = "";
     this.document1 = "assets/docs/" + folder + "overview1.md";
-    this.document2 = "assets/docs/" + folder + "overview1.md";
+    this.document2 = "assets/docs/" + folder + "overview2.md";
   }
 
   showtranscript: boolean = false;

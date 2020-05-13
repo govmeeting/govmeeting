@@ -7,11 +7,9 @@
 <li> <a href="about?id=setup#DevelopVS">Entwickeln Sie mit Visual Studio</a> </li>
 <li> <a href="about?id=setup#DevelopOther">Entwickeln Sie auf anderen Plattformen</a> </li>
 <li> <a href="about?id=setup#Database">Datenbank</a> </li>
-<li> <a href="about?id=setup#GoogleCloud">Google Cloud Platform-Konto</a> </li>
+<li> <a href="about?id=setup#GoogleCloud">Google Cloud Platform</a> </li>
 <li> <a href="about?id=setup#GoogleApi">Google API-Schlüssel</a> </li>
-</ul>
-<p> Diese Dokumentationsseiten finden Sie in FrontEnd / ClientApp / src / app / assets / docs. Bitte nehmen Sie dort Korrekturen vor und stellen Sie eine <a href="https://github.com/govmeeting/govmeeting">Pull-Anfrage auf Gitub.</a> </p>
-<hr />
+</ul><hr />
 <p><a name="InstallTools"></a></p>
 <h1> Installieren Sie Tools und klonen Sie das Repository <br/></h1>
 <p> <a href="about?id=setup#Contents">[Inhalt]</a> </p>
@@ -20,19 +18,15 @@
 <li> Git installieren. <a href="https://gitforwindows.org">Git für Windows</a> , <a href="https://git-scm.com/download/mac">Git für Mac</a> </li>
 <li> Installieren Sie <a href="https://nodejs.org/en/download/">Node.js.</a> </li>
 <li> Installieren Sie das <a href="https://dotnet.microsoft.com/download">.Net Core SDK.</a> </li>
-<li> "Fork" das Projekt auf Github </li>
-<li> Klonen Sie das Projekt lokal </li>
-<li> Erstellen Sie einen Geschwisterordner für das geklonte Repository mit dem Namen "SECRETS". </li>
-</ul>
-<p> Der Ordner "SECRETS" enthält Schlüssel und Kennwörter, die nicht im öffentlichen Repository gespeichert sind. Diese werden benötigt, um Google API-Dienste auszuführen. </p>
-<hr />
+<li> Klonen oder laden Sie das Projekt von <a href="https://github.com/govmeeting/govmeeting">Github</a> herunter <a href="https://github.com/govmeeting/govmeeting">.</a> Verzweigen Sie das Projekt am besten und klonen Sie Ihre Gabel. </li>
+</ul><hr />
 <p><a name="DevelopVsCode"></a></p>
 <h1> Entwickeln Sie mit VsCode <br/></h1>
 <p> <a href="about?id=setup#Contents">[Inhalt]</a> </p>
 <h2> Installieren Sie VsCode </h2>
 <ul>
 <li> Installieren Sie <a href="https://code.visualstudio.com/download">Visual Studio Code</a> und starten Sie es. </li>
-<li> Öffnen Sie die Erweiterungen auf der linken Seite und installieren Sie: 
+<li> Installieren Sie diese Erweiterungen über das Erweiterungsfenster links: 
 <ul>
 <li> "Debugger for Chrome" von Microsoft </li>
 <li> "C
@@ -41,53 +35,90 @@
 <li> "Todo Tree" von Gruntfuggly - zeigt TODO-Zeilen im Code (optional) </li>
 <li> "Powershell" von Microsoft - zum Debuggen von Powershell-Build-Skripten (optional) </li>
 </ul></li>
-</ul><h2> Debuggen / Ausführen von ClientApp & WebApp </h2>
+</ul><h2> Führen Sie ClientApp eigenständig aus </h2>
 <ul>
-<li> Öffnen Sie den Govmeeting-Ordner in VsCode </li>
+<li> Öffnen Sie den Projektordner in VsCode </li>
+<li> Installieren Sie NPM-Pakete: 
+<ul>
 <li> Öffnen Sie einen Terminalbereich in VsCode </li>
 <li> cd FrontEnd / ClientApp </li>
 <li> npm installieren </li>
+</ul></li>
+<li> Schließen Sie ClientApp ab und führen Sie es aus 
+<ul>
 <li> npm starten </li>
-<li> Legen Sie im Debug-Bereich die Startkonfiguration auf "WebApp & ClientApp-W" fest. </li>
-<li> Drücken Sie F5 (Debug) oder Strg-F5 (ohne Debugging ausführen). </li>
-</ul>
-<p> Die ClientApp wird in einem Browser geöffnet. </p>
-
+</ul></li>
+<li> Legen Sie im Debug-Bereich die Startkonfiguration auf "ClientApp Standalone" fest. </li>
+<li> Drücken Sie F5 (Debug) oder Strg-F5 (ohne Debugging ausführen). 
 <ul>
-<li> Klicken Sie auf einen der Menüpunkte "Info", um die Dokumentation anzuzeigen. </li>
-<li> Klicken Sie auf den Standortmenüpunkt "Boothbay Harbor". Sie sehen, dass das Dashboard für diesen Speicherort geöffnet ist. </li>
+<li> ODER öffnen Sie einen Browser für localhost: 4200 </li>
+</ul></li>
 </ul>
-<p> So überprüfen Sie, ob ClientApp die WebApp-API aufruft, um Daten abzurufen. </p>
-
+<p> Standardmäßig ruft ClientApp Stub-Services auf, anstatt die WebApp-API aufzurufen. </p>
+<h2> Führen Sie ClientApp & WebApp aus </h2>
 <ul>
-<li> Klicken Sie auf "Korrekturlesen". Sie sehen einen Videobereich und transkribierten Text. Klicken Sie auf die Schaltfläche zur Videowiedergabe. </li>
-<li> Klicken Sie auf "Tags zum Transkript hinzufügen". Sie sehen eine Abschrift eines Meetings, das markiert werden soll. </li>
-<li> Klicken Sie auf "Letzte Besprechung anzeigen". Sie sehen ein fertiges Transkript zur Ansicht. </li>
-</ul>
-<p> Die meisten anderen Dashboard-Karten rufen WebApp nicht auf, sondern geben Testdaten zurück. </p>
-
-<p> ClientApp wird vom Webpack-Dev-Server bereitgestellt, der mit "npm start" gestartet wurde. WebApp verwendet den in Asp.Net Core enthaltenen Kestrel-Server. Der Kestrel-Server antwortet auf Web-API-Aufrufe. Interne ClientApp-Anforderungen werden jedoch an den Webpack-Dev-Server weitergeleitet. </p>
-<h2> Debuggen / Ausführen von ClientApp eigenständig </h2>
+<li> Laden Sie die Unterordner von <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive</a> herunter <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">.</a> Legen Sie sie in einem Geschwisterordner für das Projekt "TESTDATA" ab. </li>
+<li> Ändern Sie in FrontEnd / ClientApp / app.module.ts "isAspServerRunning" von false in true. </li>
+<li> Projekte erstellen: 
 <ul>
-<li> Ändern Sie in app.module.ts "isAspServerRunning" von "true" in "false". </li>
+<li> Strg-Umschalt-P </li>
+<li> Wählen Sie "Aufgaben: Aufgabe ausführen" </li>
+<li> Wählen Sie "build-webapp" oder "Build All" </li>
+</ul></li>
+<li> Starten Sie ClientApp (falls noch nicht ausgeführt) 
+<ul>
+<li> cd FrontEnd / ClientApp </li>
 <li> npm starten </li>
-<li> Legen Sie im Debug-Bereich die Startkonfiguration auf "ClientApp" fest. </li>
-<li> Drücken Sie F5 (Debug) oder Strg-F5 (ohne Debugging ausführen). </li>
-</ul>
-<p> Wenn "isAspServerRunning" auf "false" gesetzt ist, werden Stub-Services verwendet, anstatt die WebApp-API aufzurufen. Dies ist nützlich, wenn wir nur Code in ClientApp ändern. </p>
-<h2> Debuggen / Ausführen von WorkflowApp </h2>
+</ul></li>
+<li> Legen Sie im Debug-Bereich die Startkonfiguration "WebApp & ClientApp" fest. </li>
+<li> Drücken Sie F5 (Debug) oder Strg-F5 (ohne Debugging ausführen). 
 <ul>
+<li> Der Chrome-Browser wird geöffnet und nach einer kurzen Verzögerung wird ClientApp auf localhost: 5000 angezeigt. </li>
+</ul></li>
+</ul><h3> Anmerkungen </h3>
+<p> "build-webapp" erstellt WebApp. </p>
+
+<p> "Alle erstellen" erstellt alle Projekte. Wie bei build-webapp werden NuGet-Pakete nach Bedarf installiert. Überprüfen Sie jedes Terminalfenster auf Fehler und führen Sie es bei Bedarf erneut aus. Es gibt einen bekannten Fehler bei der Race-Bedingung beim aysnchronen Wiederherstellen mehrerer NuGet-Pakete. </p>
+
+<p> Wenn Sie "isAspServerRunning" auf "true" setzen, wird ClientApp angewiesen, die WebApp-API anstelle der Stub-Services aufzurufen. </p>
+
+<p> Die Unterordner auf Google Drive dienen zum Testen von WebApp. Die Dateien dienen zum Testen von WorkflowApp. </p>
+
+<p> ClientApp wird vom Webpack-Dev-Server bereitgestellt. WebApp verwendet den Kestrel-Server. Kestrel überträgt ClientApp-Anforderungen jedoch an den Webpack-Dev-Server. </p>
+<h2> Führen Sie WorkflowApp aus </h2>
+<ul>
+<li> Laden Sie die Testdateien von <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive</a> herunter <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">.</a> </li>
 <li> Legen Sie im Debug-Bereich die Startkonfiguration auf "WorkflowApp" fest. </li>
 <li> Drücken Sie F5 (Debug) oder Strg-F5 (ohne Debugging ausführen). </li>
-</ul>
-<p> Wenn die WorkflowApp gestartet wird: </p>
+</ul><h3> Anmerkungen </h3>
+<p> WorkflowApp verarbeitet Transkriptionstexte und transkribiert Aufzeichnungen. Für das Transkribieren von Aufzeichnungen ist ein <a href="about?id=setup#GoogleCloud">Google Cloud-Konto</a> erforderlich <a href="about?id=setup#GoogleCloud">.</a> </p>
+
+<p> WorkflowApp erstellt einen Geschwisterordner für den Projektordner (und TESTDATA) mit dem Namen "DATAFILES". Innerhalb von DATAFILES gibt es 3 Unterordner: </p>
 
 <ul>
-<li> Kopiert einige Testdateien in den Ordner Datafles / RECEIVED: eine Transkriptions-PDF-Datei und eine MP4-Aufzeichnungsdatei. </li>
-<li> Verarbeitet die Transkriptions-PDF-Datei und erstellt eine JSON-Datei, die zum Taggen bereit ist. </li>
-<li> Verarbeiten Sie die MP4-Aufzeichnungsdatei, indem Sie sie in der Cloud transkribieren, und erstellen Sie eine JSON-Datei, die zum Korrekturlesen bereit ist. </li>
+<li> EMPFANGEN - Alle Dateien in diesem Ordner werden automatisch verarbeitet. </li>
+<li> VERARBEITUNG - Enthält Arbeitsordner zur Verarbeitung. </li>
+<li> ABGESCHLOSSEN - Abgeschlossene Dateien werden hier abgelegt. </li>
 </ul>
-<p> Die Ergebnisse finden Sie unter Datendateien / VERARBEITUNG. Sie müssen jedoch zuerst ein <a href="about?id=setup#GoogleCloud">Google Cloud-Konto einrichten</a> , damit die Aufzeichnung transkribiert werden kann. </p>
+<p> Um das Testen zu erleichtern, kopiert WorkflowApp beim Start Dateien von TESTDATA nach DATAFILES / RECEIVED. </p>
+<h3> Neue Aufnahmen verarbeiten </h3>
+<p> Neben den Testdateien auf Google Drive können Sie Ihre eigenen Aufzeichnungen von Besprechungen verarbeiten: </p>
+
+<ul>
+<li> Erhalten Sie eine Aufzeichnung einer Regierungssitzung im MP4-Format. </li>
+<li> Benennen Sie die Datei wie folgt: "country_state_county_municipality_agency_language-code_date.mp4". </li>
+<li> Zum Beispiel: "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4". </li>
+<li> Legen Sie die Datei in "DATAFILES / RECEIVED" </li>
+<li> Legen Sie in BackEnd / WorkflowApp / appsettings.json die folgenden Eigenschaften fest: 
+<ul>
+<li> "InitializeWithTestData": false </li>
+<li> "RequireManagerApproval": false </li>
+</ul></li>
+<li> Führen Sie WorkflowApp aus. </li>
+</ul>
+<p> Wenn Sie ein Google-Konto eingerichtet haben, wird die Aufzeichnung transkribiert. </p>
+<h3> Verarbeiten Sie neue Transkripte </h3>
+<p> Neben den Testprotokollen können Sie auch Ihre eigenen bearbeiten. Die Testdateien sind Transkripte der Stadtratssitzungen in Philadelphia, PA, USA. Um andere Transkriptformate verarbeiten zu können, müssen Sie ProcessTranscript_Lib eine Methode hinzufügen. Siehe <a href="https://github.com/govmeeting/govmeeting/issues/93">Ausgabe Nr. 93</a> . Schließlich besteht das Ziel darin, Code zu schreiben, der automatisch alle oder die meisten Formate ohne benutzerdefinierten Code verarbeitet. </p>
 <hr />
 <p><a name="DevelopVS"></a></p>
 <h1> Entwickeln Sie mit Visual Studio <br/></h1>
@@ -103,20 +134,24 @@
 <li> "Markdown Editor" </li>
 </ul></li>
 <li> Öffnen Sie die Lösungsdatei "govmeeting.sln" </li>
-</ul><h2> Debuggen / Ausführen von ClientApp & WebApp </h2>
+</ul><h2> Führen Sie ClientApp & WebApp aus </h2>
 <ul>
-<li> Im Task Runner Explorer (ClientApp): 
+<li> Laden Sie die Unterordner von <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive</a> herunter <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">.</a> Legen Sie sie in einem Geschwisterordner für das Projekt "TESTDATA" ab. </li>
+<li> Ändern Sie in FrontEnd / ClientApp / app.module.ts "isAspServerRunning" von false in true. </li>
+<li> Im Task Runner Explorer 
 <ul>
+<li> Wählen Sie: ClientApp </li>
 <li> Führen Sie "install" aus. </li>
 <li> Führen Sie "Start" aus </li>
 </ul></li>
 <li> Startprojekt auf "WebApp" setzen </li>
 <li> Drücken Sie F5 (Debug) oder Strg-F5 (ohne Debugging ausführen). </li>
-<li> Die WebApp wird ausgeführt und ein Browser mit der ClientApp wird geöffnet. </li>
+<li> WebApp wird ausgeführt und ein Browser wird geöffnet, in dem die ClientApp angezeigt wird. </li>
 </ul>
 <p> ANMERKUNG: Beim Festlegen von Haltepunkten in der Angular ClientApp in Visual Studio ist ein Problem aufgetreten. Siehe: <a href="https://github.com/govmeeting/govmeeting/issues/80">Github-Ausgabe Nr. 80</a> </p>
-<h2> Debuggen Sie WorkflowApp </h2>
+<h2> Führen Sie WorkflowApp aus </h2>
 <ul>
+<li> Laden Sie die Testdateien von Google Drive herunter (siehe oben). </li>
 <li> Öffnen Sie das Debug-Panel. </li>
 <li> Startprojekt auf "WorkflowApp" setzen </li>
 <li> Drücken Sie F5 (Debug) oder Strg-F5 (ohne Debugging ausführen). </li>
@@ -124,11 +159,11 @@
 <p> Hinweis: Siehe Hinweise zu WorkflowApp unter "Visual Studio Code". </p>
 <hr />
 <p><a name="DevelopOther"></a></p>
-<h1> Entwickeln Sie auf anderen Plattformen <br/></h1>
+<h1> Entwickeln Sie mit anderen Tools <br/></h1>
 <p> <a href="about?id=setup#Contents">[Inhalt]</a> </p>
 
 <p> Setzen Sie in Ihrem Profil die Umgebungsvariable ASPNETCORE_ENVIRONMENT auf "Entwicklung". Dies wird von WebApp und WorkflowApp verwendet. </p>
-<h2> Erstellen und Ausführen von ClientApp </h2>
+<h2> Führen Sie ClientApp aus </h2>
 <p> Ausführen: </p>
 
 <ul>
@@ -137,7 +172,7 @@
 <li> npm starten </li>
 </ul>
 <p> Gehen Sie in Ihrem Browser zu localhost: 4200. Die Client-App wird geladen. Einige Funktionen funktionieren erst, wenn WebApp ausgeführt wird. </p>
-<h2> Erstellen und Ausführen von WebApp mit ClientApp </h2>
+<h2> Führen Sie WebApp mit ClientApp aus </h2>
 <p> Ausführen: </p>
 
 <ul>
@@ -147,11 +182,11 @@
 <li> dotnet run bin / debug / dotnet2.2 / webapp.dll </li>
 </ul>
 <p> Gehen Sie in Ihrem Browser zu localhost: 5000. Die Client-App wird geladen. </p>
-<h2> Erstellen und Ausführen von ClientApp eigenständig </h2>
+<h2> Führen Sie ClientApp eigenständig aus </h2>
 <ul>
 <li> Ändern Sie in app.module.ts "isAspServerRunning" von "true" in "false". </li>
 <li> (oben ausführen: "ClientApp erstellen und starten") </li>
-</ul><h2> Erstellen und Ausführen von WorkflowApp </h2>
+</ul><h2> Führen Sie WorkflowApp aus </h2>
 <p> Ausführen: </p>
 
 <ul>
@@ -169,9 +204,9 @@
 <h2> Provider installieren </h2>
 <p> Wenn Sie Visual Studio oder Visual Studio Code verwenden, ist der SQL Server Express LocalDb-Anbieter bereits installiert. Andernfalls führen Sie unten "Installation des LocalDb-Anbieters" durch. </p>
 <h3> Installation des LocalDb-Providers </h3>
-<p> Gehen Sie zu <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">SQL Server Express.</a> Laden Sie für Windows die Spezialversion "Express" von SQL Server herunter. Wählen Sie während der Installation "Benutzerdefiniert" und dann "LocalDb". </p>
+<p> Gehen Sie zu <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">SQL Server Express.</a> Laden Sie für Windows die Spezialversion "Express" von SQL Server herunter. Wählen Sie während der Installation "Benutzerdefiniert" und "Lokale Datenbank". </p>
 
-<p> LocalDb ist auch für MacOs und Linux verfügbar. Wenn Sie es für eine der Plattformen installieren, aktualisieren Sie dieses Dokument mit den Schritten und führen Sie eine Pull-Anforderung durch. </p>
+<p> LocalDb ist auch für MacOs und Linux verfügbar. Wenn Sie es für eine der beiden Plattformen installieren, aktualisieren Sie dieses Dokument mit den Schritten und führen Sie eine Pull-Anforderung durch. </p>
 <h3> Andere Anbieter </h3>
 <p> Neben LocalSb unterstützt EF Core <a href= "https://docs.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli">andere Anbieter,</a> die Sie für die Entwicklung verwenden können, einschließlich SqlLite. Sie müssen das DbContext-Setup in startup.cs und die Verbindungszeichenfolge in appsettings.json ändern. </p>
 <h2> Datenbankschema erstellen </h2>
@@ -179,7 +214,7 @@
 
 <ul>
 <li> CD-Backend / WebApp </li>
-<li> dotnet ef migrations fügt das erste --project .. \ Database \ DatabaseAccess_Lib hinzu </li>
+<li> Bei dotnet ef-Migrationen wird das erste --project .. \ Database \ DatabaseAccess_Lib hinzugefügt </li>
 <li> dotnet ef database update --project .. \ Database \ DatabaseAccess_Lib </li>
 </ul><h2> Durchsuchen Sie die erstellte Datenbank </h2><h3> In VsCode </h3>
 <p> Fügen Sie Ihrer Benutzereinstellung.json in VsCode Folgendes hinzu: </p>
@@ -209,13 +244,13 @@
 <li> Fügen Sie dies zu WebApp.csproj hinzu, um es für alle Controller zu deaktivieren: </li>
 </ul><pre> <code> &lt;PropertyGroup Condition="&#39;$(Configuration)|$(Platform)&#39;==&#39;Debug|AnyCPU&#39;&gt; &lt;DefineConstants&gt;NOAUTH&lt;/DefineConstants&gt; &lt;/PropertyGroup&gt;</code> </pre>
 <ul>
-<li> Wechseln Sie in Visual Studio zu den WebApp-Eigenschaftsseiten -&gt; Erstellen -&gt; und geben Sie NOAUTH in das Feld "Bedingte Kompilierungssymbole" ein. </li>
+<li> Gehen Sie in Visual Studio zu den WebApp-Eigenschaftsseiten -&gt; Erstellen -&gt; und geben Sie NOAUTH in das Feld "Bedingte Kompilierungssymbole" ein. </li>
 </ul><hr />
 <p><a name="GoogleCloud"></a></p>
-<h1> Google Cloud Platform-Konto <br/></h1>
+<h1> Google Cloud Platform <br/></h1>
 <p> <a href="about?id=setup#Contents">[Inhalt]</a> </p>
 
-<p> Um die Google Speech APIs für die Konvertierung von Sprache in Text verwenden zu können, benötigen Sie ein GCP-Konto (Google Cloud Platform). Für die meisten Entwicklungsarbeiten in Govmeeting können Sie vorhandene Testdaten verwenden. Wenn Sie jedoch neue Aufnahmen transkribieren möchten, erhalten Sie eine GCP. Die Google API kann Aufzeichnungen in mehr als 120 Sprachen und Varianten transkribieren. </p>
+<p> Um die Google Speech APIs für die Konvertierung von Sprache in Text verwenden zu können, benötigen Sie ein Google Cloud Platform (GCP) -Konto. Für die meisten Entwicklungsarbeiten in Govmeeting können Sie vorhandene Testdaten verwenden. Wenn Sie jedoch neue Aufnahmen transkribieren möchten, erhalten Sie eine GCP. Die Google API kann Aufzeichnungen in mehr als 120 Sprachen und Varianten transkribieren. </p>
 
 <p> Google bietet Entwicklern ein kostenloses Konto mit einem Guthaben (derzeit 300 US-Dollar). Die aktuellen Kosten für die Verwendung der Sprach-API sind für bis zu 60 Minuten Konvertierung pro Monat kostenlos. Danach betragen die Kosten für das "erweiterte Modell" (was wir brauchen) 0,009 USD pro 15 Sekunden. (2,16 USD pro Stunde) </p>
 
@@ -239,23 +274,21 @@
 <p> Laden Sie die JSON-Datei mit den Anmeldeinformationen herunter. </p>
 </li>
 <li>
-<p> Legen Sie die Datei in den Ordner <code>SECRETS</code> , den Sie beim <code>SECRETS</code> des <code>SECRETS</code> erstellt haben. </p>
+<p> Erstellen Sie einen <code>SECRETS</code> Ordner als Geschwister des geklonten Projektordners </p>
 </li>
 <li>
-<p> Benennen Sie die Datei <code>TranscribeAudio.json</code> . </p>
+<p> Fügen Sie die Anmeldeinformationsdatei in SECRETS ein und benennen Sie sie in <code>TranscribeAudio.json</code> . </p>
 </li>
-</ul>
-<p> HINWEIS: Die obigen Schritte haben sich möglicherweise geringfügig geändert. Wenn ja, aktualisieren Sie bitte dieses Dokument. </p>
-<h2> Testen Sie die Transkription von Sprache zu Text </h2>
+</ul><h2> Testen Sie die Transkription von Sprache zu Text </h2>
 <ul>
 <li>
 <p> Setzen Sie das Startprojekt in Visual Studio auf <code>Backend/WorkflowApp</code> . Drücken Sie F5. </p>
 </li>
 <li>
-<p> Kopieren Sie eine der MP4-Beispieldateien von Testdaten in Datendateien / EMPFANGEN (nicht verschieben). </p>
+<p> Kopieren Sie eine der MP4-Beispieldateien von den Testdaten nach DATAFILES / RECEIVED (verschieben Sie sie nicht). </p>
 </li>
 </ul>
-<p> Das Programm erkennt nun, dass eine neue Datei angezeigt wurde, und beginnt mit der Verarbeitung. Die MP4-Datei wird nach Abschluss auf "COMPLETED" verschoben. Sie sehen die Ergebnisse in Sufoldern, die im Verzeichnis "Datendateien" erstellt wurden. </p>
+<p> Das Programm erkennt nun, dass eine neue Datei angezeigt wurde, und beginnt mit der Verarbeitung. Die MP4-Datei wird nach Abschluss auf "COMPLETED" verschoben. Sie sehen die Ergebnisse in Sufoldern, die im Verzeichnis "DATAFILES" erstellt wurden. </p>
 
 <p> In appsettings.json gibt es eine Eigenschaft "RecordingSizeForDevelopment". Es ist derzeit auf "180" eingestellt. Dadurch verarbeitet die Transkriptionsroutine in ProcessRecording_Lib nur die ersten 180 Sekunden der Aufzeichnung. </p>
 <hr />
@@ -269,8 +302,10 @@
 <li> ReCaptcha-Schlüssel werden benötigt, um ReCaptcha während der Benutzerregistrierung zu verwenden. Sie können bei <a href="https://developers.google.com/recaptcha/">Google reCaptcha bezogen werden</a> . </li>
 <li> OAuth 2.0-Anmeldeinformationen werden verwendet, um externe Benutzer anzumelden, ohne dass der Benutzer ein persönliches Konto auf der Site erstellen muss. Besuchen Sie die <a href="https://console.developers.google.com/">Google API-Konsole</a> , um Anmeldeinformationen wie eine Client-ID und ein Client-Geheimnis abzurufen. </li>
 </ul>
-<p> Erstellen Sie eine Datei mit dem Namen "appsettings.Development.json" im Ordner "SECRETS". Es sollte die Schlüssel enthalten, die Sie gerade erhalten haben: </p>
-<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-Id", "ClientSecret": "your-client-secret" } }, "ReCaptcha:SiteKey": "your-site-key", "ReCaptcha:Secret": "your-secret" }</code> </pre><hr /><h2> Testen Sie reCaptcha </h2>
+<p> Erstellen Sie einen <code>SECRETS</code> Ordner als Geschwister des geklonten Projektordners. Erstellen Sie darin eine Datei mit dem Namen "appsettings.Development.json" im folgenden Format. </p>
+<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-Id", "ClientSecret": "your-client-secret" } }, "ReCaptcha:SiteKey": "your-site-key", "ReCaptcha:Secret": "your-secret" }</code> </pre>
+<p> Bearbeiten Sie es so, dass es die Schlüssel enthält, die Sie gerade erhalten haben: </p>
+<hr /><h2> Testen Sie reCaptcha </h2>
 <ul>
 <li> Führen Sie das WebApp-Projekt aus. </li>
 <li> Klicken Sie oben rechts auf "Registrieren". </li>

@@ -4,6 +4,8 @@ using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
 
 using GM.ProcessRecording;
+using GM.FileDataRepositories;
+
 using GM.ViewModels;
 using GM.Configuration;
 using GM.GoogleCLoud;
@@ -29,12 +31,6 @@ namespace GM.ProcessRecording_Tests
 
         public void TestAll()
         {
-            //_config.DatafilesPath = Environment.CurrentDirectory + @"\..\..\Datafiles";
-            //_config.TestfilesPath = Environment.CurrentDirectory + @"\..\..\testdata";
-            _config.DatafilesPath = Environment.CurrentDirectory + _config.DatafilesPath;
-            _config.TestfilesPath = Environment.CurrentDirectory + _config.TestfilesPath;
-            _config.GoogleApplicationCredentials = Environment.CurrentDirectory + @"..\\..\\..\\..\\..\\..\\..\\..\\SECRETS\\TranscribeAudio.json";
-
             TestMoveToCloudAndTranscribe(language);
             TestTranscriptionOfFileInCloud(language);
             TestTranscriptionOfLocalFile(language);

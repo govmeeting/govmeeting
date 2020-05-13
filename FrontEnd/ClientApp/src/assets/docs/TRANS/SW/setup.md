@@ -7,11 +7,9 @@
 <li> <a href="about?id=setup#DevelopVS">Kuendeleza na Studio ya Visual</a> </li>
 <li> <a href="about?id=setup#DevelopOther">Kuendeleza kwenye majukwaa mengine</a> </li>
 <li> <a href="about?id=setup#Database">Hifadhidata</a> </li>
-<li> <a href="about?id=setup#GoogleCloud">Akaunti ya Wingu la Google Cloud</a> </li>
+<li> <a href="about?id=setup#GoogleCloud">Jukwaa la Wingu la Google</a> </li>
 <li> <a href="about?id=setup#GoogleApi">Funguo za API za Google</a> </li>
-</ul>
-<p> Kurasa hizi za nyaraka zinaweza kupatikana katika FrontEnd / ClientApp / src / programu / mali / hati. Tafadhali fanya marekebisho huko na <a href="https://github.com/govmeeting/govmeeting">utoe ombi la kuvuta kwa Gitub.</a> </p>
-<hr />
+</ul><hr />
 <p><a name="InstallTools"></a></p>
 <h1> Weka vifaa na uwekaji wa mwamba <br/></h1>
 <p> <a href="about?id=setup#Contents">[Yaliyomo]</a> </p>
@@ -20,19 +18,15 @@
 <li> Weka git. <a href="https://gitforwindows.org">Git kwa Windows</a> , <a href="https://git-scm.com/download/mac">Git kwa Mac</a> </li>
 <li> Weka <a href="https://nodejs.org/en/download/">Node.js.</a> </li>
 <li> Weka <a href="https://dotnet.microsoft.com/download">.Hakikisha SDK ya Core.</a> </li>
-<li> "Matokeo" mradi wa github </li>
-<li> Clone mradi wa ndani </li>
-<li> Unda folda ya ndugu yako kwa repositiory iliyotiwa jina la "SECRETS" </li>
-</ul>
-<p> Folda ya "SECRETS" ni ya funguo na manenosiri ambayo hayahifadhiwa kwenye hazina ya umma. Hizi zingehitajika kuendesha huduma za Google API. </p>
-<hr />
+<li> Clone au upakue mradi huo kutoka <a href="https://github.com/govmeeting/govmeeting">Github.</a> Ikiwe Kuboresha mradi huo na kugeuza uma wako. </li>
+</ul><hr />
 <p><a name="DevelopVsCode"></a></p>
 <h1> Kuendeleza na VsCode <br/></h1>
 <p> <a href="about?id=setup#Contents">[Yaliyomo]</a> </p>
 <h2> Sasisha VsCode </h2>
 <ul>
 <li> Weka <a href="https://code.visualstudio.com/download">Msimbo wa Studio ya Kuonekana</a> na uanze. </li>
-<li> Fungua upanuzi wa upande wa kushoto na usakinishe: 
+<li> Sasisha viendelezi hivi kwa kutumia jopo la upanuzi upande wa kushoto: 
 <ul>
 <li> "Debugger ya Chrome" na Microsoft </li>
 <li> "C
@@ -41,53 +35,91 @@
 <li> "Mti wa Todo" na Gruntfuggly - inaonyesha mistari ya TODO katika msimbo (hiari) </li>
 <li> "Powershell" na Microsoft - kwa Debugging Powershell kujenga hati (hiari) </li>
 </ul></li>
-</ul><h2> Debug / Run ClientApp & WebApp </h2>
+</ul><h2> Run ConeentApp ilio </h2>
 <ul>
-<li> Fungua folda ya Govmeeting katika VsCode </li>
+<li> Fungua folda ya mradi katika VsCode </li>
+<li> Weka vifurushi vya NPM: 
+<ul>
 <li> Fungua kidirisha cha terminal katika VsCode </li>
 <li> cd FrontEnd / MtejaApp </li>
 <li> npm kufunga </li>
+</ul></li>
+<li> Complile na uendeshe MtejaApp 
+<ul>
 <li> npm anza </li>
-<li> Katika jalada la utatuaji, weka usanidi wa kuzindua "WebApp & WatejaApp-W" </li>
-<li> Bonyeza F5 (Debug) au Ctrl-F5 (endesha bila kushughulikia) </li>
-</ul>
-<p> MtejaApp atafungua kwa kivinjari. </p>
-
+</ul></li>
+<li> Kwenye jopo la debug, weka usanidi wa kuzindua "Kategoria ya Wateja waApple" </li>
+<li> Bonyeza F5 (Debug) au Ctrl-F5 (endesha bila kushughulikia) 
 <ul>
-<li> Bonyeza chochote cha menyu ya "Karibu" ili kuona hati. </li>
-<li> Bonyeza kipengee cha menyu ya eneo "Bandari ya Boothbay". Utaona dashibodi kufunguliwa kwa eneo hili. </li>
+<li> AU Fungua kivinjari kwa localhost: 4200 </li>
+</ul></li>
 </ul>
-<p> Ili kuhakikisha kuwa MtejaApp anapiga simu API ya Wavuti kupata data. </p>
-
+<p> Kwa msingi, MtejaApp atapiga huduma za huduma badala ya kupiga API ya WebApp. </p>
+<h2> Run ClientApp & WebApp </h2>
 <ul>
-<li> Bonyeza "Nakala ya Proofread". Utaona kidirisha cha video na maandishi yaliyochapishwa. Bonyeza kitufe cha kucheza video. </li>
-<li> Bonyeza "Ongeza vitambulisho kwa nakala". Utaona maandishi ya mkutano kutambuliwa. </li>
-<li> Bonyeza "Angalia Mkutano wa hivi karibuni". Utaona hati iliyokamilishwa ya kutazamwa. </li>
-</ul>
-<p> Kadi nyingi za dashibodi haziiti WebApp lakini data ya mtihani wa kurudi. </p>
-
-<p> Huduma ya Wateja inatumiwa na seva ya wavuti iliyoanza na "npm kuanza". WebApp hutumia seva ya Kestrel iliyojumuishwa katika Asp.Net Core. Seva ya Kestrel inajibu kwa simu za API za Wavuti. Lakini inathibitisha maombi ya Mteja wa ndani kwa seva ya wavuti. </p>
-<h2> Debug / Run Chuma cha programu cha mteja </h2>
+<li> Pakua folda ndogo kutoka <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Hifadhi ya Google.</a> Watie kwenye folda ya nduguye kwenye mradi ulioitwa "TESTDATA" </li>
+<li> Katika FrontEnd / ClientApp / app.module.ts, badilisha "ispServerRunning" kutoka uwongo hadi ukweli. </li>
+<li> Jenga miradi: 
 <ul>
-<li> Katika programu.module.ts, badilisha "ispServerRunning" kutoka kweli kwenda kwa uwongo. </li>
+<li> Ctrl-Shift-P </li>
+<li> Chagua "Kazi: Run Task" </li>
+<li> Chagua "build-webapp" au "Jenga Zote" </li>
+</ul></li>
+<li> Anzisha MtejaApp (ikiwa haijatoka tayari) 
+<ul>
+<li> cd FrontEnd / MtejaApp </li>
 <li> npm anza </li>
-<li> Katika jalada la utatuaji, weka usanidi wa kuzindua "ClientApp" </li>
-<li> Bonyeza F5 (Debug) au Ctrl-F5 (endesha bila kushughulikia) </li>
-</ul>
-<p> Wakati "ispServerRunning" imewekwa kuwa ya uwongo, huduma za matumizi hutumiwa, badala ya kupiga API ya WebApp. Hii ni muhimu kwa wakati tunabadilisha msimbo katika ClientApp. </p>
-<h2> Debug / Run WorkAppApp </h2>
+</ul></li>
+<li> Kwenye jopo la utatuaji, weka usanidi wa kuzindua "WebApp & ClientApp" </li>
+<li> Bonyeza F5 (Debug) au Ctrl-F5 (endesha bila kushughulikia) 
 <ul>
-<li> Katika jalada la utatuaji, weka usanidi wa kuzindua "WorkflowApp" </li>
+<li> Kivinjari cha Chrome kitafunguliwa na baada ya kuchelewesha kifupi, ClientApp itaonekana kwenye eneo la nyumbani: 5000. </li>
+</ul></li>
+</ul><h3> Vidokezo </h3>
+<p> "build-webapp" huunda WebApp. </p>
+
+<p> "Jenga Zote" huunda miradi yote. Kama programu ya kujenga-wavuti, hufunga vifurushi vya NuGet kama inahitajika. Angalia kila dirisha la terminal kwa makosa na uendesha tena ikiwa inahitajika. Kuna mdudu wa hali ya mbio katika kurejesha vifurushi vingi vya NuGet kwa njia ya kawaida. </p>
+
+<p> Kuweka "isAspServerRunning" kama kweli, inamwambia ClientApp kupiga simu API ya WebApp badala ya huduma za stika. </p>
+
+<p> Folda ndogo kwenye gari la Google ni za kujaribu WebApp. Faili ni za kujaribu WorkflowApp. </p>
+
+<p> MtejaApp ni kutumiwa na seva ya tovuti. WebApp hutumia seva ya Kestrel. Lakini maombi ya Kestrel ya Wateja wa Mtandao kwa seva ya wavuti. </p>
+<h2> Run WorkflowApp </h2>
+<ul>
+<li> Pakua faili za jaribio kutoka <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Hifadhi ya Google.</a> </li>
+<li> Kwenye jopo la utatuaji, weka usanidi wa kuzindua "WorkflowApp" </li>
 <li> Bonyeza F5 (Debug) au Ctrl-F5 (endesha bila kushughulikia) </li>
-</ul>
-<p> Wakati WorkflowApp itaanza: </p>
+</ul><h3> Vidokezo </h3>
+<p> WorkflowApp inashughulikia maandishi ya maandishi na inapeana rekodi. Kuandika rekodi inahitaji <a href="about?id=setup#GoogleCloud">akaunti ya Wingu la Google.</a> </p>
+
+<p> WorkflowApp inaunda folda ya ndugu yako kwenye folda ya mradi (na TESTDATA), inayoitwa "DATAFILES". Ndani ya DATAFILES kuna folda ndogo 3: </p>
 
 <ul>
-<li> Inakili faili zingine za majaribio kwenye folda ya datafles / RECEIVED: faili ya maandishi ya PDF na faili ya kurekodi ya MP4. </li>
-<li> Inashughulikia faili ya maandishi ya PDF na inaunda faili ya JSON tayari kutambulishwa. </li>
-<li> Tengeneza faili ya kurekodi ya MP4 kwa kuiandika kwenye wingu na kuunda faili ya JSON tayari kudhibitishwa. </li>
+<li> Iliyopokelewa - Faili zozote zilizowekwa ndani ya folda hii zitashughulikiwa kiatomati. </li>
+<li> Kuendeleza - Hii ina folda za kazi za kusindika. </li>
+<li> Imekamilika - Faili zilizokamilishwa zimewekwa hapa. </li>
 </ul>
-<p> Matokeo yanaweza kupatikana katika datafiles / PROCESSING. Walakini, utahitaji kwanza kuanzisha <a href="about?id=setup#GoogleCloud">akaunti ya Wingu la Google</a> , ili kurekodi kuandikwa. </p>
+<p> Ili kuwezesha upimaji, nakala za faili za WorkflowApp zinatoka faili kutoka TESTDATA hadi DATAFILES / KUPATA wakati unapoanza. </p>
+<h3> Tengeneza rekodi mpya </h3>
+<p> Kando na faili za majaribio kwenye Hifadhi ya Google, unaweza kushughulikia rekodi zako mwenyewe za mikutano: </p>
+
+<ul>
+<li> Pata rekodi katika muundo wa mp4 wa mkutano wa serikali. </li>
+<li> Taja faili kama ifuatavyo: "nchi_state_county_municipality_agency_language-code_date.mp4". </li>
+<li> Kwa mfano: "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4". </li>
+<li> Weka faili katika "DATAFILES / TUKAIPATA" </li>
+<li> Katika BackEnd / WorkflowApp / appsettings.json, weka vifaa vifuatavyo: 
+<ul>
+<li> "AnzishaWithTestData": uongo </li>
+<li> "InahitajiManagerApproval": uongo </li>
+</ul></li>
+<li> Run WorkflowApp. </li>
+</ul>
+<p> Ikiwa una Akaunti ya Google iliyosanikishwa, itaandika rekodi. </p>
+<h3> Tengeneza nakala mpya </h3>
+<p> Kando na maandishi ya mtihani, unaweza pia kusindika yako mwenyewe. Faili za majaribio ni nakala kutoka kwa mikutano ya baraza la jiji la Philadelphia, PA, USA. Ili kushughulikia fomati zingine za maandishi, utahitaji kuongeza njia kwa Mchakato waTranscript_Lib. Tazama <a href="https://github.com/govmeeting/govmeeting/issues/93">Toleo
+# 93</a> . Mwishowe lengo ni kuandika msimbo ambao unashughulikia kiotomati fomu zote au nyingi bila kificho maalum. </p>
 <hr />
 <p><a name="DevelopVS"></a></p>
 <h1> Kuendeleza na Studio ya Visual <br/></h1>
@@ -103,10 +135,13 @@
 <li> "Mhariri wa alama ya chini" </li>
 </ul></li>
 <li> Fungua faili ya suluhisho "govmeeting.sln" </li>
-</ul><h2> Debug / Run ClientApp & WebApp </h2>
+</ul><h2> Run ClientApp & WebApp </h2>
 <ul>
-<li> Katika Kazi ya Runner ya Utafutaji (WatejaApp): 
+<li> Pakua folda ndogo kutoka <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Hifadhi ya Google.</a> Watie kwenye folda ya nduguye kwenye mradi ulioitwa "TESTDATA" </li>
+<li> Katika FrontEnd / ClientApp / app.module.ts, badilisha "ispServerRunning" kutoka uwongo hadi ukweli. </li>
+<li> Katika Kazi Runner Explorer 
 <ul>
+<li> Chagua: MtejaApp </li>
 <li> endesha "sasisha" </li>
 <li> kukimbia "anza" </li>
 </ul></li>
@@ -116,8 +151,9 @@
 </ul>
 <p> KUMBUKA: Kuna suala na mipangilio ya kuweka katika ClientApp ya Watumiaji katika Studio ya Visual. Tazama: <a href="https://github.com/govmeeting/govmeeting/issues/80">Github suala
 # 80</a> </p>
-<h2> Debug WorkflowApp </h2>
+<h2> Run WorkflowApp </h2>
 <ul>
+<li> Pakua faili za jaribio kutoka Hifadhi ya Google (tazama hapo juu) </li>
 <li> Fungua paneli ya ukarabati. </li>
 <li> Weka mradi wa kuanza kwa "WorkflowApp" </li>
 <li> Bonyeza F5 (Debug) au Ctrl-F5 (endesha bila kushughulikia) </li>
@@ -125,11 +161,11 @@
 <p> Kumbuka: Tazama maelezo ya WorkflowApp chini ya "Visual Studio Code" </p>
 <hr />
 <p><a name="DevelopOther"></a></p>
-<h1> Kuendeleza kwenye majukwaa mengine <br/></h1>
+<h1> Kuendeleza na zana zingine <br/></h1>
 <p> <a href="about?id=setup#Contents">[Yaliyomo]</a> </p>
 
 <p> Katika wasifu wako, weka mazingira ya kutofautisha, ASPNETCORE_ENVIRONMENT, kwa "Maendeleo". Hii inatumiwa na WebApp na WorkflowApp. </p>
-<h2> Kuunda na kuendesha MtejaApp </h2>
+<h2> Run ClientApp </h2>
 <p> Tekeleza: </p>
 
 <ul>
@@ -138,7 +174,7 @@
 <li> npm anza </li>
 </ul>
 <p> Nenda kwa localhost: 4200 kwenye kivinjari chako. Programu ya mteja itapakia. Vipengee vingine havitafanya kazi hadi WebApp itaanza. </p>
-<h2> Jenga na uendeshe WebApp na MtejaApp </h2>
+<h2> Run WebApp na MtejaApp </h2>
 <p> Tekeleza: </p>
 
 <ul>
@@ -148,11 +184,11 @@
 <li> dotnet kukimbia bin / debug / dotnet2.2 / webapp.dll </li>
 </ul>
 <p> Nenda kwa eneo la karibu: 5000 kwenye kivinjari chako. Programu ya mteja itapakia. </p>
-<h2> Jenga na uendeshe msimamo wa mteja wa mteja </h2>
+<h2> Run ConeentApp ilio </h2>
 <ul>
 <li> Katika programu.module.ts, badilisha "ispServerRunning" kutoka kweli kwenda kwa uwongo. </li>
 <li> (fanya hapo juu: "Jenga & Anza Huduma ya Wateja") </li>
-</ul><h2> Kuunda na kukimbia WorkflowApp </h2>
+</ul><h2> Run WorkflowApp </h2>
 <p> Tekeleza: </p>
 
 <ul>
@@ -206,14 +242,14 @@
 <p> Unaweza kutumia "NOAUTH" thamani ya processor ya mapema katika WebApp ili kupitisha uthibitishaji. Tumia moja ya njia hizi: </p>
 
 <ul>
-<li> Katika FixasrController.cs au AddtagsController.cs, un-kutoa maoni juu ya mstari wa "#if NOAUTH" juu ya faili. </li>
+<li> Katika FixasrController.cs au AddtagsController.cs, un-to-comment the "#if NOAUTH" juu ya faili. </li>
 <li> Ili kuizima kwa watawala wote, ongeza hii kwa WebApp.csproj: </li>
 </ul><pre> <code> &lt;PropertyGroup Condition="&#39;$(Configuration)|$(Platform)&#39;==&#39;Debug|AnyCPU&#39;&gt; &lt;DefineConstants&gt;NOAUTH&lt;/DefineConstants&gt; &lt;/PropertyGroup&gt;</code> </pre>
 <ul>
-<li> Katika Studio ya Visual, nenda kwenye kurasa za mali za Wavuti -&gt; Jenga -&gt; na ingiza NOAUTH katika sanduku la "Dalili za Ushirikiano wa masharti" </li>
+<li> Katika Studio ya Visual, nenda kwenye kurasa za mali za Wavuti -&gt; Jenga -&gt; na ingiza NOAUTH katika sanduku la "Dalili za Ushirikiano wa masharti". </li>
 </ul><hr />
 <p><a name="GoogleCloud"></a></p>
-<h1> Akaunti ya Wingu la Google Cloud <br/></h1>
+<h1> Jukwaa la Wingu la Google <br/></h1>
 <p> <a href="about?id=setup#Contents">[Yaliyomo]</a> </p>
 
 <p> Ili kutumia API ya Google Hotuba kwa uongofu wa maandishi na maandishi, unahitaji akaunti ya Wingu la Google Cloud (GCP). Kwa kazi nyingi za maendeleo katika Govmeeting, unaweza kutumia data iliyopo ya mtihani. Lakini ikiwa unataka kuandika rekodi mpya, utakuwa GCP. Google API ina uwezo wa kuandika rekodi katika lugha zaidi ya 120 na anuwai. </p>
@@ -240,20 +276,18 @@
 <p> Pakua faili ya JSON ya kuaminika. </p>
 </li>
 <li>
-<p> Weka faili kwenye folda ya <code>SECRETS</code> ambayo umeunda wakati <code>SECRETS</code> repo. </p>
+<p> Unda folda ya <code>SECRETS</code> kama ndugu kwa folda ya mradi iliyoshonwa </p>
 </li>
 <li>
-<p> Badili jina la faili <code>TranscribeAudio.json</code> . </p>
+<p> Weka faili ya kuaminika katika SECRETS na uitie tena jina la <code>TranscribeAudio.json</code> . </p>
 </li>
-</ul>
-<p> KUMBUKA: Hatua zilizo hapo juu zinaweza kuwa zimebadilika kidogo. Ikiwa ni hivyo, tafadhali sasisha hati hii. </p>
-<h2> Hotuba ya Mtihani kwa maandishi ya maandishi </h2>
+</ul><h2> Hotuba ya Mtihani kwa maandishi ya maandishi </h2>
 <ul>
 <li>
 <p> Weka mradi wa kuanzisha katika Studio ya Visual <code>Backend/WorkflowApp</code> . Bonyeza F5. </p>
 </li>
 <li>
-<p> Nakili (usisonge) moja ya faili za mfano za MP4 kutoka testdata kwenda kwenye data za faili / zilizopokelewa. </p>
+<p> Nakili (usisonge) moja ya faili za mfano za MP4 kutoka testdata hadi DATAFILES / RECEIVED. </p>
 </li>
 </ul>
 <p> Programu hiyo sasa itatambua kuwa faili mpya imeonekana na kuanza kusindika. Faili ya MP4 itahamishwa kwenda "KULELETWA" itakapomalizika. Utaona matokeo katika sufolders, ambazo ziliundwa katika saraka ya "DATAFILES". </p>
@@ -270,8 +304,10 @@
 <li> Funguo za ReCaptcha zinahitajika kutumia ReCaptcha wakati wa usajili wa mtumiaji. Wanaweza kupatikana kwenye <a href="https://developers.google.com/recaptcha/">reCaptcha</a> ya <a href="https://developers.google.com/recaptcha/">Google</a> . </li>
 <li> Uthibitishaji wa OAuth 2.0 hutumiwa kufanya kuingia kwa mtumiaji wa nje bila hitaji la mtumiaji kuunda akaunti ya kibinafsi kwenye wavuti. Tembelea <a href="https://console.developers.google.com/">Dashibodi</a> ya <a href="https://console.developers.google.com/">Google API</a> kupata hati kama Kitambulisho cha mteja na siri ya mteja. </li>
 </ul>
-<p> Unda faili inayoitwa "appsettings.Development.json" kwenye folda ya "SECRETS". Inapaswa kuwa na funguo ambazo umepata tu: </p>
-<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-Id", "ClientSecret": "your-client-secret" } }, "ReCaptcha:SiteKey": "your-site-key", "ReCaptcha:Secret": "your-secret" }</code> </pre><hr /><h2> Jaribu reCaptcha </h2>
+<p> Unda folda ya <code>SECRETS</code> kama ndugu kwa folda ya mradi iliyoshonwa. Unda faili ndani yake inayoitwa "appsettings.Development.json", na muundo ufuatao. </p>
+<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-Id", "ClientSecret": "your-client-secret" } }, "ReCaptcha:SiteKey": "your-site-key", "ReCaptcha:Secret": "your-secret" }</code> </pre>
+<p> Badilishe ili iwe na funguo ambazo umepata tu: </p>
+<hr /><h2> Jaribu reCaptcha </h2>
 <ul>
 <li> Endesha mradi wa WebApp. </li>
 <li> Bonyeza kwa "Sajili" katika haki ya juu. </li>

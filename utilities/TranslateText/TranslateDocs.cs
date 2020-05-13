@@ -15,6 +15,18 @@ namespace GM.Utilities.Translate
         TranslateInCloud translateInCloud;
         string folder = @"C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp\src\assets\docs";
 
+        List<string> allDocuments = new List<string>()
+            { "overview1", "overview2", "workflow", "project-status", "setup", "design", "dev-notes", "database"};
+
+        List<string> allLanguages = new List<string>()
+            { "de", "es", "fr", "it", "fi", "ar", "sw", "zh", "pt" , "bn", "hi" };
+
+        List<string> someDocuments = new List<string>()
+            { "overview1", "setup", "dev-notes"};
+
+        List<string> someLanguages = new List<string>()
+            { "ic", "sw", "no" };
+
         public TranslateDocs(TranslateInCloud _translateInCloud)
         {
             translateInCloud = _translateInCloud;
@@ -25,48 +37,42 @@ namespace GM.Utilities.Translate
             //string folder = args[1];
             //string language = args[2];
 
-            List<string> languages = new List<string>()
-                { "de", "es", "fr", "it", "fi", "ar", "sw", "zh", "pt" , "bn", "hi" };
-                //{ "ic", "sw", "no" };
+            // Translate all the documents to all languages
+        //    TranslateDocumentsLanguages(allDocuments, allLanguages);
 
-            foreach (string language in languages)
-            {
-                // Translate all the documents to all languages
-                TranslateAllDocuments(language);
+            // Translate all the documents to some languages
+         //   TranslateDocumentsLanguages(allDocuments, someLanguages);
 
-                // Translate just one specific document to all languages.
-                // This is useful when edits are made to one document.
-                string file = Path.Combine(folder, "overview1.en.md");
-                TranslateOneDocument(file, language, true);
-            };
+            // Translate some documents to all languages
+            TranslateDocumentsLanguages(someDocuments, allLanguages);
         }
 
-
-        public void TranslateAllDocuments(string language)
+        private void TranslateDocumentsLanguages(List<string> documents, List<string> languages)
         {
-
-            //ParseMarkdown();
-            //RenderMarkdown();
-
-            var files = from f in Directory.EnumerateFiles(folder)
-                        where f.EndsWith(".md")
-                        select f;
-
-            foreach (string file in files)
+            foreach (string language in languages)
             {
-                TranslateOneDocument(file, language, false);
+                foreach (string document in documents)
+                {
+                    // Translate all the documents to all languages
+                    TranslateDocument(document, language, true);
+                };
             }
         }
 
-        private void TranslateOneDocument(string file, string language, bool deletePrior)
+        // The purpose of deletePrior is to facilitate resuming translation if we abort and restart.
+        // Normally, this is set to true, since we always delete the prior translations.
+        // If we set it to false and manually delete the translations before starting,
+        // then if we abort the process, we can restart it and it will only translate those
+        // which haven't been done yet.
+        private void TranslateDocument(string document, string language, bool deletePrior)
         {
-            string newFile =  language.ToUpper() + "/" + file;
+            string file = folder + "/" + document + ".md";
+            string newFile = folder + "\\TRANS\\" + language.ToUpper() + "\\" + document + ".md";
 
             if (File.Exists(newFile) && deletePrior)
             {
                 File.Delete(newFile);
             }
-
 
             if (!File.Exists(newFile))
             {
@@ -126,7 +132,7 @@ namespace GM.Utilities.Translate
             return text;
         }
 
-        void ParseMarkdown()
+        private void ParseMarkdown()
         {
             string md = "This is **Markdown**";
             MarkdownDocument document = new MarkdownDocument();
@@ -143,7 +149,7 @@ namespace GM.Utilities.Translate
             }
         }
 
-        void RenderMarkdown()
+        private void RenderMarkdown()
         {
             var result = CommonMark.CommonMarkConverter.Convert("**Hello world!**");
         }

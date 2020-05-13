@@ -5,11 +5,11 @@
 
 <p> Heute ist es selten, dass mehr als ein Dutzend Teilnehmer an einer Ratssitzung in einer Stadt mit 30.000 Einwohnern teilnehmen. Ist das noch Demokratie? </p>
 
-<p> Meetings werden manchmal im Fernsehen ausgestrahlt, für die wenigen, die sie sehen. Einige Zeitungen berichten über einige Themen. Aber nur wenige Menschen wissen viel darüber, was passiert. </p>
+<p> Meetings werden manchmal im Fernsehen ausgestrahlt, nur wenige sehen sie sich an. Einige Zeitungen berichten über einige Themen. Aber nur wenige Menschen wissen die meisten Transaktionen während dieser Meetings. </p>
 
-<p> Es gibt viele gute Leute, die öffentliche Ämter betreten, um ihre Gemeinschaften zu verbessern. Das derzeitige undurchsichtige System macht es anderen jedoch zu leicht, ihr Büro zu nutzen, um sich selbst zu nutzen. </p>
+<p> Es gibt viele gute Leute, die öffentliche Ämter betreten, um ihre Gemeinschaften zu verbessern. Das derzeitige undurchsichtige System macht es anderen jedoch zu leicht, das Büro zu nutzen, um sich selbst zu nutzen. </p>
 
-<p> Der Zweck von Govmeeting besteht darin, einen schnellen und einfachen Zugang zu den täglichen Entscheidungen ihrer Beamten zu ermöglichen und einen besseren Einblick in die Bedeutung dieser Entscheidungen zu erhalten. </p>
+<p> Der Zweck von Govmeeting besteht darin, einen schnellen und einfachen Zugang zu offiziellen Entscheidungen ihrer Vertreter zu ermöglichen und einen Einblick in deren Bedeutung zu erhalten. </p>
 <h2> Eigenschaften </h2>
 <p> Govmeeting wird automatisch: </p>
 
@@ -34,11 +34,13 @@
 <li> Suchen Sie nach den Aussagen eines bestimmten Beamten zu Themen. </li>
 <li> Suche nach Abstimmungsergebnissen zur Gesetzgebung </li>
 <li> Siehe Statistiken, Grafiken und Diagramme zu Themen, Gesetzgebung usw. </li>
-</ul><!-- END OF README SECTION -->
+</ul>
+<p> Ziel ist es, dass Govmeeting überall, in jeder Sprache und für jede Form der repräsentativen Regierung arbeitet. Die einzige Voraussetzung ist, dass offizielle Sitzungen für die Öffentlichkeit zugänglich sind oder dass die Transkripte verfügbar sind. </p>
+
+<p> Demokratie ist heute weltweit in Gefahr. Um zu überleben, muss es ein wesentlicher Bestandteil des Lebens der Menschen werden. Dies kann nur auf lokaler Basisebene beginnen. </p>
+<!-- END OF README SECTION -->
 <p><a name="continued"></a></p>
 <h2> Probleme mit dem aktuellen Zugriff </h2>
-<p> Der Zugang zu dieser Art von Informationen ist heute schwierig. Nur wenige Großstädte stellen Transkripte ihrer Treffen zur Verfügung. Und diese sind oft schwer zu beschaffen und zu verwenden. </p>
+<p> Für Regierungsbeamte ist es normalerweise keine Priorität, die Wähler über ihre Handlungen auf dem Laufenden zu halten. Nur wenige Großstädte stellen Transkripte ihrer Treffen zur Verfügung. Und sie sind oft schwer zu beschaffen und zu verwenden. </p>
 
-<p> Philadelphia ist die sechstgrößte Stadt in den USA. Hier ist eine Beispielseite aus einem Protokoll des Rates. Es sind 154 Seiten mit doppelten Zeilen, 10 Wörter pro Zeile. Es ist im PDF-Format und daher auf kleinen Bildschirmen unbrauchbar, da die Größe nicht angepasst werden kann. Es gibt auch kein Inhaltsverzeichnis. Und der Index kann möglicherweise von einem Rechtsforscher verwendet werden, aber nicht von einer durchschnittlichen Person. </p>
-
-<p> Klicken Sie unten, um eine Beispieltranskription und einen Index anzuzeigen. </p>
+<p> Philadelphia ist die sechstgrößte Stadt in den USA. Klicken Sie unten, um eine Beispielseite eines Stadtratsprotokolls anzuzeigen. Es sind 154 Seiten mit doppelten Zeilen, 10 Wörter pro Zeile. Das PDF-Format ist auf kleinen Bildschirmen unbrauchbar, da die Größe nicht angepasst werden kann. Es gibt kein Inhaltsverzeichnis. Der Index kann möglicherweise von einem Rechtsforscher verwendet werden, jedoch nicht von einer durchschnittlichen Person. </p>

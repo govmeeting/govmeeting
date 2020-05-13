@@ -37,7 +37,7 @@ namespace GM.Workflow
             // Google Cloud libraries automatically use the environment variable GOOGLE_APPLICATION_CREDENTIALS
             // to authenticate to Google Cloud. Here we set this variable to the path of the credentials file,
             // which is defined in app.settings.json.
-            string credentialsFilePath = config.GoogleApplicationCredentials;
+            credentialsFilePath = config.GoogleApplicationCredentials;
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
 
             logger = _logger;

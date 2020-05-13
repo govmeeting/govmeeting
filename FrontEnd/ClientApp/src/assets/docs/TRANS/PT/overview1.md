@@ -5,11 +5,11 @@
 
 <p> Hoje, é raro ver mais de uma dúzia de participantes em uma reunião do conselho em uma cidade de 30.000 pessoas. Isso ainda é democracia? </p>
 
-<p> Às vezes, as reuniões são transmitidas na TV para os poucos que as assistem. Alguns jornais relatam algumas questões. Mas poucas pessoas sabem muito do que ocorre. </p>
+<p> Às vezes, as reuniões são transmitidas pela TV, poucos assistem. Alguns jornais relatam algumas questões. Mas poucas pessoas sabem a maioria das transações durante essas reuniões. </p>
 
-<p> Há muitas pessoas boas que entram em cargos públicos para melhorar suas comunidades. Mas o sistema opaco atual facilita demais o uso do escritório por outras pessoas. </p>
+<p> Há muitas pessoas boas que entram em cargos públicos para melhorar suas comunidades. Mas o atual sistema opaco facilita demais o uso do escritório por outras pessoas. </p>
 
-<p> O objetivo do Govmeeting é fornecer acesso rápido e fácil às decisões do dia a dia que seus funcionários fazem e mais informações sobre o significado dessas decisões. </p>
+<p> O objetivo do Govmeeting é fornecer acesso rápido e fácil às decisões oficiais que seus representantes tomam e entender o que elas significam. </p>
 <h2> Recursos </h2>
 <p> O Govmeeting irá automaticamente: </p>
 
@@ -34,11 +34,13 @@
 <li> Pesquise o que um funcionário específico disse sobre questões. </li>
 <li> Pesquise os resultados da votação da legislação </li>
 <li> Veja estatísticas, gráficos e tabelas sobre questões, legislatura etc. </li>
-</ul><!-- END OF README SECTION -->
+</ul>
+<p> Uma meta é que o Govmeeting trabalhe em qualquer lugar, em qualquer idioma, para qualquer forma de governo representativo. O único requisito é que as reuniões oficiais sejam abertas ao público ou que as transcrições estejam disponíveis. </p>
+
+<p> A democracia está em perigo em todo o mundo hoje. Para sobreviver, ele precisa se tornar uma parte essencial da vida das pessoas. Isso só pode começar no nível de base local. </p>
+<!-- END OF README SECTION -->
 <p><a name="continued"></a></p>
 <h2> Problemas com o acesso atual </h2>
-<p> O acesso a esse tipo de informação é difícil hoje. Apenas algumas grandes cidades disponibilizam transcrições de suas reuniões. E estes são frequentemente difíceis de obter e usar. </p>
+<p> Normalmente, não é uma prioridade para funcionários do governo manter os eleitores muito informados sobre suas ações. Apenas algumas grandes cidades disponibilizam transcrições de suas reuniões. E eles geralmente são difíceis de obter e usar. </p>
 
-<p> Filadélfia é a sexta maior cidade dos EUA. Aqui está uma página de amostra de uma transcrição do Conselho. São 154 páginas de linhas em espaço duplo, 10 palavras por linha. Está no formato PDF, tornando-o inutilizável em telas pequenas, pois o tamanho não pode ser ajustado. Também não há um índice. E o índice é possivelmente utilizável por um pesquisador jurídico, mas não pela pessoa comum. </p>
-
-<p> Clique abaixo para ver um exemplo de transcrição e índice. </p>
+<p> Filadélfia é a sexta maior cidade dos EUA. Clique abaixo para mostrar uma página de amostra de uma transcrição do conselho da cidade. São 154 páginas de linhas em espaço duplo, 10 palavras por linha. Seu formato PDF não pode ser usado em telas pequenas, pois o tamanho não pode ser ajustado. Não há índice. O índice é possivelmente utilizável por um pesquisador legal, mas não por uma pessoa comum. </p>

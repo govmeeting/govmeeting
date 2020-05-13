@@ -7,11 +7,9 @@
 <li> <a href="about?id=setup#DevelopVS">Kehitä Visual Studion kanssa</a> </li>
 <li> <a href="about?id=setup#DevelopOther">Kehitä muilla alustoilla</a> </li>
 <li> <a href="about?id=setup#Database">Tietokanta</a> </li>
-<li> <a href="about?id=setup#GoogleCloud">Google Cloud Platform -tili</a> </li>
+<li> <a href="about?id=setup#GoogleCloud">Google Cloud Platform</a> </li>
 <li> <a href="about?id=setup#GoogleApi">Google API -näppäimet</a> </li>
-</ul>
-<p> Nämä dokumentaatiosivut ovat FrontEnd / ClientApp / src / app / omaisuus / docs-kansiossa. Suorita korjaukset siellä ja <a href="https://github.com/govmeeting/govmeeting">lähetä vetopyyntö Gitubille.</a> </p>
-<hr />
+</ul><hr />
 <p><a name="InstallTools"></a></p>
 <h1> Asenna työkalut ja kloonivarasto <br/></h1>
 <p> <a href="about?id=setup#Contents">[Sisällys]</a> </p>
@@ -20,19 +18,15 @@
 <li> Asenna git. <a href="https://gitforwindows.org">Git Windowsille</a> , <a href="https://git-scm.com/download/mac">Git Macille</a> </li>
 <li> Asenna <a href="https://nodejs.org/en/download/">Node.js.</a> </li>
 <li> Asenna <a href="https://dotnet.microsoft.com/download">.Net Core SDK.</a> </li>
-<li> "Haarukka" projekti githubissa </li>
-<li> Klooni projekti paikallisesti </li>
-<li> Luo sisaruskansio kloonatulle arkistolle nimeltä "SECRETS" </li>
-</ul>
-<p> "SECRETS" -kansio on tarkoitettu avaimille ja salasanoille, joita ei ole tallennettu julkiseen arkistoon. Niitä tarvitaan Google API -palveluiden suorittamiseen. </p>
-<hr />
+<li> Klooni tai lataa projekti <a href="https://github.com/govmeeting/govmeeting">Githubista.</a> Mieluiten haarukkaa projekti ja kloonaa haarukka. </li>
+</ul><hr />
 <p><a name="DevelopVsCode"></a></p>
 <h1> Kehitä VsCode: lla <br/></h1>
 <p> <a href="about?id=setup#Contents">[Sisällys]</a> </p>
 <h2> Asenna VsCode </h2>
 <ul>
 <li> Asenna <a href="https://code.visualstudio.com/download">Visual Studio -koodi</a> ja käynnistä se. </li>
-<li> Avaa laajennukset vasemmalla sivupaneelilla ja asenna: 
+<li> Asenna nämä laajennukset vasemmalla olevalla laajennuspaneelilla: 
 <ul>
 <li> Microsoftin "Debugger for Chrome" </li>
 <li> "C
@@ -41,53 +35,91 @@
 <li> "Todo Tree" kirjoittanut Gruntfuggly - näyttää TODO-rivit koodissa (valinnainen) </li>
 <li> Microsoftin "Powershell" - Powershell-rakennuskomentosarjojen virheenkorjaukseen (valinnainen) </li>
 </ul></li>
-</ul><h2> Debug / Suorita ClientApp & WebApp </h2>
+</ul><h2> Suorita ClientApp itsenäisesti </h2>
 <ul>
-<li> Avaa Govmeeting-kansio VsCode-sovelluksessa </li>
+<li> Avaa projektikansio VsCode-sovelluksessa </li>
+<li> Asenna NPM-paketit: 
+<ul>
 <li> Avaa pääteruutu VsCode-sovelluksessa </li>
 <li> cd FrontEnd / ClientApp </li>
 <li> npm asenna </li>
+</ul></li>
+<li> Yhdistä ja suorita ClientApp 
+<ul>
 <li> npm alku </li>
-<li> Aseta vianetsintäpaneelissa käynnistysmääritykset "WebApp & ClientApp-W" </li>
-<li> Paina F5 (virheenkorjaus) tai Ctrl-F5 (suorita ilman virheenkorjausta) </li>
-</ul>
-<p> ClientApp avautuu selaimessa. </p>
-
+</ul></li>
+<li> Aseta virheenkorjauspaneelissa käynnistyskonfiguraatio "ClientApp Standalone" </li>
+<li> Paina F5 (virheenkorjaus) tai Ctrl-F5 (suorita ilman virheenkorjausta) 
 <ul>
-<li> Napsauta mitä tahansa Tietoja-valikkokohdoista, niin näet ohjeet. </li>
-<li> Napsauta sijaintivalikkokohta "Boothbayn satama". Näet kojetaulun auki tälle sijainnille. </li>
+<li> TAI avaa selain localhostille: 4200 </li>
+</ul></li>
 </ul>
-<p> Varmistaaksesi, että ClientApp soittaa WebApp API: lle tietojen noutamiseksi. </p>
-
+<p> Oletuksena ClientApp kutsuu tynkäpalveluita WebApp API: n kutsumisen sijasta. </p>
+<h2> Suorita ClientApp ja WebApp </h2>
 <ul>
-<li> Napsauta "Oikoluku transkriptio". Näet videoruudun ja tekstitetyn tekstin. Napsauta videon toistopainiketta. </li>
-<li> Napsauta "Lisää tunnisteita tekstitykseen". Näet kokouksen koodauksen merkitsemisen. </li>
-<li> Napsauta "Näytä viimeisin kokous". Näet täydellisen kopion katselua varten. </li>
-</ul>
-<p> Suurin osa muista kojelautakorteista ei soita WebAppille, vaan palauttaa testitiedot. </p>
-
-<p> ClientApp palvelee webpack-dev-palvelin, joka aloitettiin "npm start". WebApp käyttää Kestrel-palvelinta, joka sisältyy Asp.Net Core -sovellukseen. Kestrel-palvelin vastaa Web-sovellusliittymäpuheluihin. Mutta se välittää sisäiset ClientApp-pyynnöt webpack-dev-palvelimelle. </p>
-<h2> Debug / Run ClientApp itsenäinen </h2>
+<li> Lataa alikansiot <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drivesta.</a> Laita heidät sisar-kansioon projektille nimeltä "TESTDATA" </li>
+<li> Muuta FrontEnd / ClientApp / app.module.ts -kohdassa "isAspServerRunning" vääristä todellisiksi. </li>
+<li> Rakenna projekteja: 
 <ul>
-<li> Muuta sovelluksessa.module.ts "isAspServerRunning" totta väärään. </li>
+<li> Ctrl-Shift-P </li>
+<li> Valitse "Tehtävät: Suorita tehtävä" </li>
+<li> Valitse "build-webapp" tai "Build All" </li>
+</ul></li>
+<li> Käynnistä ClientApp (jos se ei ole vielä käynnissä) 
+<ul>
+<li> cd FrontEnd / ClientApp </li>
 <li> npm alku </li>
-<li> Aseta vianetsintäpaneelissa käynnistyskokoonpano "ClientApp" </li>
-<li> Paina F5 (virheenkorjaus) tai Ctrl-F5 (suorita ilman virheenkorjausta) </li>
-</ul>
-<p> Kun "isAspServerRunning" on asetettu väärään, tynkäpalveluita käytetään WebApp-sovellusliittymän kutsumisen sijasta. Tästä on hyötyä, kun muokkaamme vain koodia ClientAppissa. </p>
-<h2> Debug / Run WorkflowApp </h2>
+</ul></li>
+<li> Aseta virheenkorjauspaneelissa käynnistysmääritykset "WebApp & ClientApp" </li>
+<li> Paina F5 (virheenkorjaus) tai Ctrl-F5 (suorita ilman virheenkorjausta) 
 <ul>
+<li> Chrome-selain aukeaa ja hetken kuluttua ClientApp ilmestyy localhostiin: 5000. </li>
+</ul></li>
+</ul><h3> Huomautuksia </h3>
+<p> "build-webapp" rakentaa WebApp. </p>
+
+<p> "Rakenna kaikki" rakentaa kaikki projektit. Kuten build-webapp, se asentaa NuGet-paketit tarpeen mukaan. Tarkista jokainen pääteikkuna virheiden varalta ja suorita tarvittaessa uudelleen. Useiden NuGet-pakettien palauttamisessa aynkronisesti on tunnettu kilpailuolosuhteiden virhe. </p>
+
+<p> Jos asetukseksi "isAspServerRunning" tulee totta, käske ClientApp soittaa WebApp API: lle tynkopalvelujen sijasta. </p>
+
+<p> Google-aseman alikansiot on tarkoitettu WebAppin testaamiseen. Tiedostot ovat WorkflowApp -sovelluksen testaamiseen. </p>
+
+<p> ClientApp palvelee webpack-dev-palvelin. WebApp käyttää Kestrel-palvelinta. Mutta Kestrel välittää ClientApp-pyynnöt webpack-dev-palvelimelle. </p>
+<h2> Suorita WorkflowApp </h2>
+<ul>
+<li> Lataa testitiedostot <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drivesta.</a> </li>
 <li> Aseta virheenkorjauspaneelissa käynnistyskokoonpano "WorkflowApp" </li>
 <li> Paina F5 (virheenkorjaus) tai Ctrl-F5 (suorita ilman virheenkorjausta) </li>
-</ul>
-<p> Kun WorkflowApp käynnistää sen: </p>
+</ul><h3> Huomautuksia </h3>
+<p> WorkflowApp käsittelee kopioidut tekstit ja kopioi nauhoitukset. Tallenteiden kirjoittaminen vaatii <a href="about?id=setup#GoogleCloud">Google Cloud -tilin.</a> </p>
+
+<p> WorkflowApp luo sisaruskansion projektikansioon (ja TESTDATA), nimeltään "DATAFILES". DATAFILES-ohjelmassa on 3 alikansiota: </p>
 
 <ul>
-<li> Kopioi jotkut testitiedostot Datafles / RECEIVED-kansioon: kopioidun PDF-tiedoston ja tallentavan MP4-tiedoston. </li>
-<li> Prosessoi kopioidun PDF-tiedoston ja luo JSON-tiedoston, joka on valmis merkitsemään. </li>
-<li> Käsittele tallentava MP4-tiedosto kopioimalla se pilvessä ja luo JSON-tiedoston, joka on valmis oikolukemaan. </li>
+<li> Vastaanotetut - kaikki tähän kansioon sijoitetut tiedostot käsitellään automaattisesti. </li>
+<li> KÄSITTELY - Tämä sisältää työkansiot käsittelyä varten. </li>
+<li> VALMIS - Valmis tiedostot sijoitetaan tähän. </li>
 </ul>
-<p> Tulokset löytyvät tiedostosta / PROSESSING. Sinun on kuitenkin ensin määritettävä <a href="about?id=setup#GoogleCloud">Google Cloud -tili</a> , jotta nauhoitus voidaan kirjoittaa. </p>
+<p> Testauksen helpottamiseksi WorkflowApp kopioi tiedostot TESTDATA-tiedostosta DATAFILES / RECEIVED, kun se käynnistyy. </p>
+<h3> Käsittele uusia nauhoituksia </h3>
+<p> Google Driven testitiedostojen lisäksi voit käsitellä omia kokousten tallenteita: </p>
+
+<ul>
+<li> Hanki nauhoitus mp4-muodossa hallituksen kokouksesta. </li>
+<li> Nimeä tiedosto seuraavasti: "country_state_county_municipality_agency_language-code_date.mp4". </li>
+<li> Esimerkiksi: "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4". </li>
+<li> Laita tiedosto kohtaan "DATAFILES / RECEIVED" </li>
+<li> Aseta seuraavat ominaisuudet BackEnd / WorkflowApp / appsettings.json: 
+<ul>
+<li> "InitializeWithTestData": väärä </li>
+<li> "RequireManagerApproval": väärä </li>
+</ul></li>
+<li> Suorita WorkflowApp. </li>
+</ul>
+<p> Jos olet määrittänyt Google-tilin, se kirjoittaa nauhoituksen. </p>
+<h3> Käsittele uusia kopioita </h3>
+<p> Testitiedostojen lisäksi voit myös käsitellä omia. Testitiedostot ovat kopioita Philadelphia, PA, USA: n kaupunginvaltuuskunnan kokouksista. Muiden transkriptimuotojen käsittelemiseksi sinun on lisättävä menetelmä ProcessTranscript_Lib -sovellukseen. Katso <a href="https://github.com/govmeeting/govmeeting/issues/93">numero
+# 93</a> . Lopulta tavoitteena on kirjoittaa koodi, joka käsittelee automaattisesti kaikki tai useimmat muodot ilman mukautettua koodia. </p>
 <hr />
 <p><a name="DevelopVS"></a></p>
 <h1> Kehitä Visual Studion kanssa <br/></h1>
@@ -103,10 +135,13 @@
 <li> "Merkintäeditori" </li>
 </ul></li>
 <li> Avaa ratkaisutiedosto "govmeeting.sln" </li>
-</ul><h2> Debug / Suorita ClientApp & WebApp </h2>
+</ul><h2> Suorita ClientApp ja WebApp </h2>
 <ul>
-<li> Task Runner Explorer -sovelluksessa (ClientApp): 
+<li> Lataa alikansiot <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drivesta.</a> Laita heidät sisar-kansioon projektille nimeltä "TESTDATA" </li>
+<li> Muuta FrontEnd / ClientApp / app.module.ts -kohdassa "isAspServerRunning" vääristä todellisiksi. </li>
+<li> Task Runner Explorerissa 
 <ul>
+<li> Valitse: ClientApp </li>
 <li> suorita "asenna" </li>
 <li> aja "Käynnistä" </li>
 </ul></li>
@@ -116,8 +151,9 @@
 </ul>
 <p> HUOMAUTUS: Aikavälien asettamisessa on ongelma Visual Studion Angular ClientApp -sovelluksessa. Katso: <a href="https://github.com/govmeeting/govmeeting/issues/80">Github-numero
 # 80</a> </p>
-<h2> Debug WorkflowApp </h2>
+<h2> Suorita WorkflowApp </h2>
 <ul>
+<li> Lataa testitiedostot Google Drivesta (katso yllä) </li>
 <li> Avaa vianetsintäpaneeli. </li>
 <li> Aseta käynnistysprojektiksi "WorkflowApp" </li>
 <li> Paina F5 (virheenkorjaus) tai Ctrl-F5 (suorita ilman virheenkorjausta) </li>
@@ -125,11 +161,11 @@
 <p> Huomaa: Katso WorkflowApp -sovelluksen huomautukset kohdasta "Visual Studio -koodi" </p>
 <hr />
 <p><a name="DevelopOther"></a></p>
-<h1> Kehitä muilla alustoilla <br/></h1>
+<h1> Kehitä muiden työkalujen kanssa <br/></h1>
 <p> <a href="about?id=setup#Contents">[Sisällys]</a> </p>
 
 <p> Aseta profiilissasi ympäristömuuttuja, ASPNETCORE_ENVIRONMENT, "Kehitys" -kohtaan. Tätä käyttävät WebApp ja WorkflowApp. </p>
-<h2> Luo ja aja ClientApp </h2>
+<h2> Suorita ClientApp </h2>
 <p> Suorittaa: </p>
 
 <ul>
@@ -138,7 +174,7 @@
 <li> npm alku </li>
 </ul>
 <p> Siirry selaimeesi localhost: 4200. Asiakassovellus latautuu. Jotkut ominaisuudet eivät toimi, ennen kuin WebApp on käynnissä. </p>
-<h2> Luo ja aja WebApp ClientApp -sovelluksen avulla </h2>
+<h2> Suorita WebApp ClientApp -sovelluksella </h2>
 <p> Suorittaa: </p>
 
 <ul>
@@ -148,11 +184,11 @@
 <li> dotnet suorita bin / debug / dotnet2.2 / webapp.dll </li>
 </ul>
 <p> Siirry selaimeesi localhost: 5000. Asiakassovellus latautuu. </p>
-<h2> Luo ja aja ClientApp itsenäisesti </h2>
+<h2> Suorita ClientApp itsenäisesti </h2>
 <ul>
 <li> Muuta sovelluksessa.module.ts "isAspServerRunning" totta väärään. </li>
 <li> (tee yllä: "Rakenna ja käynnistä ClientApp") </li>
-</ul><h2> Rakenna ja suorita WorkflowApp </h2>
+</ul><h2> Suorita WorkflowApp </h2>
 <p> Suorittaa: </p>
 
 <ul>
@@ -213,7 +249,7 @@
 <li> Siirry Visual Studiossa WebApp-omaisuussivuille -&gt; Rakenna -&gt; ja kirjoita NOAUTH "Ehdollinen kokoamissymboli" -ruutuun. </li>
 </ul><hr />
 <p><a name="GoogleCloud"></a></p>
-<h1> Google Cloud Platform -tili <br/></h1>
+<h1> Google Cloud Platform <br/></h1>
 <p> <a href="about?id=setup#Contents">[Sisällys]</a> </p>
 
 <p> Jotta voit käyttää Google Speech -sovellusliittymiä puheeksi muuntamiseen, tarvitset Google Cloud Platform (GCP) -tilin. Suurimmassa osassa Govmeetingin kehitystyötä voit käyttää olemassa olevia testitietoja. Mutta jos haluat kirjoittaa uusia nauhoituksia, saat GCP: n. Google-sovellusliittymä pystyy kopioimaan nauhoituksia yli 120 kielellä ja muunnelmissa. </p>
@@ -240,23 +276,21 @@
 <p> Lataa käyttöoikeustiedot JSON-tiedosto. </p>
 </li>
 <li>
-<p> Laita tiedosto <code>SECRETS</code> kansioon, jonka loit <code>SECRETS</code> . </p>
+<p> Luo <code>SECRETS</code> kansio sisaruksena kloonattuun projektikansioon </p>
 </li>
 <li>
-<p> Nimeä tiedosto <code>TranscribeAudio.json</code> . </p>
+<p> Laita valtuustiedosto SALAISIIN ja nimeä se uudelleen <code>TranscribeAudio.json</code> . </p>
 </li>
-</ul>
-<p> HUOMAUTUS: Yllä olevat vaiheet ovat saattaneet muuttua hieman. Jos on, päivitä tämä asiakirja. </p>
-<h2> Testaa puheen ja tekstin transkriptio </h2>
+</ul><h2> Testaa puheen ja tekstin transkriptio </h2>
 <ul>
 <li>
 <p> Aseta Visual Studion käynnistysprojektiksi <code>Backend/WorkflowApp</code> . Paina F5. </p>
 </li>
 <li>
-<p> Kopioi (älä siirrä) yhtä MP4-mallitiedostoista testitiedoista DATAFILES / RECEIVED-tiedostoon. </p>
+<p> Kopioi (älä siirrä) yhtä MP4-mallitiedostoa testitiedoista DATAFILES / RECEIVED. </p>
 </li>
 </ul>
-<p> Ohjelma tunnistaa nyt uuden tiedoston ja aloittaa sen käsittelyn. MP4-tiedosto siirretään kohtaan "VALMIS", kun se on valmis. Näet tulokset alikansioissa, jotka on luotu "Tiedostot" -hakemistoon. </p>
+<p> Ohjelma tunnistaa nyt uuden tiedoston ja aloittaa sen käsittelyn. MP4-tiedosto siirretään kohtaan "VALMIS", kun se on valmis. Näet tulokset alikansioissa, jotka on luotu "DATAFILES" -hakemistoon. </p>
 
 <p> Sovelluksessa appsettings.json on omaisuus "RecordingSizeForDevelopment". Sen asetukseksi on "180". Tämä saa aikaan, että ProcessRecording_Lib -sovelluksen kopiointirutiini käsittelee vain nauhoituksen ensimmäiset 180 sekuntia. </p>
 <hr />
@@ -270,8 +304,10 @@
 <li> ReCaptcha-avaimia tarvitaan käyttämään ReCaptchaa käyttäjän rekisteröinnin aikana. Niitä voi hankkia <a href="https://developers.google.com/recaptcha/">Google reCaptcha -sivustolta</a> . </li>
 <li> OAuth 2.0 -käyttöoikeuksia käytetään ulkoisen käyttäjän kirjautumiseen ilman, että käyttäjän on luotava henkilökohtainen tili sivustolle. Vieraile <a href="https://console.developers.google.com/">Google API -konsolissa</a> saadaksesi käyttäjätiedot, kuten asiakastunnuksen ja asiakassalaisuuden. </li>
 </ul>
-<p> Luo tiedosto "appsettings.Development.json" kansioon "SECRETS". Sen tulisi sisältää juuri hankkimat avaimet: </p>
-<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-Id", "ClientSecret": "your-client-secret" } }, "ReCaptcha:SiteKey": "your-site-key", "ReCaptcha:Secret": "your-secret" }</code> </pre><hr /><h2> Testaa reCaptcha </h2>
+<p> Luo <code>SECRETS</code> kansio sisaruksena kloonattuun projektikansioon. Luo siihen tiedosto nimeltä "appsettings.Development.json" seuraavassa muodossa. </p>
+<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-Id", "ClientSecret": "your-client-secret" } }, "ReCaptcha:SiteKey": "your-site-key", "ReCaptcha:Secret": "your-secret" }</code> </pre>
+<p> Muokkaa sitä niin, että se sisältää juuri saamat avaimet: </p>
+<hr /><h2> Testaa reCaptcha </h2>
 <ul>
 <li> Suorita WebApp-projekti. </li>
 <li> Napsauta oikeassa yläkulmassa olevaa "Rekisteröidy" -painiketta. </li>

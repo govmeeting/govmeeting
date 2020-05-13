@@ -5,11 +5,11 @@
 
 <p> Leo ni nadra kuona zaidi ya waliohudhuria kwenye mkutano wa baraza katika mji wa watu 30,000. Je! Hii bado ni demokrasia? </p>
 
-<p> Mikutano wakati mwingine hutangazwa kwenye Runinga, kwa wachache wanaowaangalia. Magazeti mengine yanaripoti juu ya maswala kadhaa. Lakini watu wachache wanajua mengi ya kile kinachotokea. </p>
+<p> Mikutano wakati mwingine hutangazwa kwenye Televisheni, wachache huiangalia. Magazeti mengine yanaripoti juu ya maswala kadhaa. Lakini watu wachache wanajua zaidi ya shughuli gani wakati wa mikutano hii. </p>
 
-<p> Kuna watu wengi wazuri ambao huingia katika ofisi za umma ili kuboresha jamii zao. Lakini mfumo wa sasa wa opaque hufanya iwe rahisi sana kwa wengine kutumia ofisi zao kujinufaisha. </p>
+<p> Kuna watu wengi wazuri ambao huingia katika ofisi za umma ili kuboresha jamii zao. Lakini mfumo wa sasa wa opaque hufanya iwe rahisi sana kwa wengine kutumia ofisi kujinufaisha. </p>
 
-<p> Madhumuni ya Govmeeting ni kutoa ufikiaji wa haraka na rahisi katika siku kwa maamuzi ya siku ambayo maafisa wao hufanya na ufahamu zaidi juu ya nini maamuzi hayo yanamaanisha. </p>
+<p> Madhumuni ya Govmeeting ni kutoa ufikiaji wa haraka na rahisi katika maamuzi rasmi ambayo wawakilishi wao hufanya na ufahamu wa maana yao. </p>
 <h2> Vipengele </h2>
 <p> Govmeeting moja kwa moja: </p>
 
@@ -34,11 +34,13 @@
 <li> Tafuta ni nini afisa fulani alisema juu ya maswala. </li>
 <li> Tafuta matokeo ya kupiga kura kwenye sheria </li>
 <li> Tazama takwimu, girafu na chati kwenye maswala, wabunge, nk. </li>
-</ul><!-- END OF README SECTION -->
+</ul>
+<p> Lengo ni kwa Govmeeting kufanya kazi mahali popote, kwa lugha yoyote, kwa aina yoyote ya serikali ya uwakilishi. Sharti la pekee ni kwamba mikutano rasmi iko wazi kwa umma au kwamba hati zinapatikana. </p>
+
+<p> Demokrasia iko katika hatari ulimwenguni kote leo. Ili iweze kuishi, inahitaji kuwa sehemu muhimu ya maisha ya watu. Hii inaweza kuanza tu katika kiwango cha chini cha chini. </p>
+<!-- END OF README SECTION -->
 <p><a name="continued"></a></p>
 <h2> Shida za ufikiaji wa sasa </h2>
-<p> Kupata ufikiaji wa aina hii ya habari ni ngumu leo. Ni majiji makubwa tu ndio hufanya nakala za mikutano yao kupatikana. Na hizi mara nyingi ni ngumu kupata na kutumia. </p>
+<p> Sio kawaida kuwa kipaumbele kwa viongozi wa serikali kuweka wapiga kura habari zaidi juu ya hatua zao. Ni majiji makubwa tu ndio hufanya nakala za mikutano yao kupatikana. Na mara nyingi ni ngumu kupata na kutumia. </p>
 
-<p> Philadelphia ni mji wa 6 wakubwa zaidi hapa Amerika hapa ni ukurasa wa mfano kutoka kwa maandishi ya Baraza. Ni kurasa 154 za mistari ya spidi mbili, maneno 10 kwa kila mstari. Imewekwa katika muundo wa PDF, na kuifanya kuwa isiyoonekana kwenye skrini ndogo, kwani saizi haiwezi kubadilishwa. Hakuna meza yoyote ya yaliyomo. Na ripoti hiyo inaweza kutumika na mtafiti wa kisheria, lakini sio mtu wa wastani. </p>
-
-<p> Bonyeza hapa chini kuona sampuli ya kupitisha na faharisi. </p>
+<p> Philadelphia ni mji wa 6 wakubwa zaidi hapa Amerika Bonyeza hapa chini kuonyesha ukurasa wa nakala wa hati ya halmashauri ya jiji. Ni kurasa 154 za mistari ya spidi mbili, maneno 10 kwa kila mstari. Muundo wake wa PDF hauwezekani kwenye skrini ndogo, kwani saizi haiwezi kubadilishwa. Hakuna jedwali la yaliyomo. Index hiyo inaweza kutumika na mtafiti wa kisheria, lakini sio mtu wa wastani. </p>

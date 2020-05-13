@@ -7,56 +7,51 @@ using System.Text.RegularExpressions;
 
 namespace GM.ProcessTranscript
 {
-    interface ISpecificFix
-    {
-        string Fix(string _transcript);
-    }
-
-
-    public class Specific_Philadelphia_PA_USA : ISpecificFix
+    public class USA_PA_Philadelphia_Philadelphia_CityCouncil_en : ISpecificFix
     {
         // original PDF sources at: http://legislation.phila.gov/council-transcriptroom/
 
-        private string transcriptText;
         private string meetingInfo = "";
         private string officersNames = "";
+        private string transcriptText;      // spoken text
+
         CommonFixes cf = new CommonFixes();
-        LogProgress lp;
+        LogProgress lp = new LogProgress();
 
-        public Specific_Philadelphia_PA_USA(string workfolder)
+        public string Fix(string _transcript, string workfolder)
         {
-            lp = new LogProgress(workfolder);
-        }
+            /* First we split the transcript into three parts: meeting header, list of officers' name and the text of meeting.
+             * Currently we don't use the information in the meeting header or the list of officers' names.
+             * That's because we already have the meeting information encoded into the file name -- and
+             * the AddTags code later gets its list of speakers at the meeting from the transcript text itself.
+             * THerefore, we only return the transcipt text from this method and discard the meeting header and officer names.
+             * This will likely change in the future. We should at least save the names for officer attendence records.
+             */
 
-        public string Fix(string _transcript)
-        {
-            // Delete the date of the meeting that appears on each page
-            //            DeleteDateLine(ref transcript);
-
-
-            // Get the meeting information
+            // Extract the meeting header
             meetingInfo = cf.LinesFromAndUpto(_transcript, "    COUNCIL OF THE CITY OF PHILADELPHIA", "PRESENT:\n");
             cf.RemoveSpacesAtStartOfLine(ref meetingInfo);
 
-            // Get the officers' names
+            // Extract the officers' names
             officersNames = cf.LinesBetween(_transcript, "PRESENT:\n", "    - - -\n");
             cf.RemoveSpacesAtStartOfLine(ref officersNames);
 
-            // Get the transcript of what was said
+            // Extract the text of what was said
             transcriptText = cf.LinesBetween(_transcript, "    - - -\n", "Page 1\nA\n");
 
-            lp.SetParts(meetingInfo, officersNames);
+            // LogProgress will store the meeting header and officer names sections,
+            // so that it can write those to the trace files for each step of the conversion.
+            // On calls to lp.Log, we will only pass the new transcriptText.
 
+            lp.Initialize(meetingInfo, officersNames, workfolder);
             lp.Log("Split heading,speakers,text", transcriptText);
 
+            // Return the meeting text.
             return FixTextOfTranscript();
         }
 
         private string FixTextOfTranscript()
         {
-            // Split the transcript into three sections: meeting info, list of officers and transcript text.
-            //Split(ref transcript, ref meetingInfo, ref officersNames);
-
             //string ss = "abc\n1 aaa\n22 ttt\nzzz\n";
             //cf.RemoveLinesExceptThoseStartingWithLineNumber(ref ss);
             cf.RemoveLinesExceptThoseStartingWithLineNumber(ref transcriptText);
@@ -79,7 +74,6 @@ namespace GM.ProcessTranscript
             // Put newlines before & after section headers and before speaker headings.
             ReformatHeadings(ref transcriptText);
 
-
             return transcriptText;
         }
 
@@ -93,29 +87,6 @@ namespace GM.ProcessTranscript
             lp.Log("DeleteLineNumbers", transcriptText);
         }
 
-        //void DeletePageAndLineNumbers(ref string transcript)
-        //{
-        //    // Remove page and line numbers.
-        //    cf.RemovePageAndLineNumbers(ref transcript);
-
-        //    lp.Log("DeletePageAndLineNumbers");
-        //}
-
-        //void Split(ref string transcript, ref string meetingInfo, ref string officersNames)
-        //{
-        //    // Get the meeting information
-        //    meetingInfo = cf.LinesFromAndUpto(transcript, "    COUNCIL OF THE CITY OF PHILADELPHIA", "PRESENT:\n");
-        //    cf.RemoveSpacesAtStartOfLine(ref meetingInfo);
-
-        //    // Get the officers' names
-        //    officersNames = cf.LinesBetween(transcript, "PRESENT:\n", "    - - -\n");
-        //    cf.RemoveSpacesAtStartOfLine(ref officersNames);
-
-        //    // Get the transcript of what was said
-        //    transcript = cf.LinesBetween(transcript, "    - - -\n", "Page 1\nA\n");
-
-        //    lp.Log("Split heading,speakers,text");
-        //}
 
         void FormatSectionHeaders(ref string transcriptText)
         {

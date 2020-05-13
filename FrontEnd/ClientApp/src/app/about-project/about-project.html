@@ -6,9 +6,6 @@
    (loaded)="loadedHandler($event)">
   </markdown>
 
-  <p> <img src="assets/images/google-translate-color-regular.png"> </p>
+  <p *ngIf="language !='en'"> <img src="assets/images/google-translate-color-regular.png"> </p>
 
 </mat-card>
-
-
-<!-- <markdown [src]="'assets/docs/setup.md'" -->

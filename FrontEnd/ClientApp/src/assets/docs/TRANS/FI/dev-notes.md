@@ -1,50 +1,45 @@
-<h1> Käsittele uusia tekstityksiä </h1>
-<p> Jotkut kaupungit tuottavat kokousten jäljennöksiä. Tämän avulla voimme ohittaa kokouksen kirjoittamisen itse. Mutta se on erilainen ongelma. Oikotiedostot eivät ole vakiomuodossa. </p>
+<h1> Käsittele uudet tekstitysmuodot </h1>
+<p> Perimmäisenä tavoitteena on kirjoittaa koodi, joka käsittelee kaikki transkriptimuodot. Mutta siihen asti meidän on kirjoitettava mukautettu koodi käsitelläksesi jokaista uutta muotoa. Kun meillä on tarpeeksi näytteitä eri muodoista, pystymme paremmin kirjoittamaan yleisen koodin. </p>
 
-<p> Ohjelmistomme on: </p>
-
-<ul>
-<li> Pura tiedot. </li>
-<li> Lisää tunnisteita, joiden avulla tietoja on helppo käyttää. </li>
-</ul>
-<p> Normaalisti kopiossa olevat tiedot, jotka haluamme purkaa, ovat: </p>
+<p> Nämä ovat vaiheet uusien tekstikoodimuotojen käsittelemiseksi: </p>
 
 <ul>
-<li> Kokoustiedot: Aika, paikka, onko kyse erityiskokouksesta. </li>
+<li>
+<p> Hanki esimerkki hallituksen kokouksen kopiosta pdf- tai tekstitiedostona. </p>
+</li>
+<li>
+<p> Nimeä tiedosto seuraavasti: "country_state_county_municipality_agency_language-code_date.pdf". (tai .txt) Esimerkiksi: </p>
+<pre> <code> "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.pdf".</code> </pre></li>
+<li>
+<p> Luo uusi luokka käyttöliittymällä "ISpecificFix" projektiin "ProcessTranscripts_Lib". </p>
+</li>
+<li>
+<p> Anna luokalle nimi "country_state_county_municipality_agency_language-code". Esimerkiksi: </p>
+<pre> <code> public class USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en : ISpecificFix</code> </pre></li>
+<li>
+<p> Toteuta luokkamenetelmä: </p>
+<pre> <code> string Fix(string _transcript, string workfolder)</code> </pre></li>
+<li>
+<p> Fix () vastaanottaa olemassa olevan kopioidun tekstin ja palauttaa tekstin seuraavassa muodossa: </p>
+</li>
+</ul><pre> <code>Section: INVOCATION Speaker: COUNCIL PRESIDENT CLARKE Good morning. We&#39;re getting a very late start, so we&#39;d like to get moving. To give our invocation this morning, the Chair recognizes Pastor Mark Novales of the City Reach Philly in Tacony. I would ask all guests, members, and visitors to please rise. (Councilmembers, guests, and visitors rise.) Speaker: PASTOR NOVALES Good morning, City Council and guests and visitors. I pastor, as was mentioned, a powerful little church in -- a powerful church in Tacony called City Reach Philly. I&#39;m honored to stand in this great place of decision-making. ...</code> </pre>
+<p> Kun tämä luokka on valmis, WorkflowApp käsittelee uudet tekstit, kun ne ilmestyvät DATAFILES / RECEIVED. </p>
+
+<p> Huomautuksia: </p>
+
+<p> Käytämme System.Reflection -sovellusta oikean luokan käsittelemiseen käsiteltävän tiedoston nimen perusteella. </p>
+
+<p> Katso esimerkki ProcessTranscripts_Lib-luokasta "USA_PA_Philadelphia_Philadelphia_CityCouncil_fi". Voit ymmärtää paremmin, mitä tämä luokka tekee, tarkastelemalla lokitiedoston jälkiä "työkansiossa", joka välitetään argumentiksi Fix (): lle. </p>
+
+<p> Emme ota seuraavia tietoja nyt, mutta haluamme tehdä sen lopulta. </p>
+
+<ul>
 <li> Läsnä olevat virkamiehet </li>
-<li> Jaksootsikot </li>
-<li> Jokaisen puhujan nimi ja heidän sanomansa. </li>
+<li> Esitetyt lakiehdotukset ja päätökset </li>
+<li> Äänestysten tulokset </li>
 </ul>
-<p> Jos osiootsikoita ei ole, ohjelmiston tulisi olla riittävän älykäs määrittämään, mistä yleiset osiot alkavat: </p>
-
-<ul>
-<li> Roolipuhelu </li>
-<li> rukous </li>
-<li> Komitean raportit </li>
-<li> Laskujen käyttöönotto </li>
-<li> päätöslauselmat </li>
-<li> Julkinen kommentti </li>
-</ul>
-<p> Meidän on ymmärrettävä, kuinka hyvin voimme poimia myös laskujen ja päätöslauselmien äänestystulokset. Joskus tulokset ilmaistaan sellaisilla lauseilla kuin "silmillä on". Muina aikoina pidetään virallinen äänestys, jossa jokaisen virkamiehen nimi luetaan ääneen ja henkilö sanoo "ei" tai "ei". </p>
-
-<p> Tarpeettomat tiedot on poistettava. Esimerkiksi: toistuvat otsikot tai alatunnisteet, rivinumero ja sivunumero. </p>
-
-<p> Toivotaan, että voidaan kirjoittaa yleinen koodi, joka voi poimia tietoja uudesta tekstistä, jota sillä ei ole koskaan ollut. Siihen asti uusi koodi on kuitenkin kirjoitettava erityistapausten käsittelemiseksi. </p>
-
-<p> Koska yleensä vain suuret kaupungit tuottavat otteita: </p>
-
-<ul>
-<li> Suurimman osan ajasta käsittelemme kokousten nauhoituksia. </li>
-<li> Suuremmassa kaupungissa on todennäköisemmin tietokoneohjelmoijia, jotka kykenevät kirjoittamaan tällaisen koodin. </li>
-</ul>
-<p> Voisimme rakentaa laajennusmekanismin, jonka avulla voidaan lisätä moduulit, jotka suorittavat uutteen. Voimme sallia laajennusten kirjoittamisen useilla eri kielillä: Python, Java, PHP, Ruby - lisäksi niille kielille, joihin järjestelmä tällä hetkellä kirjoitetaan: Typescript ja C #. </p>
-
-<p> Tällä hetkellä ohjelmisto käsittelee vain yhtä tapausta, Philadelphia, PA USA. Projektikirjasto "Backend \ ProcessMeetings \ ProcessTranscripts_lib" sisältää koodin kopioiden käsittelemistä varten. </p>
-
-<p> Luokka "Specific_Philadelphia_PA_USA" kutsuu joitain yleiskäyttöisiä rutiineja Philadelphian kopioiden käsittelemiseksi. </p>
-
-<p> Austin, TX -kopion prosessointiin on tarkoitettu tynkoryhmä "Specific_Austin_TX_USA". Ehkä joku haluaisi taistella tämän koodin täyttämisessä. Testdata-kansiossa on testikopio. Mutta on luultavasti parasta saada uusimmat tiedot heidän verkkosivuiltaan: <a href="https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm">Austin, TX City Council</a> </p>
-<h1> Asiakkaan hallintapaneelin muokkaaminen </h1><h2> Lisää kortti uutta ominaisuutta varten </h2>
+<p> Austin, TX - USA: lla on myös online-julkisten kokousten kopioita. Luokka luotiin nimeltä "USA_TX_TravisCounty_Austin_CityCouncil_en" ProcessTranscripts_Lib -kansioon. Mutta Fix () -menetelmää ei toteutettu. Tekstejä voi ostaa heidän verkkosivustoltaan: <a href="https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm">Austin, TX City Council</a> </p>
+<h1> Muokkaa asiakashallintapaneelia </h1><h2> Lisää kortti uutta ominaisuutta varten </h2>
 <ul>
 <li> Siirry terminaalikehotteessa kansioon: FrontEnd / ClientApp </li>
 <li> Kirjoita: tuottaa komponentti ominaisuutesi </li>
@@ -69,16 +64,15 @@
 </ul>
 <p> Monien ClientApp-komponentitiedostojen yläosassa on määritelty const "NoLog". Vaihda sen arvo totta väärään kytkeäksesi konsolin lokitiedot käyttöön vain kyseisessä komponentissa. </p>
 <h1> Rakenna skriptit </h1>
-<p> Powershell-rakennuskomentosarjat löytyvät Apuohjelmat / PsScriptit -sivulta </p>
-<h2> BuildPublishAndDeploy.ps1 </h2>
-<p> Tämä komentosarja kutsuu monia muita komentosarjoja rakentamaan tuotantotiedotteen ja ottamaan sen käyttöön. </p>
+<p> Powershell-rakennuskomentosarjat löytyvät Apuohjelmat / PsScriptit -sivustosta </p>
 
 <ul>
+<li> BuildPublishAndDeploy.ps1 - Soita muille skripteille rakentaaksesi julkaisu ja ottaa sen käyttöön. </li>
 <li> Build-ClientApp.ps1 - Rakenna ClientApp-tuotantoversiot </li>
 <li> Publish-WebApp.ps1 - Luo WebApp "julkaise" -kansio </li>
 <li> Copy-ClientAssets.ps1 - Kopioi ClientApp-omaisuus WebApp wwwroot -kansioon </li>
 <li> Deploy-PublishFolder.ps1 - Ota julkaisukansio käyttöön etäkoneella </li>
 <li> Luo dokumentitiedostoista README.md-tiedosto Gethubille </li>
 </ul>
-<p> Deploy-PublishFolder.ps1 käyttää ohjelmistoa osoitteeseen govmeeting.org FTP: n avulla. FTP-kirjautumistiedot ovat tiedostossa appsettings.Development.json SECRETS-kansiossa. Se sisältää FTP: n ja muut kehitykseen käytettävät salaisuudet. Alla on tämän tiedostomuoto: </p>
-<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-id", "ClientSecret": "your-client-secret" } }, "ReCaptcha": { "SiteKey": "your-site-key", "Secret": "your-secret" }, "Ftp": { "username": "your-username", "password": "your-password", "domain": "your-domain" } }</code> </pre>
+<p> Deploy-PublishFolder.ps1 käyttää ohjelmistoa osoitteeseen govmeeting.org FTP: n avulla. FTP-kirjautumistiedot ovat tiedostossa appsettings.Development.json, SECRETS-kansiossa. Se sisältää FTP: n ja muut kehitykseen käytettävät salaisuudet. Alla on osa tätä tiedostoa, jota FTP käyttää: </p>
+<pre> <code>{ ... "Ftp": { "username": "your-username", "password": "your-password", "domain": "your-domain" } ... }</code> </pre>

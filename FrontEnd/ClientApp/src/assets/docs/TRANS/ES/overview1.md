@@ -5,13 +5,13 @@
 
 <p> Hoy es raro ver a más de una docena de asistentes a una reunión del consejo en una ciudad de 30,000 personas. ¿Sigue siendo democracia? </p>
 
-<p> Las reuniones a veces se transmiten por televisión, para los pocos que las ven. Algunos periódicos informan sobre algunos problemas. Pero pocas personas saben mucho de lo que ocurre. </p>
+<p> Las reuniones a veces se transmiten por televisión, pero pocas las ven. Algunos periódicos informan sobre algunos problemas. Pero pocas personas saben la mayoría de las transacciones durante estas reuniones. </p>
 
-<p> Hay muchas personas excelentes que ingresan a cargos públicos para mejorar sus comunidades. Pero el sistema opaco actual hace que sea demasiado fácil para otros usar su oficina para beneficiarse. </p>
+<p> Hay muchas personas excelentes que ingresan a cargos públicos para mejorar sus comunidades. Pero el sistema opaco actual hace que sea demasiado fácil para otros usar la oficina para beneficiarse. </p>
 
-<p> El objetivo de Govmeeting es proporcionar un acceso rápido y fácil a las decisiones diarias que toman sus funcionarios y una mayor comprensión de lo que significan esas decisiones. </p>
+<p> El propósito de Govmeeting es proporcionar un acceso rápido y fácil a las decisiones oficiales que toman sus representantes y una idea de lo que significan. </p>
 <h2> Caracteristicas </h2>
-<p> Gobmeeting automáticamente: </p>
+<p> Govmeeting automáticamente: </p>
 
 <ul>
 <li> Recupere transcripciones en línea o grabaciones de reuniones gubernamentales. </li>
@@ -19,7 +19,7 @@
 <li> Procese las transcripciones en un formato estándar. </li>
 <li> Cargue una base de datos relacional con la información en las transcripciones </li>
 </ul>
-<p> La gente podrá entonces: </p>
+<p> Las personas podrán entonces: </p>
 <h3> Elija recibir después de cada reunión: </h3>
 <ul>
 <li> Una transcripción completa de la reunión. </li>
@@ -34,11 +34,13 @@
 <li> Busque lo que dijo un funcionario específico sobre temas. </li>
 <li> Buscar resultados de votación sobre legislación </li>
 <li> Ver estadísticas, gráficos y cuadros sobre temas, legislatura, etc. </li>
-</ul><!-- END OF README SECTION -->
+</ul>
+<p> Un objetivo es que Govmeeting trabaje en cualquier lugar, en cualquier idioma, para cualquier forma de gobierno representativo. El único requisito es que las reuniones oficiales estén abiertas al público o que las transcripciones estén disponibles. </p>
+
+<p> La democracia está en peligro en todo el mundo hoy. Para sobrevivir, debe convertirse en una parte esencial de la vida de las personas. Esto solo puede comenzar en el nivel local de base. </p>
+<!-- END OF README SECTION -->
 <p><a name="continued"></a></p>
 <h2> Problemas con el acceso actual </h2>
-<p> Obtener acceso a este tipo de información es difícil hoy en día. Solo unas pocas ciudades grandes hacen disponibles las transcripciones de sus reuniones. Y estos a menudo son difíciles de obtener y usar. </p>
+<p> Por lo general, no es una prioridad para los funcionarios del gobierno mantener a los votantes muy informados sobre sus acciones. Solo unas pocas ciudades grandes hacen disponibles las transcripciones de sus reuniones. Y a menudo son difíciles de obtener y usar. </p>
 
-<p> Filadelfia es la sexta ciudad más grande de los EE. UU. Aquí hay una página de muestra de una transcripción del Consejo. Son 154 páginas de líneas de doble espacio, 10 palabras por línea. Está en formato PDF, lo que lo hace inutilizable en pantallas pequeñas, ya que el tamaño no se puede ajustar. Tampoco hay una tabla de contenido. Y el índice puede ser utilizado por un investigador legal, pero no por la persona promedio. </p>
-
-<p> Haga clic a continuación para ver una muestra de transcripción e índice. </p>
+<p> Filadelfia es la sexta ciudad más grande de los EE. UU. Haga clic a continuación para mostrar una página de muestra de una transcripción del consejo municipal. Son 154 páginas de líneas de doble espacio, 10 palabras por línea. Su formato PDF no se puede usar en pantallas pequeñas, ya que el tamaño no se puede ajustar. No hay una tabla de contenido. El índice puede ser utilizado por un investigador legal, pero no por una persona promedio. </p>

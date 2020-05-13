@@ -1,50 +1,45 @@
-<h1> Shughulikia Nakala mpya </h1>
-<p> Baadhi ya miji hutoa nakala za mikutano. Hii inaruhusu sisi kuruka kuandika mkutano wenyewe. Lakini inatoa shida tofauti. Nakala hazitakuwa katika muundo wastani. </p>
+<h1> Sindika muundo mpya wa maandishi </h1>
+<p> Lengo kuu ni kuandika msimbo ambao utasindika muundo wowote wa maandishi. Lakini hadi wakati huo, tunahitaji kuandika msimbo maalum ili kushughulikia kila fomati mpya. Tunapokuwa na sampuli za kutosha za fomati tofauti, tutaweza kuandika nambari ya generic. </p>
 
-<p> Programu yetu itahitaji: </p>
-
-<ul>
-<li> Futa habari hiyo. </li>
-<li> Ongeza vitambulisho vinavyoruhusu habari hiyo kutumiwa kwa urahisi. </li>
-</ul>
-<p> Habari kawaida katika hati, ambayo tunataka kutolewa ni: </p>
+<p> Hii ni hatua za kushughulikia fomati mpya za maandishi: </p>
 
 <ul>
-<li> Habari ya Mkutano: Wakati, mahali, iwe ni mkutano maalum. </li>
+<li>
+<p> Pata nakala ya mfano ya mkutano wa serikali kama faili ya maandishi au maandishi. </p>
+</li>
+<li>
+<p> Taja faili kama ifuatavyo: "nchi_state_county_municipality_agency_language-code_date.pdf". (au .txt) Kwa mfano: </p>
+<pre> <code> "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.pdf".</code> </pre></li>
+<li>
+<p> Unda darasa mpya na kiufundi "ISpecificFix" katika mradi "michakato yaTranscriptts_Lib". </p>
+</li>
+<li>
+<p> Taja darasa "nchi_state_county_municipality_agency_language-code". Kwa mfano: </p>
+<pre> <code> public class USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en : ISpecificFix</code> </pre></li>
+<li>
+<p> Timiza njia ya darasa: </p>
+<pre> <code> string Fix(string _transcript, string workfolder)</code> </pre></li>
+<li>
+<p> Kurekebisha () inapokea maandishi ya maandishi yaliyopo na inarudisha maandishi katika muundo ufuatao: </p>
+</li>
+</ul><pre> <code>Section: INVOCATION Speaker: COUNCIL PRESIDENT CLARKE Good morning. We&#39;re getting a very late start, so we&#39;d like to get moving. To give our invocation this morning, the Chair recognizes Pastor Mark Novales of the City Reach Philly in Tacony. I would ask all guests, members, and visitors to please rise. (Councilmembers, guests, and visitors rise.) Speaker: PASTOR NOVALES Good morning, City Council and guests and visitors. I pastor, as was mentioned, a powerful little church in -- a powerful church in Tacony called City Reach Philly. I&#39;m honored to stand in this great place of decision-making. ...</code> </pre>
+<p> Darasa hili litakapomalizika, WorkflowApp itashughulikia maandishi mapya wakati yanaonekana katika "DATAFILES / RECEIVED". </p>
+
+<p> Vidokezo: </p>
+
+<p> Tunatumia System.Reflection kusisitiza darasa sahihi kulingana na jina la faili kusindika. </p>
+
+<p> Tazama darasa "USA_PA_Philadelphia_Philadelphia_CityC Council_en" katika MchakatoTranscriptts_Lib kwa mfano. Unaweza kuelewa vizuri zaidi ambayo darasa hili linafanya kwa kuangalia athari za faili ya logi kwenye "kiboreshaji" ambacho hupitishwa kama hoja kwa Kurekebisha (). </p>
+
+<p> Hatuonyeshi habari ifuatayo sasa, lakini tutataka kufanya hivi mwishowe. </p>
+
+<ul>
 <li> Viongozi katika mahudhurio </li>
-<li> Vichwa vya sehemu </li>
-<li> Kila Jina la Spika na walichosema. </li>
+<li> Miswada na maazimio yaliyoletwa </li>
+<li> Matokeo ya upigaji kura </li>
 </ul>
-<p> Ikiwa hakuna vichwa vya sehemu vilivyopo, programu inapaswa kuwa nzuri kutosha kuamua ni sehemu gani za kawaida zinaanza: </p>
-
-<ul>
-<li> Simu ya jukumu </li>
-<li> Uombezi </li>
-<li> Ripoti za Kamati </li>
-<li> Utangulizi wa Miswada </li>
-<li> Maazimio </li>
-<li> Maoni ya Umma </li>
-</ul>
-<p> Tutahitaji kuona jinsi vizuri tunaweza pia kutoa matokeo ya kupiga kura kwenye bili na maazimio. Wakati mwingine, matokeo yanaonyeshwa na misemo kama "Ayes anayo". Wakati mwingine, kura rasmi huchukuliwa ambapo jina la kila afisa husomwa kwa sauti na mtu hujibu na "aye" au "hapana". </p>
-
-<p> Habari isiyo ya kawaida inahitaji kuondolewa. Kwa mfano: kurudia vichwa au viboreshaji, nambari za mstari na nambari za ukurasa. </p>
-
-<p> Inatarajiwa kuwa nambari ya jumla inaweza kuandikwa ambayo inaweza kutoa habari kutoka kwa nakala mpya ambayo haijawahi. Walakini, hadi wakati huo, nambari mpya itahitaji kuandikwa kushughulikia kesi maalum. </p>
-
-<p> Kwa kuwa kawaida ni miji mikubwa tu ambayo hutoa nakala: </p>
-
-<ul>
-<li> Wakati mwingi tutakuwa tukishughulika na rekodi za mikutano. </li>
-<li> Katika jiji kubwa, kuna uwezekano wa watengenezaji wa programu wa kompyuta wenye uwezo wa kuandika nambari kama hizo. </li>
-</ul>
-<p> Tunaweza kujenga mfumo wa kuziba ambao unaruhusu moduli kuongezwa ambazo hufanya uchimbaji. Tunaweza kuruhusu programu-jalizo kuandikwa kwa lugha nyingi tofauti: Python, Java, PHP, Ruby - kwa nyongeza kwa lugha ambazo mfumo huu umeandikwa hivi sasa katika: Aina na C #. </p>
-
-<p> Hivi sasa programu hiyo inashughulikia kesi moja tu, Philadelphia, PA USA. Maktaba ya mradi "Backend \ ProcessMeetings \ ProcessTranscriptts_lib" ina nambari ya usindikaji. </p>
-
-<p> Darasa la "Specific_Philadelphia_PA_USA" huita njia zingine za jumla kusindika nakala za Philadelphia. </p>
-
-<p> Kuna darasa la "Specific_Austin_TX_USA" lilimaanisha mchakato wa maandishi ya Austin, TX. Labda somone angependa kuchukua hatua ya kumaliza nambari hii. Kuna maandishi ya mtihani kwenye folda ya Testdata. Lakini labda ni bora kupata mpya kutoka kwa wavuti yao: <a href="https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm">Austin, TX Halmashauri ya Jiji</a> </p>
-<h1> Inabadilisha Dashibodi ya Mteja </h1><h2> Ongeza kadi ya huduma mpya </h2>
+<p> Austin, TX - USA pia ina nakala za mikutano ya hadharani mkondoni. Hatari iliundwa inayoitwa "USA_TX_TravisCounty_Austin_CityC Council_en" katika mchakatoTranscriptts_Lib. Lakini njia ya Kurekebisha () haikuweza kutekelezwa. Nakala zinaweza kupatikana kutoka kwa wavuti yao: <a href="https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm">Austin, TX Halmashauri ya Jiji</a> </p>
+<h1> Badilisha Dashibodi ya Mteja </h1><h2> Ongeza kadi ya huduma mpya </h2>
 <ul>
 <li> Katika mwendo wa terminal, nenda kwenye folda: FrontEnd / ClientApp </li>
 <li> Ingiza: ng toa sehemu ya kipengele chako </li>
@@ -70,15 +65,14 @@
 <p> Hapo juu ya faili nyingi za sehemu kwenye ClientApp, "NoLog" imeelezewa. Badilisha thamani yake kutoka kwa kweli kwenda kwa uwongo kuwasha ukataji wa kiweko kwa sehemu tu hiyo. </p>
 <h1> Jenga Maandishi </h1>
 <p> Maandishi ya ujenzi wa Powershell yanaweza kupatikana katika Huduma / Maandishi </p>
-<h2> BuildPublishAndDeploy.ps1 </h2>
-<p> Hati hii inayaita maandishi mengi mengine kujenga toleo la uzalishaji na kulipeleka. </p>
 
 <ul>
+<li> BuildPublishAndDeploy.ps1 -Anda maandishi mengine ili kuunda kutolewa na kuipeleka. </li>
 <li> Jenga-MtejaApp.ps1 - Tengeneza matoleo ya uzalishaji wa MtejaApp </li>
 <li> Chapisha-WebApp.ps1 - Jenga folda ya "kuchapisha" ya WebApp </li>
-<li> Copy-ClientAssets.ps1 - Nakili mali za mteja waApp kwa folda ya wWwroot ya WebApp </li>
+<li> Copy-ClientAssets.ps1 - Nakili mali za mteja waApp kwa folda ya wWwroot WebApp </li>
 <li> Deploy-PublishFolder.ps1 - Toa folda ya kuchapisha kwa mwenyeji wa mbali </li>
 <li> Unda faili ya README.md ya Gethub kutoka faili za hati </li>
 </ul>
-<p> Deploy-PublishFolder.ps1 inapea programu kwa govmeeting.org, kwa kutumia FTP. Habari ya kuingia kwa FTP iko kwenye programu ya vifaa vya faili.Development.json kwenye folda ya SECRETS. Inayo FTP na siri zingine za kutumika katika maendeleo. Chini ni muundo wa faili hii: </p>
-<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-id", "ClientSecret": "your-client-secret" } }, "ReCaptcha": { "SiteKey": "your-site-key", "Secret": "your-secret" }, "Ftp": { "username": "your-username", "password": "your-password", "domain": "your-domain" } }</code> </pre>
+<p> Deploy-PublishFolder.ps1 inapea programu kwa govmeeting.org, kwa kutumia FTP. Habari ya kuingia kwa FTP iko kwenye programu ya vifaa vya faili.Development.json kwenye folda ya SECRETS. Inayo FTP na siri zingine za kutumika katika maendeleo. Chini ni sehemu ya faili hii inayotumiwa na FTP: </p>
+<pre> <code>{ ... "Ftp": { "username": "your-username", "password": "your-password", "domain": "your-domain" } ... }</code> </pre>

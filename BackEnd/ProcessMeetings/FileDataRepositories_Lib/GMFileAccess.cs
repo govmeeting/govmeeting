@@ -220,7 +220,7 @@ namespace GM.FileDataRepositories
         }
 
         /* GetProjectSiblingFolder is for creating/finding sibling folders to the project.
-        * These include: _TESTDATA, DATAFILES, _SECRETS.
+        * These include: _TESTDATA, DATAFILES, SECRETS.
         * These folders must be outside the project folder so that they are not 
         * included in the code repository.
         * The names are coming from appsettings.json. The name could be just

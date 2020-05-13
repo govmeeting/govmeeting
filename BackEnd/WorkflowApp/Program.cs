@@ -44,10 +44,12 @@ namespace GM.Workflow
             var logger = serviceProvider.GetService<ILogger<Program>>();
 
             // Copy test data to Datafiles
-            string err = InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath, config.DeleteProcessingFolderOnStartup);
-            if (err != null)
-            {
-                logger.LogError(err);
+            if (config.InitializeWithTestData) {
+                string err = InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath, config.DeleteProcessingFolderOnStartup);
+                if (err != null)
+                {
+                    logger.LogError(err);
+                }
             }
 
             // entry to run app
@@ -101,9 +103,6 @@ namespace GM.Workflow
                 myOptions.DatafilesPath = GMFileAccess.GetProjectSiblingFolder(myOptions.DatafilesPath);
                 myOptions.TestfilesPath = GMFileAccess.GetProjectSiblingFolder(myOptions.TestfilesPath);
                 myOptions.GoogleApplicationCredentials = GMFileAccess.GetProjectSiblingFolder(myOptions.GoogleApplicationCredentials);
-                // myOptions.DatafilesPath = GMFileAccess.GetFullPath(myOptions.DatafilesPath);
-                // myOptions.TestfilesPath = GMFileAccess.GetFullPath(myOptions.TestfilesPath);
-                // myOptions.GoogleApplicationCredentials = GMFileAccess.GetFullPath(myOptions.GoogleApplicationCredentials);
             });
 
             // add services

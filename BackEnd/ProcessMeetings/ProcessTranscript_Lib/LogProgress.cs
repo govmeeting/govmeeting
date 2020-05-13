@@ -13,15 +13,11 @@ namespace ProcessTranscript_Lib
 
         int step = 1;
 
-        public LogProgress(string _workfolder)
-        {
-            workfolder = _workfolder;
-        }
-
-        public void SetParts(string info, string names)
+        public void Initialize(string info, string names, string work)
         {
             meetingInfo = info;
             officersNames = names;
+            workfolder = work;
         }
 
         public void Log(string fix_step, string transcriptText)

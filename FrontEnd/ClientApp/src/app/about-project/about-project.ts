@@ -57,7 +57,7 @@ export class AboutComponent implements OnInit {
     } else {
       this.document = "assets/docs/TRANS/" + (language).toUpperCase() + "/" + this.pageid + ".md"
     }
-}
+  }
 
   errorHandler(ev) {
     console.log("in errorHandler")

@@ -57,7 +57,7 @@ By default, ClientApp will call stub services instead of calling the WebApp API.
 
 * Download the sub-folders from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> Put them in a sibling folder to the project named "TESTDATA"
 * In FrontEnd/ClientApp/app.module.ts, change "isAspServerRunning" from false to true.
-* Build .Net components:
+* Build projects:
   * Ctrl-Shift-P
   * Select "Tasks: Run Task"
   * Select "build-webapp" or "Build All"
@@ -66,39 +66,54 @@ By default, ClientApp will call stub services instead of calling the WebApp API.
   * npm start
 * In the debug panel, set launch configuration "WebApp & ClientApp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
-  * Chrome browser will open and after a brief wait, ClientApp will appear on localhost:5000.
+  * Chrome browser will open and after a brief delay, ClientApp will appear on localhost:5000.
 
-NOTES:
+### Notes
 
-"Build All" builds all .Net components: (WorkflowApp, etc). When complete, check each terminal window for errors. Re-run if there is an error. There is a known race condition bug in restoring multiple NuGet packages aysnchronously.
+"build-webapp" builds WebApp.
 
-NOTES:
+"Build All" builds all projects. Like build-webapp, it installs NuGet packages as needed. Check each terminal window for errors and re-run if needed. There is a known race condition bug in restoring multiple NuGet packages aysnchronously.
+
+Setting "isAspServerRunning" to true, tells ClientApp to call the WebApp API instead of the stub services.
 
 The sub-folders on Google drive are for testing WebApp. The files are for testing WorkflowApp. 
-
-When "isAspServerRunning" is true, ClientApp calls the WebApp API instead of the stub services.
-
-"build-webapp" builds WebApp. "Build All" builds WebApp, WorkflowApp, TranslateText and test projects. They download and install NuGet packages as needed.
 
 ClientApp is served by the webpack-dev-server. WebApp uses the Kestrel server. But Kestrel proxies ClientApp requests to the webpack-dev-server.
 
 
 ## Run WorkflowApp
-* Download the test files from Google Drive (see above)
-* In debug panel, set launch configuration "WorkflowApp"
+* Download the test files from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a>
+* In the debug panel, set launch configuration "WorkflowApp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
 
-WorkflowApp processes PDF and transcribes MP4 meeting files. However, in order for it to transcribe MP4 files, you need to first setup a <a href="about?id=setup#GoogleCloud">Google Cloud account. </a>
+### Notes
 
-Besides the test files on Google Drive, you can also use your own:
-* Download an MP4 recording from Youtube or elsewhere.
+WorkflowApp processes transcript texts and transcribes recordings. Transcribing recordings requires a <a href="about?id=setup#GoogleCloud">Google Cloud account. </a>
+
+WorkflowApp creates a sibling folder to the project folder (and TESTDATA), called "DATAFILES". Within DATAFILES there are 3 sub-folders:
+* RECEIVED - Any files placed within this folder will be automatically processed.
+* PROCESSING - This contains work folders for processing.
+* COMPLETED - Completed files are placed here.
+
+To facilitate testing, WorkflowApp copies files from TESTDATA to DATAFILES/RECEIVED when it starts.
+
+### Process new recordings
+
+Besides the test files on Google Drive, you can process your own recordings of meetings:
+* Obtain a recording in mp4 format of a government meeting.
 * Name the file as follows: "country_state_county_municipality_agency_language-code_date.mp4".
 * For example: "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4".
-* Put the file in "TESTDATA"
+* Put the file in "DATAFILES/RECEIVED"
+* In BackEnd/WorkflowApp/appsettings.json, set the following properites:
+  * "InitializeWithTestData": false
+  * "RequireManagerApproval": false
 * Run WorkflowApp.
 
-If you have your Google Account set up, it will transcribe the recording. 
+If you have an Google Account set up, it will transcribe the recording.
 
+### Process new transcripts
+
+Besides the test transcripts, you can also process your own. The test files are transcripts from the Philadelphia, PA, USA city council meetings. In order to handle other transcript formats, you will need to add a method to ProcessTranscript_Lib. See <a href="https://github.com/govmeeting/govmeeting/issues/93"> Issue #93 </a>. Eventually the goal is to write code that automatically handle all or most formats without custom code.    
 _____
 
 <a name="DevelopVS"></a>

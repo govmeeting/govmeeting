@@ -1,7 +1,8 @@
 {
     "files.exclude": {
         "**/dist": true,
-        "**/wwwroot": true
+        "**/wwwroot": true,
+        "**/assets/docs/TRANS": true
     },
     "VSCodeCounter.showInStatusBar": false
 }

@@ -1,66 +1,61 @@
-<h1>处理新成绩单</h1>
-<p>一些城市会产生会议记录。这使我们可以跳过自己抄录会议的内容。但这提出了一个不同的问题。成绩单不是标准格式。 </p>
+<h1>处理新的成绩单格式</h1>
+<p>最终目标是编写可处理任何脚本格式的代码。但是在那之前，我们需要编写自定义代码来处理每种新格式。当我们有足够的不同格式的样本时，我们将能够更好地编写通用代码。 </p>
 
-<p>我们的软件将需要： </p>
-
-<ul>
-<li>提取信息。 </li>
-<li>添加使信息易于使用的标签。 </li>
-</ul>
-<p>通常要提取的成绩单中的信息是： </p>
+<p>这些是处理新成绩单格式的步骤： </p>
 
 <ul>
-<li>会议信息：时间，地点，是否为特别会议。 </li>
+<li>
+<p>以pdf或文本文件的形式获取政府会议的笔录样本。 </p>
+</li>
+<li>
+<p>命名文件如下：“ country_state_county_municipality_agency_language-code_date.pdf”。 （或.txt）例如： </p>
+<pre> <code> "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.pdf".</code> </pre></li>
+<li>
+<p>在项目“ ProcessTranscripts_Lib”中，使用接口“ ISpecificFix”创建一个新类。 </p>
+</li>
+<li>
+<p>将类命名为“ country_state_county_municipality_agency_language-code”。例如： </p>
+<pre> <code> public class USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en : ISpecificFix</code> </pre></li>
+<li>
+<p>实现类方法： </p>
+<pre> <code> string Fix(string _transcript, string workfolder)</code> </pre></li>
+<li>
+<p> Fix（）接收现有的脚本文本，并以以下格式返回文本： </p>
+</li>
+</ul><pre> <code>Section: INVOCATION Speaker: COUNCIL PRESIDENT CLARKE Good morning. We&#39;re getting a very late start, so we&#39;d like to get moving. To give our invocation this morning, the Chair recognizes Pastor Mark Novales of the City Reach Philly in Tacony. I would ask all guests, members, and visitors to please rise. (Councilmembers, guests, and visitors rise.) Speaker: PASTOR NOVALES Good morning, City Council and guests and visitors. I pastor, as was mentioned, a powerful little church in -- a powerful church in Tacony called City Reach Philly. I&#39;m honored to stand in this great place of decision-making. ...</code> </pre>
+<p>此类完成后，WorkflowApp将在新成绩单出现在“ DATAFILES / RECEIVED”中时对其进行处理。 </p>
+
+<p>笔记： </p>
+
+<p>我们使用System.Reflection根据要处理的文件的名称实例化正确的类。 </p>
+
+<p>有关示例，请参见ProcessTranscripts_Lib中的类“ USA_PA_Philadelphia_Philadelphia_CityCouncil_en”。通过查看作为参数传递给Fix（）的“工作文件夹”中的日志文件跟踪，您可以更好地了解此类的功能。 </p>
+
+<p>我们现在不提取以下信息，但是最终将要这样做。 </p>
+
+<ul>
 <li>出席人员</li>
-<li>章节标题</li>
-<li>每个演讲者的名字和他们说的话。 </li>
+<li>法案和决议介绍</li>
+<li>投票结果</li>
 </ul>
-<p>如果没有节标题，则该软件应足够聪明，可以确定常见节从何处开始： </p>
-
-<ul>
-<li>角色召唤</li>
-<li>调用方式</li>
-<li>委员会报告</li>
-<li>法案介绍</li>
-<li>决议案</li>
-<li>公众意见</li>
-</ul>
-<p>我们将需要了解我们还能如何在法案和决议中提取投票结果。有时，结果用诸如“赞成”的短语表示。其他时间则进行正式投票，其中大声读出每个官员的名字，然后该人以“是”或“否”答复。 </p>
-
-<p>需要删除多余的信息。例如：重复页眉或页脚，行号和页码。 </p>
-
-<p>希望可以编写能够从从未有过的新笔录中提取信息的通用代码。但是，在此之前，将需要编写新代码来处理特定情况。 </p>
-
-<p>由于通常只有较大的城市会产生成绩单： </p>
-
-<ul>
-<li>大多数时候，我们将处理会议记录。 </li>
-<li>在较大的城市中，有更多可能的计算机程序员可以编写此类代码。 </li>
-</ul>
-<p>我们可以构建一个插件机制，该机制允许添加执行提取的模块。我们可以允许以多种不同的语言编写插件：Python，Java，PHP，Ruby-除了系统当前使用的语言：Typescript和C＃。 </p>
-
-<p>目前，该软件仅处理一种情况，美国宾夕法尼亚州费城。项目库“ Backend \ ProcessMeetings \ ProcessTranscripts_lib”包含用于处理脚本的代码。 </p>
-
-<p>类“ Specific_Philadelphia_PA_USA”调用一些通用例程来处理费城的笔录。 </p>
-
-<p>有一个存根类“ Specific_Austin_TX_USA”，用于处理德克萨斯州奥斯汀的笔录。也许somone会想要完成此代码。 Testdata文件夹中有一个测试成绩单。但是，最好从他们的网站获取最新信息： <a href="https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm">德克萨斯州奥斯汀市议会</a> </p>
+<p>美国德克萨斯州奥斯汀市-美国也有在线公开会议的笔录。在ProcessTranscripts_Lib中创建了一个名为“ USA_TX_TravisCounty_Austin_CityCouncil_en”的类。但是Fix（）方法没有实现。成绩单可从其网站获得： <a href="https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm">德克萨斯州奥斯汀市议会</a> </p>
 <h1>修改客户端仪表板</h1><h2>添加新功能卡</h2>
 <ul>
 <li>在终端提示下，移至以下文件夹：FrontEnd / ClientApp </li>
 <li>输入：ng生成您的特征部件</li>
-<li>将您的功能添加到以下文件中：FrontEnd / ClientApp / src / app /您的功能</li>
+<li>将功能添加到以下文件中：FrontEnd / ClientApp / src / app /您的功能</li>
 <li>在app / dash-main / dash-main.html中插入一个新的gm-small-card或gm-large-card元素。 </li>
 <li>修改卡片元素的图标，iconcolor，标题等。 </li>
-<li>如果您需要访问控制器中当前所选位置和代理商的名称，请执行以下操作： 
+<li>如果您需要访问控制器中当前所选地点和代理商的名称，请执行以下操作： 
 <ul>
-<li>将位置和代理商输入属性添加到要素元素中</li>
+<li>将位置和代理商输入属性添加到要素元素</li>
 <li>在控制器中添加位置和代理商@Input属性。 </li>
 </ul></li>
 </ul>
 <p> （请参阅dash-main.html中的其他示例） </p>
 <h2>重新安排卡片</h2><ol>
 <li>打开文件：FrontEnd / ClientApp / src / app / dash-main / dash-main.html。 </li>
-<li>通过更改此文件中gm-small-card或gm-large-card元素的位置来更改卡的位置。 </li></ol><h1>记录中</h1>
+<li>通过更改gm-smallcard或gm-largecard元素在此文件中的位置来更改卡的位置。 </li></ol><h1>记录中</h1>
 <p> WebApp和WorkflowApp的日志文件位于解决方案根目录的“ logs”文件夹中。 </p>
 
 <ul>
@@ -70,15 +65,14 @@
 <p>在ClientApp的许多组件文件的顶部，定义了一个常量“ NoLog”。将其值从true更改为false以仅打开该组件的控制台日志记录。 </p>
 <h1>构建脚本</h1>
 <p> Powershell构建脚本可在实用程序/ PsScripts中找到</p>
-<h2> BuildPublishAndDeploy.ps1 </h2>
-<p>该脚本调用许多其他脚本来构建生产版本并进行部署。 </p>
 
 <ul>
+<li> BuildPublishAndDeploy.ps1-调用其他脚本来构建发行版并进行部署。 </li>
 <li> Build-ClientApp.ps1-构建ClientApp的生产版本</li>
 <li> Publish-WebApp.ps1-构建WebApp的“发布”文件夹</li>
 <li> Copy-ClientAssets.ps1-将ClientApp资产复制到WebApp wwwroot文件夹</li>
 <li> Deploy-PublishFolder.ps1-将发布文件夹部署到远程主机</li>
 <li>从文档文件为Gethub创建README.md文件</li>
 </ul>
-<p> Deploy-PublishFolder.ps1使用FTP将软件部署到govmeeting.org。 FTP登录信息位于SECRETS文件夹中的文件appsettings.Development.json中。它包含用于开发的FTP和其他机密。以下是此文件的格式： </p>
-<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-id", "ClientSecret": "your-client-secret" } }, "ReCaptcha": { "SiteKey": "your-site-key", "Secret": "your-secret" }, "Ftp": { "username": "your-username", "password": "your-password", "domain": "your-domain" } }</code> </pre>
+<p> Deploy-PublishFolder.ps1使用FTP将软件部署到govmeeting.org。 FTP登录信息位于SECRETS文件夹中的文件appsettings.Development.json中。它包含用于开发的FTP和其他机密。以下是FTP使用的此文件部分： </p>
+<pre> <code>{ ... "Ftp": { "username": "your-username", "password": "your-password", "domain": "your-domain" } ... }</code> </pre>

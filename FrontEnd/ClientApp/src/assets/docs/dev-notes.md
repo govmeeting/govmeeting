@@ -1,49 +1,63 @@
-# Handle new Transcripts
+# Process new transcript formats
 
-Some cities produce transcripts of meetings. This allows us to skip transcribing the meeting ourselves. But it presents a different problem. Transcripts will not be in a standard format.
+The ultimate goal is to write code that will process any transcript format. But until then, we need to write custom code to handle each new format. When we have enough samples of different formats, we will be better able to write the generic code.
 
-Our software will need to:
-* Extract the information.
-* Add tags that allow the information to be easily used.
+These are the steps for handling new transcript formats:
 
-Information normally in a transcript, which we want to extract are:
-* Meeting information: Time, place, whether it is a special meeting. 
+* Obtain a sample transcript of a government meeting as a pdf or text file.
+* Name the file as follows: "country_state_county_municipality_agency_language-code_date.pdf". (or .txt) For example:
+
+        "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.pdf".
+
+* Create a new class with interface "ISpecificFix" in the project "ProcessTranscripts_Lib".
+* Name the class "country_state_county_municipality_agency_language-code". For example:
+
+        public class USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en : ISpecificFix
+
+* Implement the class method: 
+
+        string Fix(string _transcript, string workfolder)
+
+* Fix() receives the existing transcript text and returns the text in the following format:
+
+```
+Section: INVOCATION
+
+Speaker: COUNCIL PRESIDENT CLARKE
+    Good morning.  We're getting a very late start, so we'd like to get moving.
+    To give our invocation this morning, the Chair recognizes Pastor Mark Novales of the City Reach Philly in Tacony. I would ask all guests, members, and visitors to please rise.
+    (Councilmembers, guests, and visitors rise.)
+
+Speaker: PASTOR NOVALES
+    Good morning, City Council and guests and visitors.  I pastor, as was mentioned, a powerful little church in -- a powerful church in Tacony called City Reach Philly.  I'm honored to stand in this great place of decision-making. 
+...
+```
+
+ 
+When this class is completed, WorkflowApp will process the new transcripts when they appear in "DATAFILES/RECEIVED".
+
+ 
+Notes:
+
+We use System.Reflection to instantiate the correct class based on the name of the file to be processed. 
+
+See the class "USA_PA_Philadelphia_Philadelphia_CityCouncil_en" in  ProcessTranscripts_Lib for an example. You can understand better what this class is doing by looking at the log file traces in the "workfolder" that is passed as an argument to Fix().
+
+We don't extract the following information now, but we will want to do this eventually.
 * Officials in attendance
-* Section headings
-* Each Speaker's Name and what they said. 
+* Bills and resolutions introduced
+* Voting results 
 
-If no section headings are present, the software should be smart enough to determine where common sections start:
-* Role call
-* Invocation
-* Committee Reports
-* Introduction of Bills
-* Resolutions
-* Public Comment
-
-We will need to see how well we can also extract voting results on bills and resolutions. Sometimes, the results are indicated by such phrases as "The ayes have it". Other times, a formal vote is taken where each official's name is read aloud and the person reponds with "aye" or "nay".
-
-Superfluous information needs to be removed. For example: repeating headers or footers, line numbers and page numbers.
-
-It is hoped that general code can be written that can extract information from new transcript that it has never. However,
-until then, new code will need to be written to handle specific cases. 
-
-Since it is normally only larger cities that produce transcripts:
-* Most of the time we will be dealing with recordings of meetings.
-* In a larger city, there are more likely computer programmers available capable of writing such code.
-
-We could build a plug-in mechanism that would allow modules to be added that perform the extraction. We could allow the plugins to be written in many different languages: Python, Java, PHP, Ruby - in additon to the languages that the system is currently written in: Typescript and C#.
-
-Currently the software only handles one case, Philadelphia, PA USA.
-The project library "Backend\ProcessMeetings\ProcessTranscripts_lib" contains code for processing transcripts.
-
-The class "Specific_Philadelphia_PA_USA" calls some general purpose routines to process transcripts for Philadelphia.
-
-There is a stub class "Specific_Austin_TX_USA" meant for process an Austin, TX transcript. Perhaps somone would want to take a stab at completing this code. There is a test transcript in the Testdata folder.
-But it is probably best to get the latest from their website: <a href="https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm"> Austin, TX City Council </a>
+Austin, TX - USA also has transcripts of public meetings online.  A class was created called "USA_TX_TravisCounty_Austin_CityCouncil_en" in ProcessTranscripts_Lib. But the Fix() method was not implemented. Transcripts can be obtained from their website: [Austin, TX City Council](https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm)
 
 
 
-# Modifying the Client Dashboard
+
+
+
+
+
+# Modify the Client Dashboard
 
 ## Add a card for new feature
 
@@ -76,32 +90,21 @@ At the top of many of the component files in ClientApp, a const "NoLog" is defin
 
 Powershell build scripts can be found in Utilities/PsScripts
 
-## BuildPublishAndDeploy.ps1 
-
-This script calls many of the other scripts to build a production release and deploys it.
-
+* BuildPublishAndDeploy.ps1 -Call the other scripts to build a release and deploy it.
 * Build-ClientApp.ps1 - Build production versions of ClientApp
 * Publish-WebApp.ps1 - Build a "publish" folder of WebApp
 * Copy-ClientAssets.ps1 - Copy ClientApp assets to WebApp wwwroot folder
 * Deploy-PublishFolder.ps1 - Deploy publish folder to a remote host
 * Create the README.md file for Gethub from the documentation files
 
-Deploy-PublishFolder.ps1 deploys the software to govmeeting.org, using FTP. The FTP login information is in the file appsettings.Development.json in the SECRETS folder. It contains FTP and other secrets for use in development. Below is the format of this file:  
+Deploy-PublishFolder.ps1 deploys the software to govmeeting.org, using FTP. The FTP login information is in the file appsettings.Development.json in the SECRETS folder. It contains FTP and other secrets for use in development. Below is the section of this file used by FTP:  
 
     {
-      "ExternalAuth": {
-      "Google": {
-        "ClientId": "your-client-id",
-        "ClientSecret": "your-client-secret"
-        }
-      },
-      "ReCaptcha": {
-        "SiteKey": "your-site-key",
-        "Secret": "your-secret"
-      },
+      ...
       "Ftp": {
         "username": "your-username",
         "password": "your-password",
         "domain": "your-domain"
       }
+      ...
     }

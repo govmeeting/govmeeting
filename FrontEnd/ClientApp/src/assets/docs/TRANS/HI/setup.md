@@ -7,11 +7,9 @@
 <li> <a href="about?id=setup#DevelopVS">विजुअल स्टूडियो के साथ विकसित करें</a> </li>
 <li> <a href="about?id=setup#DevelopOther">अन्य प्लेटफार्मों पर विकसित करें</a> </li>
 <li> <a href="about?id=setup#Database">डेटाबेस</a> </li>
-<li> <a href="about?id=setup#GoogleCloud">Google क्लाउड प्लेटफ़ॉर्म खाता</a> </li>
+<li> <a href="about?id=setup#GoogleCloud">Google क्लाउड प्लेटफ़ॉर्म</a> </li>
 <li> <a href="about?id=setup#GoogleApi">Google एपीआई कुंजी</a> </li>
-</ul>
-<p> ये प्रलेखन पृष्ठ FrontEnd / ClientApp / src / app / आस्तियों / डॉक्स में देखे जा सकते हैं। कृपया वहां सुधार करें और <a href="https://github.com/govmeeting/govmeeting">Gitub पर पुल अनुरोध जारी करें।</a> </p>
-<hr />
+</ul><hr />
 <p><a name="InstallTools"></a></p>
 <h1> उपकरण और क्लोन रिपॉजिटरी स्थापित करें <br/></h1>
 <p> <a href="about?id=setup#Contents">[सामग्री]</a> </p>
@@ -20,81 +18,115 @@
 <li> गिट स्थापित करें। <a href="https://gitforwindows.org">Windows के लिए</a> <a href="https://git-scm.com/download/mac">Git, Mac के लिए Git</a> </li>
 <li> <a href="https://nodejs.org/en/download/">Node.js.</a> स्थापित करें </li>
 <li> <a href="https://dotnet.microsoft.com/download">.Net कोर एसडीके</a> स्थापित करें <a href="https://dotnet.microsoft.com/download">।</a> </li>
-<li> "कांटा" परियोजना को गितुब पर </li>
-<li> प्रोजेक्ट को स्थानीय स्तर पर क्लोन करें </li>
-<li> "SECRETS" नाम के क्लोन रिपोजिटरी के लिए एक सिबलिंग फ़ोल्डर बनाएँ </li>
-</ul>
-<p> "SECRETS" फ़ोल्डर उन कुंजियों और पासवर्डों के लिए है जो सार्वजनिक रिपॉजिटरी में संग्रहीत नहीं हैं। Google API सेवाओं को चलाने के लिए इनकी आवश्यकता होगी। </p>
-<hr />
+<li> <a href="https://github.com/govmeeting/govmeeting">Github</a> से प्रोजेक्ट को क्लोन या डाउनलोड करें <a href="https://github.com/govmeeting/govmeeting">।</a> अधिमानतः परियोजना कांटा और अपने कांटा क्लोन। </li>
+</ul><hr />
 <p><a name="DevelopVsCode"></a></p>
 <h1> VsCode के साथ विकसित करें <br/></h1>
 <p> <a href="about?id=setup#Contents">[सामग्री]</a> </p>
 <h2> VsCode स्थापित करें </h2>
 <ul>
 <li> <a href="https://code.visualstudio.com/download">विजुअल स्टूडियो कोड</a> इंस्टॉल करें और इसे शुरू करें। </li>
-<li> खुला एक्सटेंशन बाईं ओर पैनल और स्थापित करें: 
+<li> बाईं ओर एक्सटेंशन पैनल का उपयोग करके इन एक्सटेंशनों को स्थापित करें: 
 <ul>
 <li> Microsoft द्वारा "Chrome के लिए डीबगर" </li>
 <li> Microsoft द्वारा "C
-# विजुअल स्टूडियो कोड के लिए" </li>
+# विज़ुअल स्टूडियो कोड के लिए" </li>
 <li> Microsoft द्वारा "SQL सर्वर (mssql)" </li>
-<li> ग्रन्टफगली द्वारा "टोडो ट्री" - कोड में TODO लाइनों को दिखाता है (वैकल्पिक) </li>
+<li> ग्रंटफगली द्वारा "टोडो ट्री" - कोड में TODO लाइनों को दर्शाता है (वैकल्पिक) </li>
 <li> Microsoft द्वारा "पॉवर्सशेल" - डिबगिंग के लिए पॉवर्सशेल बिल्ड स्क्रिप्ट्स (वैकल्पिक) </li>
 </ul></li>
-</ul><h2> डिबग / रन क्लाइंटएप और वेबएप </h2>
+</ul><h2> ClientApp स्टैंडअलोन चलाएँ </h2>
 <ul>
-<li> VsCode में Govmeeting फ़ोल्डर खोलें </li>
-<li> VsCode में एक टर्मिनल फलक खोलें </li>
-<li> सीडी फ्रंट / क्लाइंटएप </li>
+<li> VsCode में प्रोजेक्ट फ़ोल्डर खोलें </li>
+<li> एनपीएम पैकेज स्थापित करें: 
+<ul>
+<li> VsCode में एक टर्मिनल पेन खोलें </li>
+<li> सीडी फ्रंट / ClientApp </li>
 <li> npm स्थापित करें </li>
+</ul></li>
+<li> क्लाइंटऐप को कंप्लीट करें और चलाएं 
+<ul>
 <li> npm शुरू </li>
-<li> डीबग पैनल में, लॉन्च कॉन्फ़िगरेशन "WebApp & ClientApp-W" सेट करें </li>
-<li> F5 (डीबग) या Ctrl-F5 दबाएं (डिबगिंग के बिना चलाएं) </li>
-</ul>
-<p> ClientApp एक ब्राउज़र में खुलेगा। </p>
-
+</ul></li>
+<li> डीबग पैनल में, सेट लॉन्च कॉन्फ़िगरेशन "ClientApp स्टैंडअलोन" </li>
+<li> F5 (डीबग) या Ctrl-F5 दबाएं (डिबगिंग के बिना चलाएं) 
 <ul>
-<li> प्रलेखन देखने के लिए "अबाउट" मेनू आइटम में से किसी पर क्लिक करें। </li>
-<li> स्थान मेनू आइटम "बूथ हार्बर" पर क्लिक करें। आपको इस स्थान के लिए डैशबोर्ड खुला दिखाई देगा। </li>
+<li> या लोकलहोस्ट के लिए एक ब्राउज़र खोलें: 4200 </li>
+</ul></li>
 </ul>
-<p> यह सत्यापित करने के लिए कि ClientApp डेटा प्राप्त करने के लिए WebApp API को कॉल कर रहा है। </p>
-
+<p> डिफ़ॉल्ट रूप से, ClientApp WebApp API को कॉल करने के बजाय स्टब सेवाओं को कॉल करेगा। </p>
+<h2> ClientApp और WebApp चलाएं </h2>
 <ul>
-<li> "प्रूफ़रीड ट्रांसक्रिप्ट" पर क्लिक करें। आपको एक वीडियो फलक और लिखित पाठ दिखाई देगा। वीडियो प्ले बटन पर क्लिक करें। </li>
-<li> "ट्रांसक्रिप्ट में टैग जोड़ें" पर क्लिक करें। आपको टैग की जाने वाली मीटिंग की एक प्रतिलिपि दिखाई देगी। </li>
-<li> "नवीनतम बैठक देखें" पर क्लिक करें। आप देखने के लिए एक पूर्ण प्रतिलेख देखेंगे। </li>
-</ul>
-<p> अधिकांश अन्य डैशबोर्ड कार्ड वेबएप को कॉल नहीं करते हैं, लेकिन परीक्षण डेटा लौटाते हैं। </p>
-
-<p> ClientApp को "npm start" के साथ शुरू किए गए वेबपैक-देव-सर्वर द्वारा परोसा जाता है। WebApp Asp.Net Core में शामिल Kestrel सर्वर का उपयोग करता है। Kestrel सर्वर वेब API कॉल का जवाब देता है। लेकिन यह webpack-dev-server के लिए आंतरिक ClientApp अनुरोधों को समीप करता है। </p>
-<h2> डीबग / रन क्लाइंटऐप स्टैंडअलोन </h2>
+<li> <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google डिस्क</a> से उप-फ़ोल्डर डाउनलोड करें <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">।</a> उन्हें "TESTDATA" नामक परियोजना के लिए एक भाई के फ़ोल्डर में रखें </li>
+<li> FrontEnd / ClientApp / app.module.ts में, "isAspServerRunning" को असत्य से सत्य में बदलें। </li>
+<li> प्रोजेक्ट बनाएँ: 
 <ul>
-<li> App.module.ts में, "isAspServerRunning" को सही से गलत में बदलें। </li>
+<li> Ctrl-Shift-पी </li>
+<li> "कार्य: रन टास्क" चुनें </li>
+<li> "बिल्ड-वेबैप" या "बिल्ड ऑल" चुनें </li>
+</ul></li>
+<li> ClientApp शुरू करें (यदि यह पहले से नहीं चल रहा है) 
+<ul>
+<li> सीडी फ्रंट / ClientApp </li>
 <li> npm शुरू </li>
-<li> डीबग पैनल में, सेट लॉन्च कॉन्फ़िगरेशन "ClientApp" </li>
-<li> F5 (डीबग) या Ctrl-F5 दबाएं (डिबगिंग के बिना चलाएं) </li>
-</ul>
-<p> जब ".AspServerRunning" झूठे, स्टब सेवाओं का उपयोग करने के लिए सेट किया जाता है, बजाय WebApp API को कॉल करने के। यह तब उपयोगी है जब हम केवल क्लायंटऐप में कोड को संशोधित कर रहे हैं। </p>
-<h2> डीबग / रन वर्कफ़्लो </h2>
+</ul></li>
+<li> डीबग पैनल में, लॉन्च कॉन्फ़िगरेशन "WebApp और ClientApp" सेट करें </li>
+<li> F5 (डीबग) या Ctrl-F5 दबाएं (डिबगिंग के बिना चलाएं) 
 <ul>
+<li> क्रोम ब्राउज़र खुल जाएगा और थोड़ी देर के बाद, क्लाइंटऐप लोकलहोस्ट: 5000 पर दिखाई देगा। </li>
+</ul></li>
+</ul><h3> टिप्पणियाँ </h3>
+<p> "build-webapp", WebApp बनाता है। </p>
+
+<p> "बिल्ड ऑल" सभी परियोजनाओं का निर्माण करता है। बिल्ड-व्हाट्सएप की तरह, यह आवश्यकतानुसार नूगेट पैकेज स्थापित करता है। त्रुटियों के लिए प्रत्येक टर्मिनल विंडो की जाँच करें और यदि आवश्यक हो तो फिर से चलाएं। वहाँ एक ज्ञात दौड़ हालत बग कई NuGet संकुल को बहाल करने में है। </p>
+
+<p> "IsAspServerRunning" को सही पर सेट करना, क्लाइंट को स्टब सेवाओं के बजाय WebApp API को कॉल करने के लिए कहता है। </p>
+
+<p> Google ड्राइव पर उप-फ़ोल्डर WebApp के परीक्षण के लिए हैं। फ़ाइलें WorkflowApp परीक्षण के लिए कर रहे हैं। </p>
+
+<p> ClientApp को webpack-dev-server द्वारा परोसा जाता है। WebApp Kestrel सर्वर का उपयोग करता है। लेकिन Kestrel WebApp-dev-Server के लिए ClientApp अनुरोधों का समर्थन करता है। </p>
+<h2> WorkflowApp चलाएँ </h2>
+<ul>
+<li> <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google डिस्क</a> से परीक्षण फ़ाइलें डाउनलोड करें <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">।</a> </li>
 <li> डीबग पैनल में, लॉन्च कॉन्फ़िगरेशन "वर्कफ़्लो एप" सेट करें </li>
 <li> F5 (डीबग) या Ctrl-F5 दबाएं (डिबगिंग के बिना चलाएं) </li>
-</ul>
-<p> जब WorkflowApp इसे शुरू करता है: </p>
+</ul><h3> टिप्पणियाँ </h3>
+<p> वर्कफ़्लोऐप ट्रांसक्रिप्ट टेक्स्ट को प्रोसेस करता है और रिकॉर्डिंग्स को ट्रांसक्रिप्ट करता है। रिकॉर्डिंग दर्ज करने के लिए <a href="about?id=setup#GoogleCloud">Google क्लाउड खाते की</a> आवश्यकता होती है <a href="about?id=setup#GoogleCloud">।</a> </p>
+
+<p> WorkflowApp प्रोजेक्ट फ़ोल्डर (और TESTDATA) के लिए एक भाई फ़ोल्डर बनाता है, जिसे "डेटा" कहा जाता है। DATAFILES के भीतर 3 उप-फ़ोल्डर हैं: </p>
 
 <ul>
-<li> कुछ परीक्षण फाइलों को डेटाफल्स / रिकॉर्ड किए गए फ़ोल्डर में कॉपी करता है: एक ट्रांस्क्रिप्ट पीडीएफ फाइल और एक रिकॉर्डिंग MP4 फाइल। </li>
-<li> ट्रांसक्रिप्ट पीडीएफ फाइल को प्रोसेस करता है और टैग होने के लिए तैयार JSON फाइल बनाता है। </li>
-<li> रिकॉर्डिंग MP4 फ़ाइल को क्लाउड में ट्रांसक्रिप्ट करके प्रोसेस करें और एक JSON फाइल को प्रूफरीड करने के लिए तैयार करता है। </li>
+<li> RECEIVED - इस फोल्डर के भीतर रखी गई कोई भी फाइल अपने आप प्रोसेस हो जाएगी। </li>
+<li> प्रक्रिया - इसमें प्रसंस्करण के लिए कार्य फ़ोल्डर शामिल हैं। </li>
+<li> पूर्ण - पूर्ण फ़ाइलों को यहाँ रखा गया है। </li>
 </ul>
-<p> परिणाम DATAFILES / PROCESSING में देखे जा सकते हैं। हालाँकि, रिकॉर्डिंग की जाने के लिए आपको सबसे पहले एक <a href="about?id=setup#GoogleCloud">Google क्लाउड अकाउंट</a> सेटअप करना होगा। </p>
+<p> परीक्षण की सुविधा के लिए, वर्कफ़्लोऐप शुरू होने पर TESTDATA से डेटा / डेटा की प्रतिलिपि बनाता है। </p>
+<h3> नई रिकॉर्डिंग की प्रक्रिया करें </h3>
+<p> Google डिस्क पर परीक्षण फ़ाइलों के अलावा, आप मीटिंग की अपनी रिकॉर्डिंग संसाधित कर सकते हैं: </p>
+
+<ul>
+<li> एक सरकारी बैठक के mp4 प्रारूप में एक रिकॉर्डिंग प्राप्त करें। </li>
+<li> फ़ाइल को निम्नानुसार नाम दें: "country_state_county_m रिहायश_agency_language-code_date.mp4"। </li>
+<li> उदाहरण के लिए: "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4"। </li>
+<li> "DATAFILES / RECEIVED" में फ़ाइल डालें </li>
+<li> BackEnd / WorkflowApp / appsettings.json में, निम्नलिखित उचित सेट करें: 
+<ul>
+<li> "इनिशियल वाइजटेस्टडटा": गलत </li>
+<li> "आवश्यकता प्रबंधक": गलत </li>
+</ul></li>
+<li> WorkflowApp चलाएँ। </li>
+</ul>
+<p> यदि आपके पास Google खाता सेट अप है, तो यह रिकॉर्डिंग को स्थानांतरित करेगा। </p>
+<h3> नए ट्रांसक्रिप्शन की प्रक्रिया करें </h3>
+<p> परीक्षण टेप के अलावा, आप अपनी प्रक्रिया भी कर सकते हैं। परीक्षण फाइलें फिलाडेल्फिया, पीए, यूएसए नगर परिषद की बैठकों से टेप हैं। अन्य प्रतिलिपि स्वरूपों को संभालने के लिए, आपको ProcessTranscript_Lib में एक विधि जोड़ना होगा। <a href="https://github.com/govmeeting/govmeeting/issues/93">अंक
+# 93</a> देखें। आखिरकार लक्ष्य कोड लिखना है जो कस्टम कोड के बिना सभी या अधिकांश प्रारूपों को स्वचालित रूप से संभालता है। </p>
 <hr />
 <p><a name="DevelopVS"></a></p>
 <h1> विजुअल स्टूडियो के साथ विकसित करें <br/></h1>
 <p> <a href="about?id=setup#Contents">[सामग्री]</a> </p>
 
 <ul>
-<li> मुक्त <a href="https://visualstudio.microsoft.com/free-developer-offers/">Visual Studio सामुदायिक संस्करण</a> स्थापित करें <a href="https://visualstudio.microsoft.com/free-developer-offers/">।</a> </li>
+<li> मुक्त <a href="https://visualstudio.microsoft.com/free-developer-offers/">दृश्य स्टूडियो सामुदायिक संस्करण</a> स्थापित करें <a href="https://visualstudio.microsoft.com/free-developer-offers/">।</a> </li>
 <li> स्थापना के दौरान, "ASP.NET" और ".NET डेस्कटॉप" वर्कलोड दोनों का चयन करें। </li>
 <li> एक्सटेंशन स्थापित करें: (मैड्स क्रिस्टेंसन द्वारा) 
 <ul>
@@ -103,10 +135,13 @@
 <li> "मार्कडाउन संपादक" </li>
 </ul></li>
 <li> समाधान फ़ाइल खोलें "govmeeting.sln" </li>
-</ul><h2> डिबग / रन क्लाइंटएप और वेबएप </h2>
+</ul><h2> ClientApp और WebApp चलाएं </h2>
 <ul>
-<li> टास्क रनर एक्सप्लोरर (ClientApp) में: 
+<li> <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google डिस्क</a> से उप-फ़ोल्डर डाउनलोड करें <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">।</a> उन्हें "TESTDATA" नामक परियोजना के लिए एक भाई के फ़ोल्डर में रखें </li>
+<li> FrontEnd / ClientApp / app.module.ts में, "isAspServerRunning" को असत्य से सत्य में बदलें। </li>
+<li> टास्क रनर एक्सप्लोरर में 
 <ul>
+<li> का चयन करें: ClientApp </li>
 <li> "इंस्टॉल करें" चलाएं </li>
 <li> "प्रारंभ" चलाएं </li>
 </ul></li>
@@ -116,8 +151,9 @@
 </ul>
 <p> नोट :: दृश्य स्टूडियो में कोणीय ClientApp में ब्रेकपॉइंट सेट करने के साथ कोई समस्या है। देखें: <a href="https://github.com/govmeeting/govmeeting/issues/80">गितुब अंक
 # issue०</a> </p>
-<h2> डीबग वर्कफ़्लो </h2>
+<h2> WorkflowApp चलाएँ </h2>
 <ul>
+<li> Google डिस्क से परीक्षण फ़ाइलें डाउनलोड करें (ऊपर देखें) </li>
 <li> डीबग पैनल खोलें। </li>
 <li> "WorkflowApp" के लिए स्टार्टअप प्रोजेक्ट सेट करें </li>
 <li> F5 (डीबग) या Ctrl-F5 दबाएं (डिबगिंग के बिना चलाएं) </li>
@@ -125,20 +161,20 @@
 <p> नोट: "Visual Studio Code" के तहत WorkflowApp के लिए नोट्स देखें </p>
 <hr />
 <p><a name="DevelopOther"></a></p>
-<h1> अन्य प्लेटफार्मों पर विकसित करें <br/></h1>
+<h1> अन्य उपकरणों के साथ विकसित करें <br/></h1>
 <p> <a href="about?id=setup#Contents">[सामग्री]</a> </p>
 
-<p> अपने प्रोफ़ाइल में, पर्यावरण चर, ASPNETCORE_ENVIRONMENT को "विकास" पर सेट करें। इसका उपयोग WebApp और WorkflowApp द्वारा किया जाता है। </p>
-<h2> ClientApp बनाएं और चलाएं </h2>
+<p> अपनी प्रोफ़ाइल में, पर्यावरण चर, ASPNETCORE_ENVIRONMENT को "विकास" पर सेट करें। इसका उपयोग WebApp और WorkflowApp द्वारा किया जाता है। </p>
+<h2> ClientApp चलाएं </h2>
 <p> निष्पादित: </p>
 
 <ul>
-<li> सीडी फ्रंट / ClientApp </li>
+<li> सीडी फ्रंट / क्लाइंटऐप </li>
 <li> npm स्थापित करें </li>
 <li> npm शुरू </li>
 </ul>
 <p> अपने ब्राउज़र में लोकलहोस्ट: 4200 पर जाएँ। क्लाइंट ऐप लोड हो जाएगा। WebApp चलने तक कुछ सुविधाएं काम नहीं करेंगी। </p>
-<h2> WebApp को ClientApp के साथ बनाएँ और चलाएं </h2>
+<h2> WebApp को ClientApp से चलाएं </h2>
 <p> निष्पादित: </p>
 
 <ul>
@@ -148,15 +184,15 @@
 <li> डॉटनेट रन बिन / डीबग / dotnet2.2 / webapp.dll </li>
 </ul>
 <p> अपने ब्राउज़र में लोकलहोस्ट: 5000 पर जाएँ। क्लाइंट ऐप लोड हो जाएगा। </p>
-<h2> क्लाइंटऐप स्टैंडअलोन बनाएँ और चलाएं </h2>
+<h2> ClientApp स्टैंडअलोन चलाएँ </h2>
 <ul>
 <li> App.module.ts में, "isAspServerRunning" को सही से गलत में बदलें। </li>
 <li> (ऊपर करें: "ग्राहक बनाएं और शुरू करें") </li>
-</ul><h2> WorkflowApp बनाएँ और चलाएँ </h2>
+</ul><h2> WorkflowApp चलाएँ </h2>
 <p> निष्पादित: </p>
 
 <ul>
-<li> सीडी बैकएंड / वर्कफ़्लोऐप </li>
+<li> सीडी बैकएंड / वर्कफ़्लो.ऐप </li>
 <li> डॉटनेट वर्कफ़्लो का निर्माण करें </li>
 <li> डॉटनेट रन बिन / डिबग / डॉटनेट 2.0 / वर्कफ़्लो। डीएल </li>
 </ul>
@@ -170,7 +206,7 @@
 <h2> प्रदाता स्थापित करें </h2>
 <p> यदि आप Visual Studio या Visual Studio कोड का उपयोग कर रहे हैं, तो Sql Server Express LocalDb प्रदाता पहले से स्थापित है। अन्यथा नीचे "LocalDb प्रदाता स्थापना" करें। </p>
 <h3> LocalDb प्रदाता स्थापना </h3>
-<p> <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">Sql सर्वर एक्सप्रेस पर</a> जाएं <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">।</a> विंडोज के लिए, SQL सर्वर का "एक्सप्रेस" विशेष संस्करण डाउनलोड करें। स्थापना के दौरान, "कस्टम" चुनें और "लोकलडब" चुनें। </p>
+<p> <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">Sql Server Express पर</a> जाएं <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads">।</a> विंडोज के लिए, SQL सर्वर के "एक्सप्रेस" विशेष संस्करण को डाउनलोड करें। स्थापना के दौरान, "कस्टम" चुनें और "लोकलडब" चुनें। </p>
 
 <p> LocalDb MacOs और Linux के लिए भी उपलब्ध है। यदि आप इसे किसी भी प्लेटफ़ॉर्म के लिए इंस्टॉल करते हैं, तो कृपया इस दस्तावेज़ को चरणों के साथ अपडेट करें और पुल अनुरोध करें। </p>
 <h3> अन्य प्रदाता </h3>
@@ -182,18 +218,18 @@
 <li> सीडी बैकएंड / वेबएप </li>
 <li> डॉटनेट ef माइग्रेशन आरंभिक --project .. \ डेटाबेस \ DatabaseAccess_Lib जोड़ते हैं </li>
 <li> dotnet ef डेटाबेस अपडेट --project .. \ डेटाबेस \ DatabaseAccess_Lib </li>
-</ul><h2> निर्मित डेटाबेस का अन्वेषण करें </h2><h3> VsCode में </h3>
-<p> अपनी उपयोगकर्ता सेटिंग में निम्नलिखित जोड़ें। VsCode में संदेश: </p>
+</ul><h2> बनाए गए डेटाबेस का अन्वेषण करें </h2><h3> VsCode में </h3>
+<p> अपनी उपयोगकर्ता सेटिंग में निम्नलिखित जोड़ें। VsCode: </p>
 <pre> <code> "mssql.connections": [ { "server": "(localdb)\\mssqllocaldb", "database": "Govmeeting", "authenticationType": "Integrated", "profileName": "GMProfile", "password": "" } ],</code> </pre>
 <ul>
 <li> Ctrl-alt-D दबाएं या बाएं मार्जिन पर Sql सर्वर आइकन दबाएं। </li>
 <li> डेटाबेस ऑब्जेक्ट के साथ देखने और काम करने के लिए GMProfile कनेक्शन खोलें। </li>
-<li> "टेबल्स" खोलें। जब आपने स्कीमा को ऊपर बनाया था, तो आपको सभी तालिकाओं को देखना चाहिए। इसमें ऑर्टिज़ाटन के लिए AspNetxxxx टेबल और Govmeeting डेटा मॉडल के लिए टेबल शामिल हैं। </li>
+<li> "टेबल्स" खोलें। जब आपने स्कीमा को ऊपर बनाया था, तो आपको सभी तालिकाएँ देखनी चाहिए। इसमें ऑर्टिज़ाटन के लिए AspNetxxxx टेबल और Govmeeting डेटा मॉडल के लिए टेबल शामिल हैं। </li>
 </ul><h3> विजुअल स्टूडियो में </h3>
 <ul>
 <li> मेनू आइटम पर जाएं: देखें -&gt; SQL सर्वर ऑब्जेक्ट एक्सप्लोरर। </li>
 <li> SQL सर्वर का विस्तार करें -&gt; (localdb) \ MSSQLLocalDb -&gt; डेटाबेस -&gt; Govmeeting </li>
-<li> "टेबल्स" खोलें। जब आपने स्कीमा को ऊपर बनाया था, तो आपको सभी तालिकाओं को देखना चाहिए। इसमें ऑर्टिज़ाटन के लिए AspNetxxxx टेबल और Govmeeting डेटा मॉडल के लिए टेबल शामिल हैं। </li>
+<li> "टेबल्स" खोलें। जब आपने स्कीमा को ऊपर बनाया था, तो आपको सभी तालिकाएँ देखनी चाहिए। इसमें ऑर्टिज़ाटन के लिए AspNetxxxx टेबल और Govmeeting डेटा मॉडल के लिए टेबल शामिल हैं। </li>
 </ul><h3> अन्य प्लेटफार्मों </h3>
 <p> क्रॉस-प्लेटफ़ॉर्म और ओपन सोर्स <a href="https://github.com/Microsoft/sqlopsstudio?WT.mc_id=-blog-scottha">एसक्यूएल ऑपरेशंस स्टूडियो है,</a> "एक डेटा प्रबंधन उपकरण जो विंडोज, मैकओएस और लिनक्स से SQL सर्वर, एज़्योर SQL डीबी और एसक्यूएल डीडब्ल्यू के साथ काम करने में सक्षम बनाता है।" आप <a href="https://docs.microsoft.com/en-us/sql/sql-operations-studio/download?view=sql-server-2017&WT.mc_id=-blog-scottha">यहां SQL ऑपरेशंस स्टूडियो मुफ्त</a> डाउनलोड कर सकते <a href="https://docs.microsoft.com/en-us/sql/sql-operations-studio/download?view=sql-server-2017&WT.mc_id=-blog-scottha">हैं।</a> </p>
 
@@ -210,15 +246,15 @@
 <li> सभी नियंत्रकों के लिए इसे अक्षम करने के लिए, इसे WebApp.csproj में जोड़ें: </li>
 </ul><pre> <code> &lt;PropertyGroup Condition="&#39;$(Configuration)|$(Platform)&#39;==&#39;Debug|AnyCPU&#39;&gt; &lt;DefineConstants&gt;NOAUTH&lt;/DefineConstants&gt; &lt;/PropertyGroup&gt;</code> </pre>
 <ul>
-<li> विज़ुअल स्टूडियो में, WebApp प्रॉपर्टी पेज -&gt; बिल्ड -&gt; पर जाएं और "सशर्त संकलन प्रतीक" बॉक्स में NOAUTH दर्ज करें। </li>
+<li> विज़ुअल स्टूडियो में, WebApp गुण पृष्ठ -&gt; बिल्ड -&gt; पर जाएं और "सशर्त संकलन प्रतीक" बॉक्स में NOAUTH दर्ज करें। </li>
 </ul><hr />
 <p><a name="GoogleCloud"></a></p>
-<h1> Google क्लाउड प्लेटफ़ॉर्म खाता <br/></h1>
+<h1> Google क्लाउड प्लेटफ़ॉर्म <br/></h1>
 <p> <a href="about?id=setup#Contents">[सामग्री]</a> </p>
 
 <p> भाषण-से-पाठ रूपांतरण के लिए Google भाषण API का उपयोग करने के लिए, आपको Google क्लाउड प्लेटफ़ॉर्म (GCP) खाते की आवश्यकता है। Govmeeting में अधिकांश विकास कार्यों के लिए, आप मौजूदा परीक्षण डेटा का उपयोग कर सकते हैं। लेकिन अगर आप नई रिकॉर्डिंग ट्रांसफर करना चाहते हैं, तो आप एक जीसीपी करेंगे। Google API रिकॉर्डिंग को 120 से अधिक भाषाओं और वेरिएंट में ट्रांसफ़ॉर्म करने में सक्षम है। </p>
 
-<p> Google डेवलपर्स को एक निःशुल्क खाता प्रदान करता है जिसमें एक क्रेडिट (वर्तमान में $ 300) शामिल है। भाषण एपीआई का उपयोग करने की वर्तमान लागत प्रति माह 60 मिनट के रूपांतरण के लिए मुफ़्त है। उसके बाद, "बढ़ाया मॉडल" (जो कि हमें चाहिए) के लिए लागत $ 0.009 प्रति 15 सेकंड है। ($ 2.16 प्रति घंटे) </p>
+<p> Google डेवलपर्स को एक निःशुल्क खाता प्रदान करता है जिसमें एक क्रेडिट (वर्तमान में $ 300) शामिल है। भाषण एपीआई का उपयोग करने की वर्तमान लागत प्रति माह 60 मिनट के रूपांतरण के लिए मुफ्त है। उसके बाद, "बढ़ाया मॉडल" (जो हमें चाहिए) के लिए लागत $ 0.009 प्रति 15 सेकंड है। ($ 2.16 प्रति घंटे) </p>
 
 <ul>
 <li>
@@ -240,38 +276,38 @@
 <p> क्रेडेंशियल JSON फ़ाइल डाउनलोड करें। </p>
 </li>
 <li>
-<p> रेपो क्लोन करते समय आपके द्वारा बनाए गए <code>SECRETS</code> फ़ोल्डर में फ़ाइल डालें। </p>
+<p> क्लोन प्रोजेक्ट फ़ोल्डर में भाई के रूप में एक <code>SECRETS</code> फ़ोल्डर बनाएँ </p>
 </li>
 <li>
-<p> फ़ाइल का नाम बदलें <code>TranscribeAudio.json</code> । </p>
+<p> SECRETS में क्रेडेंशियल फ़ाइल रखें और इसे <code>TranscribeAudio.json</code> नाम दें। </p>
 </li>
-</ul>
-<p> नोट: उपरोक्त चरण थोड़े बदल गए हैं। यदि हां, तो कृपया इस दस्तावेज़ को अपडेट करें। </p>
-<h2> टैक्स्ट ट्रांसक्रिप्शन के लिए टेस्ट स्पीच </h2>
+</ul><h2> टैक्स्ट ट्रांसक्रिप्शन के लिए टेस्ट स्पीच </h2>
 <ul>
 <li>
-<p> Visual Studio में <code>Backend/WorkflowApp</code> स्टार्टअप प्रोजेक्ट सेट करें। F5 दबाएं। </p>
+<p> स्टार्टअप प्रोजेक्ट को Visual Studio में <code>Backend/WorkflowApp</code> सेट करें। F5 दबाएं। </p>
 </li>
 <li>
 <p> Testdata से DATAFILES / RECEIVED में नमूना MP4 फ़ाइलों में से एक को कॉपी (स्थानांतरित न करें) करें। </p>
 </li>
 </ul>
-<p> कार्यक्रम अब यह पहचान लेगा कि एक नई फ़ाइल दिखाई दी है और इसे संसाधित करना शुरू कर दिया है। पूरा होने पर MP4 फ़ाइल "COMPLETED" में स्थानांतरित हो जाएगी। आप परिणामों को sufolders में देखेंगे, जो "DATAFILES" निर्देशिका में बनाए गए थे। </p>
+<p> कार्यक्रम अब यह पहचान लेगा कि एक नई फ़ाइल दिखाई दी है और इसे संसाधित करना शुरू कर दिया है। पूरा होने पर MP4 फ़ाइल "COMPLETED" में स्थानांतरित हो जाएगी। आप परिणामों को सूफ़ोल्डर्स में देखेंगे, जो "DATAFILES" निर्देशिका में बनाए गए थे। </p>
 
-<p> Appsettings.json में, एक संपत्ति है "RecordingSizeForDevelopment"। यह वर्तमान में "180" पर सेट है। यह केवल 180 सेकंड की रिकॉर्डिंग की प्रक्रिया के लिए ProcessRecording_Lib में प्रतिलेखन रूटीन का कारण बनता है। </p>
+<p> Appsettings.json में, एक संपत्ति है "RecordingSizeForDevelopment"। यह वर्तमान में "180" पर सेट है। यह प्रक्रिया की रिकॉर्डिंग प्रक्रिया को केवल पहले 180 सेकंड में संसाधित करने का कारण बनता है। </p>
 <hr />
 <p><a name="GoogleApi"></a></p>
 <h1> Google एपीआई कुंजी <br/></h1>
 <p> <a href="about?id=setup#Contents">[सामग्री]</a> </p>
 
-<p> यदि आप पंजीकरण और लॉगिन प्रक्रिया की कुछ विशेषताओं का उपयोग या काम करना चाहते हैं तो आपको इन चाबियों की आवश्यकता होगी। </p>
+<p> यदि आप पंजीकरण और लॉगिन प्रक्रिया की कुछ विशेषताओं का उपयोग करना चाहते हैं या काम करना चाहते हैं तो आपको इन चाबियों की आवश्यकता होगी। </p>
 
 <ul>
 <li> उपयोगकर्ता पंजीकरण के दौरान ReCaptcha का उपयोग करने के लिए ReCaptcha कुंजी की आवश्यकता होती है। उन्हें <a href="https://developers.google.com/recaptcha/">Google reCaptcha</a> पर प्राप्त किया जा सकता है। </li>
-<li> OAuth 2.0 क्रेडेंशियल्स का उपयोग साइट पर एक व्यक्तिगत खाता बनाने के लिए उपयोगकर्ता की आवश्यकता के बिना बाहरी उपयोगकर्ता लॉगिन करने के लिए किया जाता है। क्लाइंट आईडी और क्लाइंट सीक्रेट जैसे क्रेडेंशियल्स प्राप्त करने के लिए <a href="https://console.developers.google.com/">Google एपीआई कंसोल पर</a> जाएं। </li>
+<li> OAuth 2.0 क्रेडेंशियल का उपयोग साइट पर एक व्यक्तिगत खाता बनाने के लिए उपयोगकर्ता की आवश्यकता के बिना बाहरी उपयोगकर्ता लॉगिन करने के लिए किया जाता है। क्लाइंट आईडी और क्लाइंट सीक्रेट जैसे क्रेडेंशियल्स प्राप्त करने के लिए <a href="https://console.developers.google.com/">Google एपीआई कंसोल पर</a> जाएं। </li>
 </ul>
-<p> "SECRETS" फ़ोल्डर में "appsettings.Development.json" नामक एक फ़ाइल बनाएं। इसमें वे कुंजियाँ होनी चाहिए जो आपने अभी प्राप्त की हैं: </p>
-<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-Id", "ClientSecret": "your-client-secret" } }, "ReCaptcha:SiteKey": "your-site-key", "ReCaptcha:Secret": "your-secret" }</code> </pre><hr /><h2> टेस्ट reCaptcha </h2>
+<p> क्लोन प्रोजेक्ट फ़ोल्डर में भाई के रूप में एक <code>SECRETS</code> फ़ोल्डर बनाएँ। निम्नलिखित प्रारूप के साथ "appsettings.Development.json" नाम से एक फ़ाइल बनाएं। </p>
+<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-Id", "ClientSecret": "your-client-secret" } }, "ReCaptcha:SiteKey": "your-site-key", "ReCaptcha:Secret": "your-secret" }</code> </pre>
+<p> इसे उन कुंजियों को संपादित करें जिन्हें आपने अभी प्राप्त किया है: </p>
+<hr /><h2> टेस्ट reCaptcha </h2>
 <ul>
 <li> WebApp प्रोजेक्ट चलाएँ। </li>
 <li> ऊपरी दाईं ओर "रजिस्टर" पर क्लिक करें। </li>
@@ -280,5 +316,5 @@
 <ul>
 <li> WebApp प्रोजेक्ट चलाएँ। </li>
 <li> ऊपरी दाईं ओर "लॉगिन" पर क्लिक करें। </li>
-<li> "लॉग इन करने के लिए एक और सेवा का उपयोग करें" के तहत, "Google" चुनें। </li>
+<li> "लॉग इन करने के लिए" किसी अन्य सेवा का उपयोग करें, "Google" चुनें। </li>
 </ul>

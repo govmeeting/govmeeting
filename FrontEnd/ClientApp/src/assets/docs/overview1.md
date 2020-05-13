@@ -41,7 +41,9 @@ People will then be able to:
 * Search for voting results on legislation
 * See statistics, graphs and charts on issues, legislature, etc.
 
-A goal is for Govmeeting to work anywhere, in any language, for any form of representative government. The only requirement is that official meetings are open to the public or the transcripts are available. 
+A goal is for Govmeeting to work anywhere, in any language, for any form of representative government. The only requirement is that official meetings are open to the public or that the transcripts are available.
+
+Democracy is in peril throughout the world today. If it is to survive, it needs to become an essential part of people's lives. This can only begin at the local grassroots level. 
 
 <!-- END OF README SECTION -->
 
@@ -49,9 +51,7 @@ A goal is for Govmeeting to work anywhere, in any language, for any form of repr
 
 ## Problems with current access
 
-Getting access to this kind of information is difficult today. Only a few large cities make transcripts of their meetings available. And these are often difficult to obtain and use.
+It is not usually a priority for government officials to keep voters very informed about their actions. Only a few large cities make transcripts of their meetings available. And they are often difficult to obtain and use.
 
-Philadelphia is the 6th largest city in the U.S. Here is a sample page from a Council transcript.
-It's 154 pages of double-spaced lines, 10-words-per-line. It's in PDF format, making it unusable on small screens, since the size can't be adjusted. There is also no table of contents. And the index is possibly usable by a legal researcher, but not the average person. 
-
-Click below to see a sample transript and index.
+Philadelphia is the 6th largest city in the U.S. Click below to show a sample page of a city council transcript.
+It's 154 pages of double-spaced lines, 10-words-per-line. Its PDF format is unusable on small screens, since the size can't be adjusted. There's no table of contents. The index is possibly usable by a legal researcher, but not an average person. 

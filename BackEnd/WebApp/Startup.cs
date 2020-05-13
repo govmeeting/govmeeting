@@ -59,8 +59,8 @@ namespace GM.WebApp
             {
                 // Modify the configuration path options to be full paths.
                 myOptions.LogfilesPath = GMFileAccess.GetFullPath(myOptions.LogfilesPath);
-                myOptions.DatafilesPath = GMFileAccess.GetFullPath(myOptions.DatafilesPath);
-                myOptions.TestfilesPath = GMFileAccess.GetFullPath(myOptions.TestfilesPath);
+                myOptions.DatafilesPath = GMFileAccess.GetProjectSiblingFolder(myOptions.DatafilesPath);
+                myOptions.TestfilesPath = GMFileAccess.GetProjectSiblingFolder(myOptions.TestfilesPath);
                 Console.WriteLine("Datafile path = " + myOptions.DatafilesPath);
             });
 

@@ -1,50 +1,45 @@
-<h1> Lidar com novas transcrições </h1>
-<p> Algumas cidades produzem transcrições de reuniões. Isso nos permite pular a transcrição da reunião. Mas apresenta um problema diferente. As transcrições não estarão em um formato padrão. </p>
+<h1> Processar novos formatos de transcrição </h1>
+<p> O objetivo final é escrever um código que processe qualquer formato de transcrição. Mas até então, precisamos escrever um código personalizado para lidar com cada novo formato. Quando tivermos amostras suficientes de diferentes formatos, poderemos escrever melhor o código genérico. </p>
 
-<p> Nosso software precisará: </p>
-
-<ul>
-<li> Extraia as informações. </li>
-<li> Adicione tags que permitam que as informações sejam usadas com facilidade. </li>
-</ul>
-<p> As informações normalmente em uma transcrição, que queremos extrair são: </p>
+<p> Estas são as etapas para lidar com novos formatos de transcrição: </p>
 
 <ul>
-<li> Informações da reunião: hora, local, se é uma reunião especial. </li>
+<li>
+<p> Obtenha uma transcrição de amostra de uma reunião do governo como um arquivo PDF ou de texto. </p>
+</li>
+<li>
+<p> Nomeie o arquivo da seguinte maneira: "country_state_county_municipality_agency_language-code_date.pdf". (ou .txt) Por exemplo: </p>
+<pre> <code> "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.pdf".</code> </pre></li>
+<li>
+<p> Crie uma nova classe com a interface "ISpecificFix" no projeto "ProcessTranscripts_Lib". </p>
+</li>
+<li>
+<p> Nomeie a classe "country_state_county_municipality_agency_language-code". Por exemplo: </p>
+<pre> <code> public class USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en : ISpecificFix</code> </pre></li>
+<li>
+<p> Implemente o método de classe: </p>
+<pre> <code> string Fix(string _transcript, string workfolder)</code> </pre></li>
+<li>
+<p> Fix () recebe o texto da transcrição existente e retorna o texto no seguinte formato: </p>
+</li>
+</ul><pre> <code>Section: INVOCATION Speaker: COUNCIL PRESIDENT CLARKE Good morning. We&#39;re getting a very late start, so we&#39;d like to get moving. To give our invocation this morning, the Chair recognizes Pastor Mark Novales of the City Reach Philly in Tacony. I would ask all guests, members, and visitors to please rise. (Councilmembers, guests, and visitors rise.) Speaker: PASTOR NOVALES Good morning, City Council and guests and visitors. I pastor, as was mentioned, a powerful little church in -- a powerful church in Tacony called City Reach Philly. I&#39;m honored to stand in this great place of decision-making. ...</code> </pre>
+<p> Quando essa classe for concluída, o WorkflowApp processará as novas transcrições quando elas aparecerem em "DATAFILES / RECEIVED". </p>
+
+<p> Notas: </p>
+
+<p> Usamos System.Reflection para instanciar a classe correta com base no nome do arquivo a ser processado. </p>
+
+<p> Consulte a classe "USA_PA_Philadelphia_Philadelphia_CityCouncil_en" em ProcessTranscripts_Lib para obter um exemplo. Você pode entender melhor o que essa classe está fazendo observando os rastreamentos do arquivo de log na "pasta de trabalho" que é passada como argumento para Fix (). </p>
+
+<p> Não extraímos as seguintes informações agora, mas queremos fazer isso eventualmente. </p>
+
+<ul>
 <li> Funcionários presentes </li>
-<li> Títulos de seção </li>
-<li> Nome de cada orador e o que eles disseram. </li>
+<li> Contas e resoluções introduzidas </li>
+<li> Resultados da votação </li>
 </ul>
-<p> Se nenhum cabeçalho de seção estiver presente, o software deve ser inteligente o suficiente para determinar onde seções comuns são iniciadas: </p>
-
-<ul>
-<li> Chamada de função </li>
-<li> Invocação </li>
-<li> Relatórios do Comitê </li>
-<li> Introdução de contas </li>
-<li> Resoluções </li>
-<li> Comentário público </li>
-</ul>
-<p> Precisamos ver quão bem também podemos extrair os resultados das votações em projetos de lei e resoluções. Às vezes, os resultados são indicados por frases como "Os sim têm". Outras vezes, é realizada uma votação formal onde o nome de cada funcionário é lido em voz alta e a pessoa responde com "sim" ou "não". </p>
-
-<p> Informações supérfluas precisam ser removidas. Por exemplo: repetir cabeçalhos ou rodapés, números de linhas e números de páginas. </p>
-
-<p> Espera-se que um código geral possa ser escrito para extrair informações de uma nova transcrição que nunca foi usada. No entanto, até então, será necessário escrever um novo código para lidar com casos específicos. </p>
-
-<p> Como normalmente são apenas as cidades maiores que produzem transcrições: </p>
-
-<ul>
-<li> Na maioria das vezes, lidaremos com gravações de reuniões. </li>
-<li> Em uma cidade maior, há mais programadores de computador disponíveis, capazes de escrever esse código. </li>
-</ul>
-<p> Poderíamos criar um mecanismo de plug-in que permitiria adicionar módulos que executam a extração. Poderíamos permitir que os plugins fossem escritos em muitas linguagens diferentes: Python, Java, PHP, Ruby - além das linguagens em que o sistema está atualmente escrito: Typescript e C #. </p>
-
-<p> Atualmente, o software lida apenas com um caso, Filadélfia, PA, EUA. A biblioteca do projeto "Backend \ ProcessMeetings \ ProcessTranscripts_lib" contém código para processar transcrições. </p>
-
-<p> A classe "Specific_Philadelphia_PA_USA" chama algumas rotinas de uso geral para processar transcrições para a Filadélfia. </p>
-
-<p> Existe uma classe de stub "Specific_Austin_TX_USA" destinada ao processo de uma transcrição de Austin, TX. Talvez alguém queira dar uma facada no preenchimento deste código. Há uma transcrição de teste na pasta Testdata. Mas provavelmente é melhor obter as informações mais recentes em seu site: <a href="https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm">Austin, TX City Council</a> </p>
-<h1> Modificando o painel do cliente </h1><h2> Adicione um cartão para novos recursos </h2>
+<p> Austin, TX - EUA também possui transcrições de reuniões públicas on-line. Uma classe foi criada chamada "USA_TX_TravisCounty_Austin_CityCouncil_en" em ProcessTranscripts_Lib. Mas o método Fix () não foi implementado. As transcrições podem ser obtidas no site: <a href="https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm">Austin, TX City Council</a> </p>
+<h1> Modificar o painel do cliente </h1><h2> Adicione um cartão para novos recursos </h2>
 <ul>
 <li> Em um prompt do terminal, vá para a pasta: FrontEnd / ClientApp </li>
 <li> Digite: ng gerar componente seu recurso </li>
@@ -70,15 +65,14 @@
 <p> Na parte superior de muitos dos arquivos de componente no ClientApp, uma const "NoLog" é definida. Altere seu valor de true para false para ativar o log do console apenas para esse componente. </p>
 <h1> Criar scripts </h1>
 <p> Os scripts de construção do PowerShell podem ser encontrados em Utilitários / PsScripts </p>
-<h2> BuildPublishAndDeploy.ps1 </h2>
-<p> Esse script chama muitos dos outros scripts para criar um release de produção e implementá-lo. </p>
 
 <ul>
+<li> BuildPublishAndDeploy.ps1 - chame os outros scripts para criar uma versão e implantá-la. </li>
 <li> Build-ClientApp.ps1 - Crie versões de produção do ClientApp </li>
 <li> Publish-WebApp.ps1 - Crie uma pasta "publicar" do WebApp </li>
 <li> Copy-ClientAssets.ps1 - Copiar ativos ClientApp para a pasta wwwroot do WebApp </li>
 <li> Deploy-PublishFolder.ps1 - Implante a pasta de publicação em um host remoto </li>
 <li> Crie o arquivo README.md para o Gethub a partir dos arquivos de documentação </li>
 </ul>
-<p> O Deploy-PublishFolder.ps1 implanta o software no govmeeting.org, usando FTP. As informações de login do FTP estão no arquivo appsettings.Development.json na pasta SECRETS. Ele contém FTP e outros segredos para uso em desenvolvimento. Abaixo está o formato deste arquivo: </p>
-<pre> <code>{ "ExternalAuth": { "Google": { "ClientId": "your-client-id", "ClientSecret": "your-client-secret" } }, "ReCaptcha": { "SiteKey": "your-site-key", "Secret": "your-secret" }, "Ftp": { "username": "your-username", "password": "your-password", "domain": "your-domain" } }</code> </pre>
+<p> O Deploy-PublishFolder.ps1 implanta o software no govmeeting.org, usando FTP. As informações de login do FTP estão no arquivo appsettings.Development.json na pasta SECRETS. Ele contém FTP e outros segredos para uso em desenvolvimento. Abaixo está a seção deste arquivo usada pelo FTP: </p>
+<pre> <code>{ ... "Ftp": { "username": "your-username", "password": "your-password", "domain": "your-domain" } ... }</code> </pre>
