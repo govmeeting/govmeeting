@@ -88,19 +88,20 @@ ClientApp is served by the webpack-dev-server. WebApp uses the Kestrel server. B
 
 ### Notes
 
-When WorkflowApp first starts, it creates a folder "DATAFILES" and within it the following 3 sub-folders:
+WorkflowApp processes transcript texts and transcribes recordings. Transcribing recordings requires a <a href="about?id=setup#GoogleCloud">Google Cloud account. </a>
+
+WorkflowApp creates a sibling folder to the project folder (and TESTDATA), called "DATAFILES". Within DATAFILES there are 3 sub-folders:
 * RECEIVED - Any files placed within this folder will be automatically processed.
 * PROCESSING - This contains work folders for processing.
 * COMPLETED - Completed files are placed here.
 
-The following setting within appsettings.json tells it to copy test files to DATAFILES/RECEIVED. The test files include a PDF transcript and an MP4 recording of sample meeetings. 
+To facilitate testing, WorkflowApp copies test into DATAFILES/RECEIVED, when it starts. After you run WorkflowApp, the results of processing the PDF transcipt will be in:
 
-        "InitializeWithTestData": true,
+    DATAFILES\PROCESSING\USA_PA_Philadelphia_Philadelphia__en\2017-12-07\PreProcess. 
 
-WorkflowApp pre-processes the transcript and produces a JSON file with the extracted data. If you have set up a <a href="about?id=setup#GoogleCloud">Google Cloud account, </a> it will transcribe the MP4 recording. You will find the results of both in the DATAFILES\PROCESSING folder.
+The results of transcribing the MP4 file are in:
 
-You will note that the initial MP4 transcript and its transcription are spilt into 3-minute work segments. This is to allow multiple volunteers to work simultaneously on proofreading the transcription.
-
+    Datafiles\PROCESSING\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\Fixasr
 
 ### Process new recordings
 
@@ -118,7 +119,7 @@ If you have an Google Account set up, it will transcribe the recording.
 
 ### Process new transcripts
 
-You can also have WorkflowApp process your own transcript files. The test files are from the Philadelphia, PA, USA city council meetings. In order to handle other transcript formats, you need to first add a method to ProcessTranscript_Lib. See  <a href="https://github.com/govmeeting/govmeeting/issues/93"> Github Issue #93 </a> 
+You can also have WorkflowApp process your own transcript files. The test files are from the Philadelphia, PA, USA city council meetings. In order to handle other transcript formats, you need to first add a method to ProcessTranscript_Lib. See <a href="about?id=dev-notes"> Developer Notes <a> or <a href="https://github.com/govmeeting/govmeeting/issues/93"> Github Issue #93 </a> 
 _____
 
 <a name="DevelopVS"></a>

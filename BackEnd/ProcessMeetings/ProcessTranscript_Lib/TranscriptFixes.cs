@@ -60,11 +60,13 @@ namespace GM.ProcessTranscript
 
         public static I CreateInstance<I>(string dllName, string spaceName, string className) where I : class
         {
-            string assemblyPath = Environment.CurrentDirectory + "\\" + dllName;
+            // The following only works in VS but not in VsCode.
+            // string assemblyPath = Environment.CurrentDirectory + "\\" + dllName;
 
+            string assemblyPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             Assembly assembly;
-
             assembly = Assembly.LoadFrom(assemblyPath);
+			
             Type type = assembly.GetType(spaceName + "." + className);
             return Activator.CreateInstance(type) as I;
         }

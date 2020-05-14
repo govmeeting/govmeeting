@@ -58,7 +58,7 @@ namespace GM.Workflow
             wf_processReceivedFiles.Run();
 
             // Process new recordings - auto speech recognition
-            // wf_processRecordings.Run();
+            //wf_processRecordings.Run();
 
             // Processing new transcript files
             wf_processTranscripts.Run();
@@ -74,9 +74,6 @@ namespace GM.Workflow
 
             if (config.ExitAfterOnceThroughWorkflow)
             {
-                // For Debugging
-                System.Console.ReadKey();
-
                 return;
             }
         }
