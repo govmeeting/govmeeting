@@ -7,25 +7,14 @@ using System.Threading.Tasks;
 using GM.FileDataRepositories;
 using GM.GoogleCLoud;
 using Microsoft.Toolkit.Parsers.Markdown;
+using GM.Utilities;
 
 namespace GM.Utilities.Translate
 {
     class TranslateDocs
     {
-        TranslateInCloud translateInCloud;
-        string folder = @"C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp\src\assets\docs";
-
-        List<string> allDocuments = new List<string>()
-            { "overview1", "overview2", "workflow", "project-status", "setup", "design", "dev-notes", "database"};
-
-        List<string> allLanguages = new List<string>()
-            { "de", "es", "fr", "it", "fi", "ar", "sw", "zh", "pt" , "bn", "hi" };
-
-        List<string> someDocuments = new List<string>()
-            { "overview1", "setup", "dev-notes"};
-
-        List<string> someLanguages = new List<string>()
-            { "ic", "sw", "no" };
+        readonly TranslateInCloud translateInCloud;
+        readonly string folder = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\assets\docs");
 
         public TranslateDocs(TranslateInCloud _translateInCloud)
         {
@@ -34,42 +23,63 @@ namespace GM.Utilities.Translate
 
         public void Run(string[] args)
         {
-            //string folder = args[1];
-            //string language = args[2];
+            // Setting update to true attempts to only re-translate files that were edited.
+            // But it is not working yet.
+            bool update = true;
 
-            // Translate all the documents to all languages
-        //    TranslateDocumentsLanguages(allDocuments, allLanguages, true);
+            // All current documents.
+            List<string> allDocuments = new List<string>()
+                { "overview1", "overview2", "workflow", "project-status", "setup", "design", "dev-notes", "database"};
 
-            // Translate all the documents to some languages
-         //   TranslateDocumentsLanguages(allDocuments, someLanguages);
+            // All languages that we currently support
+            List<string> allLanguages = new List<string>()
+                { "de", "es", "fr", "it", "fi", "ar", "sw", "zh", "pt" , "bn", "hi" };
 
-            // Translate some documents to all languages
-            TranslateDocumentsLanguages(someDocuments, allLanguages);
+            // Documents that change often.
+            List<string> someDocuments = new List<string>()
+                { "setup"};
+
+            // We may do some languages at a time.
+            List<string> someLanguages = new List<string>()
+                { "ar", "sw", "zh", "pt" , "bn", "hi" };
+
+            // No documents have yet to be translated into these languages 
+            List<string> moreLanguages = new List<string>()
+                { "ic", "sw", "no" };
+
+            // uncomment one of the following lines.
+            // TranslateDocumentsLanguages(allDocuments, allLanguages, update);
+            TranslateDocumentsLanguages(someDocuments, allLanguages, update);
+            // TranslateDocumentsLanguages(allDocuments, moreLanguages, update);
         }
 
-        // "update" true means only translate if the English is newer than the translation.
         private void TranslateDocumentsLanguages(List<string> documents, List<string> languages, bool update)
         {
             foreach (string language in languages)
             {
                 foreach (string document in documents)
                 {
-                    // Compare times if we are only updating.
-                    if (update)
-                    {
-                        string file = GetEnglishDocumentPath(document);
-                        DateTime filedt = File.GetLastWriteTime(file);
+                    // NOTE: THIS CODE DOES NOT WORK. (In Windows at least)
+                    // Windows' LastWriteTime is not acurate.
 
-                        string transfile = GetTranslatedDocumentPath(document, language);
-                        DateTime transfiledt = File.GetLastWriteTime(newfile);
+                    // // Compare times if we are only updating.
+                    // if (update)
+                    // {
+                    //     string file = GetEnglishDocumentPath(document);
+                    //     DateTime filedt = File.GetLastWriteTime(file);
 
-                        // if the translation is newer than the english, then the english has not changed.
-                        if (filedt < tranfiledt)
-                        {
-                            continue;
-                        }
-                    }
+                    //     string transfile = GetTranslatedDocumentPath(document, language);
+                    //     DateTime transfiledt = File.GetLastWriteTime(transfile);
+
+                    //     // if the translation is newer than the english, then the english has not changed.
+                    //     if (filedt < transfiledt)
+                    //     {
+                    //         continue;
+                    //     }
+                    // }
+                    
                     TranslateDocument(document, language, true);
+                    Console.WriteLine(document + ":" + language + ", ");
                 };
             }
         }
@@ -81,7 +91,7 @@ namespace GM.Utilities.Translate
 
         private string GetTranslatedDocumentPath(string document, string language)
         {
-            folder + "\\TRANS\\" + language.ToUpper() + "\\" + document + ".md";
+            return folder + "\\TRANS\\" + language.ToUpper() + "\\" + document + ".md";
         }
 
         // The purpose of deletePrior is to facilitate resuming translation if we abort and restart.
@@ -119,7 +129,7 @@ namespace GM.Utilities.Translate
                 File.WriteAllText(newFile, doNotEdit + replaced);
 
                 // Wait 10 seconds. GCP didn't like me running a close loop.
-                Task.Delay(10000).Wait();
+                Task.Delay(30000).Wait();
             }
         }
 

@@ -66,7 +66,7 @@ By default, ClientApp will call stub services instead of calling the WebApp API.
   * npm start
 * In the debug panel, set launch configuration "WebApp & ClientApp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
-  * Chrome browser will open and after a delay, ClientApp will appear on localhost:5000.
+  * Chrome browser will open. Ignore temporary message "Site can't be reached" and wait for ClientApp to display.
 
 ### Notes
 
@@ -118,7 +118,7 @@ If you have an Google Account set up, it will transcribe the recording.
 
 ### Process new transcripts
 
-You can also have WorkflowApp process your own transcript files. The test files are from the Philadelphia, PA, USA city council meetings. In order to handle other transcript formats, you need to first add a method to ProcessTranscript_Lib. See  <a href="https://github.com/govmeeting/govmeeting/issues/93"> Github Issue #93 </a> 
+The goal is to eventually write code smart enough to process all transcript formats. But for now we need to add custom code for new formats. If your city, town, etc, produces transcripts of their meetings, it would be of great help if you contribute the code to handle those.  Please see  <a href="https://github.com/govmeeting/govmeeting/issues/93"> Github Issue #93 </a> 
 _____
 
 <a name="DevelopVS"></a>

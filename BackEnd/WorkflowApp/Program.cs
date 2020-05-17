@@ -14,6 +14,8 @@ using GM.DatabaseRepositories;
 using GM.LoadDatabase;
 using GM.DatabaseAccess;
 using Microsoft.Extensions.Options;
+using Google.Cloud.Storage.V1;
+using GM.Utilities;
 
 namespace GM.Workflow
 {
@@ -27,6 +29,13 @@ namespace GM.Workflow
         public static void Main(string[] args)
         {
             // https://pioneercode.com/post/dependency-injection-logging-and-configuration-in-a-dot-net-core-console-app
+
+            string credentialsFilePath = @"C:\GOVMEETING\SECRETS\TranscribeAudio.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
+
+            //StorageClient storageClient = StorageClient.Create();
+            string secrets = GMFileAccess.FindParentFolderWithName("SECRETS");
+
 
             // create service collection
             var services = new ServiceCollection();
@@ -42,6 +51,17 @@ namespace GM.Workflow
             string datafilesPath = config.DatafilesPath;
 
             var logger = serviceProvider.GetService<ILogger<Program>>();
+
+            // Google Cloud libraries automatically use the environment variable GOOGLE_APPLICATION_CREDENTIALS
+            // to authenticate to Google Cloud. Here we set this variable to the path of the credentials file,
+            // which is defined in app.settings.json.
+            //string credentialsFilePath = config.GoogleApplicationCredentials;
+            //if (!File.Exists(credentialsFilePath)){
+            //    logger.LogError("Credentials File does not exists: ${credentialsFilePath}");
+            //}
+            //Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
+
+            //StorageClient storageClient = StorageClient.Create();
 
             // Copy test data to Datafiles
             if (config.InitializeWithTestData) {

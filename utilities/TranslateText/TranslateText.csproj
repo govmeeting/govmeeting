@@ -18,6 +18,7 @@
     <ProjectReference Include="..\..\BackEnd\Configuration_Lib\Configuration_Lib.csproj" />
     <ProjectReference Include="..\..\BackEnd\Online\GoogleCloud_Lib\GoogleCloud_Lib.csproj" />
     <ProjectReference Include="..\..\BackEnd\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
+    <ProjectReference Include="..\..\BackEnd\Utilities_Lib\Utilities_Lib.csproj" />
   </ItemGroup>
 
 </Project>

@@ -23,6 +23,7 @@ using GM.DatabaseRepositories;
 using GM.DatabaseAccess;
 using GM.FileDataRepositories;
 using GM.WebApp.Services;
+using GM.Utilities;
 
 
 namespace GM.WebApp
@@ -32,18 +33,18 @@ namespace GM.WebApp
         // https://github.com/NLog/NLog/wiki/Getting-started-with-ASP.NET-Core-2
         // https://github.com/NLog/NLog/wiki/Configuration-file#log-levels
         NLog.Logger logger;
-        public IConfiguration configuration { get; }
+        public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration _configuration)
         {
-            configuration = _configuration;
+            Configuration = _configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
             // Set a variable in the gdc which is be used in NLog.config for the
             // base path of our app: ${gdc:item=appbasepath} 
-            string logfilesPath = GMFileAccess.GetFullPath(configuration["AppSettings:LogfilesPath"]);
+            string logfilesPath = GMFileAccess.GetFullPath(Configuration["AppSettings:LogfilesPath"]);
             GlobalDiagnosticsContext.Set("logfilesPath", logfilesPath);
 
             // Create an instance of NLog.Logger manually here since it is not available
@@ -54,7 +55,7 @@ namespace GM.WebApp
             logger.Info("Modify some AppSettings");
 
             services.AddOptions();
-            services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<AppSettings>(myOptions =>
             {
                 // Modify the configuration path options to be full paths.
@@ -72,7 +73,7 @@ namespace GM.WebApp
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    configuration["AppSettings:ConnectionString"]
+                    Configuration["AppSettings:ConnectionString"]
                     //sqlServerOptions => sqlServerOptions.MigrationsAssembly("DatabaseAccess_Lib")
                     //sqlServerOptions => sqlServerOptions.MigrationsAssembly("WebApp")
                     ));
@@ -110,10 +111,10 @@ namespace GM.WebApp
 
             logger.Info("Add Application services");
 
-                bool UseDatabaseStubs = (configuration["AppSettings:UseDatabaseStubs"] == "True") ? true : false;
+                bool UseDatabaseStubs = (Configuration["AppSettings:UseDatabaseStubs"] == "True") ? true : false;
                 AddApplicationServices(services, logger, UseDatabaseStubs);
 
-                services.AddSingleton(configuration);
+                services.AddSingleton(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

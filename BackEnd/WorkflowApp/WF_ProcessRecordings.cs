@@ -11,6 +11,7 @@ using GM.FileDataRepositories;
 using GM.DatabaseRepositories;
 using GM.DatabaseModel;
 using Microsoft.Extensions.Logging;
+using GM.Utilities;
 
 namespace GM.Workflow
 {
@@ -22,8 +23,6 @@ namespace GM.Workflow
         IMeetingRepository meetingRepository;
         ILogger<WF_ProcessReceivedFiles> logger;
 
-        string credentialsFilePath;
-
         public WF_ProcessRecordings(
             ILogger<WF_ProcessReceivedFiles> _logger,
             IOptions<AppSettings> _config,
@@ -34,12 +33,6 @@ namespace GM.Workflow
         {
             config = _config.Value;
 
-            // Google Cloud libraries automatically use the environment variable GOOGLE_APPLICATION_CREDENTIALS
-            // to authenticate to Google Cloud. Here we set this variable to the path of the credentials file,
-            // which is defined in app.settings.json.
-            credentialsFilePath = config.GoogleApplicationCredentials;
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
-
             logger = _logger;
             processRecording = _processRecording;
             meetingRepository = _meetingRepository;
@@ -49,11 +42,6 @@ namespace GM.Workflow
         // Find all new received meetings whose source is a recording and approved status is true.
         public void Run()
         {
-            if (!File.Exists(credentialsFilePath)){
-                logger.LogError("Credentials File does not exists: ${credentialsFilePath}");
-                // return;
-            }
-
             // Do we need manager approval?
             bool? approved = true;
             if (!config.RequireManagerApproval) approved = null;
@@ -74,7 +62,7 @@ namespace GM.Workflow
             MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
             string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
 
-            if (!FileDataRepositories.GMFileAccess.CreateDirectory(workFolderPath))
+            if (!GMFileAccess.CreateDirectory(workFolderPath))
             {
                 Console.WriteLine($"ProcessRecordings - ERROR: could not create meeting folder {workFolderPath}");
                 return;

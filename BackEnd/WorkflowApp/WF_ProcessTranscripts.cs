@@ -11,6 +11,7 @@ using GM.FileDataRepositories;
 using GM.DatabaseRepositories;
 using GM.DatabaseModel;
 using Microsoft.Extensions.Logging;
+using GM.Utilities;
 
 namespace GM.Workflow
 {
@@ -72,7 +73,7 @@ namespace GM.Workflow
             string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
 
 
-            if (!FileDataRepositories.GMFileAccess.CreateDirectory(workFolderPath))
+            if (!GMFileAccess.CreateDirectory(workFolderPath))
             {
                 // We were not able to create a folder for processing this video.
                 // Probably because the folder already exists.

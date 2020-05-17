@@ -10,25 +10,30 @@ namespace GM.GoogleCLoud
 {
     class GoogleBucket
     {
+        StorageClient storageClient;
+
+        public GoogleBucket()
+        {
+            storageClient = StorageClient.Create();
+        }
+
         public void UploadFile(string bucketName, string localPath,
             string objectName = null, string contentType = null)
         {
-            var storage = StorageClient.Create();
             using (var file = File.OpenRead(localPath))
             {
                 objectName = objectName ?? Path.GetFileName(localPath);
-                storage.UploadObject(bucketName, objectName, contentType, file);
+                storageClient.UploadObject(bucketName, objectName, contentType, file);
                 Console.WriteLine($"GoogleBucket.cs - Uploaded {objectName}.");
             }
         }
         public void DownloadObject(string bucketName, string objectName,
             string localPath = null)
         {
-            var storage = StorageClient.Create();
             localPath = localPath ?? Path.GetFileName(objectName);
             using (var outputFile = File.OpenWrite(localPath))
             {
-                storage.DownloadObject(bucketName, objectName, outputFile);
+                storageClient.DownloadObject(bucketName, objectName, outputFile);
             }
             Console.WriteLine($"GoogleBucket.cs - downloaded {objectName} to {localPath}.");
         }
@@ -37,10 +42,6 @@ namespace GM.GoogleCLoud
         {
             // Your Google Cloud Platform project ID.
             string projectId = "YOUR-PROJECT-ID";
-
-
-            // Instantiates a client.
-            StorageClient storageClient = StorageClient.Create();
 
             // The name for the new bucket.
             string bucketName = projectId + "-test-bucket";
@@ -69,8 +70,7 @@ namespace GM.GoogleCLoud
         // prefix -	Prefix to match. Only objects with names that start with this string will be returned from cloud.
         // regex - Regular Expression to match with those objects returned.
         {
-            var storage = StorageClient.Create();
-            var listFiles = storage.ListObjects(bucketName,
+            var listFiles = storageClient.ListObjects(bucketName,
                 prefix).Where(p => Regex.IsMatch(p.Name, regex));
                 // IsMatch(String, String) 	- Indicates if regular expression finds match in input string.
             if (listFiles.Any())

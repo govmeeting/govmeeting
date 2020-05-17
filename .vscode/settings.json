@@ -4,5 +4,9 @@
         "**/wwwroot": true,
         "**/assets/docs/TRANS": true
     },
-    "VSCodeCounter.showInStatusBar": false
+    "VSCodeCounter.showInStatusBar": false,
+    "workbench.colorCustomizations": {
+        "terminal.foreground": "#00FD61",
+        "terminal.background": "#383737"
+    }
 }

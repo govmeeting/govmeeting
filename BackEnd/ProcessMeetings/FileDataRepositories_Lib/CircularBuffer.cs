@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 //using GM.WebApp.Models;
+using GM.Utilities;
 
 namespace GM.FileDataRepositories
 {
@@ -32,11 +33,11 @@ namespace GM.FileDataRepositories
 
     public class CircularBuffer
     {
-        int maxBackups;
-        string meetingSegmentFolder;
-        string basename;
-        string baseNameCorrected;
-        string extension;
+        readonly int maxBackups;
+        readonly string meetingSegmentFolder;
+        readonly string basename;
+        readonly string baseNameCorrected;
+        readonly string extension;
 
         public CircularBuffer(string _meetingSegmentFolder, string workfile, int _maxBackups)
         {
@@ -97,10 +98,10 @@ namespace GM.FileDataRepositories
             try
             {
                 // Find out what the current latest is.
-                string latestCopy = getLatestFile(meetingSegmentFolder, baseNameCorrected, extension);
+                string latestCopy = GetLatestFile(meetingSegmentFolder, baseNameCorrected, extension);
                 if (latestCopy != null)
                 {
-                    numOfNextLatest = getNumberOfNextLatest(latestCopy, SUFFIX, extension);
+                    numOfNextLatest = GetNumberOfNextLatest(latestCopy, SUFFIX, extension);
                     RenameLatestCopy(latestCopy, SUFFIX);
                 }
 
@@ -116,7 +117,7 @@ namespace GM.FileDataRepositories
         }
 
         // get filename of latest copy
-        private string getLatestFile(string fullpath, string basename, string extension)
+        private string GetLatestFile(string fullpath, string basename, string extension)
         {
             const string SUFFIX = "-LAST";
 
@@ -135,13 +136,12 @@ namespace GM.FileDataRepositories
         }
 
         // get number of next latest copy (as string)
-        private string getNumberOfNextLatest(string latestCopy, string suffix, string extension)
+        private string GetNumberOfNextLatest(string latestCopy, string suffix, string extension)
         {
-            int numLast;
             int startOfnumLast = latestCopy.Length - suffix.Length - extension.Length - 3;
 
             string numpart = latestCopy.Substring(startOfnumLast, 2);
-            bool res = int.TryParse(numpart, out numLast);
+            bool res = int.TryParse(numpart, out int numLast);
             if (!res)
             {
                 // TODO - handle error

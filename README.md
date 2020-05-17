@@ -133,7 +133,7 @@ By default, ClientApp will call stub services instead of calling the WebApp API.
   * npm start
 * In the debug panel, set launch configuration "WebApp & ClientApp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
-  * Chrome browser will open and after a brief delay, ClientApp will appear on localhost:5000.
+  * Chrome browser will open and after a delay, ClientApp will appear on localhost:5000.
 
 ### Notes
 
@@ -155,14 +155,19 @@ ClientApp is served by the webpack-dev-server. WebApp uses the Kestrel server. B
 
 ### Notes
 
-WorkflowApp processes transcript texts and transcribes recordings. Transcribing recordings requires a <a href="#GoogleCloud">Google Cloud account. </a>
-
-WorkflowApp creates a sibling folder to the project folder (and TESTDATA), called "DATAFILES". Within DATAFILES there are 3 sub-folders:
+When WorkflowApp first starts, it creates a folder "DATAFILES" and within it the following 3 sub-folders:
 * RECEIVED - Any files placed within this folder will be automatically processed.
 * PROCESSING - This contains work folders for processing.
 * COMPLETED - Completed files are placed here.
 
-To facilitate testing, WorkflowApp copies files from TESTDATA to DATAFILES/RECEIVED when it starts.
+The following setting within appsettings.json tells it to copy test files to DATAFILES/RECEIVED. The test files include a PDF transcript and an MP4 recording of sample meeetings. 
+
+        "InitializeWithTestData": true,
+
+WorkflowApp pre-processes the transcript and produces a JSON file with the extracted data. If you have set up a <a href="#GoogleCloud">Google Cloud account, </a> it will transcribe the MP4 recording. You will find the results of both in the DATAFILES\PROCESSING folder.
+
+You will note that the initial MP4 transcript and its transcription are spilt into 3-minute work segments. This is to allow multiple volunteers to work simultaneously on proofreading the transcription.
+
 
 ### Process new recordings
 
@@ -180,7 +185,7 @@ If you have an Google Account set up, it will transcribe the recording.
 
 ### Process new transcripts
 
-Besides the test transcripts, you can also process your own. The test files are transcripts from the Philadelphia, PA, USA city council meetings. In order to handle other transcript formats, you will need to add a method to ProcessTranscript_Lib. See <a href="https://github.com/govmeeting/govmeeting/issues/93"> Issue #93 </a>. Eventually the goal is to write code that automatically handle all or most formats without custom code.    
+The goal is to eventually write code smart enough to process all transcript formats. But for now we need to add custom code for new formats. If your city, town, etc, produces transcripts of their meetings, it would be of great help if you contribute the code to handle those.  Please see  <a href="https://github.com/govmeeting/govmeeting/issues/93"> Github Issue #93 </a> 
 _____
 
 <a name="DevelopVS"></a>

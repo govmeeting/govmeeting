@@ -7,15 +7,16 @@ using GM.ProcessRecording;
 using GM.ViewModels;
 using GM.GoogleCLoud;
 using GM.Configuration;
+using GM.Utilities;
 
 
 namespace GM.ProcessRecording_Tests
 {
     public class TestProcessing
     {
-        AppSettings _config;
+        readonly AppSettings _config;
 
-        private string testdataPath;
+        private readonly string testdataPath;
         // private string datafilesPath;
 
         public TestProcessing(IOptions<AppSettings> config)
@@ -70,7 +71,7 @@ namespace GM.ProcessRecording_Tests
             string inputFile = testdataPath + @"\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15-rsp.json";
 
             string outputFolder = testdataPath + "\\" + "TestReformatOfTranscribeResponse";
-            FileDataRepositories.GMFileAccess.DeleteAndCreateDirectory(outputFolder);
+            GMFileAccess.DeleteAndCreateDirectory(outputFolder);
             string outputFile = outputFolder + @"\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15.json";
 
             string stringValue = File.ReadAllText(inputFile);

@@ -24,8 +24,8 @@ namespace GM.WebApp
             services.AddAuthentication()
             .AddGoogle(options =>
             {
-                options.ClientId = configuration["ExternalAuth:Google:ClientId"];
-                options.ClientSecret = configuration["ExternalAuth:Google:ClientSecret"];
+                options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
+                options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
             });
 
             logger.Info("Add Identity");

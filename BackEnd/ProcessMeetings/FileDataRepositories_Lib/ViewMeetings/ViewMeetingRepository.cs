@@ -7,6 +7,7 @@ using GM.ViewModels;
 using GM.Configuration;
 using GM.DatabaseRepositories;
 using GM.DatabaseModel;
+using GM.Utilities;
 
 namespace GM.FileDataRepositories
 {
@@ -19,8 +20,8 @@ namespace GM.FileDataRepositories
         const string WORK_FILE_NAME = "ToView.json";
 
         private readonly AppSettings _config;
-        IMeetingRepository meetingRepository;          // database meeting repository
-        IGovBodyRepository govBodyRepository;          // database govbody repository
+        readonly IMeetingRepository meetingRepository;          // database meeting repository
+        readonly IGovBodyRepository govBodyRepository;          // database govbody repository
 
         public ViewMeetingRepository(
             IOptions<AppSettings> config,
@@ -56,18 +57,19 @@ namespace GM.FileDataRepositories
             return result;
         }
 
-        private ViewmeetingView GetViewMeetingByPath(string meetingPath)
-        {
-            string meetingString = GMFileAccess.Readfile(meetingPath);
-            if (meetingString != null)
-            {
-                ViewmeetingView meeting = JsonConvert.DeserializeObject<ViewmeetingView>(meetingString);
-                return meeting;
-            } else
-            {
-                return null;
-            }
-        }
+        //private ViewmeetingView GetViewMeetingByPath(string meetingPath)
+        //{
+        //    string meetingString = GMFileAccess.Readfile(meetingPath);
+        //    if (meetingString != null)
+        //    {
+        //        ViewmeetingView meeting = JsonConvert.DeserializeObject<ViewmeetingView>(meetingString);
+        //        return meeting;
+        //    } else
+        //    {
+        //        return null;
+        //    }
+        //}
+
         private string GetWorkFolderPath(long meetingId)
         {
             Meeting meeting = meetingRepository.Get(meetingId);

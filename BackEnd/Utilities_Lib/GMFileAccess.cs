@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GM.FileDataRepositories
+namespace GM.Utilities
 {
     public static class GMFileAccess
     {
@@ -213,7 +213,7 @@ namespace GM.FileDataRepositories
         {
             if (!Path.IsPathRooted(path))
             {
-                string cd = Directory.GetCurrentDirectory();
+                //string cd = Directory.GetCurrentDirectory();
                 path = Path.Combine(Directory.GetCurrentDirectory(), path);
             }
             return Path.GetFullPath(path);
@@ -258,6 +258,26 @@ namespace GM.FileDataRepositories
             while (current != null);
 
         return null;
+        }
+
+        public static string GetGovmeetingSolutionFolder()
+        {
+            return FindParentFolderContaining("govmeeting.sln");
+        }
+
+        public static string GetClientAppFolder()
+        {
+            return Path.Combine(GetGovmeetingSolutionFolder(),@"FrontEnd\ClientApp");
+        }
+
+        public static string GetWebAppFolder()
+        {
+            return Path.Combine(GetGovmeetingSolutionFolder(),@"BackEnd\WebApp");
+        }
+
+        public static string GetWorkflowAppFolder()
+        {
+            return Path.Combine(GetGovmeetingSolutionFolder(), @"BackEnd\WorkflowApp");
         }
 
         public static string FindParentFolderWithName(string folder)

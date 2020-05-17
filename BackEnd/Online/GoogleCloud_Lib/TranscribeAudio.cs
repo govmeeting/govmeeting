@@ -21,6 +21,8 @@ namespace GM.GoogleCLoud
         private AppSettings config;
         private string GoogleCloudBucketName;
 
+        private SpeechClient speechClient;
+
 
         public TranscribeAudio(
              //AppSettings config
@@ -29,6 +31,7 @@ namespace GM.GoogleCLoud
         {
             config = _config.Value;
             GoogleCloudBucketName = config.GoogleCloudBucketName;
+            speechClient = SpeechClient.Create();
         }
 
         /// <param name="language">Language of the audio. This is the ISO 639 code</param>
@@ -53,12 +56,12 @@ namespace GM.GoogleCLoud
 
         public TranscribeResponse TranscribeInCloud(string objectName, string language)
         {
-            var speech = SpeechClient.Create();
+            // var speechClient = SpeechClient.Create();
 
                 string fileOnCloudStorage = "gs://" + GoogleCloudBucketName + "/" + objectName;
                 RecognitionAudio recogAudio = RecognitionAudio.FromStorageUri(fileOnCloudStorage);
 
-                var longOperation = speech.LongRunningRecognize(new RecognitionConfig()
+                var longOperation = speechClient.LongRunningRecognize(new RecognitionConfig()
                 {
                     Encoding = RecognitionConfig.Types.AudioEncoding.Flac,
                     SampleRateHertz = 48000,
@@ -99,8 +102,6 @@ namespace GM.GoogleCLoud
                     transcript.alternatives.Add(alt);
                 }
             }
-
-
             return transcript;
         }
 
@@ -108,10 +109,10 @@ namespace GM.GoogleCLoud
         // Transcribe a local audio file. We can only use this with audios up to 1 minute long.
         public TranscribeResponse TranscribeFile(string fileName, string language)
         {
-            var speech = SpeechClient.Create();
+            // var speechClient = SpeechClient.Create();
             RecognitionAudio recogAudio = RecognitionAudio.FromFile(fileName);
 
-            var response = speech.Recognize(new RecognitionConfig()
+            var response = speechClient.Recognize(new RecognitionConfig()
             {
                 Encoding = RecognitionConfig.Types.AudioEncoding.Flac,
                 SampleRateHertz = 48000,
@@ -181,18 +182,19 @@ namespace GM.GoogleCLoud
         // when we create the SpeechClient. However, we are instead setting the environment variable
         // "GOOGLE_APPLICATION_CREDENTIALS" in a higher level routine. The Google Cloud libraries then
         // automatically use that value.
-        SpeechClient GetSpeechClient()
-        {
-            string credentialsFilePath = config.GoogleApplicationCredentials;
 
-            GoogleCredential googleCredential;
-            using (Stream m = new FileStream(credentialsFilePath, FileMode.Open))
-                googleCredential = GoogleCredential.FromStream(m);
-            var channel = new Grpc.Core.Channel(SpeechClient.DefaultEndpoint.Host,
-                googleCredential.ToChannelCredentials());
-            var speech = SpeechClient.Create(channel);
-            return speech;
-        }
+        // SpeechClient GetSpeechClient()
+        // {
+        //     string credentialsFilePath = config.GoogleApplicationCredentials;
+
+        //     GoogleCredential googleCredential;
+        //     using (Stream m = new FileStream(credentialsFilePath, FileMode.Open))
+        //         googleCredential = GoogleCredential.FromStream(m);
+        //     var channel = new Grpc.Core.Channel(SpeechClient.DefaultEndpoint.Host,
+        //         googleCredential.ToChannelCredentials());
+        //     var speech = SpeechClient.Create(channel);
+        //     return speech;
+        // }
     }
 }
 
