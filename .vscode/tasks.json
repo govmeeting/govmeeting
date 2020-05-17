@@ -35,6 +35,16 @@
             "problemMatcher": "$msCompile"       
         },
         {
+            "label": "build-workflowapp3",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/BackEnd/WorkflowApp3/WorkflowApp3.csproj"
+            ],
+            "problemMatcher": "$msCompile"       
+        },
+        {
             "label": "build-TranslateText",
             "command": "dotnet",
             "type": "process",

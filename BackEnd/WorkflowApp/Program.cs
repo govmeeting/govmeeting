@@ -33,7 +33,7 @@ namespace GM.Workflow
             string credentialsFilePath = @"C:\GOVMEETING\SECRETS\TranscribeAudio.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
 
-            //StorageClient storageClient = StorageClient.Create();
+            StorageClient storageClient = StorageClient.Create();
             string secrets = GMFileAccess.FindParentFolderWithName("SECRETS");
 
 

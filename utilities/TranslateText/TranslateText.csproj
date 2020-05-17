@@ -12,12 +12,11 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.0" />
     <PackageReference Include="Microsoft.Toolkit.Parsers" Version="6.0.0" />
+    <PackageReference Include="Google.Cloud.Translation.V2" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\BackEnd\Configuration_Lib\Configuration_Lib.csproj" />
-    <ProjectReference Include="..\..\BackEnd\Online\GoogleCloud_Lib\GoogleCloud_Lib.csproj" />
-    <ProjectReference Include="..\..\BackEnd\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
     <ProjectReference Include="..\..\BackEnd\Utilities_Lib\Utilities_Lib.csproj" />
   </ItemGroup>
 

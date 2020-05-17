@@ -85,6 +85,21 @@
             }
         },
         {
+            "name": "WorkflowApp3",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-workflowapp3",
+            "program": "${workspaceFolder}/Backend/WorkflowApp3/bin/Debug/netcoreapp2.0/WorkflowApp3.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/Backend/WorkflowApp3",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
             "name": "TranslateText",
             "type": "coreclr",
             "request": "launch",

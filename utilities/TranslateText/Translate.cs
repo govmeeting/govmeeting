@@ -1,16 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-// using Google.Cloud.Speech.V1;
-using Grpc.Auth;
-using Google.Apis.Auth.OAuth2;
-using System.Threading;
-using Newtonsoft.Json;
-using Google.Protobuf.Collections;
-using Microsoft.Extensions.Options;
-using GM.Configuration;
-using GM.GoogleCLoud;
 using Google.Cloud.Translation.V2;
 
 // This is in the process of being written.  

@@ -1,12 +1,10 @@
 ﻿using Google.Cloud.Speech.V1;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GM.ProcessRecordings
+namespace GM.GoogleCLoud
 {
     class StreamTranscribe
     {
