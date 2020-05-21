@@ -12,5 +12,7 @@ Govmeeting's initial focus is on tools that work the best at the local level. Le
 
 Disillusion with democracy starts at the local level. Fixing this requires a grassroots effort at that level.
 
+A goal is for Govmeeting to work anywhere, in any language, for any form of representative government. The only requirement is that official meetings are open to the public or that the transcripts are available.
+
 Govmeeting is  an  <a href="https://github.com/govmeeting/govmeeting"> open source project on Github. </a>
 

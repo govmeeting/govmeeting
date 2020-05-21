@@ -19,6 +19,10 @@ function Main
         [Parameter(Position = 1)] [string] $publish,
         [Parameter(Position = 2)] [string] $secrets
     )
+   
+    # If no params passed and repo is installed in C:\GOVMEETING|_SOURCECODE
+    if ($publish -eq "") { $publish = "C:\GOVMEETING\_SOURCECODE\BackEnd\WebApp\bin\release\netcoreapp2.2\publish" }
+    if ($secrets -eq ""){ $secrets = "C:\GOVMEETING\SECRETS\" }
 
     $devSettings = GetFullPath ($secrets + "\appsettings.Development.json")
     $prodSettings = GetFullPath ($secrets + "\appsettings.Production.json")

@@ -12,7 +12,7 @@ Function Main
     Write-Host "$me Running pre-build script Copy-ClientAssets.ps1 " -NoNewline
     Write-Host @args
 
-    # For development
+    # If no params passed and repo is installed in C:\GOVMEETING|_SOURCECODE
     if ($clientapp -eq "") { $clientapp = "C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp" }
     if ($publish -eq ""){ $publish = "C:\GOVMEETING\_SOURCECODE\BackEnd\WebApp\bin\release\netcoreapp2.2\publish" }
 

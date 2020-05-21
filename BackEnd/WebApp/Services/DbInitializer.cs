@@ -22,6 +22,7 @@ namespace GM.WebApp.Services
         //Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
         //    RoleManager<IdentityRole> roleManager, IConfiguration configuration);
         Task<bool> Initialize(bool migrateDatabase);
+        string GetFour();
     }
 
     // Class to inialize the database with the first admin user. See:
@@ -31,13 +32,13 @@ namespace GM.WebApp.Services
         private readonly ILogger<DbInitializer> logger;
 
         public DbInitializer(
-            ApplicationDbContext context, 
+            ApplicationDbContext context,
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
             //IConfiguration configuration,
             IOptions<AppSettings> config,
             ILogger<DbInitializer> _logger
-)
+            )
         {
             _context = context;
             _userManager = userManager;
@@ -89,14 +90,16 @@ namespace GM.WebApp.Services
                 {
                     await _userManager.AddClaimAsync(admin_user, new Claim("role", "Administrator"));
                 }
-            } else
+            }
+            else
             {
                 ApplicationUser admin_user;
                 admin_user = await _userManager.FindByEmailAsync(admin_email);
                 if (admin_user != null)
                 {
                     logger.LogInformation("Found admin user, " + admin_user.UserName + ", by email=" + admin_email);
-                } else
+                }
+                else
                 {
                     logger.LogWarning("admin user email=" + admin_email + " not found");
                 }
@@ -105,8 +108,32 @@ namespace GM.WebApp.Services
             // TODO add error handling and return success/fail
             return true;
         }
+        public string GetFour()
+        {
+            return "four";
+        }
+    }
+
+
+    public class DbInitializer_Stub : IDbInitializer
+    {
+        public DbInitializer_Stub()
+        {
+        }
+
+        public async Task<bool> Initialize(bool migrateDatabase)
+        {
+            await Task.Delay(1);
+            return true;
+        }
+        public string GetFour()
+        {
+            return "four";
+        }
     }
 }
+
+
 
 /// REMOVED PRIOR CODE 1
 // The following was from before we switch to using claims.

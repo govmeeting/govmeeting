@@ -11,15 +11,19 @@ Function BuildReadme
   )
   Write-Host "############################ Build-ProjectReadme.ps1 ############################"
 
+  # If no params passed and repo is installed in C:\GOVMEETING|_SOURCECODE
+  if ($clientapp -eq "") { $clientapp = "C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp" }
+  if ($readme -eq ""){ $readme = "C:\GOVMEETING\_SOURCECODE\README.md" }
+    
   # $me = "BuildProjectReadme: "
   # $useAllofSetup = $true
 
-  # If we are not passed the locations of ClientApp and README.md,
-  # assume we are running this script from Utilities\PsScripts and we know their relative locations.
-  if ($clientapp -eq "") {
-    $clientapp = GetFullPath "..\..\FrontEnd\ClientApp"
-    $readme = GetFullPath "..\..\README.md"
-  }
+  ## If we are not passed the locations of ClientApp and README.md,
+  ## assume we are running this script from Utilities\PsScripts and we know their relative locations.
+  # if ($clientapp -eq "") {
+  #   $clientapp = GetFullPath "..\..\FrontEnd\ClientApp"
+  #   $readme = GetFullPath "..\..\README.md"
+  # }
 
 # Put this before the overview doc.
 $preOverview =

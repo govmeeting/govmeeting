@@ -47,7 +47,7 @@ namespace GM.Workflow
             //var m = serviceProvider.GetService<IMeetingRepository>();
 
             var config = serviceProvider.GetService<IOptions<AppSettings>>().Value;
-            string testfilesPath = config.TestfilesPath;
+            string testfilesPath = config.TestdataPath;
             string datafilesPath = config.DatafilesPath;
 
             var logger = serviceProvider.GetService<ILogger<Program>>();
@@ -121,7 +121,7 @@ namespace GM.Workflow
             {
                 // Modify paths to be full paths.
                 myOptions.DatafilesPath = GMFileAccess.GetProjectSiblingFolder(myOptions.DatafilesPath);
-                myOptions.TestfilesPath = GMFileAccess.GetProjectSiblingFolder(myOptions.TestfilesPath);
+                myOptions.TestdataPath = GMFileAccess.GetProjectSiblingFolder(myOptions.TestdataPath);
                 myOptions.GoogleApplicationCredentials = GMFileAccess.GetProjectSiblingFolder(myOptions.GoogleApplicationCredentials);
             });
 

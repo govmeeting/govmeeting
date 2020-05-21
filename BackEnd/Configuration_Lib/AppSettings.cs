@@ -12,7 +12,7 @@ namespace GM.Configuration
         public string ConnectionString { get; set; }
         public string LogfilesPath { get; set; }
         public string DatafilesPath { get; set; }
-        public string TestfilesPath { get; set; }
+        public string TestdataPath { get; set; }
         public bool DeleteProcessingFolderOnStartup { get; set; }
         public bool IsDevelopment { get; set; }
         public int FixasrSegmentSize { get; set; }

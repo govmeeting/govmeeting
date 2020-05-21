@@ -19,6 +19,10 @@ _______
 * Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
 * Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
 * Clone or download the project from <a href="https://github.com/govmeeting/govmeeting"> Github. </a> Preferably fork the project and clone your fork. 
+* Check installation:
+  * cd FrontEnd/ClientApp
+  * npm install; npm start
+  * [ Open a browser to "localhost:4200" ]
 
 _____
 

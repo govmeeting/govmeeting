@@ -11,11 +11,11 @@ In the Athenian Assembly of 500 BC, a quorum of 6,000 of the 43,000 citizens was
 
 Today it is rare to see more than a dozen attendees at a council meeting in a town of 30,000 people. Is this still democracy? 
 
-Meetings are sometimes broadcast on TV, bit few watch them. Some newspapers report on some issues. But few people know most of what transacts during these meetings.
+Meetings are sometimes broadcast on TV, but few watch them. Some newspapers report on some issues. But few people know most of what transacts during these meetings.
 
 There are many fine people who enter public office in order to improve their communities. But the current opaque system makes it too easy for others to use the office to benefit themselves. 
 
-The purpose of Govmeeting is provide quick and easy access into official decisions that their representatives make and insight into what they mean.
+The purpose of Govmeeting is engage more people and provide more openness into the democratic process.
 
 ## Features
 
@@ -44,7 +44,7 @@ People will then be able to:
 * Search for voting results on legislation
 * See statistics, graphs and charts on issues, legislature, etc.
 
-A goal is for Govmeeting to work anywhere, in any language, for any form of representative government. The only requirement is that official meetings are open to the public or that the transcripts are available.
+Providing more government openness has other advantages. It makes it more likely that serious attention is given to important matters. It makes it less likely for bills to pass, that only benefit a select few. Also, around election time, it is better that we have already seen what what representatives have done -- rather than just listen to their new promises.
 
 Democracy is in peril throughout the world today. If it is to survive, it needs to become an essential part of people's lives. This can only begin at the local grassroots level. 
 
@@ -86,6 +86,10 @@ _______
 * Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
 * Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
 * Clone or download the project from <a href="https://github.com/govmeeting/govmeeting"> Github. </a> Preferably fork the project and clone your fork. 
+* Check installation:
+  * cd FrontEnd/ClientApp
+  * npm install; npm start
+  * [ Open a browser to "localhost:4200" ]
 
 _____
 
@@ -133,7 +137,7 @@ By default, ClientApp will call stub services instead of calling the WebApp API.
   * npm start
 * In the debug panel, set launch configuration "WebApp & ClientApp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
-  * Chrome browser will open and after a delay, ClientApp will appear on localhost:5000.
+  * Chrome browser will open. Ignore temporary message "Site can't be reached" and wait for ClientApp to display.
 
 ### Notes
 

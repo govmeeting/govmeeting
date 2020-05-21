@@ -47,13 +47,6 @@ namespace GM.WebApp
             string logfilesPath = GMFileAccess.GetFullPath(Configuration["AppSettings:LogfilesPath"]);
             GlobalDiagnosticsContext.Set("logfilesPath", logfilesPath);
 
-            string testPath = Configuration["AppSettings:TestdataPath"];
-            string dataPath = Configuration["AppSettings:DatafilesPath"];
-            string logPath = Configuration["AppSettings:LogfilesPath"];
-
-            string bin = Configuration["AppSettings:bin"];
-
-
             // Create an instance of NLog.Logger manually here since it is not available
             // from dependency injection yet.
             logger = LogManager.LoadConfiguration("nlog.config").GetCurrentClassLogger();
@@ -65,17 +58,11 @@ namespace GM.WebApp
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<AppSettings>(myOptions =>
             {
-                logger.Info("Modify the configuration path options to be full paths.");
-                logger.Info("LogfilesPath = " + myOptions.LogfilesPath);
-                logger.Info("DatafilesPath = " + myOptions.DatafilesPath);
-                logger.Info("TestdataPath = " + myOptions.TestdataPath);
-
-                logger.Info("Start modifying.");
                 // Modify the configuration path options to be full paths.
                 myOptions.LogfilesPath = GMFileAccess.GetFullPath(myOptions.LogfilesPath);
                 myOptions.DatafilesPath = GMFileAccess.GetProjectSiblingFolder(myOptions.DatafilesPath);
                 myOptions.TestdataPath = GMFileAccess.GetProjectSiblingFolder(myOptions.TestdataPath);
-                logger.Info("Done modifying.");
+                Console.WriteLine("Datafile path = " + myOptions.DatafilesPath);
             });
 
             logger.Info("Add ApplicationDbContext");

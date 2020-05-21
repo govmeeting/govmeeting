@@ -1,3 +1,6 @@
+# Temporary script to move some files.
+
+
 $docs = "C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp\src\assets\docs"
 Set-Location $docs
 

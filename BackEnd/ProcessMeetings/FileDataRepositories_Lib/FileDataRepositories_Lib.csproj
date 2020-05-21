@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,12 +20,6 @@
     <ProjectReference Include="..\..\Database\DatabaseRepositories_Lib\DatabaseRepositories_Lib.csproj" />
     <ProjectReference Include="..\..\Utilities_Lib\Utilities_Lib.csproj" />
     <ProjectReference Include="..\ViewModels_Lib\ViewModels_Lib.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Configuration_Lib">
-      <HintPath>..\..\Configuration_Lib\bin\Debug\netcoreapp2.0\Configuration_Lib.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

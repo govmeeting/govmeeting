@@ -16,13 +16,13 @@ namespace GM.ProcessRecording_Tests
     {
         readonly AppSettings _config;
 
-        private readonly string testdataPath;
+        private readonly string testfilesPath;
         // private string datafilesPath;
 
         public TestProcessing(IOptions<AppSettings> config)
         {
             _config = config.Value;
-            testdataPath = Environment.CurrentDirectory + _config.TestfilesPath;
+            testfilesPath = Environment.CurrentDirectory + _config.TestdataPath;
             // datafilesPath = Environment.CurrentDirectory + _config.DatafilesPath;
         }
 
@@ -68,9 +68,9 @@ namespace GM.ProcessRecording_Tests
 
         public void TestReformatOfTranscribeResponse()
         {
-            string inputFile = testdataPath + @"\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15-rsp.json";
+            string inputFile = testfilesPath + @"\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15-rsp.json";
 
-            string outputFolder = testdataPath + "\\" + "TestReformatOfTranscribeResponse";
+            string outputFolder = testfilesPath + "\\" + "TestReformatOfTranscribeResponse";
             GMFileAccess.DeleteAndCreateDirectory(outputFolder);
             string outputFile = outputFolder + @"\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15.json";
 

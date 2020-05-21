@@ -24,7 +24,7 @@ function Main
     # The demo at govmeeting.org will use the client stubs for data
     .\Set-IsAspServerRunning.ps1 $appmodule $false
     .\Build-ClientApp.ps1 $clientapp
-    .\Set-IsAspServerRunning.ps1 $appmodule $true
+    # .\Set-IsAspServerRunning.ps1 $appmodule $true
 
     .\Publish-WebApp.ps1 $webapp
 
