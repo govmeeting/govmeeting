@@ -44,10 +44,6 @@ People will then be able to:
 * Search for voting results on legislation
 * See statistics, graphs and charts on issues, legislature, etc.
 
-Providing more government openness has other advantages. It makes it more likely that serious attention is given to important matters. It makes it less likely for bills to pass, that only benefit a select few. Also, around election time, it is better that we have already seen what what representatives have done -- rather than just listen to their new promises.
-
-Democracy is in peril throughout the world today. If it is to survive, it needs to become an essential part of people's lives. This can only begin at the local grassroots level. 
-
 <!-- 
 <a href="http://www.govmeeting.org/overview#continue">Overview Continued</a>
  -->

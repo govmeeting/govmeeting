@@ -41,17 +41,18 @@ People will then be able to:
 * Search for voting results on legislation
 * See statistics, graphs and charts on issues, legislature, etc.
 
-Providing more government openness has other advantages. It makes it more likely that serious attention is given to important matters. It makes it less likely for bills to pass, that only benefit a select few. Also, around election time, it is better that we have already seen what what representatives have done -- rather than just listen to their new promises.
-
-Democracy is in peril throughout the world today. If it is to survive, it needs to become an essential part of people's lives. This can only begin at the local grassroots level. 
-
 <!-- END OF README SECTION -->
 
 <a name="continued"></a>
 
 ## Problems with current access
 
-It is not usually a priority for government officials to keep voters very informed about their actions. Only a few large cities make transcripts of their meetings available. And they are often difficult to obtain and use.
+It is not usually a priority for government officials to keep voters very informed about their actions. Only a few large cities make transcripts of their meetings available.
+And they are often difficult to obtain and use.
 
-Philadelphia is the 6th largest city in the U.S. Click below to show a sample page of a city council transcript.
-It's 154 pages of double-spaced lines, 10-words-per-line. Its PDF format is unusable on small screens, since the size can't be adjusted. There's no table of contents. The index is possibly usable by a legal researcher, but not an average person. 
+Philadelphia is the 6th largest city in the U.S. It's government strives for openness. There are many intitiatives to engage citizens.
+Meeting transcripts are available on its website. But quickly finding information in them is still difficult.
+
+Click below to show a sample transcript page.
+It's 154 pages of double-spaced lines, 10-words-per-line. Its PDF format is unusable on small screens, since the size can't be adjusted.
+There's no table of contents. The index is possibly usable by a legal researcher, but not an average person. 

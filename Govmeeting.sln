@@ -98,8 +98,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities_Lib", "BackEnd\Ut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowApp", "BackEnd\WorkflowApp\WorkflowApp.csproj", "{86B3DD69-E232-46BA-8EBD-5E981D4BAD5B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp2", "BackEnd\WebApp2\WebApp2.csproj", "{A966355A-5838-4F1B-B202-94AC473DA5BB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -186,10 +184,6 @@ Global
 		{86B3DD69-E232-46BA-8EBD-5E981D4BAD5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86B3DD69-E232-46BA-8EBD-5E981D4BAD5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86B3DD69-E232-46BA-8EBD-5E981D4BAD5B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A966355A-5838-4F1B-B202-94AC473DA5BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A966355A-5838-4F1B-B202-94AC473DA5BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A966355A-5838-4F1B-B202-94AC473DA5BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A966355A-5838-4F1B-B202-94AC473DA5BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -219,7 +213,6 @@ Global
 		{F49559D6-D6E7-43D9-8EB2-DE26496D5E63} = {89601BB8-30AA-4591-9332-20EB76B1C5F4}
 		{474333BD-3E8B-4976-B15F-AA7A424B38AF} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{86B3DD69-E232-46BA-8EBD-5E981D4BAD5B} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
-		{A966355A-5838-4F1B-B202-94AC473DA5BB} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {577CF991-85C7-44E5-A640-AE87641C3A8D}
