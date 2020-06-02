@@ -17,25 +17,21 @@ namespace GM.GoogleCLoud
         private SpeechClient speechClient;
 
 
-        public TranscribeAudio(
-             //AppSettings config
-             IOptions<AppSettings> _config
-        )
+        public TranscribeAudio()
         {
-            config = _config.Value;
-            GoogleCloudBucketName = config.GoogleCloudBucketName;
+            //GoogleCloudBucketName = config.GoogleCloudBucketName;
             speechClient = SpeechClient.Create();
         }
 
         /// <param name="language">Language of the audio. This is the ISO 639 code</param>
         /// The audio file name may have been shortened. For the cloud object name, we want to use the original full
         /// name of the video, but change the extension to ".flac".
-        public TranscribeResponse MoveToCloudAndTranscribe(string audiofilePath, string videoFileName, string language)
+        public TranscribeResponse MoveToCloudAndTranscribe(string audiofilePath, string objectName, string GoogleCloudBucketName, bool useAudioFileAlreadyInCloud, string language)
         {
-            string objectName = Path.GetFileNameWithoutExtension(videoFileName) + ".flac";
+            //string objectName = Path.GetFileNameWithoutExtension(videoFileName) + ".flac";
             GoogleBucket gb = new GoogleBucket();
 
-            if (config.UseAudioFileAlreadyInCloud)
+            if (useAudioFileAlreadyInCloud)
             {
                 // Only upload if not in cloud
                 if (!gb.IsObjectInBucket(GoogleCloudBucketName, objectName))
@@ -43,11 +39,11 @@ namespace GM.GoogleCLoud
                     gb.UploadFile(GoogleCloudBucketName, audiofilePath, objectName, "audio /x-flac");
                 }
             }
-            TranscribeResponse transcript = TranscribeInCloud(objectName, language);
+            TranscribeResponse transcript = TranscribeInCloud(objectName, GoogleCloudBucketName, language);
             return transcript;
         }
 
-        public TranscribeResponse TranscribeInCloud(string objectName, string language)
+        public TranscribeResponse TranscribeInCloud(string objectName, string GoogleCloudBucketName, string language)
         {
             // var speechClient = SpeechClient.Create();
 

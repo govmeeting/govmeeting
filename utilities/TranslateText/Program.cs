@@ -21,34 +21,14 @@ namespace GM.Utilities.Translate
             // create service provider
             var serviceProvider = services.BuildServiceProvider();
 
-            // Get appsettings
-            //var config = serviceProvider.GetService<IOptions<AppSettings>>().Value;
 
-            // Find path to the SECRETS folder
-            string credentialsFilePath;
-            string secrets = GMFileAccess.FindParentFolderWithName("SECRETS");
-            // If it exists look there for Google Application Credentials.
-            if (secrets != null)
-            {
-                credentialsFilePath = Path.Combine(secrets, "TranscribeAudio.json");
-            }
-            else
-            {
-                Console.WriteLine("ERROR: Can't located Google Application Credentials");
-                return;
-            }
-
-            // Google Cloud libraries automatically use the environment variable GOOGLE_APPLICATION_CREDENTIALS
-            // to authenticate to Google Cloud. Here we set this variable to the path of the credentials file,
-            // which is defined in appsettings.json in the SECRETS folder
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
+            GMFileAccess.SetGoogleCredentialsEnvironmentVariable();
 
             serviceProvider.GetService<TranslateDocs>().Run(args);
 
         }
         private static void ConfigureServices(IServiceCollection services)
         {
-            //services.AddTransient<IOptions<AppSettings>>();
             services.AddTransient<TranslateInCloud>();
             services.AddTransient<TranslateDocs>();
 

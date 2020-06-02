@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GM.Utilities
 {
-    public static class GMFileAccess
+    public static partial class GMFileAccess
     {
         public static void CopyFilesRecursively(DirectoryInfo source, DirectoryInfo target)
         {
@@ -198,7 +198,6 @@ namespace GM.Utilities
             return true;
         }
 
-
         public static void DeleteAndCreateDirectory(string folder)
         {
             if (Directory.Exists(folder))
@@ -217,26 +216,6 @@ namespace GM.Utilities
                 path = Path.Combine(Directory.GetCurrentDirectory(), path);
             }
             return Path.GetFullPath(path);
-        }
-
-        /* GetProjectSiblingFolder is for creating/finding sibling folders to the project.
-        * These include: _TESTDATA, DATAFILES, SECRETS.
-        * These folders must be outside the project folder so that they are not 
-        * included in the code repository.
-        * The names are coming from appsettings.json. The name could be just
-        * the folder name in development. But in production, it will be a rooted path.
-        * In production, we just return the path.
-        */
-        public static string GetProjectSiblingFolder(string name)
-        {
-            if (Path.IsPathRooted(name))
-            {
-                return name;
-            }
-            string projectFolder = FindParentFolderContaining("govmeeting.sln");
-            string path = Path.Combine(projectFolder, "../" + name);
-            path = Path.GetFullPath(path);
-            return path;
         }
 
 
@@ -258,26 +237,6 @@ namespace GM.Utilities
             while (current != null);
 
         return null;
-        }
-
-        public static string GetGovmeetingSolutionFolder()
-        {
-            return FindParentFolderContaining("govmeeting.sln");
-        }
-
-        public static string GetClientAppFolder()
-        {
-            return Path.Combine(GetGovmeetingSolutionFolder(),@"FrontEnd\ClientApp");
-        }
-
-        public static string GetWebAppFolder()
-        {
-            return Path.Combine(GetGovmeetingSolutionFolder(),@"BackEnd\WebApp");
-        }
-
-        public static string GetWorkflowAppFolder()
-        {
-            return Path.Combine(GetGovmeetingSolutionFolder(), @"BackEnd\WorkflowApp");
         }
 
         public static string FindParentFolderWithName(string folder)

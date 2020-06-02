@@ -17,15 +17,15 @@ namespace GM.ProcessRecording_Tests
     public class TestCloud
     {
         private readonly string language = "en";
-        private readonly AppSettings _config;
+        private readonly AppSettings config;
         readonly TranscribeAudio transcribe;
 
         public TestCloud(
-            IOptions<AppSettings> config,
+            IOptions<AppSettings> _config,
             TranscribeAudio _transcribe
         )
         {
-            _config = config.Value;
+            config = _config.Value;
             transcribe = _transcribe;
         }
 
@@ -39,8 +39,8 @@ namespace GM.ProcessRecording_Tests
         public void TestMoveToCloudAndTranscribe(string language)
         {
             string baseName = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15";
-            string videoFile = _config.TestdataPath + "\\" + baseName + ".mp4";
-            string outputFolder = _config.TestdataPath + "\\" + "TestMoveToCloudAndTranscribe";
+            string videoFile = config.TestdataPath + "\\" + baseName + ".mp4";
+            string outputFolder = config.TestdataPath + "\\" + "TestMoveToCloudAndTranscribe";
 
             GMFileAccess.DeleteAndCreateDirectory(outputFolder);
 
@@ -60,7 +60,7 @@ namespace GM.ProcessRecording_Tests
 
             // Transcribe
             //TranscribeAudio ta = new TranscribeAudio(_config);
-            TranscribeResponse response = transcribe.MoveToCloudAndTranscribe(audioFile, baseName + ".flac", language);
+            TranscribeResponse response = transcribe.MoveToCloudAndTranscribe(audioFile, baseName + ".flac", config.GoogleCloudBucketName, config.UseAudioFileAlreadyInCloud, language);
 
             string stringValue = JsonConvert.SerializeObject(response, Formatting.Indented);
             File.WriteAllText(outputBasePath + "-rsp.json", stringValue);
@@ -90,7 +90,7 @@ namespace GM.ProcessRecording_Tests
             //TranscribeAudio ta = new TranscribeAudio(_config);
 
             // Test transcription on a local file. We will use sychronous calls to the Google Speech API. These allow a max of 1 minute per request.
-            string folder = _config.TestdataPath + @"..\testdata\BBH Selectmen\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen\2017-01-09\step 2 extract\";
+            string folder = config.TestdataPath + @"..\testdata\BBH Selectmen\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen\2017-01-09\step 2 extract\";
             TranscribeResponse transcript = transcribe.TranscribeFile(folder + "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09#00-01-40.flac", language);
 
             string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);

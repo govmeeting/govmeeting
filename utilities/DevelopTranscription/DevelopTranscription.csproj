@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BackEnd\Online\GoogleCloud_Lib\GoogleCloud_Lib.csproj" />
+    <ProjectReference Include="..\..\BackEnd\ProcessMeetings\ProcessRecording_Lib\ProcessRecording_Lib.csproj" />
+    <ProjectReference Include="..\..\BackEnd\Utilities_Lib\Utilities_Lib.csproj" />
+  </ItemGroup>
+
+</Project>
