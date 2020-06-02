@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Cloud.Speech.V1" Version="1.0.1" />
+    <PackageReference Include="Google.Api.Gax.Grpc" Version="3.0.0" />
+    <PackageReference Include="Google.Cloud.Speech.V1" Version="2.0.0" />
     <PackageReference Include="Google.Cloud.Storage.V1" Version="2.1.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.0.0" />
   </ItemGroup>

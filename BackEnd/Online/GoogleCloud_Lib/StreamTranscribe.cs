@@ -1,4 +1,5 @@
 ﻿using Google.Cloud.Speech.V1;
+using Google.Api.Gax.Grpc;
 using System;
 using System.IO;
 using System.Threading;
@@ -40,10 +41,10 @@ namespace GM.GoogleCLoud
             // Print responses as they arrive.
             Task printResponses = Task.Run(async () =>
             {
-                while (await streamingCall.ResponseStream.MoveNext(
+                while (await streamingCall.GetResponseStream().MoveNextAsync(
                     default(CancellationToken)))
                 {
-                    foreach (var result in streamingCall.ResponseStream
+                    foreach (var result in streamingCall.GetResponseStream()
                         .Current.Results)
                     {
                         foreach (var alternative in result.Alternatives)

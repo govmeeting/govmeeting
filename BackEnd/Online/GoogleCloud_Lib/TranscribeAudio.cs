@@ -55,7 +55,8 @@ namespace GM.GoogleCLoud
                     Encoding = RecognitionConfig.Types.AudioEncoding.Flac,
                     SampleRateHertz = 48000,
                     EnableWordTimeOffsets = true,
-                    LanguageCode = language,
+                    LanguageCode = language
+                   //enableSpeakerDiarization = true
                 }, recogAudio);
                 longOperation = longOperation.PollUntilCompleted();
                 var response = longOperation.Result;
