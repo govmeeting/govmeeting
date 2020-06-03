@@ -6,9 +6,10 @@
 
   <ItemGroup>
     <PackageReference Include="Google.Api.Gax.Grpc" Version="3.0.0" />
-    <PackageReference Include="Google.Cloud.Speech.V1" Version="2.0.0" />
+    <PackageReference Include="Google.Cloud.Speech.V1P1Beta1" Version="2.0.0-beta02" />
     <PackageReference Include="Google.Cloud.Storage.V1" Version="2.1.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,5 @@
-﻿using Google.Cloud.Speech.V1;
-using Google.Api.Gax.Grpc;
+﻿using Google.Api.Gax.Grpc;
+using Google.Cloud.Speech.V1P1Beta1;
 using System;
 using System.IO;
 using System.Threading;

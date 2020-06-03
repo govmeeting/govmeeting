@@ -62,8 +62,20 @@ namespace GM.ProcessRecording
 
             TranscribeResponse transcript;
 
+            TranscribeParameters transParams = new TranscribeParameters
+            {
+                audiofilePath = audioFile,
+                objectName = objectName,
+                GoogleCloudBucketName = config.GoogleCloudBucketName,
+                useAudioFileAlreadyInCloud = config.UseAudioFileAlreadyInCloud,
+                language = language,
+                MinSpeakerCount = 2,
+                MaxSpeakerCount = 6
+                // TODO Add "phrases" field: names of officers
+            };
+
             // Move audio file to cloud and transcribe
-            transcript = transcribeAudio.MoveToCloudAndTranscribe(audioFile, objectName, config.GoogleCloudBucketName, config.UseAudioFileAlreadyInCloud, language);
+            transcript = transcribeAudio.MoveToCloudAndTranscribe(transParams);
 
             string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
             string outputJsonFile = meetingFolder + "\\" + "03-Transcribed.json";
