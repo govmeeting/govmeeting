@@ -62,7 +62,8 @@ namespace DevelopTranscription
             TranscribeAudio transcribe = new TranscribeAudio();
 
 
-            TranscribeResponse response = transcribe.MoveToCloudAndTranscribe(transParams);
+            //TranscribeRsp response = transcribe.MoveToCloudAndTranscribe(transParams);
+            TranscribeResponse response = transcribe.TranscribeAudioFile(transParams);
 
             string transcript = JsonConvert.SerializeObject(response, Formatting.Indented);
             File.WriteAllText(responseFile, transcript);
@@ -70,7 +71,6 @@ namespace DevelopTranscription
             WriteResponseToTmp(transcript, testdataFolder);
 
             /////// Reformat the JSON transcript to match what the fixasr routine will use.
-
             //ModifyTranscriptJson convert = new ModifyTranscriptJson();
             //string outputJsonFile = Path.Combine(testdataFolder, "04-ToFix.json");
             //FixasrView fixasr = convert.Modify(transcript);
@@ -82,7 +82,8 @@ namespace DevelopTranscription
         // We write a new file for each run so we can compare improvements
         // in transcription. The files are:
         // c:\tmp\Response1.json, c:\tmp\Response2.json
-        private static void WriteResponseToTmp(string transcript, string testdataFolder)
+
+        static void WriteResponseToTmp(string transcript, string testdataFolder)
         {
             int x = 1;
             string next;
@@ -91,8 +92,7 @@ namespace DevelopTranscription
                 next = Path.Combine(testdataFolder, $"Response{x++}.json");
             } while (File.Exists(next));
 
-            string rawResponse = JsonConvert.SerializeObject(transcript, Formatting.Indented);
-            File.WriteAllText(next, rawResponse);
+            File.WriteAllText(next, transcript);
         }
 
     }

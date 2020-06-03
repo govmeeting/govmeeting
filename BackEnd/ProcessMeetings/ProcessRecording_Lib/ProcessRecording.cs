@@ -60,7 +60,7 @@ namespace GM.ProcessRecording
             // We want the object name in the cloud to be the original video file name with ".flac" extension.
             string objectName = Path.GetFileNameWithoutExtension(videoFile) + ".flac";
 
-            TranscribeResponse transcript;
+            TranscribeRsp transcript;
 
             TranscribeParameters transParams = new TranscribeParameters
             {

@@ -75,7 +75,7 @@ namespace GM.ProcessRecording_Tests
             string outputFile = outputFolder + @"\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15.json";
 
             string stringValue = File.ReadAllText(inputFile);
-            var transcript = JsonConvert.DeserializeObject<TranscribeResponse>(stringValue);
+            var transcript = JsonConvert.DeserializeObject<TranscribeRsp>(stringValue);
 
             ModifyTranscriptJson convert = new ModifyTranscriptJson();
             FixasrView fixasr = convert.Modify(transcript);
