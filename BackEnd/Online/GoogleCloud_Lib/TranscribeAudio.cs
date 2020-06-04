@@ -176,7 +176,8 @@ namespace GM.GoogleCLoud
 
                 Result result = new Result(sra.Transcript)
                 {
-                    wordCount = sra.Words.Count
+                    wordCount = sra.Words.Count,
+                    confidence = sra.Confidence
                 };
                 Console.WriteLine($"Next result: {sra.Words.Count} words");
 
@@ -185,7 +186,8 @@ namespace GM.GoogleCLoud
                     totalCount++;
                     long startTime = item.StartTime.Seconds * 1000 +item.StartTime.Nanos / 1000000;
                     long endTime = item.EndTime.Seconds * 1000 + item.EndTime.Nanos / 1000000;
-                    result.words.Add(new Word(item.Word, startTime, endTime,item.SpeakerTag, totalCount));
+
+                    result.words.Add(new Word(item.Word, item.Confidence, startTime, endTime,item.SpeakerTag, totalCount));
                 }
                 transcript.results.Add(result);
             }

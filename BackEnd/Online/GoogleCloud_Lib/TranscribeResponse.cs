@@ -39,9 +39,10 @@ namespace GM.GoogleCLoud
         public int speakerTag;
         public int wordNum;
 
-        public Word(string _word, long _startTime, long _endTime, int _speakerTag, int _wordNum)
+        public Word(string _word, double _confidence, long _startTime, long _endTime, int _speakerTag, int _wordNum)
         {
             word = _word;
+            confidence = _confidence;
             startTime = _startTime;
             endTime = _endTime;
             wordNum = _wordNum;

@@ -86,7 +86,7 @@ ClientApp is served by the webpack-dev-server. WebApp uses the Kestrel server. B
 
 
 ## Run WorkflowApp
-* Install <a href="http://www.ffmpeg.org"> FFmpeg. </a>. This is for processing audio & video files.
+* Install <a href="https://www.ffmpeg.org"> FFmpeg. </a>. This is for processing audio & video files.
 * Download the test files from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a>
 * In the debug panel, set launch configuration "WorkflowApp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)

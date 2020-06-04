@@ -83,7 +83,7 @@ namespace DevelopTranscription
         // in transcription. The files are:
         // c:\tmp\Response1.json, c:\tmp\Response2.json
 
-        static void WriteResponseToTmp(string transcript, string testdataFolder)
+        private static void WriteResponseToTmp(string transcript, string testdataFolder)
         {
             int x = 1;
             string next;
