@@ -70,7 +70,7 @@ namespace GM.ProcessRecording_Tests
             File.WriteAllText(outputBasePath + "-rsp.json", stringValue);
 
             // Modify Transcript json format
-            ModifyTranscriptJson mt = new ModifyTranscriptJson();
+            ModifyTranscriptJson_1 mt = new ModifyTranscriptJson_1();
             FixasrView fixasr = mt.Modify(response);
 
             // Create JSON file

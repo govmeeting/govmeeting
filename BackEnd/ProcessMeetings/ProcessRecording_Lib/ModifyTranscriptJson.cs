@@ -7,88 +7,70 @@ using GM.GoogleCLoud;
 namespace GM.ProcessRecording
 {
 
-    /*
+    /**********************************************************************
      * Modify the trancription output from Google speech format to our own "FixasrView" format.
-     * The Google data contains start and end times for every word. We do not need such
-     * fine grained data for the process that will fix errors in the transcription.
-     * We will include timestamps for approximately every 40 characters of text.
-     * 
-     ******* Google Format:
-
-           {
-             "alternatives": [
-               {
-                 "text": "and in when you came in this evening there's a copy of the ambulance ... ",
-                 "wordCount": 69,
-                 "words": [
-                   {
-                     "text": "and",
-                     "startTime": 0,
-                     "endTime": 1000,
-                     "position": 1
-                   },
-                   {
-                     "text": "in",
-                     "startTime": 1000,
-                     "endTime": 1600,
-                     "position": 2
-                   },
-
-    ****** Our "Fixasr" data format:
-
-       {
-         "lastedit": 0,
-         "asrsegments": [
-           {"startTime":"0:00","said":"the tuesday october 11 selectmen's"},
-           {"startTime":"0:02","said":"meeting i will apologize apologize for"},
-           {"startTime":"0:06","said":"my voice i can hardly speak i woke up"},
-           {"startTime":"0:08","said":"Saturday with a terrible cold so if you"},
-
-
-    * Roughly we are displaying up to 40 characters of text per line. 
-    */
+     ***********************************************************************/
 
     public class ModifyTranscriptJson
     {
-        public FixasrView Modify(TranscribeRsp transcript)
+        public FixtagviewView Modify(TranscribeResponse transcript)
         {
-            int MaxCharactersPerRecord = 40;
-            FixasrView fixasr = new FixasrView();
-            string line = "";
-            int startTime = 0;
+            FixtagviewView fixtagview = new FixtagviewView();
 
-            fixasr.lastedit = 0;
-
-            foreach (RspAlternative alternative in transcript.alternatives)
+            foreach (Result result in transcript.results)
             {
-                foreach (RspWord word in alternative.words)
+                Talk talk = new Talk(result.text, result.confidence);
+
+               int speaker = -1;
+               foreach (RespWord respword in result.words)
                 {
-                    if (line.Length + word.text.Length > MaxCharactersPerRecord)
+                    Word word = new Word(
+                        respword.word,
+                        respword.confidence,
+                        respword.startTime,
+                        respword.endTime,
+                        respword.speakerTag,
+                        respword.wordNum
+                    );
+
+                    // Check if the speaker is the same for all words
+                    // "speaker" will equal "-2" if different speakers.
+                    if (speaker != -2)
                     {
-                        AsrSegment segment = NewSegment(startTime, line);
-                        fixasr.asrsegments.Add(segment);
-                        line = "";
-                        startTime = word.startTime;
+                        if (speaker == -1)
+                        {
+                            speaker = word.speaker;  // we found first speaker (could also be 0)
+                        }
+                        else
+                        {
+                            if (speaker != word.speaker)
+                            {
+                                speaker = -2;  // we found two speakers do not match
+                            }
+                        }
                     }
-                    line = line + ((line.Length == 0) ? word.text : " " + word.text);
+
+                    switch (speaker)
+                    {
+                        case 0:
+                            talk.speaker = "UNKOWN";
+                            break;
+                        case -2:
+                            talk.speaker = "DIFFERENT";
+                            break;
+                        default:
+                            talk.speaker = "Speaker " + speaker.ToString();
+                            break;
+                    }
+
+                    talk.words.Add(word);
+
                 }
-            }
-            if (line != "")
-            {
-                AsrSegment segment = NewSegment(startTime, line);
-                fixasr.asrsegments.Add(segment);
 
+                fixtagview.talks.Add(talk);
             }
-            return fixasr;
+            return fixtagview;
         }
 
-        AsrSegment NewSegment(int startTime, string line)
-        {
-            TimeSpan t = new TimeSpan(0, 0, 0, 0, startTime);
-            string format = @"hh\:mm\:ss";
-            string start = t.ToString(format);
-            AsrSegment segment = new AsrSegment(start, line);
-            return segment;
-        }
-}
+    }
 }

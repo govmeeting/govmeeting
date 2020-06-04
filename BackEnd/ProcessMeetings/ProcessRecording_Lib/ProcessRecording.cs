@@ -83,7 +83,7 @@ namespace GM.ProcessRecording
 
             /////// Reformat the JSON transcript to match what the fixasr routine will use.
 
-            ModifyTranscriptJson convert = new ModifyTranscriptJson();
+            ModifyTranscriptJson_1 convert = new ModifyTranscriptJson_1();
             outputJsonFile = meetingFolder + "\\" + "04-ToFix.json";
             FixasrView fixasr = convert.Modify(transcript);
             stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);

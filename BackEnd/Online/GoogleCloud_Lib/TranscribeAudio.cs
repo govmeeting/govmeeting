@@ -4,6 +4,7 @@ using Google.Protobuf.Collections;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 using Google.Cloud.Speech.V1P1Beta1;
+using Newtonsoft.Json;
 
 namespace GM.GoogleCLoud
 {
@@ -30,11 +31,15 @@ namespace GM.GoogleCLoud
         }
 
         // TranscribeRsp is the original format that we returned when using fixasr
-        // TranscribeResponse is the new format for MeetingEditView.
+        // TranscribeResponse is the new format for fixtagview.
 
         public TranscribeResponse TranscribeAudioFile(TranscribeParameters transParams)
         {
             LongRunningRecognizeResponse response = _MoveToCloudAndTranscribe(transParams);
+
+            string responseString = JsonConvert.SerializeObject(response, Formatting.Indented);
+            File.WriteAllText(@"C:\GOVMEETING\TESTDATA\DevelopTranscription\rawResponse.json", responseString);
+
             TranscribeResponse rsp = TransformResponse(response.Results);
             return rsp;
         }
@@ -187,7 +192,7 @@ namespace GM.GoogleCLoud
                     long startTime = item.StartTime.Seconds * 1000 +item.StartTime.Nanos / 1000000;
                     long endTime = item.EndTime.Seconds * 1000 + item.EndTime.Nanos / 1000000;
 
-                    result.words.Add(new Word(item.Word, item.Confidence, startTime, endTime,item.SpeakerTag, totalCount));
+                    result.words.Add(new RespWord(item.Word, item.Confidence, startTime, endTime,item.SpeakerTag, totalCount));
                 }
                 transcript.results.Add(result);
             }

@@ -24,6 +24,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ViewMeetingModule } from './viewmeeting/viewmeeting.module';
 import { AddtagsModule } from './addtags/addtags.module';
 import { FixasrModule } from './fixasr/fixasr.module';
+import { FixTagViewModule } from './fixtagview/fixtagview.module';
+
 import { SharedModule } from './shared/shared.module';
 import { TestingModule } from './testing/testing.module';
 import { SidenavMenuModule } from './sidenav/sidenav-menu-module';
@@ -39,6 +41,8 @@ import { AddtagsService } from './addtags/addtags.service';
 import { AddtagsServiceStub } from './addtags/addtags.service-stub';
 import { FixasrService } from './fixasr/fixasr.service';
 import { FixasrServiceStub } from './fixasr/fixasr.service-stub';
+import { FixtagviewService } from './fixtagview/fixtagview.service';
+import { FixtagviewServiceStub } from './fixtagview/fixtagview.service-stub';
 import { ChatService } from './chat/chat.service';
 import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from './testing/data-factory.service';
@@ -91,6 +95,7 @@ let isAspServerRunning = false;
     ViewMeetingModule,
     AddtagsModule,
     FixasrModule,
+    FixTagViewModule,
     SharedModule,
     FlexLayoutModule,
     AboutProjectModule,
@@ -164,6 +169,7 @@ let isAspServerRunning = false;
     { provide: ViewMeetingService, useClass: isAspServerRunning ? ViewMeetingService : ViewMeetingServiceStub },
     { provide: AddtagsService, useClass: isAspServerRunning ? AddtagsService : AddtagsServiceStub },
     { provide: FixasrService, useClass: isAspServerRunning ? FixasrService : FixasrServiceStub },
+    { provide: FixtagviewService, useClass: isAspServerRunning ? FixtagviewService : FixtagviewServiceStub },
 
     // { provide: ViewMeetingService, useClass: ViewMeetingServiceStub },
     // { provide: AddtagsService, useClass: AddtagsServiceStub },

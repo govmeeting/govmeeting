@@ -17,16 +17,15 @@ namespace GM.GoogleCLoud
         public string text;
         public double confidence;
         public int wordCount;
-        public List<Word> words;
-
+        public List<RespWord> words;
         public Result(string _text)
         {
             text = _text;
-            words = new List<Word>();
+            words = new List<RespWord>();
         }
     }
 
-    public class Word
+    public class RespWord
     {
         /* startTime and endTime are time in milliseconds since start of recording.
          * An C# int is equivilent to int32 which has a max value of 2147483647.
@@ -39,7 +38,7 @@ namespace GM.GoogleCLoud
         public int speakerTag;
         public int wordNum;
 
-        public Word(string _word, double _confidence, long _startTime, long _endTime, int _speakerTag, int _wordNum)
+        public RespWord(string _word, double _confidence, long _startTime, long _endTime, int _speakerTag, int _wordNum)
         {
             word = _word;
             confidence = _confidence;

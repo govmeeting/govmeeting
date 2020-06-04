@@ -68,6 +68,13 @@
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"
+      icon="fas fa-hand-point-right"
+      iconcolor="icon-color-green"
+      title={{fixtagviewTitle}}>
+      <gm-fixtagview></gm-fixtagview>
+    </gm-large-card>
+
+    <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-edit"
       iconcolor="icon-color-green"
       title={{fixasrTitle}}>
