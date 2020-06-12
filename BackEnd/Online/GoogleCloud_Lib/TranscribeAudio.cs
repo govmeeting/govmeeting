@@ -1,12 +1,10 @@
 ﻿using System;
 using System.IO;
 using Google.Protobuf.Collections;
-using Microsoft.Extensions.Options;
-using GM.Configuration;
 using Google.Cloud.Speech.V1P1Beta1;
 using Newtonsoft.Json;
 
-namespace GM.GoogleCLoud
+namespace GM.GoogleCloud
 {
     public class TranscribeParameters
     {
@@ -35,13 +33,20 @@ namespace GM.GoogleCLoud
 
         public TranscribeResponse TranscribeAudioFile(TranscribeParameters transParams)
         {
-            LongRunningRecognizeResponse response = _MoveToCloudAndTranscribe(transParams);
+            // TODO - remove next lines. These are for debugging.
 
-            string responseString = JsonConvert.SerializeObject(response, Formatting.Indented);
-            File.WriteAllText(@"C:\GOVMEETING\TESTDATA\DevelopTranscription\rawResponse.json", responseString);
+            string rawResponseFile = @"C:\GOVMEETING\TESTDATA\DevelopTranscription\rawResponse.json";
+            string rawResponse = File.ReadAllText(rawResponseFile);
+            LongRunningRecognizeResponse response = JsonConvert.DeserializeObject<LongRunningRecognizeResponse>(rawResponse);
 
-            TranscribeResponse rsp = TransformResponse(response.Results);
-            return rsp;
+            // LongRunningRecognizeResponse response = _MoveToCloudAndTranscribe(transParams);
+
+            // TODO - remove next lines. These are for debugging.
+            //string responseString = JsonConvert.SerializeObject(response, Formatting.Indented);
+            //File.WriteAllText(rawResponseFile, responseString);
+
+            TranscribeResponse rsp = TransformResponse.Simpify(response.Results);
+            return TransformResponse.FixSpeakerTags(rsp);
         }
 
         public TranscribeRsp MoveToCloudAndTranscribe(TranscribeParameters transParams)
@@ -159,42 +164,6 @@ namespace GM.GoogleCLoud
                     }
                     transcript.alternatives.Add(alt);
                 }
-            }
-            return transcript;
-        }
-
-        private TranscribeResponse TransformResponse(RepeatedField<SpeechRecognitionResult> srrs)
-        {
-            TranscribeResponse transcript = new TranscribeResponse();
-            int resultCount = 0;
-            int totalCount = 0;
-
-            foreach (SpeechRecognitionResult srr in srrs)
-            {
-                if (srr.Alternatives.Count > 1)
-                {
-                    resultCount++;
-                    Console.WriteLine($"ERROR: more than 1 alternative - result {resultCount}");
-                };
-
-                SpeechRecognitionAlternative sra = srr.Alternatives[0];
-
-                Result result = new Result(sra.Transcript)
-                {
-                    wordCount = sra.Words.Count,
-                    confidence = sra.Confidence
-                };
-                Console.WriteLine($"Next result: {sra.Words.Count} words");
-
-                foreach (var item in sra.Words)
-                {;
-                    totalCount++;
-                    long startTime = item.StartTime.Seconds * 1000 +item.StartTime.Nanos / 1000000;
-                    long endTime = item.EndTime.Seconds * 1000 + item.EndTime.Nanos / 1000000;
-
-                    result.words.Add(new RespWord(item.Word, item.Confidence, startTime, endTime,item.SpeakerTag, totalCount));
-                }
-                transcript.results.Add(result);
             }
             return transcript;
         }

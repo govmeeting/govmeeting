@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 
 using GM.ProcessRecording;
 using GM.ViewModels;
-using GM.GoogleCLoud;
+using GM.GoogleCloud;
 using GM.Configuration;
 using GM.Utilities;
 

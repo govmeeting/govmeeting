@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using GM.Configuration;
 //using GM.ProcessRecordings;
 using Microsoft.Extensions.Options;
-using GM.GoogleCLoud;
+using GM.GoogleCloud;
 using GM.Utilities;
 
 namespace GM.Utilities.Translate

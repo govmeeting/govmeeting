@@ -1,0 +1,23 @@
+<!-- <div id="parentDiv" #parentDiv>
+  <div *ngFor="let data of content" [attr.id]=" 'section' + data.id">
+    <p>section {{data.text}}</p>
+    <button (click)="scrollMyDiv(data)"></button>
+  </div>
+</div> -->
+
+<button (click)="scroll(0)">000</button>
+<button (click)="scroll(100)">100</button>
+<button (click)="scroll(200)">200</button>
+<button (click)="scroll(1469)">1469</button>
+<button (click)="showPositions()"></button>
+  1={{pos01}} 25={{pos25}} 50={{pos50}} top={{listTop}} bot={{listBot}} sTop={{listScrollTop}} sOffset= {{listScrollOffset}}
+<div class="scrollable" id="scrolltext" #scrolltext>
+  <div *ngFor="let data of sections"  [attr.id]=" 'section' + data.id">
+    <p>{{data.id}} section {{data.name}}
+      <button (click)="scrollMyDiv(data)"></button>
+    </p>
+  </div>
+</div>
+
+
+

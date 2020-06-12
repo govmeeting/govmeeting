@@ -74,6 +74,7 @@ import { OfficialsComponent } from './officials/officials.component';
 // import { CalendarComponent } from './calendar/calendar';
 
 import { loadConfiguration } from './configuration/loadConfiguration';
+import { WorkareaComponent } from './workarea/workarea.component';
 
 let isAspServerRunning = false;
 
@@ -127,7 +128,8 @@ let isAspServerRunning = false;
     AlertsComponent,
     WorkitemsComponent,
     IssuesComponent,
-    OfficialsComponent
+    OfficialsComponent,
+    WorkareaComponent
     // CalendarComponent,
 
   ],

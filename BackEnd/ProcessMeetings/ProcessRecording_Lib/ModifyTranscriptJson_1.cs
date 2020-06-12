@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using GM.ViewModels;
-using GM.GoogleCLoud;
+using GM.GoogleCloud;
 
 namespace GM.ProcessRecording
 {

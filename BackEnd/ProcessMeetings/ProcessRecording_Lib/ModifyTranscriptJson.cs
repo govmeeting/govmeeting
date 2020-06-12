@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using GM.ViewModels;
-using GM.GoogleCLoud;
+using GM.GoogleCloud;
 
 namespace GM.ProcessRecording
 {
 
     /**********************************************************************
-     * Modify the trancription output from Google speech format to our own "FixasrView" format.
+     * Modify the Google speech format to our own "FixtagviewView" format.
      ***********************************************************************/
 
     public class ModifyTranscriptJson
@@ -66,11 +66,9 @@ namespace GM.ProcessRecording
                     talk.words.Add(word);
 
                 }
-
                 fixtagview.talks.Add(talk);
             }
             return fixtagview;
         }
-
     }
 }

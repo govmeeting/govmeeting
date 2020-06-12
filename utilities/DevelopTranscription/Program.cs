@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using GM.GoogleCLoud;
+using GM.GoogleCloud;
 using GM.Utilities;
 using GM.ProcessRecording;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,15 +17,15 @@ namespace DevelopTranscription
         static string audiofilePath = Path.Combine(testdataFolder, "ToFix.flac");
         static string objectName = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15_3min.flac";
         static string responseFile = Path.Combine(testdataFolder, "response.json");
-        static string outputJsonFile = Path.Combine(testdataFolder, "ToFixTagView.json");
+        static string newResponseFile = Path.Combine(testdataFolder, "newResponse.json");
+        static string rawResponseFile = Path.Combine(testdataFolder, "rawResponse.json");
+        static string fixtagviewFile = Path.Combine(testdataFolder, "ToFixTagView.json");
         static string googleCloudBucketName = "govmeeting-transcribe";
 
         static void Main(string[] args)
         {
-
-            //string priorResponse = File.ReadAllText(responseFile);
-            //TranscribeResponse trp = JsonConvert.DeserializeObject<TranscribeResponse>(priorResponse);
-            //ReformatJsonResponse(trp);
+            // RunFix(responseFile, newResponseFile)
+            GetView(newResponseFile, fixtagviewFile);
 
             RepeatedField<string> phrases = new RepeatedField<string> {
                 "Denise Griffin",
@@ -75,7 +75,7 @@ namespace DevelopTranscription
             ModifyTranscriptJson convert = new ModifyTranscriptJson();
             FixtagviewView fixtagview = convert.Modify(response);
             string stringValue = JsonConvert.SerializeObject(fixtagview, Formatting.Indented);
-            File.WriteAllText(outputJsonFile, stringValue);
+            File.WriteAllText(fixtagviewFile, stringValue);
 
             WriteCopyOfResponse(responseString, testdataFolder);
         }
@@ -92,6 +92,27 @@ namespace DevelopTranscription
             } while (File.Exists(next));
 
             File.WriteAllText(next, transcript);
+        }
+
+        static void RunFix(string responseFile, string newResponseFile)
+        {
+            string priorResponse = File.ReadAllText(responseFile);
+            TranscribeResponse beforeFix = JsonConvert.DeserializeObject<TranscribeResponse>(priorResponse);
+            TranscribeResponse afterFix = TransformResponse.FixSpeakerTags(beforeFix);
+            string afterFixString = JsonConvert.SerializeObject(afterFix, Formatting.Indented);
+            File.WriteAllText(newResponseFile, afterFixString);
+        }
+
+        static void GetView(string responseFile, string newResponseFile)
+        {
+            // Reformat the response to what the fixtagview routine will use.
+            string responseString = File.ReadAllText(responseFile);
+            TranscribeResponse response = JsonConvert.DeserializeObject<TranscribeResponse>(responseString);
+            ModifyTranscriptJson convert = new ModifyTranscriptJson();
+            FixtagviewView fixtagview = convert.Modify(response);
+            string stringValue = JsonConvert.SerializeObject(fixtagview, Formatting.Indented);
+            File.WriteAllText(newResponseFile, stringValue);
+
         }
 
     }

@@ -8,7 +8,7 @@ using GM.FileDataRepositories;
 
 using GM.ViewModels;
 using GM.Configuration;
-using GM.GoogleCLoud;
+using GM.GoogleCloud;
 using GM.Utilities;
 
 namespace GM.ProcessRecording_Tests

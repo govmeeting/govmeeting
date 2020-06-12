@@ -70,29 +70,36 @@
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-hand-point-right"
       iconcolor="icon-color-green"
-      title={{fixtagviewTitle}}>
+      title={{fixasrTitle}}>
       <gm-fixtagview></gm-fixtagview>
     </gm-large-card>
 
-    <gm-large-card  *ngIf="!isCounty"
+    <!-- <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-edit"
       iconcolor="icon-color-green"
       title={{fixasrTitle}}>
       <gm-fixasr></gm-fixasr>
-    </gm-large-card>
+    </gm-large-card> -->
 
-    <gm-large-card  *ngIf="!isCounty"
+    <!-- <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-hand-point-right"
       iconcolor="icon-color-green"
       title={{addtagsTitle}}>
       <gm-addtags></gm-addtags>
-    </gm-large-card>
+    </gm-large-card> -->
 
     <gm-large-card  *ngIf="!isCounty"
       icon="fas fa-book-open"
       iconcolor="icon-color-green"
       title={{viewMeetingTitle}}>
       <gm-viewmeeting></gm-viewmeeting>
+    </gm-large-card>
+
+    <gm-large-card
+      icon="fas fa-edit"
+      iconcolor="icon-color-green"
+      title={{workareaTitle}}>
+      <gm-workarea></gm-workarea>
     </gm-large-card>
 
     <gm-large-card  *ngIf="!isCounty"

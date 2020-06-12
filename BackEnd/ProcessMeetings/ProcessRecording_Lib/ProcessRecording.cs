@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 using GM.ViewModels;
-using GM.GoogleCLoud;
+using GM.GoogleCloud;
 
 namespace GM.ProcessRecording
 {
