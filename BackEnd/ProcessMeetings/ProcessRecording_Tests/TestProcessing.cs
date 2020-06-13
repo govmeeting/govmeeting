@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 
 using GM.ProcessRecording;
 using GM.ViewModels;
-using GM.GoogleCLoud;
+using GM.GoogleCloud;
 using GM.Configuration;
 using GM.Utilities;
 
@@ -75,9 +75,9 @@ namespace GM.ProcessRecording_Tests
             string outputFile = outputFolder + @"\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15.json";
 
             string stringValue = File.ReadAllText(inputFile);
-            var transcript = JsonConvert.DeserializeObject<TranscribeResponse>(stringValue);
+            var transcript = JsonConvert.DeserializeObject<TranscribeRsp>(stringValue);
 
-            ModifyTranscriptJson convert = new ModifyTranscriptJson();
+            ModifyTranscriptJson_1 convert = new ModifyTranscriptJson_1();
             FixasrView fixasr = convert.Modify(transcript);
 
             stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);

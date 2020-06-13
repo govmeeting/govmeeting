@@ -24,6 +24,7 @@ export class DashMainComponent implements OnInit{
   billsTitle: string;
   meetingsTitle: string;
   newsTitle: string;
+  fixtagviewTitle: string;
   fixasrTitle: string;
   addtagsTitle: string;
   viewMeetingTitle: string;
@@ -36,6 +37,7 @@ export class DashMainComponent implements OnInit{
   minutesTitle: string;
   workitemsTitle: string;
   alertsTitle: string;
+  workareaTitle: string;
 
   constructor(private userSettingsService: UserSettingsService) {
    }
@@ -69,6 +71,7 @@ export class DashMainComponent implements OnInit{
     this.billsTitle = GetDashboardTitle("Legislation", this.language);
     this.meetingsTitle = GetDashboardTitle("Meetings", this.language);
     this.newsTitle = GetDashboardTitle("Govmeeting News", this.language);
+    this.fixtagviewTitle = GetDashboardTitle("Edit/View Transcript", this.language);
     this.fixasrTitle = GetDashboardTitle("Proofread Transcript", this.language);
     this.addtagsTitle = GetDashboardTitle("Add Tags to Transcript", this.language);
     this.viewMeetingTitle = GetDashboardTitle("View Latest Meeting", this.language);
@@ -81,6 +84,8 @@ export class DashMainComponent implements OnInit{
     this.minutesTitle = GetDashboardTitle("Meeting Minutes", this.language);
     this.workitemsTitle = GetDashboardTitle("Work Items", this.language);
     this.alertsTitle = GetDashboardTitle("Alerts", this.language);
+    this.workareaTitle = "Developer Workarea";
+
   }
 
 

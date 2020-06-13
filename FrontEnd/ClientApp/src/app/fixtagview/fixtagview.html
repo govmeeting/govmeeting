@@ -1,0 +1,22 @@
+  <div class="subhead"> Council Meeting - Jan. 15, 2018</div>
+
+  <style>
+    .edit-help {
+      border: 2px solid red;
+      padding: 4px;
+    }
+  </style>
+
+<button md-raised-button class="show-help-button" (click)="ToggleHelp()"> {{showhidehelp}} Help </button>
+<div class="edit-help" [hidden]="!CheckShowHelp()" (click)="ToggleHelp()">
+  THis is a new component to replace the prior Proofread and Addtags components. It will have the following functionality:
+  <ul>
+    <li> Edit the text for transcription errors. </li>
+    <li> Add and/or correct speaker names. </li>
+    <li> Add and/or correct topic names. </li>
+    <li> Add and/or correct section names.</li>
+    <li> Move the location of topic or section names.</li>
+  </ul>
+</div>
+
+<br> <gm-talks></gm-talks>

@@ -7,7 +7,7 @@ using NLog;
 using NLog.Web;
 using GM.Configuration;
 using GM.ProcessRecording;
-using GM.GoogleCLoud;
+using GM.GoogleCloud;
 using GM.ProcessTranscript;
 using GM.FileDataRepositories;
 using GM.DatabaseRepositories;

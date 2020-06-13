@@ -6,7 +6,7 @@ using System.Text;
 namespace GM.ProcessRecording
 
 {
-    class RunCommand
+    public class RunCommand
     {
         public string ExecuteCmd(string command)
         {

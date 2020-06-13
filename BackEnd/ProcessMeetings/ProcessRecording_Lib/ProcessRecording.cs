@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 using GM.ViewModels;
-using GM.GoogleCLoud;
+using GM.GoogleCloud;
 
 namespace GM.ProcessRecording
 {
@@ -60,19 +60,22 @@ namespace GM.ProcessRecording
             // We want the object name in the cloud to be the original video file name with ".flac" extension.
             string objectName = Path.GetFileNameWithoutExtension(videoFile) + ".flac";
 
-            TranscribeResponse transcript;
-            //if (!config.UseAudioFileAlreadyInCloud)
-            //{
+            TranscribeRsp transcript;
+
+            TranscribeParameters transParams = new TranscribeParameters
+            {
+                audiofilePath = audioFile,
+                objectName = objectName,
+                GoogleCloudBucketName = config.GoogleCloudBucketName,
+                useAudioFileAlreadyInCloud = config.UseAudioFileAlreadyInCloud,
+                language = language,
+                MinSpeakerCount = 2,
+                MaxSpeakerCount = 6
+                // TODO Add "phrases" field: names of officers
+            };
 
             // Move audio file to cloud and transcribe
-            transcript = transcribeAudio.MoveToCloudAndTranscribe(audioFile, objectName, language);
-
-            //} else
-            //{
-            //    // For development and it's already in cloud
-            //    // TODO - check if it is already in cloud
-            //    transcript = transcribeAudio.TranscribeInCloud(objectName, language);
-            //}
+            transcript = transcribeAudio.MoveToCloudAndTranscribe(transParams);
 
             string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
             string outputJsonFile = meetingFolder + "\\" + "03-Transcribed.json";
@@ -80,7 +83,7 @@ namespace GM.ProcessRecording
 
             /////// Reformat the JSON transcript to match what the fixasr routine will use.
 
-            ModifyTranscriptJson convert = new ModifyTranscriptJson();
+            ModifyTranscriptJson_1 convert = new ModifyTranscriptJson_1();
             outputJsonFile = meetingFolder + "\\" + "04-ToFix.json";
             FixasrView fixasr = convert.Modify(transcript);
             stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);

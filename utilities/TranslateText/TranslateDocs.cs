@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GM.GoogleCLoud;
+using GM.GoogleCloud;
 using Microsoft.Toolkit.Parsers.Markdown;
 using GM.Utilities;
 

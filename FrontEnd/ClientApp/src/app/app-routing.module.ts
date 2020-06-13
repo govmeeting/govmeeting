@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 // import { ViewMeetingComponent } from './viewmeeting/viewmeeting'
 // import { AddtagsComponent } from './addtags/addtags'
 // import { FixasrComponent } from './fixasr/fixasr'
+// import { FixtagviewComponent } from './fixasr/fixasr'
 
 import { AboutComponent } from './about-project/about-project';
 import { OverviewComponent } from './about-project/overview/overview';

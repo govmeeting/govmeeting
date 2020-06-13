@@ -1,106 +1,118 @@
 ﻿using System;
 using System.IO;
-using Google.Cloud.Speech.V1;
 using Google.Protobuf.Collections;
-using Microsoft.Extensions.Options;
-using GM.Configuration;
+using Google.Cloud.Speech.V1P1Beta1;
+using Newtonsoft.Json;
 
-// This is in the process of being written.  
-
-namespace GM.GoogleCLoud
+namespace GM.GoogleCloud
 {
+    public class TranscribeParameters
+    {
+        public TranscribeParameters() { }
+        public string audiofilePath { get; set; }
+        public string objectName { get; set; }
+        public string GoogleCloudBucketName { get; set; }
+        public bool useAudioFileAlreadyInCloud { get; set; }
+        public string language { get; set; } // This is the ISO 639 code
+        public int MinSpeakerCount { get; set; }
+        public int MaxSpeakerCount { get; set; }
+        public RepeatedField<string> phrases { get; set; }
+    }
+
     public class TranscribeAudio
     {
-        private AppSettings config;
-        private string GoogleCloudBucketName;
-
         private SpeechClient speechClient;
 
-
-        public TranscribeAudio(
-             //AppSettings config
-             IOptions<AppSettings> _config
-        )
+        public TranscribeAudio()
         {
-            config = _config.Value;
-            GoogleCloudBucketName = config.GoogleCloudBucketName;
             speechClient = SpeechClient.Create();
         }
 
-        /// <param name="language">Language of the audio. This is the ISO 639 code</param>
-        /// The audio file name may have been shortened. For the cloud object name, we want to use the original full
-        /// name of the video, but change the extension to ".flac".
-        public TranscribeResponse MoveToCloudAndTranscribe(string audiofilePath, string videoFileName, string language)
-        {
-            string objectName = Path.GetFileNameWithoutExtension(videoFileName) + ".flac";
-            GoogleBucket gb = new GoogleBucket();
+        // TranscribeRsp is the original format that we returned when using fixasr
+        // TranscribeResponse is the new format for fixtagview.
 
-            if (config.UseAudioFileAlreadyInCloud)
-            {
-                // Only upload if not in cloud
-                if (!gb.IsObjectInBucket(GoogleCloudBucketName, objectName))
-                {
-                    gb.UploadFile(GoogleCloudBucketName, audiofilePath, objectName, "audio /x-flac");
-                }
-            }
-            TranscribeResponse transcript = TranscribeInCloud(objectName, language);
-            return transcript;
+        public TranscribeResponse TranscribeAudioFile(TranscribeParameters transParams)
+        {
+            // TODO - remove next lines. These are for debugging.
+
+            string rawResponseFile = @"C:\GOVMEETING\TESTDATA\DevelopTranscription\rawResponse.json";
+            string rawResponse = File.ReadAllText(rawResponseFile);
+            LongRunningRecognizeResponse response = JsonConvert.DeserializeObject<LongRunningRecognizeResponse>(rawResponse);
+
+            // LongRunningRecognizeResponse response = _MoveToCloudAndTranscribe(transParams);
+
+            // TODO - remove next lines. These are for debugging.
+            //string responseString = JsonConvert.SerializeObject(response, Formatting.Indented);
+            //File.WriteAllText(rawResponseFile, responseString);
+
+            TranscribeResponse rsp = TransformResponse.Simpify(response.Results);
+            return TransformResponse.FixSpeakerTags(rsp);
         }
 
-        public TranscribeResponse TranscribeInCloud(string objectName, string language)
+        public TranscribeRsp MoveToCloudAndTranscribe(TranscribeParameters transParams)
+        {
+            LongRunningRecognizeResponse response = _MoveToCloudAndTranscribe(transParams);
+            TranscribeRsp rsp = TransformResp(response.Results);
+            return rsp;
+        }
+        private LongRunningRecognizeResponse _MoveToCloudAndTranscribe(TranscribeParameters transParams)
+        {
+            MoveToCloudIfNeeded(transParams);
+            LongRunningRecognizeResponse response = TranscribeInCloud(transParams);
+            return response;
+        }
+
+        private void MoveToCloudIfNeeded(TranscribeParameters transParams)
+        {
+            GoogleBucket gb = new GoogleBucket();
+
+            if (transParams.useAudioFileAlreadyInCloud)
+            {
+                // Only upload if not in cloud
+                if (!gb.IsObjectInBucket(transParams.GoogleCloudBucketName, transParams.objectName))
+                {
+                    gb.UploadFile(transParams.GoogleCloudBucketName, transParams.audiofilePath, transParams.objectName, "audio /x-flac");
+                }
+            }
+        }
+
+        public LongRunningRecognizeResponse TranscribeInCloud(TranscribeParameters transParams)
         {
             // var speechClient = SpeechClient.Create();
 
-                string fileOnCloudStorage = "gs://" + GoogleCloudBucketName + "/" + objectName;
-                RecognitionAudio recogAudio = RecognitionAudio.FromStorageUri(fileOnCloudStorage);
+            string fileOnCloudStorage = "gs://" + transParams.GoogleCloudBucketName + "/" + transParams.objectName;
+            RecognitionAudio recogAudio = RecognitionAudio.FromStorageUri(fileOnCloudStorage);
 
-                var longOperation = speechClient.LongRunningRecognize(new RecognitionConfig()
-                {
-                    Encoding = RecognitionConfig.Types.AudioEncoding.Flac,
-                    SampleRateHertz = 48000,
-                    EnableWordTimeOffsets = true,
-                    LanguageCode = language,
-                }, recogAudio);
-                longOperation = longOperation.PollUntilCompleted();
-                var response = longOperation.Result;
-
-            // Transform the Google response into a more usable object.
-            // TranscribeResponse transcript = GetLongTranscribeResponse(response);
-
-            TranscribeResponse transcript = new TranscribeResponse();
-
-            foreach (var result in response.Results)
+            SpeakerDiarizationConfig sdc = new SpeakerDiarizationConfig()
             {
-                foreach (var alternative in result.Alternatives)
-                {
-                    Console.WriteLine($"Transcript: { alternative.Transcript}");
-                    Console.WriteLine("Word details:");
-                    Console.WriteLine($" Word count:{alternative.Words.Count}");
+                EnableSpeakerDiarization = true,
+                MinSpeakerCount = transParams.MinSpeakerCount,
+                MaxSpeakerCount = transParams.MaxSpeakerCount
+            };
 
-                    RspAlternative alt = new RspAlternative(alternative.Transcript)
-                    {
-                        wordCount = alternative.Words.Count
-                    };
-
-                    int count = 1;
-                    foreach (var item in alternative.Words)
-                    {
-                        alt.words.Add(new RspWord(item.Word, ParseDuration(item.StartTime),
-                            ParseDuration(item.EndTime), count++));
-
-                        Console.WriteLine($"  {item.Word}");
-                        Console.WriteLine($"    WordStartTime: {item.StartTime}");
-                        Console.WriteLine($"    WordEndTime: {item.EndTime}");
+            var longOperation = speechClient.LongRunningRecognize(new RecognitionConfig()
+            {
+                Encoding = RecognitionConfig.Types.AudioEncoding.Flac,
+                SampleRateHertz = 48000,
+                EnableWordTimeOffsets = true,
+                LanguageCode = transParams.language,
+                EnableAutomaticPunctuation = true,
+                DiarizationConfig = sdc,
+                SpeechContexts = {
+                    new SpeechContext {
+                        Phrases = { transParams.phrases }
                     }
-                    transcript.alternatives.Add(alt);
                 }
-            }
-            return transcript;
+            }, recogAudio);
+            longOperation = longOperation.PollUntilCompleted();
+            var response = longOperation.Result;
+
+            return response;
         }
 
 
         // Transcribe a local audio file. We can only use this with audios up to 1 minute long.
-        public TranscribeResponse TranscribeFile(string fileName, string language)
+        public TranscribeRsp TranscribeFile(string fileName, string language)
         {
             // var speechClient = SpeechClient.Create();
             RecognitionAudio recogAudio = RecognitionAudio.FromFile(fileName);
@@ -114,23 +126,18 @@ namespace GM.GoogleCLoud
             }, recogAudio);
 
             // Transform the Google response into a more usable object.
-            TranscribeResponse transcript = GetShortTranscribeResponse(response);
+            TranscribeRsp transcript = GetShortTranscribeResponse(response);
             return transcript;
         }
 
-        TranscribeResponse GetLongTranscribeResponse(LongRunningRecognizeResponse response)
+        private TranscribeRsp GetShortTranscribeResponse(RecognizeResponse response)
         {
-            return GetTranscribeResponse(response.Results);
+            return TransformResp(response.Results);
         }
 
-        TranscribeResponse GetShortTranscribeResponse(RecognizeResponse response)
+        private TranscribeRsp TransformResp(RepeatedField<SpeechRecognitionResult> results)
         {
-            return GetTranscribeResponse(response.Results);
-        }
-
-        public TranscribeResponse GetTranscribeResponse(RepeatedField<SpeechRecognitionResult> results)
-        {
-            TranscribeResponse transcript = new TranscribeResponse();
+            TranscribeRsp transcript = new TranscribeRsp();
 
             foreach (var result in results)
             {
@@ -161,7 +168,7 @@ namespace GM.GoogleCLoud
             return transcript;
         }
 
-        int ParseDuration(Google.Protobuf.WellKnownTypes.Duration duration)
+        private int ParseDuration(Google.Protobuf.WellKnownTypes.Duration duration)
         {
             String s = duration.ToString();
             s = s.Replace("s", "");
@@ -179,7 +186,6 @@ namespace GM.GoogleCLoud
         // SpeechClient GetSpeechClient()
         // {
         //     string credentialsFilePath = config.GoogleApplicationCredentials;
-
         //     GoogleCredential googleCredential;
         //     using (Stream m = new FileStream(credentialsFilePath, FileMode.Open))
         //         googleCredential = GoogleCredential.FromStream(m);
@@ -188,7 +194,6 @@ namespace GM.GoogleCLoud
         //     var speech = SpeechClient.Create(channel);
         //     return speech;
         // }
+
     }
-}
-
-
+} 
