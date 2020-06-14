@@ -1,6 +1,6 @@
 ﻿import { MeetingForView } from './meetingforview'
 
-export class ViewMeeting {
+export class ViewTranscript {
     //meetingInfo: MeetingInfo;
     meeting: MeetingForView;
     topicNames: string[];

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 //import { TopicsService } from './topics.service';
-import { FixtagviewService } from '../fixtagview.service';
+import { EdittranscriptService } from '../edittranscript.service';
 
 const NoLog = true;  // set to false for console logging
 
@@ -19,7 +19,7 @@ export class TopicsComponent implements OnInit {
     @Output() topicSelect: EventEmitter<string>;
     @Output() topicEnter: EventEmitter<string>;
 
-    constructor(private _fixtagviewService: FixtagviewService) {
+    constructor(private _edittranscriptService: EdittranscriptService) {
         this.topicSelect = new EventEmitter<string>();
         this.topicEnter = new EventEmitter<string>();
         this.newTopicName = undefined;
@@ -29,7 +29,7 @@ export class TopicsComponent implements OnInit {
     ngOnInit() {this.getTopics();}
 
     getTopics() {
-        this._fixtagviewService.getTalks()
+        this._edittranscriptService.getTalks()
         .subscribe(
             addtags => {
                 this.topics = addtags.topics;

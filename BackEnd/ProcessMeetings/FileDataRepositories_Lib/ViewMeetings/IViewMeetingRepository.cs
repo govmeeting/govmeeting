@@ -9,6 +9,6 @@ namespace GM.FileDataRepositories
 {
     public interface IViewMeetingRepository
     {
-        ViewmeetingView Get(long meetingId);
+        ViewtranscriptView Get(long meetingId);
     }
 }

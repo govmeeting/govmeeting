@@ -21,10 +21,10 @@ import { ConversationModule } from './conversation/conversation.module';
 import { AboutProjectModule } from './about-project/about-project.module';
 import { VirtualMeetingModule } from './virtual-meeting/virtual-meeting-module';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { ViewMeetingModule } from './viewmeeting/viewmeeting.module';
+import { ViewTranscriptModule } from './viewtranscript/viewtranscript.module';
 import { AddtagsModule } from './addtags/addtags.module';
 import { FixasrModule } from './fixasr/fixasr.module';
-import { FixTagViewModule } from './fixtagview/fixtagview.module';
+import { EditTranscriptModule } from './edittranscript/edittranscript.module';
 
 import { SharedModule } from './shared/shared.module';
 import { TestingModule } from './testing/testing.module';
@@ -35,14 +35,14 @@ import { HeaderModule } from './header/header.module';
 /////////////////// Services ///////////////////////////////////
 // Services
 import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
-import { ViewMeetingService } from './viewmeeting/viewmeeting.service';
-import { ViewMeetingServiceStub } from './viewmeeting/viewmeeting.service-stub';
+import { ViewTranscriptService } from './viewtranscript/viewtranscript.service';
+import { ViewTranscriptServiceStub } from './viewtranscript/viewtranscript.service-stub';
 import { AddtagsService } from './addtags/addtags.service';
 import { AddtagsServiceStub } from './addtags/addtags.service-stub';
 import { FixasrService } from './fixasr/fixasr.service';
 import { FixasrServiceStub } from './fixasr/fixasr.service-stub';
-import { FixtagviewService } from './fixtagview/fixtagview.service';
-import { FixtagviewServiceStub } from './fixtagview/fixtagview.service-stub';
+import { EdittranscriptService } from './edittranscript/edittranscript.service';
+import { EdittranscriptServiceStub } from './edittranscript/edittranscript.service-stub';
 import { ChatService } from './chat/chat.service';
 import { MessagingService } from './conversation/messaging.service';
 import { DataFactoryService } from './testing/data-factory.service';
@@ -93,10 +93,10 @@ let isAspServerRunning = false;
     HttpClientModule,
 
     /////////////// internal //////////////
-    ViewMeetingModule,
+    ViewTranscriptModule,
     AddtagsModule,
     FixasrModule,
-    FixTagViewModule,
+    EditTranscriptModule,
     SharedModule,
     FlexLayoutModule,
     AboutProjectModule,
@@ -168,12 +168,12 @@ let isAspServerRunning = false;
 
     // If you use the stubs for these services, they will not call the Asp.Net server,
     // but will instead return static data.
-    { provide: ViewMeetingService, useClass: isAspServerRunning ? ViewMeetingService : ViewMeetingServiceStub },
+    { provide: ViewTranscriptService, useClass: isAspServerRunning ? ViewTranscriptService : ViewTranscriptServiceStub },
     { provide: AddtagsService, useClass: isAspServerRunning ? AddtagsService : AddtagsServiceStub },
     { provide: FixasrService, useClass: isAspServerRunning ? FixasrService : FixasrServiceStub },
-    { provide: FixtagviewService, useClass: isAspServerRunning ? FixtagviewService : FixtagviewServiceStub },
+    { provide: EdittranscriptService, useClass: isAspServerRunning ? EdittranscriptService : EdittranscriptServiceStub },
 
-    // { provide: ViewMeetingService, useClass: ViewMeetingServiceStub },
+    // { provide: ViewTranscriptService, useClass: ViewTranscriptServiceStub },
     // { provide: AddtagsService, useClass: AddtagsServiceStub },
     // { provide: FixasrService, useClass: FixasrServiceStub },
 

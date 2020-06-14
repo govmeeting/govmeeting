@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { ViewMeetingComponent } from './viewmeeting';
+import { ViewTranscriptComponent } from './viewtranscript';
 import { BrowseComponent } from './browse/browse';
 import { HeadingComponent } from './heading/heading';
 import { SpeakersComponent } from './speakers/speakers';
@@ -20,7 +20,7 @@ import { SharedModule } from '../shared/shared.module';
  ],
 
   declarations: [
-    ViewMeetingComponent,
+    ViewTranscriptComponent,
     BrowseComponent,
     HeadingComponent,
     SpeakersComponent,
@@ -28,7 +28,7 @@ import { SharedModule } from '../shared/shared.module';
   ],
 
   exports: [
-    ViewMeetingComponent
+    ViewTranscriptComponent
   ]
 })
-export class ViewMeetingModule { }
+export class ViewTranscriptModule { }

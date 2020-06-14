@@ -59,7 +59,7 @@ By default, ClientApp will call stub services instead of calling the WebApp API.
 
 ## Run ClientApp & WebApp
 
-* Download the sub-folders from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> Put them in a sibling folder to the project named "TESTDATA"
+* Download the test data from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> Put them in a sibling folder to the project named "TESTDATA". These are media files that should not be committed to Github. You can also download them from <a hfre="https://1drv.ms/u/s!AqN2hZ8PFCAag_pd_5aXKqav1FFN_Q?e=YOAjGV"> OneDrive. </a>
 * In FrontEnd/ClientApp/app.module.ts, change "isAspServerRunning" from false to true.
 * Build projects:
   * Ctrl-Shift-P

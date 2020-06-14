@@ -19,13 +19,13 @@ namespace DevelopTranscription
         static string responseFile = Path.Combine(testdataFolder, "response.json");
         static string newResponseFile = Path.Combine(testdataFolder, "newResponse.json");
         static string rawResponseFile = Path.Combine(testdataFolder, "rawResponse.json");
-        static string fixtagviewFile = Path.Combine(testdataFolder, "ToFixTagView.json");
+        static string editmeetingFile = Path.Combine(testdataFolder, "ToEditTranscript.json");
         static string googleCloudBucketName = "govmeeting-transcribe";
 
         static void Main(string[] args)
         {
             // RunFix(responseFile, newResponseFile)
-            GetView(newResponseFile, fixtagviewFile);
+            GetView(newResponseFile, editmeetingFile);
 
             RepeatedField<string> phrases = new RepeatedField<string> {
                 "Denise Griffin",
@@ -71,11 +71,11 @@ namespace DevelopTranscription
             string responseString = JsonConvert.SerializeObject(response, Formatting.Indented);
             File.WriteAllText(responseFile, responseString);
 
-            // Reformat the JSON transcript to match what the fixtagview routine will use.
+            // Reformat the JSON transcript to match what the editmeeting routine will use.
             ModifyTranscriptJson convert = new ModifyTranscriptJson();
-            FixtagviewView fixtagview = convert.Modify(response);
-            string stringValue = JsonConvert.SerializeObject(fixtagview, Formatting.Indented);
-            File.WriteAllText(fixtagviewFile, stringValue);
+            EdittranscriptView editmeeting = convert.Modify(response);
+            string stringValue = JsonConvert.SerializeObject(editmeeting, Formatting.Indented);
+            File.WriteAllText(editmeetingFile, stringValue);
 
             WriteCopyOfResponse(responseString, testdataFolder);
         }
@@ -105,12 +105,12 @@ namespace DevelopTranscription
 
         static void GetView(string responseFile, string newResponseFile)
         {
-            // Reformat the response to what the fixtagview routine will use.
+            // Reformat the response to what the editmeeting routine will use.
             string responseString = File.ReadAllText(responseFile);
             TranscribeResponse response = JsonConvert.DeserializeObject<TranscribeResponse>(responseString);
             ModifyTranscriptJson convert = new ModifyTranscriptJson();
-            FixtagviewView fixtagview = convert.Modify(response);
-            string stringValue = JsonConvert.SerializeObject(fixtagview, Formatting.Indented);
+            EdittranscriptView editmeeting = convert.Modify(response);
+            string stringValue = JsonConvert.SerializeObject(editmeeting, Formatting.Indented);
             File.WriteAllText(newResponseFile, stringValue);
 
         }

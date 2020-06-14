@@ -62,7 +62,7 @@ The structure of the ClientApp is best shown by its Angular Component structure
 <tr><th colspan="2"> Dashboard components</th></tr>
 <tr><td>Fixasr</td><td>Fix Auto Speech Recognition text</td></tr>
 <tr><td>Addtags</td><td>Add tags to transcripts</td></tr>
-<tr><td>ViewMeeting</td><td>View completed transcripts</td></tr>
+<tr><td>ViewTranscript</td><td>View completed transcripts</td></tr>
 <tr><td>Issues</td><td>View information on issues</td></tr>
 <tr><td>Alerts</td><td>View and set information on alerts</td></tr>
 <tr><td>Officials</td><td>View information on officials</td></tr>
@@ -84,7 +84,7 @@ Each of the Web API's are small and call the repositories to put or get data fro
 <tr><th colspan="2"> Controllers</th></tr>
 <tr><td>Fixasr</td><td>Save and get most recent version of transcript being proofread.</td></tr>
 <tr><td>Addtags</td><td>Save and get most recent version of transcript being tagged.</td></tr>
-<tr><td>Viewmeeting</td><td>Get latest completed trnascript.</td></tr>
+<tr><td>Viewtranscript</td><td>Get latest completed trnascript.</td></tr>
 <tr><td>Govbodies</td><td>Save and get registered government body data.</td></tr>
 <tr><td>Meetings</td><td>Save and get meeting information.</td></tr>
 <tr><td>Video</td><td>Get video of meeting.</td></tr>

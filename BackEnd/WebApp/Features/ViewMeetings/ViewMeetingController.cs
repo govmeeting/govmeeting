@@ -10,7 +10,7 @@ using GM.ViewModels;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace GM.WebApp.Features.Viewmeetings
+namespace GM.WebApp.Features.Viewtranscripts
 {
     [Route("api/[controller]")]
     public class ViewMeetingController : Controller
@@ -23,9 +23,9 @@ namespace GM.WebApp.Features.Viewmeetings
         }
 
         [HttpGet("{meetingId}")]
-        public ViewmeetingView Get(int meetingId)
+        public ViewtranscriptView Get(int meetingId)
         {
-            ViewmeetingView ret = meetings.Get(meetingId);
+            ViewtranscriptView ret = meetings.Get(meetingId);
             return ret;
         }
     }

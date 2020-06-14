@@ -8,14 +8,14 @@ namespace GM.ProcessRecording
 {
 
     /**********************************************************************
-     * Modify the Google speech format to our own "FixtagviewView" format.
+     * Modify the Google speech format to our own "EdittranscriptView" format.
      ***********************************************************************/
 
     public class ModifyTranscriptJson
     {
-        public FixtagviewView Modify(TranscribeResponse transcript)
+        public EdittranscriptView Modify(TranscribeResponse transcript)
         {
-            FixtagviewView fixtagview = new FixtagviewView();
+            EdittranscriptView editmeeting = new EdittranscriptView();
 
             foreach (Result result in transcript.results)
             {
@@ -66,9 +66,9 @@ namespace GM.ProcessRecording
                     talk.words.Add(word);
 
                 }
-                fixtagview.talks.Add(talk);
+                editmeeting.talks.Add(talk);
             }
-            return fixtagview;
+            return editmeeting;
         }
     }
 }

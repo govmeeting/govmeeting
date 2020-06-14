@@ -1,7 +1,7 @@
-import { ViewMeeting } from '../models/viewmeeting-view';
+import { ViewTranscript } from '../models/viewtranscript-view';
 
-export let viewmeetingSample: ViewMeeting = {
-//private viewMeeting: ViewMeeting = {
+export let viewtranscriptSample: ViewTranscript = {
+//private viewMeeting: ViewTranscript = {
   'meeting': {
     'meetingId': 1,
     'locationId': 1,

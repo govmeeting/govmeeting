@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FixtagviewService } from '../fixtagview.service';
-import { FixTagView, Talk, Word } from '../../models/fixtagview-view';
+import { EdittranscriptService } from '../edittranscript.service';
+import { EditTranscript, Talk, Word } from '../../models/edittranscript-view';
 
 const NoLog = true;  // set to false for console logging
 
@@ -14,12 +14,12 @@ export class TalksComponent implements OnInit {
   errorMessage: string;
   talks: Talk[] | null;
   gotTalks: boolean = false;
-  fixtagview: FixTagView = {sections: [""], topics: [""], talks: null};
+  edittranscript: EditTranscript = {sections: [""], topics: [""], talks: null};
   topics: string[];
   highlightedTopic: string;
   shownTopicSelection: number = -1; // index of where we are displaying topic choice.
 
-    constructor(private _fixtagviewService: FixtagviewService) {
+    constructor(private _edittranscriptService: EdittranscriptService) {
         //this.talks = addtagsService.getTalks();
     }
 
@@ -41,9 +41,9 @@ export class TalksComponent implements OnInit {
     if (! this.gotTalks) {
       this.gotTalks = true;
       NoLog || console.log(this.ClassName + 'getTalks');
-      this._fixtagviewService.getTalks()
+      this._edittranscriptService.getTalks()
       .subscribe(
-      fixtagview => (this.fixtagview = fixtagview, this.talks = fixtagview.talks),
+      edittranscript => (this.edittranscript = edittranscript, this.talks = edittranscript.talks),
       error => this.errorMessage = <any>error);
     }
   }
@@ -51,7 +51,7 @@ export class TalksComponent implements OnInit {
   // TODO activate Save button only if changes were made.
   saveChanges() {
       NoLog || console.log(this.ClassName + 'saveTranscript');
-      this._fixtagviewService.postChanges(this.fixtagview);
+      this._edittranscriptService.postChanges(this.edittranscript);
           // .subscribe(
           // t => t
           // );

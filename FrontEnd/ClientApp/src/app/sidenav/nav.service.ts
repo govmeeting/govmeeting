@@ -39,7 +39,10 @@ export class NavService {
   }
 
   public openFirstMenuLevels(){
-    this.navigationItems[0].expanded = true;
+    // Default view of the sidenav menu.
+    //    The "About" list is closed.
+    //    The "Select Location" list is open.
+    this.navigationItems[0].expanded = false;
     this.navigationItems[1].expanded = true;
   }
 

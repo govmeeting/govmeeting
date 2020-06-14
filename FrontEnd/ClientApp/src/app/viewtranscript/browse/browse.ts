@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 // import { MeetingService } from '../meeting.service-stub';
-import { ViewMeetingService } from '../viewmeeting.service';
+import { ViewTranscriptService } from '../viewtranscript.service';
 import { UserchoiceService } from '../userchoice.service';
-import { TopicDiscussion } from '../../models/viewmeeting-view'
+import { TopicDiscussion } from '../../models/viewtranscript-view'
 
 const NoLog = true;  // set to false for console logging
 
@@ -27,7 +27,7 @@ export class BrowseComponent implements OnInit {
      * <param name="_meetingService">       The meeting service. </param>
      * <param name="_userChoiceSrv"> The user choice service. </param>
     **/
-    constructor(private _viewMeetingService: ViewMeetingService,
+    constructor(private _viewMeetingService: ViewTranscriptService,
       private _userChoice: UserchoiceService) {
   }
 

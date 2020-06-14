@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { UserchoiceService } from './userchoice.service';
-import { ViewMeetingService } from './viewmeeting.service';
-import { TopicDiscussion } from '../models/viewmeeting-view'
+import { ViewTranscriptService } from './viewtranscript.service';
+import { TopicDiscussion } from '../models/viewtranscript-view'
 
 
 const NoLog = true;  // set to false for console logging
 
 @Component({
-  selector: 'gm-viewmeeting',
-  templateUrl: './viewmeeting.html',
-  styleUrls: ['./viewmeeting.scss'],
+  selector: 'gm-viewtranscript',
+  templateUrl: './viewtranscript.html',
+  styleUrls: ['./viewtranscript.scss'],
   providers: [
     UserchoiceService
   ]
 })
-export class ViewMeetingComponent implements OnInit {
+export class ViewTranscriptComponent implements OnInit {
   private ClassName: string = this.constructor.name + ": ";
     showhelp: boolean = true;
     showhidehelp: string = "Hide";
     topicDiscussions: TopicDiscussion[];
     errorMessage: string;
 
-    constructor(private _viewMeetingService: ViewMeetingService) {
+    constructor(private _viewMeetingService: ViewTranscriptService) {
   }
     // Normally the meetingId will be passed to the getMeeting method.
     // But we did not yet write the component for the user to select a meeting.

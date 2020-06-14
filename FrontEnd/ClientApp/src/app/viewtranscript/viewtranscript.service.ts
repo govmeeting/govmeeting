@@ -5,27 +5,27 @@ import { Observable } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
-import { ViewMeeting } from '../models/viewmeeting-view';
-import { viewmeetingSample } from './viewmeeting-sample';
+import { ViewTranscript } from '../models/viewtranscript-view';
+import { viewtranscriptSample } from './viewtranscript-sample';
 import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
 
 const NoLog = true;  // set to false for console logging
 
 @Injectable()
-export class ViewMeetingService {
+export class ViewTranscriptService {
   private ClassName: string = this.constructor.name + ": ";
-    private meetingUrl = 'api/viewmeeting';
-    private observable: Observable<ViewMeeting>;
+    private meetingUrl = 'api/viewtranscript';
+    private observable: Observable<ViewTranscript>;
     // private requestInProgress = false;
     // private requestComplete = false;
     private errorMessage: string;
-    viewMeeting: ViewMeeting = viewmeetingSample;
+    viewMeeting: ViewTranscript = viewtranscriptSample;
 
     constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
       NoLog || console.log(this.ClassName + 'constructor');
     }
 
-    getMeeting(meetingId: number): Observable<ViewMeeting> {
+    getMeeting(meetingId: number): Observable<ViewTranscript> {
         if (this.observable != null) {
             return this.observable;
         }
@@ -34,7 +34,7 @@ export class ViewMeetingService {
       }
         let url: string = this.meetingUrl;
         url = url + '/' + meetingId;
-         this.observable = this.http.get<ViewMeeting>(url)
+         this.observable = this.http.get<ViewTranscript>(url)
             .pipe(catchError(this.errHandling.handleError))
             .share();     // make it shared so more than one subscriber can get the same result.
         return this.observable;

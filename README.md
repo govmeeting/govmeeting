@@ -54,11 +54,12 @@ People will then be able to:
 Enough with the jibber-jabber, fool!
 Show me how it works!
 
-Well, the work is in progress. But click here for:  [Demos of some working parts](http://govmeeting.org/dashboard) and more documentation.
+Well, the work is in progress. But click here for:  [Demos of some working code](http://govmeeting.org/dashboard) and more documentation.
 
-<div> <img style="pointer-events: none; cursor: default;" src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
 <div style="font-size: 125%">  
- <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-eavi8zwh-4t900JzP~WJCo2Z7Z2tk0A"> Govmeeting Slack <img src="images/logo_slack25p.png"> </a> </div>
+ <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-f2to4ivp-DN1fsgsx_vwB2GG9cKWtNg"> Govmeeting Slack <img src="images/logo_slack25p.png"> </a> </div>
+ 
+ <div> If the Slack invite is expired, request an invite here: <img style="pointer-events: none; cursor: default;" src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
 
 # Developer Setup 
 <a name="Contents"></a>
@@ -122,7 +123,7 @@ By default, ClientApp will call stub services instead of calling the WebApp API.
 
 ## Run ClientApp & WebApp
 
-* Download the sub-folders from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> Put them in a sibling folder to the project named "TESTDATA"
+* Download the test data from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> Put them in a sibling folder to the project named "TESTDATA". These are media files that should not be committed to Github. You can also download them from <a hfre="https://1drv.ms/u/s!AqN2hZ8PFCAag_pd_5aXKqav1FFN_Q?e=YOAjGV"> OneDrive. </a>
 * In FrontEnd/ClientApp/app.module.ts, change "isAspServerRunning" from false to true.
 * Build projects:
   * Ctrl-Shift-P
@@ -149,6 +150,7 @@ ClientApp is served by the webpack-dev-server. WebApp uses the Kestrel server. B
 
 
 ## Run WorkflowApp
+* Install <a href="https://www.ffmpeg.org"> FFmpeg. </a>. This is for processing audio & video files.
 * Download the test files from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a>
 * In the debug panel, set launch configuration "WorkflowApp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)

@@ -1,6 +1,6 @@
 // This is the JSON format of the text to be tagged
 
-export class FixTagView {
+export class EditTranscript {
     sections: string[];
     topics: string[];
     talks: Talk[] | null;

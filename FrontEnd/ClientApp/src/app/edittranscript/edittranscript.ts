@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'gm-fixtagview',
-  templateUrl: './fixtagview.html',
-  styleUrls: ['./fixtagview.css']
+  selector: 'gm-edittranscript',
+  templateUrl: './edittranscript.html',
+  styleUrls: ['./edittranscript.css']
 })
-export class FixTagViewComponent implements OnInit {
+export class EditTranscriptComponent implements OnInit {
     showhelp: boolean = true;
     showhidehelp: string = "Hide";
 
