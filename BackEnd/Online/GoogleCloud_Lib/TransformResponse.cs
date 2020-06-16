@@ -57,10 +57,16 @@ namespace GM.GoogleCloud
             return transcript;
         }
 
+        // The LongRunningRecognizeResponse does not put SpeakerTag values
+        // on the words initially until it has completed the transcription.
+        // Then it repeats all of the words in the last result and this result
+        // contains SpeakerTag values for all words.
+        // FixSpeakerTags moves the SpeakerTag values from the last result in the response
+        // to the corresponding words in the initial results.
         public static TranscribeResponse FixSpeakerTags(TranscribeResponse rsp)
         {
             // Find where the results repeat. This should be where
-            // * the text is a zero length strng
+            // * the text is a zero length string
             // * the first word has a speaker number non-zero
             // * its words count equals the last word's wordnum
 
@@ -101,6 +107,7 @@ namespace GM.GoogleCloud
             return rsp;
         }
         
+
 
     }
 }

@@ -35,7 +35,7 @@ $preOverview =
 # Put this after the overview doc
 $postOverview =
 @"
-<!-- `n<a href="http://www.govmeeting.org/overview#continue">Overview Continued</a>`n -->
+<!-- `n<a href="https://www.govmeeting.org/overview#continue">Overview Continued</a>`n -->
 
 <img src="images/mr-t-mrt-36834265-320-254-24kb.png" alt="Photo of Mr.T">
 <!--This also works: ![Photo of Mr.T](images/mr-t-mrt-36834265-320-254-24kb.png) -->
@@ -43,7 +43,7 @@ $postOverview =
 Enough with the jibber-jabber, fool!
 Show me how it works!
 
-Well, the work is in progress. But click here for:  [Demos of some working code](http://govmeeting.org/dashboard) and more documentation.
+Well, the work is in progress. But click here for:  [Demos of some working code](https://govmeeting.org/dashboard) and more documentation.
 
 <div style="font-size: 125%">  
  <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-f2to4ivp-DN1fsgsx_vwB2GG9cKWtNg"> Govmeeting Slack <img src="images/logo_slack25p.png"> </a> </div>
@@ -61,7 +61,7 @@ $preSetup =
 # Put this after the setup doc.
 $postSetup =
 @"
-`n<a href="http://www.govmeeting.org/about?id=setup#continue">Setup Continued</a>`n
+`n<a href="https://www.govmeeting.org/about?id=setup#continue">Setup Continued</a>`n
 "@
 
 

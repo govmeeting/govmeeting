@@ -34,9 +34,9 @@
         <div [hidden]="talk.showSetTopic"><br></div>
         <!-- {{i}} --> <div class="gmspeaker"> {{ talk.speaker }}: </div>
         <div (click)="showTopicSelection(talk,i)" myhighlight (textSelected)="handleTextSelected($event)">
-             <div class="gmsaid"> {{talk.said}} </div>
-        </div>
-        <!-- <span *ngFor="let word of talk.words; let i = index"> {{word.word}} </span> -->
+             <!-- <div class="gmsaid"> {{talk.said}} </div> -->
+          <span *ngFor="let word of talk.words; let i = index"> {{word.word}} </span>
+      </div>
 
     </div>
     <br>

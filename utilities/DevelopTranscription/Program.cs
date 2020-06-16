@@ -12,20 +12,35 @@ namespace DevelopTranscription
 {
     class Program
     {
-        static string videofilePath = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\assets\stubdata\ToFix.mp4");
         static string testdataFolder = Path.Combine(GMFileAccess.GetTestdataFolder(), "DevelopTranscription");
-        static string audiofilePath = Path.Combine(testdataFolder, "ToFix.flac");
-        static string objectName = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15_3min.flac";
         static string responseFile = Path.Combine(testdataFolder, "response.json");
         static string newResponseFile = Path.Combine(testdataFolder, "newResponse.json");
-        static string rawResponseFile = Path.Combine(testdataFolder, "rawResponse.json");
         static string editmeetingFile = Path.Combine(testdataFolder, "ToEditTranscript.json");
-        static string googleCloudBucketName = "govmeeting-transcribe";
+
 
         static void Main(string[] args)
         {
-            // RunFix(responseFile, newResponseFile)
-            GetView(newResponseFile, editmeetingFile);
+            int caseSwitch = 1;
+
+            switch (caseSwitch) {
+                case 1: 
+                    TransscribeVideo();
+                    break;
+                case 2:
+                    FixSpeakerTags(responseFile, newResponseFile);
+                    break;
+                case 3:
+                    CreateEditTranscriptView(newResponseFile, editmeetingFile);
+                    break;
+            }
+        }
+
+        static void TransscribeVideo()
+        {
+            string videofilePath = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\assets\stubdata\ToFix.mp4");
+            string audiofilePath = Path.Combine(testdataFolder, "ToFix.flac");
+            string googleCloudBucketName = "govmeeting-transcribe";
+            string objectName = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15_3min.flac";
 
             RepeatedField<string> phrases = new RepeatedField<string> {
                 "Denise Griffin",
@@ -94,7 +109,7 @@ namespace DevelopTranscription
             File.WriteAllText(next, transcript);
         }
 
-        static void RunFix(string responseFile, string newResponseFile)
+        static void FixSpeakerTags(string responseFile, string newResponseFile)
         {
             string priorResponse = File.ReadAllText(responseFile);
             TranscribeResponse beforeFix = JsonConvert.DeserializeObject<TranscribeResponse>(priorResponse);
@@ -103,7 +118,8 @@ namespace DevelopTranscription
             File.WriteAllText(newResponseFile, afterFixString);
         }
 
-        static void GetView(string responseFile, string newResponseFile)
+        // Create the EditTranscriptView structure used by EditTranscript
+        static void CreateEditTranscriptView(string responseFile, string editmeetingFile)
         {
             // Reformat the response to what the editmeeting routine will use.
             string responseString = File.ReadAllText(responseFile);
@@ -111,7 +127,7 @@ namespace DevelopTranscription
             ModifyTranscriptJson convert = new ModifyTranscriptJson();
             EdittranscriptView editmeeting = convert.Modify(response);
             string stringValue = JsonConvert.SerializeObject(editmeeting, Formatting.Indented);
-            File.WriteAllText(newResponseFile, stringValue);
+            File.WriteAllText(editmeetingFile, stringValue);
 
         }
 

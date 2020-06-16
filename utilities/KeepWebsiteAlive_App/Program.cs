@@ -9,7 +9,7 @@ namespace KeepWebsiteAliveApp
         {
             using (HttpClient client = new HttpClient())
             {
-                client.GetStringAsync("http://govmeeting.org/");
+                client.GetStringAsync("https://govmeeting.org/");
             }
         }
     }

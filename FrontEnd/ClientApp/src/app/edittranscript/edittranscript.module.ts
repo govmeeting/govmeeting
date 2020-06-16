@@ -9,6 +9,8 @@ import { TalksComponent } from './talks/talks';
 import { TopicsComponent } from './topics/topics';
 import { SectionsComponent } from './sections/sections';
 import { SharedModule } from '../shared/shared.module';
+import { VideoModule } from '../video/video.module';
+
 
 @NgModule({
   declarations: [EditTranscriptComponent, TalksComponent, TopicsComponent, SectionsComponent],
@@ -18,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     RouterModule,
     //ReactiveFormsModule
+    VideoModule,
     SharedModule
   ],
 

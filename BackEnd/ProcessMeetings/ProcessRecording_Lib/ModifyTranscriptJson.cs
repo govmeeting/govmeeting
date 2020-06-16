@@ -13,7 +13,44 @@ namespace GM.ProcessRecording
 
     public class ModifyTranscriptJson
     {
+
         public EdittranscriptView Modify(TranscribeResponse transcript)
+        {
+            EdittranscriptView editmeeting = new EdittranscriptView();
+
+            foreach (Result result in transcript.results)
+            {
+                Talk talk = new Talk(result.text, result.confidence);
+                int speaker = -1;
+
+                foreach (RespWord respword in result.words)
+                {
+                    Word word = new Word(
+                        respword.word,
+                        respword.confidence,
+                        respword.startTime,
+                        respword.endTime,
+                        respword.speakerTag,
+                        respword.wordNum
+                    );
+                    if (speaker != word.speaker)
+                    {
+                        if (speaker != -1)
+                        {
+                            editmeeting.talks.Add(talk);
+                            talk = new Talk(result.text, result.confidence);
+                        }
+                        speaker = word.speaker;
+                        talk.speaker = "Speaker " + speaker.ToString();
+                    }
+                    talk.words.Add(word);
+                }
+                editmeeting.talks.Add(talk);
+            }
+            return editmeeting;
+        }
+
+        public EdittranscriptView Modify2(TranscribeResponse transcript)
         {
             EdittranscriptView editmeeting = new EdittranscriptView();
 
