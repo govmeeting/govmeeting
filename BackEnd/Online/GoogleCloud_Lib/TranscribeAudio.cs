@@ -29,7 +29,7 @@ namespace GM.GoogleCloud
         }
 
         // TranscribeRsp is the original format that we returned when using fixasr
-        // TranscribeResponse is the new format for fixtagview.
+        // TranscribeResponse is the new format for editmeeting.
 
         public TranscribeResponse TranscribeAudioFile(TranscribeParameters transParams)
         {

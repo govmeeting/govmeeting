@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { GetDashboardTitle } from '../dashboard-titles'
 import { UserSettingsService, UserSettings, LocationType } from '../../user-settings.service';
+import { isDevMode } from '@angular/core';
 
 const NoLog = true;  // set to false for console logging
 
@@ -11,6 +12,7 @@ const NoLog = true;  // set to false for console logging
 })
 export class DashMainComponent implements OnInit{
   private ClassName: string = this.constructor.name + ": ";
+  isDevMode: boolean = isDevMode();
   language: string = "en";
   location: string;
   agency: string;
@@ -24,10 +26,10 @@ export class DashMainComponent implements OnInit{
   billsTitle: string;
   meetingsTitle: string;
   newsTitle: string;
-  fixtagviewTitle: string;
+  edittranscriptTitle: string;
   fixasrTitle: string;
   addtagsTitle: string;
-  viewMeetingTitle: string;
+  viewtranscriptTitle: string;
   issuesTitle: string;
   officialsTitle: string;
   virtualMeetingTitle: string;
@@ -71,10 +73,10 @@ export class DashMainComponent implements OnInit{
     this.billsTitle = GetDashboardTitle("Legislation", this.language);
     this.meetingsTitle = GetDashboardTitle("Meetings", this.language);
     this.newsTitle = GetDashboardTitle("Govmeeting News", this.language);
-    this.fixtagviewTitle = GetDashboardTitle("Edit/View Transcript", this.language);
+    this.edittranscriptTitle = GetDashboardTitle("Edit Transcript", this.language);
     this.fixasrTitle = GetDashboardTitle("Proofread Transcript", this.language);
     this.addtagsTitle = GetDashboardTitle("Add Tags to Transcript", this.language);
-    this.viewMeetingTitle = GetDashboardTitle("View Latest Meeting", this.language);
+    this.viewtranscriptTitle = GetDashboardTitle("View Transcript", this.language);
     this.issuesTitle = GetDashboardTitle("Issues", this.language);
     this.officialsTitle = GetDashboardTitle("Officials", this.language);
     this.virtualMeetingTitle = GetDashboardTitle("Virtual Meeting", this.language);

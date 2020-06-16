@@ -12,7 +12,7 @@ namespace GM.ViewModels
      */
 
 
-    public class ViewmeetingView
+    public class ViewtranscriptView
     {
         public MeetingForView meeting { get; set; }
         public string[] topicNames { get; set; }

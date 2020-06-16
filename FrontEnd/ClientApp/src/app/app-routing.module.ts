@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // For testing without the dashboard
-// import { ViewMeetingComponent } from './viewmeeting/viewmeeting'
+// import { ViewTranscriptComponent } from './viewtranscript/viewtranscript'
 // import { AddtagsComponent } from './addtags/addtags'
 // import { FixasrComponent } from './fixasr/fixasr'
-// import { FixtagviewComponent } from './fixasr/fixasr'
+// import { EdittranscriptComponent } from './fixasr/fixasr'
 
 import { AboutComponent } from './about-project/about-project';
 import { OverviewComponent } from './about-project/overview/overview';
@@ -20,13 +20,14 @@ const routes: Routes = [
       path: 'login',
       redirectTo: 'account/login'
     },
-    // { path: 'viewmeeting', component: ViewMeetingComponent },
+    // { path: 'viewtranscript', component: ViewTranscriptComponent },
     // { path: 'addtags', component: AddtagsComponent },
     // { path: 'fixasr', component: FixasrComponent },
     { path: 'dashboard', component: DashMainComponent},
     { path: 'about', component: AboutComponent},
     { path: 'overview', component: OverviewComponent},
-    { path: '**', redirectTo: 'overview' }
+    // { path: '**', redirectTo: 'overview' }
+    { path: '**', redirectTo: 'dashboard' }
 
 ];
 

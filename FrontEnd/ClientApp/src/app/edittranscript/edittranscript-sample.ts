@@ -1,6 +1,6 @@
-import { FixTagView, Talk, Word } from '../models/fixtagview-view';
+import { EditTranscript, Talk, Word } from '../models/edittranscript-view';
 
-export let FixTagViewSample: FixTagView = {
+export let EditTranscriptSample: EditTranscript = {
   sections: [
       'Invocation',
       'Approval of Journal',

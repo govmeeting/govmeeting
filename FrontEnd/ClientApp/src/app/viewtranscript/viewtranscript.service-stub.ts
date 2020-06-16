@@ -4,22 +4,22 @@ import 'rxjs/add/observable/of';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
-import { ViewMeeting } from '../models/viewmeeting-view';
+import { ViewTranscript } from '../models/viewtranscript-view';
 import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
-import { viewmeetingSample } from './viewmeeting-sample';
+import { viewtranscriptSample } from './viewtranscript-sample';
 
   const fromFile = true;
   const url = 'assets/stubdata/ToView.json';
   // Use the jsonplaceholder service to test post requests
-  const viewmeetingUrl = 'https://jsonplaceholder.typicode.com/posts'
+  const viewtranscriptUrl = 'https://jsonplaceholder.typicode.com/posts'
   const NoLog = true;  // set to false for console logging
 
 @Injectable()
-export class ViewMeetingServiceStub {
+export class ViewTranscriptServiceStub {
   private ClassName: string = this.constructor.name + ": ";
-  viewMeeting: ViewMeeting = viewmeetingSample;
+  viewMeeting: ViewTranscript = viewtranscriptSample;
 
-  private observable: Observable<ViewMeeting>;
+  private observable: Observable<ViewTranscript>;
 
   // Use the jsonplaceholder service to test post requests
   private postId;
@@ -28,7 +28,7 @@ export class ViewMeetingServiceStub {
     NoLog || console.log(this.ClassName + 'constructor');
   }
 
-  public getMeeting(meetingId: number): Observable<ViewMeeting> {
+  public getMeeting(meetingId: number): Observable<ViewTranscript> {
     if (this.observable != null) {
       NoLog || console.log(this.ClassName + "getMeeting observable not null")
       return this.observable;
@@ -49,11 +49,11 @@ export class ViewMeetingServiceStub {
     }
   }
 
-  public getMeetingFromFile(): Observable<ViewMeeting> {
+  public getMeetingFromFile(): Observable<ViewTranscript> {
     if (fromFile) {
       NoLog || console.log(this.ClassName + 'get from file');
       // TODO - handle null return. Here we just cast to the correct object type.
-      this.observable = <Observable<ViewMeeting>> this.http.get<ViewMeeting>(url)
+      this.observable = <Observable<ViewTranscript>> this.http.get<ViewTranscript>(url)
           .pipe(catchError(this.errHandling.handleError))
           .share();     // make it shared so more than one subscriber can get the same result.
       return this.observable;
@@ -63,10 +63,10 @@ export class ViewMeetingServiceStub {
     }
   }
 
-  public postChanges(viewmeeting: ViewMeeting) {
+  public postChanges(viewtranscript: ViewTranscript) {
     NoLog || console.log(this.ClassName + 'postChanges');
     const headers = { 'Content-Type': 'application/json' }
-      this.http.post<any>(viewmeetingUrl, viewmeeting, { headers }).subscribe({
+      this.http.post<any>(viewtranscriptUrl, viewtranscript, { headers }).subscribe({
         next: data => {
           this.postId = data.id;
           NoLog || console.log(this.ClassName, data);

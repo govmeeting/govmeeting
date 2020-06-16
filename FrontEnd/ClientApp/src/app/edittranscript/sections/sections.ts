@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FixtagviewService } from '../fixtagview.service';
+import { EdittranscriptService } from '../edittranscript.service';
 
 const NoLog = true;  // set to false for console logging
 
@@ -14,7 +14,7 @@ export class SectionsComponent implements OnInit {
     sections: string[];
     gotSections: boolean = false;
 
-  constructor(private _fixtagviewService: FixtagviewService) {
+  constructor(private _edittranscriptService: EdittranscriptService) {
   }
 
     ngOnInit() { this.getSections(); }
@@ -23,7 +23,7 @@ getSections() {
   if (! this.gotSections) {
     this.gotSections = true;
     NoLog || console.log(this.ClassName + 'getSections');
-    this._fixtagviewService.getTalks()
+    this._edittranscriptService.getTalks()
         .subscribe(
         addtags => {
             this.sections = addtags.sections;

@@ -9,14 +9,13 @@
 
 <button md-raised-button class="show-help-button" (click)="ToggleHelp()"> {{showhidehelp}} Help </button>
 <div class="edit-help" [hidden]="!CheckShowHelp()" (click)="ToggleHelp()">
-  THis is a new component to replace the prior Proofread and Addtags components. It will have the following functionality:
+  [This code is under development.] It will have the following functions:
   <ul>
     <li> Edit the text for transcription errors. </li>
-    <li> Add and/or correct speaker names. </li>
-    <li> Add and/or correct topic names. </li>
-    <li> Add and/or correct section names.</li>
-    <li> Move the location of topic or section names.</li>
+    <li> Add/change speaker, topic or section names. </li>
+    <li> Move speaker, topic or section names. </li>
   </ul>
+  Click in a text area to enter a topic name. Or first highlight any text to create a default name. Use arrows to move topic.
 </div>
 
 <br> <gm-talks></gm-talks>

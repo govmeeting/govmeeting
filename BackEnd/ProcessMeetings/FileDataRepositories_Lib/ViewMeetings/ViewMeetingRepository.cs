@@ -34,18 +34,18 @@ namespace GM.FileDataRepositories
             govBodyRepository = _govBodyRepository;
         }
 
-        public ViewmeetingView Get(long meetingId)
+        public ViewtranscriptView Get(long meetingId)
         {
             string workFolderPath = GetWorkFolderPath(meetingId);
 
             CircularBuffer cb = new CircularBuffer(workFolderPath, WORK_FILE_NAME, _config.MaxWorkFileBackups);
             string latestFixes = cb.GetLatest();
 
-            ViewmeetingView viewMeeting = JsonConvert.DeserializeObject<ViewmeetingView>(latestFixes);
+            ViewtranscriptView viewMeeting = JsonConvert.DeserializeObject<ViewtranscriptView>(latestFixes);
             return viewMeeting;
         }
 
-        public bool Put(long meetingId, ViewmeetingView value)
+        public bool Put(long meetingId, ViewtranscriptView value)
         {
             string workFolderPath = GetWorkFolderPath(meetingId);
 
@@ -57,12 +57,12 @@ namespace GM.FileDataRepositories
             return result;
         }
 
-        //private ViewmeetingView GetViewMeetingByPath(string meetingPath)
+        //private ViewtranscriptView GetViewMeetingByPath(string meetingPath)
         //{
         //    string meetingString = GMFileAccess.Readfile(meetingPath);
         //    if (meetingString != null)
         //    {
-        //        ViewmeetingView meeting = JsonConvert.DeserializeObject<ViewmeetingView>(meetingString);
+        //        ViewtranscriptView meeting = JsonConvert.DeserializeObject<ViewtranscriptView>(meetingString);
         //        return meeting;
         //    } else
         //    {

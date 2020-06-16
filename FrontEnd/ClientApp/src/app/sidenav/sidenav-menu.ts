@@ -65,7 +65,7 @@ const NoLog = true;  // set to false for console logging
     ngOnInit() {
       this.navService.sidenav = this.sidenav;
       this.navService.navigationItems = this.navigationItems;
-      this.navService.openFirstMenuLevels();
+      this.navService.openFirstMenuLevels();  // set default view of menu.
     }
 
   openDialog(){

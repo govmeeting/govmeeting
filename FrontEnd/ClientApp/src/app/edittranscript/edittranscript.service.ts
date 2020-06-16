@@ -6,20 +6,20 @@ import 'rxjs/add/operator/share';
 import { catchError } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { ErrorHandlingService } from '../shared/error-handling/error-handling.service';
-import { FixTagView, Talk, Word } from '../models/fixtagview-view';
+import { EditTranscript, Talk, Word } from '../models/edittranscript-view';
 
 
 const NoLog = true;  // set to false for console logging
 
 @Injectable()
-export class FixtagviewService {
+export class EdittranscriptService {
   private ClassName: string = this.constructor.name + ": ";
 
-    private addtagsUrl = 'api/fixtagview';
+    private addtagsUrl = 'api/edittranscript';
     private postId;
 
-    private addtags: FixTagView;
-    private observable: Observable<FixTagView>;
+    private addtags: EditTranscript;
+    private observable: Observable<EditTranscript>;
 
     // Normally the meetingId will be passed to the getTalks method.
     // But we did not yet write the component for the user to select a meeting.
@@ -30,7 +30,7 @@ export class FixtagviewService {
         NoLog || console.log(this.ClassName + 'constructor');
     }
 
-    getTalks(): Observable<FixTagView> {
+    getTalks(): Observable<EditTranscript> {
         if (this.observable != null) {
             return this.observable;
         }
@@ -38,7 +38,7 @@ export class FixtagviewService {
         let url: string = this.addtagsUrl;
         url = url + '/' + this.meetingId;
         // TODO - handle null return. Here we just cast to the correct object type.
-        this.observable = <Observable<FixTagView>> this.http.get<FixTagView>(url)
+        this.observable = <Observable<EditTranscript>> this.http.get<EditTranscript>(url)
             .pipe(catchError(this.errHandling.handleError))
             .share();     // make it shared so more than one subscriber can get the same result.
         return this.observable;
@@ -52,7 +52,7 @@ export class FixtagviewService {
     //     this.postData(this.addtagsUrl, addtags);
     // }
 
-    public postChanges(addtags: FixTagView) {
+    public postChanges(addtags: EditTranscript) {
     NoLog || console.log(this.ClassName + 'postChanges');
     let url = this.addtagsUrl + '/' + this.meetingId;
 
