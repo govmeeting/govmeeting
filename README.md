@@ -45,7 +45,7 @@ People will then be able to:
 * See statistics, graphs and charts on issues, legislature, etc.
 
 <!-- 
-<a href="http://www.govmeeting.org/overview#continue">Overview Continued</a>
+<a href="https://www.govmeeting.org/overview#continue">Overview Continued</a>
  -->
 
 <img src="images/mr-t-mrt-36834265-320-254-24kb.png" alt="Photo of Mr.T">
@@ -54,7 +54,7 @@ People will then be able to:
 Enough with the jibber-jabber, fool!
 Show me how it works!
 
-Well, the work is in progress. But click here for:  [Demos of some working code](http://govmeeting.org/dashboard) and more documentation.
+Well, the work is in progress. But click here for:  [Demos of some working code](https://govmeeting.org/dashboard) and more documentation.
 
 <div style="font-size: 125%">  
  <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-f2to4ivp-DN1fsgsx_vwB2GG9cKWtNg"> Govmeeting Slack <img src="images/logo_slack25p.png"> </a> </div>
@@ -442,5 +442,5 @@ _____
 * Click on "Login" in the upper right.
 * Under "Use another service to log in", choose "Google".
 
-<a href="http://www.govmeeting.org/about?id=setup#continue">Setup Continued</a>
+<a href="https://www.govmeeting.org/about?id=setup#continue">Setup Continued</a>
 

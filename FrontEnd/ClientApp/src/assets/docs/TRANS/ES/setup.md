@@ -20,6 +20,12 @@
 <li> Instalar <a href="https://nodejs.org/en/download/">Node.js.</a> </li>
 <li> Instale <a href="https://dotnet.microsoft.com/download">.Net Core SDK.</a> </li>
 <li> Clone o descargue el proyecto desde <a href="https://github.com/govmeeting/govmeeting">Github.</a> Preferiblemente bifurca el proyecto y clona tu bifurcación. </li>
+<li> Comprobar instalación: 
+<ul>
+<li> cd FrontEnd / ClientApp </li>
+<li> npm install; npm start </li>
+<li> [Abra un navegador en "localhost: 4200"] </li>
+</ul></li>
 </ul><hr />
 <p><a name="DevelopVsCode"></a></p>
 <h1> Desarrollar con VsCode <br/></h1>
@@ -58,7 +64,7 @@
 <p> De forma predeterminada, ClientApp llamará a los servicios de código auxiliar en lugar de llamar a la API de la aplicación web. </p>
 <h2> Ejecute ClientApp y WebApp </h2>
 <ul>
-<li> Descargue las subcarpetas de <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive.</a> Póngalos en una carpeta hermana para el proyecto llamado "TESTDATA" </li>
+<li> Descargue los datos de prueba de <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive.</a> Póngalos en una carpeta hermana para el proyecto llamado "TESTDATA". Estos son archivos multimedia que no deberían comprometerse con Github. También puede descargarlos desde <a hfre="https://1drv.ms/u/s!AqN2hZ8PFCAag_pd_5aXKqav1FFN_Q?e=YOAjGV">OneDrive.</a> </li>
 <li> En FrontEnd / ClientApp / app.module.ts, cambie "isAspServerRunning" de falso a verdadero. </li>
 <li> Proyectos de construcción: 
 <ul>
@@ -74,7 +80,7 @@
 <li> En el panel de depuración, configure la configuración de inicio "WebApp & ClientApp" </li>
 <li> Presione F5 (depurar) o Ctrl-F5 (ejecutar sin depurar) 
 <ul>
-<li> El navegador Chrome se abrirá y después de un retraso, ClientApp aparecerá en localhost: 5000. </li>
+<li> Se abrirá el navegador Chrome. Ignore el mensaje temporal "No se puede acceder al sitio" y espere a que se muestre ClientApp. </li>
 </ul></li>
 </ul><h3> Notas </h3>
 <p> "build-webapp" construye la aplicación web. </p>
@@ -88,6 +94,7 @@
 <p> ClientApp es servido por el servidor webpack-dev-server. WebApp usa el servidor Kestrel. Pero Kestrel envía las solicitudes de ClientApp al servidor webpack-dev. </p>
 <h2> Ejecute WorkflowApp </h2>
 <ul>
+<li> Instale <a href="https://www.ffmpeg.org">FFmpeg.</a> . Esto es para procesar archivos de audio y video. </li>
 <li> Descargue los archivos de prueba de <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive.</a> </li>
 <li> En el panel de depuración, configure la configuración de inicio "WorkflowApp" </li>
 <li> Presione F5 (depurar) o Ctrl-F5 (ejecutar sin depurar) </li>
@@ -121,8 +128,7 @@
 </ul>
 <p> Si tiene una cuenta de Google configurada, transcribirá la grabación. </p>
 <h3> Procesar nuevas transcripciones </h3>
-<p> También puede hacer que WorkflowApp procese sus propios archivos de transcripción. Los archivos de prueba son de las reuniones del consejo municipal de Filadelfia, Pensilvania, EE. UU. Para manejar otros formatos de transcripción, primero debe agregar un método a ProcessTranscript_Lib. Ver <a href="https://github.com/govmeeting/govmeeting/issues/93">Github Issue
-# 93</a> </p>
+<p> El objetivo es eventualmente escribir código lo suficientemente inteligente como para procesar todos los formatos de transcripción. Pero por ahora necesitamos agregar código personalizado para nuevos formatos. Si su ciudad, pueblo, etc., produce transcripciones de sus reuniones, sería de gran ayuda si contribuye con el código para manejarlas. Por favor, vea el <a href="https://github.com/govmeeting/govmeeting/issues/93">número 93 de Github</a> </p>
 <hr />
 <p><a name="DevelopVS"></a></p>
 <h1> Desarrollar con Visual Studio <br/></h1>

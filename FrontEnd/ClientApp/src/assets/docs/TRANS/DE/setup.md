@@ -20,6 +20,12 @@
 <li> Installieren Sie <a href="https://nodejs.org/en/download/">Node.js.</a> </li>
 <li> Installieren Sie das <a href="https://dotnet.microsoft.com/download">.Net Core SDK.</a> </li>
 <li> Klonen oder laden Sie das Projekt von <a href="https://github.com/govmeeting/govmeeting">Github</a> herunter <a href="https://github.com/govmeeting/govmeeting">.</a> Verzweigen Sie das Projekt am besten und klonen Sie Ihre Gabel. </li>
+<li> Überprüfen Sie die Installation: 
+<ul>
+<li> cd FrontEnd / ClientApp </li>
+<li> npm installieren; npm starten </li>
+<li> [Öffnen Sie einen Browser für "localhost: 4200"] </li>
+</ul></li>
 </ul><hr />
 <p><a name="DevelopVsCode"></a></p>
 <h1> Entwickeln Sie mit VsCode <br/></h1>
@@ -58,7 +64,7 @@
 <p> Standardmäßig ruft ClientApp Stub-Services auf, anstatt die WebApp-API aufzurufen. </p>
 <h2> Führen Sie ClientApp & WebApp aus </h2>
 <ul>
-<li> Laden Sie die Unterordner von <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive</a> herunter <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">.</a> Legen Sie sie in einem Geschwisterordner für das Projekt "TESTDATA" ab. </li>
+<li> Laden Sie die Testdaten von <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive</a> herunter <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">.</a> Legen Sie sie in einem Geschwisterordner für das Projekt "TESTDATA" ab. Dies sind Mediendateien, die nicht an Github übergeben werden sollten. Sie können sie auch von <a hfre="https://1drv.ms/u/s!AqN2hZ8PFCAag_pd_5aXKqav1FFN_Q?e=YOAjGV">OneDrive</a> herunterladen <a hfre="https://1drv.ms/u/s!AqN2hZ8PFCAag_pd_5aXKqav1FFN_Q?e=YOAjGV">.</a> </li>
 <li> Ändern Sie in FrontEnd / ClientApp / app.module.ts "isAspServerRunning" von false in true. </li>
 <li> Projekte erstellen: 
 <ul>
@@ -74,7 +80,7 @@
 <li> Legen Sie im Debug-Bereich die Startkonfiguration "WebApp & ClientApp" fest. </li>
 <li> Drücken Sie F5 (Debug) oder Strg-F5 (ohne Debugging ausführen). 
 <ul>
-<li> Der Chrome-Browser wird geöffnet und nach einer Verzögerung wird ClientApp auf localhost: 5000 angezeigt. </li>
+<li> Der Chrome-Browser wird geöffnet. Ignorieren Sie die temporäre Meldung "Site kann nicht erreicht werden" und warten Sie, bis ClientApp angezeigt wird. </li>
 </ul></li>
 </ul><h3> Anmerkungen </h3>
 <p> "build-webapp" erstellt WebApp. </p>
@@ -88,6 +94,7 @@
 <p> ClientApp wird vom Webpack-Dev-Server bereitgestellt. WebApp verwendet den Kestrel-Server. Kestrel überträgt ClientApp-Anforderungen jedoch an den Webpack-Dev-Server. </p>
 <h2> Führen Sie WorkflowApp aus </h2>
 <ul>
+<li> Installieren Sie <a href="https://www.ffmpeg.org">FFmpeg.</a> . Dies dient zur Verarbeitung von Audio- und Videodateien. </li>
 <li> Laden Sie die Testdateien von <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">Google Drive</a> herunter <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing">.</a> </li>
 <li> Legen Sie im Debug-Bereich die Startkonfiguration auf "WorkflowApp" fest. </li>
 <li> Drücken Sie F5 (Debug) oder Strg-F5 (ohne Debugging ausführen). </li>
@@ -121,7 +128,7 @@
 </ul>
 <p> Wenn Sie ein Google-Konto eingerichtet haben, wird die Aufzeichnung transkribiert. </p>
 <h3> Verarbeiten Sie neue Transkripte </h3>
-<p> Sie können WorkflowApp auch Ihre eigenen Transkriptdateien verarbeiten lassen. Die Testdateien stammen von den Stadtratssitzungen in Philadelphia, PA, USA. Um andere Transkriptformate verarbeiten zu können, müssen Sie ProcessTranscript_Lib zunächst eine Methode hinzufügen. Siehe <a href="https://github.com/govmeeting/govmeeting/issues/93">Github-Ausgabe Nr. 93</a> </p>
+<p> Das Ziel ist es, Code zu schreiben, der intelligent genug ist, um alle Transkriptformate zu verarbeiten. Im Moment müssen wir jedoch benutzerdefinierten Code für neue Formate hinzufügen. Wenn Ihre Stadt, Ihre Gemeinde usw. Abschriften ihrer Besprechungen erstellt, wäre es eine große Hilfe, wenn Sie den Code zur Bearbeitung dieser Besprechungen beisteuern. Siehe <a href="https://github.com/govmeeting/govmeeting/issues/93">Github-Ausgabe Nr. 93</a> </p>
 <hr />
 <p><a name="DevelopVS"></a></p>
 <h1> Entwickeln Sie mit Visual Studio <br/></h1>

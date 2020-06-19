@@ -24,18 +24,19 @@ export class TopNavComponent implements OnInit {
      {enname: 'Spanish', value: 'es', viewValue: 'Español'},
      {enname: 'Italian', value: 'it', viewValue: 'Italiano'},
      {enname: 'Finish', value: 'fi', viewValue: 'Suomalainen'},
+     {enname: 'Greek', value: 'el', viewValue: 'Ελληνικά'},
      {enname: 'Swahili', value: 'sw', viewValue: 'Kiswahili'},
-     {enname: 'Hindi', value: 'hi', viewValue: 'हिन्दी'},
-     {enname: 'Arabic', value: 'ar', viewValue: 'عربى'},
      {enname: 'Mandarin', value: 'zh', viewValue: '普通话'},
-     {enname: 'Bengali', value: 'bn', viewValue: 'বাংলা'}
-    // {enname: 'Icelandic', value: 'ic', viewValue: 'Íslensku'},
+     {enname: 'Japanese', value: 'ja', viewValue: '日本語'},
+     {enname: 'Hindi', value: 'hi', viewValue: 'हिन्दी'},
+     {enname: 'Bengali', value: 'bn', viewValue: 'বাংলা'},
+     {enname: 'Arabic', value: 'ar', viewValue: 'عربى'}
+     // {enname: 'Icelandic', value: 'ic', viewValue: 'Íslensku'},
     // {enname: 'Norwegian', value: 'no', viewValue: ''},
     // {enname: 'Swedish', value: 'sv', viewValue: ''},
     // {enname: 'Danish', value: 'da', viewValue: ''},
     // {enname: 'Serbian', value: 'sr', viewValue: ''},
     // {enname: 'Croatian', value: 'hr', viewValue: ''},
-    // {enname: 'Greek', value: 'ic', viewValue: ''},
     // {enname: 'Albanian', value: 'sq', viewValue: ''},
     // {enname: 'Armenian', value: 'hy', viewValue: ''},
     // {enname: 'Bosnian', value: 'bs', viewValue: ''},
@@ -67,7 +68,6 @@ export class TopNavComponent implements OnInit {
     // {enname: 'Turkish', value: 'tr', viewValue: 'Türk'},
     // {enname: 'Indonesian', value: 'id', viewValue: 'Indonesia'},
     // {enname: 'Urdu', value: 'ur', viewValue: 'اردو'},
-    // {enname: 'Japanese', value: 'ja', viewValue: '日本語'},
     // {enname: 'Marathi', value: 'mr', viewValue: 'मराठी'},
   ];
 

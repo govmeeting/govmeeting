@@ -28,7 +28,7 @@ namespace GM.Utilities.Translate
 
             // All current documents.
             List<string> allDocuments = new List<string>()
-                { "overview1", "overview2", "workflow", "project-status", "setup", "design", "dev-notes", "database"};
+                { "overview1", "overview2", "workflow", "project-status", "setup", "sys-design", "dev-notes", "database"};
 
             // All languages that we currently support
             List<string> allLanguages = new List<string>()
@@ -36,11 +36,11 @@ namespace GM.Utilities.Translate
 
             // Documents that change often.
             List<string> someDocuments = new List<string>()
-                { "setup"};
+                { "sys-design"};
 
             // We may do some languages at a time.
             List<string> someLanguages = new List<string>()
-                { "ar", "sw", "zh", "pt" , "bn", "hi" };
+                { "el" };
 
             // No documents have yet to be translated into these languages 
             List<string> moreLanguages = new List<string>()
@@ -48,7 +48,7 @@ namespace GM.Utilities.Translate
 
             // uncomment one of the following lines.
             // TranslateDocumentsLanguages(allDocuments, allLanguages, update);
-            TranslateDocumentsLanguages(someDocuments, allLanguages, update);
+            TranslateDocumentsLanguages(someDocuments, someLanguages, update);
             // TranslateDocumentsLanguages(allDocuments, moreLanguages, update);
         }
 
@@ -127,7 +127,7 @@ namespace GM.Utilities.Translate
 
                 File.WriteAllText(newFile, doNotEdit + replaced);
 
-                // Wait 10 seconds. GCP didn't like me running a close loop.
+                // Wait 30 seconds. GCP didn't like me running a close loop.
                 Task.Delay(30000).Wait();
             }
         }
