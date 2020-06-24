@@ -25,7 +25,7 @@
       </gm-gov-info>
     </gm-small-card>
 
-    <gm-small-card *ngIf="!isCounty" class="top2"
+    <gm-small-card *ngIf="(!isCounty && !isBeta)" class="top2"
       icon="far fa-file-alt"
       iconcolor="icon-color-orange"
       title={{billsTitle}}>
@@ -41,7 +41,7 @@
       </gm-meetings>
     </gm-small-card>
 
-    <gm-small-card class="top4"
+    <gm-small-card *ngIf="!isBeta" class="top4"
       icon="far fa-newspaper"
       iconcolor="icon-color-purple"
       title={{newsTitle}}>
@@ -53,14 +53,14 @@
 
   <gm-large-cards>
 
-    <gm-large-card *ngIf="isCounty"
+    <gm-large-card *ngIf="(isCounty && !isBeta)"
       icon="fas fa-edit"
       iconcolor="icon-color-green"
       title={{notesTitle}}>
       <gm-notes></gm-notes>
     </gm-large-card>
 
-    <gm-large-card *ngIf="isCounty"
+    <gm-large-card *ngIf="(isCounty && !isBeta)"
       icon="fas fa-book-open"
       iconcolor="icon-color-green"
       title={{minutesTitle}}>
@@ -102,42 +102,42 @@
       <gm-addtags></gm-addtags>
     </gm-large-card> -->
 
-    <gm-large-card  *ngIf="!isCounty"
+    <gm-large-card  *ngIf="(!isCounty && !isBeta)"
       icon="fas fa-hammer"
       iconcolor="icon-color-green"
       title={{workitemsTitle}}>
       <gm-workitems></gm-workitems>
     </gm-large-card>
 
-    <gm-large-card
+    <gm-large-card *ngIf="!isBeta"
       icon="fas fa-exclamation"
       iconcolor="icon-color-green"
       title={{issuesTitle}}>
      <gm-issues></gm-issues>
     </gm-large-card>
 
-    <gm-large-card
+    <gm-large-card *ngIf="!isBeta"
       icon="fas fa-user-friends"
       iconcolor="icon-color-green"
       title={{officialsTitle}}>
       <gm-officials></gm-officials>
     </gm-large-card>
 
-    <gm-large-card
+    <gm-large-card *ngIf="!isBeta"
       icon="far fa-calendar-check"
       iconcolor="icon-color-red"
       title={{virtualMeetingTitle}}>
       <gm-virtual-meeting></gm-virtual-meeting>
     </gm-large-card>
 
-    <gm-large-card  *ngIf="!isCounty"
+    <gm-large-card  *ngIf="(!isCounty && !isBeta)"
       icon="fas fa-exclamation"
       iconcolor="icon-color-green"
       title={{alertsTitle}}>
       <gm-alerts></gm-alerts>
     </gm-large-card>
 
-    <gm-large-card
+    <gm-large-card *ngIf="!isBeta"
       icon="fas fa-comments"
       iconcolor="icon-color-red"
       title={{chatTitle}}>

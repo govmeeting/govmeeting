@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { GetDashboardTitle } from '../dashboard-titles'
 import { UserSettingsService, UserSettings, LocationType } from '../../user-settings.service';
 import { isDevMode } from '@angular/core';
+import { AppData } from '../../appdata';
 
 const NoLog = true;  // set to false for console logging
 
@@ -12,7 +13,9 @@ const NoLog = true;  // set to false for console logging
 })
 export class DashMainComponent implements OnInit{
   private ClassName: string = this.constructor.name + ": ";
-  isDevMode: boolean = isDevMode();
+  isBeta: boolean;
+  // isDevMode: boolean = isDevMode();
+  isDevMode: boolean = false;
   language: string = "en";
   location: string;
   agency: string;
@@ -41,7 +44,8 @@ export class DashMainComponent implements OnInit{
   alertsTitle: string;
   workareaTitle: string;
 
-  constructor(private userSettingsService: UserSettingsService) {
+  constructor(private userSettingsService: UserSettingsService, private appData: AppData) {
+    this.isBeta = appData.isBeta;
    }
 
    ngOnInit() {

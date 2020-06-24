@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NavService} from '../nav.service';
 import { UserSettingsService, UserSettings, LocationType } from '../../user-settings.service';
+import { AppData } from '../../appdata';
 
 interface Language {
   enname: string;
@@ -15,6 +16,7 @@ interface Language {
 export class TopNavComponent implements OnInit {
   // userSettingsService: UserSettingsService;
   language: string;
+  isBeta: boolean;
 
   languages: Language[] = [
      {enname: 'English', value: 'en', viewValue: 'English'},
@@ -76,8 +78,11 @@ export class TopNavComponent implements OnInit {
   // UserSettingsService is for changing the language
   constructor(
     public navService: NavService,
-    private userSettings: UserSettingsService
-    ) { }
+    private userSettings: UserSettingsService,
+    private appData: AppData
+    ) {
+      this.isBeta = appData.isBeta;
+    }
 
   ngOnInit() {
     this.language = "en";

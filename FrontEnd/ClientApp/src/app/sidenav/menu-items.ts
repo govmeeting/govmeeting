@@ -66,7 +66,7 @@ let boothbayHarborMenu = new NavItem(null, 'Select Location', null,
 ]);
 
 
-export let austinMenu = new NavItem(null, 'Select Location', null,
+let austinMenu = new NavItem(null, 'Select Location', null,
 [
   austin,
   travisCounty,
@@ -80,5 +80,27 @@ export let navigationItems = [
   aboutpagesMenu,
   boothbayHarborMenu
   // austinMenu
-]
+];
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+let betaAboutPages = new NavItem(null, 'About', null,
+[
+  new NavItem(EntryType.docId, 'Overview', 'toc', 'betaOverview'),
+  new NavItem(EntryType.docId, 'Documentation', 'school', 'betaDocumentation')
+]);
+
+
+let betaLocationMenu = new NavItem(null, 'Select Location', null,
+[
+  boothbayHarbor,
+  lincolnCounty
+]);
+
+export let betaNavigationItems = [
+  betaAboutPages,
+  betaLocationMenu
+];
 

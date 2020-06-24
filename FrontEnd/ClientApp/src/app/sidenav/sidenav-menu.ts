@@ -7,11 +7,12 @@ import { NavService } from './nav.service';
 import { UserSettingsService, UserSettings, LocationType } from '../user-settings.service';
 //import { string } from '@amcharts/amcharts4/core';
 
-import { navigationItems } from './menu-items';
+import { navigationItems, betaNavigationItems } from './menu-items';
 import { MenuTreeArray } from './menu-tree-array'
 
 import { MatDialog, MatDialogRef } from  '@angular/material';
 import { PopupComponent } from '../popup/popup.component';
+import { AppData } from '../appdata';
 
 enum DeviceType{
   desktop,
@@ -30,12 +31,13 @@ const NoLog = true;  // set to false for console logging
 // export class SidenavMenuComponent implements AfterViewInit {
   export class SidenavMenuComponent {
     private ClassName: string = this.constructor.name + ": ";
+    isBeta: boolean;
     @ViewChild('appDrawer', {static: false})
     subscription: Subscription;
     navItems: any[] = [];
     sidenav: ElementRef;
     version = VERSION;
-    navigationItems: NavItem[] = navigationItems;
+    navigationItems: NavItem[];
     menuTreeArray: MenuTreeArray;
     deviceType: string;
 
@@ -43,10 +45,17 @@ const NoLog = true;  // set to false for console logging
     private navService: NavService,
     public router: Router,
     private userSettingsService: UserSettingsService,
-    private  dialog:  MatDialog)
+    private  dialog:  MatDialog,
+    private appData: AppData)
   {
+      this.isBeta = appData.isBeta;
+      if (this.isBeta){
+        this.navigationItems = betaNavigationItems;
+      } else {
+        this.navigationItems = navigationItems;
+      }
       this.menuTreeArray = new MenuTreeArray();
-      this.menuTreeArray.assignPositions(navigationItems);
+      this.menuTreeArray.assignPositions(this.navigationItems);
       NoLog || console.log(this.ClassName + "navigationItems=", this.navigationItems);
       // let item: NavItem = this.menuTreeArray.getItem([1,3,1], this.navigationItems);
       // NoLog || console.log(this.ClassName + "selectedItem=", item);

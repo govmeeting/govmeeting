@@ -45,6 +45,7 @@ namespace GM.WebApp.Features.Addtags
         //TODO Add authorization check that user's location matches that of the government entity.
         // We need to read the location from the user's claims.
 #if NOAUTH
+#else
         [Authorize(Policy = "Editor")]
 #endif
         [HttpPost("{meetingId}")]          // POST api/addtags

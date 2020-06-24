@@ -47,11 +47,11 @@ namespace GM.WebApp
             string logfilesPath = GMFileAccess.GetFullPath(Configuration["AppSettings:LogfilesPath"]);
             GlobalDiagnosticsContext.Set("logfilesPath", logfilesPath);
 
-            string testPath = Configuration["AppSettings:TestdataPath"];
-            string dataPath = Configuration["AppSettings:DatafilesPath"];
-            string logPath = Configuration["AppSettings:LogfilesPath"];
+            //string testPath = Configuration["AppSettings:TestdataPath"];
+            //string dataPath = Configuration["AppSettings:DatafilesPath"];
+            //string logPath = Configuration["AppSettings:LogfilesPath"];
 
-            string bin = Configuration["AppSettings:bin"];
+            //string bin = Configuration["AppSettings:bin"];
 
 
             // Create an instance of NLog.Logger manually here since it is not available
@@ -158,23 +158,22 @@ namespace GM.WebApp
 
             logger.Info("Configure datafiles PhysicalFileProvider");
 
-            // Add a PhysicalFileProvider for the DATAFILES folder. Until we have a way to serve video files to 
-            // videogular via the API, we need to allow these to be accessed as static files.
-            if (config == null)
-            {
-                logger.Info("config is null");
-            } else
-            {
-                logger.Info("config is not null");
-            }
-            if (config.Value == null)
-            {
-                logger.Info("config.Value is null");
-            } else
-            {
-                string configstring = config.ToString();
-                logger.Info("Value is " + configstring);
-            }
+            //if (config == null)
+            //{
+            //    logger.Info("config is null");
+            //} else
+            //{
+            //    logger.Info("config is not null");
+            //}
+            //if (config.Value == null)
+            //{
+            //    logger.Info("config.Value is null");
+            //} else
+            //{
+            //    string configstring = config.ToString();
+            //    logger.Info("Value is " + configstring);
+            //}
+
             string datafilesPath = config.Value.DatafilesPath;
             if (!Directory.Exists(datafilesPath))
             {
@@ -183,6 +182,9 @@ namespace GM.WebApp
                 Directory.CreateDirectory(datafilesPath + "/PROCESSING");
                 Directory.CreateDirectory(datafilesPath + "/COMPLETED");
             }
+
+            // Add a PhysicalFileProvider for the DATAFILES folder. Until we have a way to serve video files to 
+            // videogular via the API, we need to allow these to be accessed as static files.
             logger.Info("datafilesPath=" + datafilesPath);
             app.UseStaticFiles(new StaticFileOptions
             {

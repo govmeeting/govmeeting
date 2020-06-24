@@ -19,9 +19,23 @@
     ["Japanese", "ja", "概要","ワークフロー","プロジェクトステータス","セットアップ","開発ノート","データベース、シス","テム設計"]
   ]
 
-  export function GetPageTitle(pageid: string, language: string) : string {
+  let betaPageIds = ["betaOverview", "betaDocumentation" ];
+  let betaPageTitles = [
+    ["English", "en", "Overview", "Documentation"]
+  ]
+
+  export function GetPageTitle(pageid: string, language: string, isBeta: boolean) : string {
+    if (isBeta) {
+      return GetBetaPageTitles(pageid, language)
+    }
     let i = PageIds.findIndex(x => x == pageid);
     let j = PageTitles.findIndex(y => y[1] == language);
     return PageTitles[j][i+2];
+  }
+
+  function GetBetaPageTitles(pageid: string, language: string){
+    let i = betaPageIds.findIndex(x => x == pageid);
+    let j = betaPageTitles.findIndex(y => y[1] == language);
+    return betaPageTitles[j][i+2];
   }
 

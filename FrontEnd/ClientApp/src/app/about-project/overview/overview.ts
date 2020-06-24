@@ -10,7 +10,6 @@ import { GetPageTitle } from '../document-pages';
 export class OverviewComponent implements OnInit {
   // @Input() showtitle: boolean = true;
   // userSettingsService: UserSettingsService;
-
   title: string = "Overview";
   document1: string;
   document2: string;
@@ -30,7 +29,7 @@ export class OverviewComponent implements OnInit {
 
   changeLanguage(language: string) {
     this.language = language;
-    this.title = GetPageTitle("overview", this.language);
+    this.title = GetPageTitle("overview", this.language, false);
     let folder = "TRANS/" + (this.language).toUpperCase() + "/";
     if (this.language == "en") folder = "";
     this.document1 = "assets/docs/" + folder + "overview1.md";

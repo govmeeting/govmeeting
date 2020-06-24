@@ -77,6 +77,7 @@ import { loadConfiguration } from './configuration/loadConfiguration';
 import { WorkareaComponent } from './workarea/workarea.component';
 
 let isAspServerRunning = false;
+let isBeta = false;
 
 @NgModule({
   imports: [
@@ -163,7 +164,7 @@ let isAspServerRunning = false;
       provide: AppData,
       // TODO - Read APP_DATA from the html.
       // useValue: window['APP_DATA']    // Get settings from html
-      useValue: { isAspServerRunning: isAspServerRunning },
+      useValue: { isAspServerRunning: isAspServerRunning, isBeta: isBeta },
     },
 
     // If you use the stubs for these services, they will not call the Asp.Net server,

@@ -40,6 +40,7 @@ namespace GM.WebApp.Features.Fixasr
         // POST api/fixasr
         // TODO Add next line back when working
 #if NOAUTH
+#else
         [Authorize(Policy = "Proofreader")]
 #endif
         [HttpPost("{meetingId}/{part}")]

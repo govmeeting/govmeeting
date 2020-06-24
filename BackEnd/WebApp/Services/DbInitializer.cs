@@ -160,13 +160,16 @@ namespace GM.WebApp.Services
 
 /*      SUMMARY OF CALLS TO CREATE ENTRIES IN AUTHENTICATION TABLES
  *                   CALL                                    CREATES ENTRY IN TABLE
- * roleManager.CreateAsync(new IdentityRole( ... ))          dbo.AspNetRoles
- * userManager.CreateAsync(new ApplicationUser() { ... }     dbo.AspNetUsers
- * userManager.AddToRoleAsync( ... )                         dbo.AspNetUserRoles
- * userManager.AddClaimAsync(user, new Claim( ... )          dbo.AspNetUserClaims
+ * roleManager.CreateAsync(new IdentityRole( ... ))          dbo.AspNetRoles        create roles
+ * userManager.AddToRoleAsync( ... )                         dbo.AspNetUserRoles    assign roles to users
+ *      "claims" are key value pairs (ClaimType, ClaimValue).  
+ * userManager.CreateAsync(new ApplicationUser() { ... }     dbo.AspNetUsers        create users
+ * userManager.AddClaimAsync(user, new Claim( ... )          dbo.AspNetUserClaims   assign claims to users
  * 
  *      OTHER IDENTITY TABLES
- *      dbo.AspNetRoleClaims
+ *      dbo.AspNetRoleClaims     "map Roles to Claims. Helpful if migrating from older membership framework that uses roles."
  *      dbo.AspNetUserLogins
  *      dbo.AspNetUserTokens
- * */
+ *
+ *   https://benfoster.io/blog/asp-net-identity-role-claims/
+ */
