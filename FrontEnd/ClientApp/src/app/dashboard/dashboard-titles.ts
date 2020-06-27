@@ -13,7 +13,11 @@ let DashboardTitles: string[][] = [
   ["Bengali", "bn", "রাজনীতি", "আইন", "সভা", "সরকারী সংবাদ", "প্রতিলিপি সম্পাদনা করুন", "ট্রান্সক্রিপ্টে ট্যাগ যুক্ত করুন", "প্রতিলিপি দেখুন", "সমস্যা", "আধিকারিক", "ভার্চুয়াল সভা", "চ্যাট", "চার্ট" , "নোটস", "মিটিং মিনিট", "কাজের আইটেম", "সতর্কতা"],
   ["Hindi", "hi", "राजनीति", "विधान", "बैठकें", "गोवमीटिंग न्यूज़", "ट्रांसक्रिप्ट संपादित करें", "टैगिंग को ट्रांसक्रिप्ट में जोड़ें", "प्रतिलेख देखें", "मुद्दे", "अधिकारी", "वर्चुअल मीटिंग", "चैट", "चार्ट" , "नोट्स", "मीटिंग मिनट", "कार्य आइटम", "अलर्ट"],
   ["Greek", "el", "Πολιτική", "Νομοθεσία", "Συναντήσεις", "Ειδήσεις Govmeeting", "Επεξεργασία μεταγραφής", "Προσθήκη ετικετών σε μεταγραφή", "Προβολή μεταγραφής", "Θέματα", "Αξιωματούχοι", "Εικονική συνάντηση", "Συζήτηση" , "Διαγράμματα", "Σημειώσεις", "Συνοπτικά πρακτικά", "Αντικείμενα εργασίας", "Ειδοποιήσεις"],
-  ["Japanese", "ja", "「政治」", "「法令」", "「会議」", "「Govmeetingニュース」" , "「トランスクリプトの編集」", "「トランスクリプトへのタグの追加」", "「トランスクリプトの表示」", "「問題」", "「公式」", "「仮想会議」", "「チャット」", "「グラフ」", "「メモ」", "「議事録」", "「作業項目」", "「アラート」"]
+  ["Japanese", "ja", "「政治」", "「法令」", "「会議」", "「Govmeetingニュース」" , "「トランスクリプトの編集」", "「トランスクリプトへのタグの追加」", "「トランスクリプトの表示」", "「問題」", "「公式」", "「仮想会議」", "「チャット」", "「グラフ」", "「メモ」", "「議事録」", "「作業項目」", "「アラート」"],
+  ["Korean", "ko",  "정치", "법률", "회의", "Govmeeting 뉴스", "대본 편집", "대본에 태그 추가", "대본보기", "문제", "공식", "가상 회의", "채팅" , "채팅", "메모", "회의록", "작업 항목", "경고"],
+  ["Vietnamese", "vi", "Chính trị", "Pháp luật", "Cuộc họp", "Tin tức Govmeeting", "Chỉnh sửa bảng điểm", "Thêm thẻ vào bảng điểm", "Xem bảng điểm", "Vấn đề", "Quan chức", "Cuộc họp ảo", "Trò chuyện" , "Biểu đồ", "Ghi chú", "Biên bản cuộc họp", "Mục công việc", "Cảnh báo" ],
+  ["Polish", "pl", "Polityka", "Ustawodawstwo", "Spotkania", "Govmeeting News", "Edytuj transkrypcję", "Dodaj tagi do transkrypcji", "Wyświetl transkrypt", "Problemy", "Urzędnicy", "Spotkanie wirtualne", "Czat", "Wykresy", "Notatki", "Protokół spotkania", "Elementy pracy", "Alerty"],
+  ["Icelandic", "is", "Stjórnmál", "Löggjöf", "Fundir", "Ríkisstjórnarfréttir", "Breyta afriti", "Bæta merkjum við afrit", "Skoða afrit", "mál", "Embættismenn", "Sýndarfundur", "Spjall" , "Töflur", "Athugasemdir", "Fundargerðir fundargerð", "Vinnuatriði", "Viðvaranir"]//ADD_HERE - do not remove this comment
 ]
 
 

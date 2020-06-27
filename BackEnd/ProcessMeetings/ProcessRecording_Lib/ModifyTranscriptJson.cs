@@ -14,7 +14,7 @@ namespace GM.ProcessRecording
     public class ModifyTranscriptJson
     {
 
-        public EdittranscriptView Modify(TranscribeResponse transcript)
+        public EdittranscriptView Modify(TranscribeResult transcript)
         {
             EdittranscriptView editmeeting = new EdittranscriptView();
 
@@ -50,7 +50,7 @@ namespace GM.ProcessRecording
             return editmeeting;
         }
 
-        public EdittranscriptView Modify2(TranscribeResponse transcript)
+        public EdittranscriptView Modify2(TranscribeResult transcript)
         {
             EdittranscriptView editmeeting = new EdittranscriptView();
 

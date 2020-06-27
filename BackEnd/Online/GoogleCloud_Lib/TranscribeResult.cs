@@ -2,11 +2,11 @@
 
 namespace GM.GoogleCloud
 {
-    public class TranscribeResponse
+    public class TranscribeResult
     {
         public List<Result> results;
 
-        public TranscribeResponse()
+        public TranscribeResult()
         {
             results = new List<Result>();
         }

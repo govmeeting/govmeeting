@@ -22,8 +22,6 @@ bld/
 [Bb]in/
 [Oo]bj/
 
-
-
 /Properties/launchSettings.json
 
 # Govmeeting
@@ -33,19 +31,20 @@ bld/
 !**/WebApp/wwwroot/js/
 !**/WebApp/wwwroot/lib/
 !**/WebApp/wwwroot/assets/
-
-.synkron.syncdb
-desktop.ini
-DATAFILES/
-src/logs/
-**/wwwroot/dist/
-**/ClientApp/dist/
-DebugLog*
-# Files in SECRETS folder. Just in case they get copied into repo folder, we don't want to commit them.
+**/stubdata/LARGE/
+# SECRETS files. Just in case they get copied by accident into repo folder.
 appsettings.Development.json
 appsettings.Production.json
 appsettings.Staging.json
 TranscribeAudio.json
+DATAFILES/
+**/wwwroot/dist/
+**/ClientApp/dist/
+src/logs/
+
+.synkron.syncdb
+desktop.ini
+DebugLog*
 
 # Visual Studio 2015 cache/options directory
 .vs/

@@ -19,6 +19,18 @@ export class TalksComponent implements OnInit {
   highlightedTopic: string;
   shownTopicSelection: number = -1; // index of where we are displaying topic choice.
 
+  wordColor: string = "lightgreen";
+
+  getWordColor(speaker: number): string {
+     switch (speaker) {
+       case 1: {return "lightblue";}
+       case 2: {return "lightgreen";}
+       case 3: {return "yellow";}
+       case 4: {return "pink";}
+       return "brown";
+     }
+    }
+
     constructor(private _edittranscriptService: EdittranscriptService) {
         //this.talks = addtagsService.getTalks();
     }

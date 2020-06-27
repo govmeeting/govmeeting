@@ -2,11 +2,11 @@
 
 namespace GM.GoogleCloud
 {
-    public class TranscribeRsp
+    public class TranscribeResultOrig
     {
         public List<RspAlternative> alternatives;
 
-        public TranscribeRsp()
+        public TranscribeResultOrig()
         {
             alternatives = new List<RspAlternative>();
         }

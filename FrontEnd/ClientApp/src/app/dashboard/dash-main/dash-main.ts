@@ -14,8 +14,7 @@ const NoLog = true;  // set to false for console logging
 export class DashMainComponent implements OnInit{
   private ClassName: string = this.constructor.name + ": ";
   isBeta: boolean;
-  // isDevMode: boolean = isDevMode();
-  isDevMode: boolean = false;
+  isDevMode: boolean;
   language: string = "en";
   location: string;
   agency: string;
@@ -46,6 +45,7 @@ export class DashMainComponent implements OnInit{
 
   constructor(private userSettingsService: UserSettingsService, private appData: AppData) {
     this.isBeta = appData.isBeta;
+    this.isDevMode = isDevMode();
    }
 
    ngOnInit() {

@@ -76,8 +76,9 @@ import { OfficialsComponent } from './officials/officials.component';
 import { loadConfiguration } from './configuration/loadConfiguration';
 import { WorkareaComponent } from './workarea/workarea.component';
 
-let isAspServerRunning = false;
-let isBeta = false;
+let isAspServerRunning = false;   // Is the Asp.Nnet server running?
+let isBeta = false;               // Is this the beta release version?
+let isLargeEditData = false;       // Are we using the large data for EditTranscript? (Little Falls, etc.)
 
 @NgModule({
   imports: [
@@ -164,7 +165,7 @@ let isBeta = false;
       provide: AppData,
       // TODO - Read APP_DATA from the html.
       // useValue: window['APP_DATA']    // Get settings from html
-      useValue: { isAspServerRunning: isAspServerRunning, isBeta: isBeta },
+      useValue: { isAspServerRunning: isAspServerRunning, isBeta: isBeta, isLargeEditData: isLargeEditData },
     },
 
     // If you use the stubs for these services, they will not call the Asp.Net server,

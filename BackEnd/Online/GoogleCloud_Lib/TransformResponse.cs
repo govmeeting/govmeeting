@@ -7,22 +7,35 @@ using System.Security.Cryptography.X509Certificates;
 namespace GM.GoogleCloud
 {
 
-    /*  We want to extract all the useful data from the response that comes back from the cloud.
+    /*  === Simplify methos ===
+     *  We want to extract all the useful data from the response that comes back from the cloud.
      *  But we don't want the superlous fields that make it more complicated to use.
-     *  For example, even though we are not receiving alteratives in the 
-     *  LongRunningRecognizeResponse, we still have an "alternaive' field in each result.
-     *  Also, the response from the cloud has two sets of results for the same audio.
-     *  The first set is missing the speakerTag values. The second set has the speaker tags
-     *  but has all the words in one "result" field.
-     *  Here we remove the alternative field, the second set of results and populate speaker
-     *  in the first set.
+     *  The raw response has a "Results" object containing an array of results.
+     *  Each result has an array of "Alternatives", even though in the LongRunning response 
+     *  there is only ever one alternative for each result. Each "Alternative" contains an array
+     *  of "Transcript" objects. 
+     *  We simplify this by having each "Result" object contain just the arary of "Transcript" objects.
+     *  We also:
+     *    * Rename "Results" to "results"
+     *    * Rename "Transcript: to "text"
+     *    * Add a wordcount to each "text"
+     *    * Add a sequential wordnum to each word
+     *    * Convert starttime and endtime to simple millisec counts instead of {sec, nanos} objects
+     *  
+     *  === FixSpeakerTags method ===
+     *  The raw response from the cloud has two sets of results for the same audio.
+     *  The first set is missing the speakerTag values. The second "set" has one result field with each 
+     *  word having the speaker tag.
+     *  We fix this by:
+     *      * Populate speaker tag in the first set of words.
+     *      * Remove the final result.
      */
 
     public static class TransformResponse
     {
-        public static TranscribeResponse Simpify(RepeatedField<SpeechRecognitionResult> srrs)
+        public static TranscribeResult Simpify(RepeatedField<SpeechRecognitionResult> srrs)
         {
-            TranscribeResponse transcript = new TranscribeResponse();
+            TranscribeResult transcript = new TranscribeResult();
             int resultCount = 0;
             int totalCount = 0;
 
@@ -63,7 +76,7 @@ namespace GM.GoogleCloud
         // contains SpeakerTag values for all words.
         // FixSpeakerTags moves the SpeakerTag values from the last result in the response
         // to the corresponding words in the initial results.
-        public static TranscribeResponse FixSpeakerTags(TranscribeResponse rsp)
+        public static TranscribeResult FixSpeakerTags(TranscribeResult rsp)
         {
             // Find where the results repeat. This should be where
             // * the text is a zero length string

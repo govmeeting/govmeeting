@@ -61,7 +61,7 @@ namespace GM.ProcessRecording_Tests
             // Transcribe
             //TranscribeAudio ta = new TranscribeAudio(_config);
 
-            TranscribeRsp response = new TranscribeRsp();
+            TranscribeResultOrig response = new TranscribeResultOrig();
 
             // TODO - signature of TranscribeInCloud has changed.
             // response = transcribe.MoveToCloudAndTranscribe(audioFile, baseName + ".flac", config.GoogleCloudBucketName, config.UseAudioFileAlreadyInCloud, language);
@@ -84,7 +84,7 @@ namespace GM.ProcessRecording_Tests
 
             // Test transcription of a file already in the cloud storage bucket
 
-            TranscribeRsp transcript = new TranscribeRsp();
+            TranscribeResultOrig transcript = new TranscribeResultOrig();
 
             // TODO - signature of TranscribeInCloud has changed.
             // transcript = transcribe.TranscribeInCloud("USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09_00-01-40.flac", language);
@@ -99,7 +99,7 @@ namespace GM.ProcessRecording_Tests
 
             // Test transcription on a local file. We will use sychronous calls to the Google Speech API. These allow a max of 1 minute per request.
             string folder = config.TestdataPath + @"..\testdata\BBH Selectmen\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen\2017-01-09\step 2 extract\";
-            TranscribeRsp transcript = transcribe.TranscribeFile(folder + "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09#00-01-40.flac", language);
+            TranscribeResultOrig transcript = transcribe.TranscribeFile(folder + "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09#00-01-40.flac", language);
 
             string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
         }

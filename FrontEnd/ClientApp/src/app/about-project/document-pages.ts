@@ -6,7 +6,6 @@
     ["German", "de", "Überblick", "Funktionaler Workflow","Projektstatus", "Setup","Dev Notes","Datenbank", "Design"],
     ["Spanish", "es", "Visión general", "Flujo funcional","Estado del proyecto","Configuración","Dev Notes","Base de datos","Diseño"],
     ["French", "fr","Aperçu", "Flux de travail", "Statut du projet", "Configuration", "Notes de développement", "Base de données", "Conception Sys"],
-    //["Icelandic", "is", "Yfirlit", "Vinnuflæði", "Staða verkefnis", "Uppsetning", "Dev athugasemdir", "Gagnasafn", "Sys hönnun"],
     ["Italian", "it", "Panoramica", "Flusso di lavoro", "Stato del progetto", "Impostazione", "Note per gli sviluppatori", "Database", "Progettazione"],
     ["Finish", "fi", "Yleiskatsaus", "Työnkulku", "Projektin tila", "Asennus", "Kehittäjän muistiinpanot", "Tietokanta", "Suunnittelu"],
     ["Arabic", "ar", "نظرة عامة", "تدفق العمل", "حالة المشروع", "اقامة", "ملاحظات المطور", "قاعدة البيانات", "التصميم"],
@@ -16,7 +15,11 @@
     ["Bengali", "bn", "সংক্ষিপ্ত বিবরণ", "কর্মপ্রবাহ", "প্রকল্পের স্থিতি", "সেটআপ", "বিকাশকারী নোট", "ডাটাবেস", "নকশা"],
     ["Hindi", "hi", "अवलोकन", "वर्कफ़्लो", "प्रोजेक्ट स्थिति", "सेटअप", "डेवलपर नोट्स", "डेटाबेस", "डिज़ाइन"],
     ["Greek", "el", "επισκόπηση", "ροή εργασίας", "κατάσταση έργου", "ρύθμιση", "dev-Notes", "βάση δεδομένων", "sys-design"],
-    ["Japanese", "ja", "概要","ワークフロー","プロジェクトステータス","セットアップ","開発ノート","データベース、シス","テム設計"]
+    ["Japanese", "ja", "概要","ワークフロー","プロジェクトステータス","セットアップ","開発ノート","データベース、シス","テム設計"],
+    ["Korean", "ko", "개요", "워크 플로우", "프로젝트 상태", "설정", "개발자 노트", "데이터베이스", "시스템 디자인"],
+    ["Vietnamese", "vi", "Tổng quan", "quy trình làm việc", "trạng thái dự án", "thiết lập", "ghi chú của nhà phát triển", "cơ sở dữ liệu", "thiết kế hệ thống"],
+    ["Polish", "pl", "Przegląd", "Przepływ pracy", "Status projektu", "Konfiguracja", "Notki programisty", "Baza danych", "Projekt"],
+    ["Icelandic", "is", "Yfirlit", "Verkflæði", "Staða verkefnis", "Skipulag", "Athugasemdir þróunaraðila", "Gagnasafn", "Hönnun"]//ADD_HERE - do not remove this comment
   ]
 
   let betaPageIds = ["betaOverview", "betaDocumentation" ];

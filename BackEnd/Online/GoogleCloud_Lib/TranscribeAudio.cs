@@ -6,18 +6,6 @@ using Newtonsoft.Json;
 
 namespace GM.GoogleCloud
 {
-    public class TranscribeParameters
-    {
-        public TranscribeParameters() { }
-        public string audiofilePath { get; set; }
-        public string objectName { get; set; }
-        public string GoogleCloudBucketName { get; set; }
-        public bool useAudioFileAlreadyInCloud { get; set; }
-        public string language { get; set; } // This is the ISO 639 code
-        public int MinSpeakerCount { get; set; }
-        public int MaxSpeakerCount { get; set; }
-        public RepeatedField<string> phrases { get; set; }
-    }
 
     public class TranscribeAudio
     {
@@ -28,36 +16,26 @@ namespace GM.GoogleCloud
             speechClient = SpeechClient.Create();
         }
 
-        // TranscribeRsp is the original format that we returned when using fixasr
-        // TranscribeResponse is the new format for editmeeting.
-
-        public TranscribeResponse TranscribeAudioFile(TranscribeParameters transParams)
+        public TranscribeResult TranscribeAudioFile(TranscribeParameters transParams, string rawResponseFile)
         {
-            // TODO - remove next lines. These are for debugging.
+            LongRunningRecognizeResponse response = MoveToCloudAndTranscribe(transParams);
 
-            string rawResponseFile = @"C:\GOVMEETING\TESTDATA\DevelopTranscription\rawResponse.json";
-            string rawResponse = File.ReadAllText(rawResponseFile);
-            LongRunningRecognizeResponse response = JsonConvert.DeserializeObject<LongRunningRecognizeResponse>(rawResponse);
+            // Save the raw response, if we were passed a file path.
+            if (rawResponseFile != "")
+            {
+                string responseString = JsonConvert.SerializeObject(response, Formatting.Indented);
+                File.WriteAllText(rawResponseFile, responseString);
+            }
 
-            // LongRunningRecognizeResponse response = _MoveToCloudAndTranscribe(transParams);
+            TranscribeResult resp = TransformResponse.Simpify(response.Results);
 
-            // TODO - remove next lines. These are for debugging.
-            //string responseString = JsonConvert.SerializeObject(response, Formatting.Indented);
-            //File.WriteAllText(rawResponseFile, responseString);
-
-            TranscribeResponse rsp = TransformResponse.Simpify(response.Results);
-            return TransformResponse.FixSpeakerTags(rsp);
+            return TransformResponse.FixSpeakerTags(resp);
         }
 
-        public TranscribeRsp MoveToCloudAndTranscribe(TranscribeParameters transParams)
-        {
-            LongRunningRecognizeResponse response = _MoveToCloudAndTranscribe(transParams);
-            TranscribeRsp rsp = TransformResp(response.Results);
-            return rsp;
-        }
-        private LongRunningRecognizeResponse _MoveToCloudAndTranscribe(TranscribeParameters transParams)
+        private LongRunningRecognizeResponse MoveToCloudAndTranscribe(TranscribeParameters transParams)
         {
             MoveToCloudIfNeeded(transParams);
+
             LongRunningRecognizeResponse response = TranscribeInCloud(transParams);
             return response;
         }
@@ -93,7 +71,7 @@ namespace GM.GoogleCloud
             var longOperation = speechClient.LongRunningRecognize(new RecognitionConfig()
             {
                 Encoding = RecognitionConfig.Types.AudioEncoding.Flac,
-                SampleRateHertz = 48000,
+                SampleRateHertz = 44100,
                 EnableWordTimeOffsets = true,
                 LanguageCode = transParams.language,
                 EnableAutomaticPunctuation = true,
@@ -111,8 +89,48 @@ namespace GM.GoogleCloud
         }
 
 
+        private int ParseDuration(Google.Protobuf.WellKnownTypes.Duration duration)
+        {
+            String s = duration.ToString();
+            s = s.Replace("s", "");
+            s = s.Replace("\"", "");
+            double d = Double.Parse(s);
+            int milliseconds = (int) (d * 1000);
+            return milliseconds;
+        }
+
+        // This method is not currently used. It would allow us to set the Google Application credentials file
+        // when we create the SpeechClient. However, we are instead setting the environment variable
+        // "GOOGLE_APPLICATION_CREDENTIALS" in a higher level routine. The Google Cloud libraries then
+        // automatically use that value.
+
+        // SpeechClient GetSpeechClient()
+        // {
+        //     string credentialsFilePath = config.GoogleApplicationCredentials;
+        //     GoogleCredential googleCredential;
+        //     using (Stream m = new FileStream(credentialsFilePath, FileMode.Open))
+        //         googleCredential = GoogleCredential.FromStream(m);
+        //     var channel = new Grpc.Core.Channel(SpeechClient.DefaultEndpoint.Host,
+        //         googleCredential.ToChannelCredentials());
+        //     var speech = SpeechClient.Create(channel);
+        //     return speech;
+        // }
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////// 
+        ///  Original code for fixasr component
+        //////////////////////////////////////////////////////////////////////////////////////////   
+
+        public TranscribeResultOrig MoveToCloudAndTranscribeOrig(TranscribeParameters transParams)
+        {
+            LongRunningRecognizeResponse response = MoveToCloudAndTranscribe(transParams);
+
+            TranscribeResultOrig rsp = TransformResp(response.Results);
+            return rsp;
+        }
+
         // Transcribe a local audio file. We can only use this with audios up to 1 minute long.
-        public TranscribeRsp TranscribeFile(string fileName, string language)
+        public TranscribeResultOrig TranscribeFile(string fileName, string language)
         {
             // var speechClient = SpeechClient.Create();
             RecognitionAudio recogAudio = RecognitionAudio.FromFile(fileName);
@@ -126,18 +144,19 @@ namespace GM.GoogleCloud
             }, recogAudio);
 
             // Transform the Google response into a more usable object.
-            TranscribeRsp transcript = GetShortTranscribeResponse(response);
+            TranscribeResultOrig transcript = GetShortTranscribeResponse(response);
             return transcript;
         }
 
-        private TranscribeRsp GetShortTranscribeResponse(RecognizeResponse response)
+        private TranscribeResultOrig GetShortTranscribeResponse(RecognizeResponse response)
         {
             return TransformResp(response.Results);
         }
 
-        private TranscribeRsp TransformResp(RepeatedField<SpeechRecognitionResult> results)
+
+        private TranscribeResultOrig TransformResp(RepeatedField<SpeechRecognitionResult> results)
         {
-            TranscribeRsp transcript = new TranscribeRsp();
+            TranscribeResultOrig transcript = new TranscribeResultOrig();
 
             foreach (var result in results)
             {
@@ -167,33 +186,6 @@ namespace GM.GoogleCloud
             }
             return transcript;
         }
-
-        private int ParseDuration(Google.Protobuf.WellKnownTypes.Duration duration)
-        {
-            String s = duration.ToString();
-            s = s.Replace("s", "");
-            s = s.Replace("\"", "");
-            double d = Double.Parse(s);
-            int milliseconds = (int) (d * 1000);
-            return milliseconds;
-        }
-
-        // This method is not currently used. It would allow us to set the Google Application credentials file
-        // when we create the SpeechClient. However, we are instead setting the environment variable
-        // "GOOGLE_APPLICATION_CREDENTIALS" in a higher level routine. The Google Cloud libraries then
-        // automatically use that value.
-
-        // SpeechClient GetSpeechClient()
-        // {
-        //     string credentialsFilePath = config.GoogleApplicationCredentials;
-        //     GoogleCredential googleCredential;
-        //     using (Stream m = new FileStream(credentialsFilePath, FileMode.Open))
-        //         googleCredential = GoogleCredential.FromStream(m);
-        //     var channel = new Grpc.Core.Channel(SpeechClient.DefaultEndpoint.Host,
-        //         googleCredential.ToChannelCredentials());
-        //     var speech = SpeechClient.Create(channel);
-        //     return speech;
-        // }
 
     }
 } 

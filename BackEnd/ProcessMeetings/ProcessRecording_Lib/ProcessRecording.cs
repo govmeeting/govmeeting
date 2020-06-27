@@ -60,7 +60,7 @@ namespace GM.ProcessRecording
             // We want the object name in the cloud to be the original video file name with ".flac" extension.
             string objectName = Path.GetFileNameWithoutExtension(videoFile) + ".flac";
 
-            TranscribeRsp transcript;
+            TranscribeResultOrig transcript;
 
             TranscribeParameters transParams = new TranscribeParameters
             {
@@ -75,7 +75,7 @@ namespace GM.ProcessRecording
             };
 
             // Move audio file to cloud and transcribe
-            transcript = transcribeAudio.MoveToCloudAndTranscribe(transParams);
+            transcript = transcribeAudio.MoveToCloudAndTranscribeOrig(transParams);
 
             string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
             string outputJsonFile = meetingFolder + "\\" + "03-Transcribed.json";

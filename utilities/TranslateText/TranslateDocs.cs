@@ -7,19 +7,25 @@ using System.Threading.Tasks;
 using GM.GoogleCloud;
 using Microsoft.Toolkit.Parsers.Markdown;
 using GM.Utilities;
+using System.Reflection.Metadata;
+using System.Text.RegularExpressions;
 
 namespace GM.Utilities.Translate
 {
     class TranslateDocs
     {
         readonly TranslateInCloud translateInCloud;
-        readonly string folder = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\assets\docs");
+        readonly string docsFolder = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\assets\docs");
 
         public TranslateDocs(TranslateInCloud _translateInCloud)
         {
             translateInCloud = _translateInCloud;
         }
 
+        // Note: If we add a new language, we also need to change:
+        //   FrontEnd\ClientApp\src\app\dashboard\dashboard-titles.ts
+        //   FrontEnd\ClientApp\src\app\about-project\document-pages.ts
+        //   FrontEnd\ClientApp\src\app\sidenav\sidenav-header\sidenav-header.ts
         public void Run(string[] args)
         {
             // Setting update to true attempts to only re-translate files that were edited.
@@ -40,22 +46,29 @@ namespace GM.Utilities.Translate
 
             // We may do some languages at a time.
             List<string> someLanguages = new List<string>()
-                { "el" };
+                { "is" };
 
             // No documents have yet to be translated into these languages 
             List<string> moreLanguages = new List<string>()
                 { "ic", "sw", "no" };
 
             // uncomment one of the following lines.
+            // AddToArrays("is", "Icelandic");
             // TranslateDocumentsLanguages(allDocuments, allLanguages, update);
-            TranslateDocumentsLanguages(someDocuments, someLanguages, update);
+            TranslateDocumentsLanguages(allDocuments, someLanguages, update);
             // TranslateDocumentsLanguages(allDocuments, moreLanguages, update);
+
         }
 
         private void TranslateDocumentsLanguages(List<string> documents, List<string> languages, bool update)
         {
             foreach (string language in languages)
             {
+                string languageFolder = Path.Combine(docsFolder, "TRANS", language.ToUpper());
+                if (!Directory.Exists(languageFolder))
+                {
+                    Directory.CreateDirectory(languageFolder);
+                }
                 foreach (string document in documents)
                 {
                     // NOTE: THIS CODE DOES NOT WORK. (In Windows at least)
@@ -83,14 +96,34 @@ namespace GM.Utilities.Translate
             }
         }
 
+        private void AddToArrays(string language, string languageName)
+        {
+            string docpages = @"""Overview"", ""Workflow"", ""Project status"", ""Setup"", ""Developer notes"", ""Database"", ""Design""";
+            string dashtitles = @"""Politics"", ""Legislation"", ""Meetings"", ""Govmeeting News"", ""Edit Transcript"", ""Add Tags to Transcript"", ""View Transcript"", ""Issues"", ""Officials"", ""Virtual Meeting"", ""Chat"", ""Charts"", ""Notes"", ""Meeting Minutes"", ""Work Items"", ""Alerts""";
+            string docpagesFile = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\app\about-project\document-pages.ts");
+            string dashtitlesFile = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\app\dashboard\dashboard-titles.ts");
+
+            string translated = translateInCloud.TranslateText(docpages, language);  // translate
+            translated = Regex.Replace(translated, @"„|”|“", @"""");        // replace other version of double quotes.
+            string text = File.ReadAllText(docpagesFile);
+            string newtext = text.Replace(@"]//ADD_HERE", @"]," + Environment.NewLine + @"    [""" + languageName + @""", """ + language + @""", " + translated + @"]//ADD_HERE");
+            File.WriteAllText(docpagesFile, newtext);
+
+            translated = translateInCloud.TranslateText(dashtitles, language);  // translate
+            translated = Regex.Replace(translated, @"„|”|“", @"""");        // replace other version of double quotes.
+            text = File.ReadAllText(dashtitlesFile);
+            newtext = text.Replace(@"]//ADD_HERE", @"]," + Environment.NewLine + @"    [""" + languageName + @""", """ + language + @""", " + translated + @"]//ADD_HERE");
+            File.WriteAllText(dashtitlesFile, newtext);
+        }
+
         private string GetEnglishDocumentPath(string document)
         {
-            return folder + "/" + document + ".md";
+            return docsFolder + "\\" + document + ".md";
         }
 
         private string GetTranslatedDocumentPath(string document, string language)
         {
-            return folder + "\\TRANS\\" + language.ToUpper() + "\\" + document + ".md";
+            return docsFolder + "\\TRANS\\" + language.ToUpper() + "\\" + document + ".md";
         }
 
         // The purpose of deletePrior is to facilitate resuming translation if we abort and restart.
@@ -196,7 +229,7 @@ namespace GM.Utilities.Translate
         public void DoSomethingToAllFiles(string lang)
         {
 
-            var files = from f in Directory.EnumerateFiles(folder)
+            var files = from f in Directory.EnumerateFiles(docsFolder)
                         where f.EndsWith("." + lang + ".md")
                         select f;
             foreach (string file in files)

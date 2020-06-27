@@ -17,9 +17,9 @@ export class AboutComponent implements OnInit {
   isBeta: boolean;
   subscription: Subscription;
   // userSettingsService: UserSettingsService;
-  title: string;
-  document: string;
-  pageid: string;
+  title: string;  // page title obtained from GetPageTitle(...)
+  document: string;  // The path of the document. EG: "assets/docs/TRANS/overview.md"
+  pageid: string = "overview";  // the filename of the document minus ".md". EG: "overview"
   language: string = "en";
 
   // constructor(private activeRoute: ActivatedRoute) { }
@@ -35,13 +35,7 @@ export class AboutComponent implements OnInit {
     // We subscribe to changes in user settings language.
     this.userSettingsService.subscribeLanguage(language => {
       this.language = language;
-      // this.title = GetPageTitle(this.pageid, this.language);
       this.setDocument(this.pageid, this.language);
-      // if (this.language == "en") {
-      //   this.document = "assets/docs/" + this.pageid  + ".md"
-      // } else {
-      //   this.document = "assets/docs/" + this.pageid + (this.language).toUpperCase() + "/" + this.pageid + ".md"
-      // }
     })
 
     // We subscribe to changes in the about page displayed.
@@ -49,8 +43,6 @@ export class AboutComponent implements OnInit {
     this.activeRoute.queryParams.subscribe(params => {
         this.pageid = params.id;
         this.setDocument(this.pageid, this.language);
-        // this.title = GetPageTitle(this.pageid, this.language);
-        // this.document = "assets/docs/" + this.pageid + "." + this.language + ".md"
     })
   }
 

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { VgAPI } from 'videogular2/core';
 import { Observable } from 'rxjs';
 import { timer } from 'rxjs/observable/timer';
-
 import { AppData } from '../appdata';
 
 class videoSource {
@@ -45,16 +44,19 @@ export class VideoComponent {
       // var location: string = 'api/video/3/1';  // This would be for MeetingID=3 Part=1
 
       // If WebApp is running, use DATAFILES folder
-      if (appData.isAspServerRunning) {
+      location = 'datafiles/PROCESSING/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part01/';
+      let fileBasename = 'ToFix';
 
-        location = 'datafiles/PROCESSING/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part01/';
-        //location = 'datafiles/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part01/';
-      // else use ClientApp stubdata folder
-      } else {
+        // else use ClientApp stubdata folder
+        if (!appData.isAspServerRunning) {
         location = 'assets/stubdata/';
+        if (appData.isLargeEditData) {
+          location = 'assets/stubdata/LARGE/';
+          fileBasename = 'USA_NJ_Passaic_LittleFalls_TownshipCouncil_en_2020-06-20';
+        }
       }
       NoLog || console.log(this.ClassName + 'location=' + location);
-      const fileBasename = 'ToFix';
+
 
       this.sources = [
           {

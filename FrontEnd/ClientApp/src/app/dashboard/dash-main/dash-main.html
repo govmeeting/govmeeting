@@ -74,18 +74,18 @@
       <gm-edittranscript></gm-edittranscript>
     </gm-large-card>
 
-    <gm-large-card  *ngIf="!isCounty"
-      icon="fas fa-book-open"
-      iconcolor="icon-color-green"
-      title={{viewtranscriptTitle}}>
-      <gm-viewtranscript></gm-viewtranscript>
-    </gm-large-card>
-
     <gm-large-card
       icon="fas fa-edit" *ngIf="isDevMode"
       iconcolor="icon-color-green"
       title={{workareaTitle}}>
       <gm-workarea></gm-workarea>
+    </gm-large-card>
+
+    <gm-large-card  *ngIf="!isCounty"
+      icon="fas fa-book-open"
+      iconcolor="icon-color-green"
+      title={{viewtranscriptTitle}}>
+      <gm-viewtranscript></gm-viewtranscript>
     </gm-large-card>
 
     <!-- <gm-large-card  *ngIf="!isCounty"
