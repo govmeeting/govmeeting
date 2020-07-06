@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input} from '@angular/core';
 import { GetDashboardTitle } from '../dashboard-titles'
-import { UserSettingsService, UserSettings, LocationType } from '../../user-settings.service';
+import { UserSettingsService, UserSettings, LocationType } from '../../COMMON/user-settings.service';
 import { isDevMode } from '@angular/core';
 import { AppData } from '../../appdata';
 

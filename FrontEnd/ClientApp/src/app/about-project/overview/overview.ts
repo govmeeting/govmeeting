@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserSettingsService } from '../../user-settings.service';
+import { UserSettingsService } from '../../COMMON/user-settings.service';
 import { GetPageTitle } from '../document-pages';
 
 @Component({

@@ -6,11 +6,11 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 // import {ApplicationRef} from '@angular/core';
 
-import { NavService } from './sidenav/nav.service';
-import { MediaQueryService } from './media-query.service';
+import { NavService } from './SIDENAV/nav.service';
+//import { MediaQueryService } from './WORK_EXPERIMENTS/media-query.service';
 
 import { Router } from '@angular/router';
-import { UserSettingsService, UserSettings, LocationType } from './user-settings.service';
+import { UserSettingsService, UserSettings, LocationType } from './COMMON/user-settings.service';
 
 
 const NoLog = true;  // set to false for console logging

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetPageTitle } from './document-pages';
 import { Subscription } from 'rxjs';
-import { UserSettingsService, UserSettings, LocationType } from '../user-settings.service';
+import { UserSettingsService, UserSettings, LocationType } from '../COMMON/user-settings.service';
 import { AppData } from '../appdata';
 
 const NoLog = true;  // set to false for console logging

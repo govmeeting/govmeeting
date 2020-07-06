@@ -13,68 +13,73 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 // import { Observable, ObservableInput, of } from 'rxjs';
 // import { catchError } from 'rxjs/operators/catchError.js';
 
-/////////////////// Modules - internal ///////////////////////////////////
+// APP
 import { AppRoutingModule } from './app-routing.module';
-import { DemoMaterialModule } from './material';
-import { ChatModule } from './chat/chat.module';
-import { ConversationModule } from './conversation/conversation.module';
 import { AboutProjectModule } from './about-project/about-project.module';
-import { VirtualMeetingModule } from './virtual-meeting/virtual-meeting-module';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { ViewTranscriptModule } from './viewtranscript/viewtranscript.module';
-import { AddtagsModule } from './addtags/addtags.module';
-import { FixasrModule } from './fixasr/fixasr.module';
-import { EditTranscriptModule } from './edittranscript/edittranscript.module';
-
-import { SharedModule } from './shared/shared.module';
-import { TestingModule } from './testing/testing.module';
-import { SidenavMenuModule } from './sidenav/sidenav-menu-module';
-import { HeaderModule } from './header/header.module';
-// import { AmchartsModule } from './amcharts/amcharts.module';
-
-/////////////////// Services ///////////////////////////////////
-// Services
-import { ErrorHandlingService } from './shared/error-handling/error-handling.service';
-import { ViewTranscriptService } from './viewtranscript/viewtranscript.service';
-import { ViewTranscriptServiceStub } from './viewtranscript/viewtranscript.service-stub';
-import { AddtagsService } from './addtags/addtags.service';
-import { AddtagsServiceStub } from './addtags/addtags.service-stub';
-import { FixasrService } from './fixasr/fixasr.service';
-import { FixasrServiceStub } from './fixasr/fixasr.service-stub';
-import { EdittranscriptService } from './edittranscript/edittranscript.service';
-import { EdittranscriptServiceStub } from './edittranscript/edittranscript.service-stub';
-import { ChatService } from './chat/chat.service';
-import { MessagingService } from './conversation/messaging.service';
-import { DataFactoryService } from './testing/data-factory.service';
-import { DataFakeService } from './testing/data-fake.service';
-import { ConfigService } from './configuration/config.service';
-import { UserSettingsService, UserSettings, LocationType } from './user-settings.service';
-
-/////////////////// Components ///////////////////////////////////
-
 import { AppComponent } from './app.component';
-import { DashMainComponent } from './dashboard/dash-main/dash-main';
-import { ShoutoutsComponent } from './shoutouts/shoutouts';
-// import { DashFooterComponent } from './dash-footer/dash-footer';
-import { RegisterComponent } from './register/register';
-import { GovInfoComponent } from './gov-info/gov-info.component';
-import { BillsComponent } from './bills/bills.component';
-import { MeetingsComponent } from './meetings/meetings.component';
-import { NewsComponent } from './news/news.component';
-
 import { AppData } from './appdata';
-import { CalendarComponent } from './calendar/calendar.component';
-import { PopupComponent } from './popup/popup.component';
-import { NotesComponent } from './notes/notes.component';
-import { MinutesComponent } from './minutes/minutes.component';
-import { AlertsComponent } from './alerts/alerts.component';
-import { WorkitemsComponent } from './workitems/workitems.component';
-import { IssuesComponent } from './issues/issues.component';
-import { OfficialsComponent } from './officials/officials.component';
-// import { CalendarComponent } from './calendar/calendar';
 
-import { loadConfiguration } from './configuration/loadConfiguration';
-import { WorkareaComponent } from './workarea/workarea.component';
+// DASHBOARD
+import { DashboardModule } from './DASHBOARD/dashboard.module';
+import { DashMainComponent } from './DASHBOARD/dash-main/dash-main';
+
+// SIDENAV
+import { SidenavMenuModule } from './SIDENAV/sidenav-menu-module';
+
+// HEADER
+import { HeaderModule } from './HEADER/header.module';
+
+// COMMON
+import { SharedModule } from './COMMON/common.module';
+import { ErrorHandlingService } from './COMMON/error-handling/error-handling.service';
+import { UserSettingsService, UserSettings, LocationType } from './COMMON/user-settings.service';
+import { DemoMaterialModule } from './COMMON/material';
+
+// FEATURES
+// These modules/components are used in the dashboard mat-cards
+// You can change which cards are displayed by editing DASHBOARD/dash-main/dash-main.html.
+import { ChatModule } from './FEATURES/chat/chat.module';
+import { VirtualMeetingModule } from './FEATURES/virtual-meeting/virtual-meeting-module';
+import { ViewTranscriptModule } from './FEATURES/viewtranscript/viewtranscript.module';
+import { EditTranscriptModule } from './FEATURES/edittranscript/edittranscript.module';
+import { ViewTranscriptService } from './FEATURES/viewtranscript/viewtranscript.service';
+import { ViewTranscriptServiceStub } from './FEATURES/viewtranscript/viewtranscript.service-stub';
+import { EdittranscriptService } from './FEATURES/edittranscript/edittranscript.service';
+import { EdittranscriptServiceStub } from './FEATURES/edittranscript/edittranscript.service-stub';
+import { ChatService } from './FEATURES/chat/chat.service';
+import { NotesComponent } from './FEATURES/notes/notes.component';
+import { MinutesComponent } from './FEATURES/minutes/minutes.component';
+import { AlertsComponent } from './FEATURES/alerts/alerts.component';
+import { WorkitemsComponent } from './FEATURES/workitems/workitems.component';
+import { IssuesComponent } from './FEATURES/issues/issues.component';
+import { OfficialsComponent } from './FEATURES/officials/officials.component';
+import { GovInfoComponent } from './FEATURES/gov-info/gov-info.component';
+import { BillsComponent } from './FEATURES/bills/bills.component';
+import { DatafakeModule } from './WORK_EXPERIMENTS/datafake/datafake.module';
+import { DataFactoryService } from './WORK_EXPERIMENTS/datafake/data-factory.service';
+import { MeetingsComponent } from './FEATURES/meetings/meetings.component';
+import { NewsComponent } from './FEATURES/news/news.component';
+// import { AmchartsModule } from './FEATURES/charts/charts.module';
+
+// EXPERIMENTS
+import { WorkareaComponent } from './WORK_EXPERIMENTS/workarea/workarea.component';
+import { PopupComponent } from './WORK_EXPERIMENTS/popup/popup.component';
+import { DataFakeService } from './WORK_EXPERIMENTS/datafake/data-fake.service';
+import { ConversationModule } from './WORK_EXPERIMENTS/conversation/conversation.module';
+import { ConversationService } from './WORK_EXPERIMENTS/conversation/conversation.service';
+import { loadConfiguration } from './WORK_EXPERIMENTS/configuration/loadConfiguration';
+import { ConfigService } from './WORK_EXPERIMENTS/configuration/config.service';
+import { ShoutoutsComponent } from './WORK_EXPERIMENTS/shoutouts/shoutouts';
+import { RegisterComponent } from './WORK_EXPERIMENTS/register/register';
+
+// PRIOR_WORK
+import { AddtagsModule } from './WORK_PRIOR/addtags/addtags.module';
+import { FixasrModule } from './WORK_PRIOR/fixasr/fixasr.module';
+import { AddtagsService } from './WORK_PRIOR/addtags/addtags.service';
+import { AddtagsServiceStub } from './WORK_PRIOR/addtags/addtags.service-stub';
+import { FixasrService } from './WORK_PRIOR/fixasr/fixasr.service';
+import { FixasrServiceStub } from './WORK_PRIOR/fixasr/fixasr.service-stub';
+
 
 let isAspServerRunning = false;   // Is the Asp.Nnet server running?
 let isBeta = false;               // Is this the beta release version?
@@ -107,7 +112,7 @@ let isLargeEditData = false;       // Are we using the large data for EditTransc
     ChatModule,
     ConversationModule,
     AboutProjectModule,
-    TestingModule,
+    DatafakeModule,
     SidenavMenuModule,
     VirtualMeetingModule,
     HeaderModule
@@ -116,14 +121,12 @@ let isLargeEditData = false;       // Are we using the large data for EditTransc
   declarations: [
     AppComponent,
     DashMainComponent,
-    // DashFooterComponent,
     ShoutoutsComponent,
     RegisterComponent,
     GovInfoComponent,
     BillsComponent,
     MeetingsComponent,
     NewsComponent,
-    CalendarComponent,
     PopupComponent,
     NotesComponent,
     MinutesComponent,
@@ -138,7 +141,7 @@ let isLargeEditData = false;       // Are we using the large data for EditTransc
   exports: [
     DemoMaterialModule
 
-    // The exports below are just for testing that component standalone in app.component.html
+    // The exports below are for testing the component standalone in app.component.html
     // SmallCardsComponent,
     // SmallCardComponent,
     // SidenavHeaderComponent,
@@ -149,8 +152,9 @@ let isLargeEditData = false;       // Are we using the large data for EditTransc
   ],
   providers: [
     // {
-      // This loads the ConfigureService with the contents of assets/config.json
-      // Uses APP_INITIALIZER forces the app to wait until the loading is complete.
+    // EXPERIMENTAL
+    // This loads the ConfigureService with the contents of assets/config.json
+    // Using APP_INITIALIZER forces the app to wait until the loading is complete.
     //   provide: APP_INITIALIZER,
     //   useFactory: loadConfiguration,
     //   deps: [
@@ -181,7 +185,7 @@ let isLargeEditData = false;       // Are we using the large data for EditTransc
 
 
     ChatService,
-    MessagingService,
+    ConversationService,
     DataFactoryService,
     DataFakeService,
     UserSettingsService

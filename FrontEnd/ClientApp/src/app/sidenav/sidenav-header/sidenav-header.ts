@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavService} from '../nav.service';
-import { UserSettingsService, UserSettings, LocationType } from '../../user-settings.service';
+import { UserSettingsService, UserSettings, LocationType } from '../../COMMON/user-settings.service';
 import { AppData } from '../../appdata';
 
 interface Language {
