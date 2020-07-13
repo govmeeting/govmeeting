@@ -100,7 +100,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowApp", "BackEnd\Work
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevelopRetrieval", "utilities\DevelopRetrieval\DevelopRetrieval.csproj", "{C0723E1B-AA01-418D-B0D1-55A1ABA4CF54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevelopTranscription", "utilities\DevelopTranscription\DevelopTranscription.csproj", "{4C8B04CB-A775-45B7-B3B2-74BB987F74A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevelopTranscription", "utilities\DevelopTranscription\DevelopTranscription.csproj", "{4C8B04CB-A775-45B7-B3B2-74BB987F74A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AFDC8594-CA67-4E2A-BB1B-A4C3AAE06C6E}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		global.json = global.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
