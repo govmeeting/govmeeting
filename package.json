@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "cd FrontEnd/ClientApp && npm run start",
+    "build": "cd FrontEnd/ClientApp && npm run build"
+  },
+  "-vs-binding": {
+    "BeforeBuild": [
+      "build"
+    ]
+  }
+}

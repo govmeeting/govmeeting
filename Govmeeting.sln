@@ -61,6 +61,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslateText", "utilities\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PsScripts", "PsScripts", "{2CD25487-0540-4D79-8269-68AD36CE6CBE}"
 	ProjectSection(SolutionItems) = preProject
+<<<<<<< HEAD
 		utilities\PsScripts\Build-ClientApp.ps1 = utilities\PsScripts\Build-ClientApp.ps1
 		utilities\PsScripts\Build-ProjectReadme.ps1 = utilities\PsScripts\Build-ProjectReadme.ps1
 		utilities\PsScripts\BuildPublishAndDeploy.ps1 = utilities\PsScripts\BuildPublishAndDeploy.ps1
@@ -69,21 +70,48 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PsScripts", "PsScripts", "{
 		utilities\PsScripts\Publish-WebApp.ps1 = utilities\PsScripts\Publish-WebApp.ps1
 		utilities\PsScripts\Run-PublishedWebApp.ps1 = utilities\PsScripts\Run-PublishedWebApp.ps1
 		utilities\PsScripts\Set-IsAspServerRunning.ps1 = utilities\PsScripts\Set-IsAspServerRunning.ps1
+=======
+		Utilities\PsScripts\Build-ClientApp.ps1 = Utilities\PsScripts\Build-ClientApp.ps1
+		Utilities\PsScripts\Build-ProjectReadme.ps1 = Utilities\PsScripts\Build-ProjectReadme.ps1
+		Utilities\PsScripts\BuildPublishAndDeploy.ps1 = Utilities\PsScripts\BuildPublishAndDeploy.ps1
+		Utilities\PsScripts\Copy-ClientAssets.ps1 = Utilities\PsScripts\Copy-ClientAssets.ps1
+		Utilities\PsScripts\Deploy-PublishFolder.ps1 = Utilities\PsScripts\Deploy-PublishFolder.ps1
+		Utilities\PsScripts\Publish-WebApp.ps1 = Utilities\PsScripts\Publish-WebApp.ps1
+		Utilities\PsScripts\Run-PublishedWebApp.ps1 = Utilities\PsScripts\Run-PublishedWebApp.ps1
+		Utilities\PsScripts\Set-IsAspServerRunning.ps1 = Utilities\PsScripts\Set-IsAspServerRunning.ps1
+>>>>>>> fixsln
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities_Lib", "BackEnd\Utilities_Lib\Utilities_Lib.csproj", "{474333BD-3E8B-4976-B15F-AA7A424B38AF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowApp", "BackEnd\WorkflowApp\WorkflowApp.csproj", "{86B3DD69-E232-46BA-8EBD-5E981D4BAD5B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevelopRetrieval", "utilities\DevelopRetrieval\DevelopRetrieval.csproj", "{C0723E1B-AA01-418D-B0D1-55A1ABA4CF54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevelopRetrieval", "Utilities\DevelopRetrieval\DevelopRetrieval.csproj", "{C0723E1B-AA01-418D-B0D1-55A1ABA4CF54}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevelopTranscription", "utilities\DevelopTranscription\DevelopTranscription.csproj", "{4C8B04CB-A775-45B7-B3B2-74BB987F74A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevelopTranscription", "Utilities\DevelopTranscription\DevelopTranscription.csproj", "{4C8B04CB-A775-45B7-B3B2-74BB987F74A7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AFDC8594-CA67-4E2A-BB1B-A4C3AAE06C6E}"
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		global.json = global.json
+		package.json = package.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientApp", "ClientApp", "{8BD8488E-145F-4414-8875-C0AAE3074776}"
+	ProjectSection(SolutionItems) = preProject
+		FrontEnd\ClientApp\.editorconfig = FrontEnd\ClientApp\.editorconfig
+		FrontEnd\ClientApp\.gitignore = FrontEnd\ClientApp\.gitignore
+		FrontEnd\ClientApp\angular.json = FrontEnd\ClientApp\angular.json
+		FrontEnd\ClientApp\browserslist = FrontEnd\ClientApp\browserslist
+		FrontEnd\ClientApp\karma.conf.js = FrontEnd\ClientApp\karma.conf.js
+		FrontEnd\ClientApp\package-lock.json = FrontEnd\ClientApp\package-lock.json
+		FrontEnd\ClientApp\package.json = FrontEnd\ClientApp\package.json
+		FrontEnd\ClientApp\TODO.ts = FrontEnd\ClientApp\TODO.ts
+		FrontEnd\ClientApp\tsconfig.app.json = FrontEnd\ClientApp\tsconfig.app.json
+		FrontEnd\ClientApp\tsconfig.json = FrontEnd\ClientApp\tsconfig.json
+		FrontEnd\ClientApp\tsconfig.spec.json = FrontEnd\ClientApp\tsconfig.spec.json
+		FrontEnd\ClientApp\tslint.json = FrontEnd\ClientApp\tslint.json
 	EndProjectSection
 EndProject
 Global
@@ -206,6 +234,7 @@ Global
 		{86B3DD69-E232-46BA-8EBD-5E981D4BAD5B} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{C0723E1B-AA01-418D-B0D1-55A1ABA4CF54} = {6B15424B-85AE-44A7-BDB0-A964CC25188E}
 		{4C8B04CB-A775-45B7-B3B2-74BB987F74A7} = {6B15424B-85AE-44A7-BDB0-A964CC25188E}
+		{8BD8488E-145F-4414-8875-C0AAE3074776} = {89601BB8-30AA-4591-9332-20EB76B1C5F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {577CF991-85C7-44E5-A640-AE87641C3A8D}
