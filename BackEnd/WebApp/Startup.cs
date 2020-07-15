@@ -150,10 +150,10 @@ namespace GM.WebApp
             {
                 app.UseDeveloperExceptionPage();
             }
-            //else
-            //{
-            //    app.UseExceptionHandler("/Home/Error");
-            //}
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
 
             //####################################
             logger.Info("Configure DefaultFiles & StaticFiles");
@@ -194,7 +194,19 @@ namespace GM.WebApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                // Fix controller endpoints. This give err in HomeController/Index about "no file provider"
+                //endpoints.MapControllerRoute(
+                //name: "default",
+                //pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //####################################
+            // Use during debugging to check the route metadata.
+            //app.Use(async (context, next) =>
+            //{
+            //    var endPoint = context.GetEndpoint();
+            //    var routes = context.Request.RouteValues;
+            //});
 
             //####################################
             logger.Info("Proxy calls to a separate dev server during development");
