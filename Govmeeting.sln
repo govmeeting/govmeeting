@@ -61,16 +61,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslateText", "utilities\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PsScripts", "PsScripts", "{2CD25487-0540-4D79-8269-68AD36CE6CBE}"
 	ProjectSection(SolutionItems) = preProject
-<<<<<<< HEAD
-		utilities\PsScripts\Build-ClientApp.ps1 = utilities\PsScripts\Build-ClientApp.ps1
-		utilities\PsScripts\Build-ProjectReadme.ps1 = utilities\PsScripts\Build-ProjectReadme.ps1
-		utilities\PsScripts\BuildPublishAndDeploy.ps1 = utilities\PsScripts\BuildPublishAndDeploy.ps1
-		uilities\PsScripts\Copy-ClientAssets.ps1 = utilities\PsScripts\Copy-ClientAssets.ps1
-		utilities\PsScripts\Deploy-PublishFolder.ps1 = utilities\PsScripts\Deploy-PublishFolder.ps1
-		utilities\PsScripts\Publish-WebApp.ps1 = utilities\PsScripts\Publish-WebApp.ps1
-		utilities\PsScripts\Run-PublishedWebApp.ps1 = utilities\PsScripts\Run-PublishedWebApp.ps1
-		utilities\PsScripts\Set-IsAspServerRunning.ps1 = utilities\PsScripts\Set-IsAspServerRunning.ps1
-=======
 		Utilities\PsScripts\Build-ClientApp.ps1 = Utilities\PsScripts\Build-ClientApp.ps1
 		Utilities\PsScripts\Build-ProjectReadme.ps1 = Utilities\PsScripts\Build-ProjectReadme.ps1
 		Utilities\PsScripts\BuildPublishAndDeploy.ps1 = Utilities\PsScripts\BuildPublishAndDeploy.ps1
@@ -79,7 +69,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PsScripts", "PsScripts", "{
 		Utilities\PsScripts\Publish-WebApp.ps1 = Utilities\PsScripts\Publish-WebApp.ps1
 		Utilities\PsScripts\Run-PublishedWebApp.ps1 = Utilities\PsScripts\Run-PublishedWebApp.ps1
 		Utilities\PsScripts\Set-IsAspServerRunning.ps1 = Utilities\PsScripts\Set-IsAspServerRunning.ps1
->>>>>>> fixsln
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities_Lib", "BackEnd\Utilities_Lib\Utilities_Lib.csproj", "{474333BD-3E8B-4976-B15F-AA7A424B38AF}"

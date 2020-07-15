@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using GM.DatabaseAccess;
 using GM.Configuration;
-
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace GM.WebApp
 {
@@ -22,11 +23,22 @@ namespace GM.WebApp
             )
         {
             services.AddAuthentication()
-            .AddGoogle(options =>
+            //.AddGoogle(options =>
+            //{
+            //    options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
+            //    options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
+            //});
+            // https://docs.microsoft.com/en-us/dotnet/core/compatibility/2.2-3.1#authentication-google-deprecated-and-replaced
+            .AddOpenIdConnect("Google", o =>
             {
-                options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
-                options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
+                o.ClientId = Configuration["Authentication:Google:ClientId"];
+                o.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                o.Authority = "https://accounts.google.com";
+                o.ResponseType = OpenIdConnectResponseType.Code;
+                o.CallbackPath = "/signin-google"; // Or register the default "/sigin-oidc"
+                o.Scope.Add("email");
             });
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
             logger.Info("Add Identity");
 

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using NLog.Web;
 using GM.FileDataRepositories;
 using GM.Utilities;
+using Microsoft.Extensions.Hosting;
 
 
 namespace GM.WebApp
