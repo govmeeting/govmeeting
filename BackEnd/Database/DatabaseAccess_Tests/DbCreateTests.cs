@@ -9,6 +9,8 @@ using GM.DatabaseModel;
 using GM.DatabaseAccess;
 using Microsoft.EntityFrameworkCore;
 
+#pragma warning disable CS0162
+
 namespace GM.DatabaseAccess.Tests
 {
     /// <summary>
@@ -41,22 +43,20 @@ namespace GM.DatabaseAccess.Tests
             // ACT
 
             //using (var context = new ApplicationDbContext())
-            using (var context = GetAppDbContext())
-            {
-                //if (context.Database.Exists()) context.Database.Delete();
+            using var context = GetAppDbContext();
+            //if (context.Database.Exists()) context.Database.Delete();
 
-                context.GovernmentBodies.Add(BodyWritten);
-                context.SaveChanges();
+            context.GovernmentBodies.Add(BodyWritten);
+            context.SaveChanges();
 
             // ASSERT
 
-                var query = from g in context.GovernmentBodies
+            var query = from g in context.GovernmentBodies
                         select g;
-                var BodyRetrieved = query.SingleOrDefault();
-                Assert.That(BodyRetrieved, Is.Not.Null);
-                Assert.That(BodyRetrieved.Name, Is.EqualTo(BodyWritten.Name));
-                Assert.That(BodyRetrieved.Country, Is.EqualTo(BodyWritten.Country));
-            }
+            var BodyRetrieved = query.SingleOrDefault();
+            Assert.That(BodyRetrieved, Is.Not.Null);
+            Assert.That(BodyRetrieved.Name, Is.EqualTo(BodyWritten.Name));
+            Assert.That(BodyRetrieved.Country, Is.EqualTo(BodyWritten.Country));
         }
 
         /// <summary>

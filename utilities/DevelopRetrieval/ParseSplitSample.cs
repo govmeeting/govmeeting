@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 
+#pragma warning disable IDE0051
+
 namespace GM_TestCustom
 {
     class ParseSplitSample
@@ -22,13 +24,6 @@ namespace GM_TestCustom
             }
 
             return result;
-        }
-
-        private void xxx(string html)
-        {
-            //List<List<KeyValuePair<string, string>>> parseResult = ParseHtmlToDataTable(html);
-
-            //DataTable dataTable = ToDataTable(parseResult);
         }
 
         DataTable ToDataTable(List<List<KeyValuePair<string, string>>> list)

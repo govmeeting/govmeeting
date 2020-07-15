@@ -22,7 +22,7 @@ namespace DevelopTranscription
     {
 
 
-        static void Main(string[] args)
+        static void Main()
         {
             // audio extracted from video.
             string audioFile = AddPath("ToFx.flac");

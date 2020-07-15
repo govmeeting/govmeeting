@@ -10,6 +10,10 @@ using GM.Utilities;
 using System.Reflection.Metadata;
 using System.Text.RegularExpressions;
 
+#pragma warning disable IDE0059
+#pragma warning disable IDE0051
+#pragma warning disable IDE0060
+
 namespace GM.Utilities.Translate
 {
     class TranslateDocs
@@ -71,6 +75,10 @@ namespace GM.Utilities.Translate
                 }
                 foreach (string document in documents)
                 {
+                    if (update)
+                    {
+                        Console.WriteLine("Update not working yet");
+                    }
                     // NOTE: THIS CODE DOES NOT WORK. (In Windows at least)
                     // Windows' LastWriteTime is not acurate.
 

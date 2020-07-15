@@ -18,6 +18,7 @@ using GM.WebApp.Models.AccountViewModels;
 using GM.WebApp.Features.Home;
 using GM.WebApp.Features.Manage;
 using GM.DatabaseAccess;
+using Microsoft.Extensions.Hosting;
 
 namespace GM.WebApp.Controllers
 {
@@ -29,7 +30,9 @@ namespace GM.WebApp.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
-        IHostingEnvironment _env;
+
+        //IHostingEnvironment _env;
+        readonly IWebHostEnvironment _env;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -37,7 +40,7 @@ namespace GM.WebApp.Controllers
             IEmailSender emailSender,
             ISmsSender smsSender,
             ILoggerFactory loggerFactory,
-            IHostingEnvironment env)
+            IWebHostEnvironment env)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -80,7 +83,7 @@ namespace GM.WebApp.Controllers
                 }
                 if (result.RequiresTwoFactor)
                 {
-                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction(nameof(SendCode), new { ReturnUrl = returnUrl, model.RememberMe });
                 }
                 if (result.IsLockedOut)
                 {
@@ -140,7 +143,7 @@ namespace GM.WebApp.Controllers
                     // TODO Check why Adrian Hall uses "Context" and not HttpContext.
                     //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Context.Request.Scheme);
 
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code }, protocol: HttpContext.Request.Scheme);
                     await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
                         "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
 
@@ -467,7 +470,7 @@ namespace GM.WebApp.Controllers
                 await _smsSender.SendSmsAsync(await _userManager.GetPhoneNumberAsync(user), message);
             }
 
-            return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
 
         //

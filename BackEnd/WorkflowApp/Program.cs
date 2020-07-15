@@ -26,15 +26,15 @@ namespace GM.Workflow
 
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             // https://pioneercode.com/post/dependency-injection-logging-and-configuration-in-a-dot-net-core-console-app
 
             string credentialsFilePath = @"C:\GOVMEETING\SECRETS\TranscribeAudio.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
 
-            StorageClient storageClient = StorageClient.Create();
-            string secrets = GMFileAccess.FindParentFolderWithName("SECRETS");
+            //StorageClient storageClient = StorageClient.Create();
+            //string secrets = GMFileAccess.FindParentFolderWithName("SECRETS");
 
 
             // create service collection

@@ -19,21 +19,22 @@ namespace GM.WebApp.Features.Fixasr
     [Route("api/[controller]")]
     public class FixasrController : Controller
     {
-        private readonly IAuthorizationService authz;
-        private readonly IHostingEnvironment env;
-        private IFixasrRepository fixasr { get; set; }
+        //private readonly IAuthorizationService authz;
+        //private readonly IWebHostEnvironment env;
+        private IFixasrRepository Fixasr { get; set; }
 
-        public FixasrController(IAuthorizationService _authz, IFixasrRepository _fixasr, IHostingEnvironment _env)
+        public FixasrController(IFixasrRepository _fixasr)
         {
-            authz = _authz;
-            fixasr = _fixasr;
-            env = _env;
+            Fixasr = _fixasr;
         }
+        //public FixasrController(IAuthorizationService Authz, IFixasrRepository Fixasr, IWebHostEnvironment Env)
+        //{
+        //}
 
         [HttpGet("{meetingId}/{part}")]        // GET: api/fixasr
         public FixasrView Get(int meetingId, int part)
         {
-            FixasrView ret = fixasr.Get(meetingId, part);
+            FixasrView ret = Fixasr.Get(meetingId, part);
             return ret;
         }
 
@@ -46,7 +47,7 @@ namespace GM.WebApp.Features.Fixasr
         [HttpPost("{meetingId}/{part}")]
         public bool Post([FromBody]FixasrView value, int meetingId, int part)
         {
-            return fixasr.Put(value, meetingId, part);
+            return Fixasr.Put(value, meetingId, part);
         }
     }
 }

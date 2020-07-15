@@ -31,8 +31,8 @@ namespace GM.WebApp
             // https://docs.microsoft.com/en-us/dotnet/core/compatibility/2.2-3.1#authentication-google-deprecated-and-replaced
             .AddOpenIdConnect("Google", o =>
             {
-                o.ClientId = Configuration["Authentication:Google:ClientId"];
-                o.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                o.ClientId = Configuration["ExternalAuth:Google:ClientId"];
+                o.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
                 o.Authority = "https://accounts.google.com";
                 o.ResponseType = OpenIdConnectResponseType.Code;
                 o.CallbackPath = "/signin-google"; // Or register the default "/sigin-oidc"

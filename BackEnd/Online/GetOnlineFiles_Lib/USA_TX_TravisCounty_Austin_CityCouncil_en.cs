@@ -11,9 +11,9 @@ namespace GetOnlineFiles_Lib
 {
     public class USA_TX_TravisCounty_Austin_CityCouncil_en
     {
-        string austinDomain = "https://www.austintexas.gov";
-        string councilInfo = "https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm";
-        string meetingDesc = "Regular Meeting of the Austin City Council";
+        readonly string austinDomain = "https://www.austintexas.gov";
+        readonly string councilInfo = "https://www.austintexas.gov/department/city-council/council/council_meeting_info_center.htm";
+        //string meetingDesc = "Regular Meeting of the Austin City Council";
 
         //string nextMeetingLink = "https://www.austintexas.gov/department/city-council/2020/20200507-reg.htm";
         //string transcriptLink = "https://www.austintexas.gov/edims/document.cfm?id=339945";
@@ -31,17 +31,14 @@ namespace GetOnlineFiles_Lib
 
         public bool Do(DateTime lastMeetingTime, string outputFolder)
         {
-            DateTime time;
-            string link;
-            byte[] result;
             CallBack descCallBack = new CallBack(CheckDescription);
 
-            GetNextMeetingLink(lastMeetingTime, descCallBack, out time, out link);
+            GetNextMeetingLink(lastMeetingTime, descCallBack, out DateTime time, out string link);
             if (link == "") return false;
 
             string transcriptLink = GetTranscriptLink(link);
 
-            GetPdf(transcriptLink, out result);
+            GetPdf(transcriptLink, out byte[] result);
 
             string className = GetType().Name;
             string timeString = time.ToString("yyyy-mm-dd");
@@ -132,8 +129,7 @@ namespace GetOnlineFiles_Lib
                     if (dataCells != null)
                     {
                         dataRow = resultTable.NewRow();
-                        DateTime dateValue;
-                        if (!DateTime.TryParse(dataCells[0].InnerText, out dateValue))
+                        if (!DateTime.TryParse(dataCells[0].InnerText, out DateTime dateValue))
                         {
                             break;
                         }
@@ -161,32 +157,26 @@ namespace GetOnlineFiles_Lib
 
             WebRequest wr = WebRequest.Create(url);
 
-            using (WebResponse response = wr.GetResponse())
+            using WebResponse response = wr.GetResponse();
+            // Display all the Headers present in the response received from the URl.
+            Console.WriteLine("\nThe following headers were received in the response");
+
+            // Display each header and it's key , associated with the response object.
+            for (int i = 0; i < response.Headers.Count; ++i)
+                Console.WriteLine("\nHeader Name:{0}, Header value :{1}", response.Headers.Keys[i], response.Headers[i]);
+
+            using Stream responseStream = response.GetResponseStream();
+            using MemoryStream memoryStream = new MemoryStream();
+            int count = 0;
+            do
             {
-                // Display all the Headers present in the response received from the URl.
-                Console.WriteLine("\nThe following headers were received in the response");
+                count = responseStream.Read(buffer, 0, buffer.Length);
+                memoryStream.Write(buffer, 0, count);
+                totalCount += count;
 
-                // Display each header and it's key , associated with the response object.
-                for (int i = 0; i < response.Headers.Count; ++i)
-                    Console.WriteLine("\nHeader Name:{0}, Header value :{1}", response.Headers.Keys[i], response.Headers[i]);
+            } while (count != 0);
 
-                using (Stream responseStream = response.GetResponseStream())
-                {
-                    using (MemoryStream memoryStream = new MemoryStream())
-                    {
-                        int count = 0;
-                        do
-                        {
-                            count = responseStream.Read(buffer, 0, buffer.Length);
-                            memoryStream.Write(buffer, 0, count);
-                            totalCount += count;
-
-                        } while (count != 0);
-
-                        result = memoryStream.ToArray();
-                    }
-                }
-            }
+            result = memoryStream.ToArray();
         }
 
 

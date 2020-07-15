@@ -24,6 +24,7 @@ using GM.DatabaseAccess;
 using GM.FileDataRepositories;
 using GM.WebApp.Services;
 using GM.Utilities;
+using Microsoft.Extensions.Hosting;
 
 
 namespace GM.WebApp
@@ -42,25 +43,20 @@ namespace GM.WebApp
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //####################################
             // Set a variable in the gdc which is be used in NLog.config for the
             // base path of our app: ${gdc:item=appbasepath} 
             string logfilesPath = GMFileAccess.GetFullPath(Configuration["AppSettings:LogfilesPath"]);
             GlobalDiagnosticsContext.Set("logfilesPath", logfilesPath);
 
-            //string testPath = Configuration["AppSettings:TestdataPath"];
-            //string dataPath = Configuration["AppSettings:DatafilesPath"];
-            //string logPath = Configuration["AppSettings:LogfilesPath"];
-
-            //string bin = Configuration["AppSettings:bin"];
-
-
+            //####################################
             // Create an instance of NLog.Logger manually here since it is not available
             // from dependency injection yet.
             logger = LogManager.LoadConfiguration("nlog.config").GetCurrentClassLogger();
-
             logger.Info("Just set value in GDC for NLog and created NLog.Logger instance");
-            logger.Info("Modify some AppSettings");
 
+            //####################################
+            logger.Info("Configure AppSettings options");
             services.AddOptions();
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<AppSettings>(myOptions =>
@@ -78,10 +74,9 @@ namespace GM.WebApp
                 logger.Info("Done modifying.");
             });
 
+            //####################################
             logger.Info("Add ApplicationDbContext");
-
             services.AddTransient<dBOperations>();
-
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration["AppSettings:ConnectionString"]
@@ -89,22 +84,23 @@ namespace GM.WebApp
                     //sqlServerOptions => sqlServerOptions.MigrationsAssembly("WebApp")
                     ));
 
+            //####################################
             logger.Info("Add Add Authentication");
-
             ConfigureAuthenticationServices(services, logger);
 
-            logger.Info("Add MVC");
+            //####################################
+            logger.Info("Add Razor pages");
+            services.AddRazorPages();
 
-            services.AddMvc()
-                // The ContractResolver option is to prevent the case of Json field names 
-                // being changed when retrieved by client.
-                // https://codeopinion.com/asp-net-core-mvc-json-output-camelcase-pascalcase/
-                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
-                .AddXmlSerializerFormatters();
+            //services.AddMvc()
+            //    // The ContractResolver option is to prevent the case of Json field names 
+            //    // being changed when retrieved by client.
+            //    // https://codeopinion.com/asp-net-core-mvc-json-output-camelcase-pascalcase/
+            //    .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver())
+            //    .AddXmlSerializerFormatters();
 
+            //####################################
             logger.Info("Enable Feature Folders");
-
-            // This enables the use of "Feature Folders".
             // https://scottsauber.com/2016/04/25/feature-folder-structure-in-asp-net-core/
             services.Configure<RazorViewEngineOptions>(options =>
             {
@@ -119,30 +115,37 @@ namespace GM.WebApp
             //    //configuration.RootPath = "ClientApp/dist";
             //});
 
+            //####################################
             logger.Info("Add Application services");
+            bool UseDatabaseStubs = (Configuration["AppSettings:UseDatabaseStubs"] == "True");
+            AddApplicationServices(services, logger, UseDatabaseStubs);
 
-                bool UseDatabaseStubs = (Configuration["AppSettings:UseDatabaseStubs"] == "True") ? true : false;
-                AddApplicationServices(services, logger, UseDatabaseStubs);
 
-                services.AddSingleton(Configuration);
+            //####################################
+            logger.Info("Add Configuration services");
+            services.AddSingleton(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(
             IApplicationBuilder app,
-            IHostingEnvironment env,
+            IWebHostEnvironment env,
+            //IHostingEnvironment env,
             IDbInitializer dbInitializer,
-            ILoggerFactory loggerFactory,
+            //ILoggerFactory loggerFactory,
             IOptions<AppSettings> config
             )
         {
+            string datafilesPath = config.Value.DatafilesPath;
+
+            // for testing
             logger.Info("2 + 2 is " + dbInitializer.GetFour());
 
             logger.Info("Environment is " + env.EnvironmentName);
             logger.Info("WebRootPath is " + env.WebRootPath);
 
+            //####################################
             logger.Info("Configure exception handler");
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -152,40 +155,16 @@ namespace GM.WebApp
             //    app.UseExceptionHandler("/Home/Error");
             //}
 
+            //####################################
+            logger.Info("Configure DefaultFiles & StaticFiles");
             // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-3.1
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            logger.Info("Configure datafiles PhysicalFileProvider");
-
-            //if (config == null)
-            //{
-            //    logger.Info("config is null");
-            //} else
-            //{
-            //    logger.Info("config is not null");
-            //}
-            //if (config.Value == null)
-            //{
-            //    logger.Info("config.Value is null");
-            //} else
-            //{
-            //    string configstring = config.ToString();
-            //    logger.Info("Value is " + configstring);
-            //}
-
-            string datafilesPath = config.Value.DatafilesPath;
-            if (!Directory.Exists(datafilesPath))
-            {
-                Directory.CreateDirectory(datafilesPath);
-                Directory.CreateDirectory(datafilesPath + "/RECEIVED");
-                Directory.CreateDirectory(datafilesPath + "/PROCESSING");
-                Directory.CreateDirectory(datafilesPath + "/COMPLETED");
-            }
-
+            //####################################
+            logger.Info("Configure datafiles PhysicalFileProvider. Path = " + datafilesPath);
             // Add a PhysicalFileProvider for the DATAFILES folder. Until we have a way to serve video files to 
             // videogular via the API, we need to allow these to be accessed as static files.
-            logger.Info("datafilesPath=" + datafilesPath);
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
@@ -193,15 +172,32 @@ namespace GM.WebApp
                 RequestPath = "/datafiles"
             });
 
-            logger.Info("Configure routes");
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller}/{action=Index}/{id?}");
+            //});
+            // https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-3.1&tabs=visual-studio
 
-            app.UseMvc(routes =>
+            //####################################
+            logger.Info("Configure routing");
+            app.UseRouting();
+
+            //####################################
+            logger.Info("Use Authenitication & Authorization");
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            //####################################
+            logger.Info("Configure Endpoint routing");
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
 
+            //####################################
+            logger.Info("Proxy calls to a separate dev server during development");
             app.UseSpa(spa =>
             {
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
@@ -232,18 +228,22 @@ namespace GM.WebApp
             //    await next().ConfigureAwait(true);
             //});
 
-            logger.Info("Use Authenitication");
-
-            app.UseAuthentication();
-
+            //####################################
             logger.Info("Initialize database");
-
             //Run migrations and create seed data
             bool migrateDatabase = false;
             dbInitializer.Initialize(migrateDatabase).Wait();
 
-            logger.Info("Copy test data to DATAFILES folder");
 
+            //####################################
+            logger.Info("Copy test data to DATAFILES folder");
+            if (!Directory.Exists(datafilesPath))
+            {
+                Directory.CreateDirectory(datafilesPath);
+                Directory.CreateDirectory(datafilesPath + "/RECEIVED");
+                Directory.CreateDirectory(datafilesPath + "/PROCESSING");
+                Directory.CreateDirectory(datafilesPath + "/COMPLETED");
+            }
             string testfilesPath = config.Value.TestdataPath;
             InitializeFileTestData.CopyTestData(testfilesPath, datafilesPath);
         }

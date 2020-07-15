@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Google.Cloud.Speech.V1" Version="1.0.1" />
     <PackageReference Include="Google.Cloud.Storage.V1" Version="2.1.0" />
+    <!--https://stackoverflow.com/questions/40236194/itextsharp-any-support-for-dotnet-core-netstandard1-6-->
     <PackageReference Include="iTextSharp" Version="5.5.13.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
@@ -20,7 +21,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.0" />
     <PackageReference Include="NLog" Version="4.6.6" />
-    <PackageReference Include="NLog.Web" Version="4.8.4" />
+    <PackageReference Include="NLog.Web" Version="4.9.2" />
   </ItemGroup>
 
   <ItemGroup>
