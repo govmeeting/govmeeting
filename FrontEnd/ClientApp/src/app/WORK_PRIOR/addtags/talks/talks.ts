@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AddtagsService } from '../addtags.service';
-import { Addtags, Talk } from '../../../MODELS/addtags-view';
+import { Addtags, Talk } from '../../../models/addtags-view';
 
 const NoLog = true;  // set to false for console logging
 

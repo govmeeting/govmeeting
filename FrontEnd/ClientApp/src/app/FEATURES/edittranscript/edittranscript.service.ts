@@ -6,7 +6,7 @@ import 'rxjs/add/operator/share';
 import { catchError } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { ErrorHandlingService } from '../../COMMON/error-handling/error-handling.service';
-import { EditTranscript, Talk, Word } from '../../MODELS/edittranscript-view';
+import { EditTranscript, Talk, Word } from '../../models/edittranscript-view';
 
 
 const NoLog = true;  // set to false for console logging

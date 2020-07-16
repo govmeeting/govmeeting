@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
-import { ViewTranscript } from '../../MODELS/viewtranscript-view';
+import { ViewTranscript } from '../../models/viewtranscript-view';
 import { viewtranscriptSample } from './viewtranscript-sample';
 import { ErrorHandlingService } from '../../COMMON/error-handling/error-handling.service';
 

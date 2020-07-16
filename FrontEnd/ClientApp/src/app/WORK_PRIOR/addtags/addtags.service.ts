@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { ErrorHandlingService } from '../../COMMON/error-handling/error-handling.service';
 
-import { Addtags, Talk } from '../../MODELS/addtags-view';
+import { Addtags, Talk } from '../../models/addtags-view';
 
 
 const NoLog = true;  // set to false for console logging
@@ -156,5 +156,5 @@ export class AddtagsService {
     // The way that HTTP Post works in Asp.Net Core has changed from prior Asp.Net.
     // Some good sources of information are:
     //    http://andrewlock.net/model‐binding‐json‐posts‐in‐asp‐net‐core/
-    //    https://docs.asp.net/en/latest/mvc/MODELS/model-binding.html
+    //    https://docs.asp.net/en/latest/mvc/models/model-binding.html
     //    https://lbadri.wordpress.com/2014/11/23/web-api-model-binding-in-asp-net-mvc-6-asp-net-5/

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FixasrView, AsrSegment } from '../../MODELS/fixasr-view';
+import { FixasrView, AsrSegment } from '../../models/fixasr-view';
 import { Observable } from 'rxjs';
 import 'rxjs/add/observable/of';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';

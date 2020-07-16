@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EdittranscriptService } from '../edittranscript.service';
-import { EditTranscript, Talk, Word } from '../../../MODELS/edittranscript-view';
+import { EditTranscript, Talk, Word } from '../../../models/edittranscript-view';
 
 const NoLog = true;  // set to false for console logging
 

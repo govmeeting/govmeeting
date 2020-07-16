@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { UserSettings, LocationType } from '../MODELS/user-settings';
+import { UserSettings, LocationType } from '../models/user-settings';
 
 export { UserSettings, LocationType };
 

@@ -1,4 +1,4 @@
-import { FixasrView, AsrSegment } from '../../MODELS/fixasr-view';
+import { FixasrView, AsrSegment } from '../../models/fixasr-view';
 
 
 export let fixasrShortSample: FixasrView = {

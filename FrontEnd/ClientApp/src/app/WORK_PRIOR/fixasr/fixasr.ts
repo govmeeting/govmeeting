@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
-import { FixasrView, AsrSegment } from '../../MODELS/fixasr-view';
+import { FixasrView, AsrSegment } from '../../models/fixasr-view';
 import { FixasrService } from './fixasr.service';
 import { VideoComponent } from '../../COMMON/video/video';
 import { FixasrUtilities } from './utilities';

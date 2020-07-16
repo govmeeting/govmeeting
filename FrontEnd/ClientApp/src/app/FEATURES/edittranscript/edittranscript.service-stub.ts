@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { EditTranscript, Talk, Word } from '../../MODELS/edittranscript-view';
+import { EditTranscript, Talk, Word } from '../../models/edittranscript-view';
 import { ErrorHandlingService } from '../../COMMON/error-handling/error-handling.service';
 import { EditTranscriptSample } from './edittranscript-sample';
 import { AppData } from '../../appdata';

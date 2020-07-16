@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserchoiceService } from './userchoice.service';
 import { ViewTranscriptService } from './viewtranscript.service';
-import { TopicDiscussion } from '../../MODELS/viewtranscript-view'
+import { TopicDiscussion } from '../../models/viewtranscript-view'
 
 
 const NoLog = true;  // set to false for console logging

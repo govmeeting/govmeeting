@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 // import { MeetingService } from '../meeting.service-stub';
 import { ViewTranscriptService } from '../viewtranscript.service';
 import { UserchoiceService } from '../userchoice.service';
-import { TopicDiscussion } from '../../../MODELS/viewtranscript-view'
+import { TopicDiscussion } from '../../../models/viewtranscript-view'
 
 const NoLog = true;  // set to false for console logging
 
