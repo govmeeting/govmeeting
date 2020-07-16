@@ -3,7 +3,6 @@ name: Backend .NET Core Build
 on:
   push:
     branches: [ master ]
-    paths: 
   pull_request:
     branches: [ master ]
 
