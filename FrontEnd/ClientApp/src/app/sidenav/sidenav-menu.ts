@@ -11,7 +11,7 @@ import { navigationItems, betaNavigationItems } from './menu-items';
 import { MenuTreeArray } from './menu-tree-array'
 
 import { MatDialog, MatDialogRef } from  '@angular/material';
-import { PopupComponent } from '../WORK_EXPERIMENTS/popup/popup.component';
+import { PopupComponent } from '../work_experiments/popup/popup.component';
 import { AppData } from '../appdata';
 
 enum DeviceType{

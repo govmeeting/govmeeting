@@ -7,7 +7,7 @@ import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 // import {ApplicationRef} from '@angular/core';
 
 import { NavService } from './sidenav/nav.service';
-//import { MediaQueryService } from './WORK_EXPERIMENTS/media-query.service';
+//import { MediaQueryService } from './work_experiments/media-query.service';
 
 import { Router } from '@angular/router';
 import { UserSettingsService, UserSettings, LocationType } from './common/user-settings.service';
