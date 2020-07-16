@@ -29,7 +29,7 @@ import { SidenavMenuModule } from './sidenav/sidenav-menu-module';
 // HEADER
 import { HeaderModule } from './header/header.module';
 
-// COMMON
+// common
 import { SharedModule } from './common/common.module';
 import { ErrorHandlingService } from './common/error-handling/error-handling.service';
 import { UserSettingsService, UserSettings, LocationType } from './common/user-settings.service';

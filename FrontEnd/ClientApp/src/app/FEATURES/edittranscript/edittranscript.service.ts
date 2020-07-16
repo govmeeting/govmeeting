@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/share';
 import { catchError } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { ErrorHandlingService } from '../../COMMON/error-handling/error-handling.service';
+import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { EditTranscript, Talk, Word } from '../../models/edittranscript-view';
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit,  ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 
-import { VideoComponent } from '../../COMMON/video/video';
+import { VideoComponent } from '../../common/video/video';
 
 
 @Component({

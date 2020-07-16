@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DemoMaterialModule } from '../COMMON/material';
+import { DemoMaterialModule } from '../common/material';
 
 
 import { UserDropdownComponent } from './user-dropdown/user-dropdown';

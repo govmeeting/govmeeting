@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { NavService } from '../sidenav/nav.service';
-import { UserSettingsService, UserSettings } from '../COMMON/user-settings.service';
+import { UserSettingsService, UserSettings } from '../common/user-settings.service';
 
 const NoLog = true;  // set to false for console logging
 

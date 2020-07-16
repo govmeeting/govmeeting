@@ -8,7 +8,7 @@ import { BrowseComponent } from './browse/browse';
 import { HeadingComponent } from './heading/heading';
 import { SpeakersComponent } from './speakers/speakers';
 import { TopicsComponent } from './topics/topics';
-import { SharedModule } from '../../COMMON/common.module';
+import { SharedModule } from '../../common/common.module';
 
 
 @NgModule({

@@ -10,7 +10,7 @@ import { NavService } from './sidenav/nav.service';
 //import { MediaQueryService } from './WORK_EXPERIMENTS/media-query.service';
 
 import { Router } from '@angular/router';
-import { UserSettingsService, UserSettings, LocationType } from './COMMON/user-settings.service';
+import { UserSettingsService, UserSettings, LocationType } from './common/user-settings.service';
 
 
 const NoLog = true;  // set to false for console logging

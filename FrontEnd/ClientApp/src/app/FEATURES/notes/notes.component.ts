@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input} from '@angular/core';
-import { UserSettingsService, UserSettings, LocationType } from '../../COMMON/user-settings.service';
+import { UserSettingsService, UserSettings, LocationType } from '../../common/user-settings.service';
 
 const NoLog = true;  // set to false for console logging
 

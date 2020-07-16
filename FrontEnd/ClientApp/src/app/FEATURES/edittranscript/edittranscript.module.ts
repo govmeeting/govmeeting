@@ -8,8 +8,8 @@ import { EditTranscriptComponent } from './edittranscript';
 import { TalksComponent } from './talks/talks';
 import { TopicsComponent } from './topics/topics';
 import { SectionsComponent } from './sections/sections';
-import { SharedModule } from '../../COMMON/common.module';
-import { VideoModule } from '../../COMMON/video/video.module';
+import { SharedModule } from '../../common/common.module';
+import { VideoModule } from '../../common/video/video.module';
 
 
 @NgModule({

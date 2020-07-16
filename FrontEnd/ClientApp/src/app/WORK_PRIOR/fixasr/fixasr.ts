@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { FixasrView, AsrSegment } from '../../models/fixasr-view';
 import { FixasrService } from './fixasr.service';
-import { VideoComponent } from '../../COMMON/video/video';
+import { VideoComponent } from '../../common/video/video';
 import { FixasrUtilities } from './utilities';
 import { Observable } from 'rxjs/Observable';
 import { timer } from 'rxjs/observable/timer';

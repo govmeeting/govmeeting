@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/observable/of';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { ErrorHandlingService } from '../../COMMON/error-handling/error-handling.service';
+import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { fixasrSample } from './fixasr-sample';
 
 const NoLog = true;  // set to false for console logging {}

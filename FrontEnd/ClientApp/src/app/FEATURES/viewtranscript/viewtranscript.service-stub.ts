@@ -5,7 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 import { ViewTranscript } from '../../models/viewtranscript-view';
-import { ErrorHandlingService } from '../../COMMON/error-handling/error-handling.service';
+import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { viewtranscriptSample } from './viewtranscript-sample';
 
   const fromFile = true;

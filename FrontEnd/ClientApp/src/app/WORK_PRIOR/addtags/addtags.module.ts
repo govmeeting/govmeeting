@@ -8,7 +8,7 @@ import { AddtagsComponent } from './addtags';
 import { TalksComponent } from './talks/talks';
 import { TopicsComponent } from './topics/topics';
 import { SectionsComponent } from './sections/sections';
-import { SharedModule } from '../../COMMON/common.module';
+import { SharedModule } from '../../common/common.module';
 
 @NgModule({
   declarations: [AddtagsComponent, TalksComponent, TopicsComponent, SectionsComponent],

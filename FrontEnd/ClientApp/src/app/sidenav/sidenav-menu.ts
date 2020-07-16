@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NavItem, EntryType } from './nav-item';
 import { NavService } from './nav.service';
-import { UserSettingsService, UserSettings, LocationType } from '../COMMON/user-settings.service';
+import { UserSettingsService, UserSettings, LocationType } from '../common/user-settings.service';
 //import { string } from '@amcharts/amcharts4/core';
 
 import { navigationItems, betaNavigationItems } from './menu-items';

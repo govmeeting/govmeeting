@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Addtags, Talk } from '../../models/addtags-view';
-import { ErrorHandlingService } from '../../COMMON/error-handling/error-handling.service';
+import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { addtagsSample } from './addtags-sample';
 
   const fromFile = true;

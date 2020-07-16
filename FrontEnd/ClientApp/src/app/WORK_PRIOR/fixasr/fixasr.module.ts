@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule  } from '@angular/common/http';
 import { FixasrComponent } from './fixasr';
-import { VideoModule } from '../../COMMON/video/video.module';
-import { SharedModule } from '../../COMMON/common.module'
+import { VideoModule } from '../../common/video/video.module';
+import { SharedModule } from '../../common/common.module'
 import { RouterModule } from '@angular/router';
 //import { FixasrRoutingModule } from './fixasr-routing.module';
 //import { ReactiveFormsModule } from '@angular/forms'
