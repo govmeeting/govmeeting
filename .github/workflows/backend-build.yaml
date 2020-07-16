@@ -5,12 +5,10 @@ on:
     branches: [ master ]
     paths:
       - 'BackEnd/**'
-      - 'Utilities/**'
   pull_request:
     branches: [ master ]
     paths:
       - 'BackEnd/**'
-      - 'Utilities/**'
 
 jobs:
   build:
