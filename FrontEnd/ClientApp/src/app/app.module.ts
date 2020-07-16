@@ -19,66 +19,66 @@ import { AboutProjectModule } from './about-project/about-project.module';
 import { AppComponent } from './app.component';
 import { AppData } from './appdata';
 
-// DASHBOARD
-import { DashboardModule } from './DASHBOARD/dashboard.module';
-import { DashMainComponent } from './DASHBOARD/dash-main/dash-main';
+// dashboard
+import { DashboardModule } from './dashboard/dashboard.module';
+import { DashMainComponent } from './dashboard/dash-main/dash-main';
 
 // SIDENAV
-import { SidenavMenuModule } from './SIDENAV/sidenav-menu-module';
+import { SidenavMenuModule } from './sidenav/sidenav-menu-module';
 
 // HEADER
-import { HeaderModule } from './HEADER/header.module';
+import { HeaderModule } from './header/header.module';
 
 // COMMON
-import { SharedModule } from './COMMON/common.module';
-import { ErrorHandlingService } from './COMMON/error-handling/error-handling.service';
-import { UserSettingsService, UserSettings, LocationType } from './COMMON/user-settings.service';
-import { DemoMaterialModule } from './COMMON/material';
+import { SharedModule } from './common/common.module';
+import { ErrorHandlingService } from './common/error-handling/error-handling.service';
+import { UserSettingsService, UserSettings, LocationType } from './common/user-settings.service';
+import { DemoMaterialModule } from './common/material';
 
-// FEATURES
+// features
 // These modules/components are used in the dashboard mat-cards
-// You can change which cards are displayed by editing DASHBOARD/dash-main/dash-main.html.
-import { ChatModule } from './FEATURES/chat/chat.module';
-import { VirtualMeetingModule } from './FEATURES/virtual-meeting/virtual-meeting-module';
-import { ViewTranscriptModule } from './FEATURES/viewtranscript/viewtranscript.module';
-import { EditTranscriptModule } from './FEATURES/edittranscript/edittranscript.module';
-import { ViewTranscriptService } from './FEATURES/viewtranscript/viewtranscript.service';
-import { ViewTranscriptServiceStub } from './FEATURES/viewtranscript/viewtranscript.service-stub';
-import { EdittranscriptService } from './FEATURES/edittranscript/edittranscript.service';
-import { EdittranscriptServiceStub } from './FEATURES/edittranscript/edittranscript.service-stub';
-import { ChatService } from './FEATURES/chat/chat.service';
-import { NotesComponent } from './FEATURES/notes/notes.component';
-import { MinutesComponent } from './FEATURES/minutes/minutes.component';
-import { AlertsComponent } from './FEATURES/alerts/alerts.component';
-import { WorkitemsComponent } from './FEATURES/workitems/workitems.component';
-import { IssuesComponent } from './FEATURES/issues/issues.component';
-import { OfficialsComponent } from './FEATURES/officials/officials.component';
-import { GovInfoComponent } from './FEATURES/gov-info/gov-info.component';
-import { BillsComponent } from './FEATURES/bills/bills.component';
-import { DatafakeModule } from './WORK_EXPERIMENTS/datafake/datafake.module';
-import { DataFactoryService } from './WORK_EXPERIMENTS/datafake/data-factory.service';
-import { MeetingsComponent } from './FEATURES/meetings/meetings.component';
-import { NewsComponent } from './FEATURES/news/news.component';
-// import { AmchartsModule } from './FEATURES/charts/charts.module';
+// You can change which cards are displayed by editing dashboard/dash-main/dash-main.html.
+import { ChatModule } from './features/chat/chat.module';
+import { VirtualMeetingModule } from './features/virtual-meeting/virtual-meeting-module';
+import { ViewTranscriptModule } from './features/viewtranscript/viewtranscript.module';
+import { EditTranscriptModule } from './features/edittranscript/edittranscript.module';
+import { ViewTranscriptService } from './features/viewtranscript/viewtranscript.service';
+import { ViewTranscriptServiceStub } from './features/viewtranscript/viewtranscript.service-stub';
+import { EdittranscriptService } from './features/edittranscript/edittranscript.service';
+import { EdittranscriptServiceStub } from './features/edittranscript/edittranscript.service-stub';
+import { ChatService } from './features/chat/chat.service';
+import { NotesComponent } from './features/notes/notes.component';
+import { MinutesComponent } from './features/minutes/minutes.component';
+import { AlertsComponent } from './features/alerts/alerts.component';
+import { WorkitemsComponent } from './features/workitems/workitems.component';
+import { IssuesComponent } from './features/issues/issues.component';
+import { OfficialsComponent } from './features/officials/officials.component';
+import { GovInfoComponent } from './features/gov-info/gov-info.component';
+import { BillsComponent } from './features/bills/bills.component';
+import { DatafakeModule } from './work_experiments/datafake/datafake.module';
+import { DataFactoryService } from './work_experiments/datafake/data-factory.service';
+import { MeetingsComponent } from './features/meetings/meetings.component';
+import { NewsComponent } from './features/news/news.component';
+// import { AmchartsModule } from './features/charts/charts.module';
 
 // EXPERIMENTS
-import { WorkareaComponent } from './WORK_EXPERIMENTS/workarea/workarea.component';
-import { PopupComponent } from './WORK_EXPERIMENTS/popup/popup.component';
-import { DataFakeService } from './WORK_EXPERIMENTS/datafake/data-fake.service';
-import { ConversationModule } from './WORK_EXPERIMENTS/conversation/conversation.module';
-import { ConversationService } from './WORK_EXPERIMENTS/conversation/conversation.service';
-import { loadConfiguration } from './WORK_EXPERIMENTS/configuration/loadConfiguration';
-import { ConfigService } from './WORK_EXPERIMENTS/configuration/config.service';
-import { ShoutoutsComponent } from './WORK_EXPERIMENTS/shoutouts/shoutouts';
-import { RegisterComponent } from './WORK_EXPERIMENTS/register/register';
+import { WorkareaComponent } from './work_experiments/workarea/workarea.component';
+import { PopupComponent } from './work_experiments/popup/popup.component';
+import { DataFakeService } from './work_experiments/datafake/data-fake.service';
+import { ConversationModule } from './work_experiments/conversation/conversation.module';
+import { ConversationService } from './work_experiments/conversation/conversation.service';
+import { loadConfiguration } from './work_experiments/configuration/loadConfiguration';
+import { ConfigService } from './work_experiments/configuration/config.service';
+import { ShoutoutsComponent } from './work_experiments/shoutouts/shoutouts';
+import { RegisterComponent } from './work_experiments/register/register';
 
 // PRIOR_WORK
-import { AddtagsModule } from './WORK_PRIOR/addtags/addtags.module';
-import { FixasrModule } from './WORK_PRIOR/fixasr/fixasr.module';
-import { AddtagsService } from './WORK_PRIOR/addtags/addtags.service';
-import { AddtagsServiceStub } from './WORK_PRIOR/addtags/addtags.service-stub';
-import { FixasrService } from './WORK_PRIOR/fixasr/fixasr.service';
-import { FixasrServiceStub } from './WORK_PRIOR/fixasr/fixasr.service-stub';
+import { AddtagsModule } from './work_prior/addtags/addtags.module';
+import { FixasrModule } from './work_prior/fixasr/fixasr.module';
+import { AddtagsService } from './work_prior/addtags/addtags.service';
+import { AddtagsServiceStub } from './work_prior/addtags/addtags.service-stub';
+import { FixasrService } from './work_prior/fixasr/fixasr.service';
+import { FixasrServiceStub } from './work_prior/fixasr/fixasr.service-stub';
 
 
 let isAspServerRunning = false;   // Is the Asp.Nnet server running?
