@@ -1,0 +1,152 @@
+
+C:\GOVMEETING\_SOURCECODE\BackEnd\Database\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj
+         ..\..\Configuration_Lib\Configuration_Lib.csproj
+         ..\DatabaseModel_Lib\DatabaseModel_Lib.csproj
+            > Microsoft.AspNetCore.Identity                             2.2.0       2.2.0   
+            > Microsoft.AspNetCore.Identity.EntityFrameworkCore         2.2.0       2.2.0
+            > Microsoft.EntityFrameworkCore.SqlServer                   2.0.1       2.0.1
+            > Microsoft.Extensions.Options                              2.2.0       2.2.0
+            > Microsoft.NETCore.App                               (A)   [2.0.0, )   2.0.0
+C:\GOVMEETING\_SOURCECODE\BackEnd\Database\DatabaseAccess_Tests\DatabaseAccess_Tests.csproj
+         ..\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj
+         ..\DatabaseModel_Lib\DatabaseModel_Lib.csproj
+            > Microsoft.NET.Test.Sdk         15.6.0      15.6.0  
+            > Microsoft.NETCore.App    (A)   [2.0.0, )   2.0.0
+            > NUnit                          3.9.0       3.9.0
+            > NUnit3TestAdapter              3.9.0       3.9.0
+C:\GOVMEETING\_SOURCECODE\BackEnd\Database\DatabaseModel_Lib\DatabaseModel_Lib.csproj
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0   
+C:\GOVMEETING\_SOURCECODE\BackEnd\Database\DatabaseRepositories_Lib\DatabaseRepositories_Lib.csproj
+         ..\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj
+         ..\DatabaseModel_Lib\DatabaseModel_Lib.csproj
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0   
+C:\GOVMEETING\_SOURCECODE\BackEnd\Database\LoadDatabase_Lib\LoadDatabase_Lib.csproj
+         ..\..\Configuration_Lib\Configuration_Lib.csproj
+         ..\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj
+         ..\DatabaseModel_Lib\DatabaseModel_Lib.csproj
+         ..\..\ProcessMeetings\ViewModels_Lib\ViewModels_Lib.csproj
+         ..\..\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0
+C:\GOVMEETING\_SOURCECODE\BackEnd\Online\GetOnlineFiles_Lib\GetOnlineFiles_Lib.csproj
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0
+C:\GOVMEETING\_SOURCECODE\BackEnd\Online\GoogleCloud_Lib\GoogleCloud_Lib.csproj
+         ..\..\Configuration_Lib\Configuration_Lib.csproj
+            > Google.Apis.Drive.v3                 1.32.2.1149   1.32.2.1149
+            > Google.Cloud.Speech.V1               1.0.1         1.0.1      
+            > Google.Cloud.Storage.V1              2.1.0         2.1.0      
+            > Google.Cloud.Translation.V2          2.0.0         2.0.0      
+            > Grpc.Auth                            1.10.0        1.10.0     
+            > Microsoft.Extensions.Options         2.0.0         2.0.0      
+            > Microsoft.NETCore.App          (A)   [2.0.0, )     2.0.0      
+C:\GOVMEETING\_SOURCECODE\BackEnd\Online\OnlineAccess_Lib\OnlineAccess_Lib.csproj
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0   
+C:\GOVMEETING\_SOURCECODE\BackEnd\ProcessMeetings\ViewModels_Lib\ViewModels_Lib.csproj
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0   
+C:\GOVMEETING\_SOURCECODE\BackEnd\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj
+         ..\..\Configuration_Lib\Configuration_Lib.csproj
+         ..\..\Database\DatabaseRepositories_Lib\DatabaseRepositories_Lib.csproj
+         ..\..\Utilities_Lib\Utilities_Lib.csproj
+         ..\ViewModels_Lib\ViewModels_Lib.csproj
+            > Microsoft.Extensions.Options         2.2.0       2.2.0   
+            > Microsoft.NETCore.App          (A)   [2.0.0, )   2.0.0
+            > Newtonsoft.Json                      11.0.1      11.0.1
+C:\GOVMEETING\_SOURCECODE\BackEnd\ProcessMeetings\ProcessRecording_Lib\ProcessRecording_Lib.csproj
+         ..\..\Configuration_Lib\Configuration_Lib.csproj
+         ..\ViewModels_Lib\ViewModels_Lib.csproj
+         ..\..\Online\GoogleCloud_Lib\GoogleCloud_Lib.csproj
+            > Microsoft.Extensions.Options         2.2.0       2.2.0   
+            > Microsoft.NETCore.App          (A)   [2.0.0, )   2.0.0
+            > NAudio                               1.9.0       1.9.0
+C:\GOVMEETING\_SOURCECODE\BackEnd\ProcessMeetings\ProcessRecording_Tests\ProcessRecording_Tests.csproj
+         ..\..\Configuration_Lib\Configuration_Lib.csproj
+         ..\..\Utilities_Lib\Utilities_Lib.csproj
+         ..\ViewModels_Lib\ViewModels_Lib.csproj
+         ..\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj
+         ..\ProcessRecording_Lib\ProcessRecording_Lib.csproj
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0   
+C:\GOVMEETING\_SOURCECODE\BackEnd\ProcessMeetings\ProcessTranscript_Lib\ProcessTranscript_Lib.csproj
+         ..\ViewModels_Lib\ViewModels_Lib.csproj
+         ..\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj
+            > iTextSharp                    5.5.13.1    5.5.13.1
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0
+            > NAudio                        1.9.0       1.9.0
+            > Newtonsoft.Json               11.0.1      11.0.1
+            > NLog                          4.6.6       4.6.6
+C:\GOVMEETING\_SOURCECODE\Utilities\KeepWebsiteAlive_App\KeepWebsiteAlive_App.csproj
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0   
+C:\GOVMEETING\_SOURCECODE\BackEnd\Configuration_Lib\Configuration_Lib.csproj
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0   
+C:\GOVMEETING\_SOURCECODE\BackEnd\WebApp\WebApp.csproj
+         ..\Configuration_Lib\Configuration_Lib.csproj
+         ..\Database\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj
+         ..\Database\DatabaseRepositories_Lib\DatabaseRepositories_Lib.csproj
+         ..\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj
+         ..\Utilities_Lib\Utilities_Lib.csproj
+            > Microsoft.AspNetCore.App            (A)   [2.2.0, )   2.2.0   
+            > Microsoft.AspNetCore.Razor.Design         2.2.0       2.2.0
+            > Microsoft.NETCore.App               (A)   [2.2.0, )   2.2.0
+            > NLog                                      4.7.0       4.7.0
+            > NLog.Web                                  4.9.1       4.9.1
+            > NLog.Web.AspNetCore                       4.9.1       4.9.1
+C:\GOVMEETING\_SOURCECODE\Utilities\TranslateText\TranslateText.csproj
+         ..\..\BackEnd\Configuration_Lib\Configuration_Lib.csproj
+         ..\..\BackEnd\Online\GoogleCloud_Lib\GoogleCloud_Lib.csproj
+         ..\..\BackEnd\Utilities_Lib\Utilities_Lib.csproj
+            > CommonMark.NET                                               0.15.1      0.15.1  
+            > Microsoft.Extensions.Configuration.FileExtensions            2.0.0       2.0.0
+            > Microsoft.Extensions.Configuration.Json                      2.0.0       2.0.0
+            > Microsoft.Extensions.DependencyInjection                     2.2.0       2.2.0   
+            > Microsoft.Extensions.Options.ConfigurationExtensions         2.0.0       2.0.0   
+            > Microsoft.NETCore.App                                  (A)   [2.0.0, )   2.0.0   
+            > Microsoft.Toolkit.Parsers                                    6.0.0       6.0.0   
+C:\GOVMEETING\_SOURCECODE\BackEnd\Utilities_Lib\Utilities_Lib.csproj
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0   
+C:\GOVMEETING\_SOURCECODE\BackEnd\TestLibrary\TestLibraryc.csproj
+            > Microsoft.NETCore.App   (A)   [2.0.0, )   2.0.0   
+C:\GOVMEETING\_SOURCECODE\BackEnd\WorkflowApp\WorkflowApp.csproj
+         ..\Configuration_Lib\Configuration_Lib.csproj
+         ..\Database\DatabaseRepositories_Lib\DatabaseRepositories_Lib.csproj
+         ..\Database\LoadDatabase_Lib\LoadDatabase_Lib.csproj
+         ..\Online\GetOnlineFiles_Lib\GetOnlineFiles_Lib.csproj
+         ..\Online\OnlineAccess_Lib\OnlineAccess_Lib.csproj
+         ..\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj
+         ..\ProcessMeetings\ProcessRecording_Lib\ProcessRecording_Lib.csproj
+         ..\ProcessMeetings\ProcessTranscript_Lib\ProcessTranscript_Lib.csproj
+         ..\ProcessMeetings\ViewModels_Lib\ViewModels_Lib.csproj
+         ..\Utilities_Lib\Utilities_Lib.csproj
+            > Google.Cloud.Speech.V1                                       1.0.1       1.0.1   
+            > Google.Cloud.Storage.V1                                      2.1.0       2.1.0
+            > iTextSharp                                                   5.5.13.1    5.5.13.1
+            > Microsoft.Extensions.Configuration.FileExtensions            2.0.0       2.0.0
+            > Microsoft.Extensions.Configuration.Json                      2.0.0       2.0.0
+            > Microsoft.Extensions.DependencyInjection                     2.2.0       2.2.0
+            > Microsoft.Extensions.Logging.Console                         2.0.0       2.0.0
+            > Microsoft.Extensions.Logging.Debug                           2.0.0       2.0.0
+            > Microsoft.Extensions.Options.ConfigurationExtensions         2.0.0       2.0.0
+            > Microsoft.NETCore.App                                  (A)   [2.0.0, )   2.0.0
+            > NLog                                                         4.6.6       4.6.6
+            > NLog.Web                                                     4.8.4       4.8.4   
+            > NLog.Web                                                     4.8.4       4.8.4
+C:\GOVMEETING\_SOURCECODE\BackEnd\WorkflowApp2\WorkflowApp2.csproj
+         ..\Configuration_Lib\Configuration_Lib.csproj
+         ..\Database\DatabaseRepositories_Lib\DatabaseRepositories_Lib.csproj
+         ..\Database\LoadDatabase_Lib\LoadDatabase_Lib.csproj
+         ..\Online\GetOnlineFiles_Lib\GetOnlineFiles_Lib.csproj
+         ..\Online\OnlineAccess_Lib\OnlineAccess_Lib.csproj
+         ..\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj
+         ..\ProcessMeetings\ProcessRecording_Lib\ProcessRecording_Lib.csproj
+         ..\ProcessMeetings\ProcessTranscript_Lib\ProcessTranscript_Lib.csproj
+         ..\ProcessMeetings\ViewModels_Lib\ViewModels_Lib.csproj
+         ..\Utilities_Lib\Utilities_Lib.csproj
+            > Google.Cloud.Speech.V1                                       1.0.1       1.0.1
+            > Google.Cloud.Storage.V1                                      2.1.0       2.1.0
+            > iTextSharp                                                   5.5.13.1    5.5.13.1
+            > Microsoft.Extensions.Configuration.FileExtensions            2.0.0       2.0.0
+            > Microsoft.Extensions.Configuration.Json                      2.0.0       2.0.0
+            > Microsoft.Extensions.DependencyInjection                     2.2.0       2.2.0
+            > Microsoft.Extensions.Logging.Console                         2.0.0       2.0.0
+            > Microsoft.Extensions.Logging.Debug                           2.0.0       2.0.0
+            > Microsoft.Extensions.Options.ConfigurationExtensions         2.0.0       2.0.0
+            > Microsoft.NETCore.App                                  (A)   [2.0.0, )   2.0.0
+            > NLog                                                         4.6.6       4.6.6
+            > NLog.Web                                                     4.8.4       4.8.4
