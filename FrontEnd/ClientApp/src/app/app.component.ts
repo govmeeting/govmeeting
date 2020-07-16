@@ -6,7 +6,7 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 // import {ApplicationRef} from '@angular/core';
 
-import { NavService } from './SIDENAV/nav.service';
+import { NavService } from './sidenav/nav.service';
 //import { MediaQueryService } from './WORK_EXPERIMENTS/media-query.service';
 
 import { Router } from '@angular/router';
