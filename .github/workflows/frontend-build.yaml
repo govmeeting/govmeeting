@@ -1,12 +1,9 @@
 on:
   push:
-    branches: [ master, test-actions ]
     paths: 'FrontEnd/**'
   pull_request:
-    branches: [ master, test-actions ]
     paths: 'FrontEnd/**'
 
-on: push
 name: Build Angular Front-end 
 jobs:
   build:
