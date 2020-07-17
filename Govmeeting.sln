@@ -4,7 +4,7 @@ VisualStudioVersion = 16.0.29521.150
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "utilities", "utilities", "{6B15424B-85AE-44A7-BDB0-A964CC25188E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{6B15424B-85AE-44A7-BDB0-A964CC25188E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{55F4C852-9760-41BA-844D-B3C0983A699D}"
 	ProjectSection(SolutionItems) = preProject
@@ -50,13 +50,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessRecording_Tests", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessTranscript_Lib", "BackEnd\ProcessMeetings\ProcessTranscript_Lib\ProcessTranscript_Lib.csproj", "{3025B04A-F491-4734-8CD1-E107BCF113BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeepWebsiteAlive_App", "utilities\KeepWebsiteAlive_App\KeepWebsiteAlive_App.csproj", "{450595A5-421D-47B6-BA5C-5F9EFB9F46DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeepWebsiteAlive_App", "Utilities\KeepWebsiteAlive_App\KeepWebsiteAlive_App.csproj", "{450595A5-421D-47B6-BA5C-5F9EFB9F46DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Configuration_Lib", "BackEnd\Configuration_Lib\Configuration_Lib.csproj", "{2E008A6B-E302-4D1C-AC12-A8616F24F2FC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "BackEnd\WebApp\WebApp.csproj", "{2326AA87-FD84-4DC7-9ABF-27D5BACDEC8D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslateText", "utilities\TranslateText\TranslateText.csproj", "{B6B21551-A7CD-46E7-8028-405B3BADCF2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslateText", "Utilities\TranslateText\TranslateText.csproj", "{B6B21551-A7CD-46E7-8028-405B3BADCF2F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PsScripts", "PsScripts", "{2CD25487-0540-4D79-8269-68AD36CE6CBE}"
 	ProjectSection(SolutionItems) = preProject
