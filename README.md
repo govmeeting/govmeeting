@@ -1,7 +1,9 @@
 <!-- Do not edit README.md. This file is built by Utilities/PsScripts/Build-ProjectReadme.ps1 -->
 
 # Overview 
-<!-- START OF README SECTION -->
+
+![Build Frontend](https://github.com/govmeeting/govmeeting/workflows/Build%20Frontend/badge.svg)
+![Build Backend](https://github.com/govmeeting/govmeeting/workflows/Build%20Backend/badge.svg)<!-- START OF README SECTION -->
 
 <!-- Note the controller for this page is app/about-project/overview/overview.ts -->
 

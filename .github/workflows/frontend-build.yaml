@@ -1,10 +1,11 @@
+name: Build Frontend 
+
 on:
   push:
     paths: 'FrontEnd/**'
   pull_request:
     paths: 'FrontEnd/**'
 
-name: Build Angular Front-end 
 jobs:
   build:
     runs-on: ubuntu-latest

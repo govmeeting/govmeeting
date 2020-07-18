@@ -30,6 +30,8 @@ $preOverview =
 @"
 <!-- Do not edit README.md. This file is built by Utilities/PsScripts/Build-ProjectReadme.ps1 -->
 `n# Overview `n
+![Build Frontend](https://github.com/govmeeting/govmeeting/workflows/Build%20Frontend/badge.svg)
+![Build Backend](https://github.com/govmeeting/govmeeting/workflows/Build%20Backend/badge.svg)
 "@
 
 # Put this after the overview doc
