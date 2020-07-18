@@ -50,18 +50,18 @@ namespace GM.Utilities.Translate
 
             // We may do some languages at a time.
             List<string> someLanguages = new List<string>()
-                { "is" };
+                { "hu" };
 
             // No documents have yet to be translated into these languages 
             List<string> moreLanguages = new List<string>()
                 { "ic", "sw", "no" };
 
             // uncomment one of the following lines.
-            // AddToArrays("is", "Icelandic");
             // TranslateDocumentsLanguages(allDocuments, allLanguages, update);
             TranslateDocumentsLanguages(allDocuments, someLanguages, update);
             // TranslateDocumentsLanguages(allDocuments, moreLanguages, update);
 
+            AddToArrays("hu", "Hungarian");
         }
 
         private void TranslateDocumentsLanguages(List<string> documents, List<string> languages, bool update)
@@ -110,6 +110,7 @@ namespace GM.Utilities.Translate
             string dashtitles = @"""Politics"", ""Legislation"", ""Meetings"", ""Govmeeting News"", ""Edit Transcript"", ""Add Tags to Transcript"", ""View Transcript"", ""Issues"", ""Officials"", ""Virtual Meeting"", ""Chat"", ""Charts"", ""Notes"", ""Meeting Minutes"", ""Work Items"", ""Alerts""";
             string docpagesFile = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\app\about-project\document-pages.ts");
             string dashtitlesFile = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\app\dashboard\dashboard-titles.ts");
+            string sidenavheaderFile = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\app\sidenav\sidenav-header\sidenav-header.ts");
 
             string translated = translateInCloud.TranslateText(docpages, language);  // translate
             translated = Regex.Replace(translated, @"„|”|“", @"""");        // replace other version of double quotes.
@@ -122,6 +123,12 @@ namespace GM.Utilities.Translate
             text = File.ReadAllText(dashtitlesFile);
             newtext = text.Replace(@"]//ADD_HERE", @"]," + Environment.NewLine + @"    [""" + languageName + @""", """ + language + @""", " + translated + @"]//ADD_HERE");
             File.WriteAllText(dashtitlesFile, newtext);
+
+            // {enname: 'English', value: 'en', viewValue: 'English'}
+            translated = translateInCloud.TranslateText(languageName, language);  // translate
+            text = File.ReadAllText(sidenavheaderFile);
+            newtext = text.Replace(@"}//ADD_HERE", @"}," + Environment.NewLine + @"    {enname: '" + languageName + @"', value: '" + language + @"', viewValue: '" + translated + @"'}//ADD_HERE");
+            File.WriteAllText(sidenavheaderFile, newtext);
         }
 
         private string GetEnglishDocumentPath(string document)

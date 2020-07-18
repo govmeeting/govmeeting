@@ -17,7 +17,10 @@ let DashboardTitles: string[][] = [
   ["Korean", "ko",  "정치", "법률", "회의", "Govmeeting 뉴스", "대본 편집", "대본에 태그 추가", "대본보기", "문제", "공식", "가상 회의", "채팅" , "채팅", "메모", "회의록", "작업 항목", "경고"],
   ["Vietnamese", "vi", "Chính trị", "Pháp luật", "Cuộc họp", "Tin tức Govmeeting", "Chỉnh sửa bảng điểm", "Thêm thẻ vào bảng điểm", "Xem bảng điểm", "Vấn đề", "Quan chức", "Cuộc họp ảo", "Trò chuyện" , "Biểu đồ", "Ghi chú", "Biên bản cuộc họp", "Mục công việc", "Cảnh báo" ],
   ["Polish", "pl", "Polityka", "Ustawodawstwo", "Spotkania", "Govmeeting News", "Edytuj transkrypcję", "Dodaj tagi do transkrypcji", "Wyświetl transkrypt", "Problemy", "Urzędnicy", "Spotkanie wirtualne", "Czat", "Wykresy", "Notatki", "Protokół spotkania", "Elementy pracy", "Alerty"],
-  ["Icelandic", "is", "Stjórnmál", "Löggjöf", "Fundir", "Ríkisstjórnarfréttir", "Breyta afriti", "Bæta merkjum við afrit", "Skoða afrit", "mál", "Embættismenn", "Sýndarfundur", "Spjall" , "Töflur", "Athugasemdir", "Fundargerðir fundargerð", "Vinnuatriði", "Viðvaranir"]//ADD_HERE - do not remove this comment
+  ["Icelandic", "is", "Stjórnmál", "Löggjöf", "Fundir", "Ríkisstjórnarfréttir", "Breyta afriti", "Bæta merkjum við afrit", "Skoða afrit", "mál", "Embættismenn", "Sýndarfundur", "Spjall" , "Töflur", "Athugasemdir", "Fundargerðir fundargerð", "Vinnuatriði", "Viðvaranir"],
+  ["Serbian", "sr", "Политика", "Законодавство", "Састанци", "Вести са вести", "Уређивање транскрипта", "Додавање тагова у транскрипт", "Преглед транскрипта", "Питања", "Званичници", "Виртуелни састанак", "Чет" , "Графикони", "Биљешке", "Записници састанка", "Радне ставке", "Упозорења"],
+    ["Hebrew", "iw", "פוליטיקה", "חקיקה", "ישיבות", "חדשות ממשל", "עריכת תמליל", "הוסף תגיות לתמלול", "צפה בתמליל", "סוגיות", "גורמים רשמיים", "פגישה וירטואלית", "צ'ט" , "תרשימים", "הערות", "דקות פגישה", "פריטי עבודה", "התראות"],
+    ["Hungarian", "hu", "Politika", "Jogszabályok", "Találkozók", "Govmeeting News", "Az átirat szerkesztése", "Címkék hozzáadása az átirathoz", "Áttekintés megtekintése", "Kiadványok", "Tisztviselők", "Virtuális találkozó", "Csevegés" , "Táblázatok", "Jegyzetek", "Találkozói jegyzőkönyv", "Munkaelemek", "Figyelmeztetések"]//ADD_HERE - do not remove this comment
 ]
 
 

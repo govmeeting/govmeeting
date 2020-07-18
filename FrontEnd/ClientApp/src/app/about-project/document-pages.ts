@@ -19,7 +19,10 @@
     ["Korean", "ko", "개요", "워크 플로우", "프로젝트 상태", "설정", "개발자 노트", "데이터베이스", "시스템 디자인"],
     ["Vietnamese", "vi", "Tổng quan", "quy trình làm việc", "trạng thái dự án", "thiết lập", "ghi chú của nhà phát triển", "cơ sở dữ liệu", "thiết kế hệ thống"],
     ["Polish", "pl", "Przegląd", "Przepływ pracy", "Status projektu", "Konfiguracja", "Notki programisty", "Baza danych", "Projekt"],
-    ["Icelandic", "is", "Yfirlit", "Verkflæði", "Staða verkefnis", "Skipulag", "Athugasemdir þróunaraðila", "Gagnasafn", "Hönnun"]//ADD_HERE - do not remove this comment
+    ["Icelandic", "is", "Yfirlit", "Verkflæði", "Staða verkefnis", "Skipulag", "Athugasemdir þróunaraðila", "Gagnasafn", "Hönnun"],
+    ["Serbian", "sr", "Преглед", "Радни ток", "Статус пројекта", "Постављање", "Напомене за програмере", "База података", "Дизајн"],
+    ["Hebrew", "iw", "סקירה כללית", "זרימת עבודה", "סטטוס פרויקט", "הגדרה", "הערות מפתחים", "מסד נתונים", "עיצוב"],
+    ["Hungarian", "hu", "Áttekintés", "Munkafolyamat", "Projekt állapota", "Beállítás", "Fejlesztői megjegyzések", "Adatbázis", "Tervezés"]//ADD_HERE - do not remove this comment
   ]
 
   let betaPageIds = ["betaOverview", "betaDocumentation" ];
