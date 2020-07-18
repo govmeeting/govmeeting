@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { VgAPI } from 'videogular2/core';
+// import { VgAPI } from 'videogular2/core';
+import {VgApiService} from '@videogular/ngx-videogular/core';
+
 import { Observable } from 'rxjs';
 import { timer } from 'rxjs/observable/timer';
 import { AppData } from '../../appdata';
@@ -24,10 +26,11 @@ const NoLog = true;  // set to false for console logging
 export class VideoComponent {
   private ClassName: string = this.constructor.name + ": ";
   sources: Array<videoSource>;
-  api: VgAPI;
+  // api: VgAPI;
+  api: VgApiService;
 
 
-  onPlayerReady(api: VgAPI) {
+  onPlayerReady(api: VgApiService) {
       this.api = api;
       NoLog || console.log(this.ClassName + 'OnPlayerReady');
       // api.play();

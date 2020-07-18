@@ -6,10 +6,10 @@ import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialo
 templateUrl:  'popup.component.html'
 })
 export  class  PopupComponent {
-    constructor(private  dialogRef:  MatDialogRef<PopupComponent>, @Inject(MAT_DIALOG_DATA) public  data:  any) {
-    }
-    public  closeMe() {
-        this.dialogRef.close();
-    }
+    // constructor(private  dialogRef:  MatDialogRef<PopupComponent>, @Inject(MAT_DIALOG_DATA) public  data:  any) {
+    // }
+    // public  closeMe() {
+    //     this.dialogRef.close();
+    // }
 }
 

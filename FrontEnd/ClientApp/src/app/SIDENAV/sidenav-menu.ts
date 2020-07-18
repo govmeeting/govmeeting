@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit, Input} from '@angular/core';
-import { VERSION } from '@angular/material';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NavItem, EntryType } from './nav-item';
@@ -10,7 +9,12 @@ import { UserSettingsService, UserSettings, LocationType } from '../COMMON/user-
 import { navigationItems, betaNavigationItems } from './menu-items';
 import { MenuTreeArray } from './menu-tree-array'
 
-import { MatDialog, MatDialogRef } from  '@angular/material';
+import { MatNavList } from '@angular/material/list';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatDialog, MatDialogRef } from  '@angular/material/dialog';
+
+// import {MatList} from '@angular/material/list';
+
 import { PopupComponent } from '../WORK_EXPERIMENTS/popup/popup.component';
 import { AppData } from '../appdata';
 
@@ -36,7 +40,6 @@ const NoLog = true;  // set to false for console logging
     subscription: Subscription;
     navItems: any[] = [];
     sidenav: ElementRef;
-    version = VERSION;
     navigationItems: NavItem[];
     menuTreeArray: MenuTreeArray;
     deviceType: string;
