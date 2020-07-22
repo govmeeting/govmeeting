@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { DemoMaterialModule } from '../common_XXX/material';
+import { DemoMaterialModule } from '../common/material';
 import { HttpClientModule } from '@angular/common/http'
 import { MarkdownModule } from 'ngx-markdown';
 

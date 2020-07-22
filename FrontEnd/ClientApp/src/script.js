@@ -13,7 +13,7 @@ $(document).ready(() => {
 // Set constants and grab needed elements
 const sidenavEl = $('.sidenav');
 const gridEl = $('.grid');
-const sidenav_XXX_ACTIVE_CLASS = 'sidenav--active';
+const sidenav_ACTIVE_CLASS = 'sidenav--active';
 const GRID_NO_SCROLL_CLASS = 'grid--noscroll';
 
 function toggleClass(el, className) {
@@ -32,7 +32,7 @@ function addResizeListeners() {
     NoLog || console.log(this.ClassName + 'width: ', width);
 
     if (width > 750) {
-      sidenavEl.removeClass(sidenav_XXX_ACTIVE_CLASS);
+      sidenavEl.removeClass(sidenav_ACTIVE_CLASS);
       gridEl.removeClass(GRID_NO_SCROLL_CLASS);
     }
   });
@@ -42,7 +42,7 @@ function addResizeListeners() {
 function setMenuClickListener() {
   $('.header__menu').on('click', function(e) {
     NoLog || console.log(this.ClassName + 'clicked menu icon');
-    toggleClass(sidenavEl, sidenav_XXX_ACTIVE_CLASS);
+    toggleClass(sidenavEl, sidenav_ACTIVE_CLASS);
     toggleClass(gridEl, GRID_NO_SCROLL_CLASS);
   });
 }
@@ -50,7 +50,7 @@ function setMenuClickListener() {
 // Sidenav close icon
 function setSidenavCloseListener() {
   $('.sidenav__brand-close').on('click', function(e) {
-    toggleClass(sidenavEl, sidenav_XXX_ACTIVE_CLASS);
+    toggleClass(sidenavEl, sidenav_ACTIVE_CLASS);
     toggleClass(gridEl, GRID_NO_SCROLL_CLASS);
   });
 }
