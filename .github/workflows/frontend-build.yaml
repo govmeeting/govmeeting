@@ -2,9 +2,9 @@ name: Build frontend
 
 on:
   push:
-    paths: 'frontend/**'
+    paths: ['frontend/**', '.github/workflows/frontend-build.yaml']
   pull_request:
-    paths: 'frontend/**'
+    paths: ['frontend/**', '.github/workflows/frontend-build.yaml']
 
 jobs:
   build:
@@ -32,4 +32,10 @@ jobs:
         run: |
           npm ci
           npm run build
+        working-directory: ${{env.working-directory}}
+
+      - name: uat
+        run: |
+          npm start &
+          npx cypress run
         working-directory: ${{env.working-directory}}
