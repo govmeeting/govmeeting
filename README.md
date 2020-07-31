@@ -2,7 +2,7 @@
 
 # Overview 
 
-![Build Frontend](https://github.com/govmeeting/govmeeting/workflows/Build%20Frontend/badge.svg)
+![Build frontend](https://github.com/govmeeting/govmeeting/workflows/Build%20frontend/badge.svg)
 ![Build Backend](https://github.com/govmeeting/govmeeting/workflows/Build%20Backend/badge.svg)<!-- START OF README SECTION -->
 
 <!-- Note the controller for this page is app/about-project/overview/overview.ts -->
@@ -86,7 +86,7 @@ _______
 * Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
 * Clone or download the project from <a href="https://github.com/govmeeting/govmeeting"> Github. </a> Preferably fork the project and clone your fork. 
 * Check installation:
-  * cd FrontEnd/ClientApp
+  * cd frontend/clientapp
   * npm install; npm start
   * [ Open a browser to "localhost:4200" ]
 
@@ -112,7 +112,7 @@ _____
 * Open the project folder in VsCode
 * Install NPM packages: 
   * Open a terminal pane in VsCode
-  * cd FrontEnd/ClientApp
+  * cd frontend/clientapp
   * npm install
 * Complile and run ClientApp
   *  npm start
@@ -126,13 +126,13 @@ By default, ClientApp will call stub services instead of calling the WebApp API.
 ## Run ClientApp & WebApp
 
 * Download the test data from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> Put them in a sibling folder to the project named "TESTDATA". These are media files that should not be committed to Github. You can also download them from <a hfre="https://1drv.ms/u/s!AqN2hZ8PFCAag_pd_5aXKqav1FFN_Q?e=YOAjGV"> OneDrive. </a>
-* In FrontEnd/ClientApp/app.module.ts, change "isAspServerRunning" from false to true.
+* In frontend/clientapp/app.module.ts, change "isAspServerRunning" from false to true.
 * Build projects:
   * Ctrl-Shift-P
   * Select "Tasks: Run Task"
   * Select "build-webapp" or "Build All"
 * Start ClientApp (if it's not already running)
-  * cd FrontEnd/ClientApp
+  * cd frontend/clientapp
   * npm start
 * In the debug panel, set launch configuration "WebApp & ClientApp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
@@ -208,7 +208,7 @@ _____
 
 ## Run ClientApp & WebApp
 * Download the sub-folders from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> Put them in a sibling folder to the project named "TESTDATA"
-* In FrontEnd/ClientApp/app.module.ts, change "isAspServerRunning" from false to true.
+* In frontend/clientapp/app.module.ts, change "isAspServerRunning" from false to true.
 * In Task Runner Explorer
   * Select: ClientApp
   * run "install"
@@ -240,7 +240,7 @@ In your profile, set the environment variable, ASPNETCORE_ENVIRONMENT, to "Devel
 ## Run ClientApp
 
 Execute:
-- cd Frontend/ClientApp
+- cd frontend/ClientApp
 - npm install
 - npm start
 

@@ -1,7 +1,7 @@
 # Temporary script to move some files.
 
 
-$docs = "C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp\src\assets\docs"
+$docs = "C:\GOVMEETING\_SOURCECODE\frontend\clientapp\src\assets\docs"
 Set-Location $docs
 
 # foreach ($lang in "AR","BN", "DE", "ES", "FI", "FR", "HI", "IT", "PT", "SW", "ZH") {

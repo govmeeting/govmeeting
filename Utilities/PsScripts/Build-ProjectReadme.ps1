@@ -12,7 +12,7 @@ Function BuildReadme
   Write-Host "############################ Build-ProjectReadme.ps1 ############################"
 
   # If no params passed and repo is installed in C:\GOVMEETING|_SOURCECODE
-  if ($clientapp -eq "") { $clientapp = "C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp" }
+  if ($clientapp -eq "") { $clientapp = "C:\GOVMEETING\_SOURCECODE\frontend\clientapp" }
   if ($readme -eq ""){ $readme = "C:\GOVMEETING\_SOURCECODE\README.md" }
     
   # $me = "BuildProjectReadme: "
@@ -21,7 +21,7 @@ Function BuildReadme
   ## If we are not passed the locations of ClientApp and README.md,
   ## assume we are running this script from Utilities\PsScripts and we know their relative locations.
   # if ($clientapp -eq "") {
-  #   $clientapp = GetFullPath "..\..\FrontEnd\ClientApp"
+  #   $clientapp = GetFullPath "..\..\frontend\clientapp"
   #   $readme = GetFullPath "..\..\README.md"
   # }
 
@@ -30,7 +30,7 @@ $preOverview =
 @"
 <!-- Do not edit README.md. This file is built by Utilities/PsScripts/Build-ProjectReadme.ps1 -->
 `n# Overview `n
-![Build Frontend](https://github.com/govmeeting/govmeeting/workflows/Build%20Frontend/badge.svg)
+![Build frontend](https://github.com/govmeeting/govmeeting/workflows/Build%20frontend/badge.svg)
 ![Build Backend](https://github.com/govmeeting/govmeeting/workflows/Build%20Backend/badge.svg)
 "@
 

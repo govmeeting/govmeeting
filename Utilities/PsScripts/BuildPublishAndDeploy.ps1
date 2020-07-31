@@ -11,7 +11,7 @@ function Main
         exit
     }
 
-    $clientapp = CombinePaths $solutionFolder "FrontEnd\ClientApp"
+    $clientapp = CombinePaths $solutionFolder "frontend\clientapp"
     $webapp = CombinePaths $solutionFolder  "BackEnd\WebApp"
     $secrets = CombinePaths $solutionFolder  "..\SECRETS"
     $readme = CombinePaths $solutionFolder  "README.md"

@@ -7,7 +7,7 @@
           "type": "process",
           "args": [
             "--prefix",
-            "${workspaceFolder}/FrontEnd/ClientApp",
+            "${workspaceFolder}/frontend/clientapp",
             "run",
             "start"
           ],

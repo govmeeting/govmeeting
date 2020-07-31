@@ -27,4 +27,4 @@ Function ChangeisAspServerRunning
 }
 
 ChangeisAspServerRunning @args
-# ChangeisAspServerRunning ".\FrontEnd\ClientApp\src\app\app.module.ts" $false
+# ChangeisAspServerRunning ".\frontend\clientapp\src\app\app.module.ts" $false

@@ -111,7 +111,7 @@ namespace GM.WebApp
             //// In production, the Angular files will be served from this directory
             //services.AddSpaStaticFiles(configuration =>
             //{
-            //    configuration.RootPath = "../../FrontEnd/ClientApp/dist";
+            //    configuration.RootPath = "../../frontend/clientapp/dist";
             //    //configuration.RootPath = "ClientApp/dist";
             //});
 
@@ -215,7 +215,7 @@ namespace GM.WebApp
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                //spa.Options.SourcePath = "../../FrontEnd/ClientApp";
+                //spa.Options.SourcePath = "../../frontend/clientapp";
                 //spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())

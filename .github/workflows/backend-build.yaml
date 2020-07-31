@@ -2,9 +2,9 @@ name: Build Backend
 
 on:
   push:
-    paths-ignore: 'FrontEnd/**'
+    paths-ignore: 'frontend/**'
   pull_request:
-    paths-ignore: 'FrontEnd/**'
+    paths-ignore: 'frontend/**'
 
 jobs:
   build:

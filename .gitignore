@@ -39,7 +39,7 @@ appsettings.Staging.json
 TranscribeAudio.json
 DATAFILES/
 **/wwwroot/dist/
-**/ClientApp/dist/
+**/clientapp/dist/
 src/logs/
 
 .synkron.syncdb

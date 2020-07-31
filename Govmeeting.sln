@@ -88,93 +88,93 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientApp", "ClientApp", "{8BD8488E-145F-4414-8875-C0AAE3074776}"
 	ProjectSection(SolutionItems) = preProject
-		FrontEnd\ClientApp\.editorconfig = FrontEnd\ClientApp\.editorconfig
-		FrontEnd\ClientApp\.gitignore = FrontEnd\ClientApp\.gitignore
-		FrontEnd\ClientApp\angular.json = FrontEnd\ClientApp\angular.json
-		FrontEnd\ClientApp\browserslist = FrontEnd\ClientApp\browserslist
-		FrontEnd\ClientApp\karma.conf.js = FrontEnd\ClientApp\karma.conf.js
-		FrontEnd\ClientApp\package-lock.json = FrontEnd\ClientApp\package-lock.json
-		FrontEnd\ClientApp\package.json = FrontEnd\ClientApp\package.json
-		FrontEnd\ClientApp\TODO.ts = FrontEnd\ClientApp\TODO.ts
-		FrontEnd\ClientApp\tsconfig.app.json = FrontEnd\ClientApp\tsconfig.app.json
-		FrontEnd\ClientApp\tsconfig.json = FrontEnd\ClientApp\tsconfig.json
-		FrontEnd\ClientApp\tsconfig.spec.json = FrontEnd\ClientApp\tsconfig.spec.json
-		FrontEnd\ClientApp\tslint.json = FrontEnd\ClientApp\tslint.json
+		frontend\clientapp\.editorconfig = frontend\clientapp\.editorconfig
+		frontend\clientapp\.gitignore = frontend\clientapp\.gitignore
+		frontend\clientapp\angular.json = frontend\clientapp\angular.json
+		frontend\clientapp\browserslist = frontend\clientapp\browserslist
+		frontend\clientapp\karma.conf.js = frontend\clientapp\karma.conf.js
+		frontend\clientapp\package-lock.json = frontend\clientapp\package-lock.json
+		frontend\clientapp\package.json = frontend\clientapp\package.json
+		frontend\clientapp\TODO.ts = frontend\clientapp\TODO.ts
+		frontend\clientapp\tsconfig.app.json = frontend\clientapp\tsconfig.app.json
+		frontend\clientapp\tsconfig.json = frontend\clientapp\tsconfig.json
+		frontend\clientapp\tsconfig.spec.json = frontend\clientapp\tsconfig.spec.json
+		frontend\clientapp\tslint.json = frontend\clientapp\tslint.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{337B2969-F9F1-4C91-ABFC-8A79E032D989}"
 	ProjectSection(SolutionItems) = preProject
-		FrontEnd\ClientApp\src\colors.scss = FrontEnd\ClientApp\src\colors.scss
-		FrontEnd\ClientApp\src\favicon.ico = FrontEnd\ClientApp\src\favicon.ico
-		FrontEnd\ClientApp\src\index.html = FrontEnd\ClientApp\src\index.html
-		FrontEnd\ClientApp\src\main.ts = FrontEnd\ClientApp\src\main.ts
-		FrontEnd\ClientApp\src\polyfills.ts = FrontEnd\ClientApp\src\polyfills.ts
-		FrontEnd\ClientApp\src\script.js = FrontEnd\ClientApp\src\script.js
-		FrontEnd\ClientApp\src\styles.scss = FrontEnd\ClientApp\src\styles.scss
-		FrontEnd\ClientApp\src\test.ts = FrontEnd\ClientApp\src\test.ts
+		frontend\clientapp\src\colors.scss = frontend\clientapp\src\colors.scss
+		frontend\clientapp\src\favicon.ico = frontend\clientapp\src\favicon.ico
+		frontend\clientapp\src\index.html = frontend\clientapp\src\index.html
+		frontend\clientapp\src\main.ts = frontend\clientapp\src\main.ts
+		frontend\clientapp\src\polyfills.ts = frontend\clientapp\src\polyfills.ts
+		frontend\clientapp\src\script.js = frontend\clientapp\src\script.js
+		frontend\clientapp\src\styles.scss = frontend\clientapp\src\styles.scss
+		frontend\clientapp\src\test.ts = frontend\clientapp\src\test.ts
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{1F708582-9A9F-4224-9F16-F5521B961D94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{A858ED8D-A847-4181-AA52-DD303E3AF1E8}"
 	ProjectSection(SolutionItems) = preProject
-		FrontEnd\ClientApp\src\assets\.gitkeep = FrontEnd\ClientApp\src\assets\.gitkeep
+		frontend\clientapp\src\assets\.gitkeep = frontend\clientapp\src\assets\.gitkeep
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "environments", "environments", "{D1E6145E-231F-418C-BC36-AF5DC68F6E43}"
 	ProjectSection(SolutionItems) = preProject
-		FrontEnd\ClientApp\src\environments\environment.prod.ts = FrontEnd\ClientApp\src\environments\environment.prod.ts
-		FrontEnd\ClientApp\src\environments\environment.ts = FrontEnd\ClientApp\src\environments\environment.ts
+		frontend\clientapp\src\environments\environment.prod.ts = frontend\clientapp\src\environments\environment.prod.ts
+		frontend\clientapp\src\environments\environment.ts = frontend\clientapp\src\environments\environment.ts
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{769B45C3-7861-49EC-B64C-D9B366D16043}"
 	ProjectSection(SolutionItems) = preProject
-		FrontEnd\ClientApp\src\assets\docs\betaDocumentation.md = FrontEnd\ClientApp\src\assets\docs\betaDocumentation.md
-		FrontEnd\ClientApp\src\assets\docs\betaOverview.md = FrontEnd\ClientApp\src\assets\docs\betaOverview.md
-		FrontEnd\ClientApp\src\assets\docs\database.md = FrontEnd\ClientApp\src\assets\docs\database.md
-		FrontEnd\ClientApp\src\assets\docs\dev-notes.md = FrontEnd\ClientApp\src\assets\docs\dev-notes.md
-		FrontEnd\ClientApp\src\assets\docs\overview1.md = FrontEnd\ClientApp\src\assets\docs\overview1.md
-		FrontEnd\ClientApp\src\assets\docs\overview2.md = FrontEnd\ClientApp\src\assets\docs\overview2.md
-		FrontEnd\ClientApp\src\assets\docs\project-status.md = FrontEnd\ClientApp\src\assets\docs\project-status.md
-		FrontEnd\ClientApp\src\assets\docs\setup.md = FrontEnd\ClientApp\src\assets\docs\setup.md
-		FrontEnd\ClientApp\src\assets\docs\sys-design.md = FrontEnd\ClientApp\src\assets\docs\sys-design.md
-		FrontEnd\ClientApp\src\assets\docs\workflow.md = FrontEnd\ClientApp\src\assets\docs\workflow.md
+		frontend\clientapp\src\assets\docs\betaDocumentation.md = frontend\clientapp\src\assets\docs\betaDocumentation.md
+		frontend\clientapp\src\assets\docs\betaOverview.md = frontend\clientapp\src\assets\docs\betaOverview.md
+		frontend\clientapp\src\assets\docs\database.md = frontend\clientapp\src\assets\docs\database.md
+		frontend\clientapp\src\assets\docs\dev-notes.md = frontend\clientapp\src\assets\docs\dev-notes.md
+		frontend\clientapp\src\assets\docs\overview1.md = frontend\clientapp\src\assets\docs\overview1.md
+		frontend\clientapp\src\assets\docs\overview2.md = frontend\clientapp\src\assets\docs\overview2.md
+		frontend\clientapp\src\assets\docs\project-status.md = frontend\clientapp\src\assets\docs\project-status.md
+		frontend\clientapp\src\assets\docs\setup.md = frontend\clientapp\src\assets\docs\setup.md
+		frontend\clientapp\src\assets\docs\sys-design.md = frontend\clientapp\src\assets\docs\sys-design.md
+		frontend\clientapp\src\assets\docs\workflow.md = frontend\clientapp\src\assets\docs\workflow.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{04C69D97-6E2C-44D8-8089-579045CD9E30}"
 	ProjectSection(SolutionItems) = preProject
-		FrontEnd\ClientApp\src\assets\images\Austin.png = FrontEnd\ClientApp\src\assets\images\Austin.png
-		FrontEnd\ClientApp\src\assets\images\avatar-icon-png-12.jpg = FrontEnd\ClientApp\src\assets\images\avatar-icon-png-12.jpg
-		FrontEnd\ClientApp\src\assets\images\avatar-icon-png-12.png = FrontEnd\ClientApp\src\assets\images\avatar-icon-png-12.png
-		FrontEnd\ClientApp\src\assets\images\Boothbay_Harbor_inner_harbor.png = FrontEnd\ClientApp\src\assets\images\Boothbay_Harbor_inner_harbor.png
-		FrontEnd\ClientApp\src\assets\images\Budget_Town_Hall.png = FrontEnd\ClientApp\src\assets\images\Budget_Town_Hall.png
-		FrontEnd\ClientApp\src\assets\images\condominiums.png = FrontEnd\ClientApp\src\assets\images\condominiums.png
-		FrontEnd\ClientApp\src\assets\images\female w glasses, no facial features.png = FrontEnd\ClientApp\src\assets\images\female w glasses, no facial features.png
-		FrontEnd\ClientApp\src\assets\images\female, no facial features.png = FrontEnd\ClientApp\src\assets\images\female, no facial features.png
-		FrontEnd\ClientApp\src\assets\images\FlowchartClientApp.png = FrontEnd\ClientApp\src\assets\images\FlowchartClientApp.png
-		FrontEnd\ClientApp\src\assets\images\FlowchartFunctional.png = FrontEnd\ClientApp\src\assets\images\FlowchartFunctional.png
-		FrontEnd\ClientApp\src\assets\images\FlowchartSystem.png = FrontEnd\ClientApp\src\assets\images\FlowchartSystem.png
-		FrontEnd\ClientApp\src\assets\images\FlowchartWebApp.png = FrontEnd\ClientApp\src\assets\images\FlowchartWebApp.png
-		FrontEnd\ClientApp\src\assets\images\FlowchartWorkflowApp.png = FrontEnd\ClientApp\src\assets\images\FlowchartWorkflowApp.png
-		FrontEnd\ClientApp\src\assets\images\google-translate-color-regular.png = FrontEnd\ClientApp\src\assets\images\google-translate-color-regular.png
-		FrontEnd\ClientApp\src\assets\images\google-translate-color-regular@2x.png = FrontEnd\ClientApp\src\assets\images\google-translate-color-regular@2x.png
-		FrontEnd\ClientApp\src\assets\images\GovmeetingEmail.png = FrontEnd\ClientApp\src\assets\images\GovmeetingEmail.png
-		FrontEnd\ClientApp\src\assets\images\Lincoln_County_Pemaquid_Lighthouse.png = FrontEnd\ClientApp\src\assets\images\Lincoln_County_Pemaquid_Lighthouse.png
-		FrontEnd\ClientApp\src\assets\images\Maine_Acadia_National_Park.png = FrontEnd\ClientApp\src\assets\images\Maine_Acadia_National_Park.png
-		FrontEnd\ClientApp\src\assets\images\Philly transcript index.png = FrontEnd\ClientApp\src\assets\images\Philly transcript index.png
-		FrontEnd\ClientApp\src\assets\images\Philly transcript page.png = FrontEnd\ClientApp\src\assets\images\Philly transcript page.png
-		FrontEnd\ClientApp\src\assets\images\Texas_State_Capitol.png = FrontEnd\ClientApp\src\assets\images\Texas_State_Capitol.png
-		FrontEnd\ClientApp\src\assets\images\Travis_County.png = FrontEnd\ClientApp\src\assets\images\Travis_County.png
-		FrontEnd\ClientApp\src\assets\images\United_States_Capitol.png = FrontEnd\ClientApp\src\assets\images\United_States_Capitol.png
+		frontend\clientapp\src\assets\images\Austin.png = frontend\clientapp\src\assets\images\Austin.png
+		frontend\clientapp\src\assets\images\avatar-icon-png-12.jpg = frontend\clientapp\src\assets\images\avatar-icon-png-12.jpg
+		frontend\clientapp\src\assets\images\avatar-icon-png-12.png = frontend\clientapp\src\assets\images\avatar-icon-png-12.png
+		frontend\clientapp\src\assets\images\Boothbay_Harbor_inner_harbor.png = frontend\clientapp\src\assets\images\Boothbay_Harbor_inner_harbor.png
+		frontend\clientapp\src\assets\images\Budget_Town_Hall.png = frontend\clientapp\src\assets\images\Budget_Town_Hall.png
+		frontend\clientapp\src\assets\images\condominiums.png = frontend\clientapp\src\assets\images\condominiums.png
+		frontend\clientapp\src\assets\images\female w glasses, no facial features.png = frontend\clientapp\src\assets\images\female w glasses, no facial features.png
+		frontend\clientapp\src\assets\images\female, no facial features.png = frontend\clientapp\src\assets\images\female, no facial features.png
+		frontend\clientapp\src\assets\images\FlowchartClientApp.png = frontend\clientapp\src\assets\images\FlowchartClientApp.png
+		frontend\clientapp\src\assets\images\FlowchartFunctional.png = frontend\clientapp\src\assets\images\FlowchartFunctional.png
+		frontend\clientapp\src\assets\images\FlowchartSystem.png = frontend\clientapp\src\assets\images\FlowchartSystem.png
+		frontend\clientapp\src\assets\images\FlowchartWebApp.png = frontend\clientapp\src\assets\images\FlowchartWebApp.png
+		frontend\clientapp\src\assets\images\FlowchartWorkflowApp.png = frontend\clientapp\src\assets\images\FlowchartWorkflowApp.png
+		frontend\clientapp\src\assets\images\google-translate-color-regular.png = frontend\clientapp\src\assets\images\google-translate-color-regular.png
+		frontend\clientapp\src\assets\images\google-translate-color-regular@2x.png = frontend\clientapp\src\assets\images\google-translate-color-regular@2x.png
+		frontend\clientapp\src\assets\images\GovmeetingEmail.png = frontend\clientapp\src\assets\images\GovmeetingEmail.png
+		frontend\clientapp\src\assets\images\Lincoln_County_Pemaquid_Lighthouse.png = frontend\clientapp\src\assets\images\Lincoln_County_Pemaquid_Lighthouse.png
+		frontend\clientapp\src\assets\images\Maine_Acadia_National_Park.png = frontend\clientapp\src\assets\images\Maine_Acadia_National_Park.png
+		frontend\clientapp\src\assets\images\Philly transcript index.png = frontend\clientapp\src\assets\images\Philly transcript index.png
+		frontend\clientapp\src\assets\images\Philly transcript page.png = frontend\clientapp\src\assets\images\Philly transcript page.png
+		frontend\clientapp\src\assets\images\Texas_State_Capitol.png = frontend\clientapp\src\assets\images\Texas_State_Capitol.png
+		frontend\clientapp\src\assets\images\Travis_County.png = frontend\clientapp\src\assets\images\Travis_County.png
+		frontend\clientapp\src\assets\images\United_States_Capitol.png = frontend\clientapp\src\assets\images\United_States_Capitol.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stubdata", "stubdata", "{5B68D55B-5723-490B-8411-CA26416BC8DA}"
 	ProjectSection(SolutionItems) = preProject
-		FrontEnd\ClientApp\src\assets\stubdata\ToEditTranscript.json = FrontEnd\ClientApp\src\assets\stubdata\ToEditTranscript.json
-		FrontEnd\ClientApp\src\assets\stubdata\ToFix.json = FrontEnd\ClientApp\src\assets\stubdata\ToFix.json
-		FrontEnd\ClientApp\src\assets\stubdata\ToFix.mp4 = FrontEnd\ClientApp\src\assets\stubdata\ToFix.mp4
-		FrontEnd\ClientApp\src\assets\stubdata\ToTag.json = FrontEnd\ClientApp\src\assets\stubdata\ToTag.json
-		FrontEnd\ClientApp\src\assets\stubdata\ToView.json = FrontEnd\ClientApp\src\assets\stubdata\ToView.json
+		frontend\clientapp\src\assets\stubdata\ToEditTranscript.json = frontend\clientapp\src\assets\stubdata\ToEditTranscript.json
+		frontend\clientapp\src\assets\stubdata\ToFix.json = frontend\clientapp\src\assets\stubdata\ToFix.json
+		frontend\clientapp\src\assets\stubdata\ToFix.mp4 = frontend\clientapp\src\assets\stubdata\ToFix.mp4
+		frontend\clientapp\src\assets\stubdata\ToTag.json = frontend\clientapp\src\assets\stubdata\ToTag.json
+		frontend\clientapp\src\assets\stubdata\ToView.json = frontend\clientapp\src\assets\stubdata\ToView.json
 	EndProjectSection
 EndProject
 Global

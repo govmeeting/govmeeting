@@ -9,14 +9,14 @@
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:4200",
-            "webRoot": "${workspaceRoot}/FrontEnd/ClientApp"
+            "webRoot": "${workspaceRoot}/frontend/clientapp"
         },
         {
             "name": "ClientApp",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:5000",
-            "webRoot": "${workspaceRoot}/FrontEnd/ClientApp"
+            "webRoot": "${workspaceRoot}/frontend/clientapp"
         },
         {
 			"name": "WebApp",

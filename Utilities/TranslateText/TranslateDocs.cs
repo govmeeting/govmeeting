@@ -27,9 +27,9 @@ namespace GM.Utilities.Translate
         }
 
         // Note: If we add a new language, we also need to change:
-        //   FrontEnd\ClientApp\src\app\dashboard\dashboard-titles.ts
-        //   FrontEnd\ClientApp\src\app\about-project\document-pages.ts
-        //   FrontEnd\ClientApp\src\app\sidenav\sidenav-header\sidenav-header.ts
+        //   frontend\clientapp\src\app\dashboard\dashboard-titles.ts
+        //   frontend\clientapp\src\app\about-project\document-pages.ts
+        //   frontend\clientapp\src\app\sidenav\sidenav-header\sidenav-header.ts
         public void Run(string[] args)
         {
             // Setting update to true attempts to only re-translate files that were edited.

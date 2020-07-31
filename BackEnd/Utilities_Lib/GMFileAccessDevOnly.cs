@@ -16,7 +16,7 @@ namespace GM.Utilities
 
         public static string GetClientAppFolder()
         {
-            return Path.Combine(GetGovmeetingSolutionFolder(), @"FrontEnd\ClientApp");
+            return Path.Combine(GetGovmeetingSolutionFolder(), @"frontend\clientapp");
         }
 
         public static string GetWebAppFolder()

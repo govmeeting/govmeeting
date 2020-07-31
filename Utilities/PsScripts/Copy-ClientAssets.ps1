@@ -13,7 +13,7 @@ Function Main
     Write-Host @args
 
     # If no params passed and repo is installed in C:\GOVMEETING|_SOURCECODE
-    if ($clientapp -eq "") { $clientapp = "C:\GOVMEETING\_SOURCECODE\FrontEnd\ClientApp" }
+    if ($clientapp -eq "") { $clientapp = "C:\GOVMEETING\_SOURCECODE\frontend\clientapp" }
     if ($publish -eq ""){ $publish = "C:\GOVMEETING\_SOURCECODE\BackEnd\WebApp\bin\release\netcoreapp2.2\publish" }
 
     $sourceAssets = [IO.Path]::Combine($clientapp, "dist\ClientApp")

@@ -1,16 +1,16 @@
-name: Build Frontend 
+name: Build frontend 
 
 on:
   push:
-    paths: 'FrontEnd/**'
+    paths: 'frontend/**'
   pull_request:
-    paths: 'FrontEnd/**'
+    paths: 'frontend/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      working-directory: FrontEnd/ClientApp
+      working-directory: frontend/clientapp
     strategy:
       matrix:
         node-version: [12.x]
