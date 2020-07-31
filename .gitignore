@@ -41,6 +41,9 @@ DATAFILES/
 **/wwwroot/dist/
 **/clientapp/dist/
 src/logs/
+# Cypress
+**/cypress/screenshots/
+**/cypress/videos/
 
 .synkron.syncdb
 desktop.ini
