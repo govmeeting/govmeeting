@@ -6,11 +6,15 @@ on:
   pull_request:
     paths: ['frontend/**', '.github/workflows/frontend-build.yaml']
 
+defaults:
+  run:
+    working-directory: frontend/clientapp
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      working-directory: frontend/clientapp
+    # env:
+    #   working-directory: frontend/clientapp
     strategy:
       matrix:
         node-version: [12.x]
@@ -32,10 +36,10 @@ jobs:
         run: |
           npm ci
           npm run build
-        working-directory: ${{env.working-directory}}
+        # working-directory: ${{env.working-directory}}
 
-      - name: uat
+      - name: run app and cypress tests
         run: |
           npm start &
           npx cypress run
-        working-directory: ${{env.working-directory}}
+        # working-directory: ${{env.working-directory}}
