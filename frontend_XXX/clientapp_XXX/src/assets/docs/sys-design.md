@@ -12,7 +12,7 @@
 
 The diagrams below show the interaction between software components.
 
-* ClientApp is an Angular Typescript single page application that runs in the browser. It provides the user interface.
+* clientapp is an Angular Typescript single page application that runs in the browser. It provides the user interface.
  
 * WebApp is an [Asp.Net Core](https://github.com/aspnet/home) C# application that runs on the server. It responds to WebApi calls.
 
@@ -30,7 +30,7 @@ The components in the above diagram are:
 
 <table style="width:100%">
 <tr><th colspan="2"> Applications</th></tr>
-<tr><td>ClientApp</td><td>Angular SPA</td></tr>
+<tr><td>clientapp</td><td>Angular SPA</td></tr>
 <tr><td>WebApp</td><td>Asp.Net  web server process</td></tr>
 <tr><td>WorkflowApp</td><td>Workflow server control process</td></tr>
 <tr><th colspan="2"> Libraries</th></tr>
@@ -46,12 +46,12 @@ The components in the above diagram are:
 </table>
 
 ___
-## ClientApp Design
+## clientapp Design
 </markdown>
-<img src="assets/images/FlowchartClientApp.png">
+<img src="assets/images/Flowchartclientapp.png">
 <markdown ngPreserveWhitespaces>
 
-The structure of the ClientApp is best shown by its Angular Component structure
+The structure of the clientapp is best shown by its Angular Component structure
 
 <table style="width:100%">
 <tr><th colspan="2">App Components</th></tr>
@@ -230,7 +230,7 @@ for members of the community to change the documentation.
 code in the same repository. A single PR for code changes can include the documentation 
 changes associated with it.
 
-The documentation is written in Markdown and located in Frontend/ClientApp/src/app/assets/docs. 
+The documentation is written in Markdown and located in frontend/clientapp/src/app/assets/docs. 
 
 </markdown>
 

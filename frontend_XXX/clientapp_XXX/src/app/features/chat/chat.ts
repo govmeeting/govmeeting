@@ -9,7 +9,7 @@ import { ChatService } from './chat.service';
 })
 export class ChatComponent {
 
-  title = 'ClientApp';
+  title = 'clientapp';
   txtMessage: string = '';
   uniqueID: string = new Date().getTime().toString();
   messages = new Array<Message>();

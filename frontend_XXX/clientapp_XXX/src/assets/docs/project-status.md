@@ -8,7 +8,7 @@
 * Data Model / Relational database design.
 * Build and Publish scripts
 
-## Frontend
+## frontend
  * User interface design
  * Framework for Navigation and dashboard
  * Component to proofread a transcript

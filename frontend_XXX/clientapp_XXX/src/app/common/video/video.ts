@@ -50,7 +50,7 @@ export class VideoComponent {
       location = 'datafiles/PROCESSING/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part01/';
       let fileBasename = 'ToFix';
 
-        // else use ClientApp stubdata folder
+        // else use clientapp stubdata folder
         if (!appData.isAspServerRunning) {
         location = 'assets/stubdata/';
         if (appData.isLargeEditData) {

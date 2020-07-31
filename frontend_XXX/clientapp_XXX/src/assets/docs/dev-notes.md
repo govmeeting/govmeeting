@@ -61,9 +61,9 @@ Austin, TX - USA also has transcripts of public meetings online.  A class was cr
 
 ## Add a card for new feature
 
-*  At a terminal prompt, move to the folder: FrontEnd/ClientApp
+*  At a terminal prompt, move to the folder: frontend/clientapp
 *  Enter: ng generate component your-feature
-*  Add your functionality to the files in : FrontEnd/ClientApp/src/app/your-feature
+*  Add your functionality to the files in : frontend/clientapp/src/app/your-feature
 *  Insert a new gm-small-card or gm-large-card element in app/dash-main/dash-main.html.
 *  Modify the icon, iconcolor, title, etc of the card element.
 * If you need access to the name of the currently selected location and agency in your controller:
@@ -74,7 +74,7 @@ Austin, TX - USA also has transcripts of public meetings online.  A class was cr
 
 ## Re-arrange cards
 
-1. Open the file: FrontEnd/ClientApp/src/app/dash-main/dash-main.html.
+1. Open the file: frontend/clientapp/src/app/dash-main/dash-main.html.
 2. Change the card positions by
   changing the position of the gm-small-card or gm-large-card elements in this file.
 
@@ -84,16 +84,16 @@ The log files for WebApp and WorkflowApp are in the folder "logs" at the root of
 * "nlog-all-(date).log" contains all the log messages including system.
 * The file "nlog-own-(date).log" contains only the application messages.
 
-At the top of many of the component files in ClientApp, a const "NoLog" is defined. Change its value from true to false to turn on console logging for only that component.
+At the top of many of the component files in clientapp, a const "NoLog" is defined. Change its value from true to false to turn on console logging for only that component.
 
 # Build Scripts
 
 Powershell build scripts can be found in Utilities/PsScripts
 
 * BuildPublishAndDeploy.ps1 -Call the other scripts to build a release and deploy it.
-* Build-ClientApp.ps1 - Build production versions of ClientApp
+* Build-clientapp.ps1 - Build production versions of clientapp
 * Publish-WebApp.ps1 - Build a "publish" folder of WebApp
-* Copy-ClientAssets.ps1 - Copy ClientApp assets to WebApp wwwroot folder
+* Copy-ClientAssets.ps1 - Copy clientapp assets to WebApp wwwroot folder
 * Deploy-PublishFolder.ps1 - Deploy publish folder to a remote host
 * Create the README.md file for Gethub from the documentation files
 
