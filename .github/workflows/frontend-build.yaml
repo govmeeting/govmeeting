@@ -13,14 +13,13 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # env:
-    #   working-directory: frontend/clientapp
     strategy:
       matrix:
         node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v1
+
       - name: Cache node modules
         uses: actions/cache@v1
         with:
@@ -28,18 +27,18 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
       - name: Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install and npm run build
+
+      - name: npm install, unit test and build
         run: |
           npm ci
-          npm run build
-        # working-directory: ${{env.working-directory}}
+          npm run build:ci
 
       - name: run app and cypress tests
         run: |
           npm start &
           npx cypress run
-        # working-directory: ${{env.working-directory}}
