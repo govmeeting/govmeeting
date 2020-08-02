@@ -12,7 +12,7 @@
     "test:nowatch": "ng test --watch=false --browsers=ChromeHeadlessCustom",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:ci": "npm run clean && npm run test:nowatch && npm run build:prod"
+    "build:ci": "npm run clean && npx jest && npm run build:prod"
   },
   "private": true,
   "dependencies": {
