@@ -37,6 +37,10 @@
     background-color: $color-deep-blue;
     color: $color-white;
 
+    & :hover {
+      cursor: pointer;
+    }
+
     &-icon {
       display: flex;
       align-items: center;
