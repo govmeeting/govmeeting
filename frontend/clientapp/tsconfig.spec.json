@@ -3,14 +3,15 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "types": [
-      "jest", // 1
+      "jasmine",
       "node"
     ],
-    "esModuleInterop": true, // 2
-    "emitDecoratorMetadata": true // 3
-  },
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true
+    },
   "files": [
     "src/test.ts",
+    "src/KarmaTest.ts",
     "src/polyfills.ts"
   ],
   "include": [
