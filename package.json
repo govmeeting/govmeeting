@@ -1,6 +1,9 @@
 {
   "scripts": {
-    "start": "cd frontend/clientapp && npm run start",
-    "build": "cd frontend/clientapp && npm run build"
+    "install": "cd frontend/clientapp && npm install",
+    "start": "cd frontend/clientapp && npm start",
+    "build": "cd frontend/clientapp && npm run build",
+    "restart": "cd frontend/clientapp && npm restart",
+    "update": "cd frontend/clientapp && npm update"
   }
 }

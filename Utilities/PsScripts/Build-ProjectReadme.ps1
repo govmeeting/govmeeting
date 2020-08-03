@@ -48,9 +48,9 @@ Show me how it works!
 Well, the work is in progress. But click here for:  [Demos of some working code](https://govmeeting.org/dashboard) and more documentation.
 
 <div style="font-size: 125%">  
- <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-f2to4ivp-DN1fsgsx_vwB2GG9cKWtNg"> Govmeeting Slack <img src="images/logo_slack25p.png"> </a> </div>
+ <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-gbuwp0tf-kqIOAeXqOTgzoauhSsqtNg"> Govmeeting Slack <img src="images/logo_slack25p.png"> </a> </div>
  
- <div> If the Slack invite is expired, request an invite here: <img style="pointer-events: none; cursor: default;" src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
+ <div> If the Slack invite is expired, request an invite here: <img style="pointer-events: none; cursor: none;" src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
 
 "@
 

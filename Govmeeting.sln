@@ -86,95 +86,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		package.json = package.json
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientApp", "ClientApp", "{8BD8488E-145F-4414-8875-C0AAE3074776}"
-	ProjectSection(SolutionItems) = preProject
-		frontend\clientapp\.editorconfig = frontend\clientapp\.editorconfig
-		frontend\clientapp\.gitignore = frontend\clientapp\.gitignore
-		frontend\clientapp\angular.json = frontend\clientapp\angular.json
-		frontend\clientapp\browserslist = frontend\clientapp\browserslist
-		frontend\clientapp\karma.conf.js = frontend\clientapp\karma.conf.js
-		frontend\clientapp\package-lock.json = frontend\clientapp\package-lock.json
-		frontend\clientapp\package.json = frontend\clientapp\package.json
-		frontend\clientapp\TODO.ts = frontend\clientapp\TODO.ts
-		frontend\clientapp\tsconfig.app.json = frontend\clientapp\tsconfig.app.json
-		frontend\clientapp\tsconfig.json = frontend\clientapp\tsconfig.json
-		frontend\clientapp\tsconfig.spec.json = frontend\clientapp\tsconfig.spec.json
-		frontend\clientapp\tslint.json = frontend\clientapp\tslint.json
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{BE872F34-D35C-4B4E-A21B-9ADCDD624AA9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{337B2969-F9F1-4C91-ABFC-8A79E032D989}"
-	ProjectSection(SolutionItems) = preProject
-		frontend\clientapp\src\colors.scss = frontend\clientapp\src\colors.scss
-		frontend\clientapp\src\favicon.ico = frontend\clientapp\src\favicon.ico
-		frontend\clientapp\src\index.html = frontend\clientapp\src\index.html
-		frontend\clientapp\src\main.ts = frontend\clientapp\src\main.ts
-		frontend\clientapp\src\polyfills.ts = frontend\clientapp\src\polyfills.ts
-		frontend\clientapp\src\script.js = frontend\clientapp\src\script.js
-		frontend\clientapp\src\styles.scss = frontend\clientapp\src\styles.scss
-		frontend\clientapp\src\test.ts = frontend\clientapp\src\test.ts
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{1F708582-9A9F-4224-9F16-F5521B961D94}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{A858ED8D-A847-4181-AA52-DD303E3AF1E8}"
-	ProjectSection(SolutionItems) = preProject
-		frontend\clientapp\src\assets\.gitkeep = frontend\clientapp\src\assets\.gitkeep
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "environments", "environments", "{D1E6145E-231F-418C-BC36-AF5DC68F6E43}"
-	ProjectSection(SolutionItems) = preProject
-		frontend\clientapp\src\environments\environment.prod.ts = frontend\clientapp\src\environments\environment.prod.ts
-		frontend\clientapp\src\environments\environment.ts = frontend\clientapp\src\environments\environment.ts
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{769B45C3-7861-49EC-B64C-D9B366D16043}"
-	ProjectSection(SolutionItems) = preProject
-		frontend\clientapp\src\assets\docs\betaDocumentation.md = frontend\clientapp\src\assets\docs\betaDocumentation.md
-		frontend\clientapp\src\assets\docs\betaOverview.md = frontend\clientapp\src\assets\docs\betaOverview.md
-		frontend\clientapp\src\assets\docs\database.md = frontend\clientapp\src\assets\docs\database.md
-		frontend\clientapp\src\assets\docs\dev-notes.md = frontend\clientapp\src\assets\docs\dev-notes.md
-		frontend\clientapp\src\assets\docs\overview1.md = frontend\clientapp\src\assets\docs\overview1.md
-		frontend\clientapp\src\assets\docs\overview2.md = frontend\clientapp\src\assets\docs\overview2.md
-		frontend\clientapp\src\assets\docs\project-status.md = frontend\clientapp\src\assets\docs\project-status.md
-		frontend\clientapp\src\assets\docs\setup.md = frontend\clientapp\src\assets\docs\setup.md
-		frontend\clientapp\src\assets\docs\sys-design.md = frontend\clientapp\src\assets\docs\sys-design.md
-		frontend\clientapp\src\assets\docs\workflow.md = frontend\clientapp\src\assets\docs\workflow.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{04C69D97-6E2C-44D8-8089-579045CD9E30}"
-	ProjectSection(SolutionItems) = preProject
-		frontend\clientapp\src\assets\images\Austin.png = frontend\clientapp\src\assets\images\Austin.png
-		frontend\clientapp\src\assets\images\avatar-icon-png-12.jpg = frontend\clientapp\src\assets\images\avatar-icon-png-12.jpg
-		frontend\clientapp\src\assets\images\avatar-icon-png-12.png = frontend\clientapp\src\assets\images\avatar-icon-png-12.png
-		frontend\clientapp\src\assets\images\Boothbay_Harbor_inner_harbor.png = frontend\clientapp\src\assets\images\Boothbay_Harbor_inner_harbor.png
-		frontend\clientapp\src\assets\images\Budget_Town_Hall.png = frontend\clientapp\src\assets\images\Budget_Town_Hall.png
-		frontend\clientapp\src\assets\images\condominiums.png = frontend\clientapp\src\assets\images\condominiums.png
-		frontend\clientapp\src\assets\images\female w glasses, no facial features.png = frontend\clientapp\src\assets\images\female w glasses, no facial features.png
-		frontend\clientapp\src\assets\images\female, no facial features.png = frontend\clientapp\src\assets\images\female, no facial features.png
-		frontend\clientapp\src\assets\images\FlowchartClientApp.png = frontend\clientapp\src\assets\images\FlowchartClientApp.png
-		frontend\clientapp\src\assets\images\FlowchartFunctional.png = frontend\clientapp\src\assets\images\FlowchartFunctional.png
-		frontend\clientapp\src\assets\images\FlowchartSystem.png = frontend\clientapp\src\assets\images\FlowchartSystem.png
-		frontend\clientapp\src\assets\images\FlowchartWebApp.png = frontend\clientapp\src\assets\images\FlowchartWebApp.png
-		frontend\clientapp\src\assets\images\FlowchartWorkflowApp.png = frontend\clientapp\src\assets\images\FlowchartWorkflowApp.png
-		frontend\clientapp\src\assets\images\google-translate-color-regular.png = frontend\clientapp\src\assets\images\google-translate-color-regular.png
-		frontend\clientapp\src\assets\images\google-translate-color-regular@2x.png = frontend\clientapp\src\assets\images\google-translate-color-regular@2x.png
-		frontend\clientapp\src\assets\images\GovmeetingEmail.png = frontend\clientapp\src\assets\images\GovmeetingEmail.png
-		frontend\clientapp\src\assets\images\Lincoln_County_Pemaquid_Lighthouse.png = frontend\clientapp\src\assets\images\Lincoln_County_Pemaquid_Lighthouse.png
-		frontend\clientapp\src\assets\images\Maine_Acadia_National_Park.png = frontend\clientapp\src\assets\images\Maine_Acadia_National_Park.png
-		frontend\clientapp\src\assets\images\Philly transcript index.png = frontend\clientapp\src\assets\images\Philly transcript index.png
-		frontend\clientapp\src\assets\images\Philly transcript page.png = frontend\clientapp\src\assets\images\Philly transcript page.png
-		frontend\clientapp\src\assets\images\Texas_State_Capitol.png = frontend\clientapp\src\assets\images\Texas_State_Capitol.png
-		frontend\clientapp\src\assets\images\Travis_County.png = frontend\clientapp\src\assets\images\Travis_County.png
-		frontend\clientapp\src\assets\images\United_States_Capitol.png = frontend\clientapp\src\assets\images\United_States_Capitol.png
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stubdata", "stubdata", "{5B68D55B-5723-490B-8411-CA26416BC8DA}"
-	ProjectSection(SolutionItems) = preProject
-		frontend\clientapp\src\assets\stubdata\ToEditTranscript.json = frontend\clientapp\src\assets\stubdata\ToEditTranscript.json
-		frontend\clientapp\src\assets\stubdata\ToFix.json = frontend\clientapp\src\assets\stubdata\ToFix.json
-		frontend\clientapp\src\assets\stubdata\ToFix.mp4 = frontend\clientapp\src\assets\stubdata\ToFix.mp4
-		frontend\clientapp\src\assets\stubdata\ToTag.json = frontend\clientapp\src\assets\stubdata\ToTag.json
-		frontend\clientapp\src\assets\stubdata\ToView.json = frontend\clientapp\src\assets\stubdata\ToView.json
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "clientapp", "frontend\clientapp\", "{F49559D6-D6E7-43D9-8EB2-DE26496D5E63}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_56698"
+		Debug.AspNetCompiler.PhysicalPath = "frontend\clientapp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56698\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_56698"
+		Release.AspNetCompiler.PhysicalPath = "frontend\clientapp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56698\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "56698"
 	EndProjectSection
 EndProject
 Global
@@ -267,6 +198,10 @@ Global
 		{4C8B04CB-A775-45B7-B3B2-74BB987F74A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C8B04CB-A775-45B7-B3B2-74BB987F74A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C8B04CB-A775-45B7-B3B2-74BB987F74A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F49559D6-D6E7-43D9-8EB2-DE26496D5E63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F49559D6-D6E7-43D9-8EB2-DE26496D5E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F49559D6-D6E7-43D9-8EB2-DE26496D5E63}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{F49559D6-D6E7-43D9-8EB2-DE26496D5E63}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -297,13 +232,7 @@ Global
 		{86B3DD69-E232-46BA-8EBD-5E981D4BAD5B} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{C0723E1B-AA01-418D-B0D1-55A1ABA4CF54} = {6B15424B-85AE-44A7-BDB0-A964CC25188E}
 		{4C8B04CB-A775-45B7-B3B2-74BB987F74A7} = {6B15424B-85AE-44A7-BDB0-A964CC25188E}
-		{337B2969-F9F1-4C91-ABFC-8A79E032D989} = {8BD8488E-145F-4414-8875-C0AAE3074776}
-		{1F708582-9A9F-4224-9F16-F5521B961D94} = {337B2969-F9F1-4C91-ABFC-8A79E032D989}
-		{A858ED8D-A847-4181-AA52-DD303E3AF1E8} = {337B2969-F9F1-4C91-ABFC-8A79E032D989}
-		{D1E6145E-231F-418C-BC36-AF5DC68F6E43} = {337B2969-F9F1-4C91-ABFC-8A79E032D989}
-		{769B45C3-7861-49EC-B64C-D9B366D16043} = {A858ED8D-A847-4181-AA52-DD303E3AF1E8}
-		{04C69D97-6E2C-44D8-8089-579045CD9E30} = {A858ED8D-A847-4181-AA52-DD303E3AF1E8}
-		{5B68D55B-5723-490B-8411-CA26416BC8DA} = {A858ED8D-A847-4181-AA52-DD303E3AF1E8}
+		{F49559D6-D6E7-43D9-8EB2-DE26496D5E63} = {BE872F34-D35C-4B4E-A21B-9ADCDD624AA9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {577CF991-85C7-44E5-A640-AE87641C3A8D}

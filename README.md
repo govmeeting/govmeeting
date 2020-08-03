@@ -59,9 +59,9 @@ Show me how it works!
 Well, the work is in progress. But click here for:  [Demos of some working code](https://govmeeting.org/dashboard) and more documentation.
 
 <div style="font-size: 125%">  
- <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-f2to4ivp-DN1fsgsx_vwB2GG9cKWtNg"> Govmeeting Slack <img src="images/logo_slack25p.png"> </a> </div>
+ <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-gbuwp0tf-kqIOAeXqOTgzoauhSsqtNg"> Govmeeting Slack <img src="images/logo_slack25p.png"> </a> </div>
  
- <div> If the Slack invite is expired, request an invite here: <img style="pointer-events: none; cursor: default;" src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
+ <div> If the Slack invite is expired, request an invite here: <img style="pointer-events: none; cursor: none;" src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
 
 # Developer Setup 
 <a name="Contents"></a>
@@ -107,23 +107,23 @@ _____
   * "Powershell" by Microsoft - for debugging Powershell build scripts (optional)
 
 
-## Run ClientApp standalone
+## Run clientapp standalone
 
 * Open the project folder in VsCode
 * Install NPM packages: 
   * Open a terminal pane in VsCode
   * cd frontend/clientapp
   * npm install
-* Complile and run ClientApp
+* Complile and run clientapp
   *  npm start
-* In the debug panel, set launch configuration "ClientApp Standalone"
+* In the debug panel, set launch configuration "clientapp Standalone"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
   *  OR open a browser to localhost:4200
 
-By default, ClientApp will call stub services instead of calling the WebApp API. 
+By default, clientapp will call stub services instead of calling the WebApp API. 
 
 
-## Run ClientApp & WebApp
+## Run clientapp & WebApp
 
 * Download the test data from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> Put them in a sibling folder to the project named "TESTDATA". These are media files that should not be committed to Github. You can also download them from <a hfre="https://1drv.ms/u/s!AqN2hZ8PFCAag_pd_5aXKqav1FFN_Q?e=YOAjGV"> OneDrive. </a>
 * In frontend/clientapp/app.module.ts, change "isAspServerRunning" from false to true.
@@ -131,12 +131,12 @@ By default, ClientApp will call stub services instead of calling the WebApp API.
   * Ctrl-Shift-P
   * Select "Tasks: Run Task"
   * Select "build-webapp" or "Build All"
-* Start ClientApp (if it's not already running)
+* Start clientapp (if it's not already running)
   * cd frontend/clientapp
   * npm start
-* In the debug panel, set launch configuration "WebApp & ClientApp"
+* In the debug panel, set launch configuration "WebApp & clientapp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
-  * Chrome browser will open. Ignore temporary message "Site can't be reached" and wait for ClientApp to display.
+  * Chrome browser will open. Ignore temporary message "Site can't be reached" and wait for clientapp to display.
 
 ### Notes
 
@@ -144,11 +144,11 @@ By default, ClientApp will call stub services instead of calling the WebApp API.
 
 "Build All" builds all projects. Like build-webapp, it installs NuGet packages as needed. Check each terminal window for errors and re-run if needed. There is a known race condition bug in restoring multiple NuGet packages aysnchronously.
 
-Setting "isAspServerRunning" to true, tells ClientApp to call the WebApp API instead of the stub services.
+Setting "isAspServerRunning" to true, tells clientapp to call the WebApp API instead of the stub services.
 
 The sub-folders on Google drive are for testing WebApp. The files are for testing WorkflowApp. 
 
-ClientApp is served by the webpack-dev-server. WebApp uses the Kestrel server. But Kestrel proxies ClientApp requests to the webpack-dev-server.
+clientapp is served by the webpack-dev-server. WebApp uses the Kestrel server. But Kestrel proxies clientapp requests to the webpack-dev-server.
 
 
 ## Run WorkflowApp
@@ -206,18 +206,18 @@ _____
 * Open the solution file "govmeeting.sln"
 
 
-## Run ClientApp & WebApp
+## Run clientapp & WebApp
 * Download the sub-folders from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> Put them in a sibling folder to the project named "TESTDATA"
 * In frontend/clientapp/app.module.ts, change "isAspServerRunning" from false to true.
 * In Task Runner Explorer
-  * Select: ClientApp
+  * Select: clientapp
   * run "install"
   * run "start"
 * Set startup project to "WebApp"
 * Press F5 (debug) or Ctrl-F5 (run without debugging)
-* WebApp will run and a browser will open, displaying the ClientApp.
+* WebApp will run and a browser will open, displaying the clientapp.
 
-NOTE: There is an issue with setting breakpoints in the Angular ClientApp in Visual Studio. See: <a href="https://github.com/govmeeting/govmeeting/issues/80"> Github issue #80 </a>
+NOTE: There is an issue with setting breakpoints in the Angular clientapp in Visual Studio. See: <a href="https://github.com/govmeeting/govmeeting/issues/80"> Github issue #80 </a>
 
 ## Run WorkflowApp
 * Download the test files from Google Drive (see above)
@@ -237,30 +237,30 @@ _____
 
 In your profile, set the environment variable, ASPNETCORE_ENVIRONMENT, to "Development". This is used by WebApp and WorkflowApp.
 
-## Run ClientApp
+## Run clientapp
 
 Execute:
-- cd frontend/ClientApp
+- cd frontend/clientapp
 - npm install
 - npm start
 
 Go to localhost:4200 in your browser. The client app will load.
 Some features will not work until WebApp is running.
 
-## Run WebApp with ClientApp
+## Run WebApp with clientapp
 
 Execute:
-* (do above: "Build & start ClientApp")
+* (do above: "Build & start clientapp")
 * cd ../../Backend/WebApp
 * dotnet build webapp.csproj
 * dotnet run bin/debug/dotnet2.2/webapp.dll
 
 Go to localhost:5000 in your browser. The client app will load.
 
-## Run ClientApp standalone
+## Run clientapp standalone
 
 * In app.module.ts, change "isAspServerRunning" from true to false.
-* (do above: "Build & start ClientApp")
+* (do above: "Build & start clientapp")
 
 ## Run WorkflowApp
 
@@ -349,7 +349,7 @@ If you use this, or another tool, for exploring SQL Server databases, please upd
 
 The code to store/retrieve transcript data in the database is not yet written. Therefore DatabaseRepositories_Lib uses static test data instead. In WebApp/appsettings.json, the property "UseDatabaseStubs" is set to "true", telling it to call the stub routines. 
 
-However the user registration and login code in WebApp does use the database. It accesses the Asp.Net user authentication tables. WebApp authenticates API calls from ClientApp based on the current logged in user.
+However the user registration and login code in WebApp does use the database. It accesses the Asp.Net user authentication tables. WebApp authenticates API calls from clientapp based on the current logged in user.
 
 You can use the "NOAUTH" pre-processor value in WebApp to bypass authentication. Use one of these methods:
 * In FixasrController.cs or AddtagsController.cs, un-comment the "#if NOAUTH" line at the top of the file.
