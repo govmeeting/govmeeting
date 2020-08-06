@@ -1,18 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Observable, of } from 'rxjs';
+
 import { SectionsComponent } from './sections';
 import { EdittranscriptService } from '../edittranscript.service';
-import { EdittranscriptServiceStub } from '../edittranscript.service-stub';
+import { EditTranscript, EditTranscriptSample } from '../edittranscript-sample';
+
+// Create a stub for EdittranscriptService
+class ServiceStub {
+  public getTalks(): Observable<EditTranscript> {
+    return of(EditTranscriptSample);
+  }
+}
 
 describe('SectionsComponent', () => {
   let component: SectionsComponent;
   let fixture: ComponentFixture<SectionsComponent>;
-  // let addtagsService = new AddtagsServiceStub();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SectionsComponent ],
       providers: [
-        {provide: EdittranscriptService, useClass: EdittranscriptServiceStub}
+        {provide: EdittranscriptService, useClass: ServiceStub}
       ]
     })
     .compileComponents();

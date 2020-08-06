@@ -1,6 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { Observable, of } from 'rxjs';
 
 import { TopicsComponent } from './topics';
+import { EdittranscriptService } from '../edittranscript.service';
+import { EditTranscript, EditTranscriptSample } from '../edittranscript-sample';
+
+// Create a stub for EdittranscriptService
+class ServiceStub {
+  public getTalks(): Observable<EditTranscript> {
+    return of(EditTranscriptSample);
+  }
+}
 
 describe('TopicsComponent', () => {
   let component: TopicsComponent;
@@ -8,7 +19,11 @@ describe('TopicsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopicsComponent ]
+      imports: [ FormsModule ],
+      declarations: [ TopicsComponent ],
+      providers: [
+        {provide: EdittranscriptService, useClass: ServiceStub}
+      ]
     })
     .compileComponents();
   }));
