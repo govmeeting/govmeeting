@@ -33,12 +33,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: npm install, unit test and build
-        run: |
-          npm ci
-          npm run build:ci
+      - name: Clean Install
+        run: npm ci
 
-      - name: run app and cypress tests
-        run: |
-          npm start &
-          npx cypress run
+      - name: Unit Tests
+        run: npx jest
+
+      - name: Clean Build
+        run: npm run ci:build
+
+      - name: Cypress Tests
+        run: npm run ci:cypress
