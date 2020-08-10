@@ -11,7 +11,6 @@ import { SectionsComponent } from './sections/sections';
 import { SharedModule } from '../../common/common.module';
 import { VideoModule } from '../../common/video/video.module';
 
-
 @NgModule({
   declarations: [EditTranscriptComponent, TalksComponent, TopicsComponent, SectionsComponent],
 
@@ -21,11 +20,9 @@ import { VideoModule } from '../../common/video/video.module';
     RouterModule,
     //ReactiveFormsModule
     VideoModule,
-    SharedModule
+    SharedModule,
   ],
 
-  exports: [
-    EditTranscriptComponent
-  ]
+  exports: [EditTranscriptComponent],
 })
-export class EditTranscriptModule { }
+export class EditTranscriptModule {}

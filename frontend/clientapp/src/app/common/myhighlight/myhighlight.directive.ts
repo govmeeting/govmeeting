@@ -13,55 +13,54 @@ import { HostListener } from '@angular/core';
  *      The default value of the event will be the text that is selected.
  */
 
-
-const NoLog = true;  // set to false for console logging
+const NoLog = true; // set to false for console logging
 
 @Directive({
-  selector: '[myhighlight]'
+  selector: '[myhighlight]',
 })
 export class MyhighlightDirective {
-  private ClassName: string = this.constructor.name + ": ";
-    //@Input('myHighlight') highlightColor: string;
-    @Input() highlightColor: string;
+  private ClassName: string = this.constructor.name + ': ';
+  //@Input('myHighlight') highlightColor: string;
+  @Input() highlightColor: string;
 
-    @Output() textSelected: EventEmitter<string>;
+  @Output() textSelected: EventEmitter<string>;
 
-    selectedText: string;
-    private _el:HTMLElement;
-    private _defaultColor = 'yellow';
-    //private fullText: string;
-    private selection: Selection;
+  selectedText: string;
+  private _el: HTMLElement;
+  private _defaultColor = 'yellow';
+  //private fullText: string;
+  private selection: Selection;
 
-    constructor(el: ElementRef) {
-      NoLog || console.log(this.ClassName + 'constructor');
-      this.textSelected = new EventEmitter<string>();
-      this._el = el.nativeElement;
-    }
+  constructor(el: ElementRef) {
+    NoLog || console.log(this.ClassName + 'constructor');
+    this.textSelected = new EventEmitter<string>();
+    this._el = el.nativeElement;
+  }
 
-    @HostListener('mouseenter')
-    onMouseEnter() {
-        NoLog || console.log(this.ClassName + 'onMouseEnter');
-        this._highlight(this.highlightColor || this._defaultColor);
-    }
+  @HostListener('mouseenter')
+  onMouseEnter() {
+    NoLog || console.log(this.ClassName + 'onMouseEnter');
+    this._highlight(this.highlightColor || this._defaultColor);
+  }
 
-    @HostListener('mouseleave')
-    onMouseLeave() {
-        NoLog || console.log(this.ClassName + 'onMouseLeave');
-        this._highlight('transparent');
-    }
+  @HostListener('mouseleave')
+  onMouseLeave() {
+    NoLog || console.log(this.ClassName + 'onMouseLeave');
+    this._highlight('transparent');
+  }
 
-    @HostListener('mouseup')
-    onMouseUp() {
-        NoLog || console.log(this.ClassName, window.getSelection());
-        this.selection = window.getSelection();
+  @HostListener('mouseup')
+  onMouseUp() {
+    NoLog || console.log(this.ClassName, window.getSelection());
+    this.selection = window.getSelection();
 
-        var sel = {
-            range: this.selection.getRangeAt(0),
-            text: ''
-        };
+    var sel = {
+      range: this.selection.getRangeAt(0),
+      text: '',
+    };
 
-        this.snapToWord(sel);
-/*
+    this.snapToWord(sel);
+    /*
         if ((this.selection.anchorNode == null) ||
         (!this.selection.anchorNode.textContent)) {
             return;
@@ -73,66 +72,66 @@ export class MyhighlightDirective {
         this.selectedText = this.fullText.substring(this.selection.anchorOffset,
           this.selection.focusOffset);
 */
-        this.selectedText = sel.text;
+    this.selectedText = sel.text;
 
-        NoLog || console.log(this.ClassName + 'SELECTED TEXT: ' + this.selectedText);
-        this.textSelected.emit(this.selectedText);
+    NoLog || console.log(this.ClassName + 'SELECTED TEXT: ' + this.selectedText);
+    this.textSelected.emit(this.selectedText);
+  }
+
+  private _highlight(color: string) {
+    NoLog || console.log(this.ClassName + 'color is ' + color);
+    this._el.style.backgroundColor = color;
+  }
+
+  // JP: I added "selection" as an argument. The original had it as the object on which
+  // snapToWord was called.
+  private snapToWord(selection: any) {
+    //if (isHighlighted()) {
+    //  throw new Error("Can't modify range after highlighting");
+    //}
+
+    var start = selection.range.startOffset;
+    var end = selection.range.endOffset;
+    NoLog || console.log(this.ClassName + 'start=' + start);
+    NoLog || console.log(this.ClassName + 'end=' + end);
+    // If start = end, then they just clicked and didn't select.
+    if (start === end) return;
+
+    end = end - 1; // last character selected is one less.
+
+    var startNode = selection.range.startContainer;
+    NoLog || console.log(this.ClassName + 'startNode=', startNode);
+
+    //while (startNode.textContent.charAt(start) != ' ' && start > 0) {
+    while (this.IsAlphaNum(startNode.textContent.charAt(start)) && start > 0) {
+      start--;
+    }
+    if (start !== 0 && start !== selection.range.startOffset) {
+      start++;
     }
 
-
-    private _highlight(color: string) {
-        NoLog || console.log(this.ClassName + 'color is ' + color);
-        this._el.style.backgroundColor = color;
+    var endNode = selection.range.endContainer;
+    //while (endNode.textContent.charAt(end) != ' ' && end < endNode.length) {
+    while (this.IsAlphaNum(endNode.textContent.charAt(end)) && end < endNode.length) {
+      end++;
     }
 
-    // JP: I added "selection" as an argument. The original had it as the object on which
-    // snapToWord was called.
-    private snapToWord(selection: any) {
-        //if (isHighlighted()) {
-        //  throw new Error("Can't modify range after highlighting");
-        //}
+    selection.range.setStart(startNode, start);
+    selection.range.setEnd(endNode, end);
 
-        var start = selection.range.startOffset;
-        var end = selection.range.endOffset;
-        NoLog || console.log(this.ClassName + 'start=' + start);
-        NoLog || console.log(this.ClassName + 'end=' + end);
-        // If start = end, then they just clicked and didn't select.
-        if (start === end) return;
+    selection.text = selection.range.toString();
+  }
 
-        end = end -1; // last character selected is one less.
-
-        var startNode = selection.range.startContainer;
-        NoLog || console.log(this.ClassName + 'startNode=', startNode);
-
-        //while (startNode.textContent.charAt(start) != ' ' && start > 0) {
-        while (this.IsAlphaNum(startNode.textContent.charAt(start)) && start > 0) {
-          start--;
-        }
-        if (start !== 0 && start !== selection.range.startOffset) {
-          start++;
-        }
-
-        var endNode = selection.range.endContainer;
-        //while (endNode.textContent.charAt(end) != ' ' && end < endNode.length) {
-        while (this.IsAlphaNum(endNode.textContent.charAt(end)) && end < endNode.length) {
-          end++;
-        }
-
-        selection.range.setStart(startNode, start);
-        selection.range.setEnd(endNode, end);
-
-        selection.text = selection.range.toString();
-
-   }
-
-   private IsAlphaNum(ch: string) {
-       var code = ch.charCodeAt(0);
-        if (!(code > 47 && code < 58) && // numeric (0-9)
-            !(code > 64 && code < 91) && // upper alpha (A-Z)
-            !(code > 96 && code < 123)) { // lower alpha (a-z)
-        return false;
-        }
-        return true;
-   }
-
+  private IsAlphaNum(ch: string) {
+    var code = ch.charCodeAt(0);
+    if (
+      !(code > 47 && code < 58) && // numeric (0-9)
+      !(code > 64 && code < 91) && // upper alpha (A-Z)
+      !(code > 96 && code < 123)
+    ) {
+      // lower alpha (a-z)
+      return false;
+    }
+    return true;
+  }
 }

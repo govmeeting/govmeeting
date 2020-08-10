@@ -3,16 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FixasrComponent } from './fixasr';
 
-
 const routes: Routes = [
-    {
-        path: '',
-        component: FixasrComponent
-    }
+  {
+    path: '',
+    component: FixasrComponent,
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class FixasrRoutingModule { }
+export class FixasrRoutingModule {}

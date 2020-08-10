@@ -2,21 +2,15 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'gm-small-cards',
-  template:  `
+  template: `
     <div class="smallCards">
       <ng-content></ng-content>
     </div>
-`,
-  styleUrls: ['./small-cards.scss']
+  `,
+  styleUrls: ['./small-cards.scss'],
 })
 export class SmallCardsComponent implements OnInit {
+  constructor() {}
 
-  constructor(
-  ) {
-
-   }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

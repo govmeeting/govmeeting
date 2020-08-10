@@ -1,4 +1,3 @@
-
 <ul>
 <li> Se implementan varias piezas del software (pero necesitan mejoras). </li>
 <li> Se deben implementar varias piezas críticas. </li>

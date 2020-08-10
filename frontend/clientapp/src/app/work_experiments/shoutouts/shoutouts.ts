@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { DataFactoryService } from '../datafake/data-factory.service';
 import { DataFakeService } from '../datafake/data-fake.service';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = true; // set to false for console logging
 
 @Component({
   selector: 'gm-shoutouts',
   templateUrl: './shoutouts.html',
-  styleUrls: ['./shoutouts.scss']
+  styleUrls: ['./shoutouts.scss'],
 })
 export class ShoutoutsComponent implements OnInit {
-  private ClassName: string = this.constructor.name + ": ";
+  private ClassName: string = this.constructor.name + ': ';
   // personFactory: any;
   // personFake: any;
 
@@ -19,22 +19,21 @@ export class ShoutoutsComponent implements OnInit {
   b: any;
   c: any;
 
-/*   james: any;
+  /*   james: any;
   youngBob: any;
   anybody: any;
   theBradyBunch: any[];
   theBradyBunch2: any[];
  */
   constructor(factory: DataFactoryService, fake: DataFakeService) {
-/*     this.personFactory = factory.personFactory;
+    /*     this.personFactory = factory.personFactory;
     this.personFake = fake.personFake;
  */
     this._fake = fake;
- }
+  }
 
   ngOnInit() {
-
-/*     this.anybody = this.personFactory.build();
+    /*     this.anybody = this.personFactory.build();
     this.youngBob = this.personFactory.build({ age: 5 });
     this.james = this.personFactory.build({firstName: "James",});
     this.theBradyBunch = this.personFactory.buildList(8, { lastName: "Brady" });
@@ -45,5 +44,4 @@ export class ShoutoutsComponent implements OnInit {
     NoLog || console.log(this.ClassName, this.b);
     this.c = this._fake.person();
   }
-
 }

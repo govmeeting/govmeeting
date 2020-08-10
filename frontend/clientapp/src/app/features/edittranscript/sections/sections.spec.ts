@@ -18,12 +18,9 @@ describe('SectionsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SectionsComponent ],
-      providers: [
-        {provide: EdittranscriptService, useClass: ServiceStub}
-      ]
-    })
-    .compileComponents();
+      declarations: [SectionsComponent],
+      providers: [{ provide: EdittranscriptService, useClass: ServiceStub }],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

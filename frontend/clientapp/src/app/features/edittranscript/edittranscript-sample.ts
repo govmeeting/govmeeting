@@ -1,97 +1,80 @@
 import { EditTranscript, Talk, Word } from '../../models/edittranscript-view';
-export { EditTranscript};
+export { EditTranscript };
 
 export let EditTranscriptSample: EditTranscript = {
   sections: [
-      'Invocation',
-      'Approval of Journal',
-      'Leaves of Absense',
-      'Presentations',
-      'Communications',
-      'Introductions of Bills',
-      'Reports',
-      'Bills on Second Reading',
-      'Public Comment',
-      'Second Reading',
-      'Speeches',
-      'Adjournment'
+    'Invocation',
+    'Approval of Journal',
+    'Leaves of Absense',
+    'Presentations',
+    'Communications',
+    'Introductions of Bills',
+    'Reports',
+    'Bills on Second Reading',
+    'Public Comment',
+    'Second Reading',
+    'Speeches',
+    'Adjournment',
   ],
-  topics: [
-      "",
-      "Pave 4th St.",
-      "Hire business manager",
-      "Parking ordinaces",
-      "Ice skating rink"
-  ],
+  topics: ['', 'Pave 4th St.', 'Hire business manager', 'Parking ordinaces', 'Ice skating rink'],
 
-  "talks": [
+  talks: [
     {
-      "speaker": "UNKOWN",
-      "said": "Okay.",
-      "section": null,
-      "topic": null,
-      "showSetTopic": false,
-      "confidence": 0.89840960502624512,
-      "wordcount": 0,
-      "words": [
+      speaker: 'UNKOWN',
+      said: 'Okay.',
+      section: null,
+      topic: null,
+      showSetTopic: false,
+      confidence: 0.89840960502624512,
+      wordcount: 0,
+      words: [
         {
-          "word": "Okay.",
-          "confidence": 0.0,
-          "starttime": 3400,
-          "endtime": 4300,
-          "speaker": 0,
-          "wordnum": 1
-        }
-      ]
+          word: 'Okay.',
+          confidence: 0.0,
+          starttime: 3400,
+          endtime: 4300,
+          speaker: 0,
+          wordnum: 1,
+        },
+      ],
     },
     {
-      "speaker": "UNKOWN",
-      "said": " Good evening, everybody.",
-      "section": null,
-      "topic": null,
-      "showSetTopic": false,
-      "confidence": 0.99072182178497314,
-      "wordcount": 0,
-      "words": [
+      speaker: 'UNKOWN',
+      said: ' Good evening, everybody.',
+      section: null,
+      topic: null,
+      showSetTopic: false,
+      confidence: 0.99072182178497314,
+      wordcount: 0,
+      words: [
         {
-          "word": "Good",
-          "confidence": 0.0,
-          "starttime": 5900,
-          "endtime": 6300,
-          "speaker": 0,
-          "wordnum": 2
+          word: 'Good',
+          confidence: 0.0,
+          starttime: 5900,
+          endtime: 6300,
+          speaker: 0,
+          wordnum: 2,
         },
         {
-          "word": "evening,",
-          "confidence": 0.0,
-          "starttime": 6300,
-          "endtime": 6500,
-          "speaker": 0,
-          "wordnum": 3
+          word: 'evening,',
+          confidence: 0.0,
+          starttime: 6300,
+          endtime: 6500,
+          speaker: 0,
+          wordnum: 3,
         },
         {
-          "word": "everybody.",
-          "confidence": 0.0,
-          "starttime": 6500,
-          "endtime": 7100,
-          "speaker": 0,
-          "wordnum": 4
-        }
-      ]
-    }
-  ]
-}
-
-
-
-
-
-
-
-
-
-
-
+          word: 'everybody.',
+          confidence: 0.0,
+          starttime: 6500,
+          endtime: 7100,
+          speaker: 0,
+          wordnum: 4,
+        },
+      ],
+    },
+  ],
+};
 
 //   talks: [
 //       { speaker: "COUNCIL PRESIDENT CLARKE", said: "     Thank you.\n    Before considering the resolutions and bills, we will consider our public comment as follows:\n    If you are interested in testifying on a bill or resolution that is on the Final Passage Calendar today, if you have not already done so, I'd ask that you sign up at the table to my left.\n    When your name is called, you will go to the podium in the middle of the Council Chambers.  There's a device on that podium.  When that light turns green, it will be your time to speak. When the light turns yellow, you will have 30 seconds to conclude your remarks. When the light turns red, we'd ask you to please adhere to our guidelines and conclude your remarks.  You will be given three minutes to testify.\n    Mr. Decker, please call the first name on the list.\n", section: "PUBLIC COMMENT", topic: null, showSetTopic: false }

@@ -3,7 +3,7 @@
     <mat-icon>menu</mat-icon>
   </button> -->
   <span>Govmeeting</span>
-  <span class = "filler"></span>
+  <span class="filler"></span>
 
   <!-- <mat-form-field>
     <mat-select>
@@ -13,19 +13,16 @@
     </mat-select>
   </mat-form-field> -->
   <span *ngIf="!isBeta">
-    <select id="language" #mySelect [(ngModel)]="language" (change)='setLanguage(mySelect.value)'>
+    <select id="language" #mySelect [(ngModel)]="language" (change)="setLanguage(mySelect.value)">
       <option *ngFor="let language of languages" [value]="language.value"> {{language.viewValue}} </option>
     </select>
   </span>
 
-  <span class = "filler" (click)="navService.closeNav()">
-
-    <span class = "filler"></span>
+  <span class="filler" (click)="navService.closeNav()">
+    <span class="filler"></span>
 
     <button class="sidenav-close" mat-icon-button (click)="navService.closeNav()">
       <mat-icon>close</mat-icon>
     </button>
-
   </span>
-
 </mat-toolbar>

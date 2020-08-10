@@ -1,5 +1,4 @@
-@import "../../colors.scss";
-
+@import '../../colors.scss';
 
 .main-header {
   position: fixed;
@@ -23,7 +22,6 @@
   }
 
   &-button {
-
     background-color: $color-header-items;
     //background-color: lightblue;
     border-radius: 50%;
@@ -52,5 +50,4 @@
     // background-color: $color-mischka;
     margin-top: 5px;
   }
-
 }

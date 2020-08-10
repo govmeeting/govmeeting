@@ -4,6 +4,7 @@
   height: auto;
 }
 </style>
+
 <mat-card><mat-card-title class="cardtitle"> নকশা </mat-card-title>
 <markdown ngPreserveWhitespaces>
 

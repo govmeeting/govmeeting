@@ -1,4 +1,3 @@
-
 <ul>
 <li> Einige Teile der Software sind implementiert (müssen jedoch verbessert werden). </li>
 <li> Eine Reihe kritischer Elemente muss implementiert werden. </li>

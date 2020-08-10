@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DemoMaterialModule } from '../common/material';
 
-
 import { UserDropdownComponent } from './user-dropdown/user-dropdown';
 import { HeaderComponent } from './header';
 
@@ -16,11 +15,10 @@ import { HeaderComponent } from './header';
 // import { FastFactsComponent } from './main-header/fast-facts/component';
 // import { FastFactComponent } from './main-header/fast-fact/component';
 
-
 @NgModule({
   declarations: [
     UserDropdownComponent,
-    HeaderComponent
+    HeaderComponent,
 
     // TopHeaderComponent,
     // DashSearchComponent,
@@ -29,13 +27,10 @@ import { HeaderComponent } from './header';
     // FastFactsComponent,
     // FastFactComponent,
   ],
-  imports: [
-    CommonModule,
-    DemoMaterialModule
-  ],
+  imports: [CommonModule, DemoMaterialModule],
   exports: [
     UserDropdownComponent,
-    HeaderComponent
+    HeaderComponent,
 
     // TopHeaderComponent,
     // DashSearchComponent,
@@ -43,6 +38,6 @@ import { HeaderComponent } from './header';
     // MainWelcomeComponent,
     // FastFactsComponent,
     // FastFactComponent,
-  ]
+  ],
 })
-export class HeaderModule { }
+export class HeaderModule {}

@@ -6,12 +6,7 @@ import { ChatComponent } from './chat';
 
 @NgModule({
   declarations: [ChatComponent],
-  imports: [
-    CommonModule,
-    DemoMaterialModule
-  ],
-  exports: [
-    ChatComponent
-]
+  imports: [CommonModule, DemoMaterialModule],
+  exports: [ChatComponent],
 })
-export class ChatModule { }
+export class ChatModule {}

@@ -4,39 +4,38 @@ import { DropdownValue } from './value';
 import { FormBuilder, Validators } from '@angular/forms';
 //import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 
-const NoLog = true;  // set to false for console logging
+const NoLog = true; // set to false for console logging
 
 @Component({
   //moduleId: module.id,
   selector: 'gm-dropdown',
   templateUrl: 'dropdown.html',
-  styleUrls: ['./dropdown.css']
+  styleUrls: ['./dropdown.css'],
 })
 export class DropdownComponent implements OnInit {
-  private ClassName: string = this.constructor.name + ": ";
+  private ClassName: string = this.constructor.name + ': ';
   @Input()
   values: DropdownValue[];
 
- @Output()
+  @Output()
   selectSpeaker: EventEmitter<number>;
 
- @Output()
+  @Output()
   addSpeaker: EventEmitter<string>;
 
   public newOptionForm = this.fb.group({
     newOption: ['', Validators.required],
-});
+  });
 
- constructor(public fb: FormBuilder) {
+  constructor(public fb: FormBuilder) {
     this.selectSpeaker = new EventEmitter();
     this.addSpeaker = new EventEmitter();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSelectChange(i: number) {
-    NoLog || console.log(this.ClassName + "selected index=" + i);
+    NoLog || console.log(this.ClassName + 'selected index=' + i);
     this.selectSpeaker.emit(i);
   }
 
@@ -46,7 +45,6 @@ export class DropdownComponent implements OnInit {
     this.newOptionForm.reset();
     this.addSpeaker.emit(value);
   }
-
 }
 
 /**

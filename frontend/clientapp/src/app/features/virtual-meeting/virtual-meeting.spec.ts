@@ -8,9 +8,8 @@ describe('VirtualMeetingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VirtualMeetingComponent ]
-    })
-    .compileComponents();
+      declarations: [VirtualMeetingComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

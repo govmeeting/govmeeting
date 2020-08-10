@@ -1,7 +1,6 @@
 /* Scripts for css grid dashboard */
 
-const NoLog = true;  // set to false for console logging
-
+const NoLog = true; // set to false for console logging
 
 $(document).ready(() => {
   // addResizeListeners();
@@ -27,7 +26,7 @@ function toggleClass(el, className) {
 // If user opens the menu and then expands the viewport from mobile size without closing the menu,
 // make sure scrolling is enabled again and that sidenav active class is removed
 function addResizeListeners() {
-  $(window).resize(function(e) {
+  $(window).resize(function (e) {
     const width = window.innerWidth;
     NoLog || console.log(this.ClassName + 'width: ', width);
 
@@ -40,7 +39,7 @@ function addResizeListeners() {
 
 // Menu open sidenav icon, shown only on mobile
 function setMenuClickListener() {
-  $('.header__menu').on('click', function(e) {
+  $('.header__menu').on('click', function (e) {
     NoLog || console.log(this.ClassName + 'clicked menu icon');
     toggleClass(sidenavEl, sidenav_ACTIVE_CLASS);
     toggleClass(gridEl, GRID_NO_SCROLL_CLASS);
@@ -49,15 +48,15 @@ function setMenuClickListener() {
 
 // Sidenav close icon
 function setSidenavCloseListener() {
-  $('.sidenav__brand-close').on('click', function(e) {
+  $('.sidenav__brand-close').on('click', function (e) {
     toggleClass(sidenavEl, sidenav_ACTIVE_CLASS);
     toggleClass(gridEl, GRID_NO_SCROLL_CLASS);
   });
 }
 
 // I will most likely replace his navigation menu with one base on Angular Material.
- // Sidenav list sliding functionality
- function setSidenavListeners() {
+// Sidenav list sliding functionality
+function setSidenavListeners() {
   const subHeadings = $('.navList__subheading');
   NoLog || console.log(this.ClassName + 'subHeadings: ', subHeadings);
   const SUBHEADING_OPEN_CLASS = 'navList__subheading--open';

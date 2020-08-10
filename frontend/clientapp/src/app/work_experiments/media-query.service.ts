@@ -2,26 +2,23 @@ import { Injectable } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = true; // set to false for console logging
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class MediaQueryService  {
-  private ClassName: string = this.constructor.name + ": ";
+export class MediaQueryService {
+  private ClassName: string = this.constructor.name + ': ';
 
   mediaQueryList: MediaQueryList;
-  private mediaQueryListener:() => void;
+  private mediaQueryListener: () => void;
 
-  constructor(
-    changeDetectorRef: ChangeDetectorRef,
-    media: MediaMatcher
-  ) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mediaQueryList = media.matchMedia('(max-width: 992px)');
     this.mediaQueryListener = () => {
       changeDetectorRef.detectChanges();
-      NoLog || console.log(this.ClassName + "Match?: " + this.mediaQueryList.matches)
-      }
+      NoLog || console.log(this.ClassName + 'Match?: ' + this.mediaQueryList.matches);
+    };
     this.mediaQueryList.addListener(this.mediaQueryListener);
   }
   ngOnDestroy(): void {
@@ -63,12 +60,6 @@ export class MediaQueryService  {
 //     // return this.mediaQueryService.isMobile();
 //   }
 // }
-
-
-
-
-
-
 
 // import { Injectable } from '@angular/core';
 // import { Breakpoints, BreakpointObserver, BreakpointState  } from '@angular/cdk/layout';

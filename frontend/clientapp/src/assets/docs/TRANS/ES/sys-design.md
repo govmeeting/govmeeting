@@ -5,7 +5,6 @@
 }
 </style>
 
-
 <p> Los siguientes diagramas muestran la interacción entre los componentes del software. </p>
 <ul>
 <li><p> ClientApp es una aplicación Angular Typecript de una sola página que se ejecuta en el navegador. Proporciona la interfaz de usuario. </p></li>

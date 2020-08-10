@@ -15,17 +15,20 @@
 
 <button (click)="getListInfo()">Get</button>
 <button (click)="setScrollTop()">Set</button>
-lt={{listTop}} lst={{listScrollTop}} lot={{listOffsetTop}} loh={{listOffsetHeight}} ...
-it={{itemTop}} ist={{itemScrollTop}} iot={{itemOffsetTop}}
-<input type="text" #box (keyup.enter)="scrollToValue(box.value)"> gnewST={{gnewST}} newST={{newST}}
+lt={{ listTop }} lst={{ listScrollTop }} lot={{ listOffsetTop }} loh={{ listOffsetHeight }} ... it={{ itemTop }} ist={{
+  itemScrollTop
+}}
+iot={{ itemOffsetTop }} <input type="text" #box (keyup.enter)="scrollToValue(box.value)" /> gnewST={{ gnewST }} newST={{
+  newST
+}}
 <div class="scrollable" id="scrolltext" #scrolltext>
-  <div #refEl  *ngFor="let data of sections"  [attr.id]=" 'section' + data.id">
-    <p>{{data.id}} section {{data.name}}
+  <div #refEl *ngFor="let data of sections" [attr.id]="'section' + data.id">
+    <p>
+      {{ data.id }} section {{ data.name }}
       <button (click)="getItemInfo(data)">G</button>
       <button (click)="scrollToTarget(data)">S</button>
     </p>
   </div>
 </div>
-
 
 <!-- [style.backgroundColor]="passEl(refEl)" -->

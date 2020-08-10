@@ -6,17 +6,17 @@ import 'rxjs/add/operator/map';
 
 import { ConversationService } from './conversation.service';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = true; // set to false for console logging
 
 @Component({
   selector: 'gm-conversation',
   templateUrl: './conversation.html',
-  styleUrls: ['./conversation.scss']
+  styleUrls: ['./conversation.scss'],
 })
 export class ConversationComponent implements OnInit {
-  private ClassName: string = this.constructor.name + ": ";
+  private ClassName: string = this.constructor.name + ': ';
 
-  constructor(private ms: ConversationService, private router: Router) { }
+  constructor(private ms: ConversationService, private router: Router) {}
 
   // buildConversationsArray(conversations) {
   //   let array = [];
@@ -57,39 +57,25 @@ export class ConversationComponent implements OnInit {
   //   )
   // }
 
-    selectConversation(i: number) {
-      this.selectedConversation = this.conversations[i];
-    }
-
+  selectConversation(i: number) {
+    this.selectedConversation = this.conversations[i];
+  }
 
   // sendText(text: string) {
   //   this.selectedConversation.sendText(text).then(() => this.text = "")
   // }
 
   sendText(text: string) {
-     this.text = text;
+    this.text = text;
   }
-
 
   // conversations: any
   conversations: any = [
-    {display_name: "Wrightsboro Residents", id: "1",
-      members: [
-        {username: "Joe"},
-        {username: "Sue"}
-      ]
-    },
-    {display_name: "Wrightsboro Volunteers", id: "2",
-      members: [
-        {username: "Hank"},
-        {username: "Mary"}
-      ]
-    }
-  ]
+    { display_name: 'Wrightsboro Residents', id: '1', members: [{ username: 'Joe' }, { username: 'Sue' }] },
+    { display_name: 'Wrightsboro Volunteers', id: '2', members: [{ username: 'Hank' }, { username: 'Mary' }] },
+  ];
 
-  selectedConversation: any
-  text: string
-  events: Array<any> = []
-
-
+  selectedConversation: any;
+  text: string;
+  events: Array<any> = [];
 }

@@ -1,4 +1,3 @@
-
 <p> New York City ndio mji mkubwa kabisa nchini Merika Pia hutoa nakala za mikutano ya baraza la jiji. Lakini kujaribu kupata yao sio rahisi. Unahitaji kupeana ombi na ulipe $ 1 kwa kila ukurasa au $ 20 kwa nakala ya elektroniki ya kila mkutano. </p>
 <h2> Kuzingatia </h2>
 <p> Zana za demokrasia hazijabadilika sana katika miaka 2000. Lakini na teknolojia ya leo, tunaweza hatimaye kuunda vifaa tunavyohitaji. </p>

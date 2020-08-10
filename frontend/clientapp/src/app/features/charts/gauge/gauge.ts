@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import * as am4core from '@amcharts/amcharts4/core';
+import * as am4charts from '@amcharts/amcharts4/charts';
+import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 
 /*
   This example is from https://www.amcharts.com/docs/v4/getting-started/basics/
@@ -10,19 +10,19 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
     I am not sure what the advantage is. I was not able to get a chart working in the component's html doing this.
 */
 
-const NoLog = true;  // set to false for console logging
+const NoLog = true; // set to false for console logging
 
 @Component({
   selector: 'gm-gauge',
   templateUrl: './gauge.html',
-  styleUrls: ['./gauge.scss']
+  styleUrls: ['./gauge.scss'],
 })
 export class AmgaugeComponent {
-  private ClassName: string = this.constructor.name + ": ";
+  private ClassName: string = this.constructor.name + ': ';
   //private chart: am4charts.GaugeChart;
   //private hand: { showValue: (arg0: number, arg1: number, arg2: (t: number) => number) => void; };
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     /* Chart code */
@@ -31,7 +31,7 @@ export class AmgaugeComponent {
     // Themes end
 
     // create chart
-    let chart = am4core.create("chartdiv", am4charts.GaugeChart);
+    let chart = am4core.create('chartdiv', am4charts.GaugeChart);
     chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
 
     chart.innerRadius = -25;
@@ -42,7 +42,7 @@ export class AmgaugeComponent {
     axis.min = 0;
     axis.max = 100;
     axis.strictMinMax = true;
-    axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+    axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor('background');
     axis.renderer.grid.template.strokeOpacity = 0.3;
 
     let colorSet = new am4core.ColorSet();
@@ -52,7 +52,7 @@ export class AmgaugeComponent {
     range0.endValue = 50;
     range0.axisFill.fillOpacity = 1;
     range0.axisFill.fill = colorSet.getIndex(0);
-    range0.axisFill.zIndex = - 1;
+    range0.axisFill.zIndex = -1;
 
     let range1 = axis.axisRanges.create();
     range1.value = 50;
@@ -70,19 +70,16 @@ export class AmgaugeComponent {
 
     let hand = chart.hands.push(new am4charts.ClockHand());
 
-    NoLog || console.log(this.ClassName + "this is hand: ")
-    NoLog || console.log(this.ClassName, hand)
+    NoLog || console.log(this.ClassName + 'this is hand: ');
+    NoLog || console.log(this.ClassName, hand);
     // using chart.setTimeout method as the timeout will be disposed together with a chart
     chart.setTimeout(randomValue, 2000);
 
     function randomValue() {
-      NoLog || console.log(this.ClassName + "this is hand in randomValue: ")
-      NoLog || console.log(this.ClassName + hand)
+      NoLog || console.log(this.ClassName + 'this is hand in randomValue: ');
+      NoLog || console.log(this.ClassName + hand);
       hand.showValue(Math.random() * 100, 1000, am4core.ease.cubicOut);
       chart.setTimeout(randomValue, 2000);
     }
+  }
 }
-
-}
-
-

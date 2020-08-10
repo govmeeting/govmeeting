@@ -15,14 +15,14 @@
   // }
   // &:hover,
   // &:focus {
-    // .mat-list-item:not(.expanded) {
-    //   // background-color: lightgreen;
-    //   background-color: mat-color($app-primary, 100) !important;
-    // }
-    // .mat-list-item.expanded {
-    //   // background-color: lightblue;
-    //   background-color: mat-color($app-primary, 200) !important;
-    // }
+  // .mat-list-item:not(.expanded) {
+  //   // background-color: lightgreen;
+  //   background-color: mat-color($app-primary, 100) !important;
+  // }
+  // .mat-list-item.expanded {
+  //   // background-color: lightblue;
+  //   background-color: mat-color($app-primary, 200) !important;
+  // }
   // }
 }
 
@@ -31,7 +31,7 @@
 // }
 
 .mat-list-item {
-  height:32px;
+  height: 32px;
   padding: 2px 0;
 
   .routeIcon {
@@ -42,22 +42,22 @@
 .depth0 {
   font-weight: bold;
   font-size: 130%;
-  transform:translateX(-40px);
+  transform: translateX(-40px);
 }
 .depth1 {
-  font-weight:bold;
+  font-weight: bold;
   font-size: 110%;
   // text-decoration: underline;
 }
 .depth2 {
-  font-weight:bold;
+  font-weight: bold;
   text-decoration: underline;
   // font-style:oblique;
 }
 
 .grayed-out {
   opacity: 0.4;
-  -webkit-opacity:0.4;
+  -webkit-opacity: 0.4;
   -khtml-opacity: 0.4;
   pointer-events: none;
 }
@@ -69,4 +69,3 @@
 // .blurplus {
 //   filter: blur(20px) grayscale(20%);
 // }
-

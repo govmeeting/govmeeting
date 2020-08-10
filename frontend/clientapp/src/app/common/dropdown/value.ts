@@ -1,7 +1,7 @@
 export class DropdownValue {
-  option:string;
+  option: string;
 
-  constructor(option:string) {
+  constructor(option: string) {
     this.option = option;
   }
 }

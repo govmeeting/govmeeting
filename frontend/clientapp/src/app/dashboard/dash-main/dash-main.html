@@ -1,13 +1,10 @@
 <main class="main">
+  <!-- <button (click)="CallBills()">Call Bills</button><br/> -->
 
-<!-- <button (click)="CallBills()">Call Bills</button><br/> -->
-
-<!-- <gm-ab>
+  <!-- <gm-ab>
 </gm-ab> -->
 
-
   <gm-small-cards>
-
     <!-- <gm-small-card
       icon="far fa-envelope"
       iconcolor="icon-color-red"
@@ -16,75 +13,68 @@
       <app-config></app-config>
     </gm-small-card>
  -->
-    <gm-small-card
-      class="top1"
-      icon="fas fa-sitemap"
-      iconcolor="icon-color-red"
-      title={{govinfoTitle}}>
-      <gm-gov-info>
-      </gm-gov-info>
+    <gm-small-card class="top1" icon="fas fa-sitemap" iconcolor="icon-color-red" title="{{govinfoTitle}}">
+      <gm-gov-info> </gm-gov-info>
     </gm-small-card>
 
-    <gm-small-card *ngIf="(!isCounty && !isBeta)" class="top2"
+    <gm-small-card
+      *ngIf="(!isCounty && !isBeta)"
+      class="top2"
       icon="far fa-file-alt"
       iconcolor="icon-color-orange"
-      title={{billsTitle}}>
-      <gm-bills>
-      </gm-bills>
+      title="{{billsTitle}}"
+    >
+      <gm-bills> </gm-bills>
     </gm-small-card>
 
-    <gm-small-card class="top3"
-      icon="fas fa-users"
-      iconcolor="icon-color-green"
-      title={{meetingsTitle}}>
-      <gm-meetings>
-      </gm-meetings>
+    <gm-small-card class="top3" icon="fas fa-users" iconcolor="icon-color-green" title="{{meetingsTitle}}">
+      <gm-meetings> </gm-meetings>
     </gm-small-card>
 
-    <gm-small-card *ngIf="!isBeta" class="top4"
+    <gm-small-card
+      *ngIf="!isBeta"
+      class="top4"
       icon="far fa-newspaper"
       iconcolor="icon-color-purple"
-      title={{newsTitle}}>
-      <gm-news>
-      </gm-news>
+      title="{{newsTitle}}"
+    >
+      <gm-news> </gm-news>
     </gm-small-card>
-
   </gm-small-cards>
 
   <gm-large-cards>
-
-    <gm-large-card *ngIf="(isCounty && !isBeta)"
-      icon="fas fa-edit"
-      iconcolor="icon-color-green"
-      title={{notesTitle}}>
+    <gm-large-card *ngIf="(isCounty && !isBeta)" icon="fas fa-edit" iconcolor="icon-color-green" title="{{notesTitle}}">
       <gm-notes></gm-notes>
     </gm-large-card>
 
-    <gm-large-card *ngIf="(isCounty && !isBeta)"
+    <gm-large-card
+      *ngIf="(isCounty && !isBeta)"
       icon="fas fa-book-open"
       iconcolor="icon-color-green"
-      title={{minutesTitle}}>
+      title="{{minutesTitle}}"
+    >
       <gm-minutes></gm-minutes>
     </gm-large-card>
 
-    <gm-large-card  *ngIf="!isCounty"
+    <gm-large-card
+      *ngIf="!isCounty"
       icon="fas fa-hand-point-right"
       iconcolor="icon-color-green"
-      title={{edittranscriptTitle}}>
+      title="{{edittranscriptTitle}}"
+    >
       <gm-edittranscript></gm-edittranscript>
     </gm-large-card>
 
-    <gm-large-card
-      icon="fas fa-edit" *ngIf="isDevMode"
-      iconcolor="icon-color-green"
-      title={{workareaTitle}}>
+    <gm-large-card icon="fas fa-edit" *ngIf="isDevMode" iconcolor="icon-color-green" title="{{workareaTitle}}">
       <gm-workarea></gm-workarea>
     </gm-large-card>
 
-    <gm-large-card  *ngIf="!isCounty"
+    <gm-large-card
+      *ngIf="!isCounty"
       icon="fas fa-book-open"
       iconcolor="icon-color-green"
-      title={{viewtranscriptTitle}}>
+      title="{{viewtranscriptTitle}}"
+    >
       <gm-viewtranscript></gm-viewtranscript>
     </gm-large-card>
 
@@ -102,45 +92,42 @@
       <gm-addtags></gm-addtags>
     </gm-large-card> -->
 
-    <gm-large-card  *ngIf="(!isCounty && !isBeta)"
+    <gm-large-card
+      *ngIf="(!isCounty && !isBeta)"
       icon="fas fa-hammer"
       iconcolor="icon-color-green"
-      title={{workitemsTitle}}>
+      title="{{workitemsTitle}}"
+    >
       <gm-workitems></gm-workitems>
     </gm-large-card>
 
-    <gm-large-card *ngIf="!isBeta"
-      icon="fas fa-exclamation"
-      iconcolor="icon-color-green"
-      title={{issuesTitle}}>
-     <gm-issues></gm-issues>
+    <gm-large-card *ngIf="!isBeta" icon="fas fa-exclamation" iconcolor="icon-color-green" title="{{issuesTitle}}">
+      <gm-issues></gm-issues>
     </gm-large-card>
 
-    <gm-large-card *ngIf="!isBeta"
-      icon="fas fa-user-friends"
-      iconcolor="icon-color-green"
-      title={{officialsTitle}}>
+    <gm-large-card *ngIf="!isBeta" icon="fas fa-user-friends" iconcolor="icon-color-green" title="{{officialsTitle}}">
       <gm-officials></gm-officials>
     </gm-large-card>
 
-    <gm-large-card *ngIf="!isBeta"
+    <gm-large-card
+      *ngIf="!isBeta"
       icon="far fa-calendar-check"
       iconcolor="icon-color-red"
-      title={{virtualMeetingTitle}}>
+      title="{{virtualMeetingTitle}}"
+    >
       <gm-virtual-meeting></gm-virtual-meeting>
     </gm-large-card>
 
-    <gm-large-card  *ngIf="(!isCounty && !isBeta)"
+    <gm-large-card
+      *ngIf="(!isCounty && !isBeta)"
       icon="fas fa-exclamation"
       iconcolor="icon-color-green"
-      title={{alertsTitle}}>
+      title="{{alertsTitle}}"
+    >
       <gm-alerts></gm-alerts>
     </gm-large-card>
 
-    <gm-large-card *ngIf="!isBeta"
-      icon="fas fa-comments"
-      iconcolor="icon-color-red"
-      title={{chatTitle}}>
+    <gm-large-card *ngIf="!isBeta" icon="fas fa-comments" iconcolor="icon-color-red" title="{{chatTitle}}">
       <gm-chat></gm-chat>
     </gm-large-card>
 
@@ -150,11 +137,9 @@
       title={{chartsTitle}}>
       [ The software uses the  <a href="https://www.amcharts.com/"> "amcharts" </a> plugin for
        displaying graphical information. Check back for working examples. ] -->
-      <!-- <gm-pie-chart></gm-pie-chart> -->
-      <!-- <gm-bar-chart></gm-bar-chart> -->
-      <!-- <gm-gauge></gm-gauge> -->
+    <!-- <gm-pie-chart></gm-pie-chart> -->
+    <!-- <gm-bar-chart></gm-bar-chart> -->
+    <!-- <gm-gauge></gm-gauge> -->
     <!-- </gm-large-card> -->
-
   </gm-large-cards>
-
 </main>

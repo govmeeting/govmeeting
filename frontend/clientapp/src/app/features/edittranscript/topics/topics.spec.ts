@@ -19,13 +19,10 @@ describe('TopicsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule ],
-      declarations: [ TopicsComponent ],
-      providers: [
-        {provide: EdittranscriptService, useClass: ServiceStub}
-      ]
-    })
-    .compileComponents();
+      imports: [FormsModule],
+      declarations: [TopicsComponent],
+      providers: [{ provide: EdittranscriptService, useClass: ServiceStub }],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

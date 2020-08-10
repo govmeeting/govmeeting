@@ -8,9 +8,8 @@ describe('GovInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GovInfoComponent ]
-    })
-    .compileComponents();
+      declarations: [GovInfoComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

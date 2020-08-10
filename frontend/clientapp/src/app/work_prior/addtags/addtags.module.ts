@@ -18,11 +18,9 @@ import { SharedModule } from '../../common/common.module';
     FormsModule,
     RouterModule,
     //ReactiveFormsModule
-    SharedModule
+    SharedModule,
   ],
 
-  exports: [
-    AddtagsComponent
-  ]
+  exports: [AddtagsComponent],
 })
-export class AddtagsModule { }
+export class AddtagsModule {}

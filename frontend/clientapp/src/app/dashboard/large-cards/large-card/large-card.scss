@@ -1,4 +1,4 @@
-@import "../../../../colors.scss";
+@import '../../../../colors.scss';
 
 $color-jungle: #27ae60;
 
@@ -43,8 +43,6 @@ $color-jungle: #27ae60;
   }
 }
 
-
-
 // The code below is not used. He probably had a photo card that he removed.
 // https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
 /*
@@ -80,8 +78,8 @@ $color-jungle: #27ae60;
   }
  */
 
- // This was for the prior Monthly spending card that used finance.component
- // I could not get amcharts working for that component.
+// This was for the prior Monthly spending card that used finance.component
+// I could not get amcharts working for that component.
 /*  .card--finance {
     position: relative;
   }

@@ -2,11 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-
 import { EdittranscriptService } from '../edittranscript.service';
 import { EditTranscript, EditTranscriptSample } from '../edittranscript-sample';
 import { TalksComponent } from './talks';
-import { Talk } from '../../../models/addtags-view'
+import { Talk } from '../../../models/addtags-view';
 
 // Create a stub for EdittranscriptService
 class ServiceStub {
@@ -16,7 +15,7 @@ class ServiceStub {
 }
 
 // Create a stub for nested TopicsComponent
-@Component({selector: 'gm-topicset', template: ''})
+@Component({ selector: 'gm-topicset', template: '' })
 class TopicsComponent {
   @Input() newTopicName: string | undefined;
   @Output() topicSelect: any = new EventEmitter<string>();
@@ -29,15 +28,9 @@ describe('TalksComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-         TalksComponent,
-         TopicsComponent
-    ],
-      providers: [
-        {provide: EdittranscriptService, useClass: ServiceStub}
-      ]
-    })
-    .compileComponents();
+      declarations: [TalksComponent, TopicsComponent],
+      providers: [{ provide: EdittranscriptService, useClass: ServiceStub }],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

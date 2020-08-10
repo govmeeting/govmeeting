@@ -1,4 +1,3 @@
-
 <p> Nova York é a maior cidade dos EUA. Também produz transcrições de reuniões do conselho da cidade. Mas tentar obtê-los não é fácil. Você precisa registrar uma solicitação e pagar US $ 1 por página ou US $ 20 por uma cópia eletrônica de cada reunião. </p>
 <h2> O foco </h2>
 <p> As ferramentas para a democarcia não mudaram muito em 2.000 anos. Porém, com a tecnologia atual, podemos finalmente criar as ferramentas de que precisamos. </p>

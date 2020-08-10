@@ -18,12 +18,9 @@ describe('HeadingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeadingComponent ],
-      providers: [
-        {provide: ViewTranscriptService, useClass: ServiceStub}
-      ]
-    })
-    .compileComponents();
+      declarations: [HeadingComponent],
+      providers: [{ provide: ViewTranscriptService, useClass: ServiceStub }],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

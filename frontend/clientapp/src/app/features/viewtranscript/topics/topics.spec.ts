@@ -26,13 +26,12 @@ describe('TopicsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopicsComponent ],
+      declarations: [TopicsComponent],
       providers: [
-        {provide: ViewTranscriptService, useClass: ServiceStub},
-        {provide: UserchoiceService, useClass: UserchoiceStub}
-      ]
-    })
-    .compileComponents();
+        { provide: ViewTranscriptService, useClass: ServiceStub },
+        { provide: UserchoiceService, useClass: UserchoiceStub },
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

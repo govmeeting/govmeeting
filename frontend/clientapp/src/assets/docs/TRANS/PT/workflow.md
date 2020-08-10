@@ -1,4 +1,3 @@
-
 <p> Abaixo está uma descrição funcional das principais partes do software. </p>
 <h2> Registo individual </h2>
 <ul>

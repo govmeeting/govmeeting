@@ -1,9 +1,9 @@
-export enum LocationType{
+export enum LocationType {
   municipal,
   county,
   state,
   federal,
-  nongovernment
+  nongovernment,
 }
 
 export class UserSettings {
@@ -12,36 +12,34 @@ export class UserSettings {
   locationType: LocationType;
   agency: string;
 
-  constructor(_language?: string, _location?: string, _agency?: string){
+  constructor(_language?: string, _location?: string, _agency?: string) {
     this.language = _language;
     this.location = _location;
     this.locationType = this.getLocationType(_location);
-    this.agency = _agency
+    this.agency = _agency;
   }
 
-
-      // This routine is a kludge. We need to have a location type that includes the
+  // This routine is a kludge. We need to have a location type that includes the
   // displayName, locationType, etc. This should be used in the menu items
   // and user settings.
-  private getLocationType(location: string): LocationType  {
+  private getLocationType(location: string): LocationType {
     switch (location) {
-      case "Boothbay Harbor": {
+      case 'Boothbay Harbor': {
         return LocationType.municipal;
       }
-      case "Lincoln County": {
+      case 'Lincoln County': {
         return LocationType.county;
       }
-      case "State of Maine": {
+      case 'State of Maine': {
         return LocationType.state;
       }
-      case "United States": {
+      case 'United States': {
         return LocationType.federal;
       }
-      case "Glendale HOA": {
+      case 'Glendale HOA': {
         return LocationType.nongovernment;
       }
     }
     return null;
   }
-
 }
