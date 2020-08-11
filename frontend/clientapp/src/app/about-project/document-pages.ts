@@ -1,7 +1,7 @@
 // doc filenames (less .md") and titles
 
-let PageIds = ['overview', 'workflow', 'project-status', 'setup', 'dev-notes', 'database', 'sys-design'];
-let PageTitles = [
+const PageIds = ['overview', 'workflow', 'project-status', 'setup', 'dev-notes', 'database', 'sys-design'];
+const PageTitles = [
   ['English', 'en', 'Overview', 'Workflow', 'Project status', 'Setup', 'Developer notes', 'Database', 'Design'],
   ['German', 'de', 'Überblick', 'Funktionaler Workflow', 'Projektstatus', 'Setup', 'Dev Notes', 'Datenbank', 'Design'],
   [
@@ -152,23 +152,23 @@ let PageTitles = [
     'Fejlesztői megjegyzések',
     'Adatbázis',
     'Tervezés',
-  ], //ADD_HERE - do not remove this comment
+  ], // ADD_HERE - do not remove this comment
 ];
 
-let betaPageIds = ['betaOverview', 'betaDocumentation'];
-let betaPageTitles = [['English', 'en', 'Overview', 'Documentation']];
+const betaPageIds = ['betaOverview', 'betaDocumentation'];
+const betaPageTitles = [['English', 'en', 'Overview', 'Documentation']];
 
 export function GetPageTitle(pageid: string, language: string, isBeta: boolean): string {
   if (isBeta) {
     return GetBetaPageTitles(pageid, language);
   }
-  let i = PageIds.findIndex((x) => x == pageid);
-  let j = PageTitles.findIndex((y) => y[1] == language);
+  const i = PageIds.findIndex((x) => x === pageid);
+  const j = PageTitles.findIndex((y) => y[1] === language);
   return PageTitles[j][i + 2];
 }
 
 function GetBetaPageTitles(pageid: string, language: string) {
-  let i = betaPageIds.findIndex((x) => x == pageid);
-  let j = betaPageTitles.findIndex((y) => y[1] == language);
+  const i = betaPageIds.findIndex((x) => x === pageid);
+  const j = betaPageTitles.findIndex((y) => y[1] === language);
   return betaPageTitles[j][i + 2];
 }

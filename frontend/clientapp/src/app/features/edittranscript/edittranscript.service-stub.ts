@@ -16,7 +16,7 @@ export class EdittranscriptServiceStub {
   private ClassName: string = this.constructor.name + ': ';
   postId;
   observable: Observable<EditTranscript>;
-  url: string = 'assets/stubdata/ToEditTranscript.json';
+  url = 'assets/stubdata/ToEditTranscript.json';
   isLargeEditData: boolean;
 
   public constructor(private appData: AppData, private http: HttpClient, private errHandling: ErrorHandlingService) {
@@ -31,9 +31,9 @@ export class EdittranscriptServiceStub {
       }
       NoLog || console.log(this.ClassName + 'get from file');
       // TODO - handle null return. Here we just cast to the correct object type.
-      this.observable = <Observable<EditTranscript>>(
+      this.observable = ((
         this.http.get<EditTranscript>(this.url).pipe(catchError(this.errHandling.handleError)).share()
-      ); // make it shared so more than one subscriber can get the same result.
+      ) as Observable<EditTranscript>); // make it shared so more than one subscriber can get the same result.
       return this.observable;
     } else {
       NoLog || console.log(this.ClassName + 'get from memory');

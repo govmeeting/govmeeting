@@ -16,8 +16,6 @@ export interface Food {
 export class RegisterComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
-
   // https://stackblitz.com/angular/rdlobdgvqok?file=src%2Fapp%2Fselect-overview-example.html
 
   foods: Food[] = [
@@ -25,4 +23,6 @@ export class RegisterComponent implements OnInit {
     { value: 'pizza-1', viewValue: 'Pizza' },
     { value: 'tacos-2', viewValue: 'Tacos' },
   ];
+
+  ngOnInit() {}
 }

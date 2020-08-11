@@ -33,7 +33,7 @@ export class FixasrServiceStub {
     // return Observable.of(this.asrtext);
     const url = 'assets/stubdata/ToFix.json';
     // TODO - handle null return. Here we just cast to the correct object type.
-    return <Observable<FixasrView>>this.http.get<FixasrView>(url).pipe(catchError(this.errHandling.handleError));
+    return this.http.get<FixasrView>(url).pipe(catchError(this.errHandling.handleError)) as Observable<FixasrView>;
   }
 
   public postChanges(fixasr: FixasrView) {

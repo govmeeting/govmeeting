@@ -5,9 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class KeysPipe implements PipeTransform {
   transform(value, args: string[]): any {
-    let keys = [];
-    for (let key in value) {
-      keys.push({ key: key, value: value[key] });
+    const keys = [];
+    for (const key in value) {
+      if (value.hasOwnProperty(key)) {
+        keys.push({ key, value: value[key] });
+      }
     }
     return keys;
   }

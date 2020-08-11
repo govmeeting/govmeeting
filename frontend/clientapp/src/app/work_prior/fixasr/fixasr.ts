@@ -81,7 +81,7 @@ export class FixasrComponent implements OnInit {
   ngOnInit() {
     this.getAsr();
     // We cast to avoid a compiler error. It should never be null.
-    this._scrollList = <HTMLElement>document.getElementById('scroll-text');
+    this._scrollList = document.getElementById('scroll-text') as HTMLElement;
     NoLog || console.log(this.ClassName + 'currentIndex = ' + this.currentIndex);
   }
 
@@ -133,7 +133,10 @@ export class FixasrComponent implements OnInit {
   }
 
   createSpeakerAbbrev(name: string): string {
-    let firstname: string, lastname: string, abbrev: string, extras: string;
+    let firstname: string;
+    let lastname: string;
+    let abbrev: string;
+    let extras: string;
     let x = name.indexOf(' ');
     // For a multi-word name, we start with abbreviaion of first-initial + last-initial.
     if (x !== -1) {
@@ -170,7 +173,7 @@ export class FixasrComponent implements OnInit {
   onFocus(event: any, i: number) {
     NoLog || console.log(this.ClassName + 'onFocus index=' + i + '  size=' + this.asrsegments.length);
     this.currentIndex = i;
-    this.currentElement = <HTMLInputElement>event.target;
+    this.currentElement = event.target as HTMLInputElement;
     // this.isSpeakerSelectVisible = true;
     this.isTyping = false;
     this.isFirstSpace = false;
@@ -181,7 +184,7 @@ export class FixasrComponent implements OnInit {
       return;
     }
 
-    const ele: HTMLInputElement = <HTMLInputElement>event.target;
+    const ele: HTMLInputElement = event.target as HTMLInputElement;
     NoLog ||
       console.log(
         this.ClassName + 'onMouseup index=' + i + '   start=' + ele.selectionStart + '   end=' + ele.selectionEnd
@@ -199,7 +202,7 @@ export class FixasrComponent implements OnInit {
       case ',':
       case ';':
       case '?':
-        const ele: HTMLInputElement = <HTMLInputElement>event.target;
+        const ele: HTMLInputElement = event.target as HTMLInputElement;
         ele.selectionStart = ele.selectionEnd;
         return;
     }
@@ -214,7 +217,7 @@ export class FixasrComponent implements OnInit {
         case ',':
         case ';':
         case '?':
-          ele = <HTMLInputElement>event.target;
+          ele = event.target as HTMLInputElement;
           this._Utilities.gotoNextWord(ele);
           return;
       }
@@ -237,7 +240,7 @@ export class FixasrComponent implements OnInit {
     }
 
     const key = event.key; // get key value
-    ele = <HTMLInputElement>event.target;
+    ele = event.target as HTMLInputElement;
     let value: string = ele.value;
     let start: number = ele.selectionStart;
     const end: number = ele.selectionEnd;
@@ -353,13 +356,13 @@ export class FixasrComponent implements OnInit {
         const timerx = timer(100); // yield for 100 milliseconds
         timerx.subscribe((t) => this.setScrollPosition(this.lastedit));
       },
-      (error) => (this.errorMessage = <any>error)
+      (error) => (this.errorMessage = error as any)
     );
   }
 
   saveChanges() {
     const lastedit = this.getScrollPosition();
-    let fixasrtext: FixasrView = { lastedit: lastedit, asrsegments: this.asrsegments };
+    const fixasrtext: FixasrView = { lastedit, asrsegments: this.asrsegments };
     NoLog || console.log(this.ClassName + 'saveTranscript');
     // TODO - See notes under getAsr().
     // asrtext.lastedit = this.getScrollPosition();

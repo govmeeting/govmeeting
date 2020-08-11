@@ -13,8 +13,8 @@ const NoLog = true; // set to false for console logging
 })
 export class ViewTranscriptComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
-  showhelp: boolean = true;
-  showhidehelp: string = 'Hide';
+  showhelp = true;
+  showhidehelp = 'Hide';
   topicDiscussions: TopicDiscussion[];
   errorMessage: string;
 
@@ -38,7 +38,7 @@ export class ViewTranscriptComponent implements OnInit {
         this.topicDiscussions = t.topicDiscussions;
         NoLog || console.log(this.ClassName + this.topicDiscussions);
       },
-      (error) => (this.errorMessage = <any>error)
+      (error) => (this.errorMessage = (error as any))
     );
   }
 

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { timer } from 'rxjs/observable/timer';
 import { AppData } from '../../appdata';
 
-class videoSource {
+class VideoSource {
   src: string;
   type: string;
 }
@@ -25,7 +25,7 @@ const NoLog = true; // set to false for console logging
 })
 export class VideoComponent {
   private ClassName: string = this.constructor.name + ': ';
-  sources: Array<videoSource>;
+  sources: Array<VideoSource>;
   // api: VgAPI;
   api: VgApiService;
 

@@ -7,7 +7,7 @@ import { ChangeDetectorRef, OnDestroy } from '@angular/core';
 // import {ApplicationRef} from '@angular/core';
 
 import { NavService } from './sidenav/nav.service';
-//import { MediaQueryService } from './work_experiments/media-query.service';
+// import { MediaQueryService } from './work_experiments/media-query.service';
 
 import { Router } from '@angular/router';
 import { UserSettingsService, UserSettings, LocationType } from './common/user-settings.service';
@@ -15,11 +15,11 @@ import { UserSettingsService, UserSettings, LocationType } from './common/user-s
 const NoLog = true; // set to false for console logging
 
 @Component({
-  selector: 'app-root',
+  selector: 'gm-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnDestroy {
   private ClassName: string = this.constructor.name + ': ';
   @ViewChild('sidenav', { static: false }) sidenav: ElementRef;
 
@@ -54,7 +54,7 @@ export class AppComponent implements AfterViewInit {
       NoLog || console.log(this.ClassName + 'mediaQueryListener:' + this.mediaQueryList.matches);
       // this.checkDeviceType();
     };
-    this.mediaQueryList.addListener(this.mediaQueryListener);
+    this.mediaQueryList.addEventListener('change', this.mediaQueryListener);
   }
 
   ngAfterViewInit() {
@@ -62,7 +62,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this.mediaQueryList.removeListener(this.mediaQueryListener);
+    this.mediaQueryList.removeEventListener('change', this.mediaQueryListener);
   }
 
   isMobile() {
@@ -71,7 +71,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   checkDeviceType() {
-    var width = window.innerWidth;
+    const width = window.innerWidth;
     if (width <= 768) {
       // TODO Remove "NoLog || ..." statements during pre-build of prod
       NoLog || console.log(this.ClassName + 'mobile device detected');
@@ -85,7 +85,7 @@ export class AppComponent implements AfterViewInit {
   ///      For testng ///////
 
   sendSettings() {
-    let userSettings: UserSettings = new UserSettings('en', 'Totowa', 'Council');
+    const userSettings: UserSettings = new UserSettings('en', 'Totowa', 'Council');
     this.userSettingsService.settings = userSettings;
   }
   setLanguage() {

@@ -13,7 +13,7 @@ export class SpeakersComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   speakerNames: string[];
   errorMessage: string;
-  selectedSpeaker: number = 0;
+  selectedSpeaker = 0;
 
   constructor(private _viewMeetingService: ViewTranscriptService, private _userChoice: UserchoiceService) {}
 
@@ -28,7 +28,7 @@ export class SpeakersComponent implements OnInit {
         this.speakerNames = meeting.speakerNames;
         NoLog || console.log(this.ClassName, this.speakerNames);
       },
-      (error) => (this.errorMessage = <any>error)
+      (error) => (this.errorMessage = (error as any))
     );
   }
 

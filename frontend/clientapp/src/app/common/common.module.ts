@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownComponent } from './dropdown/dropdown';
-import { MyhighlightDirective } from './myhighlight/myhighlight.directive';
-//import { ErrorHandlingService } from './error-handling/error-handling.service';
+import { HighlightDirective } from './myhighlight/myhighlight.directive';
+// import { ErrorHandlingService } from './error-handling/error-handling.service';
 
 @NgModule({
   imports: [ReactiveFormsModule, CommonModule],
   declarations: [
     DropdownComponent,
-    MyhighlightDirective,
-    //ErrorHandlingService
+    HighlightDirective,
+    // ErrorHandlingService
   ],
-  exports: [DropdownComponent, MyhighlightDirective],
+  exports: [DropdownComponent, HighlightDirective],
 })
 export class SharedModule {}

@@ -8,7 +8,7 @@ import { UserSettingsService } from '../../common/user-settings.service';
 const NoLog = true; // set to false for console logging
 
 @Component({
-  selector: 'app-menu-list-item',
+  selector: 'gm-menu-list-item',
   templateUrl: './menu-list-item.html',
   styleUrls: ['./menu-list-item.scss'],
   animations: [
@@ -19,14 +19,14 @@ const NoLog = true; // set to false for console logging
     ]),
   ],
 })
-export class MenuListItemComponent {
+export class MenuListItemComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   @Input() item: NavItem;
   // @HostBinding('attr.aria-expanded') ariaExpanded = this.item.expanded;
   @Input() depth: number;
   displayNameClass: string;
-  disabled: boolean = false;
-  grayout: string = '';
+  disabled = false;
+  grayout = '';
 
   constructor(public navService: NavService, public router: Router) {}
 
@@ -52,7 +52,7 @@ export class MenuListItemComponent {
     NoLog || console.log(this.ClassName + 'OnItemSelected selectedItem=', item);
     NoLog || console.log(this.ClassName + 'OnItemSelected myself=', this.item);
 
-    if (item.displayName == 'Select Location') {
+    if (item.displayName === 'Select Location') {
       this.navService.sendMenuSelection(item);
     }
 

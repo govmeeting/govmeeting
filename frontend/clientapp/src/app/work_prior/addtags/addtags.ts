@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addtags.css'],
 })
 export class AddtagsComponent implements OnInit {
-  showhelp: boolean = true;
-  showhidehelp: string = 'Hide';
+  showhelp = true;
+  showhidehelp = 'Hide';
 
   constructor() {}
 

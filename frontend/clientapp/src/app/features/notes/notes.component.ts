@@ -10,7 +10,7 @@ const NoLog = true; // set to false for console logging
 })
 export class NotesComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
-  location: string = 'Lincoln County';
+  location = 'Lincoln County';
 
   constructor(private userSettingsService: UserSettingsService) {}
 

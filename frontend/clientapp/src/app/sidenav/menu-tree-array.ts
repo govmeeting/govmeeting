@@ -6,12 +6,12 @@ const NoLog = true; // set to false for console logging
 export class MenuTreeArray {
   private ClassName: string = this.constructor.name + ': ';
   positions: number[];
-  //navItems: NavItem[];
+  // navItems: NavItem[];
 
-  //constructor(_navigationItems: NavItem[]) {
+  // constructor(_navigationItems: NavItem[]) {
   constructor() {
     this.positions = [];
-    //this.navItems = navigationItems;
+    // this.navItems = navigationItems;
   }
 
   // Since a NavItem can have an array of child NavItems, it is a tree object.
@@ -28,14 +28,14 @@ export class MenuTreeArray {
   //
   // We store the depth as a seperate value to simpify styling.
   public assignPositions(items: NavItem[]) {
-    //let items: NavItem[] = _items ? _items : this.navItems;
+    // let items: NavItem[] = _items ? _items : this.navItems;
     let pos = 0;
-    //for (var item of this.navItems) {
-    for (var item of items) {
+    // for (var item of this.navItems) {
+    for (const item of items) {
       // "this.positions" is an array showing where we curently are in the tree.
       // It starts out empty. If it is not empty, we use it to initialize the current items positions array.
       if (this.positions.length > 0) {
-        for (var p of this.positions) {
+        for (const p of this.positions) {
           item.position.push(p);
         }
       }
@@ -60,21 +60,21 @@ export class MenuTreeArray {
   }
 
   public getItem(position: number[], items: NavItem[]): NavItem {
-    let item: NavItem = items[position[0]];
+    const item: NavItem = items[position[0]];
     // On last postion entry, this is the item
-    if (position.length == 1) {
+    if (position.length === 1) {
       return item;
     }
     if (!item.children) {
       // TOTO - write to log
       console.log(this.ClassName + 'ERROR Invalid call to getItem');
     }
-    let newPosition: number[] = position.slice(1);
+    const newPosition: number[] = position.slice(1);
     return this.getItem(newPosition, item.children);
   }
 
   public getParent(item: NavItem, items: NavItem[]): NavItem {
-    let position = item.position.slice(0, item.position.length - 1);
+    const position = item.position.slice(0, item.position.length - 1);
     return this.getItem(position, items);
   }
 }

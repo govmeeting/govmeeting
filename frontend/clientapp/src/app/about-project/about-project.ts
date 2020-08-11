@@ -19,8 +19,8 @@ export class AboutComponent implements OnInit {
   // userSettingsService: UserSettingsService;
   title: string; // page title obtained from GetPageTitle(...)
   document: string; // The path of the document. EG: "assets/docs/TRANS/overview.md"
-  pageid: string = 'overview'; // the filename of the document minus ".md". EG: "overview"
-  language: string = 'en';
+  pageid = 'overview'; // the filename of the document minus ".md". EG: "overview"
+  language = 'en';
 
   // constructor(private activeRoute: ActivatedRoute) { }
   constructor(
@@ -48,7 +48,7 @@ export class AboutComponent implements OnInit {
 
   setDocument(pageid, language) {
     this.title = GetPageTitle(pageid, language, this.isBeta);
-    if (language == 'en') {
+    if (language === 'en') {
       this.document = 'assets/docs/' + pageid + '.md';
     } else {
       this.document = 'assets/docs/TRANS/' + language.toUpperCase() + '/' + this.pageid + '.md';

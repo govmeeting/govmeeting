@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class UserDropdownComponent implements OnInit {
   dropdownActive = '';
-  isLoggedIn: boolean = false;
-  isAdmin: boolean = false;
+  isLoggedIn = false;
+  isAdmin = false;
 
   constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {}
 
@@ -21,7 +21,7 @@ export class UserDropdownComponent implements OnInit {
   }
 
   toggle(value: string, value1: string, value2: string) {
-    return value == value1 ? value2 : value1;
+    return (value = value1 ? value2 : value1);
   }
 
   signin() {

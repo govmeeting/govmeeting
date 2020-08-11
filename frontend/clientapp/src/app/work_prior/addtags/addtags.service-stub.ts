@@ -26,9 +26,9 @@ export class AddtagsServiceStub {
     if (fromFile) {
       NoLog || console.log(this.ClassName + 'get from file');
       // TODO - handle null return. Here we just cast to the correct object type.
-      this.observable = <Observable<Addtags>>(
+      this.observable = ((
         this.http.get<Addtags>(url).pipe(catchError(this.errHandling.handleError)).share()
-      ); // make it shared so more than one subscriber can get the same result.
+      ) as Observable<Addtags>); // make it shared so more than one subscriber can get the same result.
       return this.observable;
     } else {
       NoLog || console.log(this.ClassName + 'get from memory');

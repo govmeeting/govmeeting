@@ -39,7 +39,7 @@ export class TopNavComponent implements OnInit {
     { enname: 'Hindi', value: 'hi', viewValue: 'हिन्दी' },
     { enname: 'Bengali', value: 'bn', viewValue: 'বাংলা' },
     { enname: 'Arabic', value: 'ar', viewValue: 'عربى' },
-    { enname: 'Korean', value: 'ko', viewValue: '한국어' }, //ADD_HERE - do not remove this comment
+    { enname: 'Korean', value: 'ko', viewValue: '한국어' }, // ADD_HERE - do not remove this comment
 
     // {enname: 'Norwegian', value: 'no', viewValue: ''},
     // {enname: 'Swedish', value: 'sv', viewValue: ''},

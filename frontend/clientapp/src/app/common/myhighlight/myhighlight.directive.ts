@@ -1,14 +1,14 @@
 import { Directive, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { HostListener } from '@angular/core';
 
-/*    MyhighlightDirective
- *      Add the "myhighlight" attribute to an element.
+/*    HighlightDirective
+ *      Add the "gmHighlight" attribute to an element.
  *      When the mouse pointer enters this element, its text will be highlighted.
  *      When the mouse pointer leaves, the highlight is removed
  *      The default highlight color is yellow. This can be changed by setting the "highlightColor" attribute.
  *      If text within the element is selected, the "textSelected" event is emitted.
  *      This event can be handled within the element. For example:
- *          <div myhighlight (textSelected)="handleTextSelected($event)"> This is some text. </div>
+ *          <div gmHighlight (textSelected)="handleTextSelected($event)"> This is some text. </div>
  *      The "handleTextSelected(text: string)" method would be defined on the controller.
  *      The default value of the event will be the text that is selected.
  */
@@ -16,11 +16,11 @@ import { HostListener } from '@angular/core';
 const NoLog = true; // set to false for console logging
 
 @Directive({
-  selector: '[myhighlight]',
+  selector: '[gmHighlight]',
 })
-export class MyhighlightDirective {
+export class HighlightDirective {
   private ClassName: string = this.constructor.name + ': ';
-  //@Input('myHighlight') highlightColor: string;
+  // @Input('highlight') highlightColor: string;
   @Input() highlightColor: string;
 
   @Output() textSelected: EventEmitter<string>;
@@ -28,7 +28,7 @@ export class MyhighlightDirective {
   selectedText: string;
   private _el: HTMLElement;
   private _defaultColor = 'yellow';
-  //private fullText: string;
+  // private fullText: string;
   private selection: Selection;
 
   constructor(el: ElementRef) {
@@ -54,7 +54,7 @@ export class MyhighlightDirective {
     NoLog || console.log(this.ClassName, window.getSelection());
     this.selection = window.getSelection();
 
-    var sel = {
+    const sel = {
       range: this.selection.getRangeAt(0),
       text: '',
     };
@@ -86,23 +86,25 @@ export class MyhighlightDirective {
   // JP: I added "selection" as an argument. The original had it as the object on which
   // snapToWord was called.
   private snapToWord(selection: any) {
-    //if (isHighlighted()) {
+    // if (isHighlighted()) {
     //  throw new Error("Can't modify range after highlighting");
-    //}
+    // }
 
-    var start = selection.range.startOffset;
-    var end = selection.range.endOffset;
+    let start = selection.range.startOffset;
+    let end = selection.range.endOffset;
     NoLog || console.log(this.ClassName + 'start=' + start);
     NoLog || console.log(this.ClassName + 'end=' + end);
     // If start = end, then they just clicked and didn't select.
-    if (start === end) return;
+    if (start === end) {
+      return;
+    }
 
     end = end - 1; // last character selected is one less.
 
-    var startNode = selection.range.startContainer;
+    const startNode = selection.range.startContainer;
     NoLog || console.log(this.ClassName + 'startNode=', startNode);
 
-    //while (startNode.textContent.charAt(start) != ' ' && start > 0) {
+    // while (startNode.textContent.charAt(start) != ' ' && start > 0) {
     while (this.IsAlphaNum(startNode.textContent.charAt(start)) && start > 0) {
       start--;
     }
@@ -110,8 +112,8 @@ export class MyhighlightDirective {
       start++;
     }
 
-    var endNode = selection.range.endContainer;
-    //while (endNode.textContent.charAt(end) != ' ' && end < endNode.length) {
+    const endNode = selection.range.endContainer;
+    // while (endNode.textContent.charAt(end) != ' ' && end < endNode.length) {
     while (this.IsAlphaNum(endNode.textContent.charAt(end)) && end < endNode.length) {
       end++;
     }
@@ -123,7 +125,7 @@ export class MyhighlightDirective {
   }
 
   private IsAlphaNum(ch: string) {
-    var code = ch.charCodeAt(0);
+    const code = ch.charCodeAt(0);
     if (
       !(code > 47 && code < 58) && // numeric (0-9)
       !(code > 64 && code < 91) && // upper alpha (A-Z)

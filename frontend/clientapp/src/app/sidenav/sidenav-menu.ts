@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { NavItem, EntryType } from './nav-item';
 import { NavService } from './nav.service';
 import { UserSettingsService, UserSettings, LocationType } from '../common/user-settings.service';
-//import { string } from '@amcharts/amcharts4/core';
+// import { string } from '@amcharts/amcharts4/core';
 
 import { navigationItems, betaNavigationItems } from './menu-items';
 import { MenuTreeArray } from './menu-tree-array';
@@ -33,7 +33,7 @@ const NoLog = true; // set to false for console logging
   encapsulation: ViewEncapsulation.None,
 })
 // export class SidenavMenuComponent implements AfterViewInit {
-export class SidenavMenuComponent {
+export class SidenavMenuComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   isBeta: boolean;
   @ViewChild('appDrawer', { static: false })
@@ -97,7 +97,7 @@ export class SidenavMenuComponent {
         NoLog || console.log(this.ClassName + 'Selected location. Navigate to dashboard and set settings');
         this.router.navigate(['dashboard']);
         location = item.displayName;
-        let userSettings: UserSettings = new UserSettings('en', location, null);
+        const userSettings: UserSettings = new UserSettings('en', location, null);
         this.userSettingsService.settings = userSettings;
 
         break;
@@ -105,9 +105,9 @@ export class SidenavMenuComponent {
       case EntryType.agency: {
         NoLog || console.log(this.ClassName + 'Selected agency. Set new settings');
         agency = item.displayName;
-        let parent = this.menuTreeArray.getParent(item, this.navigationItems);
+        const parent = this.menuTreeArray.getParent(item, this.navigationItems);
         location = parent.displayName;
-        let userSettings: UserSettings = new UserSettings('en', location, agency);
+        const userSettings: UserSettings = new UserSettings('en', location, agency);
         this.userSettingsService.settings = userSettings;
         break;
       }
@@ -119,7 +119,7 @@ export class SidenavMenuComponent {
       case EntryType.docId: {
         // The assets/docs pages are handled by AboutProjectComponent which loads the markdown file.
         NoLog || console.log(this.ClassName + 'Selected a link');
-        let url = '/about?id=' + item.route;
+        const url = '/about?id=' + item.route;
         this.router.navigateByUrl(url);
         break;
       }
@@ -131,8 +131,8 @@ export class SidenavMenuComponent {
   }
 
   private checkDeviceType(): DeviceType {
-    var width = window.innerWidth;
-    var deviceType;
+    const width = window.innerWidth;
+    let deviceType;
     if (width <= 768) {
       deviceType = DeviceType.mobile;
       this.deviceType = 'Mobile';
@@ -150,6 +150,6 @@ export class SidenavMenuComponent {
   }
 
   private isMobile() {
-    return this.checkDeviceType() == DeviceType.mobile;
+    return this.checkDeviceType() === DeviceType.mobile;
   }
 }

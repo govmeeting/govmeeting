@@ -16,10 +16,10 @@ const NoLog = true; // set to false for console logging
 export class FixasrUtilities {
   private ClassName: string = this.constructor.name + ': ';
   public selectWord(ele: HTMLInputElement) {
-    var start = ele.selectionStart;
-    var end = ele.selectionEnd;
-    var content = ele.value;
-    var contentLen = content.length;
+    let start = ele.selectionStart;
+    let end = ele.selectionEnd;
+    const content = ele.value;
+    const contentLen = content.length;
     NoLog || console.log(this.ClassName + 'selectWord start=' + start + '   end=' + end);
 
     // If they actually selected some text, ignore
@@ -41,13 +41,13 @@ export class FixasrUtilities {
     }
 
     // Unless it's a one-letter word, if they clicked at start or end of text, ignore.
-    //if (start + 1 != end) {
+    // if (start + 1 != end) {
     //    if ((start == 0) || (start == contentLen) ||
     //        (content.charAt(start) == " ") || (content.charAt(start - 1) == " ")) {
     //        NoLog || console.log(this.ClassName + 'selectWord ignore if start or end of word');
     //        return;
     //    }
-    //}
+    // }
 
     ele.setSelectionRange(start, end);
     NoLog || console.log(this.ClassName + 'selectWord newstart=' + start + '   newend=' + end);
@@ -60,30 +60,30 @@ export class FixasrUtilities {
   }
 
   public selectLastWord(ele: HTMLInputElement) {
-    var len = ele.value.length;
+    const len = ele.value.length;
     ele.setSelectionRange(len - 1, len - 1);
     this.selectWord(ele);
     ele.focus();
   }
 
   public insertAtStartCurrentWord(ele: HTMLInputElement, t: string) {
-    var pos = this.getStartCurrentWord(ele);
+    const pos = this.getStartCurrentWord(ele);
     this.insertText(ele, pos, t);
   }
 
   public insertAtEndCurrentWord(ele: HTMLInputElement, t: string) {
-    var pos = this.getEndCurrentWord(ele);
+    const pos = this.getEndCurrentWord(ele);
     this.insertText(ele, pos, t);
   }
 
   public insertText(ele: HTMLInputElement, pos: number, t: string) {
-    var content = ele.value;
+    const content = ele.value;
     ele.value = this.insertIntoString(content, pos, t);
   }
 
   public getStartCurrentWord(ele: HTMLInputElement): number {
-    var start = ele.selectionStart;
-    var content = ele.value;
+    let start = ele.selectionStart;
+    const content = ele.value;
     while (start > 0 && this.isNotSpace(content.charAt(start - 1))) {
       start--;
     }
@@ -91,9 +91,9 @@ export class FixasrUtilities {
   }
 
   public getEndCurrentWord(ele: HTMLInputElement): number {
-    var end = ele.selectionEnd;
-    var content = ele.value;
-    var contentLen = content.length;
+    let end = ele.selectionEnd;
+    const content = ele.value;
+    const contentLen = content.length;
     while (end < contentLen && this.isNotSpace(content.charAt(end))) {
       end++;
     }
@@ -105,13 +105,13 @@ export class FixasrUtilities {
   }
 
   public gotoNextWord(ele: HTMLInputElement) {
-    var end: number = ele.selectionEnd;
+    const end: number = ele.selectionEnd;
     ele.setSelectionRange(end + 2, end + 2);
     this.selectWord(ele);
   }
 
   public gotoPriorWord(ele: HTMLInputElement) {
-    var start: number = ele.selectionStart;
+    const start: number = ele.selectionStart;
     ele.setSelectionRange(start - 2, start - 2);
     this.selectWord(ele);
   }
@@ -123,8 +123,8 @@ export class FixasrUtilities {
     // ele is this <input> element. ele.parentElement is the <div> enclosing just this <input>.
     // That <div>'s nextSibling is the <div> whose sole child is the next <input>.
     // cast to HTMLElement because  we trust it is never null.
-    let nextSibling = <Element>(<HTMLElement>ele.parentElement).nextSibling;
-    var next: HTMLInputElement = <HTMLInputElement>nextSibling.children[0];
+    const nextSibling = (ele.parentElement as HTMLElement).nextSibling as Element;
+    const next: HTMLInputElement = nextSibling.children[0] as HTMLInputElement;
     NoLog || console.log(this.ClassName, next.value);
 
     if (typeof next.setSelectionRange !== 'undefined') {
@@ -139,8 +139,8 @@ export class FixasrUtilities {
       return;
     }
     // cast to HTMLElement because  we trust it is never null.
-    let previousSibling = <Element>(<HTMLElement>ele.parentElement).previousSibling;
-    var prior: HTMLInputElement = <HTMLInputElement>previousSibling.children[0];
+    const previousSibling = (ele.parentElement as HTMLElement).previousSibling as Element;
+    const prior: HTMLInputElement = previousSibling.children[0] as HTMLInputElement;
     if (typeof prior.setSelectionRange !== 'undefined') {
       this.selectFirstWord(prior);
     }
@@ -154,8 +154,8 @@ export class FixasrUtilities {
     }
 
     // cast to HTMLElement because  we trust it is never null.
-    let previousSibling = <Element>(<HTMLElement>ele.parentElement).previousSibling;
-    var prior: HTMLInputElement = <HTMLInputElement>previousSibling.children[0];
+    const previousSibling = (ele.parentElement as HTMLElement).previousSibling as Element;
+    const prior: HTMLInputElement = previousSibling.children[0] as HTMLInputElement;
     if (typeof prior.setSelectionRange !== 'undefined') {
       this.selectLastWord(prior);
     }
@@ -166,7 +166,7 @@ export class FixasrUtilities {
   }
 
   public isAlphaNum(ch: string) {
-    var code = ch.charCodeAt(0);
+    const code = ch.charCodeAt(0);
     if (
       !(code > 47 && code < 58) && // numeric (0-9)
       !(code > 64 && code < 91) && // upper alpha (A-Z)

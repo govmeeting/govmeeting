@@ -7,11 +7,11 @@ export interface IUserChoiceSrv {
   setTopic(topic: string): void;
 }
 
-/**
+/*
  * <summary>
  *  A user choice server.
  * </summary>
- **/
+ */
 
 @Injectable()
 export class UserchoiceService implements IUserChoiceSrv {

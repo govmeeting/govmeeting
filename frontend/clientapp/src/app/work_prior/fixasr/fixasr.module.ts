@@ -6,17 +6,17 @@ import { FixasrComponent } from './fixasr';
 import { VideoModule } from '../../common/video/video.module';
 import { SharedModule } from '../../common/common.module';
 import { RouterModule } from '@angular/router';
-//import { FixasrRoutingModule } from './fixasr-routing.module';
-//import { ReactiveFormsModule } from '@angular/forms'
+// import { FixasrRoutingModule } from './fixasr-routing.module';
+// import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [FixasrComponent],
 
   imports: [
-    //ReactiveFormsModule,
+    // ReactiveFormsModule,
     CommonModule,
     RouterModule,
-    //FixasrRoutingModule,
+    // FixasrRoutingModule,
     FormsModule,
     HttpClientModule,
     VideoModule,

@@ -14,7 +14,7 @@ export class LargeCardComponent {
   @Input() icon: string;
   @Input() iconcolor: string;
   @Input() tooltip: string;
-  panelOpenState: boolean = false;
+  panelOpenState = false;
 
   togglePanel() {
     this.panelOpenState = !this.panelOpenState;

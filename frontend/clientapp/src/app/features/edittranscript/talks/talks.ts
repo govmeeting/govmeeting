@@ -13,13 +13,13 @@ export class TalksComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   errorMessage: string;
   talks: Talk[] | null;
-  gotTalks: boolean = false;
+  gotTalks = false;
   edittranscript: EditTranscript = { sections: [''], topics: [''], talks: null };
   topics: string[];
   highlightedTopic: string;
-  shownTopicSelection: number = -1; // index of where we are displaying topic choice.
+  shownTopicSelection = -1; // index of where we are displaying topic choice.
 
-  wordColor: string = 'lightgreen';
+  wordColor = 'lightgreen';
 
   getWordColor(speaker: number): string {
     switch (speaker) {
@@ -41,7 +41,7 @@ export class TalksComponent implements OnInit {
   }
 
   constructor(private _edittranscriptService: EdittranscriptService) {
-    //this.talks = addtagsService.getTalks();
+    // this.talks = addtagsService.getTalks();
   }
 
   ///////////////////////////////////////////////////////////////
@@ -55,7 +55,7 @@ export class TalksComponent implements OnInit {
     // The following would get the list in memory.
     // this.talks = this._talkService.getTalksFromMemory();
 
-    //this.getTopics();
+    // this.getTopics();
   }
 
   getTalks() {
@@ -64,7 +64,7 @@ export class TalksComponent implements OnInit {
       NoLog || console.log(this.ClassName + 'getTalks');
       this._edittranscriptService.getTalks().subscribe(
         (edittranscript) => ((this.edittranscript = edittranscript), (this.talks = edittranscript.talks)),
-        (error) => (this.errorMessage = <any>error)
+        (error) => (this.errorMessage = (error as any))
       );
     }
   }
@@ -76,7 +76,7 @@ export class TalksComponent implements OnInit {
     // .subscribe(
     // t => t
     // );
-    //error => this.errorMessage = <any>error);
+    // error => this.errorMessage = <any>error);
     NoLog || console.log(this.ClassName + 'exit saveTranscript');
   }
 

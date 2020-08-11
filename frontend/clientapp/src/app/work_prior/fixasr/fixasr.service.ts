@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-//import { Headers, RequestOptions, Response } from '@angular/http';
+// import { Headers, RequestOptions, Response } from '@angular/http';
 import { FixasrView, AsrSegment } from '../../models/fixasr-view';
 import { Observable } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
@@ -35,18 +35,18 @@ export class FixasrService {
 
     NoLog || console.log(this.ClassName + 'get data from ' + url);
     // TODO - handle null return. Here we just cast to the correct object type.
-    return <Observable<FixasrView>>this.http.get<FixasrView>(url).pipe(catchError(this.errHandling.handleError));
+    return this.http.get<FixasrView>(url).pipe(catchError(this.errHandling.handleError)) as Observable<FixasrView>;
   }
 
   public postChanges(asrtext: FixasrView) {
     NoLog || console.log(this.ClassName + 'postChanges');
-    let url = this.fixasrUrl + '/' + this.meetingId + '/' + this.part;
+    const url = this.fixasrUrl + '/' + this.meetingId + '/' + this.part;
     NoLog || console.log(this.ClassName + 'postChanges  ' + url);
     const headers = { 'Content-Type': 'application/json' };
     this.http
       .post<any>(url, asrtext, { headers })
       .subscribe({
-        //next: data => this.postId = data.id,
+        // next: data => this.postId = data.id,
         next: (success) => {
           NoLog || console.log(this.ClassName, success);
           if (!success) {

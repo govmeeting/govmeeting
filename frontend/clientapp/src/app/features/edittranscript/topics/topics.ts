@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-//import { TopicsService } from './topics.service';
+// import { TopicsService } from './topics.service';
 import { EdittranscriptService } from '../edittranscript.service';
 
 const NoLog = true; // set to false for console logging
@@ -36,7 +36,7 @@ export class TopicsComponent implements OnInit {
         this.topics = addtags.topics;
         NoLog || console.log(this.ClassName, this.topics);
       },
-      (error) => (this.errorMessage = <any>error)
+      (error) => (this.errorMessage = (error as any))
     );
   }
 

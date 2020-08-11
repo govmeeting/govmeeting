@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-//import { ReactiveFormsModule } from '@angular/forms'
+// import { ReactiveFormsModule } from '@angular/forms'
 
 import { EditTranscriptComponent } from './edittranscript';
 import { TalksComponent } from './talks/talks';
@@ -18,7 +18,7 @@ import { VideoModule } from '../../common/video/video.module';
     CommonModule,
     FormsModule,
     RouterModule,
-    //ReactiveFormsModule
+    // ReactiveFormsModule
     VideoModule,
     SharedModule,
   ],

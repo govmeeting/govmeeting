@@ -32,7 +32,7 @@
       <div [hidden]="talk.showSetTopic"><br /></div>
       <!-- {{i}} -->
       <div class="gmspeaker">{{ talk.speaker }}:</div>
-      <div (click)="showTopicSelection(talk,i)" myhighlight (textSelected)="handleTextSelected($event)">
+      <div (click)="showTopicSelection(talk,i)" gmHighlight (textSelected)="handleTextSelected($event)">
         <div class="gmsaid">{{talk.said}}</div>
       </div>
     </div>

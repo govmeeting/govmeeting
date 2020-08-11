@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { OnDestroy } from '@angular/core';
 
 const NoLog = true; // set to false for console logging
 
 @Injectable({
   providedIn: 'root',
 })
-export class MediaQueryService {
+export class MediaQueryService implements OnDestroy {
   private ClassName: string = this.constructor.name + ': ';
 
   mediaQueryList: MediaQueryList;
@@ -19,10 +20,10 @@ export class MediaQueryService {
       changeDetectorRef.detectChanges();
       NoLog || console.log(this.ClassName + 'Match?: ' + this.mediaQueryList.matches);
     };
-    this.mediaQueryList.addListener(this.mediaQueryListener);
+    this.mediaQueryList.addEventListener('change', this.mediaQueryListener);
   }
   ngOnDestroy(): void {
-    this.mediaQueryList.removeListener(this.mediaQueryListener);
+    this.mediaQueryList.removeEventListener('change', this.mediaQueryListener);
   }
   isMobile() {
     return false;

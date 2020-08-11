@@ -41,7 +41,7 @@ export class DataFakeService {
   person() {
     // this.testRandom(40, 20, randomDistributionType.guassian);
 
-    let person = faker.name;
+    const person = faker.name;
     return {
       id: this.id++,
       firstName: person.firstName(),
@@ -51,7 +51,7 @@ export class DataFakeService {
   }
 
   public randomInteger(mean: number, stdev: number, type: randomDistributionType) {
-    if (type == randomDistributionType.uniform) {
+    if (type === randomDistributionType.uniform) {
       return this.randomUniformInteger(mean, stdev);
     }
     return this.randomGaussianInteger(mean, stdev);
@@ -61,7 +61,7 @@ export class DataFakeService {
 
   private randomUniformInteger(mean, stdev) {
     let diviation = Math.round(Math.random() * stdev);
-    if (diviation % 2 == 0) {
+    if (diviation % 2 === 0) {
       diviation = -diviation;
     }
     return mean + diviation;
@@ -75,15 +75,17 @@ export class DataFakeService {
   }
 
   private gaussianFunction(mean, stdev) {
-    var y2;
-    var use_last = false;
-    return function () {
-      var y1;
-      if (use_last) {
+    let y2;
+    let useLast = false;
+    return () => {
+      let y1;
+      if (useLast) {
         y1 = y2;
-        use_last = false;
+        useLast = false;
       } else {
-        var x1, x2, w;
+        let x1;
+        let x2;
+        let w;
         do {
           x1 = 2.0 * Math.random() - 1.0;
           x2 = 2.0 * Math.random() - 1.0;
@@ -92,10 +94,12 @@ export class DataFakeService {
         w = Math.sqrt((-2.0 * Math.log(w)) / w);
         y1 = x1 * w;
         y2 = x2 * w;
-        use_last = true;
+        useLast = true;
       }
-      var retval = mean + stdev * y1;
-      if (retval > 0) return retval;
+      const retval = mean + stdev * y1;
+      if (retval > 0) {
+        return retval;
+      }
       return -retval;
     };
   }

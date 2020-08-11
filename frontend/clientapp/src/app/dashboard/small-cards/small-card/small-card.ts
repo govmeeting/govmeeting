@@ -17,7 +17,7 @@ export class SmallCardComponent implements OnInit {
   @Input() title: string;
   @Input() subtitle: string;
   @Input() tooltip: string;
-  collapsed: boolean = true;
+  collapsed = true;
   currentStyles: any;
   subscription: Subscription;
 
@@ -25,7 +25,7 @@ export class SmallCardComponent implements OnInit {
     this.subscription = this.dashCardsService.getMessage().subscribe((message) => {
       NoLog || console.log(this.ClassName + 'receive settings=', message);
       // If another small card is opening, close if open
-      if (message != this.title && !this.collapsed) {
+      if (message !== this.title && !this.collapsed) {
         this.toggleCollapsed2();
       }
     });

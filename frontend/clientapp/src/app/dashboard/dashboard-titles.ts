@@ -1,4 +1,4 @@
-let DashboardTitles: string[][] = [
+const DashboardTitles: string[][] = [
   [
     'English',
     'en',
@@ -439,11 +439,11 @@ let DashboardTitles: string[][] = [
     'Találkozói jegyzőkönyv',
     'Munkaelemek',
     'Figyelmeztetések',
-  ], //ADD_HERE - do not remove this comment
+  ], // ADD_HERE - do not remove this comment
 ];
 
 export function GetDashboardTitle(englishTitle: string, language: string): string {
-  let i = DashboardTitles[0].findIndex((x) => x == englishTitle);
-  let j = DashboardTitles.findIndex((y) => y[1] == language);
+  const i = DashboardTitles[0].findIndex((x) => x === englishTitle);
+  const j = DashboardTitles.findIndex((y) => y[1] === language);
   return DashboardTitles[j][i];
 }

@@ -16,48 +16,6 @@ interface IChartData {
 export class BarChartComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {
-    // Create chart instance
-    let chart = am4core.create('chartdiv', am4charts.XYChart);
-    chart.data = this.chartdata;
-
-    // Create axes
-    let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = 'issue';
-    categoryAxis.title.text = 'Issues';
-
-    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.title.text = 'Alerts set';
-
-    // Create series
-    var series = chart.series.push(new am4charts.ColumnSeries());
-    series.dataFields.valueY = 'alerts';
-    series.dataFields.categoryX = 'issue';
-    series.name = 'Issues';
-    series.columns.template.tooltipText = 'Series: {name}\nCategory: {categoryX}\nValue: {valueY}';
-
-    var gradient = new am4core.LinearGradient();
-    gradient.addColor(am4core.color('red'));
-    gradient.addColor(am4core.color('blue'));
-    gradient.rotation = 90;
-
-    // Gradient for top to bottom of each column
-    // series.columns.template.fill = gradient;
-
-    // Parallel gradient
-    var max = 250;
-    var red = am4core.color('red');
-    var blue = am4core.color('blue');
-    series.columns.template.adapter.add('fill', function (fill, column) {
-      var columnGradient = new am4core.LinearGradient();
-      columnGradient.rotation = 90;
-      // interpolate(min.rgb, max.rgb, percent)
-      //columnGradient.addColor(am4core.color( am4core.colors.interpolate(blue.rgb, red.rgb, column.dataItem.dataContext.alerts / max) ), 1, 0);
-      columnGradient.addColor(blue, 1, 1);
-      return columnGradient;
-    });
-  }
-
   chartdata: IChartData[] = [
     {
       issue: 'Concerts',
@@ -95,4 +53,46 @@ export class BarChartComponent implements OnInit {
       units: 42,
     },
   ];
+
+  ngOnInit() {
+    // Create chart instance
+    const chart = am4core.create('chartdiv', am4charts.XYChart);
+    chart.data = this.chartdata;
+
+    // Create axes
+    const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.dataFields.category = 'issue';
+    categoryAxis.title.text = 'Issues';
+
+    const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxis.title.text = 'Alerts set';
+
+    // Create series
+    const series = chart.series.push(new am4charts.ColumnSeries());
+    series.dataFields.valueY = 'alerts';
+    series.dataFields.categoryX = 'issue';
+    series.name = 'Issues';
+    series.columns.template.tooltipText = 'Series: {name}\nCategory: {categoryX}\nValue: {valueY}';
+
+    const gradient = new am4core.LinearGradient();
+    gradient.addColor(am4core.color('red'));
+    gradient.addColor(am4core.color('blue'));
+    gradient.rotation = 90;
+
+    // Gradient for top to bottom of each column
+    // series.columns.template.fill = gradient;
+
+    // Parallel gradient
+    const max = 250;
+    const red = am4core.color('red');
+    const blue = am4core.color('blue');
+    series.columns.template.adapter.add('fill', (fill, column) => {
+      const columnGradient = new am4core.LinearGradient();
+      columnGradient.rotation = 90;
+      // interpolate(min.rgb, max.rgb, percent)
+      // columnGradient.addColor(am4core.color( am4core.colors.interpolate(blue.rgb, red.rgb, column.dataItem.dataContext.alerts / max) ), 1, 0);
+      columnGradient.addColor(blue, 1, 1);
+      return columnGradient;
+    });
+  }
 }

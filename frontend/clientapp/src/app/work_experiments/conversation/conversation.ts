@@ -14,9 +14,19 @@ const NoLog = true; // set to false for console logging
   styleUrls: ['./conversation.scss'],
 })
 export class ConversationComponent implements OnInit {
-  private ClassName: string = this.constructor.name + ': ';
 
   constructor(private ms: ConversationService, private router: Router) {}
+  private ClassName: string = this.constructor.name + ': ';
+
+  // conversations: any
+  conversations: any = [
+    { display_name: 'Wrightsboro Residents', id: '1', members: [{ username: 'Joe' }, { username: 'Sue' }] },
+    { display_name: 'Wrightsboro Volunteers', id: '2', members: [{ username: 'Hank' }, { username: 'Mary' }] },
+  ];
+
+  selectedConversation: any;
+  text: string;
+  events: Array<any> = [];
 
   // buildConversationsArray(conversations) {
   //   let array = [];
@@ -68,14 +78,4 @@ export class ConversationComponent implements OnInit {
   sendText(text: string) {
     this.text = text;
   }
-
-  // conversations: any
-  conversations: any = [
-    { display_name: 'Wrightsboro Residents', id: '1', members: [{ username: 'Joe' }, { username: 'Sue' }] },
-    { display_name: 'Wrightsboro Volunteers', id: '2', members: [{ username: 'Hank' }, { username: 'Mary' }] },
-  ];
-
-  selectedConversation: any;
-  text: string;
-  events: Array<any> = [];
 }

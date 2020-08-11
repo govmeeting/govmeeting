@@ -2,7 +2,7 @@ import { ViewTranscript } from '../../models/viewtranscript-view';
 export { ViewTranscript };
 
 export let ViewTranscriptSample: ViewTranscript = {
-  //private viewMeeting: ViewTranscript = {
+  // private viewMeeting: ViewTranscript = {
   meeting: {
     meetingId: 1,
     locationId: 1,

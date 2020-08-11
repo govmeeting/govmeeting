@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-//import { Headers, RequestOptions } from '@angular/http';
+// import { Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/share';
 import { catchError } from 'rxjs/operators';
@@ -37,9 +37,9 @@ export class EdittranscriptService {
     let url: string = this.addtagsUrl;
     url = url + '/' + this.meetingId;
     // TODO - handle null return. Here we just cast to the correct object type.
-    this.observable = <Observable<EditTranscript>>(
+    this.observable = ((
       this.http.get<EditTranscript>(url).pipe(catchError(this.errHandling.handleError)).share()
-    ); // make it shared so more than one subscriber can get the same result.
+    ) as Observable<EditTranscript>); // make it shared so more than one subscriber can get the same result.
     return this.observable;
   }
 
@@ -53,13 +53,13 @@ export class EdittranscriptService {
 
   public postChanges(addtags: EditTranscript) {
     NoLog || console.log(this.ClassName + 'postChanges');
-    let url = this.addtagsUrl + '/' + this.meetingId;
+    const url = this.addtagsUrl + '/' + this.meetingId;
 
     const headers = { 'Content-Type': 'application/json' };
     this.http
       .post<any>(url, addtags, { headers })
       .subscribe({
-        //next: data => this.postId = data.id,
+        // next: data => this.postId = data.id,
         next: (success) => {
           NoLog || console.log(this.ClassName, success);
           if (!success) {

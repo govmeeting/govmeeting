@@ -20,7 +20,7 @@ export class NavItem {
     this.displayName = displayName;
     this.iconName = iconName;
     this.expanded = false;
-    if (childrenOrRoute != undefined) {
+    if (childrenOrRoute !== undefined) {
       if (typeof childrenOrRoute === 'string') {
         this.route = childrenOrRoute;
       } else {

@@ -9,12 +9,12 @@ import { ChatService } from './chat.service';
 })
 export class ChatComponent {
   title = 'clientapp';
-  txtMessage: string = '';
+  txtMessage = '';
   uniqueID: string = new Date().getTime().toString();
   messages = new Array<Message>();
   message = new Message();
   constructor(private chatService: ChatService, private _ngZone: NgZone) {
-    //this.subscribeToEvents();
+    // this.subscribeToEvents();
   }
   sendMessage(): void {
     if (this.txtMessage) {

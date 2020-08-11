@@ -8,7 +8,7 @@ const NoLog = true; // set to false for console logging
 export class ChatService {
   private ClassName: string = this.constructor.name + ': ';
   messageReceived = new EventEmitter<Message>();
-  connectionEstablished = new EventEmitter<Boolean>();
+  connectionEstablished = new EventEmitter<boolean>();
 
   private connectionIsEstablished = false;
   private _hubConnection: HubConnection;

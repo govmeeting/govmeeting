@@ -15,7 +15,7 @@ export class DashMainComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   isBeta: boolean;
   isDevMode: boolean;
-  language: string = 'en';
+  language = 'en';
   location: string;
   agency: string;
   isMunicipal: boolean;
@@ -51,7 +51,7 @@ export class DashMainComponent implements OnInit {
   ngOnInit() {
     this.userSettingsService.subscribeSettings((message) => {
       // NoLog || console.log(this.ClassName + "receive message: " + message)
-      let newSettings = this.userSettingsService.settings;
+      const newSettings = this.userSettingsService.settings;
       NoLog || console.log(this.ClassName + 'SCAO ', newSettings);
       this.changeLocation(newSettings);
     });
@@ -69,7 +69,7 @@ export class DashMainComponent implements OnInit {
     this.agency = item.agency;
     NoLog || console.log(this.ClassName + 'location:' + this.location);
 
-    this.isCounty = this.location == 'Lincoln County';
+    this.isCounty = this.location === 'Lincoln County';
   }
 
   private changeTitles() {

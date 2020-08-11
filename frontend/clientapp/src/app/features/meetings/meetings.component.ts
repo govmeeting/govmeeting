@@ -20,7 +20,7 @@ export class MeetingsComponent implements OnInit {
   ngOnInit() {
     this.userSettingsService.subscribeSettings((message) => {
       // NoLog || console.log(this.ClassName + "receive message: " + message)
-      let newSettings = this.userSettingsService.settings;
+      const newSettings = this.userSettingsService.settings;
       NoLog || console.log(this.ClassName + 'SCAO ', newSettings);
       this.location = newSettings.location;
       this.agency = newSettings.agency;

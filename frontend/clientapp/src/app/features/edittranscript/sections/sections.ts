@@ -12,7 +12,7 @@ export class SectionsComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   errorMessage: string;
   sections: string[];
-  gotSections: boolean = false;
+  gotSections = false;
 
   constructor(private _edittranscriptService: EdittranscriptService) {}
 
@@ -29,7 +29,7 @@ export class SectionsComponent implements OnInit {
           this.sections = addtags.sections;
           NoLog || console.log(this.ClassName, this.sections);
         },
-        (error) => (this.errorMessage = <any>error)
+        (error) => (this.errorMessage = (error as any))
       );
     }
   }

@@ -1,7 +1,7 @@
-﻿import { MeetingForView } from './meetingforview';
+import { MeetingForView } from './meetingforview';
 
 export class ViewTranscript {
-  //meetingInfo: MeetingInfo;
+  // meetingInfo: MeetingInfo;
   meeting: MeetingForView;
   topicNames: string[];
   speakerNames: string[];

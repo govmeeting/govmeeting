@@ -80,9 +80,9 @@ import { AddtagsServiceStub } from './work_prior/addtags/addtags.service-stub';
 import { FixasrService } from './work_prior/fixasr/fixasr.service';
 import { FixasrServiceStub } from './work_prior/fixasr/fixasr.service-stub';
 
-let isAspServerRunning = false; // Is the Asp.Nnet server running?
-let isBeta = false; // Is this the beta release version?
-let isLargeEditData = false; // Are we using the large data for EditTranscript? (Little Falls, etc.)
+const isAspServerRunning = false; // Is the Asp.Nnet server running?
+const isBeta = false; // Is this the beta release version?
+const isLargeEditData = false; // Are we using the large data for EditTranscript? (Little Falls, etc.)
 
 @NgModule({
   imports: [
@@ -167,7 +167,7 @@ let isLargeEditData = false; // Are we using the large data for EditTranscript? 
       provide: AppData,
       // TODO - Read APP_DATA from the html.
       // useValue: window['APP_DATA']    // Get settings from html
-      useValue: { isAspServerRunning: isAspServerRunning, isBeta: isBeta, isLargeEditData: isLargeEditData },
+      useValue: { isAspServerRunning, isBeta, isLargeEditData },
     },
 
     // If you use the stubs for these services, they will not call the Asp.Net server,

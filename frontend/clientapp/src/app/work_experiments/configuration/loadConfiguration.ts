@@ -14,7 +14,7 @@ export function loadConfiguration(http: HttpClient, config: ConfigService): () =
         .pipe(
           map((x: ConfigService) => {
             config.baseUrl = x.baseUrl;
-            //console.log("baseUrl=" + config.baseUrl);
+            // console.log("baseUrl=" + config.baseUrl);
             resolve(true);
           }),
           catchError(

@@ -8,14 +8,14 @@ const GATEWAY_URL = 'http://localhost:3000/api/';
 export class MessagingServiceStub {
   constructor(private http: HttpClient) {}
 
+  public client: any;
+  public app: any;
+
   initialize() {
     this.client = new ConversationClient({
       debug: false,
     });
   }
-
-  public client: any;
-  public app: any;
 
   public getUserJwt(username: string): Promise<any> {
     return this.http
