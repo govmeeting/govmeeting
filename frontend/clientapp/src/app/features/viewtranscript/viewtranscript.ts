@@ -38,7 +38,7 @@ export class ViewTranscriptComponent implements OnInit {
         this.topicDiscussions = t.topicDiscussions;
         NoLog || console.log(this.ClassName + this.topicDiscussions);
       },
-      (error) => (this.errorMessage = (error as any))
+      (error) => (this.errorMessage = error as any)
     );
   }
 

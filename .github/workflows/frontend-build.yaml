@@ -1,10 +1,10 @@
-name: Build frontend 
+name: Build frontend
 
 on:
   push:
-    paths: ['frontend/**', '.github/workflows/frontend-build.yaml']
+    paths: ["frontend/**", ".github/workflows/frontend-build.yaml"]
   pull_request:
-    paths: ['frontend/**', '.github/workflows/frontend-build.yaml']
+    paths: ["frontend/**", ".github/workflows/frontend-build.yaml"]
 
 defaults:
   run:
@@ -35,6 +35,9 @@ jobs:
 
       - name: Clean Install
         run: npm ci
+
+      - name: Prettier & Lint checks
+        run: npm run ci:lint
 
       - name: Unit Tests
         run: npx jest

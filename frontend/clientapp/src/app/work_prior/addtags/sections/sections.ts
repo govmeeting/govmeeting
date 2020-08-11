@@ -29,7 +29,7 @@ export class SectionsComponent implements OnInit {
           this.sections = addtags.sections;
           NoLog || console.log(this.ClassName, this.sections);
         },
-        (error) => (this.errorMessage = (error as any))
+        (error) => (this.errorMessage = error as any)
       );
     }
   }

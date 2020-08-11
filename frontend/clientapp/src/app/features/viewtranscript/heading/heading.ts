@@ -33,7 +33,7 @@ export class HeadingComponent implements OnInit {
         this.meeting = viewMeeting.meeting;
         NoLog || console.log(this.ClassName, this.meeting);
       },
-      (error: any) => (this.errorMessage = (error as any))
+      (error: any) => (this.errorMessage = error as any)
     );
   }
 }

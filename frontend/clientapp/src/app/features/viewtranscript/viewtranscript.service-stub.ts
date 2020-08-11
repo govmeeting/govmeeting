@@ -53,9 +53,10 @@ export class ViewTranscriptServiceStub {
     if (fromFile) {
       NoLog || console.log(this.ClassName + 'get from file');
       // TODO - handle null return. Here we just cast to the correct object type.
-      this.observable = ((
-        this.http.get<ViewTranscript>(url).pipe(catchError(this.errHandling.handleError)).share()
-      ) as Observable<ViewTranscript>); // make it shared so more than one subscriber can get the same result.
+      this.observable = this.http
+        .get<ViewTranscript>(url)
+        .pipe(catchError(this.errHandling.handleError))
+        .share() as Observable<ViewTranscript>; // make it shared so more than one subscriber can get the same result.
       return this.observable;
     } else {
       NoLog || console.log(this.ClassName + 'get from memory');

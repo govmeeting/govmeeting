@@ -56,7 +56,13 @@ const boothbayHarborMenu = new NavItem(null, 'Select Location', null, [
   nonGovernment,
 ]);
 
-const austinMenu = new NavItem(null, 'Select Location', null, [austin, travisCounty, texas, unitedStates, nonGovernment]);
+const austinMenu = new NavItem(null, 'Select Location', null, [
+  austin,
+  travisCounty,
+  texas,
+  unitedStates,
+  nonGovernment,
+]);
 
 export let navigationItems = [
   aboutpagesMenu,

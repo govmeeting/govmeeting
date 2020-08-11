@@ -36,7 +36,7 @@ export class TopicsComponent implements OnInit {
         this.topics = addtags.topics;
         NoLog || console.log(this.ClassName, this.topics);
       },
-      (error) => (this.errorMessage = (error as any))
+      (error) => (this.errorMessage = error as any)
     );
   }
 

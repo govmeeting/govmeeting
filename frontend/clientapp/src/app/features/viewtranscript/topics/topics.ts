@@ -30,7 +30,7 @@ export class TopicsComponent implements OnInit {
         this.Names = t.topicNames;
         NoLog || console.log(this.ClassName, this.Names);
       },
-      (error) => (this.errorMessage = (error as any))
+      (error) => (this.errorMessage = error as any)
     );
   }
 

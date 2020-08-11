@@ -28,7 +28,7 @@ export class SpeakersComponent implements OnInit {
         this.speakerNames = meeting.speakerNames;
         NoLog || console.log(this.ClassName, this.speakerNames);
       },
-      (error) => (this.errorMessage = (error as any))
+      (error) => (this.errorMessage = error as any)
     );
   }
 

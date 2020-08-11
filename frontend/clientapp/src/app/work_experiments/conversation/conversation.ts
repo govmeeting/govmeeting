@@ -14,7 +14,6 @@ const NoLog = true; // set to false for console logging
   styleUrls: ['./conversation.scss'],
 })
 export class ConversationComponent implements OnInit {
-
   constructor(private ms: ConversationService, private router: Router) {}
   private ClassName: string = this.constructor.name + ': ';
 

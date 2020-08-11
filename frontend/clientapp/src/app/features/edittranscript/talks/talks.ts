@@ -64,7 +64,7 @@ export class TalksComponent implements OnInit {
       NoLog || console.log(this.ClassName + 'getTalks');
       this._edittranscriptService.getTalks().subscribe(
         (edittranscript) => ((this.edittranscript = edittranscript), (this.talks = edittranscript.talks)),
-        (error) => (this.errorMessage = (error as any))
+        (error) => (this.errorMessage = error as any)
       );
     }
   }

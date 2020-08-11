@@ -43,7 +43,7 @@ export class TalksComponent implements OnInit {
       NoLog || console.log(this.ClassName + 'getTalks');
       this._addtagsService.getTalks().subscribe(
         (addtags) => ((this.addtags = addtags), (this.talks = addtags.talks)),
-        (error) => (this.errorMessage = (error as any))
+        (error) => (this.errorMessage = error as any)
       );
     }
   }

@@ -82,7 +82,7 @@ export class WorkareaComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.list = (document.getElementById('scrolltext') as HTMLElement);
+    this.list = document.getElementById('scrolltext') as HTMLElement;
     const rect = this.list.getBoundingClientRect();
     this.listTop = Math.round(rect.top);
     this.listScrollTop = Math.round(this.list.scrollTop);
