@@ -4,8 +4,10 @@
   height: auto;
 }
 </style>
+
 <mat-card><mat-card-title class="cardtitle"> Conception </mat-card-title>
 <markdown ngPreserveWhitespaces>
+
 <p> Les diagrammes ci-dessous montrent l&#39;interaction entre les composants logiciels. </p>
 <ul>
 <li><p> ClientApp est une application de page unique Angular Typescript qui s&#39;exécute dans le navigateur. Il fournit l&#39;interface utilisateur. </p></li>

@@ -1,19 +1,20 @@
 <button (click)="saveChanges()">Save Changes</button>
 <ul style="list-style: none;">
-    <li *ngFor="let talk of talks; let i = index">
-
+  <li *ngFor="let talk of talks; let i = index">
     <!-- Display the section name and up/down arrows if start of new section -->
-    <div [hidden]="talk.section==null"><br>
-        <button (click)="moveSectionUp(talk, i)"> ^ </button>
-        <button (click)="moveSectionDown(talk, i)"> v </button>
-        <span  class="gmsection"> SECTION: {{talk.section}} </span><br><br>
+    <div [hidden]="talk.section==null">
+      <br />
+      <button (click)="moveSectionUp(talk, i)">^</button>
+      <button (click)="moveSectionDown(talk, i)">v</button>
+      <span class="gmsection"> SECTION: {{talk.section}} </span><br /><br />
     </div>
 
     <!-- Display the topic name and up/down arrows if start of new topic -->
-    <div [hidden]="talk.topic==null"><br>
-        <button (click)="moveTopicUp(talk, i)"> ^ </button>
-        <button (click)="moveTopicDown(talk, i)"> v </button>
-        <span  class="gmtopic"> TOPIC: {{talk.topic}} </span><br><br>
+    <div [hidden]="talk.topic==null">
+      <br />
+      <button (click)="moveTopicUp(talk, i)">^</button>
+      <button (click)="moveTopicDown(talk, i)">v</button>
+      <span class="gmtopic"> TOPIC: {{talk.topic}} </span><br /><br />
     </div>
 
     <!-- Display the topic input line.
@@ -22,22 +23,22 @@
          When the user highlights some spoken text, "highlightedTopic" is set in TalksComponent and
          and this is used to set "newTopicName" in TopicsComponent. Thus the input box gets populated.-->
     <div [hidden]="!talk.showSetTopic">
-        TOPIC:
-        <gm-topicset
-            (topicSelect)="onTopicSelect($event, talk)"
-            [newTopicName]="highlightedTopic">
-        </gm-topicset>
+      TOPIC:
+      <gm-topicset (topicSelect)="onTopicSelect($event, talk)" [newTopicName]="highlightedTopic"> </gm-topicset>
     </div>
 
     <!-- Display the speaker and spoken text. -->
-    <div >
-        <div [hidden]="talk.showSetTopic"><br></div>
-        <!-- {{i}} --> <div class="gmspeaker"> {{ talk.speaker }}: </div>
-        <div (click)="showTopicSelection(talk,i)" myhighlight (textSelected)="handleTextSelected($event)">
-             <!-- <div class="gmsaid"> {{talk.said}} </div> -->
-          <span [style.backgroundColor]="getWordColor(word.speaker)" *ngFor="let word of talk.words; let i = index"> {{word.word}} </span>
+    <div>
+      <div [hidden]="talk.showSetTopic"><br /></div>
+      <!-- {{i}} -->
+      <div class="gmspeaker">{{ talk.speaker }}:</div>
+      <div (click)="showTopicSelection(talk,i)" gmHighlight (textSelected)="handleTextSelected($event)">
+        <!-- <div class="gmsaid"> {{talk.said}} </div> -->
+        <span [style.backgroundColor]="getWordColor(word.speaker)" *ngFor="let word of talk.words; let i = index">
+          {{word.word}}
+        </span>
       </div>
     </div>
-    <br>
-    </li>
+    <br />
+  </li>
 </ul>

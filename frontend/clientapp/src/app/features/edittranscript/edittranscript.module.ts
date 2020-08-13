@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-//import { ReactiveFormsModule } from '@angular/forms'
+// import { ReactiveFormsModule } from '@angular/forms'
 
 import { EditTranscriptComponent } from './edittranscript';
 import { TalksComponent } from './talks/talks';
@@ -11,7 +11,6 @@ import { SectionsComponent } from './sections/sections';
 import { SharedModule } from '../../common/common.module';
 import { VideoModule } from '../../common/video/video.module';
 
-
 @NgModule({
   declarations: [EditTranscriptComponent, TalksComponent, TopicsComponent, SectionsComponent],
 
@@ -19,13 +18,11 @@ import { VideoModule } from '../../common/video/video.module';
     CommonModule,
     FormsModule,
     RouterModule,
-    //ReactiveFormsModule
+    // ReactiveFormsModule
     VideoModule,
-    SharedModule
+    SharedModule,
   ],
 
-  exports: [
-    EditTranscriptComponent
-  ]
+  exports: [EditTranscriptComponent],
 })
-export class EditTranscriptModule { }
+export class EditTranscriptModule {}

@@ -1,4 +1,3 @@
-
 <p> Chini ni maelezo ya kazi ya vipande kuu vya programu. </p>
 <h2> Usajili wa Mtu binafsi </h2>
 <ul>

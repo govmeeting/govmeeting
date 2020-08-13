@@ -16,28 +16,23 @@ import { DashMainComponent } from './dashboard/dash-main/dash-main';
 // https://www.codecompiled.com/angular/routing-in-angular-using-routerlink-navigate-and-navigatebyurl/
 
 const routes: Routes = [
-    {
-      path: 'login',
-      redirectTo: 'account/login'
-    },
-    // { path: 'viewtranscript', component: ViewTranscriptComponent },
-    // { path: 'addtags', component: AddtagsComponent },
-    // { path: 'fixasr', component: FixasrComponent },
-    { path: 'dashboard', component: DashMainComponent},
-    { path: 'about', component: AboutComponent},
-    { path: 'overview', component: OverviewComponent},
-    // { path: '**', redirectTo: 'overview' }
-    { path: '**', redirectTo: 'dashboard' }
-
+  {
+    path: 'login',
+    redirectTo: 'account/login',
+  },
+  // { path: 'viewtranscript', component: ViewTranscriptComponent },
+  // { path: 'addtags', component: AddtagsComponent },
+  // { path: 'fixasr', component: FixasrComponent },
+  { path: 'dashboard', component: DashMainComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'overview', component: OverviewComponent },
+  // { path: '**', redirectTo: 'overview' }
+  { path: '**', redirectTo: 'dashboard' },
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot(routes)
-    ],
-    exports: [
-        RouterModule
-    ],
-    declarations: []
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  declarations: [],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

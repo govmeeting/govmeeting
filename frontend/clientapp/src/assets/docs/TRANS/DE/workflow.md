@@ -1,4 +1,3 @@
-
 <p> Nachfolgend finden Sie eine Funktionsbeschreibung der Hauptteile der Software. </p>
 <h2> Einzelregistrierung </h2>
 <ul>

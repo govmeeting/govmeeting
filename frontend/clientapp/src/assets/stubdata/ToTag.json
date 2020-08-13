@@ -13,13 +13,7 @@
     "Speeches",
     "Adjournment"
   ],
-  "topics": [
-    "",
-    "Pave 4th St.",
-    "Hire business manager",
-    "Parking ordinaces",
-    "Ice skating rink"
-  ],
+  "topics": ["", "Pave 4th St.", "Hire business manager", "Parking ordinaces", "Ice skating rink"],
   "talks": [
     {
       "speaker": "COUNCIL PRESIDENT CLARKE",

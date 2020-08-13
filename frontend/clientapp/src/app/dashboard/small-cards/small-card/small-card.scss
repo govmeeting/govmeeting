@@ -1,7 +1,7 @@
 // for debug
 //.card  { border: 3px dashed red; }
 
- @import "../../../../colors.scss";
+@import '../../../../colors.scss';
 
 .card {
   position: relative;
@@ -15,7 +15,7 @@
   border: 2px solid $color-deep-blue;
 
   &__content {
-    background-color: PaleGoldenRod ;
+    background-color: PaleGoldenRod;
   }
 
   &-icon {

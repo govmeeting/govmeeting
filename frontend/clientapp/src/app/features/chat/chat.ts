@@ -5,26 +5,22 @@ import { ChatService } from './chat.service';
 @Component({
   selector: 'gm-chat',
   templateUrl: './chat.html',
-  styleUrls: ['./chat.scss', '../../app.component.scss']
+  styleUrls: ['./chat.scss', '../../app.component.scss'],
 })
 export class ChatComponent {
-
   title = 'clientapp';
-  txtMessage: string = '';
+  txtMessage = '';
   uniqueID: string = new Date().getTime().toString();
   messages = new Array<Message>();
   message = new Message();
-  constructor(
-    private chatService: ChatService,
-    private _ngZone: NgZone
-  ) {
-    //this.subscribeToEvents();
+  constructor(private chatService: ChatService, private _ngZone: NgZone) {
+    // this.subscribeToEvents();
   }
   sendMessage(): void {
     if (this.txtMessage) {
       this.message = new Message();
       this.message.clientuniqueid = this.uniqueID;
-      this.message.type = "sent";
+      this.message.type = 'sent';
       this.message.message = this.txtMessage;
       this.message.date = new Date();
       this.messages.push(this.message);
@@ -33,11 +29,10 @@ export class ChatComponent {
     }
   }
   private subscribeToEvents(): void {
-
     this.chatService.messageReceived.subscribe((message: Message) => {
       this._ngZone.run(() => {
         if (message.clientuniqueid !== this.uniqueID) {
-          message.type = "received";
+          message.type = 'received';
           this.messages.push(message);
         }
       });

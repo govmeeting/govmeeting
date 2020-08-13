@@ -4,8 +4,10 @@
   height: auto;
 }
 </style>
+
 <mat-card><mat-card-title class="cardtitle"> التصميم </mat-card-title>
 <markdown ngPreserveWhitespaces>
+
 <p style=";text-align:right;direction:rtl"> توضح الرسوم البيانية أدناه التفاعل بين مكونات البرامج. </p>
 <ul style=";text-align:right;direction:rtl"><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> ClientApp هو تطبيق صفحة واحدة Angular Typescript يتم تشغيله في المستعرض. يوفر واجهة المستخدم. </p>
 </li><li style=";text-align:right;direction:rtl"><p style=";text-align:right;direction:rtl"> WebApp هو تطبيق <a href="https://github.com/aspnet/home">Asp.Net Core</a> C# يعمل على الخادم. يستجيب لمكالمات WebApi. </p>

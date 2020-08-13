@@ -1,4 +1,3 @@
-
 <p> Alla on toiminnallinen kuvaus ohjelmiston pääosista. </p>
 <h2> Henkilökohtainen rekisteröinti </h2>
 <ul>

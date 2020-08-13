@@ -1,4 +1,3 @@
-
 <p> New York City è la più grande città degli Stati Uniti e produce anche trascrizioni delle riunioni del consiglio comunale. Ma cercare di ottenerli non è facile. Devi presentare una richiesta e pagare $ 1 per pagina o $ 20 per una copia elettronica di ogni riunione. </p>
 <h2> Il focus </h2>
 <p> Gli strumenti per la democarcia non sono cambiati molto in 2000 anni. Ma con la tecnologia di oggi, potremmo finalmente essere in grado di creare gli strumenti di cui abbiamo bisogno. </p>

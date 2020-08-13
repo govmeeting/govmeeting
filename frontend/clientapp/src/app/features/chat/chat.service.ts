@@ -2,13 +2,13 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
 import { Message } from './message';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = true; // set to false for console logging
 
 @Injectable()
 export class ChatService {
-  private ClassName: string = this.constructor.name + ": ";
+  private ClassName: string = this.constructor.name + ': ';
   messageReceived = new EventEmitter<Message>();
-  connectionEstablished = new EventEmitter<Boolean>();
+  connectionEstablished = new EventEmitter<boolean>();
 
   private connectionIsEstablished = false;
   private _hubConnection: HubConnection;
@@ -24,9 +24,7 @@ export class ChatService {
   }
 
   private createConnection() {
-    this._hubConnection = new HubConnectionBuilder()
-      .withUrl(window.location.href + 'MessageHub')
-      .build();
+    this._hubConnection = new HubConnectionBuilder().withUrl(window.location.href + 'MessageHub').build();
   }
 
   private startConnection(): void {
@@ -37,7 +35,7 @@ export class ChatService {
         NoLog || console.log(this.ClassName + 'Hub connection started');
         this.connectionEstablished.emit(true);
       })
-      .catch(err => {
+      .catch((err) => {
         NoLog || console.log(this.ClassName + 'Error while establishing connection, retrying...');
         // setTimeout(function () { this.startConnection(); }, 5000);
       });
@@ -48,6 +46,4 @@ export class ChatService {
       this.messageReceived.emit(data);
     });
   }
-
-
 }

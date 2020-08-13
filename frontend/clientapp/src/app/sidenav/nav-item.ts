@@ -1,8 +1,8 @@
-export enum EntryType{
+export enum EntryType {
   location,
   agency,
   link,
-  docId
+  docId,
 }
 export class NavItem {
   entryType: EntryType;
@@ -20,8 +20,8 @@ export class NavItem {
     this.displayName = displayName;
     this.iconName = iconName;
     this.expanded = false;
-    if (childrenOrRoute != undefined) {
-      if (typeof childrenOrRoute === "string") {
+    if (childrenOrRoute !== undefined) {
+      if (typeof childrenOrRoute === 'string') {
         this.route = childrenOrRoute;
       } else {
         this.children = childrenOrRoute;

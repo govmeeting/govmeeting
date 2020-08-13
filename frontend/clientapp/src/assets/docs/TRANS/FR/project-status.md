@@ -1,4 +1,3 @@
-
 <ul>
 <li> Un certain nombre d&#39;éléments du logiciel sont mis en œuvre (mais doivent être améliorés). </li>
 <li> Un certain nombre de pièces critiques doivent être mises en œuvre. </li>

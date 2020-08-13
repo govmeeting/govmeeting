@@ -10,17 +10,25 @@ $xx-large-desktop: 1920px;
 
 // generate min-width breakpoint
 @mixin breakpoint($point) {
-  @media (min-width: $point) { @content ; }
+  @media (min-width: $point) {
+    @content;
+  }
 }
 // generate max-width breakpoint (use sparingly)
 @mixin breakpoint-max($point) {
-  @media (max-width: $point) { @content ; }
+  @media (max-width: $point) {
+    @content;
+  }
 }
 // generate min-height breakpoint
 @mixin height-breakpoint($point) {
-  @media (min-height: $point) { @content ; }
+  @media (min-height: $point) {
+    @content;
+  }
 }
 // generate max-height breakpoint (use sparingly)
 @mixin height-breakpoint-max($point) {
-  @media (min-height: $point) { @content ; }
+  @media (min-height: $point) {
+    @content;
+  }
 }

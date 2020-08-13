@@ -1,4 +1,3 @@
-
 <ul>
 <li> Um número de partes do software é implementado (mas precisa ser aprimorado). </li>
 <li> É necessário implementar várias partes críticas. </li>

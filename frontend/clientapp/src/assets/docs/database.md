@@ -46,7 +46,7 @@ See the "Setup" document page for creating and working with the database.
 <tr><td>Municipal</td><td>city or town</td><td></td><td></td><td>Monroe Township</td></tr>
 </table>
 
-*More examples for Government Entity table
+\*More examples for Government Entity table
 
 <table>
 <tr><th>Field</th><th>Example 4</th><th>Example 5</th></tr>
@@ -62,7 +62,7 @@ Note that if the government entity is at the national level, its state, county a
 
 Examples for other countries are needed. If you have other examples, please edit this document and issue a Pull Request in Github. If there are reasons why this will not work for some countries, please submit an issue an Github.
 
-___
+---
 
 ## "Meeting" table
 
@@ -74,7 +74,7 @@ ___
 <tr><td>Text</td><td>transcription text</td><td>"The meeting will come to order. ..."</td><td>"The assembly will convene. ..."</td></tr>
 </table>
 
-___
+---
 
 ## "Representative" table
 
@@ -85,13 +85,13 @@ ___
 <tr><td>Identifier</td><td>personal identifier</td><td>(to be decided</td><td>(to be decided)</td></tr>
 </table>
 
-The speakers at the meetings could be representatives of the governing entity or of the general public. In either case, there can be the same people attending meetings in more than one government entity. We will want to track  what the same representative says across each of the bodies of which he/she is a member. Therefore we need a unique identifier for each representative.
+The speakers at the meetings could be representatives of the governing entity or of the general public. In either case, there can be the same people attending meetings in more than one government entity. We will want to track what the same representative says across each of the bodies of which he/she is a member. Therefore we need a unique identifier for each representative.
 
 We will need to decide on what information is required for this identification. We obviously won't have a person's national identity number of something of that nature. We may need to use a combination of more than one field to identify someone. For example, address and name.
 
 There will be a "Representative" table which contains a unique personal identifier for each representative.
 
-___
+---
 
 ## "RepresentativeToEntity" table
 
@@ -103,7 +103,7 @@ ___
 
 There will also be a table, "RepresentativeToEntity", which links representatives and the government entities on which they serve. Note that the same representative can serve on multiple government entities.
 
-___
+---
 
 ## "Citizen" table
 
@@ -118,10 +118,9 @@ There will be a "Citizen" table for members of the public. The Citizen table wil
 
 Should we try to track what members of the public say across all the meetings that they attend? Perhaps that is not appropriate.
 
- If not, the need not try to uniquely identify public speakers. The name that the person gives when they speak at a meeting can be used to identify someone just for that meeting. We do not need to correlate that name across meetings. We may even prefer to just store first name and last initial.
+If not, the need not try to uniquely identify public speakers. The name that the person gives when they speak at a meeting can be used to identify someone just for that meeting. We do not need to correlate that name across meetings. We may even prefer to just store first name and last initial.
 
-
-___
+---
 
 ## "Topic" table
 
@@ -135,8 +134,7 @@ ___
 
 Each government entity (for example the U.S. senate or the Zoning Board in Monroe Township, NJ, USA) will have its own unique names for categories and topics discussed at their meetings. Therefore, the Tag Name table contains a foreign-key pointing to the government entity.
 
-
-___
+---
 
 The full transcript of the meeting is a string of text. The Speaker Location and Tag Location tables contain pointers into the text, namely the start and end points at which either the speaker or the tag changes. These will be character pointers into the text string.
 
@@ -151,7 +149,7 @@ The full transcript of the meeting is a string of text. The Speaker Location and
 <tr><td>End</td><td>point when speaker stops talking</td><td>1050</td><td>14330</td></tr>
 </table>
 
-___
+---
 
 ## "Topic Tags" table
 
@@ -164,7 +162,7 @@ ___
 <tr><td>End</td><td>point when topic stops</td><td>1345</td><td>17765</td></tr>
 </table>
 
-___
+---
 
 ## Size of Data
 

@@ -1,6 +1,10 @@
-
-<a mat-list-item class="{{grayout}}" [ngStyle]="{'padding-left': (item.depth * 10) + 'px'}" (click)="onItemSelected(item)"
-  [ngClass]="'x'">
+<a
+  mat-list-item
+  class="{{grayout}}"
+  [ngStyle]="{'padding-left': (item.depth * 10) + 'px'}"
+  (click)="onItemSelected(item)"
+  [ngClass]="'x'"
+>
   <!-- Why does removing the ngClass from above remove the ngStyle settings ???!!!-->
   <mat-icon class="routeIcon">{{item.iconName}}</mat-icon>
   <span class="{{displayNameClass}}">{{item.displayName}}</span>
@@ -13,6 +17,5 @@
 </a>
 
 <div *ngIf="item.expanded">
-    <app-menu-list-item *ngFor="let child of item.children" [item]="child">
-    </app-menu-list-item>
+  <gm-menu-list-item *ngFor="let child of item.children" [item]="child"> </gm-menu-list-item>
 </div>

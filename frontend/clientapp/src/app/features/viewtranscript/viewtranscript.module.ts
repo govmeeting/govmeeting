@@ -10,25 +10,11 @@ import { SpeakersComponent } from './speakers/speakers';
 import { TopicsComponent } from './topics/topics';
 import { SharedModule } from '../../common/common.module';
 
-
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    HttpClientModule,
-    SharedModule
- ],
+  imports: [CommonModule, RouterModule, HttpClientModule, SharedModule],
 
-  declarations: [
-    ViewTranscriptComponent,
-    BrowseComponent,
-    HeadingComponent,
-    SpeakersComponent,
-    TopicsComponent
-  ],
+  declarations: [ViewTranscriptComponent, BrowseComponent, HeadingComponent, SpeakersComponent, TopicsComponent],
 
-  exports: [
-    ViewTranscriptComponent
-  ]
+  exports: [ViewTranscriptComponent],
 })
-export class ViewTranscriptModule { }
+export class ViewTranscriptModule {}

@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 class Section {
-  constructor(
-    public id: number,
-    public name: string) {}
+  constructor(public id: number, public name: string) {}
 }
-
 
 @Component({
   selector: 'gm-workarea',
   templateUrl: './workarea.component.html',
-  styleUrls: ['./workarea.component.scss']
+  styleUrls: ['./workarea.component.scss'],
 })
 export class WorkareaComponent implements OnInit {
-
   sections = [
     new Section(1, 'Invocation'),
     new Section(2, 'Approval of Journal'),
@@ -65,7 +61,7 @@ export class WorkareaComponent implements OnInit {
     new Section(48, 'Bills on Second Reading'),
     new Section(49, 'Public Comment'),
     new Section(50, 'Second Reading'),
-  ]
+  ];
 
   list: HTMLElement;
   listTop: number;
@@ -83,21 +79,21 @@ export class WorkareaComponent implements OnInit {
   gnewST: number;
 
   listOffsetHeight: number;
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    this.list = <HTMLElement>document.getElementById('scrolltext');
-    let rect = this.list.getBoundingClientRect();
+    this.list = document.getElementById('scrolltext') as HTMLElement;
+    const rect = this.list.getBoundingClientRect();
     this.listTop = Math.round(rect.top);
     this.listScrollTop = Math.round(this.list.scrollTop);
     this.listOffsetTop = Math.round(this.list.offsetTop);
     this.listOffsetHeight = this.list.offsetHeight;
   }
 
-  passEl(elem: Element)  {
-    let sTop: number = Math.round(elem.scrollTop);
-    let x = elem.getAttribute('id');
-    let y: string = elem.innerHTML;
+  passEl(elem: Element) {
+    const sTop: number = Math.round(elem.scrollTop);
+    const x = elem.getAttribute('id');
+    const y: string = elem.innerHTML;
   }
 
   scroll(amount: number) {
@@ -106,50 +102,49 @@ export class WorkareaComponent implements OnInit {
   }
 
   scrollMyDiv(item: Section) {
-    let section = 'section' + item.id;
+    const section = 'section' + item.id;
 
-    window.scroll(0, 0);  // reset window to top
+    window.scroll(0, 0); // reset window to top
 
     // const elem: HTMLElement = document.getElementById('#' + section);
     const elem: Element = document.querySelector('#' + section);
-    let elemTop: number  = Math.round(elem.getBoundingClientRect().top);
+    const elemTop: number = Math.round(elem.getBoundingClientRect().top);
 
-   let totalscroll = elemTop - this.listTop;
+    const totalscroll = elemTop - this.listTop;
     this.list.scrollTop = elemTop - this.listTop;
     // window.scroll(0, offsetTop);
-
   }
 
-  getListInfo(){
+  getListInfo() {
     this.listScrollTop = Math.round(this.list.scrollTop);
     this.listOffsetTop = Math.round(this.list.offsetTop);
-    let rect = this.list.getBoundingClientRect();
+    const rect = this.list.getBoundingClientRect();
     this.listTop = Math.round(rect.top);
     this.listOffsetTop = this.list.offsetHeight;
   }
-  setScrollTop(){
-    this.list.scrollTop =  this.listScrollTop;
+  setScrollTop() {
+    this.list.scrollTop = this.listScrollTop;
   }
-  getItemInfo(item: Section){
+  getItemInfo(item: Section) {
     this.getListInfo();
-    let section = 'section' + item.id;
+    const section = 'section' + item.id;
     const elem: Element = document.querySelector('#' + section);
-    const helem: HTMLElement = <HTMLElement>document.querySelector('#' + section);
-    this.itemScrollTop  = Math.round(elem.scrollTop);
+    const helem: HTMLElement = document.querySelector('#' + section) as HTMLElement;
+    this.itemScrollTop = Math.round(elem.scrollTop);
     this.itemOffsetTop = Math.round(helem.offsetTop);
-    this.itemTop  = Math.round(elem.getBoundingClientRect().top);
+    this.itemTop = Math.round(elem.getBoundingClientRect().top);
     this.gnewST = this.itemTop - this.listTop;
   }
 
-  scrollToValue(value: number){
+  scrollToValue(value: number) {
     this.list.scrollTop = value;
   }
 
   scrollToTarget(item: Section) {
-    let section = 'section' + item.id;
-    const elem: HTMLElement = <HTMLElement>document.querySelector('#' + section);
-    let itemOffsetTop = Math.round(elem.offsetTop);
-    let listOffsetTop = Math.round(this.list.offsetTop);
+    const section = 'section' + item.id;
+    const elem: HTMLElement = document.querySelector('#' + section) as HTMLElement;
+    const itemOffsetTop = Math.round(elem.offsetTop);
+    const listOffsetTop = Math.round(this.list.offsetTop);
     this.list.scrollTop = itemOffsetTop - listOffsetTop;
 
     // this.itemTop  = Math.round(elem.getBoundingClientRect().top);
@@ -160,7 +155,7 @@ export class WorkareaComponent implements OnInit {
     // elem.scrollIntoView();
   }
 
-  showPositions(){
+  showPositions() {
     this.pos01 = this.getPosition('#section1');
     this.pos25 = this.getPosition('#section25');
     this.pos50 = this.getPosition('#section50');
@@ -169,10 +164,9 @@ export class WorkareaComponent implements OnInit {
   }
 
   // Get top of bounding rectangle of specified element with id.
-  getPosition(id: string){
+  getPosition(id: string) {
     const elem: Element = document.querySelector(id);
-    let rect = elem.getBoundingClientRect();
+    const rect = elem.getBoundingClientRect();
     return Math.round(rect.top);
   }
-
 }

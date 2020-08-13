@@ -1,21 +1,19 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = true; // set to false for console logging
 
 @Component({
   selector: 'gm-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  styleUrls: ['./news.component.scss'],
 })
 export class NewsComponent implements OnInit {
-  private ClassName: string = this.constructor.name + ": ";
+  private ClassName: string = this.constructor.name + ': ';
   public datetime;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    this.datetime = new Date()
+    this.datetime = new Date();
   }
-
-
 }

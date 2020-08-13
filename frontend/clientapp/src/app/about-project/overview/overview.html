@@ -1,25 +1,29 @@
 <mat-card>
   <mat-card-title class="cardtitle"> {{title}} </mat-card-title>
 
-  <markdown [src]=document1
-   (error)="errorHandler($event)"
-   (loaded)="loadedHandler($event)">
-  </markdown>
+  <markdown [src]="document1" (error)="errorHandler($event)" (loaded)="loadedHandler($event)"> </markdown>
 
-  <button (click)="ToggleTranscript()"> {{showhidetranscript}} Sample Transcript </button>
-<img [hidden]="!CheckShowTranscript()" (click)="ToggleTranscript()" src="/assets/images/Philly transcript page.png" width="900" alt="Philadelphia transcript page">
+  <button (click)="ToggleTranscript()">{{showhidetranscript}} Sample Transcript</button>
+  <img
+    [hidden]="!CheckShowTranscript()"
+    (click)="ToggleTranscript()"
+    src="/assets/images/Philly transcript page.png"
+    width="900"
+    alt="Philadelphia transcript page"
+  />
 
-  <button (click)="ToggleIndex()"> {{showhideindex}} Sample Index </button>
-<img [hidden]="!CheckShowIndex()" (click)="ToggleIndex()" src="/assets/images/Philly transcript index.png" width="900" alt="Philadelphia transcript index">
+  <button (click)="ToggleIndex()">{{showhideindex}} Sample Index</button>
+  <img
+    [hidden]="!CheckShowIndex()"
+    (click)="ToggleIndex()"
+    src="/assets/images/Philly transcript index.png"
+    width="900"
+    alt="Philadelphia transcript index"
+  />
 
-  <markdown [src]=document2
-   (error)="errorHandler($event)"
-   (loaded)="loadedHandler($event)">
-  </markdown>
+  <markdown [src]="document2" (error)="errorHandler($event)" (loaded)="loadedHandler($event)"> </markdown>
 
   <p *ngIf="language !='en'">
-     <img src="assets/images/google-translate-color-regular.png">
- </p>
-
-
+    <img src="assets/images/google-translate-color-regular.png" />
+  </p>
 </mat-card>

@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 // import { map } from 'rxjs/operators';
 // import { Observable, ObservableInput, of } from 'rxjs';
@@ -80,10 +80,9 @@ import { AddtagsServiceStub } from './work_prior/addtags/addtags.service-stub';
 import { FixasrService } from './work_prior/fixasr/fixasr.service';
 import { FixasrServiceStub } from './work_prior/fixasr/fixasr.service-stub';
 
-
-let isAspServerRunning = false;   // Is the Asp.Nnet server running?
-let isBeta = false;               // Is this the beta release version?
-let isLargeEditData = false;       // Are we using the large data for EditTranscript? (Little Falls, etc.)
+const isAspServerRunning = false; // Is the Asp.Nnet server running?
+const isBeta = false; // Is this the beta release version?
+const isLargeEditData = false; // Are we using the large data for EditTranscript? (Little Falls, etc.)
 
 @NgModule({
   imports: [
@@ -115,7 +114,7 @@ let isLargeEditData = false;       // Are we using the large data for EditTransc
     DatafakeModule,
     SidenavMenuModule,
     VirtualMeetingModule,
-    HeaderModule
+    HeaderModule,
     // AmchartsModule,
   ],
   declarations: [
@@ -134,12 +133,11 @@ let isLargeEditData = false;       // Are we using the large data for EditTransc
     WorkitemsComponent,
     IssuesComponent,
     OfficialsComponent,
-    WorkareaComponent
+    WorkareaComponent,
     // CalendarComponent,
-
   ],
   exports: [
-    DemoMaterialModule
+    DemoMaterialModule,
 
     // The exports below are for testing the component standalone in app.component.html
     // SmallCardsComponent,
@@ -169,29 +167,32 @@ let isLargeEditData = false;       // Are we using the large data for EditTransc
       provide: AppData,
       // TODO - Read APP_DATA from the html.
       // useValue: window['APP_DATA']    // Get settings from html
-      useValue: { isAspServerRunning: isAspServerRunning, isBeta: isBeta, isLargeEditData: isLargeEditData },
+      useValue: { isAspServerRunning, isBeta, isLargeEditData },
     },
 
     // If you use the stubs for these services, they will not call the Asp.Net server,
     // but will instead return static data.
-    { provide: ViewTranscriptService, useClass: isAspServerRunning ? ViewTranscriptService : ViewTranscriptServiceStub },
+    {
+      provide: ViewTranscriptService,
+      useClass: isAspServerRunning ? ViewTranscriptService : ViewTranscriptServiceStub,
+    },
     { provide: AddtagsService, useClass: isAspServerRunning ? AddtagsService : AddtagsServiceStub },
     { provide: FixasrService, useClass: isAspServerRunning ? FixasrService : FixasrServiceStub },
-    { provide: EdittranscriptService, useClass: isAspServerRunning ? EdittranscriptService : EdittranscriptServiceStub },
+    {
+      provide: EdittranscriptService,
+      useClass: isAspServerRunning ? EdittranscriptService : EdittranscriptServiceStub,
+    },
 
     // { provide: ViewTranscriptService, useClass: ViewTranscriptServiceStub },
     // { provide: AddtagsService, useClass: AddtagsServiceStub },
     // { provide: FixasrService, useClass: FixasrServiceStub },
 
-
     ChatService,
     ConversationService,
     DataFactoryService,
     DataFakeService,
-    UserSettingsService
+    UserSettingsService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-
- }
+export class AppModule {}

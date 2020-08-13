@@ -1,33 +1,30 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule  } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FixasrComponent } from './fixasr';
 import { VideoModule } from '../../common/video/video.module';
-import { SharedModule } from '../../common/common.module'
+import { SharedModule } from '../../common/common.module';
 import { RouterModule } from '@angular/router';
-//import { FixasrRoutingModule } from './fixasr-routing.module';
-//import { ReactiveFormsModule } from '@angular/forms'
+// import { FixasrRoutingModule } from './fixasr-routing.module';
+// import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
-  declarations: [
-    FixasrComponent,
-  ],
+  declarations: [FixasrComponent],
 
   imports: [
-    //ReactiveFormsModule,
+    // ReactiveFormsModule,
     CommonModule,
     RouterModule,
-    //FixasrRoutingModule,
+    // FixasrRoutingModule,
     FormsModule,
     HttpClientModule,
     VideoModule,
-    SharedModule
+    SharedModule,
   ],
 
   exports: [FixasrComponent],
 
   providers: [],
 })
-export class FixasrModule { }
-
+export class FixasrModule {}

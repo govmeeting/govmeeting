@@ -27,13 +27,12 @@ describe('SpeakersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpeakersComponent ],
+      declarations: [SpeakersComponent],
       providers: [
-        {provide: ViewTranscriptService, useClass: ServiceStub},
-        {provide: UserchoiceService, useClass: UserchoiceStub}
-      ]
-    })
-    .compileComponents();
+        { provide: ViewTranscriptService, useClass: ServiceStub },
+        { provide: UserchoiceService, useClass: UserchoiceStub },
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,4 +1,3 @@
-
 <p> Di seguito è una descrizione funzionale delle parti principali del software. </p>
 <h2> Registrazione individuale </h2>
 <ul>

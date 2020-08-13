@@ -1,13 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* See material.angular.io/guide/theming */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 //@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 // @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
-
 
 html,
 body {
@@ -17,11 +15,11 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   //font-family: 'Times New Roman';
 }
 
- a {
+a {
   text-decoration: none;
 }
 
@@ -34,14 +32,14 @@ body {
 }
 
 .help-icon {
-position: relative;
+  position: relative;
   // position: fixed;
   right: 8px;
   top: -6px;
   color: lightblue;
 }
 
-  .mat-tooltip.tooltip {
+.mat-tooltip.tooltip {
   background-color: lightblue;
   color: black;
   font-size: 16px;
@@ -72,8 +70,8 @@ position: relative;
 }
 
 .mat-drawer-inner-container,
-.mat-drawer-content{
-   overflow-x: hidden !important;
+.mat-drawer-content {
+  overflow-x: hidden !important;
 }
 
 // .grayscale {

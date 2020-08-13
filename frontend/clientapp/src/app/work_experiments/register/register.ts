@@ -11,23 +11,18 @@ export interface Food {
 @Component({
   selector: 'gm-register',
   templateUrl: './register.html',
-  styleUrls: ['./register.scss']
+  styleUrls: ['./register.scss'],
 })
 export class RegisterComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor() {}
 
   // https://stackblitz.com/angular/rdlobdgvqok?file=src%2Fapp%2Fselect-overview-example.html
 
   foods: Food[] = [
-
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+    { value: 'steak-0', viewValue: 'Steak' },
+    { value: 'pizza-1', viewValue: 'Pizza' },
+    { value: 'tacos-2', viewValue: 'Tacos' },
   ];
 
-
+  ngOnInit() {}
 }

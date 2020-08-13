@@ -9,17 +9,8 @@ import { ConversationComponent } from './conversation';
 /// Chat app in angular material
 
 @NgModule({
-  declarations: [
-    ConversationComponent,
-    KeysPipe
-  ],
-  imports: [
-    CommonModule,
-    DemoMaterialModule,
-    FormsModule
-  ],
-  exports: [
-    ConversationComponent
-  ]
+  declarations: [ConversationComponent, KeysPipe],
+  imports: [CommonModule, DemoMaterialModule, FormsModule],
+  exports: [ConversationComponent],
 })
-export class ConversationModule { }
+export class ConversationModule {}

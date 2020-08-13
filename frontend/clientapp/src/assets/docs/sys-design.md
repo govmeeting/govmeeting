@@ -12,16 +12,18 @@
 
 The diagrams below show the interaction between software components.
 
-* clientapp is an Angular Typescript single page application that runs in the browser. It provides the user interface.
- 
-* WebApp is an [Asp.Net Core](https://github.com/aspnet/home) C# application that runs on the server. It responds to WebApi calls.
+- clientapp is an Angular Typescript single page application that runs in the browser. It provides the user interface.
 
-* WorkflowApp is a [DotNet Core](https://github.com/dotnet/core) C# application that runs on the server. It does batch processing of recordings and Transcripts. It could also be converted to a library that runs as part of the WebApp process.
+- WebApp is an [Asp.Net Core](https://github.com/aspnet/home) C# application that runs on the server. It responds to WebApi calls.
 
-* The other server components are DotNet Core C# libraries. They are used by both WebApp & WorkflowApp.
+- WorkflowApp is a [DotNet Core](https://github.com/dotnet/core) C# application that runs on the server. It does batch processing of recordings and Transcripts. It could also be converted to a library that runs as part of the WebApp process.
 
-___
-## System  Design
+- The other server components are DotNet Core C# libraries. They are used by both WebApp & WorkflowApp.
+
+---
+
+## System Design
+
 </markdown>
 <img src="assets/images/FlowchartSystem.png">
 <markdown ngPreserveWhitespaces>
@@ -45,8 +47,10 @@ The components in the above diagram are:
 <tr><td>DatabaseAccess</td><td>Access database using Entity Framework</td></tr>
 </table>
 
-___
+---
+
 ## clientapp Design
+
 </markdown>
 <img src="assets/images/Flowchartclientapp.png">
 <markdown ngPreserveWhitespaces>
@@ -72,8 +76,10 @@ The structure of the clientapp is best shown by its Angular Component structure
 <tr><td>Chat</td><td>User chat component</td></tr>
 </table>
 
-___
+---
+
 ## WebApp Design
+
 </markdown>
 <img src="assets/images/FlowchartWebApp.png">
 <markdown ngPreserveWhitespaces>
@@ -96,15 +102,17 @@ Each of the Web API's are small and call the repositories to put or get data fro
 <tr><td>Message</td><td>Handle registration confirmation via text message .</td></tr>
 </table>
 
-___
+---
+
 ## WorkflowApp Design
+
 </markdown>
 <img src="assets/images/FlowchartWorkflowApp.png">
 <markdown ngPreserveWhitespaces>
 
-The status of the workflow for a specific meeting is kept in its Meeting record in the database. Each of the workflow components operates independently. They are each called in turn to check for available work. Each component will query the database for meetings matching their criteria for available work. If work is found, they will perform it and update the meeting's status in the database. 
+The status of the workflow for a specific meeting is kept in its Meeting record in the database. Each of the workflow components operates independently. They are each called in turn to check for available work. Each component will query the database for meetings matching their criteria for available work. If work is found, they will perform it and update the meeting's status in the database.
 
-In order to build a robust system, that can recover from failures, we will need to treat steps in the workflow as "transactions". A transaction either completes fully or not at all. If there are  unrecoverable failures during a processing step, the state for that meeting rolls back to the last valid state. The code does not currently implement transactions. ( Gitub issue to follow ) 
+In order to build a robust system, that can recover from failures, we will need to treat steps in the workflow as "transactions". A transaction either completes fully or not at all. If there are unrecoverable failures during a processing step, the state for that meeting rolls back to the last valid state. The code does not currently implement transactions. ( Gitub issue to follow )
 
 Pseudo code is given below for the components
 
@@ -196,41 +204,43 @@ Pseudo code is given below for the components
   </ul>
 </ul>
 
-______
+---
+
 ## User Secrets
 
-User secrets that should not be in the code repository are kept in the "SECRETS" folder.  It contains the following information:
+User secrets that should not be in the code repository are kept in the "SECRETS" folder. It contains the following information:
 
-* ClientId and ClientSecret for the Google external authorization service.
-* SiteKey and Secret for the Google ReCaptcha service.
-* Credentials for the Google Cloud Platform.
-* Database connection string.
-* Admin username and password.
+- ClientId and ClientSecret for the Google external authorization service.
+- SiteKey and Secret for the Google ReCaptcha service.
+- Credentials for the Google Cloud Platform.
+- Database connection string.
+- Admin username and password.
 
 The SECRETS folder may contain four files.
 
-* appsettings.Development.json
-* appsettings.Production.json
-* appsettings.Staging.json
-* TranscribeAudio.json
+- appsettings.Development.json
+- appsettings.Production.json
+- appsettings.Staging.json
+- TranscribeAudio.json
 
 TranscribeAudio.json contains the Google Cloud Platform credentials. Each of other three files may contain settings for each of the other secrets. appsettings.Production.json should contain all of the setting for production. Whatever settings are in these file will overide those that are in Server/WebApp/app.settings.json. This file is inlcluded in the repository.
 
 If you want your local machine to have access to the Google services, you need to create a local folder "../SECRETS in relation to where the repository is located. Then, for example, you can add a file "appsettings.Development.json" to it, which contains keys that you obtain from Google. See: [Google API Keys](home#google-api-keys)
 
+---
 
---------------------------------------------------------------
 # Documentation
 
 Originally this documentation was kept in the Github Wiki pages.
 But it was decided to move the pages into the main project itself, for two reasons:
-* You cannot do a Pull Request for changes on Github Wiki pages. This makes it difficult
-for members of the community to change the documentation.
-* The documentation will more likely stay in sync with the code if it is together with the
-code in the same repository. A single PR for code changes can include the documentation 
-changes associated with it.
 
-The documentation is written in Markdown and located in frontend/clientapp/src/app/assets/docs. 
+- You cannot do a Pull Request for changes on Github Wiki pages. This makes it difficult
+  for members of the community to change the documentation.
+- The documentation will more likely stay in sync with the code if it is together with the
+  code in the same repository. A single PR for code changes can include the documentation
+  changes associated with it.
+
+The documentation is written in Markdown and located in frontend/clientapp/src/app/assets/docs.
 
 </markdown>
 

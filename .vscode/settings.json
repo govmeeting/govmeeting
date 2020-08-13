@@ -1,12 +1,17 @@
 {
-    "files.exclude": {
-        "**/dist": true,
-        "**/wwwroot": true,
-        "**/assets/docs/TRANS": true
-    },
-    "VSCodeCounter.showInStatusBar": false,
-    "workbench.colorCustomizations": {
-        "terminal.foreground": "#00FD61",
-        "terminal.background": "#383737"
-    }
+  "files.exclude": {
+    "**/dist": true,
+    "**/wwwroot": true,
+    "**/assets/docs/TRANS": true
+  },
+  "VSCodeCounter.showInStatusBar": false,
+  "workbench.colorCustomizations": {
+    "terminal.foreground": "#00FD61",
+    "terminal.background": "#383737"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  }
 }

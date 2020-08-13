@@ -4,32 +4,30 @@ import { Subscription } from 'rxjs';
 import { NavService } from '../sidenav/nav.service';
 import { UserSettingsService, UserSettings } from '../common/user-settings.service';
 
-const NoLog = true;  // set to false for console logging
+const NoLog = true; // set to false for console logging
 
 @Component({
   selector: 'gm-header',
   templateUrl: './header.html',
-  styleUrls: ['./header.scss']
+  styleUrls: ['./header.scss'],
 })
 export class HeaderComponent implements OnInit {
-  private ClassName: string = this.constructor.name + ": ";
+  private ClassName: string = this.constructor.name + ': ';
   messages: any[] = [];
   usSubscription: Subscription;
   location: string;
   backgroundStyle: any;
 
-  constructor(public navService: NavService, private userSettingsService: UserSettingsService) {
-  }
+  constructor(public navService: NavService, private userSettingsService: UserSettingsService) {}
 
   ngOnInit() {
-
-    this.userSettingsService.subscribeSettings(message => {
+    this.userSettingsService.subscribeSettings((message) => {
       // NoLog || console.log(this.ClassName + "receive message: " + message)
-      let newSettings = this.userSettingsService.settings;
-      NoLog || console.log(this.ClassName + "SCAO ", newSettings);
+      const newSettings = this.userSettingsService.settings;
+      NoLog || console.log(this.ClassName + 'SCAO ', newSettings);
       this.changeLocation(newSettings);
-    })
-    this.changeBackground("generic");
+    });
+    this.changeBackground('generic');
   }
 
   openNav() {
@@ -38,9 +36,9 @@ export class HeaderComponent implements OnInit {
 
   private changeLocation(item: UserSettings) {
     this.location = item.location;
-    NoLog || console.log(this.ClassName + "location:" + this.location);
-    this.changeBackground(this.location)
-}
+    NoLog || console.log(this.ClassName + 'location:' + this.location);
+    this.changeBackground(this.location);
+  }
 
   changeBackground(location: string) {
     let background;
@@ -55,15 +53,32 @@ export class HeaderComponent implements OnInit {
     // }
 
     switch (location) {
-      case 'Boothbay Harbor': { background = "url('/assets/images/Boothbay_Harbor_inner_harbor.png')"; break; }
-      case 'Lincoln County': { background = "url('/assets/images/Lincoln_County_Pemaquid_Lighthouse.png')"; break; }
-      case 'State of Maine': { background = "url('/assets/images/Maine_Acadia_National_Park.png')"; break; }
-      case 'United States': { background = "url('/assets/images/United_States_Capitol.png')"; break; }
-      case 'Glendale HOA': { background = "url('/assets/images/condominiums.png')"; break; }
-      case 'generic': { background = "url('/assets/images/Budget_Town_Hall.png')"; break; }
+      case 'Boothbay Harbor': {
+        background = "url('/assets/images/Boothbay_Harbor_inner_harbor.png')";
+        break;
+      }
+      case 'Lincoln County': {
+        background = "url('/assets/images/Lincoln_County_Pemaquid_Lighthouse.png')";
+        break;
+      }
+      case 'State of Maine': {
+        background = "url('/assets/images/Maine_Acadia_National_Park.png')";
+        break;
+      }
+      case 'United States': {
+        background = "url('/assets/images/United_States_Capitol.png')";
+        break;
+      }
+      case 'Glendale HOA': {
+        background = "url('/assets/images/condominiums.png')";
+        break;
+      }
+      case 'generic': {
+        background = "url('/assets/images/Budget_Town_Hall.png')";
+        break;
+      }
     }
 
     this.backgroundStyle = { 'background-image': background };
   }
-
 }

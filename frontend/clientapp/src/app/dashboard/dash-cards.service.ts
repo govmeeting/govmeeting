@@ -6,7 +6,7 @@ export class DashCardsService {
   private subject = new Subject<string>();
 
   clearMessages() {
-      this.subject.next();
+    this.subject.next();
   }
 
   sendMessage(message: string) {
@@ -16,5 +16,4 @@ export class DashCardsService {
   getMessage(): Observable<string> {
     return this.subject.asObservable();
   }
-
 }

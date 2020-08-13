@@ -1,4 +1,3 @@
-
 <p> New York City on Yhdysvaltojen suurin kaupunki. Se tuottaa myös otteita kaupunginvaltuuston kokouksista. Mutta yrittää hankkia ne ei ole helppoa. Sinun on jätettävä pyyntö ja maksettava 1 dollaria sivua kohti tai 20 dollaria kunkin kokouksen sähköisestä kopiosta. </p>
 <h2> Painopiste </h2>
 <p> Demokratian välineet eivät ole muuttuneet paljon 2000 vuodessa. Mutta nykypäivän tekniikan avulla voimme vihdoinkin luoda tarvittavat työkalut. </p>

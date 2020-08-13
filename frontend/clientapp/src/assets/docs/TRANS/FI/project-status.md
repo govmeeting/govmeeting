@@ -1,4 +1,3 @@
-
 <ul>
 <li> Useita ohjelmiston osia on toteutettu (mutta niitä on parannettava). </li>
 <li> Joukko kriittisiä osia on toteutettava. </li>
