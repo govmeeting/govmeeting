@@ -6,7 +6,7 @@ import { NavService } from '../sidenav/nav.service';
 
 class MockNavService {
   openNav() {}
-};
+}
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -14,11 +14,10 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
+      declarations: [HeaderComponent],
       providers: [{ provide: NavService, useClass: MockNavService }],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-    .compileComponents();
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
