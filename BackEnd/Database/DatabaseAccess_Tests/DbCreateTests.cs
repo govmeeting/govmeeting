@@ -8,6 +8,8 @@ using NUnit.Framework;
 using GM.DatabaseModel;
 using GM.DatabaseAccess;
 using Microsoft.EntityFrameworkCore;
+using DeepEqual;
+using DeepEqual.Syntax;
 
 #pragma warning disable CS0162
 
@@ -49,9 +51,9 @@ namespace GM.DatabaseAccess.Tests
             var query = from g in context.GovernmentBodies
                         select g;
             var bodyRetrieved = query.SingleOrDefault();
+
             Assert.That(bodyRetrieved, Is.Not.Null);
-            Assert.That(bodyRetrieved.Name, Is.EqualTo(bodyWritten.Name));
-            Assert.That(bodyRetrieved.Country, Is.EqualTo(bodyWritten.Country));
+            Assert.That(bodyWritten.IsDeepEqual(bodyRetrieved));
         }
 
         /// <summary>
@@ -62,7 +64,7 @@ namespace GM.DatabaseAccess.Tests
         {
             // ARRANGE
 
-            GovernmentBody bW = new GovernmentBody()
+            GovernmentBody bodyWritten = new GovernmentBody()
             {
                 Name = "U.S. Congress",
                 Country = "U.S.A.",
@@ -83,76 +85,21 @@ namespace GM.DatabaseAccess.Tests
 
             // ACT
 
-            using (var context = GetAppDbContext())
-            {
-                context.Database.EnsureDeleted();
-                context.Database.EnsureCreated();
+            using var context = GetAppDbContext();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
 
-                context.GovernmentBodies.Add(bW);
-                context.SaveChanges();
+            context.GovernmentBodies.Add(bodyWritten);
+            context.SaveChanges();
 
-                // ASSERT
+            var query = from g in context.GovernmentBodies
+                        select g;
+            var bodyRetrieved = query.SingleOrDefault();
 
-                //Assert.That(context.GovernmentBodies.Local.Count, Is.EqualTo(0));
+            // ASSERT
 
-                // Re-load the context from the database.
-                //context.GovernmentBodies.Load();
-                //context.Meetings.Load();
-                //context.TopicDiscussions.Load();
-                //context.Talks.Load();
-                //context.Topics.Load();
-                //context.Speakers.Load();
-                //context.Categories.Load();
-
-                var query = from g in context.GovernmentBodies
-                            select g;
-                var bR = query.SingleOrDefault();
-
-                Assert.That(bR, Is.Not.Null);
-                Assert.That(bR.Name, Is.EqualTo(bW.Name));
-                Assert.That(bR.Meetings[0], Is.Not.Null);
-
-                // Check meeting object.
-                Meeting mW = bW.Meetings[0];
-                Meeting mR = bR.Meetings[0];
-                Assert.That(mR.Name, Is.EqualTo(mW.Name));
-                Assert.That(mR.Date, Is.EqualTo(mW.Date));
-                Assert.That(mR.TopicDiscussions[0], Is.Not.Null);
-                Assert.That(mR.TopicDiscussions.Count, Is.EqualTo(2));
-
-                for (int i = 0; i < 2; i++)
-                {
-                    TopicDiscussion tW = mW.TopicDiscussions[i];
-                    TopicDiscussion tR = mR.TopicDiscussions[i];
-
-                    Assert.That(tR.Sequence, Is.EqualTo(tW.Sequence));
-
-                    // Check topic.
-                    Assert.That(tR.Topic, Is.Not.Null);
-                    Assert.That(tR.Topic.Name, Is.EqualTo(tW.Topic.Name));
-
-                    // Check categories.
-                    Assert.That(tR.Topic.Categories, Is.Not.Null);
-                    List<Category> cW = tW.Topic.Categories;
-                    List<Category> cR = tR.Topic.Categories;
-                    Assert.That(cR.Count, Is.EqualTo(1));
-                    Assert.That(cR[0].Name, Is.EqualTo(cW[0].Name));
-
-                    // Check talks and speakers
-                    Assert.That(tR.Talks, Is.Not.Null);
-                    List<Talk> tkW = tW.Talks;
-                    List<Talk> tkR = tR.Talks;
-                    Assert.That(tkR.Count, Is.EqualTo(2));
-                    // talk 0
-                    Assert.That(tkR[0].Text, Is.EqualTo(tkW[0].Text));
-                    Assert.That(tkR[0].Speaker, Is.Not.Null);
-                    Assert.That(tkR[0].Speaker.Name, Is.EqualTo(tkW[0].Speaker.Name));
-                    // talk 1
-                    Assert.That(tkR[1].Text, Is.EqualTo(tkW[1].Text));
-                    Assert.That(tkR[1].Speaker, Is.Not.Null);
-                    Assert.That(tkR[1].Speaker.Name, Is.EqualTo(tkW[1].Speaker.Name));
-                }
-            }
+            Assert.That(bodyRetrieved, Is.Not.Null);
+            Assert.That(bodyWritten.IsDeepEqual(bodyRetrieved));
         }
 
         public ApplicationDbContext GetAppDbContext()
@@ -166,7 +113,7 @@ namespace GM.DatabaseAccess.Tests
 
         // SAMPLE DATA //
 
-        private TopicDiscussion sampleDiscussion1 = new TopicDiscussion()
+        private readonly TopicDiscussion sampleDiscussion1 = new TopicDiscussion()
         {
             Topic = new Topic()
             {
@@ -202,8 +149,7 @@ namespace GM.DatabaseAccess.Tests
                     }
                 }
         };
-
-        TopicDiscussion sampleDiscussion2 = new TopicDiscussion()
+        readonly TopicDiscussion sampleDiscussion2 = new TopicDiscussion()
         {
             Topic = new Topic()
             {
