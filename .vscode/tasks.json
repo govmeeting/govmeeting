@@ -111,6 +111,16 @@
       "problemMatcher": "$msCompile"
     },
     {
+      "label": "build-DatabaseRepositories_Tests",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/BackEnd/Database/DatabaseRepositories_Tests/DatabaseRepositories_Tests.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
       "label": "build-Utilities_Tests",
       "command": "dotnet",
       "type": "process",
@@ -143,6 +153,7 @@
         "build-WebApp_Tests",
         "build-WorkflowApp_Tests",
         "build-DatabaseAccess_Tests",
+        "build-DatabaseRepositories_Tests",
         "build-ProcessRecording_Tests",
         "build-ProcessTranscript_Tests",
         "build-FileDataRepositories_Tests",
