@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace GM.FileDataRepositories_Test
+namespace GM.Utilities_Tests
 {
     public class UnitTest1
     {

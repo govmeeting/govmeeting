@@ -2,7 +2,6 @@ using System;
 using Xunit;
 //using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-
 using GM.WebApp;
 
 namespace GM.WebApp.Tests
@@ -13,12 +12,6 @@ namespace GM.WebApp.Tests
         public void Test1()
         {
             Assert.True(2 + 2 == 4, "2 + 2 = 4");
-        }
-
-        [Fact]
-        public void StartWebApp()
-        {
-            IWebHostBuilder iwhb = Program.CreateWebHostBuilder(null);
         }
     }
 }
