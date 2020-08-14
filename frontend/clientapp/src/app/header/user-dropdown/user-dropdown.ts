@@ -1,20 +1,14 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'gm-user-dropdown',
   templateUrl: './user-dropdown.html',
   styleUrls: ['./user-dropdown.scss'],
 })
-export class UserDropdownComponent implements OnInit {
+export class UserDropdownComponent {
   dropdownActive = '';
   isLoggedIn = false;
   isAdmin = false;
-
-  constructor(@Inject(DOCUMENT) private document: Document, private router: Router) {}
-
-  ngOnInit() {}
 
   setDropdownActive() {
     this.dropdownActive = this.toggle(this.dropdownActive, 'dropdown--active', '');
@@ -26,7 +20,6 @@ export class UserDropdownComponent implements OnInit {
 
   signin() {
     window.location.href = 'account/login';
-    // window.open('account/login');    // opens in new tab
   }
 
   register() {

@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.userSettingsService.subscribeSettings((message) => {
-      // NoLog || console.log(this.ClassName + "receive message: " + message)
       const newSettings = this.userSettingsService.settings;
       NoLog || console.log(this.ClassName + 'SCAO ', newSettings);
       this.changeLocation(newSettings);
@@ -42,15 +41,6 @@ export class HeaderComponent implements OnInit {
 
   changeBackground(location: string) {
     let background;
-
-    // switch (location) {
-    //   case 'Austin': { background = "url('/assets/images/Austin.png')"; break; }
-    //   case 'Travis County': { background = "url('/assets/images/Travis_County.png')"; break; }
-    //   case 'State of Texas': { background = "url('/assets/images/Texas_State_Capitol.png')"; break; }
-    //   case 'United States': { background = "url('/assets/images/United_States_Capitol.png')"; break; }
-    //   case 'Glendale HOA': { background = "url('/assets/images/condominiums.png')"; break; }
-    //   case 'generic': { background = "url('/assets/images/Budget_Town_Hall.png')"; break; }
-    // }
 
     switch (location) {
       case 'Boothbay Harbor': {
