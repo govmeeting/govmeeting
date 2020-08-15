@@ -10,6 +10,8 @@ using GM.DatabaseAccess;
 using Microsoft.EntityFrameworkCore;
 using DeepEqual;
 using DeepEqual.Syntax;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Data.Sqlite;
 
 #pragma warning disable CS0162
 
@@ -39,7 +41,7 @@ namespace GM.DatabaseAccess.Tests
             // ACT
 
             //using (var context = new ApplicationDbContext())
-            using var context = GetAppDbContext();
+            using var context = GetAppDbContext_InMemoryProvider();
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
@@ -85,7 +87,7 @@ namespace GM.DatabaseAccess.Tests
 
             // ACT
 
-            using var context = GetAppDbContext();
+            using var context = GetAppDbContext_InMemoryProvider();
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
@@ -102,7 +104,7 @@ namespace GM.DatabaseAccess.Tests
             Assert.That(bodyWritten.IsDeepEqual(bodyRetrieved));
         }
 
-        public ApplicationDbContext GetAppDbContext()
+        public ApplicationDbContext GetAppDbContext_LocalDb()
         {
             string connection = "Server=(localdb)\\mssqllocaldb;Database=GovmeetingTest;Trusted_Connection=True;MultipleActiveResultSets=true";
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
@@ -110,6 +112,38 @@ namespace GM.DatabaseAccess.Tests
             ApplicationDbContext _context = new ApplicationDbContext(optionsBuilder.Options);
             return _context;
         }
+
+        public ApplicationDbContext GetAppDbContext_InMemoryProvider()
+        {
+            InMemoryDatabaseRoot databaseRoot = new InMemoryDatabaseRoot();
+            string connectionString = Guid.NewGuid().ToString();
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            optionsBuilder.UseInMemoryDatabase(connectionString, databaseRoot);
+            ApplicationDbContext _context = new ApplicationDbContext(optionsBuilder.Options);
+            return _context;
+        }
+
+        public ApplicationDbContext GetAppDbContext_InMemorySqliteProvider()
+        {
+            string connectionString = "DataSource=:memory:";
+            SqliteConnection connection;
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            connection = new SqliteConnection(connectionString);
+            connection.Open();
+            optionsBuilder.UseSqlite(connection);
+            ApplicationDbContext _context = new ApplicationDbContext(optionsBuilder.Options);
+            return _context;
+        }
+
+        public ApplicationDbContext GetAppDbContext_SqliteProvider()
+        {
+            string connectionString = $"DataSource={Guid.NewGuid()}.db";
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            optionsBuilder.UseSqlite(connectionString);
+            ApplicationDbContext _context = new ApplicationDbContext(optionsBuilder.Options);
+            return _context;
+        }
+
 
         // SAMPLE DATA //
 
