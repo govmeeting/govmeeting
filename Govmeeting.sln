@@ -121,6 +121,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities_Tests", "BackEnd\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseRepositories_Tests", "BackEnd\Database\DatabaseRepositories_Tests\DatabaseRepositories_Tests.csproj", "{38EDD80A-3209-4851-9138-D7C404B9FDC9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{57FFD9FE-9835-4078-8137-5F476DD9E85E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{EAC5A1D2-FEF1-4FE0-9B1D-99E7CE0B1150}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\backend-build.yaml = .github\workflows\backend-build.yaml
+		.github\workflows\frontend-build.yaml = .github\workflows\frontend-build.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -274,6 +282,8 @@ Global
 		{4222DA34-9F25-4E5A-9CBA-9C1EC6BF2FBF} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{4433BAE9-7138-4286-AA28-4DB1411BC68D} = {A0111C47-4A43-4C2D-A7BC-6A6A3FF536E1}
 		{38EDD80A-3209-4851-9138-D7C404B9FDC9} = {22F19757-4172-4C0A-8B4C-D5059022F7E4}
+		{57FFD9FE-9835-4078-8137-5F476DD9E85E} = {AFDC8594-CA67-4E2A-BB1B-A4C3AAE06C6E}
+		{EAC5A1D2-FEF1-4FE0-9B1D-99E7CE0B1150} = {57FFD9FE-9835-4078-8137-5F476DD9E85E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {577CF991-85C7-44E5-A640-AE87641C3A8D}
