@@ -8,6 +8,10 @@ using NUnit.Framework;
 using GM.DatabaseModel;
 using GM.DatabaseAccess;
 using Microsoft.EntityFrameworkCore;
+using DeepEqual;
+using DeepEqual.Syntax;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Data.Sqlite;
 
 #pragma warning disable CS0162
 
@@ -25,15 +29,9 @@ namespace GM.DatabaseAccess.Tests
         [Test()]
         public void Backend_DbAccess_CreateOneGovBodyTest()
         {
-            Assert.That(1 + 1, Is.EqualTo(2));
-            return;
-
             // ARRANGE
 
-            // Database.SetInitializer(
-            //    new DropCreateDatabaseAlways<MeetingContext>());
-
-            GovernmentBody BodyWritten = new GovernmentBody()
+            GovernmentBody bodyWritten = new GovernmentBody()
             {
                 Name = "U.S. Senate",
                 Country = "U.S.A.",
@@ -43,20 +41,21 @@ namespace GM.DatabaseAccess.Tests
             // ACT
 
             //using (var context = new ApplicationDbContext())
-            using var context = GetAppDbContext();
-            //if (context.Database.Exists()) context.Database.Delete();
+            using var context = GetAppDbContext_InMemoryProvider();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
 
-            context.GovernmentBodies.Add(BodyWritten);
+            context.GovernmentBodies.Add(bodyWritten);
             context.SaveChanges();
 
             // ASSERT
 
             var query = from g in context.GovernmentBodies
                         select g;
-            var BodyRetrieved = query.SingleOrDefault();
-            Assert.That(BodyRetrieved, Is.Not.Null);
-            Assert.That(BodyRetrieved.Name, Is.EqualTo(BodyWritten.Name));
-            Assert.That(BodyRetrieved.Country, Is.EqualTo(BodyWritten.Country));
+            var bodyRetrieved = query.SingleOrDefault();
+
+            Assert.That(bodyRetrieved, Is.Not.Null);
+            Assert.That(bodyWritten.IsDeepEqual(bodyRetrieved));
         }
 
         /// <summary>
@@ -65,26 +64,104 @@ namespace GM.DatabaseAccess.Tests
         [Test()]
         public void Backend_DbAccess_CreateOneGovBodyAndMeetingTest()
         {
-            Assert.That(1 + 1, Is.EqualTo(2));
-            return;
-
             // ARRANGE
 
-            TopicDiscussion topicDiscussion1 = new TopicDiscussion()
+            GovernmentBody bodyWritten = new GovernmentBody()
             {
-                Topic = new Topic()
+                Name = "U.S. Congress",
+                Country = "U.S.A.",
+                Meetings = new List<Meeting>()
                 {
-                    Name = "Bill #124643",
-                    Categories = new List<Category>()
+                    new Meeting()
+                    {
+                        Name = "Regular Session Meeting",
+                        Date = DateTime.Parse("Nov 1, 1945 10:11 GMT"),
+                        TopicDiscussions = new List<TopicDiscussion>()
+                        {
+                            sampleDiscussion1,
+                            sampleDiscussion2
+                        }
+                    }
+                }
+            };
+
+            // ACT
+
+            using var context = GetAppDbContext_InMemoryProvider();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+
+            context.GovernmentBodies.Add(bodyWritten);
+            context.SaveChanges();
+
+            var query = from g in context.GovernmentBodies
+                        select g;
+            var bodyRetrieved = query.SingleOrDefault();
+
+            // ASSERT
+
+            Assert.That(bodyRetrieved, Is.Not.Null);
+            Assert.That(bodyWritten.IsDeepEqual(bodyRetrieved));
+        }
+
+        public ApplicationDbContext GetAppDbContext_LocalDb()
+        {
+            string connection = "Server=(localdb)\\mssqllocaldb;Database=GovmeetingTest;Trusted_Connection=True;MultipleActiveResultSets=true";
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            optionsBuilder.UseSqlServer(connection);
+            ApplicationDbContext _context = new ApplicationDbContext(optionsBuilder.Options);
+            return _context;
+        }
+
+        public ApplicationDbContext GetAppDbContext_InMemoryProvider()
+        {
+            InMemoryDatabaseRoot databaseRoot = new InMemoryDatabaseRoot();
+            string connectionString = Guid.NewGuid().ToString();
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            optionsBuilder.UseInMemoryDatabase(connectionString, databaseRoot);
+            ApplicationDbContext _context = new ApplicationDbContext(optionsBuilder.Options);
+            return _context;
+        }
+
+        public ApplicationDbContext GetAppDbContext_InMemorySqliteProvider()
+        {
+            string connectionString = "DataSource=:memory:";
+            SqliteConnection connection;
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            connection = new SqliteConnection(connectionString);
+            connection.Open();
+            optionsBuilder.UseSqlite(connection);
+            ApplicationDbContext _context = new ApplicationDbContext(optionsBuilder.Options);
+            return _context;
+        }
+
+        public ApplicationDbContext GetAppDbContext_SqliteProvider()
+        {
+            string connectionString = $"DataSource={Guid.NewGuid()}.db";
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            optionsBuilder.UseSqlite(connectionString);
+            ApplicationDbContext _context = new ApplicationDbContext(optionsBuilder.Options);
+            return _context;
+        }
+
+
+        // SAMPLE DATA //
+
+        private readonly TopicDiscussion sampleDiscussion1 = new TopicDiscussion()
+        {
+            Topic = new Topic()
+            {
+                Name = "Bill #124643",
+                Categories = new List<Category>()
                     {
                         new Category()
                         {
                             Name = "Health"
                         }
                     }
-                },
-                Sequence = 1,
-                Talks = new List<Talk>()
+            },
+            Sequence = 1,
+            Talks = new List<Talk>()
                 {
                     new Talk()
                     {
@@ -105,23 +182,22 @@ namespace GM.DatabaseAccess.Tests
                         }
                     }
                 }
-            };
-
-            TopicDiscussion topicDiscussion2 = new TopicDiscussion()
+        };
+        readonly TopicDiscussion sampleDiscussion2 = new TopicDiscussion()
+        {
+            Topic = new Topic()
             {
-                Topic = new Topic()
-                {
-                    Name = "Bill #987698",
-                    Categories = new List<Category>()
+                Name = "Bill #987698",
+                Categories = new List<Category>()
                     {
                         new Category()
                         {
                             Name = "Defense"
                         }
                     }
-                },
-                Sequence = 2,
-                Talks = new List<Talk>()
+            },
+            Sequence = 2,
+            Talks = new List<Talk>()
                 {
                     new Talk()
                     {
@@ -142,110 +218,7 @@ namespace GM.DatabaseAccess.Tests
                         }
                     }
                 }
-            };
+        };
 
-            GovernmentBody BodyWritten = new GovernmentBody()
-            {
-                Name = "U.S. Congress",
-                Country = "U.S.A.",
-                Meetings = new List<Meeting>()
-                    {
-                        new Meeting()
-                        {
-                            Name = "Regular Session Meeting",
-                            Date = DateTime.Parse("Nov 1, 1945 10:11 GMT"),
-                            TopicDiscussions = new List<TopicDiscussion>()
-                            {
-                                topicDiscussion1,
-                                topicDiscussion2
-                            }
-                        }
-                    }
-            };
-
-            // ACT
-
-            using (var context = GetAppDbContext())
-            {
-                //if (context.Database.Exists()) context.Database.Delete();
-                context.GovernmentBodies.Add(BodyWritten);
-                context.SaveChanges();
-            }
-
-            // ASSERT
-
-            // Re-create the context.
-            using (var context = GetAppDbContext())
-            {
-                Assert.That(context.GovernmentBodies.Local.Count, Is.EqualTo(0));
-
-                // Re-load the context from the database.
-                //context.GovernmentBodies.Load();
-                //context.Meetings.Load();
-                //context.TopicDiscussions.Load();
-                //context.Talks.Load();
-                //context.Topics.Load();
-                //context.Speakers.Load();
-                //context.Categories.Load();
-
-                var query = from g in context.GovernmentBodies
-                            select g;
-                var BodyRetrieved = query.SingleOrDefault();
-
-                Assert.That(BodyRetrieved, Is.Not.Null);
-                Assert.That(BodyRetrieved.Name, Is.EqualTo(BodyWritten.Name));
-                Assert.That(BodyRetrieved.Meetings[0], Is.Not.Null);
-
-                // Check meeting object.
-                Meeting meetingWritten = BodyWritten.Meetings[0];
-                Meeting meetingRetrieved = BodyRetrieved.Meetings[0];
-                Assert.That(meetingRetrieved.Name, Is.EqualTo(meetingWritten.Name));
-                Assert.That(meetingRetrieved.Date, Is.EqualTo(meetingWritten.Date));
-                Assert.That(meetingRetrieved.TopicDiscussions[0], Is.Not.Null);
-                Assert.That(meetingRetrieved.TopicDiscussions.Count, Is.EqualTo(2));
-
-                for (int i = 0; i < 2; i++)
-                {
-                    TopicDiscussion tdWritten = meetingWritten.TopicDiscussions[i];
-                    TopicDiscussion tdRetrieved = meetingRetrieved.TopicDiscussions[i];
-
-                    Assert.That(tdRetrieved.Sequence, Is.EqualTo(tdWritten.Sequence));
-
-                    // Check topic.
-                    Assert.That(tdRetrieved.Topic, Is.Not.Null);
-                    Assert.That(tdRetrieved.Topic.Name, Is.EqualTo(tdWritten.Topic.Name));
-
-                    // Check categories.
-                    Assert.That(tdRetrieved.Topic.Categories, Is.Not.Null);
-                    List<Category> cWritten = tdWritten.Topic.Categories;
-                    List<Category> cRetrieved = tdRetrieved.Topic.Categories;
-                    Assert.That(cRetrieved.Count, Is.EqualTo(1));
-                    Assert.That(cRetrieved[0].Name, Is.EqualTo(cWritten[0].Name));
-
-                    // Check talks and speakers
-                    Assert.That(tdRetrieved.Talks, Is.Not.Null);
-                    List<Talk> tkWritten = tdWritten.Talks;
-                    List<Talk> tkRetrieved = tdRetrieved.Talks;
-                    Assert.That(tkRetrieved.Count, Is.EqualTo(2));
-                    // talk 0
-                    Assert.That(tkRetrieved[0].Text, Is.EqualTo(tkWritten[0].Text));
-                    Assert.That(tkRetrieved[0].Speaker, Is.Not.Null);
-                    Assert.That(tkRetrieved[0].Speaker.Name, Is.EqualTo(tkWritten[0].Speaker.Name));
-                    // talk 1
-                    Assert.That(tkRetrieved[1].Text, Is.EqualTo(tkWritten[1].Text));
-                    Assert.That(tkRetrieved[1].Speaker, Is.Not.Null);
-                    Assert.That(tkRetrieved[1].Speaker.Name, Is.EqualTo(tkWritten[1].Speaker.Name));
-                }
-            }
-        }
-
-        public ApplicationDbContext GetAppDbContext()
-        {
-            string connection = "Server=(localdb)\\mssqllocaldb;Database=Govmeeting02;Trusted_Connection=True;MultipleActiveResultSets=true";
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            optionsBuilder.UseSqlServer(connection);
-            ApplicationDbContext _context = new ApplicationDbContext(optionsBuilder.Options);
-            return _context;
-        }
     }
 }
