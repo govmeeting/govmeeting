@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { NavService } from '../sidenav/nav.service';
 import { UserSettingsService, UserSettings } from '../common/user-settings.service';
+import { getBackgroundUrl } from './background.service-stub';
 
 const NoLog = true; // set to false for console logging
 
@@ -39,36 +40,8 @@ export class HeaderComponent implements OnInit {
     this.changeBackground(this.location);
   }
 
-  changeBackground(location: string) {
-    let background;
-
-    switch (location) {
-      case 'Boothbay Harbor': {
-        background = "url('/assets/images/Boothbay_Harbor_inner_harbor.png')";
-        break;
-      }
-      case 'Lincoln County': {
-        background = "url('/assets/images/Lincoln_County_Pemaquid_Lighthouse.png')";
-        break;
-      }
-      case 'State of Maine': {
-        background = "url('/assets/images/Maine_Acadia_National_Park.png')";
-        break;
-      }
-      case 'United States': {
-        background = "url('/assets/images/United_States_Capitol.png')";
-        break;
-      }
-      case 'Glendale HOA': {
-        background = "url('/assets/images/condominiums.png')";
-        break;
-      }
-      case 'generic': {
-        background = "url('/assets/images/Budget_Town_Hall.png')";
-        break;
-      }
-    }
-
+  private changeBackground(location: string) {
+    const background = getBackgroundUrl(location);
     this.backgroundStyle = { 'background-image': background };
   }
 }

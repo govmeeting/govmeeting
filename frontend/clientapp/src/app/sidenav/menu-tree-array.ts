@@ -1,5 +1,5 @@
 import { NavItem } from './nav-item';
-import { navigationItems } from './menu-items';
+import { navigationItems } from './menu-items-all';
 
 const NoLog = true; // set to false for console logging
 

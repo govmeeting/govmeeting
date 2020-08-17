@@ -6,7 +6,7 @@ import { NavService } from './nav.service';
 import { UserSettingsService, UserSettings, LocationType } from '../common/user-settings.service';
 // import { string } from '@amcharts/amcharts4/core';
 
-import { navigationItems, betaNavigationItems } from './menu-items';
+import { navigationItems, betaNavigationItems } from './menu-items-all';
 import { MenuTreeArray } from './menu-tree-array';
 
 import { MatNavList } from '@angular/material/list';
