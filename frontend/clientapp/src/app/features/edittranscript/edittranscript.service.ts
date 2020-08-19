@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/share';
 import { catchError } from 'rxjs/operators';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+// import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { EditTranscript, Talk, Word } from '../../models/edittranscript-view';
 
@@ -43,14 +43,6 @@ export class EdittranscriptService {
       .share() as Observable<EditTranscript>; // make it shared so more than one subscriber can get the same result.
     return this.observable;
   }
-
-  // postChanges(addtags: Addtags) {
-  //   // postChanges(addtags: Addtags): Observable<any> {
-  //     NoLog || console.log(this.ClassName + 'postChanges');
-  //     // return Observable.of(this.addtags);
-  //     // return this.postData(this.addtagsUrl, addtags);
-  //     this.postData(this.addtagsUrl, addtags);
-  // }
 
   public postChanges(addtags: EditTranscript) {
     NoLog || console.log(this.ClassName + 'postChanges');

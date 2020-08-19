@@ -73,7 +73,6 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   checkDeviceType() {
     const width = window.innerWidth;
     if (width <= 768) {
-      // TODO Remove "NoLog || ..." statements during pre-build of prod
       NoLog || console.log(this.ClassName + 'mobile device detected');
     } else if (width > 768 && width <= 992) {
       NoLog || console.log(this.ClassName + 'tablet detected');

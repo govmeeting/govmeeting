@@ -1,7 +1,7 @@
 import { NavItem, EntryType } from './nav-item';
 import { MenuItemsGov, MenuItemsGovBeta } from './menu-items-gov';
 
-const aboutpagesMenu = new NavItem(null, 'About', null, [
+const MenuItemsAbout = new NavItem(null, 'About', null, [
   // new NavItem(EntryType.docId, 'Purpose', 'info', 'purpose'),
   new NavItem(EntryType.link, 'Overview', 'toc', 'overview'),
   new NavItem(EntryType.docId, 'Workflow', 'trending_up', 'workflow'),
@@ -14,13 +14,13 @@ const aboutpagesMenu = new NavItem(null, 'About', null, [
   ]),
 ]);
 
-export let navigationItems = [aboutpagesMenu, MenuItemsGov];
+export let NavigationItems = [MenuItemsAbout, MenuItemsGov];
 
 ///////////////////////////////////////////////////////////////////////////////
 
-const betaAboutPages = new NavItem(null, 'About', null, [
+const MenuItemsAboutBeta = new NavItem(null, 'About', null, [
   new NavItem(EntryType.docId, 'Overview', 'toc', 'betaOverview'),
   new NavItem(EntryType.docId, 'Documentation', 'school', 'betaDocumentation'),
 ]);
 
-export let betaNavigationItems = [betaAboutPages, MenuItemsGovBeta];
+export let NavigationItemsBeta = [MenuItemsAboutBeta, MenuItemsGovBeta];

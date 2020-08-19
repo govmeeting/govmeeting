@@ -1,23 +1,20 @@
 import { NavItem } from './nav-item';
-import { navigationItems } from './menu-items-all';
 
 const NoLog = true; // set to false for console logging
 
 export class MenuTreeArray {
   private ClassName: string = this.constructor.name + ': ';
   positions: number[];
-  // navItems: NavItem[];
 
   // constructor(_navigationItems: NavItem[]) {
   constructor() {
     this.positions = [];
-    // this.navItems = navigationItems;
   }
 
   // Since a NavItem can have an array of child NavItems, it is a tree object.
   // The sidenav menu consists of an array of NavItems, each possibly with their array of child NavItems.
   // The 'position' property of a NavItem is its position within this array of trees.
-  // It's an array of numbers. (All counts start with 0.). Examples:
+  // 'position' is an array of numbers. (All counts start with 0.). Examples:
   //  [0]       = 1st item in the sidenav array ("About")
   //  [1,2]     = 2nd item's 3rd child. (Select Location --> State of Maine"
   //  [1,3,1]   = 1st item's 4th child's 2nd child. (Select Location --> United States --> House)
@@ -27,6 +24,8 @@ export class MenuTreeArray {
   // Sending only the NavItem itself is not sufficient.
   //
   // We store the depth as a seperate value to simpify styling.
+
+  // Assign the position values
   public assignPositions(items: NavItem[]) {
     // let items: NavItem[] = _items ? _items : this.navItems;
     let pos = 0;

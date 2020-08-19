@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { TopicsComponent } from './topics';
 import { ViewTranscriptService } from '../viewtranscript.service';
-import { ViewTranscript, ViewTranscriptSample } from '../viewtranscript-sample';
+import { ViewTranscript, ViewTranscriptSample } from '../../../models/sample-data/viewtranscript-sample';
 import { UserchoiceService } from '../userchoice.service';
 
 // Create a stub for ViewTranscriptService

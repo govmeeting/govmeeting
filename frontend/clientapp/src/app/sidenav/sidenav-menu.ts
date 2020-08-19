@@ -1,28 +1,17 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { isMobile } from '../common/get-device-type';
 import { NavItem, EntryType } from './nav-item';
 import { NavService } from './nav.service';
 import { UserSettingsService, UserSettings, LocationType } from '../common/user-settings.service';
-// import { string } from '@amcharts/amcharts4/core';
-
-import { navigationItems, betaNavigationItems } from './menu-items-all';
+import { NavigationItems, NavigationItemsBeta } from './menu-items-all';
 import { MenuTreeArray } from './menu-tree-array';
-
-import { MatNavList } from '@angular/material/list';
-import { MatSidenav } from '@angular/material/sidenav';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-
-// import {MatList} from '@angular/material/list';
-
-import { PopupComponent } from '../work_experiments/popup/popup.component';
 import { AppData } from '../appdata';
 
-enum DeviceType {
-  desktop,
-  tablet,
-  mobile,
-}
+// // This is for an experiment, opening a dialog box.
+// import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+// import { PopupComponent } from '../work_experiments/popup/popup.component';
 
 const NoLog = true; // set to false for console logging
 
@@ -38,25 +27,17 @@ export class SidenavMenuComponent implements OnInit {
   isBeta: boolean;
   @ViewChild('appDrawer', { static: false })
   subscription: Subscription;
-  navItems: any[] = [];
   sidenav: ElementRef;
   navigationItems: NavItem[];
   menuTreeArray: MenuTreeArray;
-  deviceType: string;
 
   constructor(
     private navService: NavService,
     public router: Router,
     private userSettingsService: UserSettingsService,
-    private dialog: MatDialog,
-    private appData: AppData
+    private appData: AppData // private dialog: MatDialog // This is for an experiment, opening a dialog box.
   ) {
-    this.isBeta = appData.isBeta;
-    if (this.isBeta) {
-      this.navigationItems = betaNavigationItems;
-    } else {
-      this.navigationItems = navigationItems;
-    }
+    this.navigationItems = appData.isBeta ? NavigationItemsBeta : NavigationItems;
     this.menuTreeArray = new MenuTreeArray();
     this.menuTreeArray.assignPositions(this.navigationItems);
     NoLog || console.log(this.ClassName + 'navigationItems=', this.navigationItems);
@@ -67,9 +48,6 @@ export class SidenavMenuComponent implements OnInit {
       if (message) {
         NoLog || console.log(this.ClassName + 'navService message=', message);
         this.HandleSelection(message);
-      } else {
-        // clear messages when empty message received
-        this.navItems = [];
       }
     });
   }
@@ -78,14 +56,6 @@ export class SidenavMenuComponent implements OnInit {
     this.navService.sidenav = this.sidenav;
     this.navService.navigationItems = this.navigationItems;
     this.navService.openFirstMenuLevels(); // set default view of menu.
-  }
-
-  openDialog() {
-    this.dialog.open(PopupComponent, {
-      data: {
-        message: 'Error!!!',
-      },
-    });
   }
 
   HandleSelection(item: NavItem) {
@@ -125,31 +95,17 @@ export class SidenavMenuComponent implements OnInit {
       }
     }
 
-    if (this.isMobile()) {
+    if (isMobile()) {
       this.navService.closeNav();
     }
   }
 
-  private checkDeviceType(): DeviceType {
-    const width = window.innerWidth;
-    let deviceType;
-    if (width <= 768) {
-      deviceType = DeviceType.mobile;
-      this.deviceType = 'Mobile';
-      NoLog || console.log(this.ClassName + 'mobile device detected');
-    } else if (width > 768 && width <= 992) {
-      deviceType = DeviceType.tablet;
-      this.deviceType = 'Tablet';
-      NoLog || console.log(this.ClassName + 'tablet detected');
-    } else {
-      deviceType = DeviceType.desktop;
-      this.deviceType = 'Desktop';
-      NoLog || console.log(this.ClassName + 'desktop detected');
-    }
-    return deviceType;
-  }
-
-  private isMobile() {
-    return this.checkDeviceType() === DeviceType.mobile;
-  }
+  // // This is for an experiment, opening a dialog box.
+  // openDialog() {
+  //   this.dialog.open(PopupComponent, {
+  //     data: {
+  //       message: 'Error!!!',
+  //     },
+  //   });
+  // }
 }

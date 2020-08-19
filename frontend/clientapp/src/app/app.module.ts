@@ -40,12 +40,12 @@ import { DemoMaterialModule } from './common/material';
 // You can change which cards are displayed by editing dashboard/dash-main/dash-main.html.
 import { ChatModule } from './features/chat/chat.module';
 import { VirtualMeetingModule } from './features/virtual-meeting/virtual-meeting-module';
-import { ViewTranscriptModule } from './features/viewtranscript/viewtranscript.module';
 import { EditTranscriptModule } from './features/edittranscript/edittranscript.module';
-import { ViewTranscriptService } from './features/viewtranscript/viewtranscript.service';
-import { ViewTranscriptServiceStub } from './features/viewtranscript/viewtranscript.service-stub';
 import { EdittranscriptService } from './features/edittranscript/edittranscript.service';
 import { EdittranscriptServiceStub } from './features/edittranscript/edittranscript.service-stub';
+import { ViewTranscriptModule } from './features/viewtranscript/viewtranscript.module';
+import { ViewTranscriptService } from './features/viewtranscript/viewtranscript.service';
+import { ViewTranscriptServiceStub } from './features/viewtranscript/viewtranscript.service-stub';
 import { ChatService } from './features/chat/chat.service';
 import { NotesComponent } from './features/notes/notes.component';
 import { MinutesComponent } from './features/minutes/minutes.component';
@@ -72,14 +72,6 @@ import { ConfigService } from './work_experiments/configuration/config.service';
 import { ShoutoutsComponent } from './work_experiments/shoutouts/shoutouts';
 import { RegisterComponent } from './work_experiments/register/register';
 
-// PRIOR_WORK
-import { AddtagsModule } from './work_prior/addtags/addtags.module';
-import { FixasrModule } from './work_prior/fixasr/fixasr.module';
-import { AddtagsService } from './work_prior/addtags/addtags.service';
-import { AddtagsServiceStub } from './work_prior/addtags/addtags.service-stub';
-import { FixasrService } from './work_prior/fixasr/fixasr.service';
-import { FixasrServiceStub } from './work_prior/fixasr/fixasr.service-stub';
-
 const isAspServerRunning = false; // Is the Asp.Nnet server running?
 const isBeta = false; // Is this the beta release version?
 const isLargeEditData = false; // Are we using the large data for EditTranscript? (Little Falls, etc.)
@@ -100,8 +92,6 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
 
     /////////////// internal //////////////
     ViewTranscriptModule,
-    AddtagsModule,
-    FixasrModule,
     EditTranscriptModule,
     SharedModule,
     FlexLayoutModule,
@@ -150,7 +140,8 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
   ],
   providers: [
     // {
-    // EXPERIMENTAL
+    // EXPERIMENTAL - trying to find a way to load config from a file and use
+    //   the settings here in app.module.ts
     // This loads the ConfigureService with the contents of assets/config.json
     // Using APP_INITIALIZER forces the app to wait until the loading is complete.
     //   provide: APP_INITIALIZER,
@@ -165,9 +156,13 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
     AppData,
     {
       provide: AppData,
-      // TODO - Read APP_DATA from the html.
+      // This method works for reading config setting from index.html. We can define APP_DATA in index.html.
       // useValue: window['APP_DATA']    // Get settings from html
       useValue: { isAspServerRunning, isBeta, isLargeEditData },
+    },
+    {
+      provide: EdittranscriptService,
+      useClass: isAspServerRunning ? EdittranscriptService : EdittranscriptServiceStub,
     },
 
     // If you use the stubs for these services, they will not call the Asp.Net server,
@@ -176,16 +171,7 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
       provide: ViewTranscriptService,
       useClass: isAspServerRunning ? ViewTranscriptService : ViewTranscriptServiceStub,
     },
-    { provide: AddtagsService, useClass: isAspServerRunning ? AddtagsService : AddtagsServiceStub },
-    { provide: FixasrService, useClass: isAspServerRunning ? FixasrService : FixasrServiceStub },
-    {
-      provide: EdittranscriptService,
-      useClass: isAspServerRunning ? EdittranscriptService : EdittranscriptServiceStub,
-    },
-
     // { provide: ViewTranscriptService, useClass: ViewTranscriptServiceStub },
-    // { provide: AddtagsService, useClass: AddtagsServiceStub },
-    // { provide: FixasrService, useClass: FixasrServiceStub },
 
     ChatService,
     ConversationService,

@@ -6,7 +6,7 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { ViewTranscript } from '../../models/viewtranscript-view';
-import { ViewTranscriptSample } from './viewtranscript-sample';
+import { ViewTranscriptSample } from '../../models/sample-data/viewtranscript-sample';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 
 const NoLog = true; // set to false for console logging
