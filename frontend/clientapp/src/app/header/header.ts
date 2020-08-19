@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   location: string;
   backgroundStyle: any;
 
-  constructor(public navService: NavService, private userSettingsService: UserSettingsService) {}
+  constructor(private navService: NavService, private userSettingsService: UserSettingsService) {}
 
   ngOnInit() {
     this.userSettingsService.subscribeSettings((message) => {

@@ -6,7 +6,7 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 import { ViewTranscript } from '../../models/viewtranscript-view';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
-import { ViewTranscriptSample } from './viewtranscript-sample';
+import { ViewTranscriptSample } from '../../models/sample-data/viewtranscript-sample';
 
 const fromFile = true;
 const url = 'assets/stubdata/ToView.json';
@@ -18,9 +18,7 @@ const NoLog = true; // set to false for console logging
 export class ViewTranscriptServiceStub {
   private ClassName: string = this.constructor.name + ': ';
   viewMeeting: ViewTranscript = ViewTranscriptSample;
-
   private observable: Observable<ViewTranscript>;
-
   // Use the jsonplaceholder service to test post requests
   private postId;
 

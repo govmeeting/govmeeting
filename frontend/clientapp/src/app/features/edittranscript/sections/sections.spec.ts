@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { SectionsComponent } from './sections';
 import { EdittranscriptService } from '../edittranscript.service';
-import { EditTranscript, EditTranscriptSample } from '../edittranscript-sample';
+import { EditTranscript, EditTranscriptSample } from '../../../models/sample-data/edittranscript-sample';
 
 // Create a stub for EdittranscriptService
 class ServiceStub {

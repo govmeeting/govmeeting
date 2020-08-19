@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { FixasrView, AsrSegment } from '../../models/fixasr-view';
 import { Observable } from 'rxjs';
 import 'rxjs/add/observable/of';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
-import { fixasrSample } from './fixasr-sample';
+import { FixasrView, AsrSegment } from '../../models/fixasr-view';
+import { fixasrSample } from '../../models/sample-data/fixasr-sample';
 
 const NoLog = true; // set to false for console logging {}
 

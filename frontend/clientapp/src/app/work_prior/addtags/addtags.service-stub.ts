@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Addtags, Talk } from '../../models/addtags-view';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
-import { addtagsSample } from './addtags-sample';
+import { addtagsSample } from '../../models/sample-data/addtags-sample';
 
 const fromFile = true;
 const url = 'assets/stubdata/ToTag.json';
