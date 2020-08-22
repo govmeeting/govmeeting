@@ -45,8 +45,8 @@ export class VideoComponent {
     // var location: string = 'api/video/3/1';  // This would be for MeetingID=3 Part=1
 
     // If WebApp is running, use DATAFILES folder
-    location = 'datafiles/PROCESSING/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part01/';
-    let fileBasename = 'ToFix';
+    location = 'datafiles/PROCESSING/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Edit/part01/';
+    let fileBasename = 'ToEdit';
 
     // else use clientapp stubdata folder
     if (!appData.isAspServerRunning) {
