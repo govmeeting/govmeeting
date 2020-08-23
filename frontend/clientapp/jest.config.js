@@ -10,6 +10,8 @@ module.exports = {
   coverageReporters: ['html'],
   coverageDirectory: 'coverage/my-app',
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths || {}, {
-    prefix: '<rootDir>/'
-  })
+    prefix: '<rootDir>/',
+  }),
+  transformIgnorePatterns: ['node_modules[/\\\\](?!@amcharts[/\\\\]amcharts4)'],
+  testPathIgnorePatterns: ['/node_modules/', 'src/app/features/charts/'],
 };

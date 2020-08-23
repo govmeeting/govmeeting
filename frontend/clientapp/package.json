@@ -17,6 +17,7 @@
     "e2e": "cypress run",
     "karma": "ng test",
     "protractor": "ng e2e",
+    "ci:test": "ng test --sourceMap=false --browsers=ChromeHeadless --watch=false",
     "ci:lint": "run-s format lint",
     "ci:build": "run-s clean build:prod",
     "ci:cypress": "start-server-and-test ci:start-server 4200 cypress",
@@ -57,7 +58,6 @@
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.6.0",
     "sass-loader": "^9.0.2",
-    "ts-jest": "^26.1.4",
     "tslib": "^1.10.0",
     "utf-8-validate": "^5.0.2",
     "ws": "^7.3.1",
@@ -88,6 +88,7 @@
     "protractor": "~7.0.0",
     "puppeteer": "^5.2.1",
     "start-server-and-test": "^1.11.2",
+    "ts-jest": "^26.2.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"

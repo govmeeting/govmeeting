@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { DashMainComponent } from './dash-main';
+import { AppData } from '../../appdata';
+
+class MockAppData {}
 
 describe('GmDashMainComponent', () => {
   let component: DashMainComponent;
@@ -8,9 +11,10 @@ describe('GmDashMainComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashMainComponent ]
-    })
-    .compileComponents();
+      declarations: [DashMainComponent],
+      providers: [{ provide: AppData, useClass: MockAppData }],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -59,7 +59,7 @@ import { DatafakeModule } from './work_experiments/datafake/datafake.module';
 import { DataFactoryService } from './work_experiments/datafake/data-factory.service';
 import { MeetingsComponent } from './features/meetings/meetings.component';
 import { NewsComponent } from './features/news/news.component';
-// import { AmchartsModule } from './features/charts/charts.module';
+import { AmchartsModule } from './features/charts/charts.module';
 
 // EXPERIMENTS
 import { WorkareaComponent } from './work_experiments/workarea/workarea.component';
@@ -105,7 +105,7 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
     SidenavMenuModule,
     VirtualMeetingModule,
     HeaderModule,
-    // AmchartsModule,
+    AmchartsModule,
   ],
   declarations: [
     AppComponent,

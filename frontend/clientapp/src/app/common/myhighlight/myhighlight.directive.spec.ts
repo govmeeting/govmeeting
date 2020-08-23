@@ -3,7 +3,7 @@ import { ElementRef } from '@angular/core';
 
 describe('HighlightDirective', () => {
   it('should create an instance', () => {
-    var el: ElementRef = new ElementRef(null);
+    const el: ElementRef = new ElementRef(null);
     const directive = new HighlightDirective(el);
     expect(directive).toBeTruthy();
   });

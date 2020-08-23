@@ -6,22 +6,23 @@ export enum DeviceType {
   mobile,
 }
 
-export function checkDeviceType() {
-  const width = window.innerWidth;
-  let deviceType: DeviceType;
-  if (width <= 768) {
-    deviceType = DeviceType.mobile;
-    this.deviceType = 'Mobile';
-  } else if (width > 768 && width <= 992) {
-    deviceType = DeviceType.tablet;
-    this.deviceType = 'Tablet';
-  } else {
-    deviceType = DeviceType.desktop;
-    this.deviceType = 'Desktop';
-  }
-  return deviceType;
-}
+export class GetDeviceType {
+  deviceType: DeviceType;
 
-export function isMobile() {
-  return this.checkDeviceType() === DeviceType.mobile;
+  static checkDeviceType() {
+    const width = window.innerWidth;
+    let deviceType: DeviceType;
+    if (width <= 768) {
+      deviceType = DeviceType.mobile;
+    } else if (width > 768 && width <= 992) {
+      deviceType = DeviceType.tablet;
+    } else {
+      deviceType = DeviceType.desktop;
+    }
+    return deviceType;
+  }
+
+  static isMobile() {
+    return this.checkDeviceType() === DeviceType.mobile;
+  }
 }

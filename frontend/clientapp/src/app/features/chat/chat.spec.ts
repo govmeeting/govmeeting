@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ChatComponent } from './chat';
+import { ChatService } from './chat.service';
+
+class MockChatService {}
 
 describe('ChatComponent', () => {
   let component: ChatComponent;
@@ -8,9 +11,10 @@ describe('ChatComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatComponent ]
-    })
-    .compileComponents();
+      declarations: [ChatComponent],
+      providers: [{ provide: ChatService, useClass: MockChatService }],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

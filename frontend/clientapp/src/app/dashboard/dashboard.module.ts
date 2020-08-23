@@ -23,6 +23,7 @@ import { DashFooterComponent } from './dash-footer/dash-footer';
     DashFooterComponent,
   ],
   imports: [CommonModule, DemoMaterialModule],
+
   exports: [
     SmallCardsComponent,
     SmallCardComponent,

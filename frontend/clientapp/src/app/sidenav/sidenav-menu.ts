@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, AfterViewInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { isMobile } from '../common/get-device-type';
+import { GetDeviceType } from '../common/get-device-type';
 import { NavItem, EntryType } from './nav-item';
 import { NavService } from './nav.service';
 import { UserSettingsService, UserSettings, LocationType } from '../common/user-settings.service';
@@ -35,7 +35,7 @@ export class SidenavMenuComponent implements OnInit {
     private navService: NavService,
     public router: Router,
     private userSettingsService: UserSettingsService,
-    private appData: AppData // private dialog: MatDialog // This is for an experiment, opening a dialog box.
+    private appData: AppData // This is for an experiment, opening a dialog box. // private dialog: MatDialog
   ) {
     this.navigationItems = appData.isBeta ? NavigationItemsBeta : NavigationItems;
     this.menuTreeArray = new MenuTreeArray();
@@ -95,7 +95,7 @@ export class SidenavMenuComponent implements OnInit {
       }
     }
 
-    if (isMobile()) {
+    if (GetDeviceType.isMobile()) {
       this.navService.closeNav();
     }
   }
