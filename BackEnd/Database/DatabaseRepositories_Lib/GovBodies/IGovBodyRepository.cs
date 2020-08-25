@@ -17,6 +17,7 @@ namespace GM.DatabaseRepositories
         GovernmentBody GetMatching(string country, string state, string county, string municipality);
 
         GovernmentBody GetMatching(GovernmentBody govBody);
+
         long Add(GovernmentBody govBody);
     }
 }
