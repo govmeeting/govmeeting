@@ -9,7 +9,7 @@ namespace GM.DatabaseModel
     // A Citizen is one type of speaker at a meeting.
     public class Citizen : Speaker
     {
-        // public int Id { get; set; }
+        // public long Id { get; set; }
         // public string Name { get; set; }
     }
 }

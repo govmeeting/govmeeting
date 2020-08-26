@@ -11,11 +11,10 @@ namespace GM.DatabaseModel
     /// </summary>
     public class Talk
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Text { get; set; }
         public int Sequence { get; set; }
         public Speaker Speaker { get; set; }
-        public int SpeakerId { get; set; }
-        public int TopicDiscussionId { get; set; }
+        public long TopicDiscussionId { get; set; }
     }
 }

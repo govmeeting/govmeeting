@@ -8,7 +8,7 @@ namespace GM.DatabaseModel
 {
     public class Language
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
     }
 }

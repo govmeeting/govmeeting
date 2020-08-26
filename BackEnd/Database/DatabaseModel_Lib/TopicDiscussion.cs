@@ -8,10 +8,10 @@ namespace GM.DatabaseModel
 {
     public class TopicDiscussion
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public Topic Topic { get; set; }
         public List<Talk> Talks { get; set; }
         public int Sequence { get; set; }
-        public int MeetingId { get; set; } 
+        public long MeetingId { get; set; } 
     }
 }

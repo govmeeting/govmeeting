@@ -27,7 +27,8 @@ namespace DatabaseModel_Lib
     /// </summary>
     public class GovEntity
     {
-            public long Id { get; set; }
+        public long Id { get; set; }
+
         public GovEntityTypes GovEntityType { get; set; }
 
         /// <summary>

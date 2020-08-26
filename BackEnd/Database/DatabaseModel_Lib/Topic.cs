@@ -11,10 +11,9 @@ namespace GM.DatabaseModel
     /// </summary>
     public class Topic
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
-        public List<TopicDiscussion> TopicDiscussions { get; set; }
         public List<Category> Categories { get; set; }
-        public int GovernmentBodyId { get; set; }
+        public long GovernmentBodyId { get; set; }
     }
 }
