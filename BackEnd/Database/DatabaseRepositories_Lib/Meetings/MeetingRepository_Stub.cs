@@ -8,7 +8,7 @@ namespace GM.DatabaseRepositories
 {
     public class MeetingRepository_Stub : IMeetingRepository
     {
-        IGovBodyRepository _govBodyRepository;
+        readonly IGovBodyRepository _govBodyRepository;
 
         public MeetingRepository_Stub(IGovBodyRepository govBodyRepository)
         {
@@ -71,7 +71,7 @@ namespace GM.DatabaseRepositories
         // will contain work files where the tagging for this meeting is being done.
         // If the status is "WorkStatus.Received", then DATAFILES/RECEIVED will contain the file.
 
-        private List<Meeting> testMeetings = new List<Meeting>
+        private readonly List<Meeting> testMeetings = new List<Meeting>
         {
             // The ViewMeeting component in ClientApp asks WebApp for this meeting.
             new Meeting()           // Boothbay Harbor 9/8/2014
@@ -80,7 +80,7 @@ namespace GM.DatabaseRepositories
                 Name = "Monthly Regular",
                 Date = new DateTime(2014, 9, 8),
                 Length = 1810,
-                TopicDiscussions = null,
+                Sections = null,
                 GovernmentBodyId = 1,
                 SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2014-09-08.mp4",
                 SourceType = SourceType.Recording,
@@ -95,7 +95,7 @@ namespace GM.DatabaseRepositories
                 Name = "Monthly Regular",
                 Date = new DateTime(2014, 9, 25),
                 Length = 3550,
-                TopicDiscussions = null,
+                Sections = null,
                 GovernmentBodyId = 2,
                 SourceFilename = "USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2014-09-25.pdf",
                 SourceType = SourceType.Transcript,
@@ -110,7 +110,7 @@ namespace GM.DatabaseRepositories
                 Name = "Monthly Regular",
                 Date = new DateTime(2017, 2, 15),
                 Length = 2109,
-                TopicDiscussions = null,
+                Sections = null,
                 GovernmentBodyId = 1,
                 SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15.mp4",
                 SourceType = SourceType.Recording,
@@ -128,7 +128,7 @@ namespace GM.DatabaseRepositories
                 Date = new DateTime(2017, 12, 7),
                 // Length = 3466,
                 Length = -1,
-                TopicDiscussions = null,
+                Sections = null,
                 GovernmentBodyId = 2,
                 SourceFilename = "USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2017-12-07.pdf",
                 SourceType = SourceType.Transcript,
@@ -146,7 +146,7 @@ namespace GM.DatabaseRepositories
                 Date = new DateTime(2017, 1, 09),
                 // Length = 192,
                 Length = -1,
-                TopicDiscussions = null,
+                Sections = null,
                 GovernmentBodyId = 1,
                 SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4",
                 SourceType = SourceType.Recording,

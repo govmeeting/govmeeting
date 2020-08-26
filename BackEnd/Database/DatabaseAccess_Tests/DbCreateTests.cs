@@ -61,61 +61,21 @@ namespace GM.DatabaseAccess.Tests
         {
             // ARRANGE
 
-            GovernmentBody bodyWritten = new GovernmentBody()
+            TopicDiscussion sampleDiscussion1 = new TopicDiscussion()
             {
-                Name = "U.S. Congress",
-                Country = "U.S.A.",
-                Meetings = new List<Meeting>()
+                Topic = new Topic()
                 {
-                    new Meeting()
-                    {
-                        Name = "Regular Session Meeting",
-                        Date = DateTime.Parse("Nov 1, 1945 10:11 GMT"),
-                        TopicDiscussions = new List<TopicDiscussion>()
-                        {
-                            sampleDiscussion1,
-                            sampleDiscussion2
-                        }
-                    }
-                }
-            };
-
-            // ACT
-
-            using var context = GetAppDbContext.GetInMemoryProvider();
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
-
-            context.GovernmentBodies.Add(bodyWritten);
-            context.SaveChanges();
-
-            var query = from g in context.GovernmentBodies
-                        select g;
-            var bodyRetrieved = query.SingleOrDefault();
-
-            // ASSERT
-
-            Assert.That(bodyRetrieved, Is.Not.Null);
-            Assert.That(bodyWritten.IsDeepEqual(bodyRetrieved));
-        }
-
-        // SAMPLE DATA //
-
-        private readonly TopicDiscussion sampleDiscussion1 = new TopicDiscussion()
-        {
-            Topic = new Topic()
+                    Name = "Bill #124643",
+                    Categories = new List<Category>()
             {
-                Name = "Bill #124643",
-                Categories = new List<Category>()
-                    {
-                        new Category()
-                        {
-                            Name = "Health"
-                        }
-                    }
-            },
-            Sequence = 1,
-            Talks = new List<Talk>()
+                new Category()
+                {
+                    Name = "Health"
+                }
+            }
+                },
+                Sequence = 1,
+                Talks = new List<Talk>()
                 {
                     new Talk()
                     {
@@ -136,22 +96,23 @@ namespace GM.DatabaseAccess.Tests
                         }
                     }
                 }
-        };
-        readonly TopicDiscussion sampleDiscussion2 = new TopicDiscussion()
-        {
-            Topic = new Topic()
+            };
+
+            TopicDiscussion sampleDiscussion2 = new TopicDiscussion()
             {
-                Name = "Bill #987698",
-                Categories = new List<Category>()
-                    {
-                        new Category()
+                Topic = new Topic()
+                {
+                    Name = "Bill #987698",
+                    Categories = new List<Category>()
                         {
-                            Name = "Defense"
+                            new Category()
+                            {
+                                Name = "Defense"
+                            }
                         }
-                    }
-            },
-            Sequence = 2,
-            Talks = new List<Talk>()
+                },
+                Sequence = 2,
+                Talks = new List<Talk>()
                 {
                     new Talk()
                     {
@@ -172,7 +133,65 @@ namespace GM.DatabaseAccess.Tests
                         }
                     }
                 }
-        };
+            };
+
+
+            Section sampleSection1 = new Section()
+            {
+                TopicDiscussions = new List<TopicDiscussion>()
+                {
+                    sampleDiscussion1,
+                    sampleDiscussion2
+                }
+            };
+
+            Section sampleSection2 = new Section()
+            {
+                TopicDiscussions = new List<TopicDiscussion>()
+                {
+                    sampleDiscussion1,
+                    sampleDiscussion2
+                }
+            };
+
+            GovernmentBody bodyWritten = new GovernmentBody()
+            {
+                Name = "U.S. Congress",
+                Country = "U.S.A.",
+                Meetings = new List<Meeting>()
+                {
+                    new Meeting()
+                    {
+                        Name = "Regular Session Meeting",
+                        Date = DateTime.Parse("Nov 1, 1945 10:11 GMT"),
+                        Sections = new List<Section>()
+                        {
+                            sampleSection1,
+                            sampleSection2
+                        },
+                    }
+                }
+            };
+
+
+            // ACT
+
+            using var context = GetAppDbContext.GetInMemoryProvider();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+
+            context.GovernmentBodies.Add(bodyWritten);
+            context.SaveChanges();
+
+            var query = from g in context.GovernmentBodies
+                        select g;
+            var bodyRetrieved = query.SingleOrDefault();
+
+            // ASSERT
+
+            Assert.That(bodyRetrieved, Is.Not.Null);
+            Assert.That(bodyWritten.IsDeepEqual(bodyRetrieved));
+        }
 
     }
 }

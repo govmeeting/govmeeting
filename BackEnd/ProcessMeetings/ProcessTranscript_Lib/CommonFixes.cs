@@ -118,8 +118,10 @@ namespace GM.ProcessTranscript
         // headers to just before the text of the next speaker.
         public void MoveSectionHeaders(ref string text)
         {
-            StringWriter strWriter = new StringWriter();
-            strWriter.NewLine = "\n";
+            StringWriter strWriter = new StringWriter
+            {
+                NewLine = "\n"
+            };
             StringReader strReader = new StringReader(text);
             string nextLine;
             string sectionLine = null;

@@ -29,7 +29,7 @@ namespace GM.DatabaseModel
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public int Length { get; set; }
-        public List<TopicDiscussion> TopicDiscussions { get; set; }
+        public List<Section> Sections { get; set; }
         public long GovernmentBodyId { get; set; }
         public string Language { get; set; }
         public string SourceFilename { get; set; }

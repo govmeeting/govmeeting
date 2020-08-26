@@ -25,7 +25,7 @@ namespace DevelopTranscription
         static void Main()
         {
             // audio extracted from video.
-            string audioFile = AddPath("ToFx.flac");
+            string audioFile = AddPath("ToFix.flac");
 
             // response returned from TranscribeAudio.TranscribeAudioFile().
             // Transcribed, Simplified and Fixed.
