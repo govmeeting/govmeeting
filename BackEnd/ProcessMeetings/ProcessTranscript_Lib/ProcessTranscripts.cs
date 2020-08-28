@@ -1,6 +1,7 @@
 ﻿using GM.FileDataRepositories;
 using System;
 using System.IO;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace GM.ProcessTranscript
 {
@@ -20,9 +21,16 @@ namespace GM.ProcessTranscript
 
         public bool Process(string filename, string meetingFolder, string language)
         {
-            MeetingFolder mf = new MeetingFolder(filename);
-            //mf.SetFields(filename);
-            location = mf.location;
+            //MeetingFolder mf = new MeetingFolder(filename);
+            ////mf.SetFields(filename);
+            //location = mf.location;
+
+            // TODO - FIX THIS KLUDGE
+            // Get the location as a string from the filename.
+            // Skip the starting meetingId and the ending date and extension.
+            int i = filename.IndexOf("_");
+            int j = filename.LastIndexOf("_");
+            location = filename.Substring(i + 1, j - 1);
 
             workFolder = meetingFolder + "\\" + WORK_FOLDER + "\\";
             Directory.CreateDirectory(workFolder);  

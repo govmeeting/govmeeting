@@ -26,10 +26,9 @@ namespace GM.DatabaseAccess.Tests
         {
             // ARRANGE
 
-            GovernmentBody bodyWritten = new GovernmentBody()
+            GovBody bodyWritten = new GovBody()
             {
                 Name = "U.S. Senate",
-                Country = "U.S.A.",
                 Meetings = new List<Meeting>()
             };
 
@@ -40,12 +39,12 @@ namespace GM.DatabaseAccess.Tests
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
-            context.GovernmentBodies.Add(bodyWritten);
+            context.GovBodies.Add(bodyWritten);
             context.SaveChanges();
 
             // ASSERT
 
-            var query = from g in context.GovernmentBodies
+            var query = from g in context.GovBodies
                         select g;
             var bodyRetrieved = query.SingleOrDefault();
 
@@ -154,10 +153,9 @@ namespace GM.DatabaseAccess.Tests
                 }
             };
 
-            GovernmentBody bodyWritten = new GovernmentBody()
+            GovBody bodyWritten = new GovBody()
             {
                 Name = "U.S. Congress",
-                Country = "U.S.A.",
                 Meetings = new List<Meeting>()
                 {
                     new Meeting()
@@ -180,10 +178,10 @@ namespace GM.DatabaseAccess.Tests
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
 
-            context.GovernmentBodies.Add(bodyWritten);
+            context.GovBodies.Add(bodyWritten);
             context.SaveChanges();
 
-            var query = from g in context.GovernmentBodies
+            var query = from g in context.GovBodies
                         select g;
             var bodyRetrieved = query.SingleOrDefault();
 

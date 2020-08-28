@@ -17,11 +17,11 @@ namespace GM.Workflow
 {
     public class WF_ProcessRecordings
     {
-        AppSettings config;
-        RecordingProcess processRecording;
-        IGovBodyRepository govBodyRepository;
-        IMeetingRepository meetingRepository;
-        ILogger<WF_ProcessReceivedFiles> logger;
+        readonly AppSettings config;
+        readonly RecordingProcess processRecording;
+        readonly IGovBodyRepository govBodyRepository;
+        readonly IMeetingRepository meetingRepository;
+        readonly ILogger<WF_ProcessReceivedFiles> logger;
 
         public WF_ProcessRecordings(
             ILogger<WF_ProcessReceivedFiles> _logger,
@@ -51,16 +51,19 @@ namespace GM.Workflow
 
             foreach (Meeting meeting in meetings)
             {
-                doWork(meeting);
+                DoWork(meeting);
             }
         }
 
         // Create a work folder in DATAFILES/PROCESSING and process the recording
-        public void doWork(Meeting meeting)
+        public void DoWork(Meeting meeting)
         {
             // Get the work folder path
-            MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
-            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
+            //MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
+            //string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
+
+            string workfolder = meetingRepository.GetLongName(meeting.Id);
+            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + workfolder;
 
             if (!GMFileAccess.CreateDirectory(workFolderPath))
             {
@@ -85,7 +88,7 @@ namespace GM.Workflow
             }
 
             File.Move(sourceFilePath, destFilePath);
-            processRecording.Process(destFilePath, workFolderPath, meetingFolder.language);
+            processRecording.Process(destFilePath, workFolderPath, meeting.Language);
 
         }
     }

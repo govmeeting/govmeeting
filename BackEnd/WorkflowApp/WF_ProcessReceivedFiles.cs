@@ -23,10 +23,10 @@ namespace GM.Workflow
          *      being uploaded by a registered user
          */
 
-        ILogger<WF_ProcessReceivedFiles> logger;
-        AppSettings config;
-        IGovBodyRepository govBodyRepository;
-        IMeetingRepository meetingRepository;
+        readonly ILogger<WF_ProcessReceivedFiles> logger;
+        readonly AppSettings config;
+        readonly IGovBodyRepository govBodyRepository;
+        readonly IMeetingRepository meetingRepository;
 
         public WF_ProcessReceivedFiles(
             ILogger<WF_ProcessReceivedFiles> _logger,
@@ -48,62 +48,68 @@ namespace GM.Workflow
             // Process any existing files in the folder
             foreach (string f in Directory.GetFiles(incomingPath))
             {
-                CheckFile(f);
+                if (CheckFile(f))
+                {
+                    SendMangerMessage("RECEIVED");
+                }
             }
 
-            DirectoryWatcher watcher = new DirectoryWatcher();
-            // TODO - uncomment next line
+            // TODO - uncomment these lines
+            //DirectoryWatcher watcher = new DirectoryWatcher();
             //watcher.watch(incomingPath, "", CheckFile);
         }
 
-        public void CheckFile(string filename)
+        public bool CheckFile(string filename)
         {
-            // Obtain the meeting work folder path from the input filename.
-            MeetingFolder meetingFolder = new MeetingFolder(filename);
-            if (!meetingFolder.valid)
-            {
-                // This is not a valid name, skip it.
-                string errmsg = $"ProcessIncomingFiles.cs - filename is invalid: {filename}";
-                Console.WriteLine(errmsg);
-                logger.LogError(errmsg);
-                return;
-            }
-
-            // Check if there is a database record for this government body.
-            GovernmentBody govBody = new GovernmentBody(
-                meetingFolder.country,
-                meetingFolder.state,
-                meetingFolder.county,
-                meetingFolder.municipality);
-
-            // If not, add one
-            long govBodyId = govBodyRepository.GetIdOfMatching(govBody);
-            if (govBodyId == -1)
-            {
-                govBodyId = govBodyRepository.Add(govBody);
-            };
-
-            // Check if there is database record for this meeting.
-            Meeting meeting = meetingRepository.Get(govBodyId, DateTime.Parse(meetingFolder.date));
-            // If not, add one
-            if (meeting == null)
-            {
-                meeting = new Meeting();
-                meeting.GovernmentBodyId = govBodyId;
-                meeting.Date = DateTime.Parse(meetingFolder.date);
-                meeting.SourceFilename = filename;
-                meeting.Language = meetingFolder.language;
-                meeting.SourceType = SourceType.Recording;
-                meeting.WorkStatus = WorkStatus.Received;
-                meeting.Approved = false;
-                meetingRepository.Add(meeting);
-            }
-
-            if (!meeting.Approved)
-            {
-                SendMangerMessage("RECEIVED");
-            }
+            return false;
         }
+
+        //###### This is old code. WF_RetrieveOnlineFiles should create the Meeting record. ###### 
+        //
+        //public bool CheckFile(string filename)
+        //{
+        //    // Obtain the meeting work folder path from the input filename.
+        //    MeetingFolder meetingFolder = new MeetingFolder(filename);
+        //    if (!meetingFolder.valid)
+        //    {
+        //        // This is not a valid name, skip it.
+        //        string errmsg = $"ProcessIncomingFiles.cs - filename is invalid: {filename}";
+        //        Console.WriteLine(errmsg);
+        //        logger.LogError(errmsg);
+        //        return false;
+        //    }
+
+        //    // Check if there is a database record for this government body.
+        //    GovernmentBody govBody = new GovernmentBody(
+        //        meetingFolder.country,
+        //        meetingFolder.state,
+        //        meetingFolder.county,
+        //        meetingFolder.municipality);
+
+        //    // If not, add one
+        //    long govBodyId = govBodyRepository.GetIdOfMatching(govBody);
+        //    if (govBodyId == -1)
+        //    {
+        //        govBodyId = govBodyRepository.Add(govBody);
+        //    };
+
+        //    // Check if there is database record for this meeting.
+        //    Meeting meeting = meetingRepository.Get(govBodyId, DateTime.Parse(meetingFolder.date));
+        //    // If not, add one
+        //    if (meeting == null)
+        //    {
+        //        meeting = new Meeting();
+        //        meeting.GovernmentBodyId = govBodyId;
+        //        meeting.Date = DateTime.Parse(meetingFolder.date);
+        //        meeting.SourceFilename = filename;
+        //        meeting.Language = meetingFolder.language;
+        //        meeting.SourceType = SourceType.Recording;
+        //        meeting.WorkStatus = WorkStatus.Received;
+        //        meeting.Approved = false;
+        //        meetingRepository.Add(meeting);
+        //    }
+        //    return meeting.Approved;
+        //}
 
         public void SendMangerMessage(string message)
         {

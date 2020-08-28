@@ -10,17 +10,17 @@ namespace GM.DatabaseAccess
     /// Routines for accessing the database
     /// </summary>
     //public class dBOperations : IDisposable
-    public class dBOperations
+    public class DBOperations
     {
         /// <summary>
         /// The meeting context
         /// </summary>
-        ApplicationDbContext applicationDbContext;
+        readonly ApplicationDbContext applicationDbContext;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="dBOperations" /> class.
+        /// Initializes a new instance of the <see cref="DBOperations" /> class.
         /// </summary>
-        public dBOperations(ApplicationDbContext _applicationDbContext)
+        public DBOperations(ApplicationDbContext _applicationDbContext)
         {
             applicationDbContext = _applicationDbContext;
             //applicationDbContext = new ApplicationDbContext();

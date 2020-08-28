@@ -10,51 +10,51 @@ namespace FakeData
 {
     public class FakeMeeting
     {
-        long mostRecentTPid = 0;
-        int nextSection = 0;
+        long mostRecentTDid = 0;
+        int nextSectionName = 0;
         int talkSequence = 1;
         int tdSequence = 1;
         long governmentBodyId;
-
+        long MeetingId = 0;
 
         public Meeting GenerateMeeting()
         {
-            int msInMinute = 60 * 1000;
-            int minLen = 50 * msInMinute;
-            int maxLen = 90 * msInMinute;
-
-            var rand = new Random();
-            governmentBodyId = rand.Next(300, 399);
+            governmentBodyId = UniqueRandomInt(300, 399);
+            MeetingId = UniqueRandomInt(200, 299);
 
             var fakeSpeaker = new Faker<Speaker>()
-               .RuleFor(x => x.Id, f => f.Random.Number(101, 199))
+               .RuleFor(x => x.Id, f => UniqueRandomInt(101, 199))
                .RuleFor(x => x.Name, f => f.Person.FullName);
 
             var fakeTalk = new Faker<Talk>()
-               .RuleFor(x => x.Id, f => f.Random.Number(2000, 2999))
+               .RuleFor(x => x.Id, f => UniqueRandomInt(2000, 2999))
                .RuleFor(x => x.Speaker, f => fakeSpeaker)
                .RuleFor(x => x.Text, f => Waffle(f, 1))
-               .RuleFor(x => x.TopicDiscussionId, f => mostRecentTPid)
+               .RuleFor(x => x.TopicDiscussionId, f => mostRecentTDid)
                .RuleFor(x => x.Sequence, f => talkSequence++);
 
             var fakeTopic = new Faker<Topic>()
-                .RuleFor(x => x.Id, f => f.Random.Number(400, 499))
+                .RuleFor(x => x.Id, f => UniqueRandomInt(400, 499))
                 .RuleFor(x => x.Name, f => RandomTopicName())
                 .RuleFor(x => x.GovernmentBodyId, f => governmentBodyId);
 
             var fakeDiscussions = new Faker<TopicDiscussion>()
-                .RuleFor(x => x.Id, f => RandomTPid(f))
+                .RuleFor(x => x.Id, f => RandomTPid())
                 .RuleFor(x => x.Topic, f => fakeTopic.Generate(1)[0])
                 .RuleFor(x => x.Talks, f => fakeTalk.Generate(2))
-                .RuleFor(x => x.Sequence, f => tdSequence++);
+                .RuleFor(x => x.Sequence, f => tdSequence++)
+                .RuleFor(x => x.MeetingId, f => MeetingId);
 
             var fakeSection = new Faker<Section>()
-                .RuleFor(x => x.Id, f => f.Random.Number(600, 699))
+                .RuleFor(x => x.Id, f => UniqueRandomInt(600, 699))
                 .RuleFor(x => x.Name, f => GetSectionName())
                 .RuleFor(x => x.TopicDiscussions, f => fakeDiscussions.Generate(2));
 
+            int msInMinute = 60 * 1000;
+            int minLen = 50 * msInMinute;
+            int maxLen = 90 * msInMinute;
             var fakeMeeting = new Faker<Meeting>()
-                .RuleFor(x => x.Id, f => f.Random.Number(200, 299))
+                .RuleFor(x => x.Id, f => MeetingId)
                 .RuleFor(x => x.Name, f => "Town Council")
                 .RuleFor(x => x.Date, f => f.Date.Recent())
                 .RuleFor(x => x.Language, f => "en")
@@ -68,10 +68,10 @@ namespace FakeData
             return meeting;
         }
 
-        long RandomTPid(Faker f)
+        long RandomTPid()
         {
-            long id = f.Random.Number(500, 599);
-            mostRecentTPid = id;
+            long id = UniqueRandomInt(500, 599);
+            mostRecentTDid = id;
             return id;
         }
 
@@ -143,9 +143,9 @@ namespace FakeData
                 "Public Comment",
             };
 
-            if (nextSection > sections.Count) { nextSection = 1; }
+            if (nextSectionName > sections.Count) { nextSectionName = 1; }
 
-            return sections[nextSection++];
+            return sections[nextSectionName++];
         }
 
         // Get specified # of sentences from waffle text
@@ -172,5 +172,19 @@ namespace FakeData
             return output;
         }
 
+        // We want to use random numbers for record Id's.
+        // But we want the numbers to also be unique
+        // so that there is no database conflicts during testing.
+        List<int> randomList = new List<int>();
+        int UniqueRandomInt(int min, int max)
+        {
+            var rand = new Random();
+            int myNumber;
+            do
+            {
+                myNumber = rand.Next(min, max);
+            } while (randomList.Contains(myNumber));
+            return myNumber;
+        }
     }
 }

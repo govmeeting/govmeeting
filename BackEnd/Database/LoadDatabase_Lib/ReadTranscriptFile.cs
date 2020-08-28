@@ -58,24 +58,24 @@ using GM.DatabaseModel;
  * I move that we approve the minutes....
  */
 
-namespace GM.LoadDatabase
-{
-    /// <summary>
-    /// Class for reading a transcript file into an in-memory Meeting object
-    /// </summary>
-    public class ReadTranscriptFile
-    {
-        public GovernmentBody LoadHeadingInfo()
-        {
-            return new GovernmentBody();
-        }
+//namespace GM.LoadDatabase
+//{
+//    /// <summary>
+//    /// Class for reading a transcript file into an in-memory Meeting object
+//    /// </summary>
+//    public class ReadTranscriptFile
+//    {
+//        public GovernmentBody LoadHeadingInfo()
+//        {
+//            return new GovernmentBody();
+//        }
 
-        public Meeting LoadMeetingData(List<Category> categories, List<Topic> topics)
-        {
-            return new Meeting();
-        }
-    }
-}
+//        public Meeting LoadMeetingData(List<Category> categories, List<Topic> topics)
+//        {
+//            return new Meeting();
+//        }
+//    }
+//}
 //        /// <summary>
 //        /// If the data is corrupt, we set hadDataError, but continue processing so that the caller
 //        /// can see all the errors in the file. We return hadDataError to the caller of ReadTranscriptFile

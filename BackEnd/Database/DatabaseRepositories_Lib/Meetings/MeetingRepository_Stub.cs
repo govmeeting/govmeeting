@@ -8,9 +8,9 @@ namespace GM.DatabaseRepositories
 {
     public class MeetingRepository_Stub : IMeetingRepository
     {
-        readonly IGovBodyRepository _govBodyRepository;
+        readonly IOGovBodyRepository _govBodyRepository;
 
-        public MeetingRepository_Stub(IGovBodyRepository govBodyRepository)
+        public MeetingRepository_Stub(IOGovBodyRepository govBodyRepository)
         {
             _govBodyRepository = govBodyRepository;
         }
@@ -62,6 +62,14 @@ namespace GM.DatabaseRepositories
             m.Id = id + 1;
             testMeetings.Add(m);
             return m.Id;
+        }
+
+        // The LongName is the SourcFilename without the extension, prefaced with the meetingId;
+        public string GetLongName(long meetingId)
+        {
+            Meeting m = Get(meetingId);
+            int i = m.SourceFilename.IndexOf(".") - 1;
+            return m.Id.ToString() + "_" + m.SourceFilename.Substring(0, i);
         }
 
         // These are sample meetings for testing. When WebApp is started, test data for these meetings is

@@ -16,7 +16,6 @@ namespace GM.DatabaseModel
         /// </summary>
         public long GovEntityID { get; set; }
         
-        public List<Language> Languages { get; set; }
         public List<Meeting> Meetings { get; set; }
         public List<Topic> Topics { get; set; }
 

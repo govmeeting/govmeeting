@@ -16,17 +16,19 @@ using GM.Configuration;
 
 namespace GM.LoadDatabase
 {
+    /*
+     
     /// <summary>
     /// load and parse a trancript into memory and write the data to the database.
     /// </summary>
     public class LoadDatabase : ILoadDatabase
     {
         private readonly AppSettings _config;
-        private dBOperations dbOps;
+        private DBOperations dbOps;
 
         public LoadDatabase(
             IOptions<AppSettings> config,
-            dBOperations _dbOps
+            DBOperations _dbOps
             )
         {
             _config = config.Value;
@@ -97,4 +99,6 @@ namespace GM.LoadDatabase
         public void Process() { }
         public void LoadAndSave(ReadTranscriptFile readTranscript)  { }
     }
+
+    */
 }

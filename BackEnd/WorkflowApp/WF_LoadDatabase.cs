@@ -11,31 +11,29 @@ using GM.FileDataRepositories;
 using GM.DatabaseRepositories;
 using GM.DatabaseModel;
 using Microsoft.Extensions.Logging;
-using GM.LoadDatabase;
 
 namespace GM.Workflow
 {
     public class WF_LoadDatabase
     {
-
-        AppSettings config;
-        IGovBodyRepository govBodyRepository;
-        IMeetingRepository meetingRepository;
-        ILogger<WF_LoadDatabase> logger;
+        readonly AppSettings config;
+        readonly IMeetingRepository meetingRepository;
+        readonly ILogger<WF_LoadDatabase> logger;
+        //IGovBodyRepository govBodyRepository;
         //ILoadDatabase loadDatabase;
 
         public WF_LoadDatabase(
             ILogger<WF_LoadDatabase> _logger,
             IOptions<AppSettings> _config,
-            IGovBodyRepository _govBodyRepository,
             IMeetingRepository _meetingRepository
-            //ILoadDatabase _loadDatabase
+           //IGovBodyRepository _govBodyRepository,
+           //ILoadDatabase _loadDatabase
            )
         {
             config = _config.Value;
             logger = _logger;
             meetingRepository = _meetingRepository;
-            govBodyRepository = _govBodyRepository;
+            //govBodyRepository = _govBodyRepository;
             //loadDatabase = _loadDatabase;
         }
 
@@ -47,17 +45,18 @@ namespace GM.Workflow
 
             foreach (Meeting meeting in meetings)
             {
-                doWork(meeting);
+                DoWork(meeting);
             }
 
         }
 
         // Load the data into the database
-        public void doWork(Meeting meeting)
+        public void DoWork(Meeting meeting)
         {
             // Get the work folder path
-            MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
-            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
+            //MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
+            string workfolder = meetingRepository.GetLongName(meeting.Id);
+            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + workfolder;
 
             // TODO - This code is old and needs to be re-written
             // loadDatabase.Process(destFilePath, workFolderPath, language);

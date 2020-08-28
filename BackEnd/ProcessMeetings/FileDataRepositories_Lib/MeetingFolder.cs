@@ -24,36 +24,36 @@ namespace GM.FileDataRepositories
 
     public class MeetingFolder
     {  
-        public string filename { get; private set; }
-        public string path { get; private set; }
-        public string location { get; private set; }
-        public string country { get; private set; }
-        public string state { get; private set; }
-        public string county { get; private set; }
-        public string municipality { get; private set; }
-        public string governmentBody { get; private set; }
-        public string language { get; private set; }
-        public string date { get; private set; }
-        public bool valid { get; private set; }
+        public string Filename { get; private set; }
+        public string Path { get; private set; }
+        public string Location { get; private set; }
+        public string Country { get; private set; }
+        public string State { get; private set; }
+        public string County { get; private set; }
+        public string Municipality { get; private set; }
+        public string GovernmentBody { get; private set; }
+        public string Language { get; private set; }
+        public string Date { get; private set; }
+        public bool Valid { get; private set; }
 
 
-        public MeetingFolder(IGovBodyRepository govBodyRepository, Meeting meeting)
+        public MeetingFolder(IOGovBodyRepository govBodyRepository, Meeting meeting)
         {
             try
             {
                 GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
-                language = g.Languages[0].Name;
-                country = g.Country;
-                state = g.State;
-                county = g.County;
-                municipality = g.Municipality;
-                date = date = string.Format("{0:yyyy-MM-dd}", meeting.Date);
+                Language = g.Languages[0].Name;
+                Country = g.Country;
+                State = g.State;
+                County = g.County;
+                Municipality = g.Municipality;
+                Date = Date = string.Format("{0:yyyy-MM-dd}", meeting.Date);
                 SetCalculatedFields();
-                valid = true;
+                Valid = true;
             }
             catch
             {
-                valid = false;
+                Valid = false;
             }
         }
 
@@ -63,63 +63,63 @@ namespace GM.FileDataRepositories
         {
             try
             {
-                date = string.Format("{0:yyyy-MM-dd}", _date);
+                Date = string.Format("{0:yyyy-MM-dd}", _date);
 
-                country = _country;
-                state = _state;
-                county = _county;
-                municipality = _municipality;
-                governmentBody = _governmentBody;
-                language = _language;
+                Country = _country;
+                State = _state;
+                County = _county;
+                Municipality = _municipality;
+                GovernmentBody = _governmentBody;
+                Language = _language;
 
                 //location = country + "_" + state + "_" + county + "_" + municipality + "_" + governmentBody + "_" + language;
                 //filename = location + "_" + date;
                 //path = location + "\\" + date;
                 SetCalculatedFields();
-                valid = true;
+                Valid = true;
             }
             catch
             {
-                valid = false;
+                Valid = false;
             }
         }
 
         private void SetCalculatedFields()
         {
-            location = country + "_" + state + "_" + county + "_" + municipality + "_" + governmentBody + "_" + language;
-            filename = location + "_" + date;
-            path = location + "\\" + date;
+            Location = Country + "_" + State + "_" + County + "_" + Municipality + "_" + GovernmentBody + "_" + Language;
+            Filename = Location + "_" + Date;
+            Path = Location + "\\" + Date;
         }
 
         public MeetingFolder(string filename)
         { 
             try
             {
-                string name = Path.GetFileNameWithoutExtension(filename);
+                string name = System.IO.Path.GetFileNameWithoutExtension(filename);
                 string[] parts = name.Split("_");
 
-                country = parts[0];
-                state = parts[1];
-                county = parts[2];
-                municipality = parts[3];
-                governmentBody = parts[4];
-                language = parts[5];
-                date = parts[6];
+                Country = parts[0];
+                State = parts[1];
+                County = parts[2];
+                Municipality = parts[3];
+                GovernmentBody = parts[4];
+                Language = parts[5];
+                Date = parts[6];
 
                 SetCalculatedFields();
                 //location = name.Substring(0, name.Length - 11);
                 //path = location + "\\" + date;
-                valid = true;
+                Valid = true;
             }
             catch
             {
-                valid = false;
+                Valid = false;
             }
         }
 
         public string MeetingFolderFullPath(string datafiles)
         {
-            return datafiles + "\\" + location + "\\" + date;
+            return datafiles + "\\" + Location + "\\" + Date;
         }
 
         //public MeetingFolder MeetingToMeetingFolder(Meeting meeting)

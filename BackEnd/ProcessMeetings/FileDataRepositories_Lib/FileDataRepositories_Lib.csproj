@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Fixasr\" />
-    <Folder Include="Addtags\" />
     <Folder Include="ViewMeetings\" />
   </ItemGroup>
 

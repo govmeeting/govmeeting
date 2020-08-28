@@ -5,6 +5,8 @@ using GM.DatabaseModel;
 
 namespace GM.LoadDatabase
 {
+    /*
+
     class ReadTranscriptFile_Stub
     {
         public GovernmentBody LoadHeadingInfo()
@@ -40,10 +42,8 @@ namespace GM.LoadDatabase
                 Languages = new List<Language> {new Language {Id = 1, Name = "en"} }
             }
         };
-    }
-}
 
-/*
+
     private addtags: Addtags = {
         data: [
             { speaker: 'Joe', said: 'Waz up', section: 'Invocation', topic: null, showSetTopic: false },
@@ -59,4 +59,11 @@ namespace GM.LoadDatabase
             { speaker: 'Mary', said: '33333', section: null, topic: 'Topic2', showSetTopic: false },
             { speaker: 'Jo', said: '33333333', section: null, topic: null, showSetTopic: false }
         ]
- */
+
+    }
+
+*/
+
+}
+
+

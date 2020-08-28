@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DatabaseModel_Lib
+namespace GM.DatabaseModel
 {
 
 
@@ -25,11 +25,13 @@ namespace DatabaseModel_Lib
     /// <summary>
     /// Government Entity an actual place such as state, county, city, country
     /// </summary>
-    public class GovEntity
+    public class GovLocation
     {
         public long Id { get; set; }
 
         public GovEntityTypes GovEntityType { get; set; }
+
+        public List<Language> Languages { get; set; }
 
         /// <summary>
         /// The list of government bodies associated with this entity

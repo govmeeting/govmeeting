@@ -73,11 +73,13 @@ namespace GM.FileDataRepositories
         private string GetWorkFolderPath(long meetingId)
         {
             Meeting meeting = meetingRepository.Get(meetingId);
-            GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
-            string language = g.Languages[0].Name;
+            //GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
+            //string language = meeting.Language;
 
-            MeetingFolder meetingFolder = new MeetingFolder(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
-            string meetingFolderPath = meetingFolder.path;
+            //MeetingFolder meetingFolder = new MeetingFolder(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
+            //string meetingFolderPath = meetingFolder.path;
+
+            string meetingFolderPath = meetingRepository.GetLongName(meeting.Id);
 
 
             string workFolder = _config.DatafilesPath + @"\PROCESSING\" + meetingFolderPath + @"\" + WORK_FOLDER_NAME;

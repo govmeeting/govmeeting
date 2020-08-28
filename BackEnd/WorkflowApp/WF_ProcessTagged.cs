@@ -12,25 +12,28 @@ using GM.ProcessRecording;
 
 namespace GM.Workflow
 {
+    //################      This code is old and is here only for reference   ##################
+
     public class WF_ProcessTagged
     {
-        AppSettings config;
-        AddtagsRepository addtagsRepository;
-        FixasrRepository fixasrRepository;
-        IGovBodyRepository govBodyRepository;
-        IMeetingRepository meetingRepository;
+        readonly AppSettings config;
+
+        //AddtagsRepository addtagsRepository;
+        //FixasrRepository fixasrRepository;
+        readonly IGovBodyRepository govBodyRepository;
+        readonly IMeetingRepository meetingRepository;
 
         public WF_ProcessTagged(
             IOptions<AppSettings> _config,
-            AddtagsRepository _addtagsRepository,
-            FixasrRepository _fixasrRepository,
+            //AddtagsRepository _addtagsRepository,
+            //FixasrRepository _fixasrRepository,
             IGovBodyRepository _govBodyRepository,
             IMeetingRepository _meetingRepository
             )
         {
             config = _config.Value;
-            addtagsRepository = _addtagsRepository;
-            fixasrRepository = _fixasrRepository;
+            //addtagsRepository = _addtagsRepository;
+            //fixasrRepository = _fixasrRepository;
             meetingRepository = _meetingRepository;
             govBodyRepository = _govBodyRepository;
         }
@@ -66,15 +69,18 @@ namespace GM.Workflow
             FormatConversions formatConversions = new FormatConversions();
             AddtagsView addtags = formatConversions.ConvertFixasrToAddtags(fixasr);
 
-            addtagsRepository.Put(addtags, meeting.Id);
+            //addtagsRepository.Put(addtags, meeting.Id);
 
         }
 
         private void CheckIfTaggingCompleted(Meeting meeting)
         {
             // Get the work folder path
-            MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
-            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
+            //MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
+            //string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
+
+            string workfolder = meetingRepository.GetLongName(meeting.Id);
+            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + workfolder;
 
             // TODO - When all of the tagging for a specific transcript is completed, it should:
             //   Change the WorkStatus field in the Meeting Record from "Tagging" to "Tagged"

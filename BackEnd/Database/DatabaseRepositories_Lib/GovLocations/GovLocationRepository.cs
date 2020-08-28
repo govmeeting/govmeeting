@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using GM.DatabaseModel;
 
 namespace GM.DatabaseRepositories
 {
-    public interface IGovBodyRepository
+    public class GovLocationRepository : IGovLocationRepository
     {
-        GovBody Get(long Id);
     }
 }

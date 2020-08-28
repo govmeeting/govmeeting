@@ -11,7 +11,7 @@ namespace GM.Workflow
     public class WF_RetrieveOnlineFiles
     {
         // TODO - IMPLEMENT THIS CLASS
-        
+
         /* RetrieveOnlineFiles will:
          * Read the meeting schedules for all government bodies in the database.
          * 1. If a current meeting may have taken place, it will:
@@ -25,19 +25,19 @@ namespace GM.Workflow
          *  Files that are uploaded by a registered user are also placed in the RECEIVED folder.
          */
 
-        AppSettings _config;
-        IGovBodyRepository _govBodyRepository;
-        IMeetingRepository _meetingRepository;
+        readonly AppSettings _config;
+        readonly IGovBodyRepository govBodyRepository;
+        readonly IMeetingRepository meetingRepository;
 
         public WF_RetrieveOnlineFiles(
             IOptions<AppSettings> config,
-            IGovBodyRepository govBodyRepository,
-            IMeetingRepository meetingRepository
+            IGovBodyRepository _govBodyRepository,
+            IMeetingRepository _meetingRepository
            )
         {
             _config = config.Value;
-            _govBodyRepository = govBodyRepository;
-            _meetingRepository = meetingRepository;
+            govBodyRepository = _govBodyRepository;
+            meetingRepository = _meetingRepository;
         }
         public void Run()
         {

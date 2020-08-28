@@ -30,6 +30,8 @@ namespace GM.DatabaseAccess
         }
 
         public DbSet<GovernmentBody> GovernmentBodies { get; set; }
+        public DbSet<GovBody> GovBodies { get; set; }
+        public DbSet<GovLocation> GovLocations { get; set; }
         public DbSet<Meeting> Meetings { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Talk> Talks { get; set; }

@@ -76,7 +76,7 @@ namespace GM.WebApp
 
             //####################################
             logger.Info("Add ApplicationDbContext");
-            services.AddTransient<dBOperations>();
+            services.AddTransient<DBOperations>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration["AppSettings:ConnectionString"]
@@ -279,8 +279,8 @@ namespace GM.WebApp
             logger.Info("Add file data repositories");
 
             services.AddSingleton<IViewMeetingRepository, ViewMeetingRepository>();
-            services.AddSingleton<IAddtagsRepository, AddtagsRepository>();
-            services.AddSingleton<IFixasrRepository, FixasrRepository>();
+            //services.AddSingleton<IAddtagsRepository, AddtagsRepository>();
+            //services.AddSingleton<IFixasrRepository, FixasrRepository>();
 
             logger.Info("Add email and sms");
 
@@ -294,7 +294,7 @@ namespace GM.WebApp
 
             logger.Info("Add MeetingFolder");
 
-            services.AddTransient<MeetingFolder>();
+            //services.AddTransient<MeetingFolder>();
 
             logger.Info("Add ValidateReCaptchaAttribute");
 

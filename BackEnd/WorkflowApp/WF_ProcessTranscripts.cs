@@ -28,11 +28,11 @@ namespace GM.Workflow
          * For new PDF files, it calls: ProcessTranscript
         */
 
-        AppSettings config;
-        TranscriptProcess transcriptProcess;
-        IMeetingRepository meetingRepository;
-        IGovBodyRepository govBodyRepository;
-        ILogger<WF_ProcessReceivedFiles> logger;
+        readonly AppSettings config;
+        readonly TranscriptProcess transcriptProcess;
+        readonly IMeetingRepository meetingRepository;
+        readonly IGovBodyRepository govBodyRepository;
+        readonly ILogger<WF_ProcessReceivedFiles> logger;
 
         public WF_ProcessTranscripts(
             ILogger<WF_ProcessReceivedFiles> _logger,
@@ -61,17 +61,19 @@ namespace GM.Workflow
 
             foreach (Meeting meeting in meetings)
             {
-                    doWork(meeting);
+                    DoWork(meeting);
             }
 
         }
 
-        public void doWork(Meeting meeting)
+        public void DoWork(Meeting meeting)
         {
             // Get the work folder path
-            MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
-            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
+            //MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
+            //string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meetingFolder.path;
 
+            string workfolder = meetingRepository.GetLongName(meeting.Id);
+            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + workfolder;
 
             if (!GMFileAccess.CreateDirectory(workFolderPath))
             {
@@ -98,7 +100,7 @@ namespace GM.Workflow
             }
 
 
-            transcriptProcess.Process(destFilePath, workFolderPath, meetingFolder.language);
+            transcriptProcess.Process(destFilePath, workFolderPath, meeting.Language);
         }
     }
 }

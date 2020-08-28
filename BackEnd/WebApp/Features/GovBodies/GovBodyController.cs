@@ -15,17 +15,17 @@ namespace GM.Webapp.Features.Govbodies
     [Route("api/[controller]")]
     public class GovernmentBodyController : Controller
     {
-        public IGovBodyRepository govBodies { get; set; }
+        public IGovBodyRepository GovBodies { get; set; }
 
         public GovernmentBodyController(IGovBodyRepository govBodies)
         {
-            this.govBodies = govBodies;
+            this.GovBodies = govBodies;
         }
 
         [HttpGet("{meetingId}")]
-        public GovernmentBody Get(int govBodyId)
+        public GovBody Get(int govBodyId)
         {
-            GovernmentBody ret = govBodies.Get(govBodyId);
+            GovBody ret = GovBodies.Get(govBodyId);
             return ret;
         }
 
