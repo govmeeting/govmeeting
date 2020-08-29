@@ -60,7 +60,7 @@ namespace FakeData
                 .RuleFor(x => x.Language, f => "en")
                 .RuleFor(x => x.Length, f => f.Random.Number(minLen, maxLen))
                 .RuleFor(x => x.Sections, f => fakeSection.Generate(2))
-                .RuleFor(x => x.GovernmentBodyId, f => governmentBodyId);
+                .RuleFor(x => x.GovBodyId, f => governmentBodyId);
 
 
             Meeting meeting = fakeMeeting.Generate(1)[0];

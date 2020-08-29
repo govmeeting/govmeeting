@@ -9,17 +9,14 @@ namespace GM.DatabaseRepositories
     public class MeetingRepository : IMeetingRepository
     {
         DBOperations dBOps;
-        IOGovBodyRepository _govBodyRepository;
 
-        public MeetingRepository(DBOperations _dBOps, IOGovBodyRepository govBodyRepository)
+        public MeetingRepository(DBOperations _dBOps)
         {
             dBOps = _dBOps;
-            _govBodyRepository = govBodyRepository;
         }
 
         public Meeting Get(long meetingId)
         {
-            //dBOperations dbo = new dBOperations(); 
             Meeting meeting = dBOps.GetMeeting(meetingId);
             return meeting;
         }

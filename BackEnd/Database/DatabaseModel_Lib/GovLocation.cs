@@ -29,6 +29,10 @@ namespace GM.DatabaseModel
     {
         public long Id { get; set; }
 
+        public string Code { get; set; }
+
+        public string Name { get; set; }
+
         public GovEntityTypes GovEntityType { get; set; }
 
         public List<Language> Languages { get; set; }
@@ -38,13 +42,10 @@ namespace GM.DatabaseModel
         /// </summary>
         public List<GovBody> GovBodies { get; set; }
 
-        public string Name { get; set; }
-
         /// <summary>
         /// Our parent GovEntity
         /// </summary>
-        public long GovEntityId;
-
+        public long GovLocationId;
 
     }
 }

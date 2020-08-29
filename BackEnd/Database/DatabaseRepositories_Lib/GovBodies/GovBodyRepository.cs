@@ -11,5 +11,11 @@ namespace GM.DatabaseRepositories
         {
             return new GovBody();
         }
+
+        public long Add(GovBody govBody)
+        {
+            return 0;
+        }
+
     }
 }

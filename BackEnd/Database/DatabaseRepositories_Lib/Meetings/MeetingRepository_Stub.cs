@@ -8,11 +8,9 @@ namespace GM.DatabaseRepositories
 {
     public class MeetingRepository_Stub : IMeetingRepository
     {
-        readonly IOGovBodyRepository _govBodyRepository;
 
-        public MeetingRepository_Stub(IOGovBodyRepository govBodyRepository)
+        public MeetingRepository_Stub()
         {
-            _govBodyRepository = govBodyRepository;
         }
  
         public Meeting Get(long meetingId)
@@ -25,14 +23,14 @@ namespace GM.DatabaseRepositories
         {
             Meeting m = testMeetings.Find( element =>
                 (element.Date == meeting.Date) &&
-                (element.GovernmentBodyId == meeting.GovernmentBodyId)
+                (element.GovBodyId == meeting.GovBodyId)
             );
             return m.Id;
         }
         public Meeting Get(long govBodyId, DateTime datetime)
         {
             Meeting m = testMeetings.Find(element =>
-               (element.GovernmentBodyId == govBodyId) &&
+               (element.GovBodyId == govBodyId) &&
                (element.Date == datetime)
 
             );
@@ -89,7 +87,7 @@ namespace GM.DatabaseRepositories
                 Date = new DateTime(2014, 9, 8),
                 Length = 1810,
                 Sections = null,
-                GovernmentBodyId = 1,
+                GovBodyId = 7,
                 SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2014-09-08.mp4",
                 SourceType = SourceType.Recording,
                 WorkStatus = WorkStatus.Viewing,
@@ -104,7 +102,7 @@ namespace GM.DatabaseRepositories
                 Date = new DateTime(2014, 9, 25),
                 Length = 3550,
                 Sections = null,
-                GovernmentBodyId = 2,
+                GovBodyId = 5,
                 SourceFilename = "USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2014-09-25.pdf",
                 SourceType = SourceType.Transcript,
                 WorkStatus = WorkStatus.Tagging,
@@ -119,7 +117,7 @@ namespace GM.DatabaseRepositories
                 Date = new DateTime(2017, 2, 15),
                 Length = 2109,
                 Sections = null,
-                GovernmentBodyId = 1,
+                GovBodyId = 7,
                 SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15.mp4",
                 SourceType = SourceType.Recording,
                 WorkStatus = WorkStatus.Proofreading,
@@ -137,7 +135,7 @@ namespace GM.DatabaseRepositories
                 // Length = 3466,
                 Length = -1,
                 Sections = null,
-                GovernmentBodyId = 2,
+                GovBodyId = 5,
                 SourceFilename = "USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2017-12-07.pdf",
                 SourceType = SourceType.Transcript,
                 WorkStatus = WorkStatus.Received,
@@ -155,30 +153,12 @@ namespace GM.DatabaseRepositories
                 // Length = 192,
                 Length = -1,
                 Sections = null,
-                GovernmentBodyId = 1,
+                GovBodyId = 7,
                 SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4",
                 SourceType = SourceType.Recording,
                 WorkStatus = WorkStatus.Received,
                 Approved = true
            }
-
-        //     // This meeting is a sample MP4 recording for WorkflowApp to process.
-        //     // Workstatus is set initially to Received, Approved to false
-        //     // This means it needs to be approved before ProcessRecordings will start to process it.
-        //     new Meeting()           // Boothbay Harbor 01/09/2017
-        //     {
-        //         Id = 5,
-        //         Name = "Monthly Regular",
-        //         Date = new DateTime(2017, 1, 09),
-        //         // Length = 192,
-        //         Length = -1,
-        //         TopicDiscussions = null,
-        //         GovernmentBodyId = 1,
-        //         SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4",
-        //         SourceType = SourceType.Recording,
-        //         WorkStatus = WorkStatus.Received,
-        //         Approved = false
-        //    }
 
         };
     }

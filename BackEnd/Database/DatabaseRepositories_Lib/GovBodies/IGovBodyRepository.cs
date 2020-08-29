@@ -8,5 +8,8 @@ namespace GM.DatabaseRepositories
     public interface IGovBodyRepository
     {
         GovBody Get(long Id);
+
+        public long Add(GovBody govBody);
+
     }
 }

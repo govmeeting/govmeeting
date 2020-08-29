@@ -86,11 +86,11 @@ namespace GM.DatabaseAccess
 
         }
 
-        public GovernmentBody GetGovernmentBody(long governmentBodyId)
+        public GovBody GetGovBody(long govBodyId)
         {
-            GovernmentBody gBody;
-            var query = from g in applicationDbContext.GovernmentBodies
-                        where g.Id == governmentBodyId
+            GovBody gBody;
+            var query = from g in applicationDbContext.GovBodies
+                        where g.Id == govBodyId
                         select g;
             gBody = query.SingleOrDefault();
             return gBody;
@@ -100,55 +100,11 @@ namespace GM.DatabaseAccess
         /// Gets the existing government bodies.
         /// </summary>
         /// <returns>list of government bodies</returns>
-        public List<GovernmentBody> GetGovernmentBodies()
+        public List<GovBody> GetGovBodies()
         {
-            return applicationDbContext.GovernmentBodies.ToList();
+            return applicationDbContext.GovBodies.ToList();
         }
 
-        /// <summary>
-        /// Gets an existing government body if it is in the database.
-        /// Otherwise it add the one that is passed
-        /// </summary>
-        /// <param name="govBody">The gov body.</param>
-        /// <returns>existing government body already exists in the database, return that one. Otherwise
-        /// return null so that call will use the one that was passed to this routine.</returns>
-        public GovernmentBody GetOrAddGovernmentBody(GovernmentBody govBody)
-        {
-            GovernmentBody gBody = GetExistingBody(govBody);
-
-            // If the government body is already in the database, use it.
-            if (gBody != null)
-            {
-                return gBody;
-            }
-            else
-            {
-                // Otherwise add the new one that the caller created.
-                // Create an empty meeting list.
-                govBody.Meetings = new List<Meeting>();
-                applicationDbContext.GovernmentBodies.Add(govBody);
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Gets an existing government body in the database.
-        /// </summary>
-        /// <param name="govBody">The gov body.</param>
-        /// <returns>existing government body or null.</returns>
-        public GovernmentBody GetExistingBody(GovernmentBody govBody)
-        {
-            GovernmentBody gBody;
-            var query = from g in applicationDbContext.GovernmentBodies
-                        where g.Name == govBody.Name
-                        && g.Country == govBody.Country
-                        && g.State == govBody.State
-                        && g.County == govBody.County
-                        && govBody.Municipality == govBody.Municipality
-                        select g;
-            gBody = query.SingleOrDefault();
-            return gBody;
-        }
 
         /// <summary>
         /// Gets the meetings for a specified government body.
@@ -158,10 +114,31 @@ namespace GM.DatabaseAccess
         public List<Meeting> GetMeetings(int govBodyId)
         {
             var query = from m in applicationDbContext.Meetings
-                        where m.GovernmentBodyId == govBodyId
+                        where m.GovBodyId == govBodyId
                         select m;
             return query.ToList();
         }
+
+
+        public GovLocation GetGovLocation(long govLocationId)
+        {
+            GovLocation govLocation;
+            var query = from g in applicationDbContext.GovLocations
+                        where g.Id == govLocationId
+                        select g;
+            govLocation = query.SingleOrDefault();
+            return govLocation;
+        }
+
+        /// <summary>
+        /// Gets the existing government locations.
+        /// </summary>
+        /// <returns>list of government locations</returns>
+        public List<GovLocation> GetGovLocation()
+        {
+            return applicationDbContext.GovLocations.ToList();
+        }
+
 
         /// <summary>
         /// Gets the existing categories.

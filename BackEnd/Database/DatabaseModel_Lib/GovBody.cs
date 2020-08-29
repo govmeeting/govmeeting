@@ -9,23 +9,25 @@ namespace GM.DatabaseModel
     public class GovBody
     {
         public long Id { get; set; }
+
         public string Name { get; set; }
 
         /// <summary>
-        ///  Assuming all GovBodies have a GovEntity as a parent
+        ///  All GovBodies have a GovLocation as a parent
         /// </summary>
-        public long GovEntityID { get; set; }
+        public long GovLocationId { get; set; }
         
         public List<Meeting> Meetings { get; set; }
+
         public List<Topic> Topics { get; set; }
 
         public GovBody()
         {
         }
-        public GovBody(string name, int entityID)
+        public GovBody(string name, int locationId)
         {
             Name = name;
-            GovEntityID = entityID;
+            GovLocationId = locationId;
          }
 
     }
