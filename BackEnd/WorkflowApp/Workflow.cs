@@ -14,35 +14,29 @@ namespace GM.Workflow
         //private readonly ITestService _testService;
         private readonly ILogger<WorkflowController> logger;
         private readonly AppSettings config;
-        private readonly WF_RetrieveOnlineFiles wf_retrieveOnlineFiles;
-        private readonly WF_ProcessReceivedFiles wf_processReceivedFiles;
-        private readonly WF_ProcessRecordings wf_processRecordings;
-        private readonly WF_ProcessTranscripts wf_processTranscripts;
-        private readonly WF_ProcessProofread wf_processFixedAsr;
-        private readonly WF_ProcessTagged wf_processTagged;
-        private readonly WF_LoadDatabase wf_loadDatabase;
+        private readonly WF1_RetrieveOnlineFiles wf_retrieveOnlineFiles;
+        private readonly WF3_TranscribeRecordings wf_processRecordings;
+        private readonly WF2_ProcessTranscripts wf_processTranscripts;
+        private readonly WF5_EditTranscriptions wf_processTagged;
+        private readonly WF7_LoadDatabase wf_loadDatabase;
 
         public WorkflowController(
             //ITestService testService,
             IOptions<AppSettings> _config,
             ILogger<WorkflowController> _logger,
-            WF_RetrieveOnlineFiles _wf_retrieveOnlineFiles,
-            WF_ProcessReceivedFiles _wf_processReceivedFiles,
-            WF_ProcessRecordings _wf_processRecordings,
-            WF_ProcessTranscripts _wf_processTranscripts,
-            WF_ProcessProofread _wf_processProofread,
-            WF_ProcessTagged _wf_processTagged,
-            WF_LoadDatabase _wf_loadDatabase
+            WF1_RetrieveOnlineFiles _wf_retrieveOnlineFiles,
+            WF3_TranscribeRecordings _wf_processRecordings,
+            WF2_ProcessTranscripts _wf_processTranscripts,
+            WF5_EditTranscriptions _wf_processTagged,
+            WF7_LoadDatabase _wf_loadDatabase
             )
         {
             //_testService = testService;
             logger = _logger;
             config = _config.Value;
             wf_retrieveOnlineFiles = _wf_retrieveOnlineFiles;
-            wf_processReceivedFiles = _wf_processReceivedFiles;
             wf_processRecordings = _wf_processRecordings;
             wf_processTranscripts = _wf_processTranscripts;
-            wf_processFixedAsr = _wf_processProofread;
             wf_processTagged = _wf_processTagged;
             wf_loadDatabase = _wf_loadDatabase;
         }
@@ -54,17 +48,11 @@ namespace GM.Workflow
             // Retreive online transcripts or recordings
             wf_retrieveOnlineFiles.Run();
 
-            // Process received files
-            wf_processReceivedFiles.Run();
-
             // Process new recordings - auto speech recognition
             wf_processRecordings.Run();
 
             // Processing new transcript files
             wf_processTranscripts.Run();
-
-            // Process the proofread transcripts to get ready for tagging
-            wf_processFixedAsr.Run();
 
             // Process tagged transcripts to be ready for viewing
             wf_processTagged.Run();

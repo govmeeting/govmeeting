@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace GM.ProcessRecording
+namespace GM.Utilities
 
 {
     public class RunCommand

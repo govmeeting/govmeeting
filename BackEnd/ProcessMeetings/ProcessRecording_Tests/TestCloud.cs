@@ -38,6 +38,8 @@ namespace GM.ProcessRecording_Tests
 
         public void TestMoveToCloudAndTranscribe(string language)
         {
+            AudioProcessing audioProcessing = new AudioProcessing();
+
             string baseName = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15";
             string videoFile = config.TestdataPath + "\\" + baseName + ".mp4";
             string outputFolder = config.TestdataPath + "\\" + "TestMoveToCloudAndTranscribe";
@@ -51,12 +53,11 @@ namespace GM.ProcessRecording_Tests
 
 
             // Extract short version
-            SplitRecording splitRecording = new SplitRecording();
-            splitRecording.ExtractPart(videoFile, shortFile, 60, 4 * 60);
+            //SplitRecording splitRecording = new SplitRecording();
+            audioProcessing.ExtractPart(videoFile, shortFile, 60, 4 * 60);
 
             // Extract audio.
-            ExtractAudio extract = new ExtractAudio();
-            extract.Extract(shortFile, audioFile);
+            audioProcessing.Extract(shortFile, audioFile);
 
             // Transcribe
             //TranscribeAudio ta = new TranscribeAudio(_config);

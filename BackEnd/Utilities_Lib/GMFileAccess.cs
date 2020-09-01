@@ -104,14 +104,8 @@ namespace GM.Utilities
 
         public static bool DeleteDirectoryAndContents(string folderName)
         {
-            if (DeleteDirectoryContents(folderName, true))
-            {
-                Directory.Delete(folderName);
-                return true;
-            }
-            return false;
+            return (DeleteDirectoryContents(folderName, true));
         }
-
 
 
         public static bool DeleteDirectoryContents(string folderName, bool deleteSelf = false)
@@ -124,6 +118,12 @@ namespace GM.Utilities
             }
             foreach (DirectoryInfo dir in di.GetDirectories())
             {
+                string dirPath = dir.FullName;
+                if (!IsDirectoryEmpty(dirPath))
+                {
+                    DeleteDirectoryContents(dirPath);
+                }
+
                 if (!DeleteAndMaybeSleep(dir))
                 {
                     return false;
@@ -134,6 +134,11 @@ namespace GM.Utilities
                 return DeleteAndMaybeSleep(di);
             }
             return true;
+        }
+
+        public static bool IsDirectoryEmpty(string path)
+        {
+            return !Directory.EnumerateFileSystemEntries(path).Any();
         }
 
         // When Windows deletes folder recursively, it does so asynchronously.
@@ -147,10 +152,12 @@ namespace GM.Utilities
                 try
                 {
                     dir.Delete(true);
+                    break;
                 }
                 catch
                 {
                     Thread.Sleep(1);
+                    continue;
                 }
             }
             return (maxTries > 0);

@@ -19,7 +19,7 @@ namespace GM.DatabaseAccess.Tests
     public class DbAccessTestTests
     {
         /// <summary>
-        /// Creates the one gov body test.
+        /// Creates one GovBody.
         /// </summary>
         [Test()]
         public void Backend_DbAccess_CreateOneGovBodyTest()
@@ -34,7 +34,7 @@ namespace GM.DatabaseAccess.Tests
 
             // ACT
 
-            //using (var context = new ApplicationDbContext())
+            // We have our choice of using 4 different DB providers. See GetAppDbContext.
             using var context = GetAppDbContext.GetInMemoryProvider();
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
@@ -53,7 +53,7 @@ namespace GM.DatabaseAccess.Tests
         }
 
         /// <summary>
-        /// Creates the one gov body and meeting test.
+        /// Creates one GovBodyand Meeting.
         /// </summary>
         [Test()]
         public void Backend_DbAccess_CreateOneGovBodyAndMeetingTest()

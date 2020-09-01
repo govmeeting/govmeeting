@@ -21,6 +21,8 @@ namespace GM.DatabaseModel
 
         public List<Topic> Topics { get; set; }
 
+        public List<ScheduledMeeting> ScheduledMeetings { get; set; }
+
         public GovBody()
         {
         }

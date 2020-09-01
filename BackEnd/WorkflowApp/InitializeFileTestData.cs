@@ -1,4 +1,5 @@
 using System.IO;
+using GM.EditTranscript;
 using GM.ProcessRecording;
 using GM.Utilities;
 
@@ -58,8 +59,9 @@ namespace GM.Workflow
                         // For testing, use only the first 9 minutes of the video recordings.
                         if (file.EndsWith(".mp4"))
                         {
-                            SplitRecording splitRecording = new SplitRecording();
-                            splitRecording.ExtractPart(source, destination, 0, 540);  // 9 * 60 sec.
+                            //SplitRecording splitRecording = new SplitRecording();
+                            AudioProcessing audioProcessing = new AudioProcessing();
+                            audioProcessing.ExtractPart(source, destination, 0, 540);  // 9 * 60 sec.
                         } else
                         {
                             File.Copy(source, destination);

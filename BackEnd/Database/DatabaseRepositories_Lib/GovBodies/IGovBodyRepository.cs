@@ -11,5 +11,6 @@ namespace GM.DatabaseRepositories
 
         public long Add(GovBody govBody);
 
+        public List<GovBody> FindThoseWithScheduledMeetings();
     }
 }

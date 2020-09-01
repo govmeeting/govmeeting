@@ -90,6 +90,7 @@ namespace DevelopTranscription
             string videofilePath = sample.filepath;
             string objectName = sample.objectname;
             RepeatedField<string> phrases = sample.phrases;
+            AudioProcessing audioProcessing = new AudioProcessing();
 
             string googleCloudBucketName = "govmeeting-transcribe";
 
@@ -112,13 +113,12 @@ namespace DevelopTranscription
             if (useSmallSample)
             {
                 string shortVideoFile = videofilePath.Replace(".mp4", "-3min.mp4");
-                SplitRecording splitRecording = new SplitRecording();
-                splitRecording.ExtractPart(videofilePath, shortVideoFile, 60, 3 * 60);
+                //SplitRecording splitRecording = new SplitRecording();
+                audioProcessing.ExtractPart(videofilePath, shortVideoFile, 60, 3 * 60);
                 videofilePath = shortVideoFile;
             }
 
-            ExtractAudio extract = new ExtractAudio();
-            extract.Extract(videofilePath, audioFile);
+            audioProcessing.Extract(videofilePath, audioFile);
 
             GMFileAccess.SetGoogleCredentialsEnvironmentVariable();
 

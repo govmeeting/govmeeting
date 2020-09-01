@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace GM.ProcessRecording
+namespace GM.EditTranscript
 {
     public class SplitRecording
     {

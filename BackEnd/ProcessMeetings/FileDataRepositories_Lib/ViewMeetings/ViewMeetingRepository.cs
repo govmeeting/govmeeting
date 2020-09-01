@@ -57,33 +57,13 @@ namespace GM.FileDataRepositories
             return result;
         }
 
-        //private ViewtranscriptView GetViewMeetingByPath(string meetingPath)
-        //{
-        //    string meetingString = GMFileAccess.Readfile(meetingPath);
-        //    if (meetingString != null)
-        //    {
-        //        ViewtranscriptView meeting = JsonConvert.DeserializeObject<ViewtranscriptView>(meetingString);
-        //        return meeting;
-        //    } else
-        //    {
-        //        return null;
-        //    }
-        //}
-
         private string GetWorkFolderPath(long meetingId)
         {
             Meeting meeting = meetingRepository.Get(meetingId);
-            //GovernmentBody g = govBodyRepository.Get(meeting.GovernmentBodyId);
-            //string language = meeting.Language;
-
-            //MeetingFolder meetingFolder = new MeetingFolder(g.Country, g.State, g.County, g.Municipality, meeting.Date, g.Name, language);
-            //string meetingFolderPath = meetingFolder.path;
 
             string meetingFolderPath = meetingRepository.GetLongName(meeting.Id);
 
-
             string workFolder = _config.DatafilesPath + @"\PROCESSING\" + meetingFolderPath + @"\" + WORK_FOLDER_NAME;
-            //string workFolderPath = Path.Combine(_config.DatafilesPath, workFolder);
             return workFolder;
         }
 

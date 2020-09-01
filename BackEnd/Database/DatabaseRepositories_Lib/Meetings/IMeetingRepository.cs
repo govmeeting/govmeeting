@@ -21,5 +21,8 @@ namespace GM.DatabaseRepositories
         List<Meeting> FindAll(SourceType? sourceType, WorkStatus? workStatus, bool? approved);
 
         string GetLongName(long meetingId);
+
+        public string GetSourceFilename(long meetingId);
+
     }
 }

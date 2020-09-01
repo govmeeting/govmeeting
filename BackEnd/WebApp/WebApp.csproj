@@ -21,6 +21,7 @@
     <ProjectReference Include="..\Configuration_Lib\Configuration_Lib.csproj" />
     <ProjectReference Include="..\Database\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj" />
     <ProjectReference Include="..\Database\DatabaseRepositories_Lib\DatabaseRepositories_Lib.csproj" />
+    <ProjectReference Include="..\Database\DatabaseRepositories_Stub_Lib\DatabaseRepositories_Stub_Lib.csproj" />
     <ProjectReference Include="..\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
     <ProjectReference Include="..\Utilities_Lib\Utilities_Lib.csproj" />
   </ItemGroup>

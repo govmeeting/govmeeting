@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GM.DatabaseModel;
+using GM.DatabaseRepositories;
 
-namespace GM.DatabaseRepositories
+namespace GM.DatabaseRepositories_Stub
 {
     public class GovLocationRepository_Stub : IGovLocationRepository
     {

@@ -11,37 +11,32 @@ using GM.FileDataRepositories;
 using GM.DatabaseRepositories;
 using GM.DatabaseModel;
 using Microsoft.Extensions.Logging;
+using GM.DatabaseAccess;
 
 namespace GM.Workflow
 {
-    public class WF_LoadDatabase
+    public class WF7_LoadDatabase
     {
+        readonly ILogger<WF7_LoadDatabase> logger;
         readonly AppSettings config;
-        readonly IMeetingRepository meetingRepository;
-        readonly ILogger<WF_LoadDatabase> logger;
-        //IGovBodyRepository govBodyRepository;
-        //ILoadDatabase loadDatabase;
+        readonly IDBOperations dBOperations;
 
-        public WF_LoadDatabase(
-            ILogger<WF_LoadDatabase> _logger,
+        public WF7_LoadDatabase(
+            ILogger<WF7_LoadDatabase> _logger,
             IOptions<AppSettings> _config,
-            IMeetingRepository _meetingRepository
-           //IGovBodyRepository _govBodyRepository,
-           //ILoadDatabase _loadDatabase
+            IDBOperations _dBOperations
            )
         {
             config = _config.Value;
             logger = _logger;
-            meetingRepository = _meetingRepository;
-            //govBodyRepository = _govBodyRepository;
-            //loadDatabase = _loadDatabase;
+            dBOperations = _dBOperations;
         }
 
         // Find all meetings whose tagging is complete and approved.
         public void Run()
         {
 
-            List<Meeting> meetings = meetingRepository.FindAll(null, WorkStatus.Tagged, true);
+            List<Meeting> meetings = dBOperations.FindMeetings(null, WorkStatus.Tagged, true);
 
             foreach (Meeting meeting in meetings)
             {
@@ -55,8 +50,7 @@ namespace GM.Workflow
         {
             // Get the work folder path
             //MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
-            string workfolder = meetingRepository.GetLongName(meeting.Id);
-            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + workfolder;
+            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meeting.WorkFolder;
 
             // TODO - This code is old and needs to be re-written
             // loadDatabase.Process(destFilePath, workFolderPath, language);

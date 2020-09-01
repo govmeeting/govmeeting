@@ -17,5 +17,9 @@ namespace GM.DatabaseRepositories
             return 0;
         }
 
+        public List<GovBody> FindThoseWithScheduledMeetings()
+        {
+            return new List<GovBody>();
+        }
     }
 }

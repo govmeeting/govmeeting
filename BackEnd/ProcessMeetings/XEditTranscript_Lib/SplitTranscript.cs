@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 using GM.ViewModels;
 
-namespace GM.ProcessRecording
+namespace GM.EditTranscript
 {
     /* Split the fixasr JSON object into segments.
      *  {
@@ -19,12 +19,12 @@ namespace GM.ProcessRecording
      */
     public class SplitTranscript
     {
-        CultureInfo culture = CultureInfo.CurrentCulture;
-        string format = "hh\\:mm\\:ss";
+        readonly CultureInfo culture = CultureInfo.CurrentCulture;
+        readonly string format = "hh\\:mm\\:ss";
         int sectionNumber;
-        FixasrView[] fixasrSegment = new FixasrView[2];
+        readonly FixasrView[] fixasrSegment = new FixasrView[2];
 
-       public void split(FixasrView fixasr, string outputFolder, int sectionSize, int overlap, int parts)
+       public void Split(FixasrView fixasr, string outputFolder, int sectionSize, int overlap, int parts)
        {
             fixasrSegment[0] = new FixasrView();
             fixasrSegment[1] = new FixasrView();

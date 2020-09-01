@@ -11,10 +11,12 @@ using GM.GoogleCloud;
 using GM.ProcessTranscript;
 using GM.FileDataRepositories;
 using GM.DatabaseRepositories;
+using GM.DatabaseRepositories_Stub;
 using GM.DatabaseAccess;
 using Microsoft.Extensions.Options;
 using Google.Cloud.Storage.V1;
 using GM.Utilities;
+using GM.DatabaseAccess_Stub;
 
 namespace GM.Workflow
 {
@@ -127,28 +129,29 @@ namespace GM.Workflow
             // add services
             //services.AddTransient<IOptions<AppSettings>>();
             services.AddTransient<ApplicationDbContext>();
-            services.AddTransient<DBOperations>();
+            services.AddTransient<IDBOperations, DBOperationsStub>();
             services.AddTransient<RecordingProcess>();
             services.AddTransient<TranscribeAudio>();
             services.AddTransient<TranscriptProcess>();
             //services.AddTransient<ILoadTranscript, LoadTranscript_Stub>();
-            //services.AddTransient<AddtagsRepository>();
-            //services.AddTransient<FixasrRepository>();
+            services.AddTransient<IFileRepository, FileRepository>();
+
 
             // services.AddTransient<IMeetingRepository, MeetingRepository_Stub>();
             // services.AddTransient<IGovBodyRepository, GovBodyRepository_Stub>();
             services.AddSingleton<IMeetingRepository, MeetingRepository_Stub>();
-            //services.AddSingleton<IoGovBodyRepository, OGovBodyRepository_Stub>();
             services.AddSingleton<IGovBodyRepository, GovBodyRepository_Stub>();
             services.AddSingleton<IGovLocationRepository, GovLocationRepository_Stub>();
 
-            services.AddTransient<WF_RetrieveOnlineFiles>();
-            services.AddTransient<WF_ProcessReceivedFiles>();
-            services.AddTransient<WF_ProcessRecordings>();
-            services.AddTransient<WF_ProcessTranscripts>();
-            services.AddTransient<WF_ProcessTagged>();
-            services.AddTransient<WF_ProcessProofread>();
-            services.AddTransient<WF_LoadDatabase>();
+            // TODO make singletons
+            services.AddTransient<WF1_RetrieveOnlineFiles>();
+            services.AddTransient<WF2_ProcessTranscripts>();
+            services.AddTransient<WF3_TranscribeRecordings>();
+            services.AddTransient<WF4_TagTranscripts>();
+            services.AddTransient<WF5_EditTranscriptions>();
+            services.AddTransient<WF6_ViewMeetings>();
+            services.AddTransient<WF7_LoadDatabase>();
+            services.AddTransient<WF8_SendAlerts>();
 
             // add app
             services.AddTransient<WorkflowController>();

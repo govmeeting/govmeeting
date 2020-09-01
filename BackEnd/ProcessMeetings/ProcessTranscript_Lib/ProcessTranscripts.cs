@@ -5,7 +5,13 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace GM.ProcessTranscript
 {
-    public class TranscriptProcess
+
+    public interface ITranscriptProcess
+    {
+        public string Process(string filename, string meetingFolder, string language);
+    }
+
+    public class TranscriptProcess : ITranscriptProcess
     {
         /*     ProcessTranscript process new transcript files that arrive.
          *     It performs the following steps:
@@ -15,70 +21,68 @@ namespace GM.ProcessTranscript
          *       3. Convert the file to JSON format.
          */
 
-        const string WORK_FOLDER = "PreProcess";
-        string workFolder;
+        const string SUB_WORK_FOLDER = "ProcessTranscript";
+        string subworkFolder;
         string location;
 
-        public bool Process(string filename, string meetingFolder, string language)
+        public string Process(string sourcefilename, string meetingFolder, string language)
         {
-            //MeetingFolder mf = new MeetingFolder(filename);
-            ////mf.SetFields(filename);
-            //location = mf.location;
-
             // TODO - FIX THIS KLUDGE
-            // Get the location as a string from the filename.
-            // Skip the starting meetingId and the ending date and extension.
-            int i = filename.IndexOf("_");
-            int j = filename.LastIndexOf("_");
-            location = filename.Substring(i + 1, j - 1);
+            // We extract the "location" name from the meetingFolder name.
+            // These are the name used for location specific fixes. 
+            // Get meeting folder name, EG: "USA_PA_Philadelphia_Philadelphia_CityCouncil_en__2017-12-07"
+            string meetingFoldername = Path.GetDirectoryName(meetingFolder);
+            // Remove end date to get "location", EG: "USA_PA_Philadelphia_Philadelphia_CityCouncil_en"
+            int i = meetingFoldername.LastIndexOf("_");
+            location = meetingFoldername.Substring(0, i - 1);
 
-            workFolder = meetingFolder + "\\" + WORK_FOLDER + "\\";
-            Directory.CreateDirectory(workFolder);  
-            if (filename.ToLower().EndsWith(".pdf"))
+            subworkFolder = meetingFolder + "\\" + SUB_WORK_FOLDER + "\\";
+            Directory.CreateDirectory(subworkFolder);  
+            if (sourcefilename.ToLower().EndsWith(".pdf"))
             {
-                return ProcessPdf(filename, language);
+                return ProcessPdf(sourcefilename, language);
             }
-            string workfile = workFolder + "2 plain-text.txt";
-            File.Copy(filename, workfile);
+            string workfile = subworkFolder + "2 plain-text.txt";
+            File.Copy(sourcefilename, workfile);
             string text = File.ReadAllText(workfile);
             return TextFixes(text);
         }
 
-        private bool ProcessPdf(string filename, string language)
+        private string ProcessPdf(string filename, string language)
         {
 
             // Step 1 - Copy PDF to meeting workfolder
 
-            string outfile = workFolder + "1 original.pdf";
+            string outfile = subworkFolder + "1 original.pdf";
             File.Copy(filename, outfile);
 
             // Step 2 - Convert the PDF file to text
 
             string text = ConvertPdfToText.Convert(outfile);
-            outfile = workFolder + "2 plain-text.txt";
+            outfile = subworkFolder + "2 plain-text.txt";
             File.WriteAllText(outfile, text);
 
             return TextFixes(text);
         }
 
-        private bool TextFixes(string text)
+        private string TextFixes(string text)
         {
             // Step 3 - Fix the transcript text: Put in common format
 
             TranscriptFixes transcriptFixes = new TranscriptFixes();
-            string transcript = transcriptFixes.Fix(workFolder, text, location);
+            string transcript = transcriptFixes.Fix(subworkFolder, text, location);
 
             // Convert the fixed transcript to JSON
             ConvertToJson.Convert(ref transcript);
-            string outfile = workFolder + "3 ToBeTagged.json";
-            File.WriteAllText(outfile, transcript);
+            //string outfile = workFolder + "3 ToBeTagged.json";
+            //File.WriteAllText(outfile, transcript);
 
-            return true;
+            return transcript;
         }
 
         //private void CreateWorkFolder(string meetingFolder)
         //{
-        //    workFolder = meetingFolder + "\\" + WORK_FOLDER + "\\";
+        //    workFolder = meetingFolder + "\\" + SUB_WORK_FOLDER + "\\";
         //    Directory.CreateDirectory(workFolder);
         //}
 

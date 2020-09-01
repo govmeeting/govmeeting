@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using GM.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using GM.DatabaseModel;
-using GM.DatabaseRepositories;
+using GM.DatabaseAccess;
+
+//using GM.DatabaseRepositories;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,17 +17,17 @@ namespace GM.Webapp.Features.Govbodies
     [Route("api/[controller]")]
     public class GovernmentBodyController : Controller
     {
-        public IGovBodyRepository GovBodies { get; set; }
+        public DBOperations dbOps { get; set; }
 
-        public GovernmentBodyController(IGovBodyRepository govBodies)
+        public GovernmentBodyController(DBOperations _dbOps)
         {
-            this.GovBodies = govBodies;
+            this.dbOps = _dbOps;
         }
 
         [HttpGet("{meetingId}")]
         public GovBody Get(int govBodyId)
         {
-            GovBody ret = GovBodies.Get(govBodyId);
+            GovBody ret = dbOps.GetGovBody(govBodyId);
             return ret;
         }
 

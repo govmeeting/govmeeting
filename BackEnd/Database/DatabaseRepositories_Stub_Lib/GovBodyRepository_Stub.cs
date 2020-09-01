@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GM.DatabaseRepositories;
 
-namespace GM.DatabaseRepositories
+namespace GM.DatabaseRepositories_Stub
 {
     public class GovBodyRepository_Stub : IGovBodyRepository
     {
@@ -22,6 +23,11 @@ namespace GM.DatabaseRepositories
             return id;
         }
 
+        public List<GovBody> FindThoseWithScheduledMeetings()
+        {
+            return new List<GovBody>();
+        }
+
 
         private List<GovBody> testGovBodies = new List<GovBody>
         {
@@ -35,7 +41,15 @@ namespace GM.DatabaseRepositories
             {
                 Id = 1,
                 Name = "City Council",
-                GovLocationId = 5   // Philadelphia
+                GovLocationId = 5,   // Philadelphia
+                ScheduledMeetings = new List<ScheduledMeeting>()
+                {
+                    new ScheduledMeeting()
+                    {
+                        Id = 1,
+                        Date = DateTime.Now.AddDays(-2)
+                    }
+                }
             }
         };
 

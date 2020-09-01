@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using GM.DatabaseModel;
+using GM.DatabaseRepositories;
 
-namespace GM.DatabaseRepositories
+namespace GM.DatabaseRepositories_Stub
 {
     public class MeetingRepository_Stub : IMeetingRepository
     {
@@ -62,12 +63,18 @@ namespace GM.DatabaseRepositories
             return m.Id;
         }
 
-        // The LongName is the SourcFilename without the extension, prefaced with the meetingId;
+        // The LongName is the SourceFilename without the extension + "_" +  meetingId;
+        public string GetSourceFilename(long meetingId)
+        {
+            Meeting m = Get(meetingId);
+            return m.SourceFilename;
+        }
+
         public string GetLongName(long meetingId)
         {
             Meeting m = Get(meetingId);
             int i = m.SourceFilename.IndexOf(".") - 1;
-            return m.Id.ToString() + "_" + m.SourceFilename.Substring(0, i);
+            return m.SourceFilename.Substring(0, i) + "_" + m.Id.ToString();
         }
 
         // These are sample meetings for testing. When WebApp is started, test data for these meetings is
@@ -120,7 +127,7 @@ namespace GM.DatabaseRepositories
                 GovBodyId = 7,
                 SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15.mp4",
                 SourceType = SourceType.Recording,
-                WorkStatus = WorkStatus.Proofreading,
+                WorkStatus = WorkStatus.Editing,
                 Approved = false
 
            },

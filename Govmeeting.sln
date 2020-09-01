@@ -129,7 +129,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\frontend-build.yaml = .github\workflows\frontend-build.yaml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeData", "Utilities\FakeData\FakeData.csproj", "{DB437061-2DB2-4F05-86B7-4BE6132D839E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeData", "Utilities\FakeData\FakeData.csproj", "{DB437061-2DB2-4F05-86B7-4BE6132D839E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EditTranscript_Lib", "BackEnd\ProcessMeetings\EditTranscript_Lib\EditTranscript_Lib.csproj", "{51F03EAE-55FE-47D0-A3F7-9F98D05FE6DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseRepositories_Stub_Lib", "BackEnd\Database\DatabaseRepositories_Stub_Lib\DatabaseRepositories_Stub_Lib.csproj", "{7152DD43-7946-41CC-8A47-BCDAEC1DC9A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseAccess_Stub_Lib", "BackEnd\Database\DatabaseAccess_Stub_Lib\DatabaseAccess_Stub_Lib.csproj", "{5B5FB4D6-1B7C-429C-AA98-84473D93EDE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -251,6 +257,18 @@ Global
 		{DB437061-2DB2-4F05-86B7-4BE6132D839E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB437061-2DB2-4F05-86B7-4BE6132D839E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB437061-2DB2-4F05-86B7-4BE6132D839E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51F03EAE-55FE-47D0-A3F7-9F98D05FE6DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51F03EAE-55FE-47D0-A3F7-9F98D05FE6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51F03EAE-55FE-47D0-A3F7-9F98D05FE6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51F03EAE-55FE-47D0-A3F7-9F98D05FE6DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7152DD43-7946-41CC-8A47-BCDAEC1DC9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7152DD43-7946-41CC-8A47-BCDAEC1DC9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7152DD43-7946-41CC-8A47-BCDAEC1DC9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7152DD43-7946-41CC-8A47-BCDAEC1DC9A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B5FB4D6-1B7C-429C-AA98-84473D93EDE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B5FB4D6-1B7C-429C-AA98-84473D93EDE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B5FB4D6-1B7C-429C-AA98-84473D93EDE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B5FB4D6-1B7C-429C-AA98-84473D93EDE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -291,6 +309,9 @@ Global
 		{57FFD9FE-9835-4078-8137-5F476DD9E85E} = {AFDC8594-CA67-4E2A-BB1B-A4C3AAE06C6E}
 		{EAC5A1D2-FEF1-4FE0-9B1D-99E7CE0B1150} = {57FFD9FE-9835-4078-8137-5F476DD9E85E}
 		{DB437061-2DB2-4F05-86B7-4BE6132D839E} = {6B15424B-85AE-44A7-BDB0-A964CC25188E}
+		{51F03EAE-55FE-47D0-A3F7-9F98D05FE6DC} = {C5D796A1-3CBE-49F5-BD47-3BB29027F878}
+		{7152DD43-7946-41CC-8A47-BCDAEC1DC9A5} = {22F19757-4172-4C0A-8B4C-D5059022F7E4}
+		{5B5FB4D6-1B7C-429C-AA98-84473D93EDE1} = {22F19757-4172-4C0A-8B4C-D5059022F7E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {577CF991-85C7-44E5-A640-AE87641C3A8D}

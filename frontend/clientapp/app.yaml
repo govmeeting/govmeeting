@@ -1,0 +1,13 @@
+# This is for deploying to Google App Engine
+
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /
+  static_files: clientapp/index.html
+  upload: clientapp/index.html
+   
+- url: /
+  static_dir: clientapp

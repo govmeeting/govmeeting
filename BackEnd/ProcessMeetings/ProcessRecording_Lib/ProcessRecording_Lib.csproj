@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Configuration_Lib\Configuration_Lib.csproj" />
+    <ProjectReference Include="..\EditTranscript_Lib\EditTranscript_Lib.csproj" />
     <ProjectReference Include="..\ViewModels_Lib\ViewModels_Lib.csproj" />
     <ProjectReference Include="..\..\Online\GoogleCloud_Lib\GoogleCloud_Lib.csproj" />
   </ItemGroup>

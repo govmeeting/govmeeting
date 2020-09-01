@@ -124,18 +124,11 @@ Pseudo code is given below for the components
     <li> Check schedule(s) for meeting(s) to retrieve</li>
     <li> Retrieve either recording or transcript file</li>
     <li> Put file in DATAFILES\Received folder</li>
-    </ul>
-  <li> Files may also be placed in the Received folder by user upload.</li>
-  </ul>
-<li> ProcessReceivedFiles</li>
-  <ul>
-  <li> For files in DATAFILES\Received and database record does not exist:</li>
-    <ul>
-    <li> Determine file type</li>
     <li> Create database record</li> 
     <li> set status=received, approved=false</li>
     <li> Send manager(s) message: "Received"</li>
     </ul>
+  <li> Files may also be placed in the Received folder by user upload.</li>
   </ul>
 <li> TranscribeRecordings</li>
   <ul>
