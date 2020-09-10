@@ -26,6 +26,7 @@ using GM.WebApp.Services;
 using GM.Utilities;
 using Microsoft.Extensions.Hosting;
 using GM.DatabaseRepositories_Stub;
+using GM.DatabaseAccess_Stub;
 
 namespace GM.WebApp
 {
@@ -267,20 +268,16 @@ namespace GM.WebApp
 
             if (UseDatabaseStubs)
             {
-                services.AddSingleton<IGovBodyRepository, GovBodyRepository_Stub>();
-                services.AddSingleton<IMeetingRepository, MeetingRepository_Stub>();
+                services.AddSingleton<IDBOperations, DBOperationsStub>();
             }
             else
             {
-                services.AddSingleton<IGovBodyRepository, GovBodyRepository>();
-                services.AddSingleton<IMeetingRepository, MeetingRepository>();
+                services.AddSingleton<IDBOperations, DBOperations>();
             }
 
             logger.Info("Add file data repositories");
 
             services.AddSingleton<IViewMeetingRepository, ViewMeetingRepository>();
-            //services.AddSingleton<IAddtagsRepository, AddtagsRepository>();
-            //services.AddSingleton<IFixasrRepository, FixasrRepository>();
 
             logger.Info("Add email and sms");
 

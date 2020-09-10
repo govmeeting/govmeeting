@@ -23,6 +23,7 @@ namespace GM.DatabaseAccess
         public long Add(GovLocation govLocation);
         public long Add(GovBody govBody);
         public List<Meeting> FindMeetings(SourceType? sourceType, WorkStatus? workStatus, bool? approved);
+        public List<GovBody> FindGovBodiesWithScheduledMeetings();
     }
 
 
@@ -202,5 +203,12 @@ namespace GM.DatabaseAccess
             return query.ToList();
         }
         */
+
+        public List<GovBody> FindGovBodiesWithScheduledMeetings()
+        {
+            // TODO - implement
+            return new List<GovBody>();
+        }
+
     }
 }

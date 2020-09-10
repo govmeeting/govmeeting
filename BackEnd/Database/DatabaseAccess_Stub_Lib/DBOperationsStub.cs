@@ -100,7 +100,11 @@ namespace GM.DatabaseAccess_Stub
             return meetings;
         }
 
-
+        public List<GovBody> FindGovBodiesWithScheduledMeetings()
+        {
+            // TODO - implement
+            return new List<GovBody>();
+        }
 
         //// /////////////////// STUB DATA ///////////////////////////////////
 

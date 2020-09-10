@@ -38,7 +38,6 @@ namespace GM.Workflow
             config = _config.Value;
             transcriptProcess = _transcriptProcess;
             dBOperations = _dBOperations;
-            //fileRepository = _fileRepository;
         }
 
         public void Run()
@@ -58,23 +57,13 @@ namespace GM.Workflow
         private void DoWork(Meeting meeting)
         {
             string workFolderPath = Path.Combine(config.DatafilesPath, meeting.WorkFolder);
-            //string sourceFilePath = Path.Combine(workFolderPath, meeting.SourceFilename);
             string processedFilePath = Path.Combine(workFolderPath, WorkfileNames.processedTranscript);
 
-            // If the workfolder exists, it most likely means the system crashed while trying to
-            // process this meeting earlier. Remove the folder and try again.
-            //if (Directory.Exists(workFolderPath))
-            //{
-            //    GMFileAccess.DeleteDirectoryAndContents(workFolderPath);
-            //}
-
-            // Wrap the file and database operations in the same transaction
+            // For wrapping the file and database operations in the same transaction
             TxFileManager fileMgr = new TxFileManager();
+
             using (TransactionScope scope = new TransactionScope())
             {
-
-                //fileMgr.CreateDirectory(workFolderPath);
-
                 meeting.WorkStatus = WorkStatus.Processing;
                 meeting.Approved = false;
 
@@ -87,7 +76,6 @@ namespace GM.Workflow
 
             using (TransactionScope scope = new TransactionScope())
             {
-
                 fileMgr.WriteAllText(processedFilePath, processedOutput);
 
                 meeting.WorkStatus = WorkStatus.Processed;

@@ -7,6 +7,7 @@ using GM.DatabaseRepositories;
 using GM.DatabaseModel;
 using System.Collections.Generic;
 using System.ComponentModel;
+using GM.DatabaseAccess;
 
 namespace GM.Workflow
 {
@@ -33,23 +34,20 @@ namespace GM.Workflow
          */
 
         readonly AppSettings config;
-        readonly IGovBodyRepository govBodyRepository;
-        readonly IMeetingRepository meetingRepository;
+        readonly IDBOperations dBOperations;
 
         public WF1_RetrieveOnlineFiles(
             IOptions<AppSettings> _config,
-            IGovBodyRepository _govBodyRepository,
-            IMeetingRepository _meetingRepository
+            IDBOperations _dBOperations
            )
         {
             config = _config.Value;
-            govBodyRepository = _govBodyRepository;
-            meetingRepository = _meetingRepository;
+            dBOperations = _dBOperations;
         }
 
         public void Run()
         {
-            List<GovBody> govBodies = govBodyRepository.FindThoseWithScheduledMeetings();
+            List<GovBody> govBodies = dBOperations.FindGovBodiesWithScheduledMeetings();
 
             foreach (GovBody govBody in govBodies)
             {
@@ -62,15 +60,5 @@ namespace GM.Workflow
 
         }
 
-            //string incomingPath = _config.DatafilesPath + @"\RECEIVED";
-            //Directory.CreateDirectory(incomingPath);
-            
-            //RetrieveNewFiles(incomingPath);
-
-
-        //public void RetrieveNewFiles(string incomingPath)
-        //{
-        //    // throw new NotImplementedException();
-        //}
     }
 }
