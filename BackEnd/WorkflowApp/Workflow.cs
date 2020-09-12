@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 using GM.Configuration;
 //using GM.LoadDatabase;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
 
     public class WorkflowController

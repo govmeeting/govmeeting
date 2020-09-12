@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
     public static class WorkfileNames
     {

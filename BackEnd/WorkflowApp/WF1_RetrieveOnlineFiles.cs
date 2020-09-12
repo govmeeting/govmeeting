@@ -8,8 +8,10 @@ using GM.DatabaseModel;
 using System.Collections.Generic;
 using System.ComponentModel;
 using GM.DatabaseAccess;
+using Microsoft.Extensions.Logging;
+using System.Linq;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
     public class WF1_RetrieveOnlineFiles
     {
@@ -33,14 +35,17 @@ namespace GM.Workflow
          *      * a file being uploaded by a registered user with appropriate rights.
          */
 
+        readonly ILogger<WF1_RetrieveOnlineFiles> logger;
         readonly AppSettings config;
         readonly IDBOperations dBOperations;
 
         public WF1_RetrieveOnlineFiles(
+            ILogger<WF1_RetrieveOnlineFiles> _logger,
             IOptions<AppSettings> _config,
             IDBOperations _dBOperations
            )
         {
+            logger = _logger;
             config = _config.Value;
             dBOperations = _dBOperations;
         }
@@ -57,6 +62,12 @@ namespace GM.Workflow
 
         private void DoWork(GovBody govBody)
         {
+            List<ScheduledMeeting> scheduled = govBody.ScheduledMeetings;
+
+            // Get all meetings that have should occured
+            IEnumerable<ScheduledMeeting> results = scheduled.Where(
+                s => s.Date < (DateTime.Now));
+
 
         }
 

@@ -57,9 +57,9 @@ namespace GM.FileDataRepositories
         {
             Meeting meeting = dBOperations.GetMeeting(meetingId);
 
-            string workfolderName = meeting.WorkFolder;
+            string workfolderName = dBOperations.GetWorkFolderName(meeting);
 
-            string workFolder = _config.DatafilesPath + @"\PROCESSING\" + workfolderName + @"\" + SUB_WORK_FOLDER;
+            string workFolder = _config.DatafilesPath  + workfolderName + @"\" + SUB_WORK_FOLDER;
             return workFolder;
         }
 

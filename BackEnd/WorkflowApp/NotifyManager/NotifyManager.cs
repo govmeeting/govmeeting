@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
 
     /* Notify manager if action approval is needed to proceed with workflow.

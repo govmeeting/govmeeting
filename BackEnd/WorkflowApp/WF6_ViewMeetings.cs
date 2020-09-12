@@ -13,7 +13,7 @@ using GM.Utilities;
 using GM.EditTranscript;
 using GM.DatabaseAccess;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
     /* The final meeting transctipt is ready for viewing, when either:
      *  1.  An original transcript has been processed and tagged.

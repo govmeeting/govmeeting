@@ -24,6 +24,7 @@ namespace GM.DatabaseAccess
         public long Add(GovBody govBody);
         public List<Meeting> FindMeetings(SourceType? sourceType, WorkStatus? workStatus, bool? approved);
         public List<GovBody> FindGovBodiesWithScheduledMeetings();
+        public string GetWorkFolderName(Meeting meeting);
     }
 
 
@@ -208,6 +209,12 @@ namespace GM.DatabaseAccess
         {
             // TODO - implement
             return new List<GovBody>();
+        }
+
+        public string GetWorkFolderName(Meeting meeting)
+        {
+            GovBody govbody = GetGovBody(meeting.GovBodyId);
+            return govbody.LongName + "_" + meeting.Date;
         }
 
     }

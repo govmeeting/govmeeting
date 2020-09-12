@@ -35,7 +35,7 @@ namespace GM.DatabaseModel
         public long GovBodyId { get; set; }
         public string Language { get; set; }
         public string SourceFilename { get; set; }
-        public string WorkFolder { get; set; }
+        //public string WorkFolder { get; set; }
         public SourceType SourceType { get; set; }
         public WorkStatus WorkStatus { get; set; }
         public bool Approved { get; set; }

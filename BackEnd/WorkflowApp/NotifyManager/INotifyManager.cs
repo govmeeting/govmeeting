@@ -1,4 +1,4 @@
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
     public interface INotifyManager {
         void Run();

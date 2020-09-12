@@ -12,6 +12,11 @@ namespace GM.DatabaseModel
 
         public string Name { get; set; }
 
+        // The "LongName" consists of the names of its GovLocation ancestors and itself, separated by "_".
+        // This could be built by traversing its ancestors, but for convenience, it's a property.
+        // Example: "USA_NJ_Essex_Nutley_TownCouncil"
+        public string LongName { get; set; }
+
         /// <summary>
         ///  All GovBodies have a GovLocation as a parent
         /// </summary>

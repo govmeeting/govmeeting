@@ -10,7 +10,7 @@ using GM.DatabaseModel;
 using Microsoft.Extensions.Logging;
 using GM.DatabaseAccess;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
     public class WF8_SendAlerts
 

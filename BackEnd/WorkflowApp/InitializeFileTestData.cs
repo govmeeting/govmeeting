@@ -3,7 +3,7 @@ using GM.EditTranscript;
 using GM.ProcessRecording;
 using GM.Utilities;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
     public static class InitializeFileTestData {
         public static string CopyTestData(string testfilesPath, string datafilesPath, bool deleteProcessing)

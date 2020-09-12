@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using NLog;
 using NLog.Web;
 using GM.Configuration;
@@ -18,7 +19,7 @@ using Google.Cloud.Storage.V1;
 using GM.Utilities;
 using GM.DatabaseAccess_Stub;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
     /* Eventually This may become part of WebApp. It is in a separate proceess
      * for development. We want to start it in the same way that WebApp will start it.
@@ -82,9 +83,9 @@ namespace GM.Workflow
             var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
             // add configured instance of logging
-            services.AddSingleton(new LoggerFactory()
-                .AddConsole()
-                .AddDebug());
+            //services.AddSingleton(new LoggerFactory()
+            //    .AddConsole()
+            //    .AddDebug());
 
             // add logging
             services.AddLogging();

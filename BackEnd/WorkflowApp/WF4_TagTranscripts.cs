@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 using GM.Utilities;
 using GM.DatabaseAccess;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
     public class WF4_TagTranscripts
     {
@@ -64,7 +64,8 @@ namespace GM.Workflow
 
         public void DoWork(Meeting meeting)
         {
-            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meeting.WorkFolder;
+            string workfolderName = dBOperations.GetWorkFolderName(meeting);
+            string workFolderPath = config.DatafilesPath + workfolderName;
 
             if (!GMFileAccess.CreateDirectory(workFolderPath))
             {

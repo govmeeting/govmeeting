@@ -10,7 +10,7 @@ using GM.DatabaseModel;
 using GM.EditTranscript;
 using GM.DatabaseAccess;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
 
     public class WF5_EditTranscriptions
@@ -79,7 +79,8 @@ namespace GM.Workflow
 
         private void CheckIfEditingCompleted(Meeting meeting)
         {
-            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meeting.WorkFolder;
+            string workfolderName = dBOperations.GetWorkFolderName(meeting);
+            string workFolderPath = config.DatafilesPath + workfolderName;
 
             // TODO - When all of the tagging for a specific transcript is completed, it should:
             //   Change the WorkStatus field in the Meeting Record from "Tagging" to "Tagged"

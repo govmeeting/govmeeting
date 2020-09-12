@@ -106,6 +106,13 @@ namespace GM.DatabaseAccess_Stub
             return new List<GovBody>();
         }
 
+        public string GetWorkFolderName(Meeting meeting)
+        {
+            GovBody govbody = GetGovBody(meeting.GovBodyId);
+            return govbody.LongName + "_" + meeting.Date;
+        }
+
+
         //// /////////////////// STUB DATA ///////////////////////////////////
 
         //// /////////////////// GovBody /////////////////////////////

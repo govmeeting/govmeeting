@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
     public class DirectoryWatcher {
 

@@ -2,40 +2,66 @@
 
 # Contents
 
-- <a href="about?id=setup#InstallTools"> Install tools and clone repository </a>
-- <a href="about?id=setup#DevelopVsCode"> Develop with VsCode </a>
-- <a href="about?id=setup#DevelopVS"> Develop with Visual Studio </a>
-- <a href="about?id=setup#DevelopOther"> Develop on other platforms </a>
-- <a href="about?id=setup#Database"> Database </a>
-- <a href="about?id=setup#GoogleCloud"> Google Cloud Platform </a>
-- <a href="about?id=setup#GoogleApi"> Google API Keys </a>
+- <a href="#QuickStart"> Quick Start </a>
+- <a href="#DevelopVsCode"> Develop with VsCode </a>
+- <a href="#DevelopVS"> Develop with Visual Studio </a>
+- <a href="#DevelopOther"> Develop on other platforms </a>
+- <a href="#Database"> Database </a>
+- <a href="#GoogleCloud"> Google Cloud Platform </a>
+- <a href="#GoogleApi"> Google API Keys </a>
 
 ---
 
-<a name="InstallTools"></a>
+<a name="QuickStart"></a>
 
-# Install tools and clone repository <br/>
+# Quick Start <br/>
 
-<a href="about?id=setup#Contents"> [Contents] </a>
+<a href="#QuickStart"> [Contents] </a>
 
-- Install git. <a href="https://gitforwindows.org"> Git for Windows </a>, <a href="https://git-scm.com/download/mac"> Git for Mac </a>
+## Clone project
+
+- Install git: <a href="https://gitforwindows.org"> Git for Windows </a>, <a href="https://git-scm.com/download/mac"> Git for Mac </a>
+- > git clone https://github.com/govmeeting/govmeeting.git
+
+But to contribute, it's better to fork the project at https://github.com/govmeeting/govmeeting and clone your fork.
+
+## Build and run Angular client
+
 - Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
+- > cd govmeeting/frontend/clientapp
+- > npm install
+- > npm start
+- Open brower to localhost:4200.
+
+## Build and run .Net Web API server
+
 - Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
-- Clone or download the project from <a href="https://github.com/govmeeting/govmeeting"> Github. </a> Preferably fork the project and clone your fork.
-- Check installation:
-  - cd frontend/clientapp
-  - npm install; npm start
-  - [ Open a browser to "localhost:4200" ]
+- Leave Angular client running, but close browser.
+- > cd govmeeting/BackEnd/WebApp
+- > dotnet build
+- > dotnet run bin\Debug\netcoreapp3.1/WebApp.dll
+- Browser will automatically open to localhost:5000.
+
+## Build all .Net projects
+
+- > cd govmeeting
+- > dotnet build
+
+Besides the Web API server, there are the following .Net projects:
+
+- WorkflowApp - This backend process retrieves and processes online transcripts and videos
+  of meetings, extracts the data and loads it into the database.
+- Utility programs - Under govmeeting/utilities are useful programs for development.
 
 ---
 
 <a name="DevelopVsCode"></a>
 
-# Develop with VsCode <br/>
+# Developing with Visual Studio Code <br/>
 
 <a href="about?id=setup#Contents"> [Contents] </a>
 
-## Install VsCode
+## Install and setup VsCode
 
 - Install <a href="https://code.visualstudio.com/download"> Visual Studio Code </a> and start it.
 - Install these extensions using the extensions panel on the left:
@@ -45,79 +71,67 @@
   - "Todo Tree" by Gruntfuggly - shows TODO lines in code (optional)
   - "Powershell" by Microsoft - for debugging Powershell build scripts (optional)
 
-## Run clientapp standalone
+## Build/run/debug Angular client
 
 - Open the project folder in VsCode
-- Install NPM packages:
-  - Open a terminal pane in VsCode
-  - cd frontend/clientapp
-  - npm install
-- Complile and run clientapp
-  - npm start
-- In the debug panel, set launch configuration "clientapp Standalone"
-- Press F5 (debug) or Ctrl-F5 (run without debugging)
-  - OR open a browser to localhost:4200
+- Open a terminal pane
+- > cd frontend/clientapp
+- > npm install
+- > npm start
+- To debug, set debug launch configuration to "clientapp Standalone"and press F5.
 
 By default, clientapp will call stub services instead of calling the WebApp API.
 
-## Run clientapp & WebApp
+## Build/run/debug .Net Web API server
 
-- Download the test data from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> Put them in a sibling folder to the project named "TESTDATA". These are media files that should not be committed to Github. You can also download them from <a hfre="https://1drv.ms/u/s!AqN2hZ8PFCAag_pd_5aXKqav1FFN_Q?e=YOAjGV"> OneDrive. </a>
+- Select menu item View -> Command Pallete (or ctrl-shift-P)
+- Select "Tasks: Run Task" -> "build-webapp"
+- In the debug panel, set launch configuration "WebApp"
+- Press F5 (debug) or Ctrl-F5 (run without debugging)
+
+## Debug Angular client and .Net server together
+
 - In frontend/clientapp/app.module.ts, change "isAspServerRunning" from false to true.
-- Build projects:
-  - Ctrl-Shift-P
-  - Select "Tasks: Run Task"
-  - Select "build-webapp" or "Build All"
-- Start clientapp (if it's not already running)
-  - cd frontend/clientapp
-  - npm start
+- Start clientapp as above
 - In the debug panel, set launch configuration "WebApp & clientapp"
 - Press F5 (debug) or Ctrl-F5 (run without debugging)
-  - Chrome browser will open. Ignore temporary message "Site can't be reached" and wait for clientapp to display.
+- Chrome browser will open. Ignore temporary message "Site can't be reached" and wait for clientapp to display.
 
-### Notes
+## Notes
 
-"build-webapp" builds WebApp.
+- "Tasks: Run Task" -> "build-webapp" builds WebApp.
+- "Tasks: Run Task" -> "Build All" builds all .Net projects.
+- Before the builds, NuGet packages are installed. Check each terminal window for errors and re-run if needed. NuGet packages are installed aysnchronously and there is a known race condition bug.
+- When "isAspServerRunning" is set to true, clientapp call the WebApp API instead of the stub services.
+- clientapp is served by the webpack-dev-server. WebApp uses the Kestrel server. Kestrel proxies clientapp requests to the webpack-dev-server.
 
-"Build All" builds all projects. Like build-webapp, it installs NuGet packages as needed. Check each terminal window for errors and re-run if needed. There is a known race condition bug in restoring multiple NuGet packages aysnchronously.
-
-Setting "isAspServerRunning" to true, tells clientapp to call the WebApp API instead of the stub services.
-
-The sub-folders on Google drive are for testing WebApp. The files are for testing WorkflowApp.
-
-clientapp is served by the webpack-dev-server. WebApp uses the Kestrel server. But Kestrel proxies clientapp requests to the webpack-dev-server.
-
-## Run WorkflowApp
+# Run WorkflowApp
 
 - Install <a href="https://www.ffmpeg.org"> FFmpeg. </a>. This is for processing audio & video files.
 - Download the test files from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a>
 - In the debug panel, set launch configuration "WorkflowApp"
 - Press F5 (debug) or Ctrl-F5 (run without debugging)
 
-### Notes
+## Notes
 
 When WorkflowApp first starts, it creates a folder "DATAFILES" and within it the following 3 sub-folders:
 
-- RECEIVED - Any files placed within this folder will be automatically processed.
-- PROCESSING - This contains work folders for processing.
-- COMPLETED - Completed files are placed here.
-
-The following setting within appsettings.json tells it to copy test files to DATAFILES/RECEIVED. The test files include a PDF transcript and an MP4 recording of sample meeetings.
+The following setting within appsettings.json tells it to copy test files to DATAFILES. The test files include a sample PDF transcript and an MP4 recording of meeetings.
 
         "InitializeWithTestData": true,
 
-WorkflowApp pre-processes the transcript and produces a JSON file with the extracted data. If you have set up a <a href="about?id=setup#GoogleCloud">Google Cloud account, </a> it will transcribe the MP4 recording. You will find the results of both in the DATAFILES\PROCESSING folder.
+WorkflowApp pre-processes the transcript and produces a JSON file with the extracted data. If you have set up a <a href="about?id=setup#GoogleCloud">Google Cloud account, </a> it will transcribe the MP4 recording. You will find the results of both in the DATAFILES folder.
 
-You will note that the initial MP4 transcript and its transcription are spilt into 3-minute work segments. This is to allow multiple volunteers to work simultaneously on proofreading the transcription.
+You will note that the initial MP4 transcript and its transcription are split into 3-minute work segments. This is to allow multiple volunteers to work simultaneously on proofreading the transcription.
 
-### Process new recordings
+## Process new recordings
 
 Besides the test files on Google Drive, you can process your own recordings of meetings:
 
 - Obtain a recording in mp4 format of a government meeting.
 - Name the file as follows: "country_state_county_municipality_agency_language-code_date.mp4".
 - For example: "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4".
-- Put the file in "DATAFILES/RECEIVED"
+- Put the file in "DATAFILES"
 - In BackEnd/WorkflowApp/appsettings.json, set the following properites:
   - "InitializeWithTestData": false
   - "RequireManagerApproval": false
@@ -125,7 +139,7 @@ Besides the test files on Google Drive, you can process your own recordings of m
 
 If you have an Google Account set up, it will transcribe the recording.
 
-### Process new transcripts
+## Process new transcripts
 
 The goal is to eventually write code smart enough to process all transcript formats. But for now we need to add custom code for new formats. If your city, town, etc, produces transcripts of their meetings, it would be of great help if you contribute the code to handle those. Please see <a href="https://github.com/govmeeting/govmeeting/issues/93"> Github Issue #93 </a>
 

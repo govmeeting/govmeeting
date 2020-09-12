@@ -13,7 +13,7 @@ using GM.DatabaseModel;
 using Microsoft.Extensions.Logging;
 using GM.DatabaseAccess;
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
     public class WF7_LoadDatabase
     {
@@ -48,9 +48,8 @@ namespace GM.Workflow
         // Load the data into the database
         public void DoWork(Meeting meeting)
         {
-            // Get the work folder path
-            //MeetingFolder meetingFolder = new MeetingFolder(govBodyRepository, meeting);
-            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meeting.WorkFolder;
+            string workfolderName = dBOperations.GetWorkFolderName(meeting);
+            string workFolderPath = config.DatafilesPath + workfolderName;
 
             // TODO - This code is old and needs to be re-written
             // loadDatabase.Process(destFilePath, workFolderPath, language);

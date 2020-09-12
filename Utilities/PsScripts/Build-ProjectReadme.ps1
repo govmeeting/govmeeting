@@ -47,10 +47,12 @@ Show me how it works!
 
 Well, the work is in progress. But click here for:  [Demos of some working code](https://govmeeting.org/dashboard) and more documentation.
 
-<div style="font-size: 125%">  
- <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-gbuwp0tf-kqIOAeXqOTgzoauhSsqtNg"> Govmeeting Slack <img src="images/logo_slack25p.png"> </a> </div>
- 
- <div> If the Slack invite is expired, request an invite here: <img style="pointer-events: none; cursor: none;" src="images/GovmeetingEmail 75p.png" alt="Govmeeting Email"> </div>
+<h4>
+<div  style="float:left;">  
+ Information or help: &nbsp; &nbsp;  <a href="https://join.slack.com/t/govmeeting/shared_invite/zt-gbuwp0tf-kqIOAeXqOTgzoauhSsqtNg"> Govmeeting Slack <img src="images/logo_slack25p.png"> </a> &nbsp; &nbsp; &nbsp;  </div>
+ <div> <img style="vertical-align:middle; pointer-events: none; cursor: none;" src="images/GovmeetingEmail - crop 75p.png" alt="Govmeeting Email"> </div>
+ <div style="clear: left;"/>
+</h4><br/>
 
 "@
 

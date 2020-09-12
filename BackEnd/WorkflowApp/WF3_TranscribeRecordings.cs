@@ -15,7 +15,7 @@ using GM.EditTranscript;
 using GM.DatabaseAccess;
 
 
-namespace GM.Workflow
+namespace GM.WorkflowApp
 {
     public class WF3_TranscribeRecordings
     {
@@ -80,8 +80,8 @@ namespace GM.Workflow
 
         private string GetWorkfolderPath(Meeting meeting)
         {
-            string workFolderPath = config.DatafilesPath + "\\PROCESSING\\" + meeting.WorkFolder;
-
+            string workfolderName = dBOperations.GetWorkFolderName(meeting);
+            string workFolderPath = config.DatafilesPath + workfolderName;
             return workFolderPath;
         }
 
