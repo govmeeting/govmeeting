@@ -36,13 +36,13 @@ namespace GM.ProcessTranscript
             int i = meetingFoldername.LastIndexOf("_");
             location = meetingFoldername.Substring(0, i - 1);
 
-            subworkFolder = meetingFolder + "\\" + SUB_WORK_FOLDER + "\\";
+            subworkFolder = Path.Combine(meetingFolder, SUB_WORK_FOLDER);
             Directory.CreateDirectory(subworkFolder);  
             if (sourcefilename.ToLower().EndsWith(".pdf"))
             {
                 return ProcessPdf(sourcefilename, language);
             }
-            string workfile = subworkFolder + "2 plain-text.txt";
+            string workfile = Path.Combine(subworkFolder, "2 plain-text.txt");
             File.Copy(sourcefilename, workfile);
             string text = File.ReadAllText(workfile);
             return TextFixes(text);
@@ -53,13 +53,13 @@ namespace GM.ProcessTranscript
 
             // Step 1 - Copy PDF to meeting workfolder
 
-            string outfile = subworkFolder + "1 original.pdf";
+            string outfile = Path.Combine(subworkFolder, "1 original.pdf");
             File.Copy(filename, outfile);
 
             // Step 2 - Convert the PDF file to text
 
             string text = ConvertPdfToText.Convert(outfile);
-            outfile = subworkFolder + "2 plain-text.txt";
+            outfile = Path.Combine(subworkFolder, "2 plain-text.txt");
             File.WriteAllText(outfile, text);
 
             return TextFixes(text);
@@ -82,7 +82,7 @@ namespace GM.ProcessTranscript
 
         //private void CreateWorkFolder(string meetingFolder)
         //{
-        //    workFolder = meetingFolder + "\\" + SUB_WORK_FOLDER + "\\";
+        //    workFolder = Path.Combine(meetingFolder, SUB_WORK_FOLDER);
         //    Directory.CreateDirectory(workFolder);
         //}
 

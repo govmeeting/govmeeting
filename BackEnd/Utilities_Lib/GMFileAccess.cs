@@ -35,7 +35,7 @@ namespace GM.Utilities
         public static void CopyDirectory(string sourceDirectory, string targetDirectory)
         {
             DirectoryInfo diSource = new DirectoryInfo(sourceDirectory);
-            string destination = targetDirectory + "\\" + diSource.Name;
+            string destination = Path.Combine(targetDirectory, diSource.Name);
             Directory.CreateDirectory(destination);
             CopyContents(sourceDirectory, destination);
         }

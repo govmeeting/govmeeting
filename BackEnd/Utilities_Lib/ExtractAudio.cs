@@ -22,9 +22,9 @@ namespace GM.Utilities
         //{
         //    foreach (string dir in Directory.GetDirectories(inputFolder))
         //    {
-        //        string inputFile = dir + "\\ToFix.mp4";
+        //        string inputFile = Path.Combine(dir, "ToFix.mp4";
         //        // TODO - convert to mp3 instead of flac.
-        //        string outputFile = dir + "\\ToFix.flac";
+        //        string outputFile = Path.Combine(dir, "ToFix.flac";
 
         //        Extract(inputFile, outputFile);
         //    }

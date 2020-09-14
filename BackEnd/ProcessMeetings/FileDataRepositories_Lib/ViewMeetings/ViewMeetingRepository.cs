@@ -59,7 +59,7 @@ namespace GM.FileDataRepositories
 
             string workfolderName = dBOperations.GetWorkFolderName(meeting);
 
-            string workFolder = _config.DatafilesPath  + workfolderName + @"\" + SUB_WORK_FOLDER;
+            string workFolder = Path.Combine(_config.DatafilesPath, workfolderName, SUB_WORK_FOLDER);
             return workFolder;
         }
 

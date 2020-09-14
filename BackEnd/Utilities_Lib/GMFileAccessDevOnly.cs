@@ -16,17 +16,17 @@ namespace GM.Utilities
 
         public static string GetClientAppFolder()
         {
-            return Path.Combine(GetGovmeetingSolutionFolder(), @"frontend\clientapp");
+            return Path.Combine(GetGovmeetingSolutionFolder(), "frontend", "clientapp");
         }
 
         public static string GetWebAppFolder()
         {
-            return Path.Combine(GetGovmeetingSolutionFolder(), @"BackEnd\WebApp");
+            return Path.Combine(GetGovmeetingSolutionFolder(), "BackEnd", "WebApp");
         }
 
         public static string GetWorkflowAppFolder()
         {
-            return Path.Combine(GetGovmeetingSolutionFolder(), @"BackEnd\WorkflowApp");
+            return Path.Combine(GetGovmeetingSolutionFolder(), "BackEnd", "WorkflowApp");
         }
 
         public static string GetGovmeetingSolutionFolder()

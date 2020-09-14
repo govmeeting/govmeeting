@@ -41,12 +41,12 @@ namespace GM.ProcessRecording_Tests
             AudioProcessing audioProcessing = new AudioProcessing();
 
             string baseName = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15";
-            string videoFile = config.TestdataPath + "\\" + baseName + ".mp4";
-            string outputFolder = config.TestdataPath + "\\" + "TestMoveToCloudAndTranscribe";
+            string videoFile = Path.Combine(config.TestdataPath, baseName + ".mp4");
+            string outputFolder = Path.Combine(config.TestdataPath, "TestMoveToCloudAndTranscribe");
 
             GMFileAccess.DeleteAndCreateDirectory(outputFolder);
 
-            string outputBasePath = outputFolder + "\\" + baseName;
+            string outputBasePath = Path.Combine(outputFolder, baseName);
             string shortFile = outputBasePath + ".mp4";
             string audioFile = outputBasePath + ".flac";
             string jsonFile = outputBasePath + ".json";

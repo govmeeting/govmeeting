@@ -17,7 +17,7 @@ namespace GM.WorkflowApp
             } else {
                 if (deleteProcessing)
                 {
-                    GMFileAccess.DeleteDirectoryContents(datafilesPath + @"\PROCESSING");
+                    GMFileAccess.DeleteDirectoryContents(Path.Combine(datafilesPath, "PROCESSING"));
                 }
             }
 
@@ -50,10 +50,10 @@ namespace GM.WorkflowApp
 
             foreach (string file in files)
             {
-                string source = testfilesPath + "\\" + file;
+                string source = Path.Combine(testfilesPath, file);
 
                 if (File.Exists(source)) {
-                    string destination = datafilesPath + "\\" + "RECEIVED" + "\\" + file;
+                    string destination = Path.Combine(datafilesPath, "RECEIVED", file);
                     if (!File.Exists(destination))
                     {
                         // For testing, use only the first 9 minutes of the video recordings.

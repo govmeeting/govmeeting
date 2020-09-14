@@ -133,12 +133,12 @@ namespace GM.Utilities.Translate
 
         private string GetEnglishDocumentPath(string document)
         {
-            return docsFolder + "\\" + document + ".md";
+            return Path.Combine(docsFolder, document + ".md");
         }
 
         private string GetTranslatedDocumentPath(string document, string language)
         {
-            return docsFolder + "\\TRANS\\" + language.ToUpper() + "\\" + document + ".md";
+            return Path.Combine(docsFolder, "TRANS", language.ToUpper(), document + ".md");
         }
 
         // The purpose of deletePrior is to facilitate resuming translation if we abort and restart.

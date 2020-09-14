@@ -22,7 +22,7 @@ namespace ProcessTranscript_Lib
 
         public void Log(string fix_step, string transcriptText)
         {
-            string outputFile = workfolder + "\\" + "2-" + step + " " + fix_step + ".txt";
+            string outputFile = Path.Combine(workfolder, "2-" + step + " " + fix_step + ".txt");
             step++;
 
             File.WriteAllText(outputFile, meetingInfo + "-----------------------------\n" + officersNames + "-----------------------------\n" + transcriptText);

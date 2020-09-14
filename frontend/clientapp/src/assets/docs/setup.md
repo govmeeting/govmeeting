@@ -39,7 +39,7 @@ But to contribute, it's better to fork the project at https://github.com/govmeet
 - Leave Angular client running, but close browser.
 - > cd govmeeting/BackEnd/WebApp
 - > dotnet build
-- > dotnet run bin\Debug\netcoreapp3.1/WebApp.dll
+- > dotnet run bin/Debug/netcoreapp3.1/WebApp.dll
 - Browser will automatically open to localhost:5000.
 
 ## Build all .Net projects

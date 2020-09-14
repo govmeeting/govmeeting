@@ -53,12 +53,12 @@ namespace GM.ProcessRecording_Tests
             //string videoFile = testdata + @"\TestMoveToCloudAndTranscribe - Copy\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15.mp4";
             //string transcriptFile = testdata + @"\TestMoveToCloudAndTranscribe - Copy\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15.json";
 
-            //string outputFolder = testdata + "\\" + "TestSplitIntoWorkSegments";
+            //string outputFolder = Path.Combine(testdata, "TestSplitIntoWorkSegments");
             //DeleteAndCreateDirectory(outputFolder);
 
             string outputFolder = @"C:\GOVMEETING\_SOURCECODE\src\DATAFILES\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN\2017-01-09";
-            string videoFile = outputFolder + "\\" + "01-Video.mp4";
-            string transcriptFile = outputFolder + "\\" + "R3-ToBeFixed.json";
+            string videoFile = Path.Combine(outputFolder, "01-Video.mp4");
+            string transcriptFile = Path.Combine(outputFolder, "R3-ToBeFixed.json");
             int segmentSize = 180;
             int overlap = 5;
 
@@ -70,7 +70,7 @@ namespace GM.ProcessRecording_Tests
         {
             string inputFile = testfilesPath + @"\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15-rsp.json";
 
-            string outputFolder = testfilesPath + "\\" + "TestReformatOfTranscribeResponse";
+            string outputFolder = Path.Combine(testfilesPath, "TestReformatOfTranscribeResponse");
             GMFileAccess.DeleteAndCreateDirectory(outputFolder);
             string outputFile = outputFolder + @"\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15.json";
 

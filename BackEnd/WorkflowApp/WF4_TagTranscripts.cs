@@ -75,14 +75,14 @@ namespace GM.WorkflowApp
                 return;
             }
 
-            string sourceFilePath = config.DatafilesPath + "\\RECEIVED\\" + meeting.SourceFilename;
+            string sourceFilePath = Path.Combine(config.DatafilesPath, "RECEIVED", meeting.SourceFilename);
             if (!File.Exists(sourceFilePath))
             {
                 logger.LogError("Source file does not exist: ${sourceFilePath}");
                 return;
             }
 
-            string destFilePath = config.DatafilesPath + "\\PROCESSING\\" + meeting.SourceFilename;
+            string destFilePath = Path.Combine(config.DatafilesPath, "PROCESSING", meeting.SourceFilename);
             if (File.Exists(destFilePath))
             {
                 logger.LogError("Destination file already exists: ${destFilePath}");

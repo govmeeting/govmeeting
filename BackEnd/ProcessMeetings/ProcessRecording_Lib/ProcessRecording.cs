@@ -39,7 +39,7 @@ namespace GM.ProcessRecording
             /////// Copy video to meeting folder  /////////
 
             AudioProcessing audioProcessing = new AudioProcessing();
-            string videofileCopy = meetingFolder + "\\" + "video.mp4";
+            string videofileCopy = Path.Combine(meetingFolder,"video.mp4");
 
             if (!config.IsDevelopment)
             {
@@ -54,7 +54,7 @@ namespace GM.ProcessRecording
             /////// Extract the audio. ////////////////////////
 
             ExtractAudio extract = new ExtractAudio();
-            string audioFile = meetingFolder + "\\" + "audio.flac";
+            string audioFile = Path.Combine(meetingFolder,"audio.flac");
             audioProcessing.Extract(videofileCopy, audioFile);
 
             /////// Transcribe the audio file. /////////////
@@ -80,13 +80,13 @@ namespace GM.ProcessRecording
             transcript = transcribeAudio.MoveToCloudAndTranscribeOrig(transParams);
 
             string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
-            string outputJsonFile = meetingFolder + "\\" + "transcribed.json";
+            string outputJsonFile = Path.Combine(meetingFolder, "transcribed.json");
             File.WriteAllText(outputJsonFile, stringValue);
 
             /////// Reformat the JSON transcript to match what the fixasr routine will use.
 
             //ModifyTranscriptJson_1 convert = new ModifyTranscriptJson_1();
-            //outputJsonFile = meetingFolder + "\\" + "04-ToFix.json";
+            //outputJsonFile = Path.Combine(meetingFolder, "04-ToFix.json");
             //FixasrView fixasr = convert.Modify(transcript);
             //stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);
             //File.WriteAllText(outputJsonFile, stringValue);

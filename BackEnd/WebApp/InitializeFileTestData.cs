@@ -33,8 +33,8 @@ namespace GM.WebApp
 
             foreach (string dir in dirs)
             {
-                string source = testfilesPath + "\\" + dir;
-                string destination = datafilesPath + "\\PROCESSING\\" + dir;
+                string source = Path.Combine(testfilesPath, dir);
+                string destination = Path.Combine(datafilesPath, "PROCESSING", dir);
                 if (!Directory.Exists(destination))
                 {
                     Directory.CreateDirectory(destination);

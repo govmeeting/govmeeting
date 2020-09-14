@@ -85,7 +85,7 @@ namespace GM.EditTranscript
 
             // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interpolated-strings
             // https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings
-            string outputFile = outputFolder + "\\" + $"part{partNumber:D2}" + "\\ToFix.json";
+            string outputFile = Path.Combine(outputFolder, $"part{partNumber:D2}", "ToFix.json");
 
             File.WriteAllText(outputFile, stringValue);
         }

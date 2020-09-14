@@ -123,7 +123,7 @@ Pseudo code is given below for the components
     <ul>
     <li> Check schedule(s) for meeting(s) to retrieve</li>
     <li> Retrieve either recording or transcript file</li>
-    <li> Put file in DATAFILES\Received folder</li>
+    <li> Create work folder and move recording to folder</li>
     <li> Create database record</li> 
     <li> set status=received, approved=false</li>
     <li> Send manager(s) message: "Received"</li>
@@ -134,7 +134,6 @@ Pseudo code is given below for the components
   <ul>
   <li> For recordings with sourcetype=recording, status=received, approved=true</li>
     <ul>
-    <li> Create work folder</li>
     <li> set status=transcribing, approved=false</li>
     <li> Transcribe recording</li>
     <li> set status=transcribed, approved=false</li>
@@ -152,7 +151,7 @@ Pseudo code is given below for the components
     <li> Send manager(s) message: "Processed"</li>
     </ul>
   </ul>
-<li> ProofreadRecording</li>
+<li> EditRecordingTranscription </li>
   <ul>
   <li> For recordings with status=transcribed/approved=true</li>
     <ul>

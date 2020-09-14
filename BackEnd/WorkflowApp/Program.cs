@@ -32,7 +32,8 @@ namespace GM.WorkflowApp
         {
             // https://pioneercode.com/post/dependency-injection-logging-and-configuration-in-a-dot-net-core-console-app
 
-            string credentialsFilePath = @"C:\GOVMEETING\SECRETS\TranscribeAudio.json";
+            string secrets = GMFileAccess.FindParentFolderWithName("SECRETS");
+            string credentialsFilePath = Path.Combine(secrets, "TranscribeAudio.json");
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
 
             //StorageClient storageClient = StorageClient.Create();

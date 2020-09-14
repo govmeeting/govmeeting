@@ -67,7 +67,7 @@ namespace GM.WorkflowApp
             }
 
             // transcribe recording
-            string sourceFilePath = config.DatafilesPath + "\\RECEIVED\\" + meeting.SourceFilename;
+            string sourceFilePath = Path.Combine(config.DatafilesPath, "RECEIVED", meeting.SourceFilename);
             processRecording.Process(sourceFilePath, workfolderPath, meeting.Language);
 
             meeting.WorkStatus = WorkStatus.Transcribed;

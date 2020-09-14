@@ -27,10 +27,10 @@ namespace GM.EditTranscript
             {
                 int start = (x - 1) * segmentSize;
 
-                string segmentFolder = outputFolder + $"\\part{x:D2}";
+                string segmentFolder = Path.Combine(outputFolder, $"part{x:D2}");
                 Directory.CreateDirectory(segmentFolder);
 
-                string outputFile = segmentFolder + "\\" + "ToFix.mp4";
+                string outputFile = Path.Combine(segmentFolder, "ToFix.mp4");
                 if (x < numberOfSections)
                 {
                     ExtractPart(inputFile, outputFile, start, segmentSize + segmentOverlap);

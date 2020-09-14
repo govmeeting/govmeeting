@@ -61,7 +61,7 @@ namespace GM.ProcessTranscript
         public static I CreateInstance<I>(string dllName, string spaceName, string className) where I : class
         {
             // The following only works in VS but not in VsCode.
-            // string assemblyPath = Environment.CurrentDirectory + "\\" + dllName;
+            // string assemblyPath = Path.Combine(Environment.CurrentDirectory, dllName);
 
             string assemblyPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             Assembly assembly;
