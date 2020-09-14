@@ -25,7 +25,8 @@ namespace GM.WorkflowApp.Tests
         readonly IOptions<AppSettings> config;
         readonly ITranscriptProcess transcriptProcess;
 
-        ILogger<WF2_ProcessTranscriptsTests> loggerReal;
+        // This is for if we need to debug a Github Actions issue.
+        //ILogger<WF2_ProcessTranscriptsTests> loggerReal;
 
         // We will create a temporary DATAFILES folder with a unique name for the tests.
         readonly string datafilesPath = Path.Combine(Directory.GetCurrentDirectory(), @"DATAFILES" + Guid.NewGuid());
@@ -36,15 +37,15 @@ namespace GM.WorkflowApp.Tests
 
         public WF2_ProcessTranscriptsTests()
         {
-
-            ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
-            loggerReal = loggerFactory.CreateLogger<WF2_ProcessTranscriptsTests>();
-            loggerReal.LogInformation("REALLOGGER TEST - WF2_ProcessTranscriptsTests");
+            // This is for if we need to debug a Github Actions issue.
+            //ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            //loggerReal = loggerFactory.CreateLogger<WF2_ProcessTranscriptsTests>();
+            //loggerReal.LogInformation("REALLOGGER TEST - WF2_ProcessTranscriptsTests");
 
             // Create dependencies used by WF2_ProcessTranscripts that are needed
             // for all the tests.
 
-            // logger will be null logger
+            // logger will be the null logger
             logger = new NullLogger<WF2_ProcessTranscripts>();
 
             // Mock of the Appsettings that it accesses
@@ -58,8 +59,8 @@ namespace GM.WorkflowApp.Tests
             config = mock.Object;
 
             // Mock of TranscriptProcess that it called to process transcripts.
-            // Its Process method will returns the results.
-            // WF2_ProcessTranscripts should write the results to the workfolder.
+            // TranscriptProcess.Process method should return the results.
+            // WF2_ProcessTranscripts.DoWork will write the results to the workfolder.
             var mockTranscriptProcess = new Mock<ITranscriptProcess>();
             mockTranscriptProcess.Setup(a => a.Process(
                 It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(processingResults);
@@ -108,9 +109,7 @@ namespace GM.WorkflowApp.Tests
             // the source file for the transcript to be processed.
             string workfolderName = govbody.LongName + "_" + meetingDate;
             string workFolderPath = Path.Combine(datafilesPath, workfolderName);
-            loggerReal.LogInformation("REALLOGGER TEST datafilesPath={0}", datafilesPath);
             Directory.CreateDirectory(datafilesPath);
-            loggerReal.LogInformation("REALLOGGER TEST workFolderPath={0}", workFolderPath);
             Directory.CreateDirectory(workFolderPath);
             string sourceFilePath = Path.Combine(workFolderPath, meetings[0].SourceFilename);
             File.WriteAllText(sourceFilePath, "Sample Source File Coneents");
@@ -118,8 +117,6 @@ namespace GM.WorkflowApp.Tests
             // We expect WF2_ProcessTranscripts to write the results of processing the transcript
             // to the following file.
             string processedFile = Path.Combine(workFolderPath, WorkfileNames.processedTranscript);
-
-            loggerReal.LogInformation("REALLOGGER TEST procesedFilePath={0}", processedFile);
 
 
             // Mock all DBOperations that WF2_ProcessTranscripts calls
@@ -133,13 +130,12 @@ namespace GM.WorkflowApp.Tests
             wf2 = new WF2_ProcessTranscripts(logger, config, transcriptProcess, dBOperations);
             wf2.Run();
 
-            Assert.True(true, "Always true");
-            //Assert.True(File.Exists(processedFile), "Processed results were written to file.");
-            //string results = File.ReadAllText(processedFile);
-            //Assert.True(results == processingResults, "Processed results are correct");
+            Assert.True(File.Exists(processedFile), "Processed results were written to file.");
+            string results = File.ReadAllText(processedFile);
+            Assert.True(results == processingResults, "Processed results are correct");
 
             // Clean up the temporary Datafiles folder and all its contents.
-            //GMFileAccess.DeleteDirectoryAndContents(datafilesPath);
+            GMFileAccess.DeleteDirectoryAndContents(datafilesPath);
         }
     }
 }

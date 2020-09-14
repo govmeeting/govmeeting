@@ -28,15 +28,14 @@ namespace GM.WorkflowApp
 
         //readonly IFileRepository fileRepository;
 
-        // This is solely for debugging a unit test issue.
-        readonly ILogger<WF2_ProcessTranscripts> loggerReal;
+        // This is for if we need to debug a Github Actions issue.
+        //readonly ILogger<WF2_ProcessTranscripts> loggerReal;
 
         public WF2_ProcessTranscripts(
             ILogger<WF2_ProcessTranscripts> _logger,
             IOptions<AppSettings> _config,
             ITranscriptProcess _transcriptProcess,
             IDBOperations _dBOperations
-            //IFileRepository _fileRepository
            )
         {
             logger = _logger;
@@ -44,10 +43,10 @@ namespace GM.WorkflowApp
             transcriptProcess = _transcriptProcess;
             dBOperations = _dBOperations;
 
-            // This is solely for debugging a unit test issue.
-            ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
-            loggerReal = loggerFactory.CreateLogger<WF2_ProcessTranscripts>();
-            loggerReal.LogInformation("REALLOGGER MAIN - WF2_ProcessTranscripts");
+            // This is for if we need to debug a Github Actions issue.
+            //ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            //loggerReal = loggerFactory.CreateLogger<WF2_ProcessTranscripts>();
+            //loggerReal.LogInformation("REALLOGGER MAIN - WF2_ProcessTranscripts");
         }
 
         public void Run()
@@ -71,8 +70,6 @@ namespace GM.WorkflowApp
             string workFolderPath = Path.Combine(config.DatafilesPath, workfolderName);
             string processedFile = Path.Combine(workFolderPath, WorkfileNames.processedTranscript);
 
-            loggerReal.LogInformation("REALLOGGER MAIN proccesedFilePath={0}", processedFile);
-
             // For wrapping file database operations in the same transaction
             TxFileManager fileMgr = new TxFileManager();
 
@@ -91,16 +88,6 @@ namespace GM.WorkflowApp
             using (TransactionScope scope = new TransactionScope())
             {
                 fileMgr.WriteAllText(processedFile, processedOutput);
-                //File.WriteAllText(processedFile, processedOutput);
-
-                bool existsDatafiles = Directory.Exists(config.DatafilesPath);
-                bool existsWorkfolder = Directory.Exists(workFolderPath);
-                bool existsSourceFile = File.Exists(Path.Combine(workFolderPath, meeting.SourceFilename));
-                bool existsProcessedFile = File.Exists(processedFile);
-                loggerReal.LogInformation("REALLOGGER MAIN datafilesPath={0}", config.DatafilesPath);
-                loggerReal.LogInformation("REALLOGGER MAIN workFolderPath={0}", workFolderPath);
-                loggerReal.LogInformation("REALLOGGER MAIN D={0} W={1} S={3} P={4}",
-                    existsDatafiles, existsWorkfolder, existsSourceFile, existsProcessedFile);
 
                 meeting.WorkStatus = WorkStatus.Processed;
                 meeting.Approved = false;
