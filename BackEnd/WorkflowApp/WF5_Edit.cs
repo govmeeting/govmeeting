@@ -13,12 +13,12 @@ using GM.DatabaseAccess;
 namespace GM.WorkflowApp
 {
 
-    public class WF5_EditTranscriptions
+    public class WF5_Edit
     {
         readonly AppSettings config;
         readonly IDBOperations dBOperations;
 
-        public WF5_EditTranscriptions(
+        public WF5_Edit(
             IOptions<AppSettings> _config,
             IDBOperations _dBOperations
             )

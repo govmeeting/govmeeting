@@ -12,15 +12,15 @@ using GM.DatabaseAccess;
 
 namespace GM.WorkflowApp
 {
-    public class WF8_SendAlerts
+    public class WF8_Alert
 
     {
-        readonly ILogger<WF8_SendAlerts> logger;
+        readonly ILogger<WF8_Alert> logger;
         readonly AppSettings config;
         readonly IDBOperations dBOperations;
 
-        public WF8_SendAlerts(
-            ILogger<WF8_SendAlerts> _logger,
+        public WF8_Alert(
+            ILogger<WF8_Alert> _logger,
             IOptions<AppSettings> _config,
             IDBOperations _dBOperations
            )

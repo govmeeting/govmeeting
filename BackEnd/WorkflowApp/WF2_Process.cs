@@ -19,9 +19,9 @@ using GM.DatabaseAccess;
 
 namespace GM.WorkflowApp
 {
-    public class WF2_ProcessTranscripts
+    public class WF2_Process
     {
-        readonly ILogger<WF2_ProcessTranscripts> logger;
+        readonly ILogger<WF2_Process> logger;
         readonly AppSettings config;
         readonly ITranscriptProcess transcriptProcess;
         readonly IDBOperations dBOperations;
@@ -31,8 +31,8 @@ namespace GM.WorkflowApp
         // This is for if we need to debug a Github Actions issue.
         //readonly ILogger<WF2_ProcessTranscripts> loggerReal;
 
-        public WF2_ProcessTranscripts(
-            ILogger<WF2_ProcessTranscripts> _logger,
+        public WF2_Process(
+            ILogger<WF2_Process> _logger,
             IOptions<AppSettings> _config,
             ITranscriptProcess _transcriptProcess,
             IDBOperations _dBOperations

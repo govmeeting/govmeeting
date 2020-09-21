@@ -18,6 +18,7 @@ using Microsoft.Extensions.Options;
 using Google.Cloud.Storage.V1;
 using GM.Utilities;
 using GM.DatabaseAccess_Stub;
+using GM.GetOnlineFiles;
 
 namespace GM.WorkflowApp
 {
@@ -144,16 +145,18 @@ namespace GM.WorkflowApp
             services.AddSingleton<IMeetingRepository, MeetingRepository_Stub>();
             //services.AddSingleton<IGovBodyRepository, GovBodyRepository_Stub>();
             services.AddSingleton<IGovLocationRepository, GovLocationRepository_Stub>();
+            services.AddSingleton<IGovLocationRepository, GovLocationRepository_Stub>();
+            services.AddSingleton<IRetrieveNewFiles, RetrieveNewFiles>();
 
             // TODO make singletons
-            services.AddTransient<WF1_RetrieveOnlineFiles>();
-            services.AddTransient<WF2_ProcessTranscripts>();
-            services.AddTransient<WF3_TranscribeRecordings>();
-            services.AddTransient<WF4_TagTranscripts>();
-            services.AddTransient<WF5_EditTranscriptions>();
-            services.AddTransient<WF6_ViewMeetings>();
-            services.AddTransient<WF7_LoadDatabase>();
-            services.AddTransient<WF8_SendAlerts>();
+            services.AddTransient<WF1_Retrieve>();
+            services.AddTransient<WF2_Process>();
+            services.AddTransient<WF3_Transcribe>();
+            services.AddTransient<WF4_Tag>();
+            services.AddTransient<WF5_Edit>();
+            services.AddTransient<WF6_View>();
+            services.AddTransient<WF7_Load>();
+            services.AddTransient<WF8_Alert>();
 
             // add app
             services.AddTransient<WorkflowController>();

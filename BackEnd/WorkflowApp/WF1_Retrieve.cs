@@ -10,10 +10,13 @@ using System.ComponentModel;
 using GM.DatabaseAccess;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using GM.GetOnlineFiles;
+using System.Transactions;
+using ChinhDo.Transactions;
 
 namespace GM.WorkflowApp
 {
-    public class WF1_RetrieveOnlineFiles
+    public class WF1_Retrieve
     {
         // TODO - IMPLEMENT THIS CLASS
 
@@ -35,19 +38,22 @@ namespace GM.WorkflowApp
          *      * a file being uploaded by a registered user with appropriate rights.
          */
 
-        readonly ILogger<WF1_RetrieveOnlineFiles> logger;
+        readonly ILogger<WF1_Retrieve> logger;
         readonly AppSettings config;
         readonly IDBOperations dBOperations;
+        readonly IRetrieveNewFiles retrieveNewFiles;
 
-        public WF1_RetrieveOnlineFiles(
-            ILogger<WF1_RetrieveOnlineFiles> _logger,
+        public WF1_Retrieve(
+            ILogger<WF1_Retrieve> _logger,
             IOptions<AppSettings> _config,
-            IDBOperations _dBOperations
+            IDBOperations _dBOperations,
+            IRetrieveNewFiles _retrieveNewFiles
            )
         {
             logger = _logger;
             config = _config.Value;
             dBOperations = _dBOperations;
+            retrieveNewFiles = _retrieveNewFiles;
         }
 
         public void Run()
@@ -68,7 +74,42 @@ namespace GM.WorkflowApp
             IEnumerable<ScheduledMeeting> results = scheduled.Where(
                 s => s.Date < (DateTime.Now));
 
+            foreach (ScheduledMeeting result in results)
+            {
+                DateTime actualDate;
+                SourceType type;
 
+                // Do actual retrieval
+                string retrievedFile = retrieveNewFiles.RetrieveFile(govBody, result.Date, out actualDate, out type);
+
+                // create a work folder for this meeting
+                string workfolderName = govBody.LongName + "_" + actualDate.ToString("yyyy-MM-dd");
+                string workFolderPath = Path.Combine(config.DatafilesPath, workfolderName);
+
+                string extension = Path.GetExtension(retrievedFile);
+                string sourceFilename = "source" + extension;
+                string sourceFilePath = Path.Combine(workFolderPath, sourceFilename);
+
+                Meeting meeting = new Meeting();
+                // Create the meeting record
+                meeting.SourceType = type;
+                meeting.SourceFilename = sourceFilename;
+                meeting.Date = actualDate;
+                meeting.WorkStatus = WorkStatus.Received;
+                meeting.Approved = false;
+
+                TxFileManager fileMgr = new TxFileManager();
+                using (TransactionScope scope = new TransactionScope())
+
+                {
+                    Directory.CreateDirectory(workFolderPath);
+                    fileMgr.Copy(retrievedFile, sourceFilePath, true);
+                    dBOperations.Add(meeting);
+                    dBOperations.WriteChanges();
+                    scope.Complete();
+                }
+
+            }
         }
 
     }

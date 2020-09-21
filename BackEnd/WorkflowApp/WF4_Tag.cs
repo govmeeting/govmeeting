@@ -11,7 +11,7 @@ using GM.DatabaseAccess;
 
 namespace GM.WorkflowApp
 {
-    public class WF4_TagTranscripts
+    public class WF4_Tag
     {
         // TODO - IMPLEMENT THIS CLASS
 
@@ -27,12 +27,12 @@ namespace GM.WorkflowApp
 
         readonly AppSettings config;
         readonly IDBOperations dBOperations;
-        readonly ILogger<WF2_ProcessTranscripts> logger;
+        readonly ILogger<WF2_Process> logger;
 
-        public WF4_TagTranscripts(
+        public WF4_Tag(
             IOptions<AppSettings> _config,
             IDBOperations _dBOperations,
-            ILogger<WF2_ProcessTranscripts> _logger
+            ILogger<WF2_Process> _logger
            )
         {
             logger = _logger;

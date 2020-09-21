@@ -8,4 +8,8 @@
     <PackageReference Include="HtmlAgilityPack" Version="1.11.23" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Database\DatabaseModel_Lib\DatabaseModel_Lib.csproj" />
+  </ItemGroup>
+
 </Project>

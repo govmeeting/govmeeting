@@ -11,7 +11,13 @@ using GM.Utilities;
 
 namespace GM.ProcessRecording
 {
-    public class RecordingProcess
+    public interface IRecordingProcess
+    {
+        public void Process(string videoFile, string meetingFolder, string language);
+    }
+
+
+    public class RecordingProcess : IRecordingProcess
     {
         /*     ProcessRecording processes new MP4 recording files that arrive.
          *     It performs the following steps:

@@ -18,37 +18,28 @@ using System.Globalization;
 
 namespace GM.WorkflowApp.Tests
 {
-    public class WF2_ProcessTranscriptsTests
+    public class WF2_Process_Tests
     {
-        WF2_ProcessTranscripts wf2;
-        readonly NullLogger<WF2_ProcessTranscripts> logger;
+        WF2_Process wf2;
+        readonly ILogger<WF2_Process> logger;
         readonly IOptions<AppSettings> config;
         readonly ITranscriptProcess transcriptProcess;
+        readonly string datafilesPath;
+        readonly string processingResults;
 
-        // This is for if we need to debug a Github Actions issue.
-        //ILogger<WF2_ProcessTranscriptsTests> loggerReal;
-
-        // We will create a temporary DATAFILES folder with a unique name for the tests.
-        readonly string datafilesPath = Path.Combine(Directory.GetCurrentDirectory(), @"DATAFILES" + Guid.NewGuid());
-
-        // These are the results that the mock of TranscriptProcess will return.
-        readonly string processingResults = "Sample Processing Results";
-
-
-        public WF2_ProcessTranscriptsTests()
+        public WF2_Process_Tests()
         {
-            // This is for if we need to debug a Github Actions issue.
+            // Mock ILogger. Use null logger
+            logger = new NullLogger<WF2_Process>();
+            // This is in case we need to debug CI using logging.
             //ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
-            //loggerReal = loggerFactory.CreateLogger<WF2_ProcessTranscriptsTests>();
-            //loggerReal.LogInformation("REALLOGGER TEST - WF2_ProcessTranscriptsTests");
+            //logger = loggerFactory.CreateLogger<WF2_ProcessTranscriptsTests>();
+            //logger.LogInformation("In constructor WF2_ProcessTranscriptsTests");
 
-            // Create dependencies used by WF2_ProcessTranscripts that are needed
-            // for all the tests.
+            // We  create a temporary DATAFILES folder with a unique name.
+            datafilesPath = Path.Combine(Directory.GetCurrentDirectory(), @"DATAFILES" + Guid.NewGuid());
 
-            // logger will be the null logger
-            logger = new NullLogger<WF2_ProcessTranscripts>();
-
-            // Mock of the Appsettings that it accesses
+            // Mock the settings used in Appsettings
             AppSettings appsettings = new AppSettings()
             {
                 DatafilesPath = datafilesPath,
@@ -58,33 +49,35 @@ namespace GM.WorkflowApp.Tests
             mock.Setup(a => a.Value).Returns(appsettings);
             config = mock.Object;
 
-            // Mock of TranscriptProcess that it called to process transcripts.
-            // TranscriptProcess.Process method should return the results.
-            // WF2_ProcessTranscripts.DoWork will write the results to the workfolder.
+            // Mock TranscriptProcess.Process(..)
+            // This is the method that will be called to do the actual processing
+            // Mock it by just returning sample results
             var mockTranscriptProcess = new Mock<ITranscriptProcess>();
+            processingResults = "Sample Processing Results";
             mockTranscriptProcess.Setup(a => a.Process(
                 It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(processingResults);
             transcriptProcess = mockTranscriptProcess.Object;
         }
 
-
         [Fact()]
-        public void Create_WF2_ProcessTranscriptsTest()
+        public void Create_WF2_ProcessTranscripts_Test()
         {
             var mockDbOp = new Mock<IDBOperations>();
             IDBOperations dBOperations = mockDbOp.Object;
 
-            wf2 = new WF2_ProcessTranscripts(logger, config, transcriptProcess, dBOperations);
+            wf2 = new WF2_Process(logger, config, transcriptProcess, dBOperations);
             Assert.True(wf2 != null, "Create new WF2_ProcessTranscripts");
         }
 
         [Fact()]
-        public void Run_WF2_Process_One_TranscriptTest()
+        public void Run_WF2_Process_One_Transcript_Test()
         {
+            // Mock some sample database records, a Meeting and GovBody.
+            // WF2_ProcessTranscripts will search for all meetings with
+            // correct SourceType, WorkStatus and Approved status.
             string meetingDate = "2018-12-25";  // random meeting date
             CultureInfo ci = CultureInfo.InvariantCulture;
             DateTime meetingDateTime = DateTime.ParseExact(meetingDate, "yyyy-MM-dd", ci);
-
             long govbodyId = 5;  // random Id
             List<Meeting> meetings = new List<Meeting>()
             {
@@ -98,39 +91,42 @@ namespace GM.WorkflowApp.Tests
                     Approved = false
                 }
             };
-
             GovBody govbody = new GovBody()
             {
                 Id = govbodyId,
                 LongName = "USA_ME"
             };
 
-            // WF2_ProcessTranscripts expects a workfolder to exist that contains
-            // the source file for the transcript to be processed.
+            // Create the Datafiles folder
+            Directory.CreateDirectory(datafilesPath);
+
+            // WF2_ProcessTranscripts expects a workfolder for this meeting to already exist.
             string workfolderName = govbody.LongName + "_" + meetingDate;
             string workFolderPath = Path.Combine(datafilesPath, workfolderName);
-            Directory.CreateDirectory(datafilesPath);
             Directory.CreateDirectory(workFolderPath);
+
+            //  It expects the workfolder to contain the file for the transcript to be processed.
             string sourceFilePath = Path.Combine(workFolderPath, meetings[0].SourceFilename);
             File.WriteAllText(sourceFilePath, "Sample Source File Coneents");
 
-            // We expect WF2_ProcessTranscripts to write the results of processing the transcript
-            // to the following file.
-            string processedFile = Path.Combine(workFolderPath, WorkfileNames.processedTranscript);
-
-
-            // Mock all DBOperations that WF2_ProcessTranscripts calls
+            // Mock the DBOperations that it will call
             var mockDbOp = new Mock<IDBOperations>();
             mockDbOp.Setup(a => a.FindMeetings(SourceType.Transcript, WorkStatus.Received, true)).Returns(meetings);
             mockDbOp.Setup(a => a.WriteChanges());
             mockDbOp.Setup(a => a.GetWorkFolderName(It.IsAny<Meeting>())).Returns(workfolderName);
             IDBOperations dBOperations = mockDbOp.Object;
 
-            // This is where we actually execute the class to be tested. Everything else was setup for this. 
-            wf2 = new WF2_ProcessTranscripts(logger, config, transcriptProcess, dBOperations);
+            //################ This is the actual test. Everything else was setup ############. 
+            wf2 = new WF2_Process(logger, config, transcriptProcess, dBOperations);
             wf2.Run();
+            // 
+            //################################################################################. 
 
+            // WF2_ProcessTranscripts should have writen the results to the processedFile
+            string processedFile = Path.Combine(workFolderPath, WorkfileNames.processedTranscript);
             Assert.True(File.Exists(processedFile), "Processed results were written to file.");
+
+            // Check the content of processedFile
             string results = File.ReadAllText(processedFile);
             Assert.True(results == processingResults, "Processed results are correct");
 
