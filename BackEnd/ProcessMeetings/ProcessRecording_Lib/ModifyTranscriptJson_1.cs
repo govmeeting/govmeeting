@@ -50,10 +50,10 @@ namespace GM.ProcessRecording
 
     public class ModifyTranscriptJson_1
     {
-        public FixasrView Modify(TranscribeResultOrig transcript)
+        public FixasrViewModel Modify(TranscribeResultOrig transcript)
         {
             int MaxCharactersPerRecord = 40;
-            FixasrView fixasr = new FixasrView();
+            FixasrViewModel fixasr = new FixasrViewModel();
             string line = "";
             int startTime = 0;
 

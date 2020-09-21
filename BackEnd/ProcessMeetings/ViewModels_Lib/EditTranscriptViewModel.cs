@@ -4,14 +4,14 @@ using System.Text;
 
 namespace GM.ViewModels
 {
-    public class EdittranscriptView
+    public class EditTranscriptViewModel
     {
         public List<string> sections { get; set; }
         public List<string> topics { get; set; }
         public List<Talk> talks { get; set; }
 		public long lastedit { get; set; }  // time into transcript of last edit
 
-        public EdittranscriptView()
+        public EditTranscriptViewModel()
         {
             talks = new List<Talk>();
         }

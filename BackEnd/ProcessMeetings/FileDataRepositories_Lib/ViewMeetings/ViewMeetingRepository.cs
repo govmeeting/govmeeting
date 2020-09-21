@@ -30,18 +30,18 @@ namespace GM.FileDataRepositories
             dBOperations = _dBOperations;
         }
 
-        public ViewtranscriptView Get(long meetingId)
+        public TranscriptViewModel Get(long meetingId)
         {
             string workFolderPath = GetWorkFolderPath(meetingId);
 
             CircularBuffer cb = new CircularBuffer(workFolderPath, WORK_FILE_NAME, _config.MaxWorkFileBackups);
             string latestFixes = cb.GetLatest();
 
-            ViewtranscriptView viewMeeting = JsonConvert.DeserializeObject<ViewtranscriptView>(latestFixes);
+            TranscriptViewModel viewMeeting = JsonConvert.DeserializeObject<TranscriptViewModel>(latestFixes);
             return viewMeeting;
         }
 
-        public bool Put(long meetingId, ViewtranscriptView value)
+        public bool Put(long meetingId, TranscriptViewModel value)
         {
             string workFolderPath = GetWorkFolderPath(meetingId);
 

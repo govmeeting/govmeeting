@@ -72,7 +72,7 @@ namespace GM.ProcessRecording_Tests
 
             // Modify Transcript json format
             ModifyTranscriptJson_1 mt = new ModifyTranscriptJson_1();
-            FixasrView fixasr = mt.Modify(response);
+            FixasrViewModel fixasr = mt.Modify(response);
 
             // Create JSON file
             stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);

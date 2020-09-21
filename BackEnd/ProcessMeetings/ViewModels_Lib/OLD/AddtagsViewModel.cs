@@ -11,7 +11,7 @@ namespace GM.ViewModels
      * If the value is null for either, it means that it did not change.
      */
 
-    public class AddtagsView
+    public class AddtagsViewModel
     {
         public List<string> sections { get; set; }
         public List<string> topics { get; set; }

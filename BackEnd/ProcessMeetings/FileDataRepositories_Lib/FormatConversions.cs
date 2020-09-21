@@ -8,9 +8,9 @@ namespace GM.FileDataRepositories
 {
     public class FormatConversions
     {
-        public AddtagsView ConvertFixasrToAddtags(FixasrView fixasr)
+        public AddtagsViewModel ConvertFixasrToAddtags(FixasrViewModel fixasr)
         {
-            AddtagsView addtags = new AddtagsView();
+            AddtagsViewModel addtags = new AddtagsViewModel();
             addtags.talks = new List<TalksView>();
             TalksView talk = new TalksView();
             talk.said = "";

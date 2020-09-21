@@ -35,7 +35,7 @@ namespace GM.EditTranscript
             //   2. Less video or audio data needs to be downloaded to a user at one time.
 
             string stringValue = File.ReadAllText(fixasrFile);
-            FixasrView fixasr = JsonConvert.DeserializeObject<FixasrView>(stringValue);
+            FixasrViewModel fixasr = JsonConvert.DeserializeObject<FixasrViewModel>(stringValue);
 
             // Split the recording into parts and put them each in subfolders of subfolder "parts".
             SplitRecording splitRecording = new SplitRecording();

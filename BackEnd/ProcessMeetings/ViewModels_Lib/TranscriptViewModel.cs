@@ -5,34 +5,27 @@ using System.Threading.Tasks;
 
 namespace GM.ViewModels
 {
-    /* The model of the meeting data for the JSON
-     * data is different from that of the database
-     * model. The types "TopicDiscussion", "Talk" &
-     * "Meeting" are also defined in the database model.
-     */
-
-
-    public class ViewtranscriptView
+    public class TranscriptViewModel
     {
-        public MeetingForView meeting { get; set; }
+        public MeetingViewModel meeting { get; set; }
         public string[] topicNames { get; set; }
         public string[] speakerNames { get; set; }
-        public TopicdiscussionForView[] topicDiscussions { get; set; }
+        public TopicdiscussionViewModel[] topicDiscussions { get; set; }
     }
 
-    public class TopicdiscussionForView
+    public class TopicdiscussionViewModel
     {
         public string name { get; set; }
-        public TalkForView[] talks { get; set; }
+        public TalkViewModel[] talks { get; set; }
     }
 
-    public class TalkForView
+    public class TalkViewModel
     {
         public string Speaker { get; set; }
         public string Text { get; set; }
     }
 
-    public class MeetingForView
+    public class MeetingViewModel
     {
         public long meetingId { get; set; }
         public long locationId { get; set; }

@@ -165,7 +165,7 @@ namespace DevelopTranscription
             string responseString = File.ReadAllText(responseFile);
             TranscribeResult response = JsonConvert.DeserializeObject<TranscribeResult>(responseString);
             ModifyTranscriptJson convert = new ModifyTranscriptJson();
-            EdittranscriptView editmeeting = convert.Modify(response);
+            EditTranscriptViewModel editmeeting = convert.Modify(response);
             string stringValue = JsonConvert.SerializeObject(editmeeting, Formatting.Indented);
             File.WriteAllText(editmeetingFile, stringValue);
 

@@ -10,12 +10,12 @@ namespace GM.ViewModels
      * by Automatic Speech Recogniton.
      */
 
-    public class FixasrView
+    public class FixasrViewModel
     {
         public double lastedit;
         public List<AsrSegment> asrsegments { get; set; }
 
-        public FixasrView()
+        public FixasrViewModel()
         {
             asrsegments = new List<AsrSegment>();
         }

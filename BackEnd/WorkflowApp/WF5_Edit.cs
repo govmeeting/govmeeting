@@ -69,9 +69,9 @@ namespace GM.WorkflowApp
             bool b = true;
             if (b) return;
 
-            FixasrView fixasr = JsonConvert.DeserializeObject<FixasrView>(fixasrText);
+            FixasrViewModel fixasr = JsonConvert.DeserializeObject<FixasrViewModel>(fixasrText);
             FormatConversions formatConversions = new FormatConversions();
-            AddtagsView addtags = formatConversions.ConvertFixasrToAddtags(fixasr);
+            AddtagsViewModel addtags = formatConversions.ConvertFixasrToAddtags(fixasr);
 
             //addtagsRepository.Put(addtags, meeting.Id);
 
