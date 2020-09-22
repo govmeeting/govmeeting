@@ -38,8 +38,6 @@ namespace GM.DatabaseAccess
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Speaker> Speakers { get; set; }
-        public DbSet<Representative> Representatives { get; set; }
-        public DbSet<Citizen> Citizens { get; set; }
         public DbSet<Language> Languages { get; set; }
     }
 }

@@ -13,8 +13,11 @@ namespace GM.DatabaseModel
     {
         public long Id { get; set; }
         public string Text { get; set; }
-        public int Sequence { get; set; }
         public Speaker Speaker { get; set; }
         public long TopicDiscussionId { get; set; }
+
+        // Sequence of Talks within TopicDiscussion. This is used for
+        // re-constructing the transcript.
+        public int Sequence { get; set; }   // sequence within TopicDiscussion
     }
 }

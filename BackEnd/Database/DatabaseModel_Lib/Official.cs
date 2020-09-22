@@ -10,9 +10,11 @@ namespace GM.DatabaseModel
     /// A Government official - works for and acts on the government's behalf,
     /// but is not elected by the citizens.
     /// </summary>
-    public class Official : Speaker
+    public class Official
     {
-        public string Identifier { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
         public long GovernmentBodyId { get; set; }
+        public bool IsElected { get; set; }
     }
 }

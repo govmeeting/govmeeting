@@ -23,12 +23,12 @@ namespace FakeData
         {
             Console.WriteLine("Hello World!");
 
-            FakeMeeting fm = new FakeMeeting();
-            Meeting meeting = fm.GenerateMeeting();
+            //FakeMeeting fm = new FakeMeeting();
+            //Meeting meeting = fm.GenerateMeeting();
 
-            string text = Newtonsoft.Json.JsonConvert.SerializeObject(meeting, Newtonsoft.Json.Formatting.Indented);
+            //string text = Newtonsoft.Json.JsonConvert.SerializeObject(meeting, Newtonsoft.Json.Formatting.Indented);
 
-            File.WriteAllText(@"c:\tmp\fakemeeting.json", text);
+            //File.WriteAllText(@"c:\tmp\fakemeeting.json", text);
         }
 
     }

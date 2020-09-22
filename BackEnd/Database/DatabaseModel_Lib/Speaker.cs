@@ -13,5 +13,6 @@ namespace GM.DatabaseModel
     {
         public long Id { get; set; }
         public string Name { get; set; }
+        public long MeetingId { get; set; }
     }
 }

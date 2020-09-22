@@ -10,8 +10,15 @@ namespace GM.DatabaseModel
     {
         public long Id { get; set; }
         public Topic Topic { get; set; }
+        public long SectionId { get; set; }
+
+
+        // Sequence of TopicDiscussion within Section. This is used for
+        // re-constructing the transcript
+        public int Sequence { get; set; }    // sequence within Section
+
+        // Talks is a convenience property. It's not part of the
+        // DB table but is useful when re-constructing the transcript
         public List<Talk> Talks { get; set; }
-        public int Sequence { get; set; }
-        public long MeetingId { get; set; } 
     }
 }
