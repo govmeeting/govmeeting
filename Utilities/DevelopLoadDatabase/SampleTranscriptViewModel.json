@@ -1,0 +1,134 @@
+{
+  "MeetingId": 0,
+  "GovBodyName": "City Council",
+  "LocationName": "United States - Texas - Potter County - Amarillo",
+  "Date": "9/18/2020",
+  "Topics": [
+    {
+      "TopicId": 7,
+      "Name": "public housing",
+      "IsExisting": false
+    },
+    {
+      "TopicId": 587,
+      "Name": "town budget",
+      "IsExisting": true
+    },
+    {
+      "TopicId": 565,
+      "Name": "city center beautification",
+      "IsExisting": true
+    },
+    {
+      "TopicId": 510,
+      "Name": "business area parking",
+      "IsExisting": true
+    }
+  ],
+  "Speakers": [
+    {
+      "SpeakerId": 2669,
+      "Name": "Chauncey Kuhlman",
+      "IsExisting": true
+    },
+    {
+      "SpeakerId": 2656,
+      "Name": "Kenny Bins",
+      "IsExisting": true
+    },
+    {
+      "SpeakerId": 2589,
+      "Name": "Orin Ritchie",
+      "IsExisting": true
+    },
+    {
+      "SpeakerId": 2583,
+      "Name": "Darrick Kemmer",
+      "IsExisting": true
+    },
+    {
+      "SpeakerId": 15,
+      "Name": "Javon Cummings",
+      "IsExisting": false
+    },
+    {
+      "SpeakerId": 33,
+      "Name": "Raul Maggio",
+      "IsExisting": false
+    },
+    {
+      "SpeakerId": 2721,
+      "Name": "Novella Roob",
+      "IsExisting": true
+    },
+    {
+      "SpeakerId": 2654,
+      "Name": "Hank McKenzie",
+      "IsExisting": true
+    }
+  ],
+  "Sections": [
+    {
+      "Name": "Presentation",
+      "TopicDiscussions": [
+        {
+          "TopicId": 7,
+          "Talks": [
+            {
+              "SpeakerId": 2669,
+              "Text": "The following points should be appreciated about "
+            },
+            {
+              "SpeakerId": 2656,
+              "Text": "It is common knowledge that significant progress has been made in the proactive numinous sensibilit"
+            }
+          ]
+        },
+        {
+          "TopicId": 587,
+          "Talks": [
+            {
+              "SpeakerId": 2589,
+              "Text": "Although it is fair to say that the incorporation of the cohesive diffusible principle reinforces the weaknesses in the applicability and value of the strategic indicative resources, one should take this out of the loop parameters within a concept of what we have come to call the primary characteristic functionality may mean a wide diffusion of the indicative critical service into the three-tier methodological discordanc"
+            },
+            {
+              "SpeakerId": 2583,
+              "Text": "For example, the core business develops a vision to leverage the prevalent sub-logical teleology or the affirming concep"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Approval of Minutes",
+      "TopicDiscussions": [
+        {
+          "TopicId": 565,
+          "Talks": [
+            {
+              "SpeakerId": 15,
+              "Text": "Since Jenny Locksley's first formulation of the non-viable effective discordance, it has become fairly obvious that the quest for the movers and shakers has the intrinsic benefit of resilience, unlike the the scientific aesthetic of the secondary appreciatio"
+            },
+            {
+              "SpeakerId": 33,
+              "Text": "Focussing on the agreed facts, we can say that the assertion of the importance of the integrational digital dialog provides the bandwidth for The backbone of connectivit"
+            }
+          ]
+        },
+        {
+          "TopicId": 510,
+          "Talks": [
+            {
+              "SpeakerId": 2721,
+              "Text": "Be that as it may, a preponderance of the the bottom line provides a heterogeneous environment to the inductive symbolis"
+            },
+            {
+              "SpeakerId": 2654,
+              "Text": "Without a doubt, Lionel White i was right in saying that both ideal organic funding and terminology of vivacity clearly stimulates the integration of key specific vivacity with strategic initiatives and what is beginning to be termed the \"crucial effective reconstruction"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

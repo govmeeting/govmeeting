@@ -34,12 +34,16 @@ namespace GM.ViewModels
         public string LocationName { get; set; }
         public string Date { get; set; }
 
+        // Topics and Speakers are the list of topics discussed
+        // at this meeting and the list of speakers.
+        public List<TopicViewModel> Topics { get; set; }
+        public List<SpeakerViewModel> Speakers { get; set; }
+
         public List<SectionViewModel> Sections { get; set; }
     }
 
     public class SectionViewModel
     {
-        public long SectionId { get; set; }
         public string Name { get; set; }
         public List<TopicDiscussionViewModel> TopicDiscussions { get; set; }
     }
@@ -59,8 +63,13 @@ namespace GM.ViewModels
     // Some topics may have been already discussed at past meetings. In this case
     // the "TopicId" property will contain the ID of that topic and "IsExisting" will
     // be true.
-    // New topics that were discussed for the first time at this meeting will be
-    // added to the database and assigned a new TopicId.
+    //
+    // But topics that are discussed for the first time at this meeting will be
+    // not have an existing TopicId in the DB. In that case the "IsExisting" property will be false and the
+    // TopicId property will be a temporary unique Id that was just assigned for this meeting.
+    //
+    // When the data is added to the DB, the new topics will
+    // be added to the Topic table and assigned thier final TopicId.
     public class TopicViewModel
     {
         public long TopicId { get; set; }
@@ -74,12 +83,12 @@ namespace GM.ViewModels
     //
     // But speakers from the general public are not tracked and will not have an existing
     // SpealerId. In that case the "IsExisting" property will be false and the
-    // SpeakerId property will be a temporary unique Id for this meeting.
+    // SpeakerId property will be a temporary for this meeting.
     //
-    // When the data for this transcript is written to the database for the first time,
-    // each of these new speakers will be added to the speaker table and assigned a new SpeakerId.
-    // These new SpeakerIds are needed when re-constructing the transcript from the DB,
-    // but they don't track the identity of the person who spoke at the meeting.
+    // When the data for this transcript is written to the database,
+    // each of these new speakers will be added to the speaker table and assigned a SpeakerId.
+    // These new SpeakerIds are used when re-constructing the transcript from the DB,
+    // but they don't track the identity of the person from meeting to meeting.
     public class SpeakerViewModel
     {
         public long SpeakerId { get; set; } 

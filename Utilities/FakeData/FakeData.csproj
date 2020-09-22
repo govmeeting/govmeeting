@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\BackEnd\Database\DatabaseModel_Lib\DatabaseModel_Lib.csproj" />
+    <ProjectReference Include="..\..\BackEnd\ProcessMeetings\ViewModels_Lib\ViewModels_Lib.csproj" />
   </ItemGroup>
 
 </Project>
