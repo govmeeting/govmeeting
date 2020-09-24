@@ -2,15 +2,10 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "start-clientapp",
-      "command": "npm.cmd",
+      "label": "build-dotnet",
+      "command": "dotnet",
       "type": "process",
-      "args": [
-        "--prefix",
-        "${workspaceFolder}/frontend/clientapp",
-        "run",
-        "start"
-      ],
+      "args": ["build", "${workspaceFolder}/govmeeting.sln"],
       "problemMatcher": "$msCompile"
     },
     {
@@ -18,16 +13,6 @@
       "command": "dotnet",
       "type": "process",
       "args": ["build", "${workspaceFolder}/BackEnd/WebApp/WebApp.csproj"],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build-WebApp_Tests",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/BackEnd/WebApp_Tests/WebApp_Tests.csproj"
-      ],
       "problemMatcher": "$msCompile"
     },
     {
@@ -39,134 +24,6 @@
         "${workspaceFolder}/BackEnd/WorkflowApp/WorkflowApp.csproj"
       ],
       "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build-WorkflowApp_Tests",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/BackEnd/WorkflowApp_Tests/WorkflowApp_Tests.csproj"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build-TranslateText",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/Utilities/TranslateText/TranslateText.csproj"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build-KeepWebsiteAlive",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/Utilities/KeepWebsiteAlive_App/KeepWebsiteAlive_App.csproj"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build-DatabaseAccess_Tests",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/BackEnd/Database/DatabaseAccess_Tests/DatabaseAccess_Tests.csproj"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build-ProcessRecording_Tests",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/BackEnd/ProcessMeetings/ProcessRecording_Tests/ProcessRecording_Tests.csproj"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build-ProcessTranscript_Tests",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/BackEnd/ProcessMeetings/ProcessTranscript_Tests/ProcessTranscript_Tests.csproj"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build-FileDataRepositories_Tests",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/BackEnd/ProcessMeetings/FileDataRepositories_Tests/FileDataRepositories_Tests.csproj"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build-DatabaseRepositories_Tests",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/BackEnd/Database/DatabaseRepositories_Tests/DatabaseRepositories_Tests.csproj"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build-Utilities_Tests",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/BackEnd/Utilities/Utilities_Tests.csproj"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "Build All Apps",
-      "type": "shell",
-      "command": "echo",
-      "args": ["Build All has completed"],
-      "problemMatcher": [],
-      "dependsOn": [
-        "build-webapp",
-        "build-workflowapp",
-        "build-TranslateText",
-        "build-KeepWebsiteAlive"
-      ]
-    },
-    {
-      "label": "Build All Tests",
-      "type": "shell",
-      "command": "echo",
-      "args": ["Build All has completed"],
-      "problemMatcher": [],
-      "dependsOn": [
-        "build-WebApp_Tests",
-        "build-WorkflowApp_Tests",
-        "build-DatabaseAccess_Tests",
-        "build-DatabaseRepositories_Tests",
-        "build-ProcessRecording_Tests",
-        "build-ProcessTranscript_Tests",
-        "build-FileDataRepositories_Tests",
-        "build-Utilities_Tests"
-      ]
-    },
-    {
-      "label": "Build All",
-      "type": "shell",
-      "command": "echo",
-      "args": ["Build All has completed"],
-      "problemMatcher": [],
-      "dependsOn": ["Build All Apps", "Build All Tests"]
     }
   ]
 }

@@ -1,172 +1,138 @@
 {
-   // Use IntelliSense to find out which attributes exist for C# debugging
-   // Use hover for the description of the existing attributes
-   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-   "version": "0.2.0",
-   "configurations": [
-        {
-            "name": "ClientApp Standalone",
-            "type": "chrome",
-            "request": "launch",
-            "url": "http://localhost:4200",
-            "webRoot": "${workspaceRoot}/frontend/clientapp"
+  // Use IntelliSense to find out which attributes exist for C# debugging
+  // Use hover for the description of the existing attributes
+  // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ClientApp Standalone",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceRoot}/frontend/clientapp"
+    },
+    {
+      "name": "ClientApp",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5000",
+      "webRoot": "${workspaceRoot}/frontend/clientapp"
+    },
+    {
+      "name": "WebApp",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-webapp",
+      "program": "${workspaceFolder}/Backend/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/Backend/WebApp",
+      "stopAtEntry": false,
+      "internalConsoleOptions": "openOnSessionStart",
+      "launchBrowser": {
+        "enabled": false
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    {
+      "name": "WebApp & Launch",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-webapp",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/Backend/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/Backend/WebApp",
+      "stopAtEntry": false,
+      "internalConsoleOptions": "openOnSessionStart",
+      "launchBrowser": {
+        "enabled": true,
+        "args": "${auto-detect-url}",
+        "windows": {
+          "command": "cmd.exe",
+          "args": "/C start ${auto-detect-url}"
         },
-        {
-            "name": "ClientApp",
-            "type": "chrome",
-            "request": "launch",
-            "url": "http://localhost:5000",
-            "webRoot": "${workspaceRoot}/frontend/clientapp"
+        "osx": {
+          "command": "open"
         },
-        {
-			"name": "WebApp",
-			"type": "coreclr",
-			"request": "launch",
-			"preLaunchTask": "build-webapp",
-			"program": "${workspaceFolder}/Backend/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
-			"args": [],
-			"cwd": "${workspaceFolder}/Backend/WebApp",
-			"stopAtEntry": false,
-			"internalConsoleOptions": "openOnSessionStart",
-			"launchBrowser": {
-				"enabled": false
-			},
-			"env": {
-				"ASPNETCORE_ENVIRONMENT": "Development"
-			}
-		},
-         {
-            "name": "WebApp & Launch",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build-webapp",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Backend/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/Backend/WebApp",
-            "stopAtEntry": false,
-            "internalConsoleOptions": "openOnSessionStart",
-            "launchBrowser": {
-                "enabled": true,
-                "args": "${auto-detect-url}",
-                "windows": {
-                    "command": "cmd.exe",
-                    "args": "/C start ${auto-detect-url}"
-                },
-                "osx": {
-                    "command": "open"
-                },
-                "linux": {
-                    "command": "xdg-open"
-                }
-            },
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            },
-            "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
-            }
-        },
-        {
-            "name": "WorkflowApp",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build-workflowapp",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Backend/WorkflowApp/bin/Debug/netcoreapp2.2/WorkflowApp.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/Backend/WorkflowApp",
-            // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
-            "console": "internalConsole",
-            "stopAtEntry": false,
-            "internalConsoleOptions": "openOnSessionStart",
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            }
-        },
-        {
-            "name": "WorkflowApp3",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build-workflowapp3",
-            "program": "${workspaceFolder}/Backend/WorkflowApp3/bin/Debug/netcoreapp2.2/WorkflowApp3.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/Backend/WorkflowApp3",
-            "console": "internalConsole",
-            "stopAtEntry": false,
-            "internalConsoleOptions": "openOnSessionStart",
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            }
-        },
-        {
-            "name": "TranslateText",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build-TranslateText",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Utilities/TranslateText/bin/Debug/netcoreapp2.2/TranslateText.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/Utilities/TranslateText",
-            // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
-            "console": "internalConsole",
-            "stopAtEntry": false,
-            "internalConsoleOptions": "openOnSessionStart",
-            "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            }
-        },
-       {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:pickProcess}"
-        },
-        {
-            "name": "PowerShell Launch Current File",
-            "type": "PowerShell",
-            "request": "launch",
-            "script": "${file}",
-            "args": [],
-            "cwd": "${file}"
-        },
-        {
-            "name": "PowerShell Launch Current File with args prompt",
-            "type": "PowerShell",
-            "request": "launch",
-            "script": "${file}",
-            "args": [
-                "$(command:SpecifyScriptArgs)"
-            ],
-            "cwd": "${file}"
-        },
-        {
-            "name": "PowerShell Launch Current File in Temporary Console",
-            "type": "PowerShell",
-            "request": "launch",
-            "script": "${file}",
-            "args": [],
-            "cwd": "${file}",
-            "createTemporaryIntegratedConsole": true
-        },
-        {
-            "name": "PowerShell Attach to Host Process",
-            "type": "PowerShell",
-            "request": "attach",
-            "processId": "${command:PickPSHostProcess}",
-            "runspaceId": 1
-        },
-        {
-            "name": "PowerShell Interactive Session",
-            "type": "PowerShell",
-            "request": "launch",
-            "cwd": "${workspaceRoot}"
-        }  
-    ],
-    "compounds": [
-        {
-            "name": "WebApp & ClientApp",
-            "configurations": ["WebApp", "ClientApp"]
+        "linux": {
+          "command": "xdg-open"
         }
-    ]
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/Views"
+      }
+    },
+    {
+      "name": "WorkflowApp",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-workflowapp",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/Backend/WorkflowApp/bin/Debug/netcoreapp2.2/WorkflowApp.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/Backend/WorkflowApp",
+      // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
+      "console": "internalConsole",
+      "stopAtEntry": false,
+      "internalConsoleOptions": "openOnSessionStart",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+    },
+    {
+      "name": "PowerShell Launch Current File",
+      "type": "PowerShell",
+      "request": "launch",
+      "script": "${file}",
+      "args": [],
+      "cwd": "${file}"
+    },
+    {
+      "name": "PowerShell Launch Current File with args prompt",
+      "type": "PowerShell",
+      "request": "launch",
+      "script": "${file}",
+      "args": ["$(command:SpecifyScriptArgs)"],
+      "cwd": "${file}"
+    },
+    {
+      "name": "PowerShell Launch Current File in Temporary Console",
+      "type": "PowerShell",
+      "request": "launch",
+      "script": "${file}",
+      "args": [],
+      "cwd": "${file}",
+      "createTemporaryIntegratedConsole": true
+    },
+    {
+      "name": "PowerShell Attach to Host Process",
+      "type": "PowerShell",
+      "request": "attach",
+      "processId": "${command:PickPSHostProcess}",
+      "runspaceId": 1
+    },
+    {
+      "name": "PowerShell Interactive Session",
+      "type": "PowerShell",
+      "request": "launch",
+      "cwd": "${workspaceRoot}"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "WebApp & ClientApp",
+      "configurations": ["WebApp", "ClientApp"]
+    }
+  ]
 }
