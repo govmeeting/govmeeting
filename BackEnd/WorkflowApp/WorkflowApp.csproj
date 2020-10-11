@@ -28,8 +28,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Configuration_Lib\Configuration_Lib.csproj" />
     <ProjectReference Include="..\Database\DatabaseAccess_Stub_Lib\DatabaseAccess_Stub_Lib.csproj" />
-    <ProjectReference Include="..\Database\DatabaseRepositories_Lib\DatabaseRepositories_Lib.csproj" />
-    <ProjectReference Include="..\Database\DatabaseRepositories_Stub_Lib\DatabaseRepositories_Stub_Lib.csproj" />
     <ProjectReference Include="..\Database\LoadDatabase_Lib\LoadDatabase_Lib.csproj" />
     <ProjectReference Include="..\Online\GetOnlineFiles_Lib\GetOnlineFiles_Lib.csproj" />
     <ProjectReference Include="..\Online\OnlineAccess_Lib\OnlineAccess_Lib.csproj" />

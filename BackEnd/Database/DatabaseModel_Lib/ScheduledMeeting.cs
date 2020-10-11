@@ -7,7 +7,6 @@ namespace GM.DatabaseModel
     public class ScheduledMeeting
     {
         public long Id { get; set; }
-
         public DateTime Date { get; set; }
     }
 }

@@ -11,8 +11,8 @@ using GM.ProcessRecording;
 using GM.GoogleCloud;
 using GM.ProcessTranscript;
 using GM.FileDataRepositories;
-using GM.DatabaseRepositories;
-using GM.DatabaseRepositories_Stub;
+//using GM.DatabaseRepositories;
+//using GM.DatabaseRepositories_Stub;
 using GM.DatabaseAccess;
 using Microsoft.Extensions.Options;
 using Google.Cloud.Storage.V1;
@@ -142,10 +142,10 @@ namespace GM.WorkflowApp
 
             // services.AddTransient<IMeetingRepository, MeetingRepository_Stub>();
             // services.AddTransient<IGovBodyRepository, GovBodyRepository_Stub>();
-            services.AddSingleton<IMeetingRepository, MeetingRepository_Stub>();
+            //services.AddSingleton<IMeetingRepository, MeetingRepository_Stub>();
             //services.AddSingleton<IGovBodyRepository, GovBodyRepository_Stub>();
-            services.AddSingleton<IGovLocationRepository, GovLocationRepository_Stub>();
-            services.AddSingleton<IGovLocationRepository, GovLocationRepository_Stub>();
+            //services.AddSingleton<IGovLocationRepository, GovLocationRepository_Stub>();
+            //services.AddSingleton<IGovLocationRepository, GovLocationRepository_Stub>();
             services.AddSingleton<IRetrieveNewFiles, RetrieveNewFiles>();
 
             // TODO make singletons

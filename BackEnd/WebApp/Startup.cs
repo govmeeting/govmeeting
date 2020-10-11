@@ -19,13 +19,13 @@ using Newtonsoft.Json.Serialization;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 using GM.WebApp.StartupCustomizations;
-using GM.DatabaseRepositories;
+//using GM.DatabaseRepositories;
 using GM.DatabaseAccess;
 using GM.FileDataRepositories;
 using GM.WebApp.Services;
 using GM.Utilities;
 using Microsoft.Extensions.Hosting;
-using GM.DatabaseRepositories_Stub;
+//using GM.DatabaseRepositories_Stub;
 using GM.DatabaseAccess_Stub;
 
 namespace GM.WebApp
@@ -186,6 +186,9 @@ namespace GM.WebApp
             app.UseRouting();
 
             //####################################
+            // UseAuthentication must come between UseRouting & UseEndpoints
+            // so that route information is available for authentication decisions
+            // and before accessing the endpoints.
             logger.Info("Use Authenitication & Authorization");
             app.UseAuthentication();
             app.UseAuthorization();
@@ -195,10 +198,10 @@ namespace GM.WebApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                // Fix controller endpoints. This give err in HomeController/Index about "no file provider"
-                //endpoints.MapControllerRoute(
-                //name: "default",
-                //pattern: "{controller=Home}/{action=Index}/{id?}");
+                //Fix controller endpoints.This give err in HomeController / Index about "no file provider"
+                endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
             //####################################

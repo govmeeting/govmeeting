@@ -13,7 +13,7 @@ using Microsoft.Extensions.Logging;
 using GM.Utilities;
 using GM.EditTranscript;
 using GM.DatabaseAccess;
-
+using System.Transactions;
 
 namespace GM.WorkflowApp
 {
@@ -23,20 +23,22 @@ namespace GM.WorkflowApp
         readonly AppSettings config;
         readonly IRecordingProcess processRecording;
         readonly IDBOperations dBOperations;
+        readonly IFileRepository fileRepository;
         readonly WorkSegments workSegments = new WorkSegments();
 
         public WF3_Transcribe(
             ILogger<WF3_Transcribe> _logger,
             IOptions<AppSettings> _config,
             IRecordingProcess _processRecording,
-            IDBOperations _dBOperations
+            IDBOperations _dBOperations,
+            IFileRepository _fileRepository
            )
         {
-            config = _config.Value;
-
             logger = _logger;
+            config = _config.Value;
             processRecording = _processRecording;
             dBOperations = _dBOperations;
+            fileRepository = _fileRepository;
         }
 
         // Find all new received meetings whose source is a recording and approved status is true.
@@ -54,41 +56,27 @@ namespace GM.WorkflowApp
             }
         }
 
-        // Create a work folder in DATAFILES/PROCESSING and process the recording
         private void TranscribeRecording(Meeting meeting)
         {
-            meeting.WorkStatus = WorkStatus.Transcribing;
+            string workfolderPath = fileRepository.WorkfolderPath(meeting);
+            string sourcefilePath = fileRepository.SourcefilePath(meeting);
 
-            // Create workfolder
-            string workfolderPath = GetWorkfolderPath(meeting);
+            using (TransactionScope scope = new TransactionScope())
+            {
+                meeting.WorkStatus = WorkStatus.Transcribing;
 
-            // transcribe recording
-            string sourceFilePath = Path.Combine(workfolderPath, meeting.SourceFilename);
-            processRecording.Process(sourceFilePath, workfolderPath, meeting.Language);
+                // transcribe recording
+                processRecording.Process(sourcefilePath, workfolderPath, meeting.Language);
 
-            meeting.WorkStatus = WorkStatus.Transcribed;
+                meeting.WorkStatus = WorkStatus.Transcribed;
 
-            // if true, editing will be allowed to proceed automatically.
-            // set to false to require manager approval.
-            meeting.Approved = true;
+                // if true, editing will be allowed to proceed automatically.
+                // set to false to require manager approval.
+                meeting.Approved = true;
+
+                dBOperations.WriteChanges();
+                scope.Complete();
+            }
         }
-
-
-        private string GetWorkfolderPath(Meeting meeting)
-        {
-            string workfolderName = dBOperations.GetWorkFolderName(meeting);
-            string workFolderPath = config.DatafilesPath + workfolderName;
-            return workFolderPath;
-        }
-
-        //private bool CreateWorkfolder(string workFolderPath)
-        //{
-        //    if (!GMFileAccess.CreateDirectory(workFolderPath))
-        //    {
-        //        Console.WriteLine($"ProcessRecordings - ERROR: could not create meeting folder {workFolderPath}");
-        //        return false;
-        //    }
-        //    return true;
-        //}
     }
 }

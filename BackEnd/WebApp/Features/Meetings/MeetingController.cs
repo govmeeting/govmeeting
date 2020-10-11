@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GM.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
-using GM.DatabaseRepositories;
+// using GM.DatabaseRepositories;
 using GM.DatabaseModel;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,19 +15,21 @@ namespace GM.WebApp.Features.Meetings
     [Route("api/[controller]")]
     public class MeetingController : Controller
     {
-        public IMeetingRepository meetings { get; set; }
+        //// This code needs to be re-written, since we removed DatabaseRepositories_Lib
 
-        public MeetingController(IMeetingRepository meetings)
-        {
-            this.meetings = meetings;
-        }
+        //public IMeetingRepository meetings { get; set; }
 
-        [HttpGet("{meetingId}")]
-        public Meeting Get(int meetingId)
-        {
-            Meeting ret = meetings.Get(meetingId);
-            return ret;
-        }
+        //public MeetingController(IMeetingRepository meetings)
+        //{
+        //    this.meetings = meetings;
+        //}
+
+        //[HttpGet("{meetingId}")]
+        //public Meeting Get(int meetingId)
+        //{
+        //    Meeting ret = meetings.Get(meetingId);
+        //    return ret;
+        //}
 
         //[HttpGet("{country}/{state}/{county}/{city}/{govEntity?}/{meetingDate?}")]
         //public ViewMeeting Get(string country, string state, string county, string city, string govEntity = "Selectmen", string language = "en", string meetingDate = null)

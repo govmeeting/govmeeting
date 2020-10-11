@@ -20,7 +20,7 @@ namespace GM.WebApp.Features.Home
         public IActionResult Index()
         {
             _logger.LogTrace("Hello from HomeController Index!");
-            return File("~/index.html", "text/html");
+            return new VirtualFileResult("~/index.html", "text/html");
              //return View();
         }
 

@@ -6,10 +6,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Configuration_Lib\Configuration_Lib.csproj" />
+    <ProjectReference Include="..\..\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
     <ProjectReference Include="..\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj" />
     <ProjectReference Include="..\DatabaseModel_Lib\DatabaseModel_Lib.csproj" />
     <ProjectReference Include="..\..\ProcessMeetings\ViewModels_Lib\ViewModels_Lib.csproj" />
-    <ProjectReference Include="..\..\ProcessMeetings\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
   </ItemGroup>
 
 </Project>

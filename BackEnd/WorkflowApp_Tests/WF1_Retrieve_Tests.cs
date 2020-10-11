@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Logging;
 using GM.Configuration;
-using GM.DatabaseRepositories;
+//using GM.DatabaseRepositories;
 using GM.ProcessTranscript;
 using GM.Utilities;
 using Moq;
@@ -60,7 +60,7 @@ namespace GM.WorkflowApp.Tests
             Assert.True(wf1 != null, "Create new WF2_ProcessTranscripts");
         }
 
-        [Fact()]
+        //[Fact()]
         public void RetrieveOneOnlineFile_Test()
         {
             string scheduledDate = "2020-08-25";
@@ -68,20 +68,12 @@ namespace GM.WorkflowApp.Tests
 
             // Mock some sample database records.
             // We expect WF1_RetrieveOnlineFiles to search for all GovBody's with scheduled meetings.
-            List<ScheduledMeeting> scheduled = new List<ScheduledMeeting>()
-            {
-                new ScheduledMeeting()
-                {
-                    Date = scheduledDateTime
-                }
-            };
             List<GovBody> govbodies = new List<GovBody>()
             {
                 new GovBody()
                 {
                     Id = 10,
                     LongName = "USA_ME",
-                    ScheduledMeetings = scheduled
                 },
                 new GovBody()
                 {
@@ -89,6 +81,12 @@ namespace GM.WorkflowApp.Tests
                     LongName = "USA_NJ_Summit"
                 }
             };
+
+            govbodies[0].ScheduledMeetings.Add(new ScheduledMeeting()
+            {
+                Date = scheduledDateTime
+            });
+
             // We expect WF1_RetrieveOnlineFiles to add a new meeting to this empty list
             List<Meeting> meetings = new List<Meeting>();
 

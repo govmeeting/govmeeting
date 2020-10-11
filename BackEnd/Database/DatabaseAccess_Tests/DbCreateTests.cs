@@ -29,7 +29,6 @@ namespace GM.DatabaseAccess.Tests
             GovBody bodyWritten = new GovBody()
             {
                 Name = "U.S. Senate",
-                Meetings = new List<Meeting>()
             };
 
             // ACT

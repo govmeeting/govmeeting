@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Configuration_Lib\Configuration_Lib.csproj" />
-    <ProjectReference Include="..\..\Database\DatabaseRepositories_Lib\DatabaseRepositories_Lib.csproj" />
+    <ProjectReference Include="..\..\Database\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj" />
     <ProjectReference Include="..\..\Utilities_Lib\Utilities_Lib.csproj" />
     <ProjectReference Include="..\ViewModels_Lib\ViewModels_Lib.csproj" />
   </ItemGroup>

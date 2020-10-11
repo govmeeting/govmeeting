@@ -93,7 +93,6 @@ namespace GM.WorkflowApp
                 meeting.Approved = false;
 
                 dBOperations.WriteChanges();
-
                 scope.Complete();
             }
         }

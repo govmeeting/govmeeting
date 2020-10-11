@@ -216,6 +216,11 @@ namespace GM.DatabaseAccess
             GovBody govbody = GetGovBody(meeting.GovBodyId);
             return govbody.LongName + "_" + meeting.Date;
         }
+        public string GetWorkFolderName(long meetingId)
+        {
+            Meeting meeting = GetMeeting(meetingId);
+            return GetWorkFolderName(meeting);
+        }
 
     }
 }

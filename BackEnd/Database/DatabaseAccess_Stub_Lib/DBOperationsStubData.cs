@@ -10,6 +10,18 @@ namespace GM.DatabaseAccess_Stub
     {
         // /////////////////// GovBody /////////////////////////////
 
+        private static GovBody CreateGB()
+        {
+            GovBody gb = new GovBody();
+            gb.ScheduledMeetings.Add(
+                new ScheduledMeeting()
+                {
+                    Id = 1,
+                    Date = DateTime.Now.AddDays(-2)
+                });
+            return gb;
+        }
+
         public List<GovBody> GovBodiesStubData = new List<GovBody>
         {
             new GovBody()
@@ -18,105 +30,98 @@ namespace GM.DatabaseAccess_Stub
                 Name = "Board of Selectmen",
                 GovLocationId = 7   // Boothbay Harbor
             },
-            new GovBody()
-            {
-                Id = 1,
-                Name = "City Council",
-                GovLocationId = 5,   // Philadelphia
-                ScheduledMeetings = new List<ScheduledMeeting>()
-                {
-                    new ScheduledMeeting()
-                    {
-                        Id = 1,
-                        Date = DateTime.Now.AddDays(-2)
-                    }
-                }
-            }
+            CreateGB()
+            //new GovBody()
+            //{
+            //    Id = 1,
+            //    Name = "City Council",
+            //    GovLocationId = 5,   // Philadelphia
+            //    ScheduledMeetings = new List<ScheduledMeeting>()
+            //    {
+            //        new ScheduledMeeting()
+            //        {
+            //            Id = 1,
+            //            Date = DateTime.Now.AddDays(-2)
+            //        }
+            //    }
+            //}
         };
 
         // /////////////////// GovLocation /////////////////////////////
 
+
+
         private List<GovLocation> GovLocationsStubData = new List<GovLocation>
         {
-            new GovLocation()
+            new GovLocation("en")
             {
                 Id = 1,
                 Name = "United States of America",
                 Code = "USA",
-                GovLocationId = 0,
-                Languages = new List<Language> {new Language {Id = 1, Name = "en"} }
+                GovLocationId = 0
             },
             new GovLocation()
             {
                 Id = 2,
                 Name = "Pennsylvania",
                 Code = "PA",
-                GovLocationId = 1,
-                Languages = new List<Language> {new Language {Id = 1, Name = "en"} }
+                GovLocationId = 1
             },
-            new GovLocation()
+            new GovLocation("en")
             {
                 Id = 3,
                 Name = "New Jersey",
                 Code = "NJ",
-                GovLocationId = 1,
-                Languages = new List<Language> {new Language {Id = 1, Name = "en"} }
+                GovLocationId = 1
             },
-            new GovLocation()
+            new GovLocation("en")
             {
                 Id = 4,
                 Name = "Maine",
                 Code = "ME",
-                GovLocationId = 1,
-                Languages = new List<Language> {new Language {Id = 1, Name = "en"} }
+                GovLocationId = 1
             },
-            new GovLocation()
+            new GovLocation("en")
             {
                 Id = 5,
                 Name = "Philadelphia",
                 Code = "",
-                GovLocationId = 2,
-                Languages = new List<Language> {new Language {Id = 1, Name = "en"} }
+                GovLocationId = 2
             },
-            new GovLocation()
+            new GovLocation("en")
             {
                 Id = 6,
                 Name = "Little Falls",
                 Code = "",
-                GovLocationId = 3,
-                Languages = new List<Language> {new Language {Id = 1, Name = "en"} }
+                GovLocationId = 3
             },
-            new GovLocation()
+            new GovLocation("en")
             {
                 Id = 7,
                 Name = "Boothbay Harbor",
                 Code = "",
-                GovLocationId = 4,
-                Languages = new List<Language> {new Language {Id = 1, Name = "en"} }
+                GovLocationId = 4
             },
-            new GovLocation()
+            new GovLocation("en")
             {
                 Id = 8,
                 Name = "Australia",
                 Code = "AUS",
-                GovLocationId = 0,
-                Languages = new List<Language> {new Language {Id = 1, Name = "en"} }
+                GovLocationId = 0
             },
-            new GovLocation()
+            new GovLocation("en")
             {
                 Id = 9,
                 Name = "Victoria",
                 Code = "Vic",
-                GovLocationId = 8,
-                Languages = new List<Language> {new Language {Id = 1, Name = "en"} }
+                GovLocationId = 8
             },
-            new GovLocation()
+            new GovLocation("en")
             {
                 Id = 10,
                 Name = "Melbourne",
                 Code = "",
-                GovLocationId = 9,
-                Languages = new List<Language> {new Language {Id = 1, Name = "en"} }
+                GovLocationId = 9
             }
         };
 
@@ -132,7 +137,6 @@ namespace GM.DatabaseAccess_Stub
                 Name = "Monthly Regular",
                 Date = new DateTime(2014, 9, 8),
                 Length = 1810,
-                Sections = null,
                 GovBodyId = 7,
                 SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2014-09-08.mp4",
                 SourceType = SourceType.Recording,
@@ -147,7 +151,6 @@ namespace GM.DatabaseAccess_Stub
                 Name = "Monthly Regular",
                 Date = new DateTime(2014, 9, 25),
                 Length = 3550,
-                Sections = null,
                 GovBodyId = 5,
                 SourceFilename = "USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2014-09-25.pdf",
                 SourceType = SourceType.Transcript,
@@ -162,7 +165,6 @@ namespace GM.DatabaseAccess_Stub
                 Name = "Monthly Regular",
                 Date = new DateTime(2017, 2, 15),
                 Length = 2109,
-                Sections = null,
                 GovBodyId = 7,
                 SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15.mp4",
                 SourceType = SourceType.Recording,
@@ -180,7 +182,6 @@ namespace GM.DatabaseAccess_Stub
                 Date = new DateTime(2017, 12, 7),
                 // Length = 3466,
                 Length = -1,
-                Sections = null,
                 GovBodyId = 5,
                 SourceFilename = "USA_PA_Philadelphia_Philadelphia_CityCouncil_en_2017-12-07.pdf",
                 SourceType = SourceType.Transcript,
@@ -198,7 +199,6 @@ namespace GM.DatabaseAccess_Stub
                 Date = new DateTime(2017, 1, 09),
                 // Length = 192,
                 Length = -1,
-                Sections = null,
                 GovBodyId = 7,
                 SourceFilename = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4",
                 SourceType = SourceType.Recording,

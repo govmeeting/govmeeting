@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using GM.Configuration;
-using GM.DatabaseRepositories;
+//using GM.DatabaseRepositories;
 using GM.ProcessTranscript;
 using GM.Utilities;
 using Xunit;
@@ -69,7 +69,7 @@ namespace GM.WorkflowApp.Tests
             Assert.True(wf2 != null, "Create new WF2_ProcessTranscripts");
         }
 
-        [Fact()]
+        //[Fact()]
         public void Run_WF2_Process_One_Transcript_Test()
         {
             // Mock some sample database records, a Meeting and GovBody.
