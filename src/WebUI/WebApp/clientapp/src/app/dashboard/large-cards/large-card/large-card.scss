@@ -1,0 +1,90 @@
+@import '../../../../colors.scss';
+
+$color-jungle: #27ae60;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  //background-color: #fff;
+  margin: 10px;
+  -webkit-column-break-inside: avoid;
+  // border: 3px dashed green;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    background-color: $color-deep-blue;
+    color: $color-white;
+
+    & :hover {
+      cursor: pointer;
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      margin: 5px;
+      font-size: 15px;
+      color: #fff;
+    }
+
+    &-title {
+      margin: 10px;
+      font-size: 20px;
+      letter-spacing: 1.2px;
+    }
+
+    &-nodata {
+      color: lightblue;
+    }
+  }
+}
+
+// The code below is not used. He probably had a photo card that he removed.
+// https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/
+/*
+.card {
+  &__secondary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-auto-rows: 100px;
+    grid-gap: 25px;
+    padding: 20px;
+    background-color: $color-white;
+  }
+
+  &__photo {
+    // background-image: url('../../img/pumpkin-carving.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: slategray;
+    // overflow: hidden;
+    transform: scale(1);
+    transition: transform .3s ease-in-out;
+    width: 100%;
+    height: 100%;
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
+
+  &__photo-wrapper {
+    overflow: hidden;
+  }
+ */
+
+// This was for the prior Monthly spending card that used finance.component
+// I could not get amcharts working for that component.
+/*  .card--finance {
+    position: relative;
+  }
+}
+ */

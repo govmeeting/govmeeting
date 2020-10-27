@@ -1,1 +1,0 @@
-Currently "clientapp" is the only frontend app. But perhaps there will be other frontend apps that we will want. For example: native apps for ios or android, a phone app for just recording meetings and also some experiments in creating the frontend app in Flutter or something else.

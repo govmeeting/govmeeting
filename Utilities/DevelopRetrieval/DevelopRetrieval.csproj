@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BackEnd\Online\GetOnlineFiles_Lib\GetOnlineFiles_Lib.csproj" />
-    <ProjectReference Include="..\..\BackEnd\Utilities_Lib\Utilities_Lib.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\GetOnlineFiles_Lib\GetOnlineFiles_Lib.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
   </ItemGroup>
 
 </Project>

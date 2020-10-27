@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Api.Gax.Grpc" Version="3.0.0" />
+    <PackageReference Include="Google.Cloud.Speech.V1P1Beta1" Version="2.0.0-beta02" />
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Configuration_Lib\Configuration_Lib.csproj" />
+  </ItemGroup>
+
+</Project>

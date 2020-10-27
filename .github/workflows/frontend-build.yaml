@@ -2,13 +2,13 @@ name: Build frontend
 
 on:
   push:
-    paths: ["frontend/**", ".github/workflows/frontend-build.yaml"]
+    paths: ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yaml"]
   pull_request:
-    paths: ["frontend/**", ".github/workflows/frontend-build.yaml"]
+    paths: ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yaml"]
 
 defaults:
   run:
-    working-directory: frontend/clientapp
+    working-directory: src/WebUI/WebApp/clientapp
 
 jobs:
   build:
