@@ -21,7 +21,7 @@
     "ci:lint": "run-s format lint",
     "ci:build": "run-s clean build:prod",
     "ci:cypress": "start-server-and-test ci:start-server 4200 cypress",
-    "ci:start-server": "angular-http-server --path ./dist -p 4200",
+    "ci:start-server": "angular-http-server --path ./dist -p 4200"
   },
   "private": true,
   "dependencies": {
