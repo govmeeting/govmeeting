@@ -1,4 +1,4 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
+﻿using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
 using Moq;
 
 namespace Microsoft.eShopWeb.UnitTests.Builders

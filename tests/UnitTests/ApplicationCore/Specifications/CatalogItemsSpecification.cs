@@ -3,6 +3,7 @@ using Moq;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;
 
 namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Specifications
 {
@@ -12,7 +13,7 @@ namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Specifications
         public void MatchesSpecificCatalogItem()
         {
             var catalogItemIds = new int[] { 1 };
-            var spec = new eShopWeb.ApplicationCore.Specifications.CatalogItemsSpecification(catalogItemIds);
+            var spec = new eShopWeb.ApplicationCore.Features.Catalog.CatalogItemsSpecification(catalogItemIds);
 
             var result = GetTestCollection()
                 .AsQueryable()
@@ -26,7 +27,7 @@ namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Specifications
         public void MatchesAllCatalogItems()
         {
             var catalogItemIds = new int[] { 1, 3 };
-            var spec = new eShopWeb.ApplicationCore.Specifications.CatalogItemsSpecification(catalogItemIds);
+            var spec = new eShopWeb.ApplicationCore.Features.Catalog.CatalogItemsSpecification(catalogItemIds);
 
             var result = GetTestCollection()
                 .AsQueryable()

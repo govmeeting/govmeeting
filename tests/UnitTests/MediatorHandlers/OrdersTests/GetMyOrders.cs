@@ -1,6 +1,5 @@
 ﻿using Ardalis.Specification;
-using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+using Microsoft.eShopWeb.ApplicationCore.Features.Orders;
 using Microsoft.eShopWeb.Web.Features.MyOrders;
 using Moq;
 using System.Collections.Generic;
