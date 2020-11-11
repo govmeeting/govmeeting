@@ -10,10 +10,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BackEnd\Online\GoogleCloud_Lib\GoogleCloud_Lib.csproj" />
-    <ProjectReference Include="..\..\BackEnd\ProcessMeetings\ProcessRecording_Lib\ProcessRecording_Lib.csproj" />
-    <ProjectReference Include="..\..\BackEnd\ProcessMeetings\ViewModels_Lib\ViewModels_Lib.csproj" />
-    <ProjectReference Include="..\..\BackEnd\Utilities_Lib\Utilities_Lib.csproj" />
+    <ProjectReference Include="..\..\src\Application\ProcessRecording_Lib\ProcessRecording_Lib.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\GoogleCloud_Lib\GoogleCloud_Lib.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
+    <ProjectReference Include="..\..\src\WebUI\ViewModels_Lib\ViewModels_Lib.csproj" />
   </ItemGroup>
 
 </Project>

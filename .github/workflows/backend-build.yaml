@@ -2,9 +2,9 @@ name: Build Backend
 
 on:
   push:
-    paths-ignore: ['frontend/**', '.github/workflows/frontend-build.yaml']
+    paths-ignore: ['src/WebUI/WebApp/clientapp/**', '.github/workflows/frontend-build.yaml']
   pull_request:
-    paths-ignore: ['frontend/**', '.github/workflows/frontend-build.yaml']
+    paths-ignore: ['src/WebUI/WebApp/clientapp/**', '.github/workflows/frontend-build.yaml']
 
 jobs:
   build:

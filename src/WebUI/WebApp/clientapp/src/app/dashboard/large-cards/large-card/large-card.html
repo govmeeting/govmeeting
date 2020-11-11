@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card__header" (click)="togglePanel()">
+    <div class="card__header-icon {{iconcolor}}">
+      <i class="{{icon}}"></i>
+    </div>
+
+    <div class="card__header-title text-light">
+      <span><strong>{{title}} </strong></span>
+      <i *ngIf="!panelOpenState" class="fa fa-angle-down custom"></i>
+      <i *ngIf="panelOpenState" class="fa fa-angle-up custom"></i>
+    </div>
+
+    <div></div>
+  </div>
+
+  <div>
+    <mat-expansion-panel [expanded]="panelOpenState">
+      <ng-content></ng-content>
+    </mat-expansion-panel>
+  </div>
+</div>

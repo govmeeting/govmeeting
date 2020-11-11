@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <Compile Remove="BlockAndDelay.cs" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="Google.Cloud.Speech.V1" Version="1.0.1" />
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="2.1.0" />
+    <!--https://stackoverflow.com/questions/40236194/itextsharp-any-support-for-dotnet-core-netstandard1-6-->
+    <PackageReference Include="iTextSharp" Version="5.5.13.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.8" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.8" />
+    <PackageReference Include="NLog" Version="4.6.6" />
+    <PackageReference Include="NLog.Web" Version="4.9.2" />
+    <PackageReference Include="TxFileManager" Version="1.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\tests\DatabaseAccess_Stub_Lib\DatabaseAccess_Stub_Lib.csproj" />
+    <ProjectReference Include="..\..\Application\Configuration_Lib\Configuration_Lib.csproj" />
+    <ProjectReference Include="..\..\Application\EditTranscript_Lib\EditTranscript_Lib.csproj" />
+    <ProjectReference Include="..\..\Application\ProcessRecording_Lib\ProcessRecording_Lib.csproj" />
+    <ProjectReference Include="..\..\Application\ProcessTranscript_Lib\ProcessTranscript_Lib.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\GetOnlineFiles_Lib\GetOnlineFiles_Lib.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\LoadDatabase_Lib\LoadDatabase_Lib.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\OnlineAccess_Lib\OnlineAccess_Lib.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
+    <ProjectReference Include="..\..\WebUI\ViewModels_Lib\ViewModels_Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

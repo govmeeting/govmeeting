@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BackEnd\Configuration_Lib\Configuration_Lib.csproj" />
-    <ProjectReference Include="..\..\BackEnd\Utilities_Lib\Utilities_Lib.csproj" />
+    <ProjectReference Include="..\..\src\Application\Configuration_Lib\Configuration_Lib.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
   </ItemGroup>
 
 </Project>
