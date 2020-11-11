@@ -1,4 +1,4 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
+﻿using Microsoft.eShopWeb.ApplicationCore.Features.Orders;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -13,7 +13,7 @@ namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Specifications
         [Fact]
         public void ReturnsOrderWithOrderedItem()
         {
-            var spec = new eShopWeb.ApplicationCore.Specifications.CustomerOrdersWithItemsSpecification(_buyerId);
+            var spec = new eShopWeb.ApplicationCore.Features.Orders.CustomerOrdersWithItemsSpecification(_buyerId);
 
             var result = GetTestCollection()
                 .AsQueryable()
@@ -28,7 +28,7 @@ namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Specifications
         [Fact]
         public void ReturnsAllOrderWithAllOrderedItem()
         {
-            var spec = new eShopWeb.ApplicationCore.Specifications.CustomerOrdersWithItemsSpecification(_buyerId);
+            var spec = new eShopWeb.ApplicationCore.Features.Orders.CustomerOrdersWithItemsSpecification(_buyerId);
 
             var result = GetTestCollection()
                 .AsQueryable()

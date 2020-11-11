@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;
 
 namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Specifications
 {
@@ -10,7 +11,7 @@ namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Specifications
         [Fact]
         public void ReturnsAllCatalogItems()
         {
-            var spec = new eShopWeb.ApplicationCore.Specifications.CatalogFilterPaginatedSpecification(0, 10, null, null);
+            var spec = new eShopWeb.ApplicationCore.Features.Catalog.CatalogFilterPaginatedSpecification(0, 10, null, null);
 
             var result = GetTestCollection()
                 .AsQueryable()
@@ -23,7 +24,7 @@ namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Specifications
         [Fact]
         public void Returns2CatalogItemsWithSameBrandAndTypeId()
         {
-            var spec = new eShopWeb.ApplicationCore.Specifications.CatalogFilterPaginatedSpecification(0, 10, 1, 1);
+            var spec = new eShopWeb.ApplicationCore.Features.Catalog.CatalogFilterPaginatedSpecification(0, 10, 1, 1);
 
             var result = GetTestCollection()
                 .AsQueryable()

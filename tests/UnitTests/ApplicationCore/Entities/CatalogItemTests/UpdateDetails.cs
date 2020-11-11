@@ -1,6 +1,6 @@
 ﻿using Xunit;
-using Microsoft.eShopWeb.ApplicationCore.Entities;
 using System;
+using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;
 
 namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Entities.CatalogItemTests
 {
