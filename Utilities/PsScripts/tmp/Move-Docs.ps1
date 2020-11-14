@@ -1,7 +1,8 @@
 # Temporary script to move some files.
 
+$WORKSPACE_ROOT = "C:\GOVMEETING\_SOURCECODE"
 
-$docs = "C:\GOVMEETING\_SOURCECODE\frontend\clientapp\src\assets\docs"
+$docs = $WORKSPACE_ROOT + "\src\WebUI\WebApp\clientapp\src\assets\docs"
 Set-Location $docs
 
 # foreach ($lang in "AR","BN", "DE", "ES", "FI", "FR", "HI", "IT", "PT", "SW", "ZH") {

@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Configuration_Lib\Configuration_Lib.csproj" />
-    <ProjectReference Include="..\..\Domain\DatabaseModel_Lib\DatabaseModel_Lib.csproj" />
+    <ProjectReference Include="..\..\Domain\DatabaseModel_Lib\Entities_Lib.csproj" />
   </ItemGroup>
 
 </Project>

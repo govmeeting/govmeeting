@@ -11,8 +11,8 @@ function Main
         exit
     }
 
-    $clientapp = CombinePaths $solutionFolder "frontend\clientapp"
-    $webapp = CombinePaths $solutionFolder  "BackEnd\WebApp"
+    $clientapp = CombinePaths $solutionFolder "src\WebUI\WebApp\clientapp"
+    $webapp = CombinePaths $solutionFolder  "src\WebUI\WebApp"
     $secrets = CombinePaths $solutionFolder  "..\SECRETS"
     $readme = CombinePaths $solutionFolder  "README.md"
     $publish = $webapp + "\bin\release\netcoreapp2.2\publish"

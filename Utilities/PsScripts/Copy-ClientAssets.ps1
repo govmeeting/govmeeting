@@ -2,6 +2,8 @@
 
 Function Main
 {
+    $WORKSPACE_ROOT = "C:\GOVMEETING\_SOURCECODE"
+
     [CmdletBinding()]
     param (
         [Parameter(Position = 1)] [string] $clientapp,
@@ -13,8 +15,8 @@ Function Main
     Write-Host @args
 
     # If no params passed and repo is installed in C:\GOVMEETING|_SOURCECODE
-    if ($clientapp -eq "") { $clientapp = "C:\GOVMEETING\_SOURCECODE\frontend\clientapp" }
-    if ($publish -eq ""){ $publish = "C:\GOVMEETING\_SOURCECODE\BackEnd\WebApp\bin\release\netcoreapp2.2\publish" }
+    if ($clientapp -eq "") { $clientapp = $WORKSPACE_ROOT + "\src\WebUI\WebApp\clientapp" }
+    if ($publish -eq ""){ $publish = $WORKSPACE_ROOT + "\src\WebUI\WebApp\bin\release\netcoreapp2.2\publish" }
 
     $sourceAssets = [IO.Path]::Combine($clientapp, "dist\ClientApp")
     $destAssets = [IO.Path]::Combine($publish, "wwwroot") 

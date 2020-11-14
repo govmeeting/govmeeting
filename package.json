@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "install": "cd frontend/clientapp && npm install",
-    "start": "cd frontend/clientapp && npm start",
-    "build": "cd frontend/clientapp && npm run build",
-    "restart": "cd frontend/clientapp && npm restart",
-    "update": "cd frontend/clientapp && npm update"
+    "install": "cd src\\WebUI\\WebApp\\clientapp && npm install",
+    "start": "cd src\\WebUI\\WebApp\\clientapp && npm start",
+    "build": "cd src\\WebUI\\WebApp\\clientapp && npm run build",
+    "restart": "cd src\\WebUI\\WebApp\\clientapp && npm restart",
+    "update": "cd src\\WebUI\\WebApp\\clientapp && npm update"
   }
 }

@@ -10,6 +10,7 @@
 # Another weird problem emerged of a library working in one app but not another.
 # Problems like these are easier to solve when using the command line to build projects.
 
+# NOTE: The folder structure has changed since this was written.
 
 function Main
 {
@@ -17,15 +18,15 @@ function Main
     Set-Location C:/GOVMEETING/_SOURCECODE
     Get-Location | Write-Host
 
-    ### Choose what to run by un-commenting one of these lines. ###
+    ### Choose what to run by un-commenting one of the commands. ###
+
     #CreateWorkflowApp2
-    #CreateSolutionSummaries
 
     ### Some miscellaneous commands ###
     # AddPackage $googleCloudLibProject "Google.Cloud.Translation.V2" "2.0.0"
     # BuildProject $googleCloudLibProject
     # dotnet remove "BackEnd\Online\GoogleCloud_Lib2\GoogleCloud_Lib2.csproj"  package "Google.Cloud.Translation.V2"
-    # dotnet remove Backend\WorkflowApp3\WorkflowApp3.csproj package "Google.Cloud.Storage.V1"
+    # dotnet remove Backend\WorkflowApp2\WorkflowApp2.csproj package "Google.Cloud.Storage.V1"
     # AddReference $workflowAppProject "BackEnd\ProcessMeetings\ProcessRecording_Lib\ProcessRecording_Lib.csproj"
     # AddPackage $workflowAppProject "Google.Cloud.Storage.V1" "2.1.0"
     # BuildProject $workflowAppProject
@@ -42,29 +43,14 @@ function CreateWorkflowApp2
     #   install a subset of the original packages.
     # We add GoogleCLoud2_Lib as a reference to WorkflowApp2.
 
-    $workflowAppProject = "BackEnd\WorkflowApp3\WorkflowApp3.csproj"
-    $oldProjectFolder = "BackEnd/WorkflowApp2"
+    $workflowAppProject = "BackEnd\WorkflowApp2\WorkflowApp2.csproj"
+    $oldProjectFolder = "BackEnd/WorkflowApp"
     $googleCloudLibProject = "BackEnd\Online\GoogleCloud_Lib2\GoogleCloud_Lib2.csproj"
-
-    $solutionSummary = "utilities/PsScripts/SolutionSummary.txt"
-    $uniquePackages = "utilities/PsScripts/SolutionSummary-UniquePackages.txt"
 
     CreateWorkflowAppProject $workflowAppProject $oldProjectFolder
     CreateGoogleCloudLibProject $googleCloudLibProject
     AddReference $workflowAppProject $googleCloudLibProject
 }
-
-function CreateSolutionSummaries
-{
-    # In the following, we analyse the solution file "govmeeting.sln" and write two summaries:
-    #   summary of all projects with their references and packages.
-    #   summary of unique packages. 
-
-    Write-SolutionSummary $solutionSummary
-    AnalyseSolutionSummary $solutionSummary $uniquePackages
-}
-
-
 
 function CreateGoogleCloudLibProject($projectFile)
 {
@@ -164,52 +150,6 @@ function AddWorkflowAppPackages($project) {
         dotnet add $project package $name -v $version
     }
 }
-
-# Write-SolutionSummary reads the solution file (.sln file) and writes
-# a summary of projects, references and packages
-function Write-SolutionSummary($solutionSummary) {
-
-    $solutionPath = (Get-Location).ToString()
-    $solutionFile = "govmeeting.sln"
-
-    $sb = [System.Text.StringBuilder]::new()
-
-    dotnet sln $solutionFile list | ForEach-Object {
-        $slnLine = $_
-        if (!$slnLine.StartsWith("---" )-and 
-                !$slnLine.StartsWith("Project(s)") -and 
-                !$slnLine.EndsWith("ClientApp\")) {
-            $projectFile = [IO.Path]::Combine($solutionPath, $slnLine)
-            [void]$sb.AppendLine($projectFile)
-
-            dotnet list $projectFile reference | ForEach-Object {
-                $refLine = $_
-                if ((!$refLine.Contains("---" ) -and (!$refLine.Contains("Project reference")))) {
-                    [void]$sb.AppendLine("        $refLineb")
-                }
-            }
-            dotnet list $projectFile package | ForEach-Object {
-                $prjLine = $_
-                if ($prjLine.Contains(" > ")) {
-                    $prjLine = $prjLine -replace "^ *> ", ""
-                    [void]$sb.AppendLine("        $prjLine")
-                }
-            }
-        }
-    }
-    $sb.ToString() | set-content $solutionSummary
-}
-
-# AnalyseSolutionSummary read the SolutionSummary.txt file and 
-# analyses the results
-function AnalyseSolutionSummary($solutionSummary, $uniquePackages)
-{
-    $summary = get-content $solutionSummary
-    $packages = $summary | Where-Object {$_ -match '    > '}
-    $edited= $packages -replace "^ *> ", "" -replace " +$", ""  -replace "\(A\)", "" -replace " \)", ")" -replace "  +", " | "
-    $unique = $edited | Sort-Object | Get-Unique
-    $unique | set-content $uniquePackages
-}  
 
 function GetFullPath($relativePath)
 {

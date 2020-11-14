@@ -16,7 +16,7 @@
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\Domain\ApplicationCore\ApplicationCore.csproj" />
+		<ProjectReference Include="..\..\Domain\ApplicationCore\ApplicationCore_from_eshop.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Data\Migrations\" />

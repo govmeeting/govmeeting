@@ -9,7 +9,7 @@ namespace GM.WebApp
     // This is a basic alternative to NLog.
     public class StartupLogger
     {
-        StreamWriter stream;
+        readonly StreamWriter stream;
 
 
         public StartupLogger(string logFolder)
