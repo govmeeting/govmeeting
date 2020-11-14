@@ -9,14 +9,14 @@
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:4200",
-      "webRoot": "${workspaceRoot}/frontend/clientapp"
+      "webRoot": "${workspaceRoot}/src/WebUI/WebApp/clientapp"
     },
     {
       "name": "ClientApp",
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:5000",
-      "webRoot": "${workspaceRoot}/frontend/clientapp"
+      "webRoot": "${workspaceRoot}/src/WebUI/WebApp/clientapp"
     },
     {
       "name": "WebApp",
@@ -25,7 +25,7 @@
       "preLaunchTask": "build-webapp",
       "program": "${workspaceFolder}/Backend/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/Backend/WebApp",
+      "cwd": "${workspaceFolder}/src/WebUI/WebApp",
       "stopAtEntry": false,
       "internalConsoleOptions": "openOnSessionStart",
       "launchBrowser": {
@@ -41,9 +41,9 @@
       "request": "launch",
       "preLaunchTask": "build-webapp",
       // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/Backend/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
+      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/Backend/WebApp",
+      "cwd": "${workspaceFolder}/src/WebUI/WebApp",
       "stopAtEntry": false,
       "internalConsoleOptions": "openOnSessionStart",
       "launchBrowser": {
@@ -64,7 +64,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "sourceFileMap": {
-        "/Views": "${workspaceFolder}/Views"
+        "/Views": "${workspaceFolder}/src/WebUI/WebApp/Features"
       }
     },
     {
@@ -73,9 +73,9 @@
       "request": "launch",
       "preLaunchTask": "build-workflowapp",
       // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/Backend/WorkflowApp/bin/Debug/netcoreapp2.2/WorkflowApp.dll",
+      "program": "${workspaceFolder}/src/Workflow/WorkflowApp/bin/Debug/netcoreapp2.2/WorkflowApp.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/Backend/WorkflowApp",
+      "cwd": "${workspaceFolder}/src/Workflow/WorkflowApp",
       // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
       "console": "internalConsole",
       "stopAtEntry": false,

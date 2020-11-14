@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Domain\ApplicationCore\ApplicationCore.csproj" />
+    <ProjectReference Include="..\..\src\Domain\ApplicationCore\ApplicationCore_from_eshop.csproj" />
     <ProjectReference Include="..\..\src\WebUI\WebApp\WebApp.csproj" />
   </ItemGroup>
 

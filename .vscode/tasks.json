@@ -12,7 +12,7 @@
       "label": "build-webapp",
       "command": "dotnet",
       "type": "process",
-      "args": ["build", "${workspaceFolder}/BackEnd/WebApp/WebApp.csproj"],
+      "args": ["build", "${workspaceFolder}/src/WebUI/WebApp/WebApp.csproj"],
       "problemMatcher": "$msCompile"
     },
     {
@@ -21,7 +21,7 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/BackEnd/WorkflowApp/WorkflowApp.csproj"
+        "${workspaceFolder}/src/Workflow/WorkflowApp/WorkflowApp.csproj"
       ],
       "problemMatcher": "$msCompile"
     }

@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebUI", "WebUI", "{A26AF765
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflow", "Workflow", "{73BAD179-F00E-4497-BB52-C374F94B9D8B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseModel_Lib", "src\Domain\DatabaseModel_Lib\DatabaseModel_Lib.csproj", "{F877D1E0-FDB8-4711-9C02-773D83DBB8CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities_Lib", "src\Domain\DatabaseModel_Lib\Entities_Lib.csproj", "{F877D1E0-FDB8-4711-9C02-773D83DBB8CB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseAccess_Lib", "src\Infrastructure\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj", "{9A87F261-AAA5-4EA2-B984-749CBE7D455B}"
 EndProject
@@ -62,15 +62,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BashScripts", "BashScripts"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PsScripts", "PsScripts", "{3FBD0C18-A610-42C9-856F-22210FAA0E2B}"
 	ProjectSection(SolutionItems) = preProject
+		AnalyzeSolutionFile.ps1 = AnalyzeSolutionFile.ps1
 		utilities\PsScripts\Build-ClientApp.ps1 = utilities\PsScripts\Build-ClientApp.ps1
 		utilities\PsScripts\Build-ProjectReadme.ps1 = utilities\PsScripts\Build-ProjectReadme.ps1
 		utilities\PsScripts\Build-Solution.ps1 = utilities\PsScripts\Build-Solution.ps1
 		utilities\PsScripts\BuildPublishAndDeploy.ps1 = utilities\PsScripts\BuildPublishAndDeploy.ps1
 		utilities\PsScripts\Copy-ClientAssets.ps1 = utilities\PsScripts\Copy-ClientAssets.ps1
 		utilities\PsScripts\Deploy-PublishFolder.ps1 = utilities\PsScripts\Deploy-PublishFolder.ps1
-		utilities\PsScripts\move-docs.ps1 = utilities\PsScripts\move-docs.ps1
 		utilities\PsScripts\Publish-WebApp.ps1 = utilities\PsScripts\Publish-WebApp.ps1
-		utilities\PsScripts\Rename-SpecFiles.ps1 = utilities\PsScripts\Rename-SpecFiles.ps1
 		utilities\PsScripts\Run-PublishedWebApp.ps1 = utilities\PsScripts\Run-PublishedWebApp.ps1
 		utilities\PsScripts\Set-IsAspServerRunning.ps1 = utilities\PsScripts\Set-IsAspServerRunning.ps1
 	EndProjectSection
@@ -97,11 +96,30 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslateText", "Utilities\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeepWebsiteAlive", "Utilities\KeepWebsiteAlive\KeepWebsiteAlive.csproj", "{EB2D09ED-9483-4FBE-BE9F-EFD86CE65651}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationCore", "src\Domain\ApplicationCore\ApplicationCore.csproj", "{01F46923-EF80-47FA-905C-BB9AD4F6D43D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationCore_from_eshop", "src\Domain\ApplicationCore\ApplicationCore_from_eshop.csproj", "{01F46923-EF80-47FA-905C-BB9AD4F6D43D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{ABE89AEA-30DF-4573-86C0-228B12FBACA8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "src\Infrastructure\Infrastructure\Infrastructure.csproj", "{923444EF-8B57-4679-81F1-79A92A71BBA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure_from_eshop", "src\Infrastructure\Infrastructure\Infrastructure_from_eshop.csproj", "{923444EF-8B57-4679-81F1-79A92A71BBA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution_items", "solution_items", "{99C9A472-ED3F-43D7-965C-C4AB80D65251}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.npmrc = .npmrc
+		global.json = global.json
+		LICENSE = LICENSE
+		package.json = package.json
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tmp", "tmp", "{D9DFD401-C9CE-4F56-9E63-FC30B96E8F40}"
+	ProjectSection(SolutionItems) = preProject
+		Utilities\PsScripts\tmp\Move-Docs.ps1 = Utilities\PsScripts\tmp\Move-Docs.ps1
+		Utilities\PsScripts\tmp\Rename-SpecFiles.ps1 = Utilities\PsScripts\tmp\Rename-SpecFiles.ps1
+		Utilities\PsScripts\tmp\SolutionSummary-UniquePackages.txt = Utilities\PsScripts\tmp\SolutionSummary-UniquePackages.txt
+		Utilities\PsScripts\tmp\SolutionSummary.txt = Utilities\PsScripts\tmp\SolutionSummary.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -262,6 +280,7 @@ Global
 		{01F46923-EF80-47FA-905C-BB9AD4F6D43D} = {6CF26830-15E5-462A-B39B-A37B53CB8CC3}
 		{ABE89AEA-30DF-4573-86C0-228B12FBACA8} = {605EA6F9-19D6-43BA-BC7C-DDF255D295D8}
 		{923444EF-8B57-4679-81F1-79A92A71BBA1} = {BADA351D-EF99-4B70-8D72-754554262FEB}
+		{D9DFD401-C9CE-4F56-9E63-FC30B96E8F40} = {3FBD0C18-A610-42C9-856F-22210FAA0E2B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F267E5D-0E3E-4AD3-A33A-27D6D658BB1F}

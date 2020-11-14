@@ -50,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\ApplicationCore\ApplicationCore.csproj" />
+    <ProjectReference Include="..\..\Domain\ApplicationCore\ApplicationCore_from_eshop.csproj" />
     <ProjectReference Include="..\..\Infrastructure\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
   </ItemGroup>
