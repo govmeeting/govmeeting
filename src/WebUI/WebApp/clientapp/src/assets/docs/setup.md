@@ -2,7 +2,7 @@
 
 # Contents
 
-- <a href="#QuickStart"> Quick Start </a>
+- <a href="#QuickStart"> Quick Start (no IDE) </a>
 - <a href="#DevelopVsCode"> Develop with VsCode </a>
 - <a href="#DevelopVS"> Develop with Visual Studio </a>
 - <a href="#Database"> Database </a>
@@ -13,7 +13,7 @@
 
 <a name="QuickStart"></a>
 
-# Quick Start <br/>
+# Quick Start (no IDE) <br/>
 
 <a href="#QuickStart"> [Contents] </a>
 
@@ -29,14 +29,14 @@ But if you may contribute, it's better to fork and clone your fork.
 This is the Anglar front end app.
 
 - Install <a href="https://nodejs.org/en/download/"> Node.js. </a>
-- &gt; cd govmeeting/frontend/clientapp
+- &gt; cd govmeeting/src/WebUI/WebApp/clientapp
 - &gt; npm install
 - &gt; npm start
 - Open brower to localhost:4200.
 
 ## Run ClientApp tests
 
-- &gt; cd govmeeting/frontend/clientapp
+- &gt; cd govmeeting/src/WebUI/WebApp/clientapp
 - &gt; npm run test:once &nbsp; &nbsp; &nbsp; ( run once )
 - &gt; npm run test &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ( run in watch mode )
 
@@ -48,23 +48,23 @@ This is the Anglar front end app.
 
 ## Run .NET tests
 
-- &gt; cd govmeeting/frontend/clientapp
-- &gt; dotnet test
+- &gt; cd govmeeting/src/WebUI/WebApp/clientapp
+- &gt; dotnet test &nbsp; &nbsp; &nbsp; &nbsp; (ignore warnings about iTextSharp & NLog.Web)
 
 ## Run WebApp
 
 This is the .NET Web API server.
 
 - Leave Angular client running, but close browser.
-- &gt; cd govmeeting/BackEnd/WebApp
+- &gt; cd govmeeting/src/WebUI/WebApp
 - &gt; dotnet run
 - Browser will automatically open to localhost:5000.
 
-## Run .Net Workflow App
+## Run Workflow App
 
 This standalone performs batch jobs such as downloading, processing and transcribing meeting recordings.
 
-- &gt; cd govmeeting/BackEnd/WorkflowApp
+- &gt; cd govmeeting/src/Workflow/WorkflowApp
 - &gt; dotnet run
 
 ---
@@ -91,7 +91,7 @@ This is the Anglar front end SPA.
 
 - Open the project folder in VsCode
 - Open a terminal pane
-- &gt; cd frontend/clientapp
+- &gt; cd src/WebUI/WebApp/clientapp
 - &gt; npm install
 - &gt; npm start
 - Open a browser to localhost:4200
@@ -135,7 +135,7 @@ This standalone performs batch jobs such as downloading, processing and transcri
 ## Notes
 
 - The first time that the .NET projects are built, the NuGet packages are installed. If errors occur, re-run the build. NuGet packages are installed aysnchronously and there is a known race condition bug.
-- The Angular App has a setting for whether it should call the Web API server or use stub data instead. The default is to stub data. To change this setting, change "isAspServerRunning" from false to true in frontend\clientapp\src\app\app.module.ts
+- The Angular App has a setting for whether it should call the Web API server or use stub data instead. The default is to stub data. To change this setting, change "isAspServerRunning" from false to true in src/WebUI/WebApp\clientapp\src\app\app.module.ts
 - During development, ClientApp is served by webpack-dev-server. WebApp uses the Kestrel server for API calls. Kestrel proxies all non-API requests to webpack-dev-server.
 
 ---
@@ -157,7 +157,7 @@ This standalone performs batch jobs such as downloading, processing and transcri
 ## Run clientapp & WebApp
 
 - Download the sub-folders from <a href="https://drive.google.com/drive/folders/1_I8AEnMNoPud7XZ_zIYfyGbvy96b-PyN?usp=sharing"> Google Drive. </a> Put them in a sibling folder to the project named "TESTDATA"
-- In frontend/clientapp/app.module.ts, change "isAspServerRunning" from false to true.
+- In src/WebUI/WebApp/clientapp/app.module.ts, change "isAspServerRunning" from false to true.
 - In Task Runner Explorer
   - Select: clientapp
   - run "install"
@@ -183,7 +183,7 @@ Note: See notes for WorkflowApp under "Visual Studio Code"
 
 Execute:
 
-- cd Backend/WorkflowApp
+- cd src/Workflow/WorkflowApp
 - dotnet build workflowapp.csproj
 - dotnet run bin/debug/dotnet2.0/workflowapp.dll
 
@@ -220,7 +220,7 @@ Besides the test files on Google Drive, you can process your own recordings of m
 - Name the file as follows: "country_state_county_municipality_agency_language-code_date.mp4".
 - For example: "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4".
 - Put the file in "DATAFILES"
-- In BackEnd/WorkflowApp/appsettings.json, set the following properites:
+- In src/Workflow/WorkflowApp/appsettings.json, set the following properites:
   - "InitializeWithTestData": false
   - "RequireManagerApproval": false
 - Run WorkflowApp.
@@ -261,7 +261,7 @@ appsettings.json.
 
 The database is built via the "code first" feature of Entity Framework Core. It examines the C# classes in the data model and automatically creates all tables and relations. There are two steps: (1) Create the "migrations" code for doing the update and (2) execute the update.
 
-- cd Backend/WebApp
+- cd src/WebUI/WebApp
 - dotnet ef migrations add initial --project ..\Database\DatabaseAccess_Lib
 - dotnet ef database update --project ..\Database\DatabaseAccess_Lib
 
@@ -354,7 +354,7 @@ Google provides developers with a free account which includes a credit (currentl
 
 ## Test Speech to Text transcription
 
-- Set the startup project in Visual Studio to `Backend/WorkflowApp`. Press F5.
+- Set the startup project in Visual Studio to `src/Workflow/WorkflowApp`. Press F5.
 
 - Copy (don't move) one of the sample MP4 files from testdata to DATAFILES/RECEIVED.
 
