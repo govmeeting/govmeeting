@@ -3,7 +3,7 @@
     <option *ngFor="let s of topics" [value]="s">{{s}}</option>
   </select>
 </span>
-<input type="text" style="font-size: 10pt; height: 20px; width: 400px;" [(ngModel)]="newTopicName" />
+<input type="text" style="font-size: 10pt; height: 20px; width: 400px" [(ngModel)]="newTopicName" />
 <!-- <input size="80" [(ngModel)]="newTopicName"> -->
 <button (click)="OnEnter()">SET</button>
 <!-- for debugging

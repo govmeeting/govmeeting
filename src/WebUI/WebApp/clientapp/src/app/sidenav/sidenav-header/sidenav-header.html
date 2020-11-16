@@ -14,7 +14,7 @@
   </mat-form-field> -->
   <span *ngIf="!isBeta">
     <select id="language" #mySelect [(ngModel)]="language" (change)="setLanguage(mySelect.value)">
-      <option *ngFor="let language of languages" [value]="language.value"> {{language.viewValue}} </option>
+      <option *ngFor="let language of languages" [value]="language.value">{{language.viewValue}}</option>
     </select>
   </span>
 

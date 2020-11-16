@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 // import { Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { catchError } from 'rxjs/operators';
+import { catchError, share } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { ViewTranscript } from '../../models/viewtranscript-view';
 import { ViewTranscriptSample } from '../../models/sample-data/viewtranscript-sample';
@@ -34,7 +34,10 @@ export class ViewTranscriptService {
     }
     let url: string = this.meetingUrl;
     url = url + '/' + meetingId;
-    this.observable = this.http.get<ViewTranscript>(url).pipe(catchError(this.errHandling.handleError)).share(); // make it shared so more than one subscriber can get the same result.
+    // this.observable = this.http.get<ViewTranscript>(url).pipe(catchError(this.errHandling.handleError)).share();
+    this.observable = this.http.get<ViewTranscript>(url).pipe(catchError(this.errHandling.handleError), share());
+
+    // observable is shared so more than one subscriber can get the same result.
     return this.observable;
   }
 }
