@@ -13,18 +13,14 @@
                 <div class="incoming_msg_img"></div>
                 <div class="received_msg">
                   <div class="received_withd_msg">
-                    <p>
-                      {{msg.message}}
-                    </p>
+                    <p>{{msg.message}}</p>
                     <span class="time_date"> {{msg.date | date:'medium'}} </span>
                   </div>
                 </div>
               </div>
               <div class="outgoing_msg" *ngIf="msg.type == 'sent'">
                 <div class="sent_msg">
-                  <p>
-                    {{msg.message}}
-                  </p>
+                  <p>{{msg.message}}</p>
                   <span class="time_date"> {{msg.date | date:'medium'}}</span>
                 </div>
               </div>

@@ -10,9 +10,7 @@
   <span class="{{displayNameClass}}">{{item.displayName}}</span>
   <span fxFlex *ngIf="item.children && item.children.length">
     <span fxFlex></span>
-    <mat-icon [@indicatorRotate]="item.expanded ? 'expanded': 'collapsed'">
-      expand_more
-    </mat-icon>
+    <mat-icon [@indicatorRotate]="item.expanded ? 'expanded': 'collapsed'"> expand_more </mat-icon>
   </span>
 </a>
 

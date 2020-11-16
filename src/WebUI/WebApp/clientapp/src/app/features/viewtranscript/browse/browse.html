@@ -4,7 +4,7 @@
     <div [hidden]="!CheckShowTopic(topicDiscuss.name)">
       <h2>{{topicDiscuss.name}}</h2>
       <!-- Display all the speakers and their statements on this topic. -->
-      <div style="padding: 10px;">
+      <div style="padding: 10px">
         <div *ngFor="let talk of topicDiscuss.talks; let j = index">
           <div [hidden]="!CheckShowSpeaker(talk.Speaker)">
             <p><strong>{{talk.Speaker}}:</strong> {{talk.Text}}</p>

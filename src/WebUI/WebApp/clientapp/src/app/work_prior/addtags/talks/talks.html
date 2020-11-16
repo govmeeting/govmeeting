@@ -1,5 +1,5 @@
 <button (click)="saveChanges()">Save Changes</button>
-<ul style="list-style: none;">
+<ul style="list-style: none">
   <li *ngFor="let talk of talks; let i = index">
     <!-- Display the section name and up/down arrows if start of new section -->
     <div [hidden]="talk.section==null">

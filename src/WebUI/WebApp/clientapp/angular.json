@@ -19,7 +19,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "tsConfig": "tsconfig.app.json",
             "assets": [ "src/assets" ],
             "styles": [
               "src/styles.css",
@@ -68,10 +68,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
+            "main": "src/KarmaTest.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
             "styles": [
               "src/styles.scss",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
@@ -84,7 +84,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [ "src/tsconfig.app.json", "src/tsconfig.spec.json" ],
+            "tsConfig": [ "tsconfig.app.json", "tsconfig.spec.json" ],
             "exclude": [ "**/node_modules/**" ]
           }
         },
@@ -93,7 +93,7 @@
           "options": {
             "outputPath": "dist-server",
             "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.server.json"
+            "tsConfig": "tsconfig.server.json"
           },
           "configurations": {
             "dev": {
