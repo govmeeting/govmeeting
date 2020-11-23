@@ -96,7 +96,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TranslateText", "Utilities\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeepWebsiteAlive", "Utilities\KeepWebsiteAlive\KeepWebsiteAlive.csproj", "{EB2D09ED-9483-4FBE-BE9F-EFD86CE65651}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationCore_from_eshop", "src\Domain\ApplicationCore\ApplicationCore_from_eshop.csproj", "{01F46923-EF80-47FA-905C-BB9AD4F6D43D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "src\Domain\ApplicationCore\Core.csproj", "{01F46923-EF80-47FA-905C-BB9AD4F6D43D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{ABE89AEA-30DF-4573-86C0-228B12FBACA8}"
 EndProject
