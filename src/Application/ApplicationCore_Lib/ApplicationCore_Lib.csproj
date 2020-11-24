@@ -14,7 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\DatabaseModel_Lib\Entities_Lib.csproj" />
+	  <ProjectReference Include="..\Entities_Lib\Entities_Lib.csproj" />
 	</ItemGroup>
 
 </Project>

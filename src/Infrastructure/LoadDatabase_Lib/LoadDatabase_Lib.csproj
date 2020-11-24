@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Configuration_Lib\Configuration_Lib.csproj" />
-    <ProjectReference Include="..\..\Domain\DatabaseModel_Lib\Entities_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
     <ProjectReference Include="..\..\WebUI\ViewModels_Lib\ViewModels_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj" />
