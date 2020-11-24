@@ -16,9 +16,10 @@
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\Domain\ApplicationCore\ApplicationCore_from_eshop.csproj" />
+		<Folder Include="Data\Migrations\" />
 	</ItemGroup>
 	<ItemGroup>
-		<Folder Include="Data\Migrations\" />
+	  <ProjectReference Include="..\..\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
+      <ProjectReference Include="..\..\Application\Entities_Lib\Entities_Lib.csproj" />
 	</ItemGroup>
 </Project>

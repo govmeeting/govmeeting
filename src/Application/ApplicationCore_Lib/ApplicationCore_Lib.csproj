@@ -13,4 +13,8 @@
 		<PackageReference Include="System.Text.Json" Version="4.7.2" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Entities_Lib\Entities_Lib.csproj" />
+	</ItemGroup>
+
 </Project>

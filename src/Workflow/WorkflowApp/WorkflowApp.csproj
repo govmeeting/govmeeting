@@ -27,6 +27,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\tests\DatabaseAccess_Stub_Lib\DatabaseAccess_Stub_Lib.csproj" />
+    <ProjectReference Include="..\..\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
+    <ProjectReference Include="..\..\Application\Entities_Lib\Entities_Lib.csproj" />
     <ProjectReference Include="..\..\Application\Configuration_Lib\Configuration_Lib.csproj" />
     <ProjectReference Include="..\..\Application\EditTranscript_Lib\EditTranscript_Lib.csproj" />
     <ProjectReference Include="..\..\Application\ProcessRecording_Lib\ProcessRecording_Lib.csproj" />

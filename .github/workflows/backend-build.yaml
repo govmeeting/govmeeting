@@ -8,8 +8,9 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+    # Build master for Govmeeting owner. But all but master for others.
+    if: (github.repository_owner == 'Govmeeting' && github.ref == 'refs/heads/master') || (github.repository_owner != 'Govmeeting' && github.ref != 'refs/heads/master') 
 
     steps:
     - uses: actions/checkout@v2

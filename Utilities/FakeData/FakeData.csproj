@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Domain\DatabaseModel_Lib\Entities_Lib.csproj" />
+    <ProjectReference Include="..\..\src\Application\Entities_Lib\Entities_Lib.csproj" />
     <ProjectReference Include="..\..\src\WebUI\ViewModels_Lib\ViewModels_Lib.csproj" />
   </ItemGroup>
 

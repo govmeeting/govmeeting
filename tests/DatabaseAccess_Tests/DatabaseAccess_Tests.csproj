@@ -16,10 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Domain\DatabaseModel_Lib\Entities_Lib.csproj" />
+    <ProjectReference Include="..\..\src\Application\Entities_Lib\Entities_Lib.csproj" />
     <ProjectReference Include="..\..\src\Infrastructure\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj" />
     <ProjectReference Include="..\..\src\Infrastructure\DatabaseAccess_Lib\DatabaseAccess_Lib.csproj" />
-    <ProjectReference Include="..\..\src\Domain\DatabaseModel_Lib\DatabaseModel_Lib.csproj" />
   </ItemGroup>
 
 </Project>

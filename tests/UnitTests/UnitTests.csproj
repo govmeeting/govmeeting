@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ApplicationCore\**" />
+    <EmbeddedResource Remove="ApplicationCore\**" />
+    <None Remove="ApplicationCore\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="4.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
@@ -27,11 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ApplicationCore\Helpers\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Domain\ApplicationCore\ApplicationCore_from_eshop.csproj" />
+    <ProjectReference Include="..\..\src\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
+    <ProjectReference Include="..\..\src\Application\Entities_Lib\Entities_Lib.csproj" />
     <ProjectReference Include="..\..\src\WebUI\WebApp\WebApp.csproj" />
   </ItemGroup>
 

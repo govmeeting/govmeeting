@@ -13,6 +13,9 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Build master for Govmeeting owner. But all but master for others.
+    if: (github.repository_owner == 'Govmeeting' && github.ref == 'refs/heads/master') || (github.repository_owner != 'Govmeeting' && github.ref != 'refs/heads/master') 
+
     strategy:
       matrix:
         node-version: [12.x]
