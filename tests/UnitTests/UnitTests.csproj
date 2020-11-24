@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Domain\ApplicationCore\Core.csproj" />
+    <ProjectReference Include="..\..\src\Domain\ApplicationCore\Core_Lib.csproj" />
     <ProjectReference Include="..\..\src\WebUI\WebApp\WebApp.csproj" />
   </ItemGroup>
 
