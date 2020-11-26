@@ -159,7 +159,7 @@ namespace GM.WebApp
         private void ConfigureDbContext(IServiceCollection services)
         {
             logger.Info("Add ApplicationDbContext");
-            services.AddTransient<DBOperations>();
+            ////services.AddTransient<DBOperations>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration["AppSettings:ConnectionString"]

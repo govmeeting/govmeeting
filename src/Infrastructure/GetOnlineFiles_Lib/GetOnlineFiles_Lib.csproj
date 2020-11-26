@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
     <ProjectReference Include="..\..\Application\Entities_Lib\Entities_Lib.csproj" />
   </ItemGroup>
 

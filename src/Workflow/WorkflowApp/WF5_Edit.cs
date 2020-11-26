@@ -16,26 +16,28 @@ namespace GM.WorkflowApp
     public class WF5_Edit
     {
         readonly AppSettings config;
-        readonly IDBOperations dBOperations;
+        ////readonly IDBOperations dBOperations;
 
         public WF5_Edit(
-            IOptions<AppSettings> _config,
-            IDBOperations _dBOperations
+            IOptions<AppSettings> _config
+            ////IDBOperations _dBOperations
             )
         {
             config = _config.Value;
-            dBOperations = _dBOperations;
+            ////dBOperations = _dBOperations;
         }
 
         public void Run()
         {
-            List<Meeting> transcribedMeetings = dBOperations.FindMeetings(SourceType.Recording, WorkStatus.Transcribed, true);
+            ////List<Meeting> transcribedMeetings = dBOperations.FindMeetings(SourceType.Recording, WorkStatus.Transcribed, true);
+            List<Meeting> transcribedMeetings = new List<Meeting>();   // TODO - CA
             foreach (Meeting meeting in transcribedMeetings)
             {
                 StartEditing(meeting);
             }
 
-            List<Meeting> proofreadingMeetings = dBOperations.FindMeetings(SourceType.Recording, WorkStatus.Editing, null);
+            ////List<Meeting> proofreadingMeetings = dBOperations.FindMeetings(SourceType.Recording, WorkStatus.Editing, null);
+            List<Meeting> proofreadingMeetings = new List<Meeting>();   // TODO - CA
             foreach (Meeting meeting in proofreadingMeetings)
             {
                 CheckIfEditingCompleted(meeting);
@@ -79,7 +81,8 @@ namespace GM.WorkflowApp
 
         private void CheckIfEditingCompleted(Meeting meeting)
         {
-            string workfolderName = dBOperations.GetWorkFolderName(meeting);
+            ////string workfolderName = dBOperations.GetWorkFolderName(meeting);
+            string workfolderName = "kjkjkjkjkoou9ukj";  // TODO - CA
             string workFolderPath = config.DatafilesPath + workfolderName;
 
             // TODO - When all of the tagging for a specific transcript is completed, it should:

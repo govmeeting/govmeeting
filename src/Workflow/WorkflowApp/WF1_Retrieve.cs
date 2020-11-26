@@ -7,7 +7,7 @@ using GM.FileDataRepositories;
 using GM.DatabaseModel;
 using System.Collections.Generic;
 using System.ComponentModel;
-using GM.DatabaseAccess;
+////using GM.DatabaseAccess;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 using GM.GetOnlineFiles;
@@ -40,25 +40,26 @@ namespace GM.WorkflowApp
 
         readonly ILogger<WF1_Retrieve> logger;
         readonly AppSettings config;
-        readonly IDBOperations dBOperations;
+        ////readonly IDBOperations dBOperations;
         readonly IRetrieveNewFiles retrieveNewFiles;
 
         public WF1_Retrieve(
             ILogger<WF1_Retrieve> _logger,
             IOptions<AppSettings> _config,
-            IDBOperations _dBOperations,
+            ////IDBOperations _dBOperations,
             IRetrieveNewFiles _retrieveNewFiles
            )
         {
             logger = _logger;
             config = _config.Value;
-            dBOperations = _dBOperations;
+            ////dBOperations = _dBOperations;
             retrieveNewFiles = _retrieveNewFiles;
         }
 
         public void Run()
         {
-            List<GovBody> govBodies = dBOperations.FindGovBodiesWithScheduledMeetings();
+            ////List<GovBody> govBodies = dBOperations.FindGovBodiesWithScheduledMeetings();
+            List<GovBody> govBodies = new List<GovBody>();  // TODO - implement
 
             foreach (GovBody govBody in govBodies)
             {
@@ -68,7 +69,8 @@ namespace GM.WorkflowApp
 
         private void DoWork(GovBody govBody)
         {
-            List<ScheduledMeeting> scheduled = govBody.ScheduledMeetings;
+            //List<ScheduledMeeting> scheduled = govBody.ScheduledMeetings;
+            IReadOnlyCollection<ScheduledMeeting> scheduled = govBody.ScheduledMeetings;
 
             // Get all meetings that have should occured
             IEnumerable<ScheduledMeeting> results = scheduled.Where(
@@ -104,8 +106,9 @@ namespace GM.WorkflowApp
                 {
                     Directory.CreateDirectory(workFolderPath);
                     fileMgr.Copy(retrievedFile, sourceFilePath, true);
-                    dBOperations.Add(meeting);
-                    dBOperations.WriteChanges();
+                    //// TODO - implement
+                    ////dBOperations.Add(meeting);
+                    ////dBOperations.WriteChanges();
                     scope.Complete();
                 }
 

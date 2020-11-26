@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Infrastructure\LoadDatabase_Lib\LoadDatabase_Lib.csproj" />
     <ProjectReference Include="..\..\src\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
   </ItemGroup>
 

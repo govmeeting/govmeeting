@@ -17,19 +17,21 @@ namespace GM.Webapp.Features.Govbodies
     [Route("api/[controller]")]
     public class GovernmentBodyController : Controller
     {
-        public DBOperations dbOps { get; set; }
+        ////public DBOperations dbOps { get; set; }
 
-        public GovernmentBodyController(DBOperations _dbOps)
-        {
-            this.dbOps = _dbOps;
-        }
+        ////public GovernmentBodyController(DBOperations _dbOps)
+        ////{
+        ////    this.dbOps = _dbOps;
+        ////}
 
-        [HttpGet("{meetingId}")]
-        public GovBody Get(int govBodyId)
-        {
-            GovBody ret = dbOps.GetGovBody(govBodyId);
-            return ret;
-        }
+        ////[HttpGet("{meetingId}")]
+        ////public GovBody Get(int govBodyId)
+        ////{
+        ////    GovBody ret = dbOps.GetGovBody(govBodyId);
+        ////    return ret;
+        ////}
+
+
 
         //[HttpGet("{country}/{state}/{county}/{city}/{govEntity?}/{meetingDate?}")]
         //public ViewMeeting Get(string country, string state, string county, string city, string govEntity = "Selectmen", string language = "en", string meetingDate = null)

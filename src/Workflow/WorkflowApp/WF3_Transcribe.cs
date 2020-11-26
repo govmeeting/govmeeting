@@ -22,7 +22,7 @@ namespace GM.WorkflowApp
         readonly ILogger<WF3_Transcribe> logger;
         readonly AppSettings config;
         readonly IRecordingProcess processRecording;
-        readonly IDBOperations dBOperations;
+        ////readonly IDBOperations dBOperations;
         readonly IFileRepository fileRepository;
         readonly WorkSegments workSegments = new WorkSegments();
 
@@ -30,14 +30,14 @@ namespace GM.WorkflowApp
             ILogger<WF3_Transcribe> _logger,
             IOptions<AppSettings> _config,
             IRecordingProcess _processRecording,
-            IDBOperations _dBOperations,
+            ////IDBOperations _dBOperations,
             IFileRepository _fileRepository
            )
         {
             logger = _logger;
             config = _config.Value;
             processRecording = _processRecording;
-            dBOperations = _dBOperations;
+            ////dBOperations = _dBOperations;
             fileRepository = _fileRepository;
         }
 
@@ -49,7 +49,9 @@ namespace GM.WorkflowApp
             if (!config.RequireManagerApproval) approved = null;
             List<Meeting> meetings;
 
-            meetings = dBOperations.FindMeetings(SourceType.Recording, WorkStatus.Received, approved);
+            ////meetings = dBOperations.FindMeetings(SourceType.Recording, WorkStatus.Received, approved);
+            meetings = new List<Meeting>();   // TODO - CA
+
             foreach (Meeting meeting in meetings)
             {
                 TranscribeRecording(meeting);
@@ -74,7 +76,7 @@ namespace GM.WorkflowApp
                 // set to false to require manager approval.
                 meeting.Approved = true;
 
-                dBOperations.WriteChanges();
+                ////dBOperations.WriteChanges();
                 scope.Complete();
             }
         }

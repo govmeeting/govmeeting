@@ -17,7 +17,7 @@ using GM.DatabaseAccess;
 using Microsoft.Extensions.Options;
 using Google.Cloud.Storage.V1;
 using GM.Utilities;
-using GM.DatabaseAccess_Stub;
+////using GM.DatabaseAccess_Stub;
 using GM.GetOnlineFiles;
 
 namespace GM.WorkflowApp
@@ -132,7 +132,7 @@ namespace GM.WorkflowApp
             // add services
             //services.AddTransient<IOptions<AppSettings>>();
             services.AddTransient<ApplicationDbContext>();
-            services.AddTransient<IDBOperations, DBOperationsStub>();
+            ////services.AddTransient<IDBOperations, DBOperationsStub>();
             services.AddTransient<RecordingProcess>();
             services.AddTransient<TranscribeAudio>();
             services.AddTransient<TranscriptProcess>();
