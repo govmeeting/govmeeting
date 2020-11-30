@@ -19,13 +19,13 @@ namespace GM.Configuration
 
             if (environment == "Development")
             {
-                string sharedFolder = GMFileAccess.GetSolutionItemsFolder();
+                string solutionFolder = GMFileAccess.GetSolutionFolder();
                 string secretsFolder = GMFileAccess.GetSecretsFolder();
 
                 config
-                .AddJsonFile(Path.Combine(sharedFolder, "appsettings.Shared.json"), optional: true)
+                .AddJsonFile(Path.Combine(solutionFolder, "appsettings.Shared.json"), optional: true)
                 .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Secrets.json"), optional: true)
-                .AddJsonFile(Path.Combine(sharedFolder, $"appsettings.{environment}.json"), optional: true);
+                .AddJsonFile(Path.Combine(solutionFolder, $"appsettings.{environment}.json"), optional: true);
             }
             else
             {

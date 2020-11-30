@@ -36,9 +36,6 @@ namespace GM.Utilities
         public static string GetSolutionFolder() =>
             FindParentFolderContaining("govmeeting.sln");
 
-        public static string GetSolutionItemsFolder() =>
-            Path.Combine(GetSolutionFolder(), "solution_items");
-
         public static string GetWebAppFolder() =>
             Path.Combine(GetSolutionFolder(), "src", "WebUI", "WebApp");
 
