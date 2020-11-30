@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
 using GM.DatabaseModel;
 
-
 namespace GM.DatabaseAccess
-
 {
     // See here for extending this class:
     //   https://stackoverflow.com/a/40579369/1978840

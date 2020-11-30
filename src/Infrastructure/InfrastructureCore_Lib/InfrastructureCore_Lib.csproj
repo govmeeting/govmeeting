@@ -17,6 +17,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Data\Migrations\" />
+		<Folder Include="Configuration\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
