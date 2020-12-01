@@ -2,6 +2,7 @@
 using Microsoft.eShopWeb.ApplicationCore.Constants;
 using System.Threading.Tasks;
 using Microsoft.eShopWeb.ApplicationCore.Authorization;
+using GM.DatabaseAccess;
 
 namespace Microsoft.eShopWeb.Infrastructure.Identity
 {

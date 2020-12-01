@@ -6,7 +6,7 @@ using GM.ViewModels;
 using GM.Configuration;
 using GM.DatabaseModel;
 using GM.Utilities;
-using GM.DatabaseAccess;
+////using GM.DatabaseAccess;
 
 namespace GM.FileDataRepositories
 {
@@ -19,15 +19,15 @@ namespace GM.FileDataRepositories
         const string WORK_FILE_NAME = "ToView.json";
 
         private readonly AppSettings _config;
-        readonly IDBOperations dBOperations;
+        ////readonly IDBOperations dBOperations;
 
         public ViewMeetingRepository(
-            IOptions<AppSettings> config,
-            IDBOperations _dBOperations
+            IOptions<AppSettings> config
+            ////IDBOperations _dBOperations
             )
         {
             _config = config.Value;
-            dBOperations = _dBOperations;
+            ////dBOperations = _dBOperations;
         }
 
         public TranscriptViewModel Get(long meetingId)
@@ -55,12 +55,13 @@ namespace GM.FileDataRepositories
 
         private string GetWorkFolderPath(long meetingId)
         {
-            Meeting meeting = dBOperations.GetMeeting(meetingId);
+            return "kjjljkjkj"; // TODO - CA
+            ////Meeting meeting = dBOperations.GetMeeting(meetingId);
 
-            string workfolderName = dBOperations.GetWorkFolderName(meeting);
+            ////string workfolderName = dBOperations.GetWorkFolderName(meeting);
 
-            string workFolder = Path.Combine(_config.DatafilesPath, workfolderName, SUB_WORK_FOLDER);
-            return workFolder;
+            ////string workFolder = Path.Combine(_config.DatafilesPath, workfolderName, SUB_WORK_FOLDER);
+            ////return workFolder;
         }
 
     }

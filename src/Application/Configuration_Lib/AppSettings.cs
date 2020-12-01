@@ -11,6 +11,7 @@ namespace GM.Configuration
     public class AppSettings
     {
         public string ConnectionString { get; set; }
+        public string DatabaseType { get; set; } // Choices: UseConnectionString (default), InMemory, SQLite 
         public string DatafilesPath { get; set; }
         public string TestdataPath { get; set; }
         public bool DeleteProcessingFolderOnStartup { get; set; }

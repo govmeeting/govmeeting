@@ -6,7 +6,7 @@ using GM.DatabaseModel;
 
 // Experiment with specification pattern - (not yet used)
 
-namespace DatabaseAccess_Lib
+namespace GM.DatabaseAccess
 {
     public abstract class Specification<T>
     {

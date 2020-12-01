@@ -17,4 +17,9 @@
 	  <ProjectReference Include="..\Entities_Lib\Entities_Lib.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Entities\" />
+	  <Folder Include="Specifications\" />
+	</ItemGroup>
+
 </Project>

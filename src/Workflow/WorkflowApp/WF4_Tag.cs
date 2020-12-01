@@ -26,18 +26,18 @@ namespace GM.WorkflowApp
          */
 
         readonly AppSettings config;
-        readonly IDBOperations dBOperations;
+        ////readonly IDBOperations dBOperations;
         readonly ILogger<WF2_Process> logger;
 
         public WF4_Tag(
             IOptions<AppSettings> _config,
-            IDBOperations _dBOperations,
+            ////IDBOperations _dBOperations,
             ILogger<WF2_Process> _logger
            )
         {
             logger = _logger;
             config = _config.Value;
-            dBOperations = _dBOperations;
+            ////dBOperations = _dBOperations;
         }
         public void Run()
         {
@@ -46,14 +46,16 @@ namespace GM.WorkflowApp
             bool? approved = true;
             if (!config.RequireManagerApproval) approved = null;
 
-            List<Meeting> meetings = dBOperations.FindMeetings(SourceType.Transcript, WorkStatus.Processed, approved);
+            ////List<Meeting> meetings = dBOperations.FindMeetings(SourceType.Transcript, WorkStatus.Processed, approved);
+            List<Meeting> meetings = new List<Meeting>();   // TODO - CA
 
             foreach (Meeting meeting in meetings)
             {
                 StartTagging(meeting);
             }
 
-            meetings = dBOperations.FindMeetings(SourceType.Recording, WorkStatus.Tagging, null);
+            ////meetings = dBOperations.FindMeetings(SourceType.Recording, WorkStatus.Tagging, null);
+            meetings = new List<Meeting>();   // TODO - CA
             foreach (Meeting meeting in meetings)
             {
                 CheckIfTaggingCompleted(meeting);
@@ -64,7 +66,8 @@ namespace GM.WorkflowApp
 
         public void DoWork(Meeting meeting)
         {
-            string workfolderName = dBOperations.GetWorkFolderName(meeting);
+            ////string workfolderName = dBOperations.GetWorkFolderName(meeting);
+            string workfolderName = "kjkjkjkjkoou9ukj";  // TODO - CA
             string workFolderPath = config.DatafilesPath + workfolderName;
 
             if (!GMFileAccess.CreateDirectory(workFolderPath))

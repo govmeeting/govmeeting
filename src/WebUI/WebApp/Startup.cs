@@ -13,11 +13,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.DataProtection;
 using NLog;
 using GM.WebApp.StartupCustomizations;
 using GM.Configuration;
 using GM.DatabaseAccess;
 using GM.Utilities;
+using System.IO;
+//using Microsoft.EntityFrameworkCore.Sqlite;
+using Microsoft.Data.Sqlite;
 
 namespace GM.WebApp
 {
@@ -31,6 +35,80 @@ namespace GM.WebApp
         NLog.Logger logger;
         public IConfiguration Configuration { get; }
 
+        /* NOTE: WebBuilder in Program.Main will call the correct Configure<environmnent>Services,
+         * where <environment> is the value of IHostEnvironment.EnvironmentName.
+         * IHostEnvironment.EnvironmentName can be set to any value, but the following values are provided by the framework:
+         *    Development : The launchSettings.json file sets ASPNETCORE_ENVIRONMENT to Development on the local machine.
+         *    Production : The default if DOTNET_ENVIRONMENT and ASPNETCORE_ENVIRONMENT have not been set.
+         */
+
+        public void ConfigureDevelopmentServices(IServiceCollection services)
+        {
+            switch (Configuration["AppSettings:DatabaseType"]) { 
+            case "InMemory":
+                ConfigureInMemoryDatabase(services);
+                break;
+            case "SQLite":
+                ConfigureSQLiteInMemoryDatabase(services);
+                break;
+            case "UseConnectionString":
+            default:
+                ConfigureRealDatabase(services);
+                break;
+            }
+            ConfigureServices(services);
+        }
+
+        public void ConfigureProductionServices(IServiceCollection services)
+        {
+            ConfigureRealDatabase(services);
+            ConfigureServices(services);
+        }
+
+        public void ConfigureTestingServices(IServiceCollection services)
+        {
+            ConfigureInMemoryDatabase(services);
+            ConfigureServices(services);
+        }
+        public void ConfigureDockerServices(IServiceCollection services)
+        {
+            services.AddDataProtection()
+                .SetApplicationName("govmeeting")
+                .PersistKeysToFileSystem(new DirectoryInfo(@"./"));
+
+            ConfigureDevelopmentServices(services);
+        }
+
+        private void ConfigureRealDatabase(IServiceCollection services)
+        {
+            // use real database
+            // Requires LocalDB which can be installed with SQL Server Express 2016
+            // https://www.microsoft.com/en-us/download/details.aspx?id=54284
+            services.AddDbContext<ApplicationDbContext>(c =>
+                c.UseSqlServer(Configuration["AppSettings:ConnectionString"]));
+            //c => c.MigrationsAssembly("Infrastructure_Lib")
+        }
+
+        private void ConfigureInMemoryDatabase(IServiceCollection services)
+        {
+            // use in-memory database - not relational, does not support transactions, cannot run raw SQL queries
+            services.AddDbContext<ApplicationDbContext>(c =>
+                c.UseInMemoryDatabase("govmeeting"));
+        }
+
+        private void ConfigureSQLiteInMemoryDatabase(IServiceCollection services)
+        {
+            // use SQLite in-memory database - a full relational database
+            var connectionStringBuilder =
+              new SqliteConnectionStringBuilder { DataSource = ":memory:" };
+            var connectionString = connectionStringBuilder.ToString();
+            var connection = new SqliteConnection(connectionString);
+            services.AddDbContext<ApplicationDbContext>(c =>
+                c.UseSqlite(connection));
+        }
+
+
+
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureLoggingService();
@@ -39,8 +117,8 @@ namespace GM.WebApp
             ConfigureAppsettings(services);
             logger.Info("Configure Appsettings");
 
-            ConfigureDbContext(services);
-            logger.Info("Configure DbContext");
+            //ConfigureDbContext(services);
+            //logger.Info("Configure DbContext");
 
             services.AddHealthChecks();
             logger.Info("AddHealthChecks");
@@ -154,18 +232,6 @@ namespace GM.WebApp
                 logger.Info("DatafilesPath: {0}, TestdataPath: {2}",
                     myOptions.DatafilesPath, myOptions.TestdataPath);
             });
-        }
-
-        private void ConfigureDbContext(IServiceCollection services)
-        {
-            logger.Info("Add ApplicationDbContext");
-            services.AddTransient<DBOperations>();
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration["AppSettings:ConnectionString"]
-                    //sqlServerOptions => sqlServerOptions.MigrationsAssembly("DatabaseAccess_Lib")
-                    //sqlServerOptions => sqlServerOptions.MigrationsAssembly("WebApp")
-                    ));
         }
 
         private void ConfigureAuthentication(IServiceCollection services)

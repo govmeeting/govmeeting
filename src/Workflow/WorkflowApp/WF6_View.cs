@@ -25,18 +25,18 @@ namespace GM.WorkflowApp
     {
         readonly ILogger<WF6_View> logger;
         readonly AppSettings config;
-        readonly IDBOperations dBOperations;
+        ////readonly IDBOperations dBOperations;
         readonly WorkSegments workSegments = new WorkSegments();
 
         public WF6_View(
             ILogger<WF6_View> _logger,
-            IOptions<AppSettings> _config,
-            IDBOperations _dBOperations
+            IOptions<AppSettings> _config
+            ////IDBOperations _dBOperations
            )
         {
             logger = _logger;
             config = _config.Value;
-            dBOperations = _dBOperations;
+            ////dBOperations = _dBOperations;
         }
 
         public void Run()
@@ -48,13 +48,14 @@ namespace GM.WorkflowApp
 
             // Find all tagged transcripts or edited transcriptions
 
-            meetings = dBOperations.FindMeetings(SourceType.Transcript, WorkStatus.Tagged, approved);
+            ////meetings = dBOperations.FindMeetings(SourceType.Transcript, WorkStatus.Tagged, approved);
+            meetings = new List<Meeting>();   // TODO - CA
             foreach (Meeting meeting in meetings)
             {
                 ViewTaggedTranscript(meeting);
             }
 
-            meetings = dBOperations.FindMeetings(SourceType.Recording, WorkStatus.Edited, approved);
+            ////meetings = dBOperations.FindMeetings(SourceType.Recording, WorkStatus.Edited, approved);
             foreach (Meeting meeting in meetings)
             {
                 ViewEditedTranscription(meeting);

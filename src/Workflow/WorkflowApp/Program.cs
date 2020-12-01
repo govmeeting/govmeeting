@@ -17,8 +17,9 @@ using GM.DatabaseAccess;
 using Microsoft.Extensions.Options;
 using Google.Cloud.Storage.V1;
 using GM.Utilities;
-using GM.DatabaseAccess_Stub;
+////using GM.DatabaseAccess_Stub;
 using GM.GetOnlineFiles;
+
 
 namespace GM.WorkflowApp
 {
@@ -93,32 +94,35 @@ namespace GM.WorkflowApp
             services.AddLogging();
 
             // build configuration
+            var config = new ConfigurationBuilder();
+            BuildConfig.Build(config, environmentName);
 
-            // appsettings.json is copied to the output folder during the build.
-            // Otherwise, we would need to set appsettingsdir as follows:
-            // string appsettingsdir = Directory.GetCurrentDirectory() + @"\..\..\..";
+            //// appsettings.json is copied to the output folder during the build.
+            //// Otherwise, we would need to set appsettingsdir as follows:
+            //// string appsettingsdir = Directory.GetCurrentDirectory() + @"\..\..\..";
 
-            // Location of appsettings.json
-            string appsettingsdir = Directory.GetCurrentDirectory();
+            //// Location of appsettings.json
+            //string appsettingsdir = Directory.GetCurrentDirectory();
 
-            string devSettingFile = $"appsettings.{environmentName}.json";
-            // Find path to the SECRETS folder
-            string secrets = GMFileAccess.GetSolutionSiblingFolder("SECRETS");
-            // If it exists look there for environment settings file.
-            if (secrets != null)
-            {
-                devSettingFile = Path.Combine(secrets, $"appsettings.{environmentName}.json");
-            }
+            //string devSettingFile = $"appsettings.{environmentName}.json";
+            //// Find path to the SECRETS folder
+            //string secrets = GMFileAccess.GetSolutionSiblingFolder("SECRETS");
+            //// If it exists look there for environment settings file.
+            //if (secrets != null)
+            //{
+            //    devSettingFile = Path.Combine(secrets, $"appsettings.{environmentName}.json");
+            //}
 
-            var configuration = new ConfigurationBuilder()
-                // TODO - The following path will only work in development.
-                // It isn't yet decided how WorkflowApp will run in production.
-                // Will it be a separate .EXE or a .LIB loaded by WebApp?
-                .SetBasePath(appsettingsdir)
-                .AddJsonFile("appsettings.json", false)
-                .AddJsonFile(devSettingFile, optional: true)
-                .Build();
+            //var configuration = new ConfigurationBuilder()
+            //    // TODO - The following path will only work in development.
+            //    // It isn't yet decided how WorkflowApp will run in production.
+            //    // Will it be a separate .EXE or a .LIB loaded by WebApp?
+            //    .SetBasePath(appsettingsdir)
+            //    .AddJsonFile("appsettings.json", false)
+            //    .AddJsonFile(devSettingFile, optional: true)
+            //    .Build();
 
+            var configuration = config.Build();
             services.AddOptions();
             services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
             services.Configure<AppSettings>(myOptions =>
@@ -132,7 +136,7 @@ namespace GM.WorkflowApp
             // add services
             //services.AddTransient<IOptions<AppSettings>>();
             services.AddTransient<ApplicationDbContext>();
-            services.AddTransient<IDBOperations, DBOperationsStub>();
+            ////services.AddTransient<IDBOperations, DBOperationsStub>();
             services.AddTransient<RecordingProcess>();
             services.AddTransient<TranscribeAudio>();
             services.AddTransient<TranscriptProcess>();

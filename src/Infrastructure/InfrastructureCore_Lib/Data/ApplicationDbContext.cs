@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
 using GM.DatabaseModel;
+
+using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
+using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;
+using Microsoft.eShopWeb.ApplicationCore.Features.Orders;
 
 
 namespace GM.DatabaseAccess
-
 {
     // See here for extending this class:
     //   https://stackoverflow.com/a/40579369/1978840
@@ -39,5 +37,16 @@ namespace GM.DatabaseAccess
         public DbSet<Category> Categories { get; set; }
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<Language> Languages { get; set; }
+
+
+
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<CatalogItem> CatalogItems { get; set; }
+        public DbSet<CatalogBrand> CatalogBrands { get; set; }
+        public DbSet<CatalogType> CatalogTypes { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
+
     }
 }
