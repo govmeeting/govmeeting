@@ -1,5 +1,6 @@
-﻿using GM.DatabaseModel;
-using System;
+﻿using System;
+using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Meetings;
 
 namespace GM.GetOnlineFiles
 {

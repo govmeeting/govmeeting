@@ -20,7 +20,7 @@ namespace FakeData
         List<SpeakerViewModel> Speakers = new List<SpeakerViewModel>();
         Faker faker = new Faker();
 
-        public TranscriptViewModel GenerateFake()
+        public TranscriptDto GenerateFake()
         {
             var fakeTalk = new Faker<TalkViewModel>()
                .RuleFor(x => x.SpeakerId, f => RandomSpeaker())
@@ -34,14 +34,14 @@ namespace FakeData
                 .RuleFor(x => x.Name, f => GetSectionName())
                 .RuleFor(x => x.TopicDiscussions, f => fakeDiscussions.Generate(2));
 
-            var fakeTVM = new Faker<TranscriptViewModel>()
+            var fakeTVM = new Faker<TranscriptDto>()
                .RuleFor(x => x.MeetingId, f => MeetingId)
                .RuleFor(x => x.GovBodyName, f => "City Council")
                .RuleFor(x => x.LocationName, f => "United States - Texas - Potter County - Amarillo")
                .RuleFor(x => x.Date, f => meetingDate)
                .RuleFor(x => x.Sections, f => fakeSection.Generate(2));
 
-            TranscriptViewModel transcriptViewModel = fakeTVM.Generate(1)[0];
+            TranscriptDto transcriptViewModel = fakeTVM.Generate(1)[0];
 
             transcriptViewModel.Topics = Topics;
             transcriptViewModel.Speakers = Speakers;

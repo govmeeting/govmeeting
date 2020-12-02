@@ -4,7 +4,11 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Bogus;
 using Bogus.DataSets;
-using GM.DatabaseModel;
+
+using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.Speakers;
+using GM.ApplicationCore.Entities.Topics;
 
 namespace FakeData
 {

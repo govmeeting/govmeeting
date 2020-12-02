@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
     <ProjectReference Include="..\..\Application\Configuration_Lib\Configuration_Lib.csproj" />
-    <ProjectReference Include="..\..\WebUI\ViewModels_Lib\ViewModels_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
   </ItemGroup>
 

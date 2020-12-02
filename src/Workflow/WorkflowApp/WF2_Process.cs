@@ -8,7 +8,6 @@ using GM.ViewModels;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 //using GM.FileDataRepositories;
-using GM.DatabaseModel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using GM.Utilities;
@@ -16,6 +15,12 @@ using ChinhDo.Transactions;
 using System.Transactions;
 using GM.FileDataRepositories;
 using GM.DatabaseAccess;
+
+using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.Speakers;
+using GM.ApplicationCore.Entities.Topics;
+
 
 namespace GM.WorkflowApp
 {

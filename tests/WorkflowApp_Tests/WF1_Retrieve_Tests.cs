@@ -10,7 +10,6 @@ using GM.Utilities;
 using Moq;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
-using GM.DatabaseModel;
 using GM.FileDataRepositories;
 using GM.DatabaseAccess;
 using System.IO;
@@ -19,6 +18,11 @@ using GM.GetOnlineFiles;
 using NLog.Filters;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using System.Runtime.CompilerServices;
+
+using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.Speakers;
+using GM.ApplicationCore.Entities.Topics;
 
 namespace GM.WorkflowApp.Tests
 {

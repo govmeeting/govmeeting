@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
-    <ProjectReference Include="..\..\WebUI\ViewModels_Lib\ViewModels_Lib.csproj" />
+    <ProjectReference Include="..\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
   </ItemGroup>
 
 </Project>

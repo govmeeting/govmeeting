@@ -27,7 +27,7 @@ namespace GM.ViewModels
     // these sequences in the correct order.
 
 
-    public class TranscriptViewModel
+    public class TranscriptDto
     {
         public long MeetingId { get; set; }
         public string GovBodyName { get; set; }

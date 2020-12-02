@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
-using GM.DatabaseModel;
+using GM.ApplicationCore.Entities.GovBodies;
 
 // Experiment with specification pattern - (not yet used)
 

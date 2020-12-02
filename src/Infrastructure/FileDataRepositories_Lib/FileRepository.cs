@@ -5,8 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-////using GM.DatabaseAccess;
-using GM.DatabaseModel;
+using GM.ApplicationCore.Entities.Meetings;
 
 namespace GM.FileDataRepositories
 {

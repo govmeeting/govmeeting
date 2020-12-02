@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
-    <ProjectReference Include="..\..\WebUI\ViewModels_Lib\ViewModels_Lib.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,8 +4,6 @@ using System.IO;
 using Microsoft.Extensions.Options;
 using GM.ViewModels;
 using GM.Configuration;
-using GM.DatabaseModel;
-using GM.Utilities;
 ////using GM.DatabaseAccess;
 
 namespace GM.FileDataRepositories
@@ -30,18 +28,18 @@ namespace GM.FileDataRepositories
             ////dBOperations = _dBOperations;
         }
 
-        public TranscriptViewModel Get(long meetingId)
+        public TranscriptDto Get(long meetingId)
         {
             string workFolderPath = GetWorkFolderPath(meetingId);
 
             CircularBuffer cb = new CircularBuffer(workFolderPath, WORK_FILE_NAME, _config.MaxWorkFileBackups);
             string latestFixes = cb.GetLatest();
 
-            TranscriptViewModel viewMeeting = JsonConvert.DeserializeObject<TranscriptViewModel>(latestFixes);
+            TranscriptDto viewMeeting = JsonConvert.DeserializeObject<TranscriptDto>(latestFixes);
             return viewMeeting;
         }
 
-        public bool Put(long meetingId, TranscriptViewModel value)
+        public bool Put(long meetingId, TranscriptDto value)
         {
             string workFolderPath = GetWorkFolderPath(meetingId);
 

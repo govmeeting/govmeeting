@@ -23,9 +23,9 @@ namespace GM.WebApp.Features.Viewtranscripts
         }
 
         [HttpGet("{meetingId}")]
-        public TranscriptViewModel Get(int meetingId)
+        public TranscriptDto Get(int meetingId)
         {
-            TranscriptViewModel ret = meetings.Get(meetingId);
+            TranscriptDto ret = meetings.Get(meetingId);
             return ret;
         }
     }
