@@ -5,8 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GM.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
-// using GM.DatabaseRepositories;
-using GM.DatabaseModel;
+
+using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.Speakers;
+using GM.ApplicationCore.Entities.Topics;
+
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 

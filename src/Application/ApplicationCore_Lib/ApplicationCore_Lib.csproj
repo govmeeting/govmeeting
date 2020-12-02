@@ -14,12 +14,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Entities_Lib\Entities_Lib.csproj" />
+	  <Compile Remove="Features\**" />
+	  <Compile Remove="Specifications\**" />
+	  <EmbeddedResource Remove="Features\**" />
+	  <EmbeddedResource Remove="Specifications\**" />
+	  <None Remove="Features\**" />
+	  <None Remove="Specifications\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Entities\" />
-	  <Folder Include="Specifications\" />
+	  <Folder Include="Entities\Meeting\" />
+	  <Folder Include="Entities\Topic\" />
+	  <Folder Include="Entities\Speaker\" />
 	</ItemGroup>
 
 </Project>

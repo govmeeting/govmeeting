@@ -4,7 +4,6 @@ using Microsoft.Extensions.Options;
 using GM.Configuration;
 using GM.FileDataRepositories;
 //using GM.DatabaseRepositories;
-using GM.DatabaseModel;
 using System.Collections.Generic;
 using System.ComponentModel;
 ////using GM.DatabaseAccess;
@@ -13,6 +12,12 @@ using System.Linq;
 using GM.GetOnlineFiles;
 using System.Transactions;
 using ChinhDo.Transactions;
+
+using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.Speakers;
+using GM.ApplicationCore.Entities.Topics;
+
 
 namespace GM.WorkflowApp
 {
@@ -92,11 +97,8 @@ namespace GM.WorkflowApp
                 string sourceFilename = "source" + extension;
                 string sourceFilePath = Path.Combine(workFolderPath, sourceFilename);
 
-                Meeting meeting = new Meeting();
                 // Create the meeting record
-                meeting.SourceType = type;
-                meeting.SourceFilename = sourceFilename;
-                meeting.Date = actualDate;
+                Meeting meeting = new Meeting(actualDate, type, sourceFilename);
                 meeting.WorkStatus = WorkStatus.Received;
                 meeting.Approved = false;
 

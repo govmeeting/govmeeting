@@ -10,11 +10,15 @@ using GM.Utilities;
 using Xunit;
 using Moq;
 using Microsoft.Extensions.Options;
-using GM.DatabaseModel;
 using GM.FileDataRepositories;
 using GM.DatabaseAccess;
 using System.IO;
 using System.Globalization;
+
+using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.Speakers;
+using GM.ApplicationCore.Entities.Topics;
 
 namespace GM.WorkflowApp.Tests
 {

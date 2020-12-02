@@ -1,9 +1,11 @@
 ﻿using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Moq;
 using System.Threading.Tasks;
 using Xunit;
-using GM.DatabaseModel;
+
+using GM.ApplicationCore.Interfaces;
+using GM.ApplicationCore.Entities.GovBodies;
+
 
 namespace Microsoft.eShopWeb.UnitTests.GmTests
 {

@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using GM.DatabaseModel;
+using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.Speakers;
+using GM.ApplicationCore.Entities.Topics;
 
 using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
 using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;

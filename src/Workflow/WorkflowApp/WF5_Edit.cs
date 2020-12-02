@@ -6,9 +6,13 @@ using GM.Configuration;
 using Newtonsoft.Json;
 using GM.FileDataRepositories;
 using GM.ViewModels;
-using GM.DatabaseModel;
 using GM.EditTranscript;
-using GM.DatabaseAccess;
+
+using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.Speakers;
+using GM.ApplicationCore.Entities.Topics;
+
 
 namespace GM.WorkflowApp
 {
@@ -71,9 +75,9 @@ namespace GM.WorkflowApp
             bool b = true;
             if (b) return;
 
-            FixasrViewModel fixasr = JsonConvert.DeserializeObject<FixasrViewModel>(fixasrText);
-            FormatConversions formatConversions = new FormatConversions();
-            AddtagsViewModel addtags = formatConversions.ConvertFixasrToAddtags(fixasr);
+            //FixasrViewModel fixasr = JsonConvert.DeserializeObject<FixasrViewModel>(fixasrText);
+            //FormatConversions formatConversions = new FormatConversions();
+            //AddtagsViewModel addtags = formatConversions.ConvertFixasrToAddtags(fixasr);
 
             //addtagsRepository.Put(addtags, meeting.Id);
 

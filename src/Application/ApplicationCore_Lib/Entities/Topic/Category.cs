@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GM.DatabaseModel
+namespace GM.ApplicationCore.Entities.Topics
 {
     /// <summary>
     /// A category of topics discussed at meetings. The categories should be globally meaningful for all

@@ -14,9 +14,9 @@ namespace GM.ProcessRecording
     public class ModifyTranscriptJson
     {
 
-        public EditTranscriptViewModel Modify(TranscribeResult transcript)
+        public EditTranscriptDto Modify(TranscribeResult transcript)
         {
-            EditTranscriptViewModel editmeeting = new EditTranscriptViewModel();
+            EditTranscriptDto editmeeting = new EditTranscriptDto();
 
             foreach (Result result in transcript.results)
             {
@@ -50,9 +50,9 @@ namespace GM.ProcessRecording
             return editmeeting;
         }
 
-        public EditTranscriptViewModel Modify2(TranscribeResult transcript)
+        public EditTranscriptDto Modify2(TranscribeResult transcript)
         {
-            EditTranscriptViewModel editmeeting = new EditTranscriptViewModel();
+            EditTranscriptDto editmeeting = new EditTranscriptDto();
 
             foreach (Result result in transcript.results)
             {

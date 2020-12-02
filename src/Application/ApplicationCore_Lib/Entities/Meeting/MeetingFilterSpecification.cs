@@ -1,7 +1,6 @@
 ﻿using Ardalis.Specification;
-using GM.DatabaseModel;
 
-namespace GM.ApplicationCore.Features.Meetings
+namespace GM.ApplicationCore.Entities.Meetings
 {
     /* Specification to return meetings from a government body
      * with the (optionally) specified SourceType and WorkStatus.

@@ -15,12 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
     <ProjectReference Include="..\..\src\Application\Configuration_Lib\Configuration_Lib.csproj" />
     <ProjectReference Include="..\..\src\Application\ProcessRecording_Lib\ProcessRecording_Lib.csproj" />
     <ProjectReference Include="..\..\src\Infrastructure\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
     <ProjectReference Include="..\..\src\Infrastructure\GoogleCloud_Lib\GoogleCloud_Lib.csproj" />
     <ProjectReference Include="..\..\src\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
-    <ProjectReference Include="..\..\src\WebUI\ViewModels_Lib\ViewModels_Lib.csproj" />
   </ItemGroup>
 
 </Project>
