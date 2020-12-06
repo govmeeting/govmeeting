@@ -23,7 +23,7 @@ namespace GM.ProcessRecording
          *     It performs the following steps:
          *       1. Extract the audio.
          *       2. Calls Google's Speech API to transcribe the text
-         *       3. Convert the returned JSON data to a format more usable by the next processing step (Fixasr).
+         *       3. Convert the returned JSON data to a format more usable by the next processing step (EditTranscript).
          *       4. Split the video, audio and text files into small segments. Each of these
          *          segments can then be worked on separately by multiple volunteers.
          */
@@ -47,14 +47,14 @@ namespace GM.ProcessRecording
             AudioProcessing audioProcessing = new AudioProcessing();
             string videofileCopy = Path.Combine(meetingFolder,"video.mp4");
 
-            if (!config.IsDevelopment)
+            // #### If MaxRecordingSize is not zero, we shorted the recording. ####
+            if (config.MaxRecordingSize == 0)
             {
                 File.Copy(videoFile, videofileCopy);
             }
             else
             {
-                // #### FOR DEVELOPMENT: WE SHORTEN THE RECORDING FILE. ####
-                audioProcessing.ExtractPart(videoFile, videofileCopy, 0, config.RecordingSizeForDevelopment);
+                audioProcessing.ExtractPart(videoFile, videofileCopy, 0, config.MaxRecordingSize);
             }
 
             /////// Extract the audio. ////////////////////////
@@ -68,8 +68,6 @@ namespace GM.ProcessRecording
             // We want the object name in the cloud to be the original video file name with ".flac" extension.
             string objectName = Path.GetFileNameWithoutExtension(videoFile) + ".flac";
 
-            TranscribeResultOrig transcript;
-
             TranscribeParameters transParams = new TranscribeParameters
             {
                 audiofilePath = audioFile,
@@ -82,28 +80,11 @@ namespace GM.ProcessRecording
                 // TODO Add "phrases" field: names of officers
             };
 
-            // Move audio file to cloud and transcribe
-            transcript = transcribeAudio.MoveToCloudAndTranscribeOrig(transParams);
+            TranscribedDto transcript = transcribeAudio.TranscribeAudioFile(transParams);
 
             string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
             string outputJsonFile = Path.Combine(meetingFolder, "transcribed.json");
             File.WriteAllText(outputJsonFile, stringValue);
-
-            /////// Reformat the JSON transcript to match what the fixasr routine will use.
-
-            //ModifyTranscriptJson_1 convert = new ModifyTranscriptJson_1();
-            //outputJsonFile = Path.Combine(meetingFolder, "04-ToFix.json");
-            //FixasrView fixasr = convert.Modify(transcript);
-            //stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);
-            //File.WriteAllText(outputJsonFile, stringValue);
-
-            ///// Split the video, audio and transcript into multiple work segments
-
-            //    WorkSegments split = new WorkSegments();
-            //    split.Split(meetingFolder, videofileCopy, outputJsonFile, config.FixasrSegmentSize,
-            //        config.FixasrSegmentOverlap);
-            //}
-
         }
 
     }

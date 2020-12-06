@@ -7,6 +7,7 @@ using GM.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using GM.FileDataRepositories;
 using GM.ViewModels;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,10 +24,19 @@ namespace GM.WebApp.Features.Viewtranscripts
         }
 
         [HttpGet("{meetingId}")]
-        public TranscriptDto Get(int meetingId)
+        public MeetingViewDto Get(int meetingId)
         {
-            TranscriptDto ret = meetings.Get(meetingId);
-            return ret;
+            string transcript = meetings.Get(meetingId);
+            MeetingViewDto viewMeeting = JsonConvert.DeserializeObject<MeetingViewDto>(transcript);
+            return viewMeeting;
+        }
+
+        [HttpPut("{meetingId}")]
+        public bool Put(int meetingId, MeetingViewDto meetingDto)
+        {
+            string stringValue = JsonConvert.SerializeObject(meetingDto, Formatting.Indented);
+            bool result = meetings.Put(meetingId, stringValue);
+            return result;
         }
     }
 }

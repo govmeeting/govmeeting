@@ -15,10 +15,9 @@ namespace GM.Configuration
         public string DatafilesPath { get; set; }
         public string TestdataPath { get; set; }
         public bool DeleteProcessingFolderOnStartup { get; set; }
-        public bool IsDevelopment { get; set; }
         public int FixasrSegmentSize { get; set; }
         public int FixasrSegmentOverlap { get; set; }
-        public int RecordingSizeForDevelopment { get; set; }
+        public int MaxRecordingSize { get; set; }
         public bool UseAudioFileAlreadyInCloud { get; set; }
         public string GoogleCloudBucketName { get; set; }
         public int MaxWorkFileBackups { get; set; }

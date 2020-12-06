@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 using GM.WebApp.Services;
-using GM.DatabaseAccess;
+using GM.DatabaseAccess.Identity;
 
 // Instructions for upgrading from ASP.NET 5 RC1 to ASP.NET Core 1.0
 // https://docs.microsoft.com/en-us/aspnet/core/migration/rc1-to-rtm

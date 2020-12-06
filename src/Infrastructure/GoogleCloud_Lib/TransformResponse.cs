@@ -7,117 +7,134 @@ using System.Security.Cryptography.X509Certificates;
 namespace GM.GoogleCloud
 {
 
-    /*  === Simplify methos ===
-     *  We want to extract all the useful data from the response that comes back from the cloud.
-     *  But we don't want the superlous fields that make it more complicated to use.
-     *  The raw response has a "Results" object containing an array of results.
-     *  Each result has an array of "Alternatives", even though in the LongRunning response 
-     *  there is only ever one alternative for each result. Each "Alternative" contains an array
-     *  of "Transcript" objects. 
-     *  We simplify this by having each "Result" object contain just the arary of "Transcript" objects.
-     *  We also:
-     *    * Rename "Results" to "results"
-     *    * Rename "Transcript: to "text"
-     *    * Add a wordcount to each "text"
-     *    * Add a sequential wordnum to each word
-     *    * Convert starttime and endtime to simple millisec counts instead of {sec, nanos} objects
-     *  
-     *  === FixSpeakerTags method ===
-     *  The raw response from the cloud has two sets of results for the same audio.
-     *  The first set is missing the speakerTag values. The second "set" has one result field with each 
-     *  word having the speaker tag.
-     *  We fix this by:
-     *      * Populate speaker tag in the first set of words.
-     *      * Remove the final result.
-     */
-
     public static class TransformResponse
     {
-        public static TranscribeResult Simpify(RepeatedField<SpeechRecognitionResult> srrs)
+
+        /*  === TransformResponse.Simplify method ===
+           *  We want to extract all the useful data from the response that comes back from the cloud.
+           *  But we don't want the superlous fields that make it more complicated to use.
+           *  
+           *  The raw response structure contains:
+           *  A single unnamed object with a "Results" array.
+           *  The "Results" array consists of unnamed objects, each containing:
+           *      "Alternatives" array, "ChannelTag" integer, "LanguageCode" string
+           *  The "Alternatives" arrays appear to always consists of a single unnamed object containing:
+           *      "Transcript" string, "Confidence" decimal, "Words" array
+           *      WHEN DOES THIS EVER CONSIST OF MORE THEN ONE ALTERNATIVE?
+           *  The "Words" array consists of unnamed objects containing:
+           *      "StartTime" object, "EndTime" object, "Word" object
+           *  The "StartTime" and "EndTime" objects both contain:
+           *      "Seconds" int, "Nanos" integer
+           *  The "Word" objects contain:
+           *      "Word" string, "Confidence" decimal, "SpeakerTag" integer
+           *  
+           *  The new structure contains:
+           *  A single unnamed object with a "Results" array.
+           *  The "Results" array consists of unnamed objects, each containing:
+           *      "Transcript" string, "Confidence" decimal, "Words" array and "WordCount" integer
+           *  The "Words" array consists of unnamed objects, eash containing:
+           *      "Word" string, "Confidence" decimal, "StartTime" integer, "EndTime integer, "speakerTag" integer,
+           *      and "WordNum" integer.
+           *      Both StartTime and EndTime integers are in milliseconds.
+           *      "WordCount" and "WordNum" are new fields added to help in fixing speaker tags,
+           *      but we leave them in the final structure for possible future use.
+           */
+
+        public static TranscribedDto Simpify(RepeatedField<SpeechRecognitionResult> recogResults)
         {
-            TranscribeResult transcript = new TranscribeResult();
-            int resultCount = 0;
-            int totalCount = 0;
+            TranscribedDto transcript = new TranscribedDto();
+            int altCount = 0;
+            int wordNum = 0;
 
-            foreach (SpeechRecognitionResult srr in srrs)
+            foreach (SpeechRecognitionResult recogResult in recogResults)
             {
-                if (srr.Alternatives.Count > 1)
+                if (recogResult.Alternatives.Count > 1)
                 {
-                    resultCount++;
-                    Console.WriteLine($"ERROR: more than 1 alternative - result {resultCount}");
+                    altCount++;
+                    Console.WriteLine($"ERROR: more than 1 alternative - result {altCount}");
                 };
 
-                SpeechRecognitionAlternative sra = srr.Alternatives[0];
+                SpeechRecognitionAlternative recogAlt = recogResult.Alternatives[0];
 
-                Result result = new Result(sra.Transcript)
+                TranscribedTalk result = new TranscribedTalk(recogAlt.Transcript, recogAlt.Confidence)
                 {
-                    wordCount = sra.Words.Count,
-                    confidence = sra.Confidence
+                    // The new "WordCount" field in Result is populated with the total word count.
+                    WordCount = recogAlt.Words.Count,
                 };
-                Console.WriteLine($"Next result: {sra.Words.Count} words");
+                Console.WriteLine($"Next result: {recogAlt.Words.Count} words");
 
-                foreach (var item in sra.Words)
+                foreach (var item in recogAlt.Words)
                 {
-                    ;
-                    totalCount++;
                     long startTime = item.StartTime.Seconds * 1000 + item.StartTime.Nanos / 1000000;
                     long endTime = item.EndTime.Seconds * 1000 + item.EndTime.Nanos / 1000000;
 
-                    result.words.Add(new RespWord(item.Word, item.Confidence, startTime, endTime, item.SpeakerTag, totalCount));
+                    // The new "WordNum" field in RespWord is popluated with the sequencial "wordnum"
+                    wordNum++;
+                    result.Words.Add(new TranscribedWord(item.Word, item.Confidence, startTime, endTime, item.SpeakerTag, wordNum));
                 }
-                transcript.results.Add(result);
+                transcript.Talks.Add(result);
             }
             return transcript;
         }
 
+
+        //  === FixSpeakerTags method ===
         // The LongRunningRecognizeResponse does not put SpeakerTag values
         // on the words initially until it has completed the transcription.
-        // Then it repeats all of the words in the last result and this result
-        // contains SpeakerTag values for all words.
+        // At that point, it creates one more result that has the entire text
+        // in its Transcript field, and a word array that contains 
+        // every word in the entire text. The SpeakerTag fields now contains values.
         // FixSpeakerTags moves the SpeakerTag values from the last result in the response
-        // to the corresponding words in the initial results.
-        public static TranscribeResult FixSpeakerTags(TranscribeResult rsp)
+        // to the corresponding words in the initial results and then removes the final result.
+
+        public static TranscribedDto FixSpeakerTags(TranscribedDto transcribed)
         {
-            // Find where the results repeat. This should be where
-            // * the text is a zero length string
-            // * the first word has a speaker number non-zero
-            // * its words count equals the last word's wordnum
 
-            Result lastResult = rsp.results[rsp.results.Count - 1];
-            Result nextToLastResult = rsp.results[rsp.results.Count - 2];
-            int lastWordnum = lastResult.words[lastResult.words.Count - 1].wordNum;
-            int nextToLastWordnum = nextToLastResult.words[nextToLastResult.words.Count - 1].wordNum;
+            int resultCount = transcribed.Talks.Count;
+            TranscribedTalk lastResult = transcribed.Talks[resultCount - 1];
+            TranscribedTalk nextToLastResult = transcribed.Talks[resultCount - 2];
 
-            if ((lastResult.text != "") ||
+            int lastWordnum = lastResult.Words[lastResult.Words.Count - 1].WordNum;
+            int nextToLastWordnum = nextToLastResult.Words[nextToLastResult.Words.Count - 1].WordNum;
+
+            // Check that the last result is the one we want. This should be where:
+            // * The WordNum of its last word is exactly double the WordNum of the next to last result.
+            // * Its text is a zero length string
+            // * The first word in its word array has a non-zero SpeakerTag
+            if ((lastResult.Transcript != "") ||
                 (lastWordnum != nextToLastWordnum * 2) ||
-                (lastResult.words[0].speakerTag == 0))
+                (lastResult.Words[0].SpeakerTag == 0))
             {
+                // TODO - throw exception
                 Console.WriteLine("ERROR: Final result with speakerTags not present");
                 return null;
             }
 
+            // Now we will populate the Word objects in the prior results with
+            // the SpeakerTag of the matching word in the final result.
             int i = 0;
-            List<RespWord> words = lastResult.words;
+            List<TranscribedWord> words = lastResult.Words;
             // "results" will be all but last
-            List<Result> results = rsp.results.GetRange(0, rsp.results.Count - 1);
+            List<TranscribedTalk> results = transcribed.Talks.GetRange(0, resultCount - 1);
 
-            foreach (Result result in results)
+            foreach (TranscribedTalk result in results)
             {
-                foreach (RespWord word in result.words)
+                foreach (TranscribedWord word in result.Words)
                 {
-                    RespWord w = words[i++];
-                    if (w.word != word.word)
+                    TranscribedWord w = words[i++];
+                    if (w.Word != word.Word)
                     {
+                        // TODO - throw exception
                         Console.WriteLine(@"ERROR: word {i}: '{w.word}' does not match '{word.word}'");
                         return null;
                     }
-                    word.speakerTag = w.speakerTag;
+                    word.SpeakerTag = w.SpeakerTag;
                 }
             }
 
-            rsp.results.RemoveAt(rsp.results.Count - 1);
-
-            return rsp;
+            // And finally, we delete the last result containing the repeated text.
+            transcribed.Talks.RemoveAt(resultCount - 1);
+            return transcribed;
         }
         
 

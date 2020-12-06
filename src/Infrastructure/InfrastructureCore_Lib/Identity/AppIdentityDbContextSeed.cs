@@ -2,9 +2,10 @@
 using Microsoft.eShopWeb.ApplicationCore.Constants;
 using System.Threading.Tasks;
 using Microsoft.eShopWeb.ApplicationCore.Authorization;
-using GM.DatabaseAccess;
+using GM.DatabaseAccess.Identity;
 
 namespace Microsoft.eShopWeb.Infrastructure.Identity
+
 {
     public class AppIdentityDbContextSeed
     {

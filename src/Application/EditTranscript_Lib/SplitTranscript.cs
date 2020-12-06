@@ -24,7 +24,7 @@ namespace GM.EditTranscript
         //    int sectionNumber;
         //    readonly FixasrView[] fixasrSegment = new FixasrView[2];
 
-        public void Split(FixasrViewModel fixasr, string outputFolder, int sectionSize, int overlap, int parts)
+        public void Split(MeetingEditDto meetingEditDto, string outputFolder, int sectionSize, int overlap, int parts)
         {
             //        fixasrSegment[0] = new FixasrView();
             //        fixasrSegment[1] = new FixasrView();

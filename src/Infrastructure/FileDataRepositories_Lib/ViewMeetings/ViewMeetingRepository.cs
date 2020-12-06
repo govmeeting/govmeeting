@@ -8,8 +8,8 @@ using GM.Configuration;
 
 namespace GM.FileDataRepositories
 {
-    // This is a "repository" of "viewable" transcripts. Viewable transcripts are the JSON files generated after  
-    //  the tags are added.
+    // This is a "repository" of "viewable" transcripts. Viewable transcripts are the
+    // JSON files generated after the tags are added.
 
     public class ViewMeetingRepository : IViewMeetingRepository
     {
@@ -17,36 +17,30 @@ namespace GM.FileDataRepositories
         const string WORK_FILE_NAME = "ToView.json";
 
         private readonly AppSettings _config;
-        ////readonly IDBOperations dBOperations;
 
         public ViewMeetingRepository(
             IOptions<AppSettings> config
-            ////IDBOperations _dBOperations
             )
         {
             _config = config.Value;
-            ////dBOperations = _dBOperations;
         }
 
-        public TranscriptDto Get(long meetingId)
+        public string Get(long meetingId)
         {
             string workFolderPath = GetWorkFolderPath(meetingId);
 
             CircularBuffer cb = new CircularBuffer(workFolderPath, WORK_FILE_NAME, _config.MaxWorkFileBackups);
             string latestFixes = cb.GetLatest();
 
-            TranscriptDto viewMeeting = JsonConvert.DeserializeObject<TranscriptDto>(latestFixes);
-            return viewMeeting;
+            return latestFixes;
         }
 
-        public bool Put(long meetingId, TranscriptDto value)
+        public bool Put(long meetingId, string meeting)
         {
             string workFolderPath = GetWorkFolderPath(meetingId);
 
-            string stringValue = JsonConvert.SerializeObject(value, Formatting.Indented);
-
             CircularBuffer cb = new CircularBuffer(workFolderPath, WORK_FILE_NAME, _config.MaxWorkFileBackups);
-            bool result = cb.WriteLatest(stringValue);
+            bool result = cb.WriteLatest(meeting);
 
             return result;
         }

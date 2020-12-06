@@ -16,32 +16,32 @@ namespace FakeData
         RandomData RD = new RandomData();
         Random random = new Random();
         string meetingDate = DateTime.Now.AddDays(-4).ToString("d");
-        List<TopicViewModel> Topics = new List<TopicViewModel>();
-        List<SpeakerViewModel> Speakers = new List<SpeakerViewModel>();
+        List<TopicView> Topics = new List<TopicView>();
+        List<SpeakerView> Speakers = new List<SpeakerView>();
         Faker faker = new Faker();
 
-        public TranscriptDto GenerateFake()
+        public MeetingViewDto GenerateFake()
         {
-            var fakeTalk = new Faker<TalkViewModel>()
+            var fakeTalk = new Faker<TalkView>()
                .RuleFor(x => x.SpeakerId, f => RandomSpeaker())
                .RuleFor(x => x.Text, f => RD.Waffle(f, 1));
 
-            var fakeDiscussions = new Faker<TopicDiscussionViewModel>()
+            var fakeDiscussions = new Faker<TopicDiscussionView>()
                 .RuleFor(x => x.TopicId, f => RandomTopic())
                 .RuleFor(x => x.Talks, f => fakeTalk.Generate(2));
 
-            var fakeSection = new Faker<SectionViewModel>()
+            var fakeSection = new Faker<SectionView>()
                 .RuleFor(x => x.Name, f => GetSectionName())
                 .RuleFor(x => x.TopicDiscussions, f => fakeDiscussions.Generate(2));
 
-            var fakeTVM = new Faker<TranscriptDto>()
+            var fakeTVM = new Faker<MeetingViewDto>()
                .RuleFor(x => x.MeetingId, f => MeetingId)
                .RuleFor(x => x.GovBodyName, f => "City Council")
                .RuleFor(x => x.LocationName, f => "United States - Texas - Potter County - Amarillo")
                .RuleFor(x => x.Date, f => meetingDate)
                .RuleFor(x => x.Sections, f => fakeSection.Generate(2));
 
-            TranscriptDto transcriptViewModel = fakeTVM.Generate(1)[0];
+            MeetingViewDto transcriptViewModel = fakeTVM.Generate(1)[0];
 
             transcriptViewModel.Topics = Topics;
             transcriptViewModel.Speakers = Speakers;
@@ -51,7 +51,7 @@ namespace FakeData
 
         long RandomSpeaker()
         {
-            SpeakerViewModel s = new SpeakerViewModel();
+            SpeakerView s = new SpeakerView();
             s.Name = faker.Name.FullName();
             int r = random.Next(1, 3);
 
@@ -75,7 +75,7 @@ namespace FakeData
         {
             int r = random.Next(1, 3);
             long id;
-            TopicViewModel t = new TopicViewModel();
+            TopicView t = new TopicView();
 
             if (r == 1)
             {

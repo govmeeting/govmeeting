@@ -35,7 +35,7 @@ namespace GM.EditTranscript
             //   2. Less video or audio data needs to be downloaded to a user at one time.
 
             string stringValue = File.ReadAllText(fixasrFile);
-            FixasrViewModel fixasr = JsonConvert.DeserializeObject<FixasrViewModel>(stringValue);
+            MeetingEditDto meetingEditDto = JsonConvert.DeserializeObject<MeetingEditDto>(stringValue);
 
             // Split the recording into parts and put them each in subfolders of subfolder "parts".
             SplitRecording splitRecording = new SplitRecording();
@@ -48,7 +48,7 @@ namespace GM.EditTranscript
 
             // Split the full transcript into segments that match the audio and video segments in size.
             SplitTranscript splitTranscript = new SplitTranscript();
-            splitTranscript.Split(fixasr, splitFolder, segmentSize, segmentOverlap, parts);
+            splitTranscript.Split(meetingEditDto, splitFolder, segmentSize, segmentOverlap, parts);
 
         }
 

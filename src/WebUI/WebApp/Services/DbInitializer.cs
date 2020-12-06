@@ -14,6 +14,7 @@ using GM.DatabaseAccess;
 using GM.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
+using GM.DatabaseAccess.Identity;
 
 namespace GM.WebApp.Services
 {

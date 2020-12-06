@@ -4,6 +4,7 @@ using GM.ApplicationCore.Entities.GovBodies;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;
+using GM.DatabaseAccess.Identity;
 
 using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
 using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;

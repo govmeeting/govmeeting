@@ -362,7 +362,7 @@ The program will now recognize that a new file has appeared and start processing
 The MP4 file will be moved to "COMPLETED" when done. You will see the results in
 sufolders, which were created in the "DATAFILES" directory.
 
-In appsettings.json, there is a property "RecordingSizeForDevelopment". It is currently
+In appsettings.json, there is a property "MaxRecordingSize". It is currently
 set to "180". This causes the transcription routine in ProcessRecording_Lib to process only the first 180 seconds of the recording.
 
 ---

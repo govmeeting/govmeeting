@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using GM.ProcessRecording;
 using GM.FileDataRepositories;
 
+//using GM.OldViewModels;
 using GM.ViewModels;
 using GM.Configuration;
 using GM.GoogleCloud;
@@ -62,7 +63,8 @@ namespace GM.ProcessRecording_Tests
             // Transcribe
             //TranscribeAudio ta = new TranscribeAudio(_config);
 
-            TranscribeResultOrig response = new TranscribeResultOrig();
+            //TranscribeResultOrig response = new TranscribeResultOrig();
+            TranscribedDto response = new TranscribedDto();
 
             // TODO - signature of TranscribeInCloud has changed.
             // response = transcribe.MoveToCloudAndTranscribe(audioFile, baseName + ".flac", config.GoogleCloudBucketName, config.UseAudioFileAlreadyInCloud, language);
@@ -71,11 +73,14 @@ namespace GM.ProcessRecording_Tests
             File.WriteAllText(outputBasePath + "-rsp.json", stringValue);
 
             // Modify Transcript json format
-            ModifyTranscriptJson_1 mt = new ModifyTranscriptJson_1();
-            FixasrViewModel fixasr = mt.Modify(response);
+            //ModifyTranscriptJson_1 mt = new ModifyTranscriptJson_1();
+            ModifyTranscriptJson mt = new ModifyTranscriptJson();
+            //FixasrViewModel fixasr = mt.Modify(response);
+            MeetingEditDto meetingEditDto = mt.Modify(response);
 
             // Create JSON file
-            stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);
+            //stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);
+            stringValue = JsonConvert.SerializeObject(meetingEditDto, Formatting.Indented);
             File.WriteAllText(jsonFile, stringValue);
         }
 
@@ -100,7 +105,8 @@ namespace GM.ProcessRecording_Tests
 
             // Test transcription on a local file. We will use sychronous calls to the Google Speech API. These allow a max of 1 minute per request.
             string folder = config.TestdataPath + @"..\testdata\BBH Selectmen\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen\2017-01-09\step 2 extract\";
-            TranscribeResultOrig transcript = transcribe.TranscribeFile(folder + "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09#00-01-40.flac", language);
+            //TranscribeResultOrig transcript = transcribe.TranscribeFile(folder + "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09#00-01-40.flac", language);
+            TranscribedDto transcript = transcribe.TranscribeLocalFile(folder + "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09#00-01-40.flac", language);
 
             string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
         }

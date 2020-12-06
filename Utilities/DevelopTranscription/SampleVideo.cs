@@ -25,7 +25,6 @@ namespace DevelopTranscription
         }
     }
 
-
     public class SampleVideos
     {
         public SampleVideo LittleFallsVideo = new SampleVideo(GMFileAccess.GetTestdataFolder())

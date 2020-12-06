@@ -17,8 +17,8 @@ using GM.WebApp.Services;
 using GM.WebApp.Models.AccountViewModels;
 using GM.WebApp.Features.Home;
 using GM.WebApp.Features.Manage;
-using GM.DatabaseAccess;
 using Microsoft.Extensions.Hosting;
+using GM.DatabaseAccess.Identity;
 
 namespace GM.WebApp.Controllers
 {

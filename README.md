@@ -1,6 +1,6 @@
 <!-- Do not edit README.md. This file is built by Utilities/PsScripts/Build-ProjectReadme.ps1 -->
 
-# Overview 
+# Overview
 
 ![Build frontend](https://github.com/govmeeting/govmeeting/workflows/Build%20frontend/badge.svg)
 ![Build Backend](https://github.com/govmeeting/govmeeting/workflows/Build%20Backend/badge.svg)<!-- START OF README SECTION -->
@@ -46,7 +46,7 @@ People will then be able to:
 - Search for voting results on legislation
 - See statistics, graphs and charts on issues, legislature, etc.
 
-<!-- 
+<!--
 <a href="https://www.govmeeting.org/overview#continue">Overview Continued</a>
  -->
 
@@ -56,7 +56,7 @@ People will then be able to:
 Enough with the jibber-jabber, fool!
 Show me how it works!
 
-Well, the work is in progress. But click here for:  [Demos of some working code](https://govmeeting.org/dashboard) and more documentation.
+Well, the work is in progress. But click here for: [Demos of some working code](https://govmeeting.org/dashboard) and more documentation.
 
 <h4>
 <div  style="float:left;">  
@@ -65,7 +65,8 @@ Well, the work is in progress. But click here for:  [Demos of some working code]
  <div style="clear: left;"/>
 </h4><br/>
 
-# Developer Setup 
+# Developer Setup
+
 <a name="Contents"></a>
 
 # Contents
@@ -430,7 +431,7 @@ The program will now recognize that a new file has appeared and start processing
 The MP4 file will be moved to "COMPLETED" when done. You will see the results in
 sufolders, which were created in the "DATAFILES" directory.
 
-In appsettings.json, there is a property "RecordingSizeForDevelopment". It is currently
+In appsettings.json, there is a property "MaxRecordingSize". It is currently
 set to "180". This causes the transcription routine in ProcessRecording_Lib to process only the first 180 seconds of the recording.
 
 ---
@@ -478,4 +479,3 @@ Edit it to contain the keys that you just obtained:
 - Under "Use another service to log in", choose "Google".
 
 <a href="https://www.govmeeting.org/about?id=setup#continue">Setup Continued</a>
-

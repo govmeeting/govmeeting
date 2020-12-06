@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using GM.ViewModels;
 
 
-namespace GM.FileDataRepositories
+namespace GM.OldViewModels
 {
-    public class FormatConversions
+    public class OldFormatConversion
     {
-        public AddtagsViewModel ConvertFixasrToAddtags(FixasrViewModel fixasr)
+        public AddtagsViewModel ConvertToMeetingViewDto(FixasrViewModel fixasr)
         {
             AddtagsViewModel addtags = new AddtagsViewModel();
             addtags.talks = new List<TalksView>();
@@ -42,7 +41,8 @@ namespace GM.FileDataRepositories
                             talk.speaker = speaker;
                             talk.said = "";
                         }
-                    } else
+                    }
+                    else
                     {
                         if (talk.said != "")
                         {
@@ -52,7 +52,7 @@ namespace GM.FileDataRepositories
                         break;
                     }
 
-                } while (true) ;
+                } while (true);
             }
             if (talk.said.Length > 0)
             {

@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 namespace GM.ViewModels
 {
-    // The TranscriptViewModel represents the final state of a transcript after is has
+    // The MeetingViewDto represents the final state of a transcript after it has
     // been processed, proofread and tagged.
     // At this time the transcript data can be loaded into the database. 
     // A Meeting record already exists in the DB at this time for the transcript.
     // What is needed to be loaded into the database are the contents of the meeting.
     //
-    // A TranscriptViewModel also needs to be re-constituted from the database
+    // A MeetingViewDto also needs to be re-constituted from the database
     // whenever we want to display a easily browsable and searchable transcript.
-    // That means the TranscriptViewModel needs to be saved to the DB in a way
+    // That means the MeetingViewDto needs to be saved to the DB in a way
     // that no information or references are lost.
     //
     // A Transcript consists of a sequence of Sections.
@@ -21,13 +21,13 @@ namespace GM.ViewModels
     // Each TopicDiscussion consists of a sequence of Talks.
     // Each Talk consist of a Speaker and what the Speaker said.
     //
-    // When these sequences of items are written to the DB, the order the items can not
+    // When these sequences of items are written to the DB, the order of the items can not
     // be lost. Therefore you will note that each Section, TopicDiscussion and Talk record
-    // in the DB contains a "Sequence" property that enables us to re-construct these
-    // these sequences in the correct order.
+    // in the DB contains a "Sequence" property that enables us to re-construct them
+    // in the correct order.
 
 
-    public class TranscriptDto
+    public class MeetingViewDto
     {
         public long MeetingId { get; set; }
         public string GovBodyName { get; set; }
@@ -36,25 +36,25 @@ namespace GM.ViewModels
 
         // Topics and Speakers are the list of topics discussed
         // at this meeting and the list of speakers.
-        public List<TopicViewModel> Topics { get; set; }
-        public List<SpeakerViewModel> Speakers { get; set; }
+        public List<TopicView> Topics { get; set; }
+        public List<SpeakerView> Speakers { get; set; }
 
-        public List<SectionViewModel> Sections { get; set; }
+        public List<SectionView> Sections { get; set; }
     }
 
-    public class SectionViewModel
+    public class SectionView
     {
         public string Name { get; set; }
-        public List<TopicDiscussionViewModel> TopicDiscussions { get; set; }
+        public List<TopicDiscussionView> TopicDiscussions { get; set; }
     }
 
-    public class TopicDiscussionViewModel
+    public class TopicDiscussionView
     {
         public long TopicId { get; set; }
-        public List<TalkViewModel> Talks { get; set; }
+        public List<TalkView> Talks { get; set; }
     }
 
-    public class TalkViewModel
+    public class TalkView
     {
         public long SpeakerId { get; set; }
         public string Text { get; set; }
@@ -70,7 +70,7 @@ namespace GM.ViewModels
     //
     // When the data is added to the DB, the new topics will
     // be added to the Topic table and assigned thier final TopicId.
-    public class TopicViewModel
+    public class TopicView
     {
         public long TopicId { get; set; }
         public string Name { get; set; }
@@ -89,7 +89,7 @@ namespace GM.ViewModels
     // each of these new speakers will be added to the speaker table and assigned a SpeakerId.
     // These new SpeakerIds are used when re-constructing the transcript from the DB,
     // but they don't track the identity of the person from meeting to meeting.
-    public class SpeakerViewModel
+    public class SpeakerView
     {
         public long SpeakerId { get; set; } 
         public string Name { get; set; }

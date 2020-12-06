@@ -9,6 +9,7 @@ namespace GM.FileDataRepositories
 {
     public interface IViewMeetingRepository
     {
-        TranscriptDto Get(long meetingId);
+        public string Get(long meetingId);
+        public bool Put(long meetingId, string meeting);
     }
 }

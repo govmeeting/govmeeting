@@ -37,14 +37,14 @@ namespace GM.ProcessRecording_Tests
         {
             string fixasrFile = @"C:\GOVMEETING\_SOURCECODE\src\DATAFILES\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\R3-ToBeFixed.json";
             string stringValue = File.ReadAllText(fixasrFile);
-            FixasrViewModel fixasr = JsonConvert.DeserializeObject<FixasrViewModel>(stringValue);
+            MeetingEditDto meetingEditDto = JsonConvert.DeserializeObject<MeetingEditDto>(stringValue);
             string outputFolder = @"C:\GOVMEETING\_SOURCECODE\src\DATAFILES\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\FixText";
             int sectionSize = 180;
             int overlap = 5;
             int parts = 4;
 
             SplitTranscript st = new SplitTranscript();
-            st.Split(fixasr, outputFolder, sectionSize, overlap, parts);
+            st.Split(meetingEditDto, outputFolder, sectionSize, overlap, parts);
 
         }
         public void TestSplitIntoWorkSegments()
@@ -75,12 +75,12 @@ namespace GM.ProcessRecording_Tests
             string outputFile = outputFolder + @"\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15.json";
 
             string stringValue = File.ReadAllText(inputFile);
-            var transcript = JsonConvert.DeserializeObject<TranscribeResultOrig>(stringValue);
+            var transcript = JsonConvert.DeserializeObject<TranscribedDto>(stringValue);
 
-            ModifyTranscriptJson_1 convert = new ModifyTranscriptJson_1();
-            FixasrViewModel fixasr = convert.Modify(transcript);
+            ModifyTranscriptJson convert = new ModifyTranscriptJson();
+            MeetingEditDto meetingEditDto = convert.Modify(transcript);
 
-            stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);
+            stringValue = JsonConvert.SerializeObject(meetingEditDto, Formatting.Indented);
             File.WriteAllText(outputFile, stringValue);
         }
     }

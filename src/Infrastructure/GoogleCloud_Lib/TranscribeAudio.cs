@@ -16,9 +16,9 @@ namespace GM.GoogleCloud
             speechClient = SpeechClient.Create();
         }
 
-        public TranscribeResult TranscribeAudioFile(TranscribeParameters transParams, string rawResponseFile)
+        public TranscribedDto TranscribeAudioFile(TranscribeParameters transParams, string rawResponseFile = null)
         {
-            LongRunningRecognizeResponse response = MoveToCloudAndTranscribe(transParams);
+            LongRunningRecognizeResponse response = UploadAndTranscribeInCloud(transParams);
 
             // Save the raw response, if we were passed a file path.
             if (rawResponseFile != "")
@@ -27,20 +27,40 @@ namespace GM.GoogleCloud
                 File.WriteAllText(rawResponseFile, responseString);
             }
 
-            TranscribeResult resp = TransformResponse.Simpify(response.Results);
+            TranscribedDto resp = TransformResponse.Simpify(response.Results);
 
             return TransformResponse.FixSpeakerTags(resp);
         }
 
-        private LongRunningRecognizeResponse MoveToCloudAndTranscribe(TranscribeParameters transParams)
+        // Transcribe a local audio file. We can only use this with audios up to 1 minute long.
+        public TranscribedDto TranscribeLocalFile(string fileName, string language)
         {
-            MoveToCloudIfNeeded(transParams);
+            //    // var speechClient = SpeechClient.Create();
+            RecognitionAudio recogAudio = RecognitionAudio.FromFile(fileName);
+
+            var response = speechClient.Recognize(new RecognitionConfig()
+            {
+                Encoding = RecognitionConfig.Types.AudioEncoding.Flac,
+                SampleRateHertz = 48000,
+                EnableWordTimeOffsets = true,
+                LanguageCode = language,
+            }, recogAudio);
+
+            TranscribedDto resp = TransformResponse.Simpify(response.Results);
+
+            return TransformResponse.FixSpeakerTags(resp);
+        }
+
+
+        public LongRunningRecognizeResponse UploadAndTranscribeInCloud(TranscribeParameters transParams)
+        {
+            UploadToCloudIfNeeded(transParams);
 
             LongRunningRecognizeResponse response = TranscribeInCloud(transParams);
             return response;
         }
 
-        private void MoveToCloudIfNeeded(TranscribeParameters transParams)
+        private void UploadToCloudIfNeeded(TranscribeParameters transParams)
         {
             GoogleBucket gb = new GoogleBucket();
 
@@ -121,71 +141,71 @@ namespace GM.GoogleCloud
         ///  Original code for fixasr component
         //////////////////////////////////////////////////////////////////////////////////////////   
 
-        public TranscribeResultOrig MoveToCloudAndTranscribeOrig(TranscribeParameters transParams)
-        {
-            LongRunningRecognizeResponse response = MoveToCloudAndTranscribe(transParams);
+        //public TranscribeResultOrig MoveToCloudAndTranscribeOrig(TranscribeParameters transParams)
+        //{
+        //    LongRunningRecognizeResponse response = MoveToCloudAndTranscribe(transParams);
 
-            TranscribeResultOrig rsp = TransformResp(response.Results);
-            return rsp;
-        }
+        //    TranscribeResultOrig rsp = TransformResp(response.Results);
+        //    return rsp;
+        //}
 
-        // Transcribe a local audio file. We can only use this with audios up to 1 minute long.
-        public TranscribeResultOrig TranscribeFile(string fileName, string language)
-        {
-            // var speechClient = SpeechClient.Create();
-            RecognitionAudio recogAudio = RecognitionAudio.FromFile(fileName);
+        //// Transcribe a local audio file. We can only use this with audios up to 1 minute long.
+        //public TranscribeResultOrig TranscribeFile(string fileName, string language)
+        //{
+        //    // var speechClient = SpeechClient.Create();
+        //    RecognitionAudio recogAudio = RecognitionAudio.FromFile(fileName);
 
-            var response = speechClient.Recognize(new RecognitionConfig()
-            {
-                Encoding = RecognitionConfig.Types.AudioEncoding.Flac,
-                SampleRateHertz = 48000,
-                EnableWordTimeOffsets = true,
-                LanguageCode = language,
-            }, recogAudio);
+        //    var response = speechClient.Recognize(new RecognitionConfig()
+        //    {
+        //        Encoding = RecognitionConfig.Types.AudioEncoding.Flac,
+        //        SampleRateHertz = 48000,
+        //        EnableWordTimeOffsets = true,
+        //        LanguageCode = language,
+        //    }, recogAudio);
 
-            // Transform the Google response into a more usable object.
-            TranscribeResultOrig transcript = GetShortTranscribeResponse(response);
-            return transcript;
-        }
+        //    // Transform the Google response into a more usable object.
+        //    TranscribeResultOrig transcript = GetShortTranscribeResponse(response);
+        //    return transcript;
+        //}
 
-        private TranscribeResultOrig GetShortTranscribeResponse(RecognizeResponse response)
-        {
-            return TransformResp(response.Results);
-        }
+        //private TranscribeResultOrig GetShortTranscribeResponse(RecognizeResponse response)
+        //{
+        //    return TransformResp(response.Results);
+        //}
 
 
-        private TranscribeResultOrig TransformResp(RepeatedField<SpeechRecognitionResult> results)
-        {
-            TranscribeResultOrig transcript = new TranscribeResultOrig();
+        //private TranscribeResultOrig TransformResp(RepeatedField<SpeechRecognitionResult> results)
+        //{
+        //    TranscribeResultOrig transcript = new TranscribeResultOrig();
 
-            foreach (var result in results)
-            {
-                foreach (var alternative in result.Alternatives)
-                {
-                    Console.WriteLine($"Transcript: { alternative.Transcript}");
-                    Console.WriteLine("Word details:");
-                    Console.WriteLine($" Word count:{alternative.Words.Count}");
+        //    foreach (var result in results)
+        //    {
+        //        foreach (var alternative in result.Alternatives)
+        //        {
+        //            Console.WriteLine($"Transcript: { alternative.Transcript}");
+        //            Console.WriteLine("Word details:");
+        //            Console.WriteLine($" Word count:{alternative.Words.Count}");
 
-                    RspAlternative alt = new RspAlternative(alternative.Transcript)
-                    {
-                        wordCount = alternative.Words.Count
-                    };
+        //            RspAlternative alt = new RspAlternative(alternative.Transcript)
+        //            {
+        //                wordCount = alternative.Words.Count
+        //            };
 
-                    int count = 1;
-                    foreach (var item in alternative.Words)
-                    {
-                        alt.words.Add(new RspWord(item.Word, ParseDuration(item.StartTime),
-                            ParseDuration(item.EndTime), count++));
+        //            int count = 1;
+        //            foreach (var item in alternative.Words)
+        //            {
+        //                alt.words.Add(new RspWord(item.Word, ParseDuration(item.StartTime),
+        //                    ParseDuration(item.EndTime), count++));
 
-                        Console.WriteLine($"  {item.Word}");
-                        Console.WriteLine($"    WordStartTime: {item.StartTime}");
-                        Console.WriteLine($"    WordEndTime: {item.EndTime}");
-                    }
-                    transcript.alternatives.Add(alt);
-                }
-            }
-            return transcript;
-        }
+        //                Console.WriteLine($"  {item.Word}");
+        //                Console.WriteLine($"    WordStartTime: {item.StartTime}");
+        //                Console.WriteLine($"    WordEndTime: {item.EndTime}");
+        //            }
+        //            transcript.alternatives.Add(alt);
+        //        }
+        //    }
+        //    return transcript;
+        //}
 
     }
 } 

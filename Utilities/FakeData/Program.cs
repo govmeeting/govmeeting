@@ -36,7 +36,7 @@ namespace FakeData
             //File.WriteAllText(@"c:\tmp\fakemeeting.json", text);
 
             FakeTranscriptViewModel ft = new FakeTranscriptViewModel();
-            TranscriptDto tvm = ft.GenerateFake();
+            MeetingViewDto tvm = ft.GenerateFake();
             string text = Newtonsoft.Json.JsonConvert.SerializeObject(tvm, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(@"c:\tmp\faketvm.json", text);
 

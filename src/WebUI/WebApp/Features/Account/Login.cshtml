@@ -2,6 +2,8 @@
 @using Microsoft.AspNetCore.Http
 @*@using Microsoft.AspNetCore.Http.Authentication*@
 @using Microsoft.AspNetCore.Authentication
+@using GM.DatabaseAccess.Identity;
+
 
 @*@using GM.WebApp.Data*@
 @using GM.DatabaseAccess
@@ -86,29 +88,29 @@
       <h4>Use another login service</h4>
       <hr />
       @{
-                // Upgrade to SDK 2.0: Use GetExternalAuthenticationSchemesAsync
-                var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-                // var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
-                if (loginProviders.Count == 0)
-                {
+        // Upgrade to SDK 2.0: Use GetExternalAuthenticationSchemesAsync
+        var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        // var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
+        if (loginProviders.Count == 0)
+        {
           <div>
             <p>
               There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                      for details on setting up this ASP.NET application to support logging in via external services.
+              for details on setting up this ASP.NET application to support logging in via external services.
             </p>
           </div>
-                }
-                else
-                {
+        }
+        else
+        {
           <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
             <div>
               <p>
                 @foreach (var provider in loginProviders)
-              {
+                {
                   <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-              // Upgrade to SDK 2.0
-              // <button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
-            }
+                  // Upgrade to SDK 2.0
+                  // <button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
+                }
               </p>
             </div>
           </form>

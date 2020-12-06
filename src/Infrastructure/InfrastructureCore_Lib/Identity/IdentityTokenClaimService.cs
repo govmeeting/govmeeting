@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using GM.DatabaseAccess;
+using GM.DatabaseAccess.Identity;
 
 namespace Microsoft.eShopWeb.Infrastructure.Identity
 {
