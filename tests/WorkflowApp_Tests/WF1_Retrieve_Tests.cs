@@ -19,7 +19,7 @@ using NLog.Filters;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using System.Runtime.CompilerServices;
 
-using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Govbodies;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;
@@ -71,14 +71,14 @@ namespace GM.WorkflowApp.Tests
         //    DateTime scheduledDateTime = DateTime.ParseExact(scheduledDate, "yyyy-MM-dd", new CultureInfo("en-US"));
 
         //    // Mock some sample database records.
-        //    // We expect WF1_RetrieveOnlineFiles to search for all GovBody's with scheduled meetings.
-        //    List<GovBody> govbodies = new List<GovBody>()
+        //    // We expect WF1_RetrieveOnlineFiles to search for all Govbody's with scheduled meetings.
+        //    List<Govbody> govbodies = new List<Govbody>()
         //    {
-        //        new GovBody("Senate", 1, 10)
+        //        new Govbody("Senate", 1, 10)
         //        {
         //            LongName = "USA_ME",
         //        },
-        //        new GovBody("House", 2, 11)
+        //        new Govbody("House", 2, 11)
         //        {
         //            LongName = "USA_NJ_Summit"
         //        }
@@ -104,8 +104,8 @@ namespace GM.WorkflowApp.Tests
 
         //    // Mock all DBOperations that WF2_ProcessTranscripts calls
         //    var mockDbOp = new Mock<IDBOperations>();
-        //    // FindGovBodiesWithScheduledMeetings returns GovBodys that have scheduled meetings.
-        //    List<GovBody> govbodiesWithSchedules = new List<GovBody>() { govbodies[0] };
+        //    // FindGovBodiesWithScheduledMeetings returns Govbodys that have scheduled meetings.
+        //    List<Govbody> govbodiesWithSchedules = new List<Govbody>() { govbodies[0] };
         //    mockDbOp.Setup(a => a.FindGovBodiesWithScheduledMeetings()).Returns(govbodiesWithSchedules);
         //    // Add adds the meeting to meetings collection.
         //    mockDbOp.Setup(a => a.Add(It.IsAny<Meeting>())).Returns((Meeting m) => {
@@ -123,7 +123,7 @@ namespace GM.WorkflowApp.Tests
         //    SourceType sourceType;
         //    var mockRetrieveNewFiles = new Mock<IRetrieveNewFiles>();
         //    mockRetrieveNewFiles.Setup(a => a.RetrieveFile(
-        //        It.IsAny<GovBody>(), scheduledDateTime, out actualDateTime, out sourceType)).Returns(fileRetrieved);
+        //        It.IsAny<Govbody>(), scheduledDateTime, out actualDateTime, out sourceType)).Returns(fileRetrieved);
         //    retrieveNewFiles = mockRetrieveNewFiles.Object;
 
         //    //################ This is the actual test. Everything else was setup ############. 

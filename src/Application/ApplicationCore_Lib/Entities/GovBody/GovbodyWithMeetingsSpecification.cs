@@ -1,8 +1,8 @@
 ﻿using Ardalis.Specification;
 
-namespace GM.ApplicationCore.Entities.GovBodies
+namespace GM.ApplicationCore.Entities.Govbodies
 {
-    public sealed class GovbodyWithMeetingsSpecification : Specification<GovBody>
+    public sealed class GovbodyWithMeetingsSpecification : Specification<Govbody>
     {
         public GovbodyWithMeetingsSpecification(int govbodyId)
         {

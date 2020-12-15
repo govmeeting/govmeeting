@@ -145,9 +145,9 @@ namespace GM.WorkflowApp
 
 
             // services.AddTransient<IMeetingRepository, MeetingRepository_Stub>();
-            // services.AddTransient<IGovBodyRepository, GovBodyRepository_Stub>();
+            // services.AddTransient<IGovbodyRepository, GovbodyRepository_Stub>();
             //services.AddSingleton<IMeetingRepository, MeetingRepository_Stub>();
-            //services.AddSingleton<IGovBodyRepository, GovBodyRepository_Stub>();
+            //services.AddSingleton<IGovbodyRepository, GovbodyRepository_Stub>();
             //services.AddSingleton<IGovLocationRepository, GovLocationRepository_Stub>();
             //services.AddSingleton<IGovLocationRepository, GovLocationRepository_Stub>();
             services.AddSingleton<IRetrieveNewFiles, RetrieveNewFiles>();

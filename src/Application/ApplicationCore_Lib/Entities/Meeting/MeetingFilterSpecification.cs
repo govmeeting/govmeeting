@@ -14,7 +14,7 @@ namespace GM.ApplicationCore.Entities.Meetings
             bool? approved)
         {
             Query.Where(i => 
-            (govBodyId == i.GovBodyId) && 
+            (govBodyId == i.GovbodyId) && 
             (!sourceType.HasValue || i.SourceType == sourceType) &&
             (!workStatus.HasValue || i.WorkStatus == workStatus) &&
             (!approved.HasValue || i.Approved == approved));

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
-using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Govbodies;
 
 // Experiment with specification pattern - (not yet used)
 
@@ -19,9 +19,9 @@ namespace GM.DatabaseAccess
         }
     }
 
-    public class HasScheduledMeetings_Spec : Specification<GovBody>
+    public class HasScheduledMeetings_Spec : Specification<Govbody>
     {
-        public override Expression<Func<GovBody, bool>> ToExpression()
+        public override Expression<Func<Govbody, bool>> ToExpression()
         {
             return gb => gb.ScheduledMeetings.Count > 0;
         }

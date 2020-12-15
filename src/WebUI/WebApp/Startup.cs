@@ -25,6 +25,7 @@ using Microsoft.Data.Sqlite;
 using GM.DatabaseAccess.Identity;
 using GM.ApplicationCore.Interfaces;
 using WebApp.Services;
+using GM.ApplicationCore.Common;
 
 namespace GM.WebApp
 {
@@ -141,6 +142,9 @@ namespace GM.WebApp
             ConfigureLoggingService();
             logger.Info("Configure Logging Service");
 
+            services.AddApplication();
+            logger.Info("Configure Application Services");
+
             ConfigureAppsettings(services);
             logger.Info("Configure Appsettings");
 
@@ -181,6 +185,19 @@ namespace GM.WebApp
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            /*  NOTE: 
+             *  For Visual Studio, the URL's used during development are in
+             *      (WebApp) Project -> Properties -> Debug. Currently:
+             *      "App URL" = "http:/localhost:36029"
+             *      "Enable SSL" is checked. "https:/localhost:44333/"
+             *  For "dotnet run", the dev URL's are in WebApp\Properties\launchSettings.json,
+             *    Currently for IISExpress:
+             *      "applicationUrl": "http://localhost:36029",
+             *      "sslPort": 44333
+             *  For VsCode, the dev URL's are in clientapp/.vscode/launch.json. Currently:
+             *      "url": "http:/localhost:4200"
+             */
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

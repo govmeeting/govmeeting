@@ -5,16 +5,16 @@ using GM.ApplicationCore.Interfaces;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Topics;
 
-namespace GM.ApplicationCore.Entities.GovBodies
+namespace GM.ApplicationCore.Entities.Govbodies
 {
     /// <summary>
     /// The Government body .. Senate, Lower House, Council etc.
     /// </summary>
-    public class GovBody : AuditEntity, IAggregateRoot
+    public class Govbody : AuditEntity, IAggregateRoot
     {
-        private GovBody() { }  // for EF
+        private Govbody() { }  // for EF
 
-        public GovBody(string name, int locationId, int id)
+        public Govbody(string name, int locationId, int id)
         {
             Guard.Against.NullOrEmpty(name, nameof(name));
             Guard.Against.Null(locationId, nameof(locationId));
@@ -34,7 +34,7 @@ namespace GM.ApplicationCore.Entities.GovBodies
         // Example: "USA_NJ_Essex_Nutley_TownCouncil"
         public string LongName { get; set; }
 
-        public long GovLocationId { get; set; }
+        public int GovLocationId { get; set; }
 
         private readonly List<Meeting> _meetings = new List<Meeting>();
         public IReadOnlyCollection<Meeting> Meetings => _meetings.AsReadOnly();

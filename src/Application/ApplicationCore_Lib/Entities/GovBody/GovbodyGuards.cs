@@ -2,11 +2,11 @@
 using System.Linq;
 using Ardalis.GuardClauses;
 
-namespace GM.ApplicationCore.Entities.GovBodies
+namespace GM.ApplicationCore.Entities.Govbodies
 {
     public static class GovbodyGuards
     {
-        public static void NullGovbody(this IGuardClause guardClause, int govbodyId, GovBody govbody)
+        public static void NullGovbody(this IGuardClause guardClause, int govbodyId, Govbody govbody)
         {
             if (govbody == null)
                 throw new GovbodyNotFoundException(govbodyId);

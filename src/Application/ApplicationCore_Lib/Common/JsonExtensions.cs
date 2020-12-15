@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Microsoft.eShopWeb
+namespace GM.ApplicationCore.Common
 {
     public static class JsonExtensions
     {

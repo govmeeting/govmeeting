@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GM.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
-using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Govbodies;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;
 using GM.ApplicationCore.Interfaces;
 using GM.ViewModels;
+using WebApp.Endpoints;
 
 
 //using GM.DatabaseRepositories;
@@ -20,21 +21,37 @@ using GM.ViewModels;
 namespace GM.Webapp.Features.Govbodies
 {
 
-
-[Route("api/[controller]")]
-    public class GovBodyController : Controller
+    //[Authorize]
+    public class GovbodyController : ApiController
     {
-        IAsyncRepository<GovBody> _govbodyRepository;
-        IAsyncRepository<GovLocation> _govlocationRepository;
 
-        public GovBodyController(
-            IAsyncRepository<GovBody> govbodyRepository,
-            IAsyncRepository<GovLocation> govlocationRepository
-        )
+        [HttpPost]
+        public async Task<ActionResult<int>> Create(CreateGovbodyCommand command)
         {
-            _govbodyRepository = govbodyRepository;
-            _govlocationRepository = govlocationRepository;
+            return await Mediator.Send(command);
         }
+
+        [HttpGet("{location}")]
+        public async Task<IList<GovbodyVm>> Get(string location)
+        {
+            return await Mediator.Send(new GetGovbodiesQuery { Govlocation = location });
+        }
+
+
+        //[Route("api/[controller]")]
+        //    public class GovbodyController : Controller
+        //    {
+        //        IAsyncRepository<Govbody> _govbodyRepository;
+        //        IAsyncRepository<GovLocation> _govlocationRepository;
+
+        //        public GovbodyController(
+        //            IAsyncRepository<Govbody> govbodyRepository,
+        //            IAsyncRepository<GovLocation> govlocationRepository
+        //        )
+        //        {
+        //            _govbodyRepository = govbodyRepository;
+        //            _govlocationRepository = govlocationRepository;
+        //        }
 
         // POST: /Govbody/Register
         [HttpPost]
@@ -55,9 +72,9 @@ namespace GM.Webapp.Features.Govbodies
         ////}
 
         ////[HttpGet("{meetingId}")]
-        ////public GovBody Get(int govBodyId)
+        ////public Govbody Get(int govBodyId)
         ////{
-        ////    GovBody ret = dbOps.GetGovBody(govBodyId);
+        ////    Govbody ret = dbOps.GetGovbody(govBodyId);
         ////    return ret;
         ////}
 

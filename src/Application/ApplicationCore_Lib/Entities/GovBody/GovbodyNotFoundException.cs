@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GM.ApplicationCore.Entities.GovBodies
+namespace GM.ApplicationCore.Entities.Govbodies
 {
     public class GovbodyNotFoundException : Exception
     {

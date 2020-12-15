@@ -5,7 +5,7 @@ using System.Text;
 using Bogus;
 using Bogus.DataSets;
 
-using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Govbodies;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;
@@ -64,7 +64,7 @@ namespace FakeData
     //            .RuleFor(x => x.Language, f => "en")
     //            .RuleFor(x => x.Length, f => f.Random.Number(minLen, maxLen))
     //            .RuleFor(x => x.Sections, f => fakeSection.Generate(2))
-    //            .RuleFor(x => x.GovBodyId, f => governmentBodyId);
+    //            .RuleFor(x => x.GovbodyId, f => governmentBodyId);
 
 
     //        Meeting meeting = fakeMeeting.Generate(1)[0];

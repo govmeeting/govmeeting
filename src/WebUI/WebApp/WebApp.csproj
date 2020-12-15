@@ -16,6 +16,7 @@
     <PackageReference Include="Ardalis.ApiEndpoints" Version="2.0.0" />
     <PackageReference Include="Ardalis.ListStartupServices" Version="1.1.3" />
     <PackageReference Include="Ardalis.Specification" Version="4.0.0" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="MediatR" Version="8.0.2" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
@@ -66,7 +67,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Endpoints\GovBody\" />
     <Folder Include="Endpoints\GovLocation\" />
     <Folder Include="Endpoints\MeetingView\" />
     <Folder Include="Endpoints\Meetings\" />

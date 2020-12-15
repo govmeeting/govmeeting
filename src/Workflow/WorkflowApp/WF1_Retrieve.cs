@@ -13,7 +13,7 @@ using GM.GetOnlineFiles;
 using System.Transactions;
 using ChinhDo.Transactions;
 
-using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Govbodies;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;
@@ -26,19 +26,19 @@ namespace GM.WorkflowApp
         // TODO - IMPLEMENT THIS CLASS
 
         /*   ===== RetrieveOnlineFiles will:
-         * Read the meeting schedules of each GovBody in the database.
+         * Read the meeting schedules of each Govbody in the database.
          * If a current meeting may have taken place, it will:
          *    Check the website where either its transcript or a recording may be found.
          *    If found it will:
          * Start the file retrieval.
          * Store the retieved file in the "DATAFILES/RECEIVED" folder.
-         * Create a new Meeting record for the GovBody
+         * Create a new Meeting record for the Govbody
          * Set the Meeting WorkStatus property to "Received"
          * Set the Meeting Approved property to false".
-         * Send the GovBody managers a "RECEIVED" message.
+         * Send the Govbody managers a "RECEIVED" message.
          * Repeat for each government body.
          *
-         *  New meetings can also added to a GovBody by:
+         *  New meetings can also added to a Govbody by:
          *      * the phone app for recording a meeting
          *      * a file being uploaded by a registered user with appropriate rights.
          */
@@ -63,16 +63,16 @@ namespace GM.WorkflowApp
 
         public void Run()
         {
-            ////List<GovBody> govBodies = dBOperations.FindGovBodiesWithScheduledMeetings();
-            List<GovBody> govBodies = new List<GovBody>();  // TODO - implement
+            ////List<Govbody> govBodies = dBOperations.FindGovBodiesWithScheduledMeetings();
+            List<Govbody> govBodies = new List<Govbody>();  // TODO - implement
 
-            foreach (GovBody govBody in govBodies)
+            foreach (Govbody govBody in govBodies)
             {
                 DoWork(govBody);
             }
         }
 
-        private void DoWork(GovBody govBody)
+        private void DoWork(Govbody govBody)
         {
             //List<ScheduledMeeting> scheduled = govBody.ScheduledMeetings;
             IReadOnlyCollection<ScheduledMeeting> scheduled = govBody.ScheduledMeetings;

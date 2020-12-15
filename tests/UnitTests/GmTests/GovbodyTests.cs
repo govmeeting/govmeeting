@@ -1,21 +1,20 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
-using Moq;
+﻿using Moq;
 using System.Threading.Tasks;
 using Xunit;
 
 using GM.ApplicationCore.Interfaces;
-using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Govbodies;
 
 
-namespace Microsoft.eShopWeb.UnitTests.GmTests
+namespace GM.UnitTests.GmTests
 {
     class GovbodyTests
     {
-        private readonly Mock<IAsyncRepository<GovBody>> _mockGovbodyRepo;
+        private readonly Mock<IAsyncRepository<Govbody>> _mockGovbodyRepo;
 
         public GovbodyTests()
         {
-            _mockGovbodyRepo = new Mock<IAsyncRepository<GovBody>>();
+            _mockGovbodyRepo = new Mock<IAsyncRepository<Govbody>>();
         }
     }
 }

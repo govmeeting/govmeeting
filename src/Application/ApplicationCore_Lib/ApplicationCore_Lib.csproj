@@ -2,29 +2,18 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
-		<RootNamespace>Microsoft.eShopWeb.ApplicationCore</RootNamespace>
+		<RootNamespace>GM.ApplicationCore</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Ardalis.GuardClauses" Version="1.5.0" />
 		<PackageReference Include="Ardalis.Specification" Version="4.0.0" />
+		<PackageReference Include="FluentValidation" Version="8.6.3" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="8.6.3" />
 		<PackageReference Include="MediatR" Version="8.0.2" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
 		<PackageReference Include="System.Security.Claims" Version="4.3.0" />
 		<PackageReference Include="System.Text.Json" Version="4.7.2" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Remove="Features\**" />
-	  <Compile Remove="Specifications\**" />
-	  <EmbeddedResource Remove="Features\**" />
-	  <EmbeddedResource Remove="Specifications\**" />
-	  <None Remove="Features\**" />
-	  <None Remove="Specifications\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Entities\Topic\" />
-	  <Folder Include="Entities\Speaker\" />
 	</ItemGroup>
 
 </Project>

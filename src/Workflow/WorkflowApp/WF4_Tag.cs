@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using GM.Utilities;
 using GM.DatabaseAccess;
 
-using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Govbodies;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;

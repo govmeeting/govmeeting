@@ -29,8 +29,8 @@ namespace GM.ViewModels
 
     public class MeetingViewDto
     {
-        public long MeetingId { get; set; }
-        public string GovBodyName { get; set; }
+        public int MeetingId { get; set; }
+        public string GovbodyName { get; set; }
         public string LocationName { get; set; }
         public string Date { get; set; }
 

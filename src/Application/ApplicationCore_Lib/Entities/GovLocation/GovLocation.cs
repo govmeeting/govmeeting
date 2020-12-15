@@ -6,7 +6,7 @@ using GM.ApplicationCore.Entities.Meetings;
 using Ardalis.GuardClauses;
 using GM.ApplicationCore.Entities.Topics;
 
-namespace GM.ApplicationCore.Entities.GovBodies
+namespace GM.ApplicationCore.Entities.Govbodies
 {
     public enum GovlocType
     {
@@ -22,7 +22,7 @@ namespace GM.ApplicationCore.Entities.GovBodies
 
 
     /// <summary>
-    /// GovLocation is the place where a GovBody is located,
+    /// GovLocation is the place where a Govbody is located,
     /// such as the state, county, city, country
     /// </summary>
     public class GovLocation : BaseEntity, IAggregateRoot
@@ -47,9 +47,9 @@ namespace GM.ApplicationCore.Entities.GovBodies
         /// </summary>
         public long GovLocationId;
 
-        //public List<GovBody> GovBodies { get; private set; }
-        private readonly List<GovBody> _govbodies = new List<GovBody>();
-        public IReadOnlyCollection<GovBody> Govbodies => _govbodies.AsReadOnly();
+        //public List<Govbody> GovBodies { get; private set; }
+        private readonly List<Govbody> _govbodies = new List<Govbody>();
+        public IReadOnlyCollection<Govbody> Govbodies => _govbodies.AsReadOnly();
 
         //public List<Language> Languages { get; private set; }
         private readonly List<Language> _languages = new List<Language>();

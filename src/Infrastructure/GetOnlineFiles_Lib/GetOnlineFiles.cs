@@ -1,5 +1,5 @@
 ﻿using System;
-using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Govbodies;
 using GM.ApplicationCore.Entities.Meetings;
 
 namespace GM.GetOnlineFiles
@@ -12,12 +12,12 @@ namespace GM.GetOnlineFiles
 
     public interface IRetrieveNewFiles
     {
-        public string RetrieveFile(GovBody govbody, DateTime scheduled, out DateTime actual, out SourceType type);
+        public string RetrieveFile(Govbody govbody, DateTime scheduled, out DateTime actual, out SourceType type);
     }
 
     public class RetrieveNewFiles : IRetrieveNewFiles
     {
-        public string RetrieveFile(GovBody govbody, DateTime scheduled, out DateTime actual, out SourceType type)
+        public string RetrieveFile(Govbody govbody, DateTime scheduled, out DateTime actual, out SourceType type)
         {
             // TODO - implement
             actual = DateTime.Now;

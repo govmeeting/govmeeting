@@ -36,7 +36,7 @@ namespace FakeData
 
             var fakeTVM = new Faker<MeetingViewDto>()
                .RuleFor(x => x.MeetingId, f => MeetingId)
-               .RuleFor(x => x.GovBodyName, f => "City Council")
+               .RuleFor(x => x.GovbodyName, f => "City Council")
                .RuleFor(x => x.LocationName, f => "United States - Texas - Potter County - Amarillo")
                .RuleFor(x => x.Date, f => meetingDate)
                .RuleFor(x => x.Sections, f => fakeSection.Generate(2));

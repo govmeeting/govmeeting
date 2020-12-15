@@ -6,15 +6,15 @@ using Ardalis.GuardClauses;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Interfaces;
 
-namespace GM.ApplicationCore.Entities.GovBodies
+namespace GM.ApplicationCore.Entities.Govbodies
 {
-    class GovBodyService
+    class GovbodyService
     {
-        private readonly IAsyncRepository<GovBody> _govbodyRepository;
-        private readonly IAppLogger<GovBodyService> _logger;
+        private readonly IAsyncRepository<Govbody> _govbodyRepository;
+        private readonly IAppLogger<GovbodyService> _logger;
 
-        public GovBodyService(IAsyncRepository<GovBody> govbodyRepository,
-            IAppLogger<GovBodyService> logger)
+        public GovbodyService(IAsyncRepository<Govbody> govbodyRepository,
+            IAppLogger<GovbodyService> logger)
         {
             _govbodyRepository = govbodyRepository;
             _logger = logger;

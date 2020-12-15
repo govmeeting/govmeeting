@@ -50,7 +50,7 @@ namespace GM.ApplicationCore.Entities.Meetings
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public int Length { get; set; }
-        public long GovBodyId { get; set; }
+        public int GovbodyId { get; set; }
         public string Language { get; set; }
         public string SourceFilename { get; set; }
         public SourceType SourceType { get; set; }

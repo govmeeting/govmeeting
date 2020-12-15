@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using GM.UnitTests.ApplicationCore.Extensions;
+using Xunit;
 
-namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Extensions
+namespace GM.ApplicationCore.Common
 {
     public class JsonExtensions
     {

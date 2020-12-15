@@ -14,13 +14,13 @@ namespace GM.ApplicationCore.Entities.Speakers
         public Official(string name, long govbodyId, bool? isElected = null)
         {
             Name = name;
-            GovBodyId = govbodyId;
+            GovbodyId = govbodyId;
 
             Guard.Against.NullOrEmpty(name, nameof(name));
             Guard.Against.NegativeOrZero(govbodyId, nameof(govbodyId));
         }
         public string Name { get; set; }
-        public long GovBodyId { get; set; }
+        public long GovbodyId { get; set; }
         public bool IsElected { get; set; }
     }
 }

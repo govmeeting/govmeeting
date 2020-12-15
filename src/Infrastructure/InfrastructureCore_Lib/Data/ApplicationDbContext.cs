@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Govbodies;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;
@@ -40,7 +40,7 @@ namespace GM.DatabaseAccess
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<GovBody> GovBodies { get; set; }
+        public DbSet<Govbody> Govbodies { get; set; }
         public DbSet<GovLocation> GovLocations { get; set; }
         public DbSet<Meeting> Meetings { get; set; }
         public DbSet<Section> Sections { get; set; }

@@ -14,7 +14,7 @@ using GM.DatabaseAccess;
 using System.IO;
 using System.Globalization;
 
-using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Govbodies;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;
@@ -66,7 +66,7 @@ namespace GM.WorkflowApp.Tests
         //[Fact()]
         //public void Run_WF3_Transcribe_One_Recording_Test()
         //{
-        //    // Mock some sample database records, a Meeting and GovBody.
+        //    // Mock some sample database records, a Meeting and Govbody.
         //    // WF2_ProcessTranscripts will search for all meetings with
         //    // correct SourceType, WorkStatus and Approved status.
         //    string meetingDate = "2018-12-25";  // random meeting date
@@ -78,7 +78,7 @@ namespace GM.WorkflowApp.Tests
         //        new Meeting()
         //        {
         //            Date = meetingDateTime,
-        //            GovBodyId = govbodyId,
+        //            GovbodyId = govbodyId,
         //            Language = "en",
         //            SourceFilename = "source.mp4",
         //            SourceType = SourceType.Recording,
@@ -86,7 +86,7 @@ namespace GM.WorkflowApp.Tests
         //            Approved = true
         //        }
         //    };
-        //    GovBody govbody = new GovBody("Senate", 1, govbodyId)
+        //    Govbody govbody = new Govbody("Senate", 1, govbodyId)
         //    {
         //        LongName = "USA_ME"
         //    };

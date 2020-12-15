@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using GM.ViewModels;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Entities.Meeting
+//namespace Microsoft.eShopWeb.ApplicationCore.Entities.Meeting
+namespace GM.ApplicationCore.Entities.Meetings
 {
     public class MeetingFormatConversion
     {

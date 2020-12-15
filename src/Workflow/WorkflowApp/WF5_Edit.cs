@@ -8,7 +8,7 @@ using GM.FileDataRepositories;
 using GM.ViewModels;
 using GM.EditTranscript;
 
-using GM.ApplicationCore.Entities.GovBodies;
+using GM.ApplicationCore.Entities.Govbodies;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;
