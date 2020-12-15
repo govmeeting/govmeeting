@@ -23,11 +23,37 @@ using System.IO;
 //using Microsoft.EntityFrameworkCore.Sqlite;
 using Microsoft.Data.Sqlite;
 using GM.DatabaseAccess.Identity;
+using GM.ApplicationCore.Interfaces;
+using WebApp.Services;
 
 namespace GM.WebApp
 {
     public class Startup
     {
+
+        private void ConfigureAuthentication(IServiceCollection services)
+        {
+            services.AddAuthentication()
+            //.AddGoogle(options =>
+            //{
+            //    options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
+            //    options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
+            //});
+            // https://docs.microsoft.com/en-us/dotnet/core/compatibility/2.2-3.1#authentication-google-deprecated-and-replaced
+            .AddOpenIdConnect("Google", o =>
+            {
+                o.ClientId = Configuration["ExternalAuth:Google:ClientId"];
+                o.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
+                o.Authority = "https://accounts.google.com";
+                o.ResponseType = OpenIdConnectResponseType.Code;
+                o.CallbackPath = "/signin-google"; // Or register the default "/sigin-oidc"
+                o.Scope.Add("email");
+            });
+        }
+
+
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -148,6 +174,9 @@ namespace GM.WebApp
             services.AddSpaStaticFiles(configuration => configuration.RootPath = "clientapp/dist");
             logger.Info("AddSpaStaticFiles");
             // Angular files will be served from this directory in production. 
+
+            // get the current user for auditing
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -235,25 +264,25 @@ namespace GM.WebApp
             });
         }
 
-        private void ConfigureAuthentication(IServiceCollection services)
-        {
-            services.AddAuthentication()
-            //.AddGoogle(options =>
-            //{
-            //    options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
-            //    options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
-            //});
-            // https://docs.microsoft.com/en-us/dotnet/core/compatibility/2.2-3.1#authentication-google-deprecated-and-replaced
-            .AddOpenIdConnect("Google", o =>
-            {
-                o.ClientId = Configuration["ExternalAuth:Google:ClientId"];
-                o.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
-                o.Authority = "https://accounts.google.com";
-                o.ResponseType = OpenIdConnectResponseType.Code;
-                o.CallbackPath = "/signin-google"; // Or register the default "/sigin-oidc"
-                o.Scope.Add("email");
-            });
-        }
+        //private void ConfigureAuthentication(IServiceCollection services)
+        //{
+        //    services.AddAuthentication()
+        //    //.AddGoogle(options =>
+        //    //{
+        //    //    options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
+        //    //    options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
+        //    //});
+        //    // https://docs.microsoft.com/en-us/dotnet/core/compatibility/2.2-3.1#authentication-google-deprecated-and-replaced
+        //    .AddOpenIdConnect("Google", o =>
+        //    {
+        //        o.ClientId = Configuration["ExternalAuth:Google:ClientId"];
+        //        o.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
+        //        o.Authority = "https://accounts.google.com";
+        //        o.ResponseType = OpenIdConnectResponseType.Code;
+        //        o.CallbackPath = "/signin-google"; // Or register the default "/sigin-oidc"
+        //        o.Scope.Add("email");
+        //    });
+        //}
 
         private void ConfigureIdentity(IServiceCollection services)
         {

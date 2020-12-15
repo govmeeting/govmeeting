@@ -10,7 +10,7 @@ namespace GM.ApplicationCore.Entities.GovBodies
     /// <summary>
     /// The Government body .. Senate, Lower House, Council etc.
     /// </summary>
-    public class GovBody : BaseEntity, IAggregateRoot
+    public class GovBody : AuditEntity, IAggregateRoot
     {
         private GovBody() { }  // for EF
 

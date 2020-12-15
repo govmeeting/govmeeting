@@ -9,7 +9,11 @@ using GM.DatabaseAccess.Identity;
 using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
 using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;
 using Microsoft.eShopWeb.ApplicationCore.Features.Orders;
-
+using System.Threading.Tasks;
+using System.Threading;
+using GM.ApplicationCore.Entities;
+using System;
+using GM.ApplicationCore.Interfaces;
 
 namespace GM.DatabaseAccess
 {
@@ -17,9 +21,14 @@ namespace GM.DatabaseAccess
     //   https://stackoverflow.com/a/40579369/1978840
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options = null)
+        private readonly ICurrentUserService _currentUserService;
+
+        public ApplicationDbContext(ICurrentUserService currentUserService,
+            DbContextOptions<ApplicationDbContext> options = null
+            )
             : base(options)
         {
+            _currentUserService = currentUserService;
         }
 
         // TODO: OnModelCreating should be disabled for production 
@@ -43,7 +52,7 @@ namespace GM.DatabaseAccess
         public DbSet<Language> Languages { get; set; }
 
 
-
+        // Temporary inclusion of eshoponweb DbSets during development
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<CatalogItem> CatalogItems { get; set; }
         public DbSet<CatalogBrand> CatalogBrands { get; set; }
@@ -52,5 +61,27 @@ namespace GM.DatabaseAccess
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
 
+
+        // If the dbset inherits from AuditEntity, save the audit info.
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            foreach (var entry in ChangeTracker.Entries<AuditEntity>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.CreatedBy = _currentUserService.UserId;
+                        entry.Entity.Created = DateTime.UtcNow;
+                        break;
+                    case EntityState.Modified:
+                        entry.Entity.LastModifiedBy = _currentUserService.UserId;
+                        entry.Entity.LastModified = DateTime.UtcNow;
+                        break;
+                }
+            }
+
+            return base.SaveChangesAsync(cancellationToken);
+
+        }
     }
 }
