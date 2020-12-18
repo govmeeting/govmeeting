@@ -6,9 +6,9 @@ using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;
 using GM.DatabaseAccess.Identity;
 
-using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
-using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;
-using Microsoft.eShopWeb.ApplicationCore.Features.Orders;
+//using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
+//using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;
+//using Microsoft.eShopWeb.ApplicationCore.Features.Orders;
 using System.Threading.Tasks;
 using System.Threading;
 using GM.ApplicationCore.Entities;
@@ -52,14 +52,14 @@ namespace GM.DatabaseAccess
         public DbSet<Language> Languages { get; set; }
 
 
-        // Temporary inclusion of eshoponweb DbSets during development
-        public DbSet<Basket> Baskets { get; set; }
-        public DbSet<CatalogItem> CatalogItems { get; set; }
-        public DbSet<CatalogBrand> CatalogBrands { get; set; }
-        public DbSet<CatalogType> CatalogTypes { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<BasketItem> BasketItems { get; set; }
+        //// Temporary inclusion of eshoponweb DbSets during development
+        //public DbSet<Basket> Baskets { get; set; }
+        //public DbSet<CatalogItem> CatalogItems { get; set; }
+        //public DbSet<CatalogBrand> CatalogBrands { get; set; }
+        //public DbSet<CatalogType> CatalogTypes { get; set; }
+        //public DbSet<Order> Orders { get; set; }
+        //public DbSet<OrderItem> OrderItems { get; set; }
+        //public DbSet<BasketItem> BasketItems { get; set; }
 
 
         // If the dbset inherits from AuditEntity, save the audit info.

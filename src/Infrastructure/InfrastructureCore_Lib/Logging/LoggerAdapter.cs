@@ -1,4 +1,4 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+﻿using GM.ApplicationCore.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace Microsoft.eShopWeb.Infrastructure.Logging

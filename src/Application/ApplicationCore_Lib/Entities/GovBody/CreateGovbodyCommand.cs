@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GM.ApplicationCore.Entities.Govbodies
 {
-    public class CreateGovbodyCommand : IRequest<int>
+    public class CreateGovbodyCommand : IRequest<int?>
     {
         public CreateGovbodyCommand()
         {
@@ -17,7 +17,7 @@ namespace GM.ApplicationCore.Entities.Govbodies
         }
         public string Name { get; set; }
         public string LongName { get; set; }
-        public int GovLocationId { get; set; }
+        public int? GovLocationId { get; set; }
         public List<MeetingVm> Meetings { get; set; }
         public List<TopicVm> Topics { get; set; }
         public List<ScheduledMeetingVm> ScheduledMeetings { get; set; }

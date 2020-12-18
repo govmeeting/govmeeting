@@ -1,11 +1,14 @@
 ﻿using Ardalis.Specification;
 using Ardalis.Specification.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopWeb.ApplicationCore.Entities;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+//using Microsoft.eShopWeb.ApplicationCore.Entities;
+//using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+using GM.ApplicationCore.Interfaces;
+using GM.ApplicationCore.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GM.DatabaseAccess;
 
 namespace Microsoft.eShopWeb.Infrastructure.Data
 {
@@ -16,9 +19,10 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
     /// <typeparam name="T"></typeparam>
     public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity, IAggregateRoot
     {
-        protected readonly CatalogContext _dbContext;
+        //protected readonly CatalogContext _dbContext;
+        protected readonly ApplicationDbContext _dbContext;
 
-        public EfRepository(CatalogContext dbContext)
+        public EfRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.eShopWeb.ApplicationCore.Constants;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+//using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GM.DatabaseAccess;
 using GM.DatabaseAccess.Identity;
+using GM.ApplicationCore.Interfaces;
 
 namespace Microsoft.eShopWeb.Infrastructure.Identity
 {

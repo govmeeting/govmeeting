@@ -10,7 +10,7 @@ using GM.ApplicationCore.Entities.Govbodies;
 namespace GM.WebApp.Endpoints.GovBodies
 {
 
-    public class CreateGovbodyCommandHandler : IRequestHandler<CreateGovbodyCommand, int>
+    public class CreateGovbodyCommandHandler : IRequestHandler<CreateGovbodyCommand, int?>
     {
         private readonly IApplicationDbContext _context;
 
@@ -18,7 +18,7 @@ namespace GM.WebApp.Endpoints.GovBodies
         {
             _context = context;
         }
-        public async Task<int> Handle(CreateGovbodyCommand request, CancellationToken cancellationToken)
+        public async Task<int?> Handle(CreateGovbodyCommand request, CancellationToken cancellationToken)
         {
             var entity = new Govbody(request.Name, request.GovLocationId, 0)
             {

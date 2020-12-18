@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GM.ViewModels
 {
-    public enum GovlocType
+    public enum GovlocTypes
     {
         City,
         Town,
@@ -19,7 +19,7 @@ namespace GM.ViewModels
     public class GovLocationDto
     {
         public string Name;
-        public GovlocType Type;
+        public GovlocTypes GovLocType;
     }
 
     public class RegisterGovlocationDto

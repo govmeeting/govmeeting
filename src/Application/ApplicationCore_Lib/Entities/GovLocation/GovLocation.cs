@@ -8,7 +8,7 @@ using GM.ApplicationCore.Entities.Topics;
 
 namespace GM.ApplicationCore.Entities.Govbodies
 {
-    public enum GovlocType
+    public enum GovlocTypes
     {
         City,
         Town,
@@ -29,23 +29,23 @@ namespace GM.ApplicationCore.Entities.Govbodies
     {
         private GovLocation() { }  // for EF
 
-        public GovLocation(string name, GovlocType type, string code)
+        public GovLocation(string name, GovlocTypes type, string code)
         {
             Name = name;
-            Type = Type;
+            GovLocType = GovLocType;
             Code = code;
 
             Guard.Against.NullOrEmpty(name, nameof(name));
             Guard.Against.NullOrEmpty(code, nameof(code));
         }
         public string Name { get; private set; }
-        public GovlocType Type { get; set; }
+        public GovlocTypes GovLocType { get; set; }
         public string Code { get; private set; }
 
         /// <summary>
         /// Our parent GovEntity or null if no parent
         /// </summary>
-        public long GovLocationId;
+        public int? GovLocationId;
 
         //public List<Govbody> GovBodies { get; private set; }
         private readonly List<Govbody> _govbodies = new List<Govbody>();

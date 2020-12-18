@@ -3,9 +3,9 @@ using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
-using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;
-using Microsoft.eShopWeb.ApplicationCore.Features.Orders;
+//using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
+//using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;
+//using Microsoft.eShopWeb.ApplicationCore.Features.Orders;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,14 +28,14 @@ namespace GM.Infrastructure.Data
         public DbSet<Language> Languages { get; set; }
 
 
-        // Temporary inclusion of eshoponweb DbSets during development
-        public DbSet<Basket> Baskets { get; set; }
-        public DbSet<CatalogItem> CatalogItems { get; set; }
-        public DbSet<CatalogBrand> CatalogBrands { get; set; }
-        public DbSet<CatalogType> CatalogTypes { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<BasketItem> BasketItems { get; set; }
+        //// Temporary inclusion of eshoponweb DbSets during development
+        //public DbSet<Basket> Baskets { get; set; }
+        //public DbSet<CatalogItem> CatalogItems { get; set; }
+        //public DbSet<CatalogBrand> CatalogBrands { get; set; }
+        //public DbSet<CatalogType> CatalogTypes { get; set; }
+        //public DbSet<Order> Orders { get; set; }
+        //public DbSet<OrderItem> OrderItems { get; set; }
+        //public DbSet<BasketItem> BasketItems { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

@@ -1,4 +1,4 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+﻿using GM.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 
 namespace Microsoft.eShopWeb.Infrastructure.Services

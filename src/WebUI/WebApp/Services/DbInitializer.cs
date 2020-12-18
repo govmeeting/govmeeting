@@ -23,7 +23,6 @@ namespace GM.WebApp.Services
         //Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
         //    RoleManager<IdentityRole> roleManager, IConfiguration configuration);
         Task<bool> Initialize(bool migrateDatabase);
-        string GetFour();
     }
 
     // Class to inialize the database with the first admin user. See:
@@ -109,10 +108,6 @@ namespace GM.WebApp.Services
             // TODO add error handling and return success/fail
             return true;
         }
-        public string GetFour()
-        {
-            return "four";
-        }
     }
 
 
@@ -126,10 +121,6 @@ namespace GM.WebApp.Services
         {
             await Task.Delay(1);
             return true;
-        }
-        public string GetFour()
-        {
-            return "four";
         }
     }
 }

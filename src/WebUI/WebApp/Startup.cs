@@ -26,6 +26,7 @@ using GM.DatabaseAccess.Identity;
 using GM.ApplicationCore.Interfaces;
 using WebApp.Services;
 using GM.ApplicationCore.Common;
+using GM.WebApp.Services;
 
 namespace GM.WebApp
 {
@@ -251,6 +252,9 @@ namespace GM.WebApp
                     spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
             });
+
+            //SeedDatabase.Seed();
+
         }
 
         private void ConfigureLoggingService()

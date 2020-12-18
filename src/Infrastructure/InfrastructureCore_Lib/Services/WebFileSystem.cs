@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+using GM.ApplicationCore.Interfaces;
 using Microsoft.eShopWeb.Infrastructure.Data;
 
 namespace Microsoft.eShopWeb.Infrastructure.Services

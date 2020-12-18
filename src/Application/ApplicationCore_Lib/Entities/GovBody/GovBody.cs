@@ -14,15 +14,15 @@ namespace GM.ApplicationCore.Entities.Govbodies
     {
         private Govbody() { }  // for EF
 
-        public Govbody(string name, int locationId, int id)
+        public Govbody(string name, int? govLocationId, int id = 0)
         {
             Guard.Against.NullOrEmpty(name, nameof(name));
-            Guard.Against.Null(locationId, nameof(locationId));
+            Guard.Against.Null(govLocationId, nameof(govLocationId));
 
             Name = name;
-            GovLocationId = locationId;
+            GovLocationId = govLocationId;
 
-            Id = id;  // TODO - this is a kludge to get a test working
+            Id = id;  // TODO - Remove this kludge to get a test working
         }
 
         public override int Id { get; protected set; }
@@ -34,7 +34,7 @@ namespace GM.ApplicationCore.Entities.Govbodies
         // Example: "USA_NJ_Essex_Nutley_TownCouncil"
         public string LongName { get; set; }
 
-        public int GovLocationId { get; set; }
+        public int? GovLocationId { get; set; }
 
         private readonly List<Meeting> _meetings = new List<Meeting>();
         public IReadOnlyCollection<Meeting> Meetings => _meetings.AsReadOnly();
