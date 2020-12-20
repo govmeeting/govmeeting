@@ -19,7 +19,7 @@ namespace GM.ViewModels
     public class GovLocationDto
     {
         public string Name;
-        public GovlocTypes GovLocType;
+        public GovlocTypes Type;
     }
 
     public class RegisterGovlocationDto

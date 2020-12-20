@@ -8,18 +8,17 @@ using GM.ApplicationCore.Entities.Topics;
 
 namespace GM.ApplicationCore.Entities.Govbodies
 {
-    public enum GovlocTypes
+    public enum GovlocTypes : int
     {
-        City,
-        Town,
-        Borough,
-        Township,
-        County,
-        StateOrProvince,
-        Territory,
-        Country
+        City = 0,
+        Town = 1,
+        Borough = 2,
+        Township = 3,
+        County = 4,
+        StateOrProvince = 5,
+        Territory = 6,
+        Country = 7
     };
-
 
     /// <summary>
     /// GovLocation is the place where a Govbody is located,
@@ -30,22 +29,23 @@ namespace GM.ApplicationCore.Entities.Govbodies
         private GovLocation() { }  // for EF
 
         public GovLocation(string name, GovlocTypes type, string code)
+        //public GovLocation(string name, int type, string code)
         {
             Name = name;
-            GovLocType = GovLocType;
+            Type = type;
             Code = code;
 
             Guard.Against.NullOrEmpty(name, nameof(name));
             Guard.Against.NullOrEmpty(code, nameof(code));
         }
         public string Name { get; private set; }
-        public GovlocTypes GovLocType { get; set; }
+        public GovlocTypes Type { get; set; }
         public string Code { get; private set; }
 
         /// <summary>
-        /// Our parent GovEntity or null if no parent
+        /// Our parent GovLocation or null if no parent
         /// </summary>
-        public int? GovLocationId;
+        public GovLocation ParentLocation { get; set; }
 
         //public List<Govbody> GovBodies { get; private set; }
         private readonly List<Govbody> _govbodies = new List<Govbody>();

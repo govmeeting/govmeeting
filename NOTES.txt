@@ -1,0 +1,18 @@
+=== Commands for EF Core Migrations ===
+
+== Update tools ==
+dotnet tool update --global dotnet-ef
+
+== Add migration ==
+dotnet ef migrations add <migration-name> --verbose --project src\Infrastructure\InfrastructureCore_Lib --startup-project src\WebUI\WebApp
+
+== Update database (apply migrations) ==
+dotnet ef database update --verbose --project src\Infrastructure\InfrastructureCore_Lib --startup-project src\WebUI\WebApp
+
+== Remove last migration ==
+dotnet ef migrations remove
+
+== Remove all migrations ==
+* drop database
+* delete "src\Infrastructure\InfrastructureCore_Lib\Migrations" folder"
+

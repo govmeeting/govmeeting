@@ -16,7 +16,7 @@ namespace GM.ApplicationCore.Entities.Govbodies
             }
             public string Name { get; set; }
             public string LongName { get; set; }
-            public long GovLocationId { get; set; }
+            public GovLocation ParentLocation { get; set; }
             public List<MeetingVm> Meetings { get; set; }
             public List<TopicVm> Topics { get; set; }
             public List<ScheduledMeetingVm> ScheduledMeetings { get; set; }

@@ -253,7 +253,7 @@ namespace GM.WebApp
                 }
             });
 
-            //SeedDatabase.Seed();
+            SeedDatabase.Seed();
 
         }
 

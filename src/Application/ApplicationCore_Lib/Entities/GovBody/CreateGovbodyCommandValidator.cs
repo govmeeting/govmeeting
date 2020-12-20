@@ -15,7 +15,7 @@ namespace GM.ApplicationCore.Entities.Govbodieses
         {
             RuleFor(v => v.Name).NotNull();
             RuleFor(v => v.LongName).NotNull();
-            RuleFor(v => v.GovLocationId).NotEqual(0);
+            RuleFor(v => v.ParentLocation).NotNull();
             // TODO - remove this check
             // NOTE: ScheduledMeetings is not required to be non-null.
             // This code is for experimenting with this type of validation.

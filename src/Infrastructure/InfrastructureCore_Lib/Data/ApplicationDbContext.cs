@@ -38,6 +38,14 @@ namespace GM.DatabaseAccess
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
+
+            // https://sigitov.de/how-to-handle-enums-in-asp-net-core-web-applications/
+            //builder
+            //    .Entity<GovLocation>()
+            //    .Property(e => e.GovLocType)
+            //    .HasConversion(
+            //        v => v.ToString(),
+            //        v => (GovlocTypes)Enum.Parse(typeof(GovlocTypes), v));
         }
 
         public DbSet<Govbody> Govbodies { get; set; }

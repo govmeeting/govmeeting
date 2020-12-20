@@ -20,7 +20,7 @@ namespace GM.WebApp.Endpoints.GovBodies
         }
         public async Task<int?> Handle(CreateGovbodyCommand request, CancellationToken cancellationToken)
         {
-            var entity = new Govbody(request.Name, request.GovLocationId, 0)
+            var entity = new Govbody(request.Name, request.ParentLocation, 0)
             {
                 LongName = request.LongName
                 //    InvoiceItems = request.InvoiceItems.Select(i => new InvoiceItem

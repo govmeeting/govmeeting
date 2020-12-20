@@ -34,19 +34,19 @@ namespace GM.WebApp.Services
                     new GovLocation("United States", GovlocTypes.Country, "USA"),
                     new GovLocation("New Jersey", GovlocTypes.StateOrProvince, "NJ"),
                     new GovLocation("Passaic County", GovlocTypes.County, "Passaic"),
-                    new GovLocation("Little Falls", GovlocTypes.Country, "LittleFalls")
+                    new GovLocation("Little Falls", GovlocTypes.Township, "LittleFalls")
                 };
-                int? parentGovLocId = null;
+                GovLocation parentGovLoc = null;
                 foreach (GovLocation loc in locs)
                 {
-                    loc.GovLocationId = parentGovLocId;
+                    loc.ParentLocation = parentGovLoc;
                     context.GovLocations.Add(loc);
                     context.SaveChanges();
-                    parentGovLocId = loc.GovLocationId;
+                    parentGovLoc = loc;
                 }
 
                 // Write one Govbody for the last GovLocation
-                Govbody gov = new Govbody("Town Council", parentGovLocId ?? -1);
+                Govbody gov = new Govbody("Town Council", parentGovLoc);
                 context.Govbodies.Add(gov);
                 context.SaveChanges();
             }
@@ -54,7 +54,7 @@ namespace GM.WebApp.Services
 
         private static ApplicationDbContext GetLocalDbProvider()
         {
-            string connection = "Server=(localdb)\\mssqllocaldb;Database=GovmeetingTest;Trusted_Connection=True;MultipleActiveResultSets=true";
+            string connection = "Server=(localdb)\\mssqllocaldb;Database=Govmeeting;Trusted_Connection=True;MultipleActiveResultSets=true";
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
             optionsBuilder.UseSqlServer(connection);
             ApplicationDbContext _context = new ApplicationDbContext(null, optionsBuilder.Options);

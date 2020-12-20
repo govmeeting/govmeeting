@@ -92,9 +92,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution_items", "solution_
 		.gitignore = .gitignore
 		.npmrc = .npmrc
 		appsettings.development.json = appsettings.development.json
-		appsettings.shared.json = appsettings.shared.json
 		global.json = global.json
 		LICENSE = LICENSE
+		NOTES.txt = NOTES.txt
 		package.json = package.json
 		README.md = README.md
 	EndProjectSection

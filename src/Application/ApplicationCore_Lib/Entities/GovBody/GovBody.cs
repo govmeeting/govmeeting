@@ -14,13 +14,13 @@ namespace GM.ApplicationCore.Entities.Govbodies
     {
         private Govbody() { }  // for EF
 
-        public Govbody(string name, int? govLocationId, int id = 0)
+        public Govbody(string name, GovLocation parentLocation, int id = 0)
         {
             Guard.Against.NullOrEmpty(name, nameof(name));
-            Guard.Against.Null(govLocationId, nameof(govLocationId));
+            Guard.Against.Null(parentLocation, nameof(parentLocation));
 
             Name = name;
-            GovLocationId = govLocationId;
+            ParentLocation = parentLocation;
 
             Id = id;  // TODO - Remove this kludge to get a test working
         }
@@ -34,7 +34,7 @@ namespace GM.ApplicationCore.Entities.Govbodies
         // Example: "USA_NJ_Essex_Nutley_TownCouncil"
         public string LongName { get; set; }
 
-        public int? GovLocationId { get; set; }
+        public GovLocation ParentLocation { get; set; }
 
         private readonly List<Meeting> _meetings = new List<Meeting>();
         public IReadOnlyCollection<Meeting> Meetings => _meetings.AsReadOnly();

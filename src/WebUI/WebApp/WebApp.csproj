@@ -54,9 +54,6 @@
 
   <ItemGroup>
     <Content Include="..\..\..\appsettings.development.json" Link="appsettings.development.json" />
-    <Content Include="..\..\..\appsettings.shared.json" Link="appsettings.shared.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
