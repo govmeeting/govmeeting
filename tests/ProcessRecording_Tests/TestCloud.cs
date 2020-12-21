@@ -6,11 +6,11 @@ using Microsoft.Extensions.Options;
 using GM.ProcessRecording;
 using GM.FileDataRepositories;
 
-//using GM.OldViewModels;
-using GM.ViewModels;
 using GM.Configuration;
 using GM.GoogleCloud;
 using GM.Utilities;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.MeetingsDto;
 
 namespace GM.ProcessRecording_Tests
 
@@ -76,7 +76,7 @@ namespace GM.ProcessRecording_Tests
             //ModifyTranscriptJson_1 mt = new ModifyTranscriptJson_1();
             ModifyTranscriptJson mt = new ModifyTranscriptJson();
             //FixasrViewModel fixasr = mt.Modify(response);
-            MeetingEditDto meetingEditDto = mt.Modify(response);
+            EditMeetingDto meetingEditDto = mt.Modify(response);
 
             // Create JSON file
             //stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);

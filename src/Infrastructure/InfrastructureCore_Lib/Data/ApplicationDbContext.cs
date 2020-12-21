@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using GM.ApplicationCore.Entities.GovLocations;
 using GM.ApplicationCore.Entities.Govbodies;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
@@ -14,6 +15,7 @@ using System.Threading;
 using GM.ApplicationCore.Entities;
 using System;
 using GM.ApplicationCore.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GM.DatabaseAccess
 {
@@ -46,6 +48,7 @@ namespace GM.DatabaseAccess
             //    .HasConversion(
             //        v => v.ToString(),
             //        v => (GovlocTypes)Enum.Parse(typeof(GovlocTypes), v));
+
         }
 
         public DbSet<Govbody> Govbodies { get; set; }

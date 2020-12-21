@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GM.ViewModels
+namespace GM.ApplicationCore.Entities.GovbodiesDto
 {
     public class RegisterGovbodyDto
     {

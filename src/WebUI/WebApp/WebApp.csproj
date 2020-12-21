@@ -58,6 +58,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
+    <ProjectReference Include="..\..\Application\DataTransferObjects\DataTransferObjects.csproj" />
     <ProjectReference Include="..\..\Infrastructure\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\InfrastructureCore_Lib\InfrastructureCore_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />

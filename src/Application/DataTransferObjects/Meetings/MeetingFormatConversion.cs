@@ -1,31 +1,31 @@
-﻿using System;
+﻿using GM.ApplicationCore.Entities.MeetingsDto;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using GM.ViewModels;
 
 //namespace Microsoft.eShopWeb.ApplicationCore.Entities.Meeting
 namespace GM.ApplicationCore.Entities.Meetings
 {
     public class MeetingFormatConversion
     {
-        MeetingEditDto editDto;
-        MeetingViewDto view = new MeetingViewDto();
+        EditMeetingDto editDto;
+        ViewMeetingDto view = new ViewMeetingDto();
 
-        public MeetingFormatConversion(MeetingEditDto _editDto)
+        public MeetingFormatConversion(EditMeetingDto _editDto)
         {
             editDto = _editDto;
         }
 
-        public MeetingViewDto Convert()
+        public ViewMeetingDto Convert()
         {
 
-            MeetingViewDto view = new MeetingViewDto();
+            ViewMeetingDto view = new ViewMeetingDto();
 
-            SectionView section = null;
-            TopicDiscussionView topicDisc = null;
-            TalkView talk = null;
+            ViewMeetingSectionDto section = null;
+            ViewMeetingTopicDiscussionDto topicDisc = null;
+            ViewMeetingTalkDto talk = null;
 
-            foreach (MeetingEditTalk talkEdit in editDto.Talks)
+            foreach (EditMeetingTalkDto talkEdit in editDto.Talks)
             {
                 if (talkEdit.SectionName != "")
                 {
@@ -33,7 +33,7 @@ namespace GM.ApplicationCore.Entities.Meetings
                     {
                         view.Sections.Add(section);
                     }
-                    section = new SectionView();
+                    section = new ViewMeetingSectionDto();
                     section.Name = talkEdit.SectionName;
                 }
                 if (talkEdit.TopicName != "")
@@ -42,7 +42,7 @@ namespace GM.ApplicationCore.Entities.Meetings
                     {
                         section.TopicDiscussions.Add(topicDisc);
                     }
-                    topicDisc = new TopicDiscussionView();
+                    topicDisc = new ViewMeetingTopicDiscussionDto();
                     topicDisc.TopicId = GetOrAddToTopics(talkEdit.TopicName);
                 }
                 if (talkEdit.SpeakerName != "")
@@ -51,7 +51,7 @@ namespace GM.ApplicationCore.Entities.Meetings
                     {
                         topicDisc.Talks.Add(talk);
                     }
-                    talk = new TalkView();
+                    talk = new ViewMeetingTalkDto();
                     talk.SpeakerId = GetOrAddToSpeakers(talkEdit.SpeakerName);
                 }
                 talk.Text = talkEdit.Transcript;
@@ -68,10 +68,10 @@ namespace GM.ApplicationCore.Entities.Meetings
         // and add it to the list of topics.
         private long GetOrAddToTopics(string topicName)
         {
-            TopicView result = view.Topics.Find(x => x.Name == topicName);
+            ViewMeetingTopicDto result = view.Topics.Find(x => x.Name == topicName);
             if (result == null)
             {
-                TopicView topic = new TopicView() {
+                ViewMeetingTopicDto topic = new ViewMeetingTopicDto() {
                     TopicId = view.Topics.Count + 1,
                     Name = topicName,
                     IsExisting = false };
@@ -84,10 +84,10 @@ namespace GM.ApplicationCore.Entities.Meetings
         // and add it to the list of speakers.
         private long GetOrAddToSpeakers(string speakerName)
         {
-            SpeakerView result = view.Speakers.Find(x => x.Name == speakerName);
+            ViewMeetingSpeakerDto result = view.Speakers.Find(x => x.Name == speakerName);
             if (result == null)
             {
-                SpeakerView speaker = new SpeakerView()
+                ViewMeetingSpeakerDto speaker = new ViewMeetingSpeakerDto()
                 {
                     SpeakerId = view.Speakers.Count + 1,
                     Name = speakerName,

@@ -4,7 +4,6 @@ using System.IO;
 using System.Text;
 using GM.ProcessRecording;
 using GM.ProcessTranscript;
-using GM.ViewModels;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
 using GM.FileDataRepositories;
@@ -67,22 +66,20 @@ namespace GM.WorkflowApp
             string workfolderPath = fileRepository.WorkfolderPath(meeting);
             string sourcefilePath = fileRepository.SourcefilePath(meeting);
 
-            using (TransactionScope scope = new TransactionScope())
-            {
-                meeting.WorkStatus = WorkStatus.Transcribing;
+            using TransactionScope scope = new TransactionScope();
+            meeting.WorkStatus = WorkStatus.Transcribing;
 
-                // transcribe recording
-                processRecording.Process(sourcefilePath, workfolderPath, meeting.Language);
+            // transcribe recording
+            processRecording.Process(sourcefilePath, workfolderPath, meeting.Language);
 
-                meeting.WorkStatus = WorkStatus.Transcribed;
+            meeting.WorkStatus = WorkStatus.Transcribed;
 
-                // if true, editing will be allowed to proceed automatically.
-                // set to false to require manager approval.
-                meeting.Approved = true;
+            // if true, editing will be allowed to proceed automatically.
+            // set to false to require manager approval.
+            meeting.Approved = true;
 
-                ////dBOperations.WriteChanges();
-                scope.Complete();
-            }
+            ////dBOperations.WriteChanges();
+            scope.Complete();
         }
     }
 }

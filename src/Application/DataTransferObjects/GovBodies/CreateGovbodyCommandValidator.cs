@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GM.ApplicationCore.Entities.Govbodieses
+namespace GM.ApplicationCore.Entities.GovbodiesDto
 {
     class CreateGovbodyCommandValidator : AbstractValidator<CreateGovbodyCommand>
     {
@@ -33,7 +33,7 @@ namespace GM.ApplicationCore.Entities.Govbodieses
         }
         protected override bool IsValid(PropertyValidatorContext context)
         {
-            var list = context.PropertyValue as IList<ScheduledMeetingVm>;
+            var list = context.PropertyValue as IList<ScheduledMeetingDto>;
             return list != null && list.Any();
         }
     }

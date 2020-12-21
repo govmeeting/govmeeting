@@ -4,11 +4,12 @@ using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
 
 using GM.ProcessRecording;
-using GM.ViewModels;
 using GM.GoogleCloud;
 using GM.Configuration;
 using GM.Utilities;
 using GM.EditTranscript;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.MeetingsDto;
 
 namespace GM.ProcessRecording_Tests
 {
@@ -37,7 +38,7 @@ namespace GM.ProcessRecording_Tests
         {
             string fixasrFile = @"C:\GOVMEETING\_SOURCECODE\src\DATAFILES\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\R3-ToBeFixed.json";
             string stringValue = File.ReadAllText(fixasrFile);
-            MeetingEditDto meetingEditDto = JsonConvert.DeserializeObject<MeetingEditDto>(stringValue);
+            EditMeetingDto meetingEditDto = JsonConvert.DeserializeObject<EditMeetingDto>(stringValue);
             string outputFolder = @"C:\GOVMEETING\_SOURCECODE\src\DATAFILES\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\FixText";
             int sectionSize = 180;
             int overlap = 5;
@@ -78,7 +79,7 @@ namespace GM.ProcessRecording_Tests
             var transcript = JsonConvert.DeserializeObject<TranscribedDto>(stringValue);
 
             ModifyTranscriptJson convert = new ModifyTranscriptJson();
-            MeetingEditDto meetingEditDto = convert.Modify(transcript);
+            EditMeetingDto meetingEditDto = convert.Modify(transcript);
 
             stringValue = JsonConvert.SerializeObject(meetingEditDto, Formatting.Indented);
             File.WriteAllText(outputFile, stringValue);

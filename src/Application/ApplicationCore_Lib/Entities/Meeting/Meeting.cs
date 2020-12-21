@@ -58,7 +58,7 @@ namespace GM.ApplicationCore.Entities.Meetings
         public bool Approved { get; set; }
 
         private readonly List<Section> _sections = new List<Section>();
-        public IReadOnlyCollection<Section> Items => _sections.AsReadOnly();
+        public IReadOnlyCollection<Section> Sections => _sections.AsReadOnly();
 
 
         /*

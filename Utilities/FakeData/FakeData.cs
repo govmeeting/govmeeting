@@ -2,19 +2,85 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.MeetingsDto;
 
 namespace FakeData
 {
-    public class RandomData
+    public class FakeData
     {
         static Random random;
+        readonly Faker faker = new Faker();
+        int nextSectionName = 0;
 
-        public RandomData()
+
+        public FakeData()
         {
             random = new Random();
         }
 
-        public string RandomTopicName(out long index)
+        /*  A speaker may be a known official already in the database, an official not yet in the database
+         *  or an anonymous citizen, for which we do not maintain a record in the database.
+         *  For citizens, we temporarily use a unique key for the meeting, between 1 and 99.
+         *  For known speakers, we would normally have the key from the database.
+         *  For this RandomSpeaker method, we arbitrarily asign a key at random between 2000 and 2999. N
+         *  We return at random either a known speaker or anonymous citizen.
+         */
+        public long RandomSpeaker(List<ViewMeetingSpeakerDto> Speakers)
+        {
+            ViewMeetingSpeakerDto s = new ViewMeetingSpeakerDto
+            {
+                Name = faker.Name.FullName()
+            };
+            int r = random.Next(1, 3);
+
+            if (r == 1)
+            {
+                // new speaker
+                s.SpeakerId = UniqueInt(1, 99);
+                s.IsExisting = false;
+            }
+            else
+            {
+                // existing speaker
+                s.SpeakerId = UniqueInt(2000, 2999);
+                s.IsExisting = true;
+            };
+            // Add the speaker to the list
+            Speakers.Add(s);
+            return s.SpeakerId;
+
+        }
+
+        /*  The same logic described above for speakers is used for topics.
+        */
+        public long RandomTopic(List<ViewMeetingTopicDto> Topics)
+        {
+            int r = random.Next(1, 3);
+            long id;
+            ViewMeetingTopicDto t = new ViewMeetingTopicDto();
+
+            if (r == 1)
+            {
+                // new topic
+                t.Name = Topic(out id);
+                t.TopicId = id;
+                t.IsExisting = false;
+                //mostRecentTDid = id;
+            }
+            else
+            {
+                // existing topic
+                t.TopicId = UniqueInt(500, 599);
+                t.Name = Topic(out id);
+                t.IsExisting = true;
+            }
+            Topics.Add(t);
+            return t.TopicId;
+        }
+
+
+        public string Topic(out long index)
         {
             List<string> topics = new List<string>()
                 {
@@ -69,9 +135,29 @@ namespace FakeData
             return topics[x];
         }
 
+        public string GetSectionName()
+        {
+            List<string> sections = new List<string>()
+                {
+                    "Presentation",
+                    "Approval of Minutes",
+                    "City Manager Presentation",
+                    "Reading of Ordinances",
+                    "Committee Reports",
+                    "Resolutions",
+                    "Public Comment",
+                };
+
+            if (nextSectionName > sections.Count) { nextSectionName = 1; }
+
+            return sections[nextSectionName++];
+        }
+
+
+
 
         // Get specified # of sentences from waffle text
-        public string Waffle(Faker f, int sentences)
+        public string Text(Faker f, int sentences)
         {
             int i;
             string output = "";
@@ -97,8 +183,8 @@ namespace FakeData
         // We want to use random numbers for record Id's.
         // But we want the numbers to also be unique
         // so that there is no database conflicts during testing.
-        List<int> randomList = new List<int>();
-        public int UniqueRandomInt(int min, int max)
+        readonly List<int> randomList = new List<int>();
+        public int UniqueInt(int min, int max)
         {
             int myNumber;
             do

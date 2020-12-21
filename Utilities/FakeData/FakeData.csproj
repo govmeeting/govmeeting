@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
+    <ProjectReference Include="..\..\src\Application\DataTransferObjects\DataTransferObjects.csproj" />
   </ItemGroup>
 
 </Project>

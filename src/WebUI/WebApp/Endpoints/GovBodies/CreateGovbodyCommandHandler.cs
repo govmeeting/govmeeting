@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using GM.Infrastructure.Data;
+using GM.ApplicationCore.Entities.GovbodiesDto;
 using GM.ApplicationCore.Entities.Govbodies;
 
 namespace GM.WebApp.Endpoints.GovBodies
@@ -31,7 +32,7 @@ namespace GM.WebApp.Endpoints.GovBodies
                 //    }).ToList()
             };
 
-            _context.GovBodies.Add(entity);
+            _context.Govbodies.Add(entity);
             await _context.SaveChangesAsync(cancellationToken);
             return entity.Id;
         }

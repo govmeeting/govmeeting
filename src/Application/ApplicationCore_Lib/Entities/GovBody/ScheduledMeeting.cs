@@ -1,7 +1,7 @@
 ﻿using System;
 using Ardalis.GuardClauses;
 
-namespace GM.ApplicationCore.Entities.Meetings
+namespace GM.ApplicationCore.Entities.Govbodies
 {
     public class ScheduledMeeting : BaseEntity
     {

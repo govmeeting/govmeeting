@@ -5,7 +5,6 @@ using System.Text;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
-using GM.ViewModels;
 using GM.GoogleCloud;
 using GM.Utilities;
 

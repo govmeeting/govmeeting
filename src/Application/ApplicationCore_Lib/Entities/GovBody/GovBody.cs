@@ -4,6 +4,7 @@ using Ardalis.GuardClauses;
 using GM.ApplicationCore.Interfaces;
 using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Topics;
+using GM.ApplicationCore.Entities.GovLocations;
 
 namespace GM.ApplicationCore.Entities.Govbodies
 {

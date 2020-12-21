@@ -3,14 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using GM.ViewModels;
+using GM.ApplicationCore.Entities.Meetings;
 using GM.Utilities;
+using GM.ApplicationCore.Entities.MeetingsDto;
 
 namespace GM.EditTranscript
 {
     public class WorkSegments
     {
-        AudioProcessing audioProcessing;
+        readonly AudioProcessing audioProcessing;
 
         public WorkSegments()
         {
@@ -35,7 +36,7 @@ namespace GM.EditTranscript
             //   2. Less video or audio data needs to be downloaded to a user at one time.
 
             string stringValue = File.ReadAllText(fixasrFile);
-            MeetingEditDto meetingEditDto = JsonConvert.DeserializeObject<MeetingEditDto>(stringValue);
+            EditMeetingDto meetingEditDto = JsonConvert.DeserializeObject<EditMeetingDto>(stringValue);
 
             // Split the recording into parts and put them each in subfolders of subfolder "parts".
             SplitRecording splitRecording = new SplitRecording();

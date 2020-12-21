@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using System.IO;
 using Microsoft.Extensions.Options;
-using GM.ViewModels;
 using GM.Configuration;
 ////using GM.DatabaseAccess;
 

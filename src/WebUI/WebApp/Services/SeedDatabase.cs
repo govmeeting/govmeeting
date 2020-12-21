@@ -1,10 +1,10 @@
-﻿using GM.ApplicationCore.Entities.Govbodies;
-using GM.DatabaseAccess;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using GM.DatabaseAccess;
+using GM.ApplicationCore.Entities.Govbodies;
+using GM.ApplicationCore.Entities.GovLocations;
 
 namespace GM.WebApp.Services
 {
@@ -29,7 +29,7 @@ namespace GM.WebApp.Services
                 {
                     /* TODO - I am using the "code" field key wrongly here.
                      * "code" should be its official location code.
-                     * I should set an "abbriation" property and use it, concatenated with its parent, as "LongName" 
+                     * I should set an "abbreviation" property and use it, concatenated with its parent, as "LongName" 
                      */
                     new GovLocation("United States", GovlocTypes.Country, "USA"),
                     new GovLocation("New Jersey", GovlocTypes.StateOrProvince, "NJ"),

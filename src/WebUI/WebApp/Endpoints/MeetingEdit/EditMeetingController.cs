@@ -10,8 +10,8 @@ using System.IO;
 using GM.WebApp.Features.Shared;
 using Microsoft.AspNetCore.Hosting;
 using GM.FileDataRepositories;
-using GM.ViewModels;
-
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.MeetingsDto;
 
 namespace WebApp.Endpoints.MeetingEdit
 {
@@ -19,19 +19,19 @@ namespace WebApp.Endpoints.MeetingEdit
     public class EditMeetingController : Controller
     {
         private readonly IAuthorizationService authz;
-        private IEditMeetingRepository editMeetingRepo { get; set; }
+        private IEditMeetingRepository EditMeetingRepo { get; set; }
 
         public EditMeetingController(IAuthorizationService _authz, IEditMeetingRepository _fixasr)
         {
             authz = _authz;
-            editMeetingRepo = _fixasr;
+            EditMeetingRepo = _fixasr;
         }
 
         [HttpGet("{meetingId}/{part}")]        // GET: api/fixasr
-        public MeetingEditDto Get(int meetingId, int part)
+        public EditMeetingDto Get(int meetingId, int part)
         {
-            string meeting = editMeetingRepo.Get(meetingId, part);
-            MeetingEditDto meetingEditDto = JsonConvert.DeserializeObject<MeetingEditDto>(meeting);
+            string meeting = EditMeetingRepo.Get(meetingId, part);
+            EditMeetingDto meetingEditDto = JsonConvert.DeserializeObject<EditMeetingDto>(meeting);
             return meetingEditDto;
         }
 
@@ -39,10 +39,10 @@ namespace WebApp.Endpoints.MeetingEdit
         // TODO Add next line back when working
         //[Authorize(Policy = "Proofreader")]
         [HttpPost("{meetingId}/{part}")]
-        public bool Post([FromBody] MeetingEditDto value, int meetingId, int part)
+        public bool Post([FromBody] EditMeetingDto value, int meetingId, int part)
         {
             string stringValue = JsonConvert.SerializeObject(value, Formatting.Indented);
-            return editMeetingRepo.Put(stringValue, meetingId, part);
+            return EditMeetingRepo.Put(stringValue, meetingId, part);
         }
     }
 }

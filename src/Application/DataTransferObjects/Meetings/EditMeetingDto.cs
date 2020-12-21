@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GM.ViewModels
+namespace GM.ApplicationCore.Entities.MeetingsDto
 {
     // The MeetingEditDto represents the transcribed meeting in process
     // of being edited (proofread and tagged). While it's being edited,
@@ -24,20 +24,20 @@ namespace GM.ViewModels
     // file, up to 'MaxWorkFileBackups' total copies, where MaxWorkFileBackups is defined
     // in appsettings.Shared.json.
 
-    public class MeetingEditDto
+    public class EditMeetingDto
     {
         public List<string> Sections { get; set; }
         public List<string> Topics { get; set; }
-        public List<MeetingEditTalk> Talks { get; set; }
+        public List<EditMeetingTalkDto> Talks { get; set; }
 		public long LastEdit { get; set; }  // time into transcript of last edit
 
-        public MeetingEditDto()
+        public EditMeetingDto()
         {
-            Talks = new List<MeetingEditTalk>();
+            Talks = new List<EditMeetingTalkDto>();
         }
     }
 
-    public class MeetingEditTalk
+    public class EditMeetingTalkDto
     {
         public string Transcript { get; set; }
         public double Confidence { get; set; }
@@ -47,17 +47,17 @@ namespace GM.ViewModels
         public string TopicName { get; set; }
         public bool ShowSetTopic { get; set; }
         // whether to show "SetTopic" at this location during editing
-        public List<MeetingEditWord> Words { get; set; }
+        public List<EditMeetingWordDto> Words { get; set; }
 		
-		public MeetingEditTalk(string _transcript, double _confidence) 
+		public EditMeetingTalkDto(string _transcript, double _confidence) 
 		{
 			Transcript = _transcript;
 			Confidence = _confidence;
-            Words = new List<MeetingEditWord>();
+            Words = new List<EditMeetingWordDto>();
 		}
     }
 
-    public class MeetingEditWord
+    public class EditMeetingWordDto
     {
         public string Word { get; set; }
         public double Confidence { get; set; }
@@ -66,7 +66,7 @@ namespace GM.ViewModels
         public int WordNum { get; set; }
         public int SpeakerTag { get; set; }
 
-        public MeetingEditWord( string _word, double _confidence, long _starttime,
+        public EditMeetingWordDto( string _word, double _confidence, long _starttime,
 			long _endtime, int _speaker, int _wordnum
 		)
 		{

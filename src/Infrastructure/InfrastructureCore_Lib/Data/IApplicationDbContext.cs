@@ -1,22 +1,20 @@
-﻿using GM.ApplicationCore.Entities.Govbodies;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.Speakers;
-using GM.ApplicationCore.Entities.Topics;
-using Microsoft.EntityFrameworkCore;
-//using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
-//using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;
-//using Microsoft.eShopWeb.ApplicationCore.Features.Orders;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using GM.ApplicationCore.Entities.Govbodies;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.Speakers;
+using GM.ApplicationCore.Entities.Topics;
+using GM.ApplicationCore.Entities.GovLocations;
 
 namespace GM.Infrastructure.Data
 {
     public interface IApplicationDbContext
     {
-        DbSet<Govbody> GovBodies { get; set; }
+        DbSet<Govbody> Govbodies { get; set; }
         DbSet<GovLocation> GovLocations { get; set; }
         public DbSet<Meeting> Meetings { get; set; }
         public DbSet<Section> Sections { get; set; }

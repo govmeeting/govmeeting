@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using System.IO;
 using Microsoft.Extensions.Options;
 using GM.Configuration;
-using GM.ViewModels;
 //using GM.DatabaseRepositories;
 
 namespace GM.FileDataRepositories

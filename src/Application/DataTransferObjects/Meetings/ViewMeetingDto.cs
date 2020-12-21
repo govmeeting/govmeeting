@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GM.ViewModels
+namespace GM.ApplicationCore.Entities.MeetingsDto
 {
     // The MeetingViewDto represents the final state of a transcript after it has
     // been processed, proofread and tagged.
@@ -27,7 +27,7 @@ namespace GM.ViewModels
     // in the correct order.
 
 
-    public class MeetingViewDto
+    public class ViewMeetingDto
     {
         public int MeetingId { get; set; }
         public string GovbodyName { get; set; }
@@ -36,25 +36,25 @@ namespace GM.ViewModels
 
         // Topics and Speakers are the list of topics discussed
         // at this meeting and the list of speakers.
-        public List<TopicView> Topics { get; set; }
-        public List<SpeakerView> Speakers { get; set; }
+        public List<ViewMeetingTopicDto> Topics { get; set; }
+        public List<ViewMeetingSpeakerDto> Speakers { get; set; }
 
-        public List<SectionView> Sections { get; set; }
+        public List<ViewMeetingSectionDto> Sections { get; set; }
     }
 
-    public class SectionView
+    public class ViewMeetingSectionDto
     {
         public string Name { get; set; }
-        public List<TopicDiscussionView> TopicDiscussions { get; set; }
+        public List<ViewMeetingTopicDiscussionDto> TopicDiscussions { get; set; }
     }
 
-    public class TopicDiscussionView
+    public class ViewMeetingTopicDiscussionDto
     {
         public long TopicId { get; set; }
-        public List<TalkView> Talks { get; set; }
+        public List<ViewMeetingTalkDto> Talks { get; set; }
     }
 
-    public class TalkView
+    public class ViewMeetingTalkDto
     {
         public long SpeakerId { get; set; }
         public string Text { get; set; }
@@ -70,7 +70,7 @@ namespace GM.ViewModels
     //
     // When the data is added to the DB, the new topics will
     // be added to the Topic table and assigned thier final TopicId.
-    public class TopicView
+    public class ViewMeetingTopicDto
     {
         public long TopicId { get; set; }
         public string Name { get; set; }
@@ -89,7 +89,7 @@ namespace GM.ViewModels
     // each of these new speakers will be added to the speaker table and assigned a SpeakerId.
     // These new SpeakerIds are used when re-constructing the transcript from the DB,
     // but they don't track the identity of the person from meeting to meeting.
-    public class SpeakerView
+    public class ViewMeetingSpeakerDto
     {
         public long SpeakerId { get; set; } 
         public string Name { get; set; }

@@ -5,10 +5,11 @@ using GM.Utilities;
 using GM.ProcessRecording;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using GM.ViewModels;
 using Google.Protobuf.Collections;
 using Google.Cloud.Speech.V1P1Beta1;
 using Google.Protobuf;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.MeetingsDto;
 
 /* This program is for experimenting with Google Speech-to-Text.
  *   * To transcribe samples.
@@ -170,7 +171,7 @@ namespace DevelopTranscription
             string responseString = File.ReadAllText(fixedTags);
             TranscribedDto response = JsonConvert.DeserializeObject<TranscribedDto>(responseString);
             ModifyTranscriptJson convert = new ModifyTranscriptJson();
-            MeetingEditDto editmeeting = convert.Modify(response);
+            EditMeetingDto editmeeting = convert.Modify(response);
             string stringValue = JsonConvert.SerializeObject(editmeeting, Formatting.Indented);
             File.WriteAllText(editmeetingFile, stringValue);
 

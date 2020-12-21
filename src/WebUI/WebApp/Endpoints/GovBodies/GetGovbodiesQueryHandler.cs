@@ -8,11 +8,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using GM.ApplicationCore.Entities.GovbodiesDto;
 
 namespace GM.WebApp.Endpoints.GovBodies
 {
     public class GetGovbodiesQueryHandler : IRequestHandler<GetGovbodiesQuery,
-        IList<GovbodyVm>>
+        IList<GovbodyDto>>
     {
         private readonly IApplicationDbContext _context;
 
@@ -23,14 +24,14 @@ namespace GM.WebApp.Endpoints.GovBodies
             _context = context;
             _mapper = mapper;
         }
-        public async Task<IList<GovbodyVm>> Handle(GetGovbodiesQuery request, CancellationToken cancellationToken)
+        public async Task<IList<GovbodyDto>> Handle(GetGovbodiesQuery request, CancellationToken cancellationToken)
         {
-            var result = new List<GovbodyVm>();
-            var govbodies = await _context.GovBodies.Include(i => i.ScheduledMeetings).ToListAsync(); ;
+            var result = new List<GovbodyDto>();
+            var govbodies = await _context.Govbodies.Include(i => i.ScheduledMeetings).ToListAsync(); ;
 
             if (govbodies != null)
             {
-                result = _mapper.Map<List<GovbodyVm>>(govbodies);
+                result = _mapper.Map<List<GovbodyDto>>(govbodies);
             }
 
             return result;

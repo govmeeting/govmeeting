@@ -10,8 +10,8 @@ using GM.ApplicationCore.Entities.Meetings;
 using GM.ApplicationCore.Entities.Speakers;
 using GM.ApplicationCore.Entities.Topics;
 using GM.ApplicationCore.Interfaces;
-using GM.ViewModels;
 using WebApp.Endpoints;
+using GM.ApplicationCore.Entities.GovbodiesDto;
 
 
 //using GM.DatabaseRepositories;
@@ -32,7 +32,7 @@ namespace GM.Webapp.Features.Govbodies
         }
 
         [HttpGet("{location}")]
-        public async Task<IList<GovbodyVm>> Get(string location)
+        public async Task<IList<GovbodyDto>> Get(string location)
         {
             return await Mediator.Send(new GetGovbodiesQuery { Govlocation = location });
         }

@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
-using GM.ViewModels;
+using GM.ApplicationCore.Entities.Meetings;
+using GM.ApplicationCore.Entities.MeetingsDto;
 
 namespace GM.EditTranscript
 {
@@ -24,7 +25,7 @@ namespace GM.EditTranscript
         //    int sectionNumber;
         //    readonly FixasrView[] fixasrSegment = new FixasrView[2];
 
-        public void Split(MeetingEditDto meetingEditDto, string outputFolder, int sectionSize, int overlap, int parts)
+        public void Split(EditMeetingDto meetingEditDto, string outputFolder, int sectionSize, int overlap, int parts)
         {
             //        fixasrSegment[0] = new FixasrView();
             //        fixasrSegment[1] = new FixasrView();

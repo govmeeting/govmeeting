@@ -5,7 +5,6 @@ using Microsoft.Extensions.Options;
 using GM.Configuration;
 using Newtonsoft.Json;
 using GM.FileDataRepositories;
-using GM.ViewModels;
 using GM.EditTranscript;
 
 using GM.ApplicationCore.Entities.Govbodies;
