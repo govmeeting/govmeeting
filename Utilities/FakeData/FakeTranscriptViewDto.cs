@@ -1,13 +1,9 @@
 ﻿using Bogus;
-using Bogus.DataSets;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.MeetingsDto;
 using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Text;
+using GM.Application.DTOs.Meetings;
 
-namespace FakeData
+namespace GM.Utilities.FakeData
 {
     public class FakeTranscriptViewDto
     {

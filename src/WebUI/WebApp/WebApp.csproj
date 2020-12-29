@@ -57,15 +57,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
-    <ProjectReference Include="..\..\Application\DataTransferObjects\DataTransferObjects.csproj" />
+    <ProjectReference Include="..\..\Application\Core_Lib\AppCore_Lib.csproj" />
+    <ProjectReference Include="..\..\Application\DTOs_Lib\DTOs_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\InfrastructureCore_Lib\InfrastructureCore_Lib.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\InfraCore_Lib\InfraCore_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Endpoints\GovLocation\" />
+    <Folder Include="Endpoints\GovLocations\" />
     <Folder Include="Endpoints\MeetingView\" />
     <Folder Include="Endpoints\Meetings\" />
     <Folder Include="Endpoints\HealthCheck\" />

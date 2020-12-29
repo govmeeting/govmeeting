@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GM.WebApp.Features.Manage
+namespace GM.WebUI.WebApp.Features.Manage
 {
     public class FactorViewModel
     {

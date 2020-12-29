@@ -10,8 +10,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
-    <ProjectReference Include="..\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
-    <ProjectReference Include="..\DataTransferObjects\DataTransferObjects.csproj" />
+    <ProjectReference Include="..\Core_Lib\AppCore_Lib.csproj" />
+    <ProjectReference Include="..\DTOs_Lib\DTOs_Lib.csproj" />
   </ItemGroup>
 
 </Project>

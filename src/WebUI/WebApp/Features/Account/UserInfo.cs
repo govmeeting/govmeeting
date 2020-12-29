@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GM.WebApp.Models
+namespace GM.WebUI.WebApp.Models
 {
     public class UserInfo
     {

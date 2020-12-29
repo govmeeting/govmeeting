@@ -3,15 +3,15 @@ using System.IO;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
 
-using GM.ProcessRecording;
-using GM.GoogleCloud;
-using GM.Configuration;
+using GM.Application.ProcessRecording;
+using GM.Infrastructure.GoogleCloud;
+using GM.Application.Configuration;
 using GM.Utilities;
-using GM.EditTranscript;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.MeetingsDto;
+using GM.Application.EditTranscript;
+using GM.Application.AppCore.Entities.Meetings;
+using GM.Application.DTOs.Meetings;
 
-namespace GM.ProcessRecording_Tests
+namespace GM.Tests.ProcessRecording_Tests
 {
     public class TestProcessing
     {

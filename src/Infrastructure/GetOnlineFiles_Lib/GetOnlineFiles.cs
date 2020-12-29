@@ -1,8 +1,8 @@
 ﻿using System;
-using GM.ApplicationCore.Entities.Govbodies;
-using GM.ApplicationCore.Entities.Meetings;
+using GM.Application.AppCore.Entities.Govbodies;
+using GM.Application.AppCore.Entities.Meetings;
 
-namespace GM.GetOnlineFiles
+namespace GM.Infrastructure.GetOnlineFiles
 {
 
     /* This is a placeholder for code to be written for retrieving transcripts or recordings from a remote site.

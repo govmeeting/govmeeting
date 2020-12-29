@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using GetOnlineFiles_Lib;
+using GM.Infrastructure.GetOnlineFiles;
 using GM.Utilities;
 
-namespace GM_TestCustom
+namespace GM.Utilities.DevelopRetrieval
 {
     class Program
     {

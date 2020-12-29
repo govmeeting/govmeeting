@@ -3,16 +3,16 @@ using System.IO;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
 
-using GM.ProcessRecording;
-using GM.FileDataRepositories;
+using GM.Application.ProcessRecording;
+using GM.Infrastructure.FileDataRepositories;
 
-using GM.Configuration;
-using GM.GoogleCloud;
+using GM.Application.Configuration;
+using GM.Infrastructure.GoogleCloud;
 using GM.Utilities;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.MeetingsDto;
+using GM.Application.AppCore.Entities.Meetings;
+using GM.Application.DTOs.Meetings;
 
-namespace GM.ProcessRecording_Tests
+namespace GM.Tests.ProcessRecording_Tests
 
 {
     public class TestCloud

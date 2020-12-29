@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using Microsoft.Extensions.Options;
-using GM.Configuration;
+using GM.Application.Configuration;
 
 namespace GM.WorkflowApp
 {

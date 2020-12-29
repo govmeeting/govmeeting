@@ -4,11 +4,12 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Options;
-using GM.Configuration;
-using GM.GoogleCloud;
+using GM.Application.Configuration;
+using GM.Infrastructure.GoogleCloud;
 using GM.Utilities;
+using GM.Application.DTOs.Meetings;
 
-namespace GM.ProcessRecording
+namespace GM.Application.ProcessRecording
 {
     public interface IRecordingProcess
     {

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using Bogus;
-using Bogus.DataSets;
+﻿using Bogus;
+using GM.Application.AppCore.Entities.Meetings;
+using GM.Application.AppCore.Entities.Speakers;
+using GM.Application.AppCore.Entities.Topics;
 
-using GM.ApplicationCore.Entities.Govbodies;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.Speakers;
-using GM.ApplicationCore.Entities.Topics;
-
-namespace FakeData
+namespace GM.Utilities.FakeData
 {
     public class FakeMeeting
     {

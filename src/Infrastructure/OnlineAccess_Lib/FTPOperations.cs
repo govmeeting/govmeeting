@@ -19,19 +19,19 @@ static void Main(string[] args)
         }  
  */
 
-namespace GM.OnlineAccess
+namespace GM.Infrastructure.OnlineAccess
 {
     public class FTPOperations
     {
-        string username { get; set; }
-        string password { get; set; }
-        string ftpAddress { get; set; }
+        string Username { get; set; }
+        string Password { get; set; }
+        string FtpAddress { get; set; }
 
         public FTPOperations(string _username, string _password, string _ftpAddress)
         {
-            username = _username;
-            password = _password;
-            ftpAddress = _ftpAddress;
+            Username = _username;
+            Password = _password;
+            FtpAddress = _ftpAddress;
         }
 
         public string ListFtpDrive()
@@ -39,10 +39,10 @@ namespace GM.OnlineAccess
             // show all the contents and directories of your FTP Drive
             try
             {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpAddress);
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(FtpAddress);
                 request.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.CacheIfAvailable);
                 request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
-                request.Credentials = new NetworkCredential(username, password);
+                request.Credentials = new NetworkCredential(Username, Password);
                 request.KeepAlive = false;
                 request.UseBinary = true;
                 request.UsePassive = true;
@@ -73,10 +73,10 @@ namespace GM.OnlineAccess
             // Get and open the following content only,
             try
             {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpAddress + "/" + remoteFilePath);
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(FtpAddress + "/" + remoteFilePath);
                 request.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.CacheIfAvailable);
                 request.Method = WebRequestMethods.Ftp.DownloadFile;
-                request.Credentials = new NetworkCredential(username, password);
+                request.Credentials = new NetworkCredential(Username, Password);
                 request.KeepAlive = false;
                 request.UseBinary = true;
                 request.UsePassive = true;
@@ -113,10 +113,10 @@ namespace GM.OnlineAccess
         {
             try
             {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpAddress + "/" + remoteFilePath);
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(FtpAddress + "/" + remoteFilePath);
                 request.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.CacheIfAvailable);
                 request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = new NetworkCredential(username, password);
+                request.Credentials = new NetworkCredential(Username, Password);
 
                 // Copy the contents of the file to the request stream.  
                 StreamReader sourceStream = new StreamReader(localFilePath);

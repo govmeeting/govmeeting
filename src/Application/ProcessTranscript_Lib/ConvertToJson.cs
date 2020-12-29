@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace GM.ProcessTranscript
+namespace GM.Application.ProcessTranscript
 {
     public static class ConvertToJson
     {

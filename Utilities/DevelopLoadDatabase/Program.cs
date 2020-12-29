@@ -3,7 +3,7 @@ using System.IO;
 ////using GM.LoadDatabase;
 using GM.Utilities;
 
-namespace DevelopLoadDatabase
+namespace GM.Utilities.DevelopLoadDatabase
 {
     class Program
     {

@@ -1,11 +1,9 @@
 ﻿using Bogus;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.MeetingsDto;
+using GM.Application.DTOs.Meetings;
 
-namespace FakeData
+namespace GM.Utilities.FakeData
 {
     public class FakeData
     {

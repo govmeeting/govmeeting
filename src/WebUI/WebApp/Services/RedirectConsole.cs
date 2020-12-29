@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GM.WebApp.Services
+namespace GM.WebUI.WebApp.Services
 {
     public interface IRedirectConsole
     {

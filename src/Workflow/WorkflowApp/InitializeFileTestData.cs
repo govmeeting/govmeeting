@@ -1,6 +1,6 @@
 using System.IO;
-using GM.EditTranscript;
-using GM.ProcessRecording;
+using GM.Application.EditTranscript;
+using GM.Application.ProcessRecording;
 using GM.Utilities;
 
 namespace GM.WorkflowApp

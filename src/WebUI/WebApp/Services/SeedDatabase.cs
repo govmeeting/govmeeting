@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GM.DatabaseAccess;
-using GM.ApplicationCore.Entities.Govbodies;
-using GM.ApplicationCore.Entities.GovLocations;
+using GM.Application.AppCore.Entities.Govbodies;
+using GM.Application.AppCore.Entities.GovLocations;
 
-namespace GM.WebApp.Services
+namespace GM.WebUI.WebApp.Services
 {
     public static class SeedDatabase
     {

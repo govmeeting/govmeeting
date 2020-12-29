@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GM.GoogleCloud
+namespace GM.Infrastructure.GoogleCloud
 {
     public class TranscribeResultOrig
     {

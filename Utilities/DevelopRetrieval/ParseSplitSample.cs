@@ -7,7 +7,7 @@ using System.Text;
 
 #pragma warning disable IDE0051
 
-namespace GM_TestCustom
+namespace GM.Utilities.DevelopRetrieval
 {
     class ParseSplitSample
     {

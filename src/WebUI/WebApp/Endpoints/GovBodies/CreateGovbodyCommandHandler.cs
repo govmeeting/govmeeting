@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using GM.Infrastructure.Data;
-using GM.ApplicationCore.Entities.GovbodiesDto;
-using GM.ApplicationCore.Entities.Govbodies;
+using GM.Application.DTOs.Govbodies;
+using GM.Application.AppCore.Entities.Govbodies;
 
-namespace GM.WebApp.Endpoints.GovBodies
+namespace GM.WebUI.WebApp.Endpoints.Govbodies
 {
 
     public class CreateGovbodyCommandHandler : IRequestHandler<CreateGovbodyCommand, int?>

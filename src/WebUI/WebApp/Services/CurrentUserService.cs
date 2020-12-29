@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using GM.ApplicationCore.Interfaces;
+using GM.Application.AppCore.Interfaces;
 using Microsoft.AspNetCore.Http;
 
-namespace WebApp.Services
+namespace GM.WebUI.WebApp.Services
 {
     public class CurrentUserService : ICurrentUserService
     {

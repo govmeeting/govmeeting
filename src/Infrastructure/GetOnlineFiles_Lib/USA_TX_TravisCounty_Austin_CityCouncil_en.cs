@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
 
-namespace GetOnlineFiles_Lib
+namespace GM.Infrastructure.GetOnlineFiles
 {
     public class USA_TX_TravisCounty_Austin_CityCouncil_en
     {

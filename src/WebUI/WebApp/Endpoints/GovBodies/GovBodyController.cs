@@ -3,22 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using GM.WebApp.Models;
+using GM.WebUI.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
-using GM.ApplicationCore.Entities.Govbodies;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.Speakers;
-using GM.ApplicationCore.Entities.Topics;
-using GM.ApplicationCore.Interfaces;
-using WebApp.Endpoints;
-using GM.ApplicationCore.Entities.GovbodiesDto;
+using GM.Application.AppCore.Entities.Govbodies;
+using GM.Application.AppCore.Entities.Meetings;
+using GM.Application.AppCore.Entities.Speakers;
+using GM.Application.AppCore.Entities.Topics;
+using GM.Application.AppCore.Interfaces;
+using GM.Application.DTOs.Govbodies;
 
 
 //using GM.DatabaseRepositories;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace GM.Webapp.Features.Govbodies
+namespace GM.WebUI.WebApp.Endpoints.Govbodies
 {
 
     //[Authorize]

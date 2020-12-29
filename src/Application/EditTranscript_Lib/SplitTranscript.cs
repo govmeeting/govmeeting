@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Text;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.MeetingsDto;
+using GM.Application.AppCore.Entities.Meetings;
+using GM.Application.DTOs.Meetings;
 
-namespace GM.EditTranscript
+namespace GM.Application.EditTranscript
 {
     ///* Split the fixasr JSON object into segments.
     // *  {

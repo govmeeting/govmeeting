@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace GM.GoogleCloud
+namespace GM.Infrastructure.GoogleCloud
 {
     class GoogleBucket
     {
-        StorageClient storageClient;
+        readonly StorageClient storageClient;
 
         public GoogleBucket()
         {
@@ -18,17 +18,15 @@ namespace GM.GoogleCloud
         public void UploadFile(string bucketName, string localPath,
             string objectName = null, string contentType = null)
         {
-            using (var file = File.OpenRead(localPath))
-            {
-                objectName = objectName ?? Path.GetFileName(localPath);
-                storageClient.UploadObject(bucketName, objectName, contentType, file);
-                Console.WriteLine($"GoogleBucket.cs - Uploaded {objectName}.");
-            }
+            using var file = File.OpenRead(localPath);
+            objectName ??= Path.GetFileName(localPath);
+            storageClient.UploadObject(bucketName, objectName, contentType, file);
+            Console.WriteLine($"GoogleBucket.cs - Uploaded {objectName}.");
         }
         public void DownloadObject(string bucketName, string objectName,
             string localPath = null)
         {
-            localPath = localPath ?? Path.GetFileName(objectName);
+            localPath ??= Path.GetFileName(objectName);
             using (var outputFile = File.OpenWrite(localPath))
             {
                 storageClient.DownloadObject(bucketName, objectName, outputFile);

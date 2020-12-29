@@ -2,10 +2,10 @@
 using Newtonsoft.Json;
 using System.IO;
 using Microsoft.Extensions.Options;
-using GM.Configuration;
+using GM.Application.Configuration;
 ////using GM.DatabaseAccess;
 
-namespace GM.FileDataRepositories
+namespace GM.Infrastructure.FileDataRepositories.ViewMeetings
 {
     // This is a "repository" of "viewable" transcripts. Viewable transcripts are the
     // JSON files generated after the tags are added.

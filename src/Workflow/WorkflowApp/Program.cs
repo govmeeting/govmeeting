@@ -6,11 +6,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using NLog;
 using NLog.Web;
-using GM.Configuration;
-using GM.ProcessRecording;
-using GM.GoogleCloud;
-using GM.ProcessTranscript;
-using GM.FileDataRepositories;
+using GM.Application.Configuration;
+using GM.Application.ProcessRecording;
+using GM.Infrastructure.GoogleCloud;
+using GM.Application.ProcessTranscript;
+using GM.Infrastructure.FileDataRepositories;
 //using GM.DatabaseRepositories;
 //using GM.DatabaseRepositories_Stub;
 using GM.DatabaseAccess;
@@ -18,7 +18,7 @@ using Microsoft.Extensions.Options;
 using Google.Cloud.Storage.V1;
 using GM.Utilities;
 ////using GM.DatabaseAccess_Stub;
-using GM.GetOnlineFiles;
+using GM.Infrastructure.GetOnlineFiles;
 
 
 namespace GM.WorkflowApp

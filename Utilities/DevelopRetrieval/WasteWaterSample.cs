@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Net;
 
-namespace GM_TestCustom
+namespace GM.Utilities.DevelopRetrieval
 {
     class WasteWaterSample
     {

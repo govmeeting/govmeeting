@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-//using GM.WebApp.Models;
+//using GM.WebUI.WebApp.Models;
 using GM.Utilities;
 
-namespace GM.FileDataRepositories
+namespace GM.Infrastructure.FileDataRepositories
 {
     // This class implements a circular buffer of files, where each new set of fixes is saved to a new file.
     // After max files is reached, the latest one will overwrite the oldest one.

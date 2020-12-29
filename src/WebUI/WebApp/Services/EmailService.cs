@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 
-namespace Gm.WebApp.Services
+namespace GM.WebUI.WebApp.Services
 {
 
     public class EmailService

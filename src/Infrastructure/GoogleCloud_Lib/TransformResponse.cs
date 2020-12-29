@@ -1,10 +1,12 @@
-﻿using Google.Cloud.Speech.V1P1Beta1;
+﻿
+using Google.Cloud.Speech.V1P1Beta1;
 using Google.Protobuf.Collections;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using GM.Application.DTOs.Meetings;
 
-namespace GM.GoogleCloud
+namespace GM.Infrastructure.GoogleCloud
 {
 
     public static class TransformResponse
@@ -56,7 +58,7 @@ namespace GM.GoogleCloud
 
                 SpeechRecognitionAlternative recogAlt = recogResult.Alternatives[0];
 
-                TranscribedTalk result = new TranscribedTalk(recogAlt.Transcript, recogAlt.Confidence)
+                TranscribedTalkDto result = new TranscribedTalkDto(recogAlt.Transcript, recogAlt.Confidence)
                 {
                     // The new "WordCount" field in Result is populated with the total word count.
                     WordCount = recogAlt.Words.Count,
@@ -70,7 +72,7 @@ namespace GM.GoogleCloud
 
                     // The new "WordNum" field in RespWord is popluated with the sequencial "wordnum"
                     wordNum++;
-                    result.Words.Add(new TranscribedWord(item.Word, item.Confidence, startTime, endTime, item.SpeakerTag, wordNum));
+                    result.Words.Add(new TranscribedWordDto(item.Word, item.Confidence, startTime, endTime, item.SpeakerTag, wordNum));
                 }
                 transcript.Talks.Add(result);
             }
@@ -91,11 +93,11 @@ namespace GM.GoogleCloud
         {
 
             int resultCount = transcribed.Talks.Count;
-            TranscribedTalk lastResult = transcribed.Talks[resultCount - 1];
-            TranscribedTalk nextToLastResult = transcribed.Talks[resultCount - 2];
+            TranscribedTalkDto lastResult = transcribed.Talks[resultCount - 1];
+            TranscribedTalkDto nextToLastResult = transcribed.Talks[resultCount - 2];
 
-            int lastWordnum = lastResult.Words[lastResult.Words.Count - 1].WordNum;
-            int nextToLastWordnum = nextToLastResult.Words[nextToLastResult.Words.Count - 1].WordNum;
+            int lastWordnum = lastResult.Words[^1].WordNum;
+            int nextToLastWordnum = nextToLastResult.Words[^1].WordNum;
 
             // Check that the last result is the one we want. This should be where:
             // * The WordNum of its last word is exactly double the WordNum of the next to last result.
@@ -113,15 +115,15 @@ namespace GM.GoogleCloud
             // Now we will populate the Word objects in the prior results with
             // the SpeakerTag of the matching word in the final result.
             int i = 0;
-            List<TranscribedWord> words = lastResult.Words;
+            List<TranscribedWordDto> words = lastResult.Words;
             // "results" will be all but last
-            List<TranscribedTalk> results = transcribed.Talks.GetRange(0, resultCount - 1);
+            List<TranscribedTalkDto> results = transcribed.Talks.GetRange(0, resultCount - 1);
 
-            foreach (TranscribedTalk result in results)
+            foreach (TranscribedTalkDto result in results)
             {
-                foreach (TranscribedWord word in result.Words)
+                foreach (TranscribedWordDto word in result.Words)
                 {
-                    TranscribedWord w = words[i++];
+                    TranscribedWordDto w = words[i++];
                     if (w.Word != word.Word)
                     {
                         // TODO - throw exception

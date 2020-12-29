@@ -5,7 +5,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 
 
-namespace GM.ProcessTranscript
+namespace GM.Application.ProcessTranscript
 {
     public class USA_PA_Philadelphia_Philadelphia_CityCouncil_en : ISpecificFix
     {

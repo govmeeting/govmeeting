@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using GM.GoogleCloud;
 using Microsoft.Toolkit.Parsers.Markdown;
-using GM.Utilities;
-using System.Reflection.Metadata;
 using System.Text.RegularExpressions;
 
 #pragma warning disable IDE0059
 #pragma warning disable IDE0051
 #pragma warning disable IDE0060
 
-namespace GM.Utilities.Translate
+namespace GM.Utilities.TranslateText
 {
     class TranslateDocs
     {

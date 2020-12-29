@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace GM.WebApp.Features.Meetings
+namespace GM.WebUI.WebApp.Features.Meetings
 {
     [Route("api/[controller]")]
     public class TestapiController : Controller

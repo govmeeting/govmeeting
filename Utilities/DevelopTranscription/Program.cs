@@ -1,15 +1,16 @@
 ﻿using System;
 using System.IO;
-using GM.GoogleCloud;
+using GM.Infrastructure.GoogleCloud;
 using GM.Utilities;
-using GM.ProcessRecording;
+using GM.Application.ProcessRecording;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Google.Protobuf.Collections;
 using Google.Cloud.Speech.V1P1Beta1;
 using Google.Protobuf;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.MeetingsDto;
+using GM.Application.DTOs.Meetings;
+
+//using GM.Application.ApplicationCore.DTOs;
 
 /* This program is for experimenting with Google Speech-to-Text.
  *   * To transcribe samples.
@@ -18,7 +19,7 @@ using GM.ApplicationCore.Entities.MeetingsDto;
  *   * To work on formatting the response in the best way for the routines that will handle it.
  */
 
-namespace DevelopTranscription
+namespace GM.Utilities.DevelopTranscription
 {
     class Program
     {

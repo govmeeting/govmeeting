@@ -5,7 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GM.GoogleCloud
+namespace GM.Infrastructure.GoogleCloud
 {
     class StreamTranscribe
     {

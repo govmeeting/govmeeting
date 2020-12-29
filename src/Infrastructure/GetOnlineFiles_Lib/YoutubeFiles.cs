@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GM.GetOnlineFiles
+namespace GM.Infrastructure.GetOnlineFiles
 {
     class YoutubeFiles
     {
     }
 }
 
-/*  Layout of ayoutube subscription page
+/*  Layout of a youtube subscription page
  *  
  *  Sample source for the Little Falls subscription page is in:
  *  Utilities\DevelopTranscription\youtube_channel_2010-12-09.html

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GM.ProcessRecording
+namespace GM.Application.ProcessRecording
 {
     public class Phrase
     {

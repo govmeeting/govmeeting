@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace GM.EditTranscript
+namespace GM.Application.EditTranscript
 {
     public class SplitRecording
     {

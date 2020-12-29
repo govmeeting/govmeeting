@@ -1,4 +1,4 @@
-﻿using GM.ApplicationCore.Entities.Govbodies;
+﻿using GM.Application.AppCore.Entities.Govbodies;
 using GM.Infrastructure.Data;
 using MediatR;
 using System;
@@ -8,9 +8,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using GM.ApplicationCore.Entities.GovbodiesDto;
+using GM.Application.DTOs.Govbodies;
 
-namespace GM.WebApp.Endpoints.GovBodies
+namespace GM.WebUI.WebApp.Endpoints.Govbodies
 {
     public class GetGovbodiesQueryHandler : IRequestHandler<GetGovbodiesQuery,
         IList<GovbodyDto>>

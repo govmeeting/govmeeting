@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GM.WebApp
+namespace GM.WebUI.WebApp
 {
     // THIS CODE IS UNUSED.
     // It was for an experiment in using SpaServices to run the angular app

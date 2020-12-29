@@ -4,7 +4,7 @@ using System.Text;
 using Google.Protobuf.Collections;
 
 
-namespace GM.GoogleCloud
+namespace GM.Infrastructure.GoogleCloud
 {
     public class TranscribeParameters
     {

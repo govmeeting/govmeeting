@@ -12,8 +12,4 @@
     <PackageReference Include="NLog" Version="4.6.6" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Infrastructure\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
-  </ItemGroup>
-
 </Project>

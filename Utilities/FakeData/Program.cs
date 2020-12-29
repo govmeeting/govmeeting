@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using Bogus;
-using Bogus.DataSets;
+using GM.Application.DTOs.Meetings;
 
-using GM.ApplicationCore.Entities.Govbodies;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.MeetingsDto;
-using GM.ApplicationCore.Entities.Speakers;
-using GM.ApplicationCore.Entities.Topics;
-
-namespace FakeData
+namespace GM.Utilities.FakeData
 {
     //public class Section
     //{

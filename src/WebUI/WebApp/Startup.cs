@@ -15,20 +15,19 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.DataProtection;
 using NLog;
-using GM.WebApp.StartupCustomizations;
-using GM.Configuration;
+using GM.WebUI.WebApp.StartupCustomizations;
+using GM.Application.Configuration;
 using GM.DatabaseAccess;
 using GM.Utilities;
 using System.IO;
 //using Microsoft.EntityFrameworkCore.Sqlite;
 using Microsoft.Data.Sqlite;
 using GM.DatabaseAccess.Identity;
-using GM.ApplicationCore.Interfaces;
-using WebApp.Services;
-using GM.ApplicationCore.Common;
-using GM.WebApp.Services;
+using GM.Application.AppCore.Interfaces;
+using GM.WebUI.WebApp.Services;
+using GM.Application.AppCore.Common;
 
-namespace GM.WebApp
+namespace GM.WebUI.WebApp
 {
     public class Startup
     {

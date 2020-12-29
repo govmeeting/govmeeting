@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace GM.Configuration
+namespace GM.Application.Configuration
 {
 
     public class AppSettings

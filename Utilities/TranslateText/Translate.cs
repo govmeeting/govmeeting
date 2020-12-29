@@ -2,7 +2,7 @@ using Google.Cloud.Translation.V2;
 
 // This is in the process of being written.  
 
-namespace GM.GoogleCloud
+namespace GM.Utilities.TranslateText
 {
     public class TranslateInCloud
     {

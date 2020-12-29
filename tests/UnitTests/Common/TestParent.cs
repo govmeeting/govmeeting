@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace GM.UnitTests.ApplicationCore.Extensions
+namespace GM.Tests.UnitTests.Common
 {
     public class TestParent : IEquatable<TestParent>
     {

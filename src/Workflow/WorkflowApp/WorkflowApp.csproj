@@ -32,14 +32,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj" />
+    <ProjectReference Include="..\..\Application\Core_Lib\AppCore_Lib.csproj" />
     <ProjectReference Include="..\..\Application\Configuration_Lib\Configuration_Lib.csproj" />
     <ProjectReference Include="..\..\Application\EditTranscript_Lib\EditTranscript_Lib.csproj" />
     <ProjectReference Include="..\..\Application\ProcessRecording_Lib\ProcessRecording_Lib.csproj" />
     <ProjectReference Include="..\..\Application\ProcessTranscript_Lib\ProcessTranscript_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\GetOnlineFiles_Lib\GetOnlineFiles_Lib.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\InfrastructureCore_Lib\InfrastructureCore_Lib.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\InfraCore_Lib\InfraCore_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\OnlineAccess_Lib\OnlineAccess_Lib.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
   </ItemGroup>

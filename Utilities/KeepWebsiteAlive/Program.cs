@@ -1,7 +1,6 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 
-namespace KeepWebsiteAliveApp
+namespace GM.Utilities.KeepWebsiteAliveApp
 {
     class Program
     {

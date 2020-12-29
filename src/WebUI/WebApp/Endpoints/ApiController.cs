@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
 
-namespace WebApp.Endpoints
+namespace GM.WebUI.WebApp.Endpoints
 {
     [Route("api/[controller]")]
     [ApiController]

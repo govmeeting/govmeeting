@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using GM.FileDataRepositories;
+using GM.Infrastructure.FileDataRepositories;
 using GM.Utilities;
 
-namespace GM.WebApp
+namespace GM.WebUI.WebApp
 {
     public static class InitializeFileTestData
     {

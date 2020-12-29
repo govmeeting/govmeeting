@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using GM.Configuration;
+using GM.Application.Configuration;
 //using GM.LoadDatabase;
 
 namespace GM.WorkflowApp

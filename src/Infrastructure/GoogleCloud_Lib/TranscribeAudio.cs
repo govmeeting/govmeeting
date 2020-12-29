@@ -3,13 +3,14 @@ using System.IO;
 using Google.Protobuf.Collections;
 using Google.Cloud.Speech.V1P1Beta1;
 using Newtonsoft.Json;
+using GM.Application.DTOs.Meetings;
 
-namespace GM.GoogleCloud
+namespace GM.Infrastructure.GoogleCloud
 {
 
     public class TranscribeAudio
     {
-        private SpeechClient speechClient;
+        private readonly SpeechClient speechClient;
 
         public TranscribeAudio()
         {

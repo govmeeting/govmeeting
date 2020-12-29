@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
-namespace GM_DevelopRetrieval
+namespace GM.Utilities.DevelopRetrieval
 {
     class WebRequestSamples
     {

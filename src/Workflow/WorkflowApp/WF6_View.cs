@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using GM.ProcessRecording;
-using GM.ProcessTranscript;
+using GM.Application.ProcessRecording;
+using GM.Application.ProcessTranscript;
 using Microsoft.Extensions.Options;
-using GM.Configuration;
-using GM.FileDataRepositories;
+using GM.Application.Configuration;
+using GM.Infrastructure.FileDataRepositories;
 using Microsoft.Extensions.Logging;
 using GM.Utilities;
-using GM.EditTranscript;
+using GM.Application.EditTranscript;
 
-using GM.ApplicationCore.Entities.Govbodies;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.Speakers;
-using GM.ApplicationCore.Entities.Topics;
+using GM.Application.AppCore.Entities.Govbodies;
+using GM.Application.AppCore.Entities.Meetings;
+using GM.Application.AppCore.Entities.Speakers;
+using GM.Application.AppCore.Entities.Topics;
 
 
 namespace GM.WorkflowApp

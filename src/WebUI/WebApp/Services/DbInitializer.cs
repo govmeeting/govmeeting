@@ -11,12 +11,12 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 
 using GM.DatabaseAccess;
-using GM.Configuration;
+using GM.Application.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
 using GM.DatabaseAccess.Identity;
 
-namespace GM.WebApp.Services
+namespace GM.WebUI.WebApp.Services
 {
     public interface IDbInitializer
     {

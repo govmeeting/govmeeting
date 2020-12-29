@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using ProcessTranscript_Lib;
 
-namespace GM.ProcessTranscript
+namespace GM.Application.ProcessTranscript
 {
     class USA_TX_TravisCounty_Austin_CityCouncil_en : ISpecificFix
     {

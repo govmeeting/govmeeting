@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace GM.WebApp.Features.AspAuth
+namespace GM.WebUI.WebApp.Features.AspAuth
 {
     public class AspAuthController : Controller
     {

@@ -1,7 +1,7 @@
-﻿using GM.UnitTests.ApplicationCore.Extensions;
+﻿using GM.Application.AppCore.Common;
 using Xunit;
 
-namespace GM.ApplicationCore.Common
+namespace GM.Tests.UnitTests.Common
 {
     public class JsonExtensions
     {

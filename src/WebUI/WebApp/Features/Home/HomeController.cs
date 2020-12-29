@@ -6,7 +6,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace GM.WebApp.Features.Home
+namespace GM.WebUI.WebApp.Features.Home
 {
     public class HomeController : Controller
     {

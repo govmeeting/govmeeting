@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using GM.WebApp.Models;
+using GM.WebUI.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
-using GM.FileDataRepositories;
+using GM.Infrastructure.FileDataRepositories.ViewMeetings;
 using Newtonsoft.Json;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.MeetingsDto;
+using GM.Application.AppCore.Entities.Meetings;
+using GM.Application.DTOs.Meetings;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace GM.WebApp.Features.Viewtranscripts
+namespace GM.WebUI.WebApp.Endpoints.Viewtranscripts
 {
     [Route("api/[controller]")]
     public class ViewMeetingController : Controller

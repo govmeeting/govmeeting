@@ -1,9 +1,8 @@
-﻿using GM.FileDataRepositories;
-using System;
+﻿using System;
 using System.IO;
 using System.Runtime.InteropServices.ComTypes;
 
-namespace GM.ProcessTranscript
+namespace GM.Application.ProcessTranscript
 {
 
     public interface ITranscriptProcess

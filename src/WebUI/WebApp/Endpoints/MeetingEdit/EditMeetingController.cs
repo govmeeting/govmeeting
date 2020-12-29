@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using GM.WebApp.Models;
+using GM.WebUI.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using System.IO;
-using GM.WebApp.Features.Shared;
+using GM.WebUI.WebApp.Features.Shared;
 using Microsoft.AspNetCore.Hosting;
-using GM.FileDataRepositories;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.MeetingsDto;
+using GM.Infrastructure.FileDataRepositories.EditMeetings;
+using GM.Application.DTOs.Meetings;
 
-namespace WebApp.Endpoints.MeetingEdit
+namespace GM.WebUI.WebApp.Endpoints.MeetingEdit
 {
     [Route("api/[controller]")]
     public class EditMeetingController : Controller

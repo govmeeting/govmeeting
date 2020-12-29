@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.MeetingsDto;
-using GM.GoogleCloud;
+using GM.Infrastructure.GoogleCloud;
+using GM.Application.DTOs.Meetings;
 
-namespace GM.ProcessRecording
+namespace GM.Application.ProcessRecording
 {
 
     /**********************************************************************
@@ -20,12 +19,12 @@ namespace GM.ProcessRecording
             EditMeetingDto editmeeting = new EditMeetingDto();
             int wordNum = 0;   // running word sequence number
 
-            foreach (TranscribedTalk result in transcript.Talks)
+            foreach (TranscribedTalkDto result in transcript.Talks)
             {
                 EditMeetingTalkDto talk = new EditMeetingTalkDto(result.Transcript, result.Confidence);
                 int speaker = -1;
 
-                foreach (TranscribedWord respword in result.Words)
+                foreach (TranscribedWordDto respword in result.Words)
                 {
                     EditMeetingWordDto word = new EditMeetingWordDto(
                         respword.Word,
@@ -57,12 +56,12 @@ namespace GM.ProcessRecording
             EditMeetingDto editmeeting = new EditMeetingDto();
             int wordNum = 0;   // running word sequence number
 
-            foreach (TranscribedTalk result in transcript.Talks)
+            foreach (TranscribedTalkDto result in transcript.Talks)
             {
                 EditMeetingTalkDto talk = new EditMeetingTalkDto(result.Transcript, result.Confidence);
                int speaker = -1;
                  
-               foreach (TranscribedWord respword in result.Words)
+               foreach (TranscribedWordDto respword in result.Words)
                 {
                     EditMeetingWordDto word = new EditMeetingWordDto(
                         respword.Word,

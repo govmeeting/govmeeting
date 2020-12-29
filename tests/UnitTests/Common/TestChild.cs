@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace GM.UnitTests.ApplicationCore.Extensions
+namespace GM.Tests.UnitTests.Common
 {
     [DebuggerDisplay("Id={Id}, Date={Date}")]
     public class TestChild : IEquatable<TestChild>

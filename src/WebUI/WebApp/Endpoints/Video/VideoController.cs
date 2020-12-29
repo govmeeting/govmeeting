@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 //   * not need to configure the DATAFILES folder as a static file provider.
 //   * not require the ClientApp to know the exact file location of all video files that it requests.
 
-namespace GM.WebApp.Features.Video
+namespace GM.WebUI.WebApp.Features.Video
 {
     //[Produces("application/json")]
     [Produces("video/mp4")]

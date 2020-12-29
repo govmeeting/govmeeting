@@ -1,13 +1,13 @@
-﻿using GM.Configuration;
+﻿using GM.Application.Configuration;
 //using GM.DatabaseRepositories;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using GM.ApplicationCore.Entities.Meetings;
+using GM.Application.AppCore.Entities.Meetings;
 
-namespace GM.FileDataRepositories
+namespace GM.Infrastructure.FileDataRepositories
 {
     public interface IFileRepository
     {

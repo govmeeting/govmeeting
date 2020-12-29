@@ -6,10 +6,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using NLog.Web;
 using GM.Utilities;
-using GM.Configuration;
-using GM.WebApp.Services;
+using GM.Application.Configuration;
+using GM.WebUI.WebApp.Services;
 
-namespace GM.WebApp
+namespace GM.WebUI.WebApp
 {
     public class Program
     {

@@ -4,7 +4,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 using System.Text;
 
-namespace GM.ProcessTranscript
+namespace GM.Application.ProcessTranscript
 {
     public static class ConvertPdfToText
     {

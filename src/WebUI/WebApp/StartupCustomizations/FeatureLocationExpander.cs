@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Razor;
 
-namespace GM.WebApp.StartupCustomizations
+namespace GM.WebUI.WebApp.StartupCustomizations
 {
     public class FeatureLocationExpander : IViewLocationExpander
     {

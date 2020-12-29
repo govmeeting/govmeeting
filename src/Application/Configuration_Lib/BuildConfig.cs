@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using GM.Utilities;
 using System.IO;
 
-namespace GM.Configuration
+namespace GM.Application.Configuration
 {
     public static class BuildConfig
     {

@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using Xunit;
 
-using GM.ApplicationCore.Interfaces;
-using GM.ApplicationCore.Entities.Govbodies;
+using GM.Application.AppCore.Interfaces;
+using GM.Application.AppCore.Entities.Govbodies;
 
 
-namespace GM.UnitTests.GmTests
+namespace GM.Tests.UnitTests.GmTests
 {
     class GovbodyTests
     {

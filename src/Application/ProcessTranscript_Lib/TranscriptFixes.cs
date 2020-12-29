@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
 
-namespace GM.ProcessTranscript
+namespace GM.Application.ProcessTranscript
 {
     interface ISpecificFix
     {
@@ -36,7 +36,7 @@ namespace GM.ProcessTranscript
             // This enables the creators of new ISpecificFix classes to just write the new class and not need
             // to modify exising code to instantiate the class.
 
-            ISpecificFix specificFix = CreateInstance<ISpecificFix>("ProcessTranscript_Lib.dll", "GM.ProcessTranscript", location);
+            ISpecificFix specificFix = CreateInstance<ISpecificFix>("ProcessTranscript_Lib.dll", "GM.Application.ProcessTranscript", location);
 
 
             //ISpecificFix specificFix;

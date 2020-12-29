@@ -84,7 +84,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeepWebsiteAlive", "Utiliti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTests\UnitTests.csproj", "{ABE89AEA-30DF-4573-86C0-228B12FBACA8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfrastructureCore_Lib", "src\Infrastructure\InfrastructureCore_Lib\InfrastructureCore_Lib.csproj", "{923444EF-8B57-4679-81F1-79A92A71BBA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfraCore_Lib", "src\Infrastructure\InfraCore_Lib\InfraCore_Lib.csproj", "{923444EF-8B57-4679-81F1-79A92A71BBA1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution_items", "solution_items", "{99C9A472-ED3F-43D7-965C-C4AB80D65251}"
 	ProjectSection(SolutionItems) = preProject
@@ -107,9 +107,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tmp", "tmp", "{D9DFD401-C9C
 		Utilities\PsScripts\tmp\SolutionSummary.txt = Utilities\PsScripts\tmp\SolutionSummary.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationCore_Lib", "src\Application\ApplicationCore_Lib\ApplicationCore_Lib.csproj", "{FAF4EA74-DB43-4B0D-9117-274964CB04FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore_Lib", "src\Application\Core_Lib\AppCore_Lib.csproj", "{FAF4EA74-DB43-4B0D-9117-274964CB04FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferObjects", "src\Application\DataTransferObjects\DataTransferObjects.csproj", "{142E029C-64EA-4972-957E-89A9F378CC79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTOs_Lib", "src\Application\DTOs_Lib\DTOs_Lib.csproj", "{142E029C-64EA-4972-957E-89A9F378CC79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

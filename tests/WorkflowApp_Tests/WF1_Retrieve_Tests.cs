@@ -3,28 +3,28 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.Logging;
-using GM.Configuration;
+using GM.Application.Configuration;
 //using GM.DatabaseRepositories;
-using GM.ProcessTranscript;
+using GM.Application.ProcessTranscript;
 using GM.Utilities;
 using Moq;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
-using GM.FileDataRepositories;
+using GM.Infrastructure.FileDataRepositories;
 using GM.DatabaseAccess;
 using System.IO;
 using System.Globalization;
-using GM.GetOnlineFiles;
+using GM.Infrastructure.GetOnlineFiles;
 using NLog.Filters;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using System.Runtime.CompilerServices;
 
-using GM.ApplicationCore.Entities.Govbodies;
-using GM.ApplicationCore.Entities.Meetings;
-using GM.ApplicationCore.Entities.Speakers;
-using GM.ApplicationCore.Entities.Topics;
+using GM.Application.AppCore.Entities.Govbodies;
+using GM.Application.AppCore.Entities.Meetings;
+using GM.Application.AppCore.Entities.Speakers;
+using GM.Application.AppCore.Entities.Topics;
 
-namespace GM.WorkflowApp.Tests
+namespace GM.Tests.WorkflowApp_Tests
 {
 
     public class WF1_Retrieve_Tests
