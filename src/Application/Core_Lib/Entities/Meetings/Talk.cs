@@ -1,5 +1,5 @@
-﻿using GM.Application.AppCore.Entities.Speakers;
-using Ardalis.GuardClauses;
+﻿using Ardalis.GuardClauses;
+using GM.Application.AppCore.Entities.Speakers;
 
 namespace GM.Application.AppCore.Entities.Meetings
 {

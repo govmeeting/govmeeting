@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GM.Application.AppCore.Interfaces;
-using GM.Application.AppCore.Entities.Meetings;
-using Ardalis.GuardClauses;
+﻿using Ardalis.GuardClauses;
 using GM.Application.AppCore.Entities.Govbodies;
+using GM.Application.AppCore.Entities.Meetings;
+using GM.Application.AppCore.Interfaces;
+using System.Collections.Generic;
 
 namespace GM.Application.AppCore.Entities.GovLocations
 {

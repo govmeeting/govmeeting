@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GM.Application.AppCore.Entities.Govbodies;
+using System;
 using System.Linq.Expressions;
-using System.Text;
-using GM.Application.AppCore.Entities.Govbodies;
 
 // Experiment with specification pattern - (not yet used)
 

@@ -1,5 +1,5 @@
-﻿using System;
-using Ardalis.GuardClauses;
+﻿using Ardalis.GuardClauses;
+using System;
 
 namespace GM.Application.AppCore.Entities.Govbodies
 {

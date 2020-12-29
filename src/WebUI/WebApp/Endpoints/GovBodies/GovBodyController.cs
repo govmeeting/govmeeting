@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GM.Application.DTOs.Govbodies;
 using Microsoft.AspNetCore.Mvc;
-using GM.WebUI.WebApp.Models;
-using Microsoft.AspNetCore.Authorization;
-using GM.Application.AppCore.Entities.Govbodies;
-using GM.Application.AppCore.Entities.Meetings;
-using GM.Application.AppCore.Entities.Speakers;
-using GM.Application.AppCore.Entities.Topics;
-using GM.Application.AppCore.Interfaces;
-using GM.Application.DTOs.Govbodies;
-
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 //using GM.DatabaseRepositories;
-
-// For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace GM.WebUI.WebApp.Endpoints.Govbodies
 {
@@ -33,7 +21,7 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
         [HttpGet("{location}")]
         public async Task<IList<GovbodyDto>> Get(string location)
         {
-            return await Mediator.Send(new GetGovbodiesQuery { Govlocation = location });
+            return await Mediator.Send(new GetGovbodyQuery { Govlocation = location });
         }
 
 

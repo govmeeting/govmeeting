@@ -7,7 +7,7 @@ using System.Text;
 
 namespace GM.WebUI.WebApp.Endpoints.Govbodies
 {
-    public class GetGovbodiesQuery :IRequest<IList<GovbodyDto>>
+    public class GetGovbodyQuery :IRequest<IList<GovbodyDto>>
     {
         public string Govlocation { get; set; }
     }

@@ -65,7 +65,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Endpoints\GovLocations\" />
     <Folder Include="Endpoints\MeetingView\" />
     <Folder Include="Endpoints\Meetings\" />
     <Folder Include="Endpoints\HealthCheck\" />

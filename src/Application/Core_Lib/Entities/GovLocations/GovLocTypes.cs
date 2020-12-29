@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GM.Application.AppCore.Entities.GovLocations
+﻿namespace GM.Application.AppCore.Entities.GovLocations
 {
     public enum GovlocTypes : int
     {

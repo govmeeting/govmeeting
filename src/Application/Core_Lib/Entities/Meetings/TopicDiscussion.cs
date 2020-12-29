@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Ardalis.GuardClauses;
 using GM.Application.AppCore.Entities.Topics;
-using Ardalis.GuardClauses;
+using System.Collections.Generic;
 
 namespace GM.Application.AppCore.Entities.Meetings
 {

@@ -1,12 +1,8 @@
 ﻿using FluentValidation;
 using FluentValidation.Validators;
-using GM.Application.AppCore.Entities.Govbodies;
-using GM.Application.AppCore.Entities.Meetings;
 using GM.Application.DTOs.Govbodies;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GM.WebUI.WebApp.Endpoints.Govbodies
 {
@@ -17,6 +13,7 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
             RuleFor(v => v.Name).NotNull();
             RuleFor(v => v.LongName).NotNull();
             RuleFor(v => v.ParentLocation).NotNull();
+
             // TODO - remove this check
             // NOTE: ScheduledMeetings is not required to be non-null.
             // This code is for experimenting with this type of validation.
@@ -24,7 +21,6 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
 
         }
     }
-
 
     public class MustHaveScheduledMeetingsPropertyValidator : PropertyValidator
     {

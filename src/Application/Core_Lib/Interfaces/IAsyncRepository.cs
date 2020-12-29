@@ -1,7 +1,7 @@
 ﻿using Ardalis.Specification;
+using GM.Application.AppCore.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GM.Application.AppCore.Entities;
 
 namespace GM.Application.AppCore.Interfaces
 {

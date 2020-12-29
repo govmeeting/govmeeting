@@ -1,12 +1,8 @@
-﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GM.Application.AppCore.Entities.Govbodies;
+using GM.Infrastructure.Data;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using GM.Infrastructure.Data;
-using GM.Application.DTOs.Govbodies;
-using GM.Application.AppCore.Entities.Govbodies;
 
 namespace GM.WebUI.WebApp.Endpoints.Govbodies
 {

@@ -1,5 +1,4 @@
-﻿using System;
-using Ardalis.GuardClauses;
+﻿using Ardalis.GuardClauses;
 
 namespace GM.Application.AppCore.Entities.Speakers
 {

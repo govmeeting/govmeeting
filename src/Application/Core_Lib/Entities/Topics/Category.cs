@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GM.Application.AppCore.Entities.Topics
+﻿namespace GM.Application.AppCore.Entities.Topics
 {
     /// <summary>
     /// A category of topics discussed at meetings. The categories should be globally meaningful for all
