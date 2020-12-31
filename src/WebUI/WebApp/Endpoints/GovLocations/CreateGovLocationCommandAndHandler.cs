@@ -1,18 +1,23 @@
 ﻿using GM.Application.AppCore.Entities.GovLocations;
-using GM.Infrastructure.Data;
+using GM.Application.DTOs.GovLocations;
+using GM.DatabaseAccess;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace GM.WebUI.WebApp.Endpoints.GovLocations
 {
+    public class CreateGovLocationCommand : CreateGovLocationDto, IRequest<int?>
+    {
+    }
+
     public class CreateGovLocationCommandHandler : 
         IRequestHandler<CreateGovLocationCommand, int?>
 
     {
-        private readonly IApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CreateGovLocationCommandHandler(IApplicationDbContext context)
+        public CreateGovLocationCommandHandler(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -24,5 +29,14 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
             await _context.SaveChangesAsync(cancellationToken);
             return entity.Id;
         }
+
+        //public CreateGovLocationCommandHandler() { }
+        //public async Task<int?> Handle(CreateGovLocationCommand request, CancellationToken cancellationToken)
+        //{
+        //    Task task = Task.Delay(1);
+        //    await task;
+        //    return 1;
+        //}
+
     }
 }

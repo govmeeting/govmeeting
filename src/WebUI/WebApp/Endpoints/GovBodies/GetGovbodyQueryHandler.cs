@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GM.Application.DTOs.Govbodies;
-using GM.Infrastructure.Data;
+using GM.DatabaseAccess;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -12,11 +12,11 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
     public class GetGovbodyQueryHandler : IRequestHandler<GetGovbodyQuery,
         IList<GovbodyDto>>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         private readonly IMapper _mapper;
 
-        public GetGovbodyQueryHandler(IApplicationDbContext context, IMapper mapper)
+        public GetGovbodyQueryHandler(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -33,5 +33,14 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
 
             return result;
         }
+
+        //public GetGovbodyQueryHandler() { }
+        //public async Task<IList<GovbodyDto>> Handle(GetGovbodyQuery request, CancellationToken cancellationToken)
+        //{
+        //    Task task = Task.Delay(1);
+        //    await task;
+        //    return null;
+        //}
+
     }
 }

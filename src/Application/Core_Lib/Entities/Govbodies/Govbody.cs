@@ -23,7 +23,7 @@ namespace GM.Application.AppCore.Entities.Govbodies
             Name = name;
             ParentLocation = parentLocation;
 
-            Id = id;  // TODO - Remove this kludge to get a test working
+            Id = id;  // TODO - Remove this. It's a kludge to get a test working.
         }
 
         public override int Id { get; protected set; }

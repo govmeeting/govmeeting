@@ -1,60 +1,36 @@
-using System;
-using System.IdentityModel.Tokens.Jwt;
+using GM.Application.AppCore.Common;
+using GM.Application.AppCore.Interfaces;
+using GM.Application.Configuration;
+using GM.DatabaseAccess;
+using GM.DatabaseAccess.Identity;
+using GM.Utilities;
+using GM.WebUI.WebApp.Services;
+using GM.WebUI.WebApp.StartupCustomizations;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.AspNetCore.Routing;
+//using Microsoft.EntityFrameworkCore.Sqlite;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.DataProtection;
 using NLog;
-using GM.WebUI.WebApp.StartupCustomizations;
-using GM.Application.Configuration;
-using GM.DatabaseAccess;
-using GM.Utilities;
+using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.IO;
-//using Microsoft.EntityFrameworkCore.Sqlite;
-using Microsoft.Data.Sqlite;
-using GM.DatabaseAccess.Identity;
-using GM.Application.AppCore.Interfaces;
-using GM.WebUI.WebApp.Services;
-using GM.Application.AppCore.Common;
+using System.Reflection;
 
 namespace GM.WebUI.WebApp
 {
     public class Startup
     {
-
-        private void ConfigureAuthentication(IServiceCollection services)
-        {
-            services.AddAuthentication()
-            //.AddGoogle(options =>
-            //{
-            //    options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
-            //    options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
-            //});
-            // https://docs.microsoft.com/en-us/dotnet/core/compatibility/2.2-3.1#authentication-google-deprecated-and-replaced
-            .AddOpenIdConnect("Google", o =>
-            {
-                o.ClientId = Configuration["ExternalAuth:Google:ClientId"];
-                o.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
-                o.Authority = "https://accounts.google.com";
-                o.ResponseType = OpenIdConnectResponseType.Code;
-                o.CallbackPath = "/signin-google"; // Or register the default "/sigin-oidc"
-                o.Scope.Add("email");
-            });
-        }
-
-
-
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -142,9 +118,6 @@ namespace GM.WebUI.WebApp
             ConfigureLoggingService();
             logger.Info("Configure Logging Service");
 
-            services.AddApplication();
-            logger.Info("Configure Application Services");
-
             ConfigureAppsettings(services);
             logger.Info("Configure Appsettings");
 
@@ -181,6 +154,11 @@ namespace GM.WebUI.WebApp
 
             // get the current user for auditing
             services.AddScoped<ICurrentUserService, CurrentUserService>();
+
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            services.AddCQR();
+            logger.Info("Configure Application Services");
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -269,6 +247,15 @@ namespace GM.WebUI.WebApp
             logger = LogManager.LoadConfiguration("nlog.config").GetCurrentClassLogger();
         }
 
+
+        //public IServiceCollection AddCQR(this IServiceCollection services)
+        //{
+        //    services.AddMediatR(Assembly.GetExecutingAssembly());
+        //    services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        //    services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        //    return services;
+        //}
+
         private void ConfigureAppsettings(IServiceCollection services)
         {
             services.AddOptions();
@@ -284,25 +271,25 @@ namespace GM.WebUI.WebApp
             });
         }
 
-        //private void ConfigureAuthentication(IServiceCollection services)
-        //{
-        //    services.AddAuthentication()
-        //    //.AddGoogle(options =>
-        //    //{
-        //    //    options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
-        //    //    options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
-        //    //});
-        //    // https://docs.microsoft.com/en-us/dotnet/core/compatibility/2.2-3.1#authentication-google-deprecated-and-replaced
-        //    .AddOpenIdConnect("Google", o =>
-        //    {
-        //        o.ClientId = Configuration["ExternalAuth:Google:ClientId"];
-        //        o.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
-        //        o.Authority = "https://accounts.google.com";
-        //        o.ResponseType = OpenIdConnectResponseType.Code;
-        //        o.CallbackPath = "/signin-google"; // Or register the default "/sigin-oidc"
-        //        o.Scope.Add("email");
-        //    });
-        //}
+        private void ConfigureAuthentication(IServiceCollection services)
+        {
+            services.AddAuthentication()
+            //.AddGoogle(options =>
+            //{
+            //    options.ClientId = Configuration["ExternalAuth:Google:ClientId"];
+            //    options.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
+            //});
+            // https://docs.microsoft.com/en-us/dotnet/core/compatibility/2.2-3.1#authentication-google-deprecated-and-replaced
+            .AddOpenIdConnect("Google", o =>
+            {
+                o.ClientId = Configuration["ExternalAuth:Google:ClientId"];
+                o.ClientSecret = Configuration["ExternalAuth:Google:ClientSecret"];
+                o.Authority = "https://accounts.google.com";
+                o.ResponseType = OpenIdConnectResponseType.Code;
+                o.CallbackPath = "/signin-google"; // Or register the default "/sigin-oidc"
+                o.Scope.Add("email");
+            });
+        }
 
         private void ConfigureIdentity(IServiceCollection services)
         {

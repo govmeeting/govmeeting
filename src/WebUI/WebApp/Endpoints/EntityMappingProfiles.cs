@@ -14,20 +14,26 @@ namespace GM.WebUI.WebApp.Endpoints
     {
         public EntityMappingProfiles()
         {
-            CreateMap<Govbody, GovbodyDto>();
-            CreateMap<Topic, TopicDto>().ConstructUsing(i => new TopicDto
-            {
-                Id = i.Id,
-                Name = i.Name,
-            });
-            CreateMap<GovLocation, GovLocationDto>();
 
-            CreateMap<GovbodyDto, Govbody>();
-            CreateMap<TopicDto, Topic>();
-            CreateMap<GovLocationDto, GovLocation>();
+            CreateMap<CreateGovLocationCommand, GovLocation>();     // for POST endpoint
+            //CreateMap<CreateGovLocationDto, GovLocation>();
+            CreateMap<GovLocation, CreateGovLocationDto>();         // for GET endpoint
 
             CreateMap<CreateGovbodyCommand, Govbody>();
-            CreateMap<CreateGovLocationCommand, GovLocation>();
+            //CreateMap<GovbodyDto, Govbody>();
+            CreateMap<Govbody, GovbodyDto>();
+
+            CreateMap<Topic, TopicDto>();
+            CreateMap<TopicDto, Topic>();
+
+
+            //// Example of using "ContructUsing".
+            //CreateMap<Topic, TopicDto>().ConstructUsing(i => new TopicDto
+            //{
+            //    Id = i.TopicId,
+            //    Name = i.TopicName,
+            //});
+
         }
     }
 }

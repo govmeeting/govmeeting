@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GM.Application.DTOs.GovLocations;
-using GM.Infrastructure.Data;
+using GM.DatabaseAccess;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -12,11 +12,11 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
     public class GetGovLocationQueryHandler : IRequestHandler<GetGovLocationQuery,
         IList<GovLocationDto>>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         private readonly IMapper _mapper;
 
-        public GetGovLocationQueryHandler(IApplicationDbContext context, IMapper mapper)
+        public GetGovLocationQueryHandler(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -33,5 +33,15 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
 
             return result;
         }
+
+        //public GetGovLocationQueryHandler(ApplicationDbContext context, IMapper mapper) { }
+        //public async Task<IList<GovLocationDto>> Handle(GetGovLocationQuery request, CancellationToken cancellationToken)
+        //{
+        //    Task task = Task.Delay(1);
+        //    await task;
+        //    return null;
+        //}
+
+
     }
 }

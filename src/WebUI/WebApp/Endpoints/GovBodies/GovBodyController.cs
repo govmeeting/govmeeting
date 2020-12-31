@@ -42,7 +42,7 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
 
         // POST: /Govbody/Register
         [HttpPost]
-        public void Register(RegisterGovbodyDto model)
+        public void Register(CreateGovbodyDto model)
         {
 
             //_govlocationRepository.AddAsync(govlocation);

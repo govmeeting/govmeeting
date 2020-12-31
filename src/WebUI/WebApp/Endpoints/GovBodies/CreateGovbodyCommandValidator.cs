@@ -14,10 +14,10 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
             RuleFor(v => v.LongName).NotNull();
             RuleFor(v => v.ParentLocation).NotNull();
 
-            // TODO - remove this check
-            // NOTE: ScheduledMeetings is not required to be non-null.
-            // This code is for experimenting with this type of validation.
-            RuleFor(v => v.ScheduledMeetings).SetValidator(new MustHaveScheduledMeetingsPropertyValidator());
+            //// TODO - remove this check
+            //// NOTE: ScheduledMeetings is not required to be non-null.
+            //// This code is for experimenting with this type of validation.
+            //RuleFor(v => v.ScheduledMeetings).SetValidator(new MustHaveScheduledMeetingsPropertyValidator());
 
         }
     }
