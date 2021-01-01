@@ -33,9 +33,8 @@ bld/
 #!**/WebApp/wwwroot/assets/
 **/stubdata/LARGE/
 # SECRETS files. Just in case they get copied by accident into repo folder.
-appsettings.Development.json
 appsettings.Production.json
-appsettings.Staging.json
+appsettings.Secrets.json
 TranscribeAudio.json
 DATAFILES/
 **/wwwroot/dist/
