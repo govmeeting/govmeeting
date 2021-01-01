@@ -1,7 +1,7 @@
 ﻿using GM.Application.AppCore.Interfaces;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Infrastructure.Services
+namespace GM.Infrastructure.InfraCore.Services
 {
     // This class is used by the application to send email for account confirmation and password reset.
     // For more details see https://go.microsoft.com/fwlink/?LinkID=532713

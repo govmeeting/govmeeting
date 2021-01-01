@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web.HealthChecks
+namespace WebUI.WebApp.Endpoints.HealthCheck
 {
     public class ApiHealthCheck : IHealthCheck
     {

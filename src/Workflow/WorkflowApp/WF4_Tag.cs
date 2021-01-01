@@ -6,7 +6,7 @@ using GM.Infrastructure.FileDataRepositories;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using GM.Utilities;
-using GM.DatabaseAccess;
+using GM.Infrastructure.InfraCore.Data;
 
 using GM.Application.AppCore.Entities.Govbodies;
 using GM.Application.AppCore.Entities.Meetings;

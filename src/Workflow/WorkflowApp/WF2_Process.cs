@@ -13,7 +13,7 @@ using GM.Utilities;
 using ChinhDo.Transactions;
 using System.Transactions;
 using GM.Infrastructure.FileDataRepositories;
-using GM.DatabaseAccess;
+using GM.Infrastructure.InfraCore.Data;
 
 using GM.Application.AppCore.Entities.Govbodies;
 using GM.Application.AppCore.Entities.Meetings;

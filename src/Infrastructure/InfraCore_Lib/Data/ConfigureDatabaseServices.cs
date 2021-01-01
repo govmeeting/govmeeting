@@ -1,9 +1,8 @@
-﻿using GM.DatabaseAccess;
-using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GM.Infrastructure.Data
+namespace GM.Infrastructure.InfraCore.Data
 {
     public static class ConfigureDatabaseServices
     {

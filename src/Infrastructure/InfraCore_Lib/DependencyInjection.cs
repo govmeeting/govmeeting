@@ -1,11 +1,9 @@
-﻿using GM.DatabaseAccess.Identity;
+﻿using GM.Infrastructure.InfraCore.Data;
+using GM.Infrastructure.InfraCore.Identity;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 /* This file is the start of work to move the DI code from WebApp to Infrastructure.
  */
@@ -14,7 +12,7 @@ using System.Text;
 //using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 
-namespace GM.DatabaseAccess
+namespace GM.Infrastructure.InfraCore
 {
     public static class DependencyInjection
     {

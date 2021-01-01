@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GM.Application.DTOs.Govbodies;
-using GM.DatabaseAccess;
+using GM.Infrastructure.InfraCore.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

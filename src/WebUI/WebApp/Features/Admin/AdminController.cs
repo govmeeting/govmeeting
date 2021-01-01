@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Security.Claims;
+﻿using GM.Infrastructure.InfraCore.Data;
+using GM.Infrastructure.InfraCore.Identity;
+using GM.WebUI.WebApp.Models;
+using GM.WebUI.WebApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using GM.WebUI.WebApp.Models;
-using GM.WebUI.WebApp.Services;
-using GM.DatabaseAccess;
-using GM.DatabaseAccess.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace GM.WebUI.WebApp.Features.Admin
 {

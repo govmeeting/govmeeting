@@ -1,7 +1,7 @@
 ﻿using GM.Application.AppCore.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace Microsoft.eShopWeb.Infrastructure.Logging
+namespace GM.Infrastructure.InfraCore.Logging
 {
     public class LoggerAdapter<T> : IAppLogger<T>
     {

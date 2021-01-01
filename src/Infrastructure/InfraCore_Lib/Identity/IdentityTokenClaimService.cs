@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.eShopWeb.ApplicationCore.Constants;
-//using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+﻿using GM.Application.AppCore.Interfaces;
+using GM.Infrastructure.InfraCore.Identity;
+using Microsoft.AspNetCore.Identity;
+using GM.Application.Core_Lib.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using GM.DatabaseAccess;
-using GM.DatabaseAccess.Identity;
-using GM.Application.AppCore.Interfaces;
 
-namespace Microsoft.eShopWeb.Infrastructure.Identity
+namespace GM.Infrastructure.InfraCore.Identity
 {
     public class IdentityTokenClaimService : ITokenClaimsService
     {

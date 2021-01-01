@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GM.Application.AppCore.Entities.Govbodies;
 using GM.Application.DTOs.Govbodies;
-using GM.DatabaseAccess;
+using GM.Infrastructure.InfraCore.Data;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

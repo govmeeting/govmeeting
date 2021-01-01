@@ -1,10 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//using Microsoft.EntityFrameworkCore;
+//using Microsoft.EntityFrameworkCore.Design;
 
-namespace GM.DatabaseAccess
+namespace GM.Infrastructure.InfraCore.Data
 {
     /* NOT WORKING
      * Running "dotnet ef migrations add InitialCreate --verbose" gives this error:

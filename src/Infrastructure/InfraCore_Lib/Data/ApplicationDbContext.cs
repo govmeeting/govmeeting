@@ -1,23 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using GM.Application.AppCore.Entities.GovLocations;
+﻿using GM.Application.AppCore.Entities;
 using GM.Application.AppCore.Entities.Govbodies;
+using GM.Application.AppCore.Entities.GovLocations;
 using GM.Application.AppCore.Entities.Meetings;
 using GM.Application.AppCore.Entities.Speakers;
 using GM.Application.AppCore.Entities.Topics;
-using GM.DatabaseAccess.Identity;
-
-//using Microsoft.eShopWeb.ApplicationCore.Features.BasketNS;
-//using Microsoft.eShopWeb.ApplicationCore.Features.Catalog;
-//using Microsoft.eShopWeb.ApplicationCore.Features.Orders;
-using System.Threading.Tasks;
-using System.Threading;
-using GM.Application.AppCore.Entities;
-using System;
 using GM.Application.AppCore.Interfaces;
-using System.ComponentModel.DataAnnotations.Schema;
+using GM.Infrastructure.InfraCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace GM.DatabaseAccess
+namespace GM.Infrastructure.InfraCore.Data
 {
     // See here for extending this class:
     //   https://stackoverflow.com/a/40579369/1978840

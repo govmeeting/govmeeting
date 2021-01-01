@@ -1,6 +1,6 @@
 ﻿using GM.Application.AppCore.Entities.GovLocations;
 using GM.Application.DTOs.GovLocations;
-using GM.DatabaseAccess;
+using GM.Infrastructure.InfraCore.Data;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

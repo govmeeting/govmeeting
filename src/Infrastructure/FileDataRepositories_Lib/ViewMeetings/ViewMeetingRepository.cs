@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System.IO;
 using Microsoft.Extensions.Options;
 using GM.Application.Configuration;
-////using GM.DatabaseAccess;
+////using GM.Infrastructure.InfraCore.Data;
 
 namespace GM.Infrastructure.FileDataRepositories.ViewMeetings
 {

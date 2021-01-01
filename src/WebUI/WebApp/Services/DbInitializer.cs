@@ -1,20 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using GM.Application.Configuration;
+using GM.Infrastructure.InfraCore.Data;
+using GM.Infrastructure.InfraCore.Identity;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.IO;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-
-using GM.DatabaseAccess;
-using GM.Application.Configuration;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Logging;
-using GM.DatabaseAccess.Identity;
 
 namespace GM.WebUI.WebApp.Services
 {

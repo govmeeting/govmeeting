@@ -11,7 +11,7 @@ using Moq;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using GM.Infrastructure.FileDataRepositories;
-using GM.DatabaseAccess;
+using GM.Infrastructure.InfraCore.Data;
 using System.IO;
 using System.Globalization;
 using GM.Infrastructure.GetOnlineFiles;

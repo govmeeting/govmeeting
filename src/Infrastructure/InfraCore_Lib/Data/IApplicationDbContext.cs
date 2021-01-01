@@ -1,16 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using GM.Application.AppCore.Entities.Govbodies;
+﻿using GM.Application.AppCore.Entities.Govbodies;
+using GM.Application.AppCore.Entities.GovLocations;
 using GM.Application.AppCore.Entities.Meetings;
 using GM.Application.AppCore.Entities.Speakers;
 using GM.Application.AppCore.Entities.Topics;
-using GM.Application.AppCore.Entities.GovLocations;
+using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace GM.Infrastructure.Data
+namespace GM.Infrastructure.InfraCore.Data
 {
     public interface IApplicationDbContext
     {

@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.eShopWeb.ApplicationCore.Constants;
+﻿using GM.Application.AppCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using GM.Application.Core_Lib.Authorization;
 using System.Threading.Tasks;
-using GM.Application.AppCore.Authorization;
-using GM.DatabaseAccess.Identity;
 
-namespace Microsoft.eShopWeb.Infrastructure.Identity
+namespace GM.Infrastructure.InfraCore.Identity
 
 {
     public class AppIdentityDbContextSeed

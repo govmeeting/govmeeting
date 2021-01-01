@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GM.Infrastructure.InfraCore.Identity;
+using GM.WebUI.WebApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-
-using GM.WebUI.WebApp.Services;
-using GM.DatabaseAccess.Identity;
+using System.Linq;
+using System.Threading.Tasks;
 
 // Instructions for upgrading from ASP.NET 5 RC1 to ASP.NET Core 1.0
 // https://docs.microsoft.com/en-us/aspnet/core/migration/rc1-to-rtm

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 
-//namespace Microsoft.eShopWeb.ApplicationCore.Entities.Meeting
 namespace GM.Application.DTOs.Meetings
 {
     public class MeetingFormatConversion

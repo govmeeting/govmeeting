@@ -5,9 +5,9 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using GM.Application.AppCore.Interfaces;
-using Microsoft.eShopWeb.Infrastructure.Data;
+using GM.Infrastructure.InfraCore.Data;
 
-namespace Microsoft.eShopWeb.Infrastructure.Services
+namespace GM.Infrastructure.InfraCore.Services
 {
     public class WebFileSystem: IFileSystem
     {

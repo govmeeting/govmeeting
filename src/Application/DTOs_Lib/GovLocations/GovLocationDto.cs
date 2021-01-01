@@ -1,6 +1,4 @@
-﻿using GM.Application.AppCore.Entities.Govbodies;
-using GM.Application.AppCore.Entities.GovLocations;
-using System.Collections.Generic;
+﻿using GM.Application.AppCore.Entities.GovLocations;
 
 namespace GM.Application.DTOs.GovLocations
 {
@@ -10,6 +8,6 @@ namespace GM.Application.DTOs.GovLocations
         public GovlocTypes Type { get; set; }
         public string Code { get; set; }
         public GovLocation ParentLocation { get; set; }
-        public List<Govbody> Govbodies { get; set; }
+        //public List<Govbody> Govbodies { get; set; }
     }
 }
