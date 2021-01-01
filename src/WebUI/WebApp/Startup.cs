@@ -3,10 +3,10 @@ using GM.Application.AppCore.Interfaces;
 using GM.Application.Configuration;
 using GM.DatabaseAccess;
 using GM.DatabaseAccess.Identity;
+using GM.Infrastructure.Data;
 using GM.Utilities;
 using GM.WebUI.WebApp.Services;
 using GM.WebUI.WebApp.StartupCustomizations;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
@@ -15,8 +15,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Routing;
 //using Microsoft.EntityFrameworkCore.Sqlite;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,93 +23,28 @@ using NLog;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
-using System.Reflection;
 
 namespace GM.WebUI.WebApp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
         NLog.Logger logger;
         public IConfiguration Configuration { get; }
+        public IHostEnvironment Environment { get; }
 
-        /* NOTE: WebBuilder in Program.Main will call the correct Configure<environmnent>Services,
-         * where <environment> is the value of IHostEnvironment.EnvironmentName.
-         * IHostEnvironment.EnvironmentName can be set to any value, but the following values are provided by the framework:
-         *    Development : The launchSettings.json file sets ASPNETCORE_ENVIRONMENT to Development on the local machine.
-         *    Production : The default if DOTNET_ENVIRONMENT and ASPNETCORE_ENVIRONMENT have not been set.
-         */
-
-        public void ConfigureDevelopmentServices(IServiceCollection services)
-        {
-            switch (Configuration["AppSettings:DatabaseType"]) { 
-            case "InMemory":
-                ConfigureInMemoryDatabase(services);
-                break;
-            case "SQLite":
-                ConfigureSQLiteInMemoryDatabase(services);
-                break;
-            case "UseConnectionString":
-            default:
-                ConfigureRealDatabase(services);
-                break;
-            }
-            ConfigureServices(services);
-        }
-
-        public void ConfigureProductionServices(IServiceCollection services)
-        {
-            ConfigureRealDatabase(services);
-            ConfigureServices(services);
-        }
-
-        public void ConfigureTestingServices(IServiceCollection services)
-        {
-            ConfigureInMemoryDatabase(services);
-            ConfigureServices(services);
-        }
         public void ConfigureDockerServices(IServiceCollection services)
         {
             services.AddDataProtection()
                 .SetApplicationName("govmeeting")
                 .PersistKeysToFileSystem(new DirectoryInfo(@"./"));
-
-            ConfigureDevelopmentServices(services);
+            ConfigureServices(services);
         }
-
-        private void ConfigureRealDatabase(IServiceCollection services)
-        {
-            // use real database
-            // Requires LocalDB which can be installed with SQL Server Express 2016
-            // https://www.microsoft.com/en-us/download/details.aspx?id=54284
-            services.AddDbContext<ApplicationDbContext>(c =>
-                c.UseSqlServer(Configuration["AppSettings:ConnectionString"]));
-            //c => c.MigrationsAssembly("Infrastructure_Lib")
-        }
-
-        private void ConfigureInMemoryDatabase(IServiceCollection services)
-        {
-            // use in-memory database - not relational, does not support transactions, cannot run raw SQL queries
-            services.AddDbContext<ApplicationDbContext>(c =>
-                c.UseInMemoryDatabase("govmeeting"));
-        }
-
-        private void ConfigureSQLiteInMemoryDatabase(IServiceCollection services)
-        {
-            // use SQLite in-memory database - a full relational database
-            var connectionStringBuilder =
-              new SqliteConnectionStringBuilder { DataSource = ":memory:" };
-            var connectionString = connectionStringBuilder.ToString();
-            var connection = new SqliteConnection(connectionString);
-            services.AddDbContext<ApplicationDbContext>(c =>
-                c.UseSqlite(connection));
-        }
-
-
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -121,8 +54,9 @@ namespace GM.WebUI.WebApp
             ConfigureAppsettings(services);
             logger.Info("Configure Appsettings");
 
-            //ConfigureDbContext(services);
-            //logger.Info("Configure DbContext");
+            ConfigureDatabaseServices.Configure(services, Environment.EnvironmentName,
+                Configuration["AppSettings:DatabaseType"], Configuration["AppSettings:ConnectionString"]);
+            logger.Info("Configure Database");
 
             services.AddHealthChecks();
             logger.Info("AddHealthChecks");
@@ -148,17 +82,15 @@ namespace GM.WebUI.WebApp
             logger.Info("Enable Feature Folders");
             // https://scottsauber.com/2016/04/25/feature-folder-structure-in-asp-net-core/
 
+            // Angular files will be served from this directory in production. 
             services.AddSpaStaticFiles(configuration => configuration.RootPath = "clientapp/dist");
             logger.Info("AddSpaStaticFiles");
-            // Angular files will be served from this directory in production. 
 
             // get the current user for auditing
             services.AddScoped<ICurrentUserService, CurrentUserService>();
 
-            services.AddMediatR(Assembly.GetExecutingAssembly());
-
             services.AddCQR();
-            logger.Info("Configure Application Services");
+            logger.Info("Configure CQR Services");
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

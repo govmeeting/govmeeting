@@ -1,13 +1,8 @@
-using System;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Hosting;
-using NLog.Web;
-using GM.Utilities;
 using GM.Application.Configuration;
-using GM.WebUI.WebApp.Services;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using NLog.Web;
 
 namespace GM.WebUI.WebApp
 {
@@ -32,7 +27,7 @@ namespace GM.WebUI.WebApp
                 .ConfigureLogging(logging =>
                 {
                     logging.ClearProviders();
-                    logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                    logging.SetMinimumLevel(LogLevel.Trace);
                 })
                 .UseNLog();  // NLog: setup NLog for Dependency injection
             });

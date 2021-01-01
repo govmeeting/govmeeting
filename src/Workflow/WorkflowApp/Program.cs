@@ -1,24 +1,20 @@
-﻿using System;
-using System.IO;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using NLog;
-using NLog.Web;
-using GM.Application.Configuration;
+﻿using GM.Application.Configuration;
 using GM.Application.ProcessRecording;
-using GM.Infrastructure.GoogleCloud;
 using GM.Application.ProcessTranscript;
-using GM.Infrastructure.FileDataRepositories;
 //using GM.DatabaseRepositories;
 //using GM.DatabaseRepositories_Stub;
 using GM.DatabaseAccess;
-using Microsoft.Extensions.Options;
-using Google.Cloud.Storage.V1;
-using GM.Utilities;
+using GM.Infrastructure.FileDataRepositories;
 ////using GM.DatabaseAccess_Stub;
 using GM.Infrastructure.GetOnlineFiles;
+using GM.Infrastructure.GoogleCloud;
+using GM.Utilities;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using System;
+using System.IO;
 
 
 namespace GM.WorkflowApp
@@ -137,9 +133,9 @@ namespace GM.WorkflowApp
             //services.AddTransient<IOptions<AppSettings>>();
             services.AddTransient<ApplicationDbContext>();
             ////services.AddTransient<IDBOperations, DBOperationsStub>();
-            services.AddTransient<RecordingProcess>();
+            services.AddTransient<IRecordingProcess, RecordingProcess>();
             services.AddTransient<TranscribeAudio>();
-            services.AddTransient<TranscriptProcess>();
+            services.AddTransient<ITranscriptProcess, TranscriptProcess>();
             //services.AddTransient<ILoadTranscript, LoadTranscript_Stub>();
             services.AddTransient<IFileRepository, FileRepository>();
 
