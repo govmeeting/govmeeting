@@ -466,12 +466,5 @@ const DashboardTitles: string[][] = [
 export function GetDashboardTitle(englishTitle: string, language: string): string {
   const i = DashboardTitles[0].findIndex((x) => x === englishTitle);
   const j = DashboardTitles.findIndex((y) => y[1] === language);
-  console.log({
-    index: i,
-    english: DashboardTitles[0][i],
-    languageIndex: j,
-    language,
-    languageValue: DashboardTitles[j][i],
-  });
   return DashboardTitles[j][i];
 }
