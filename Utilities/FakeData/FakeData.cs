@@ -24,9 +24,9 @@ namespace GM.Utilities.FakeData
          *  For this RandomSpeaker method, we arbitrarily asign a key at random between 2000 and 2999. N
          *  We return at random either a known speaker or anonymous citizen.
          */
-        public long RandomSpeaker(List<ViewMeetingSpeakerDto> Speakers)
+        public long RandomSpeaker(List<ViewMeetingSpeaker_Dto> Speakers)
         {
-            ViewMeetingSpeakerDto s = new ViewMeetingSpeakerDto
+            ViewMeetingSpeaker_Dto s = new ViewMeetingSpeaker_Dto
             {
                 Name = faker.Name.FullName()
             };
@@ -52,11 +52,11 @@ namespace GM.Utilities.FakeData
 
         /*  The same logic described above for speakers is used for topics.
         */
-        public long RandomTopic(List<ViewMeetingTopicDto> Topics)
+        public long RandomTopic(List<ViewMeetingTopic_Dto> Topics)
         {
             int r = random.Next(1, 3);
             long id;
-            ViewMeetingTopicDto t = new ViewMeetingTopicDto();
+            ViewMeetingTopic_Dto t = new ViewMeetingTopic_Dto();
 
             if (r == 1)
             {

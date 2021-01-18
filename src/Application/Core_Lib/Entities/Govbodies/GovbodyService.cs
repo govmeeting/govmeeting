@@ -22,7 +22,7 @@ namespace GM.Application.AppCore.Entities.Govbodies
             int govbodyId, string name, DateTime dateTime,
             string language, SourceType sourceType, string sourceFilename)
         {
-            var govbodySpec = new GovbodyWithMeetingsSpecification(govbodyId);
+            var govbodySpec = new GovbodyWithMeetings_Spec(govbodyId);
             var govbody = await _govbodyRepository.FirstOrDefaultAsync(govbodySpec);
             Guard.Against.NullGovbody(govbodyId, govbody);
 

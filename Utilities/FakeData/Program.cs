@@ -25,7 +25,7 @@ namespace GM.Utilities.FakeData
             //File.WriteAllText(@"c:\tmp\fakemeeting.json", text);
 
             FakeTranscriptViewDto ft = new FakeTranscriptViewDto();
-            ViewMeetingDto tvm = ft.GenerateFake();
+            ViewMeeting_Dto tvm = ft.GenerateFake();
             text = Newtonsoft.Json.JsonConvert.SerializeObject(tvm, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(@"c:\tmp\faketvm.json", text);
 

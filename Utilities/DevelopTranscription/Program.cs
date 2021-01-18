@@ -131,7 +131,7 @@ namespace GM.Utilities.DevelopTranscription
 
             // Transcribe the audio file
             TranscribeAudio transcribe = new TranscribeAudio();
-            TranscribedDto response = transcribe.TranscribeAudioFile(transParams, rawTranscription);
+            Transcribed_Dto response = transcribe.TranscribeAudioFile(transParams, rawTranscription);
             string responseString = JsonConvert.SerializeObject(response, Formatting.Indented);
             File.WriteAllText(fixedTags, responseString);
 
@@ -145,7 +145,7 @@ namespace GM.Utilities.DevelopTranscription
 
             string priorResponse = File.ReadAllText(responseFile);
             LongRunningRecognizeResponse beforeFix = JsonConvert.DeserializeObject<LongRunningRecognizeResponse>(priorResponse);
-            TranscribedDto afterFix = TransformResponse.Simpify(beforeFix.Results);
+            Transcribed_Dto afterFix = TransformResponse.Simpify(beforeFix.Results);
             string afterFixString = JsonConvert.SerializeObject(afterFix, Formatting.Indented);
             File.WriteAllText(simplified, afterFixString);
         }
@@ -156,8 +156,8 @@ namespace GM.Utilities.DevelopTranscription
             File.Delete(fixedRsp);
 
             string priorResponse = File.ReadAllText(responseFile);
-            TranscribedDto beforeFix = JsonConvert.DeserializeObject<TranscribedDto>(priorResponse);
-            TranscribedDto afterFix = TransformResponse.FixSpeakerTags(beforeFix);
+            Transcribed_Dto beforeFix = JsonConvert.DeserializeObject<Transcribed_Dto>(priorResponse);
+            Transcribed_Dto afterFix = TransformResponse.FixSpeakerTags(beforeFix);
             string afterFixString = JsonConvert.SerializeObject(afterFix, Formatting.Indented);
             File.WriteAllText(fixedRsp, afterFixString);
         }
@@ -170,9 +170,9 @@ namespace GM.Utilities.DevelopTranscription
 
             // Reformat the response to what the editmeeting routine will use.
             string responseString = File.ReadAllText(fixedTags);
-            TranscribedDto response = JsonConvert.DeserializeObject<TranscribedDto>(responseString);
+            Transcribed_Dto response = JsonConvert.DeserializeObject<Transcribed_Dto>(responseString);
             ModifyTranscriptJson convert = new ModifyTranscriptJson();
-            EditMeetingDto editmeeting = convert.Modify(response);
+            EditMeeting_Dto editmeeting = convert.Modify(response);
             string stringValue = JsonConvert.SerializeObject(editmeeting, Formatting.Indented);
             File.WriteAllText(editmeetingFile, stringValue);
 

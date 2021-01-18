@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace GM.Application.DTOs.Meetings
 {
@@ -24,20 +22,20 @@ namespace GM.Application.DTOs.Meetings
     // file, up to 'MaxWorkFileBackups' total copies, where MaxWorkFileBackups is defined
     // in appsettings.Shared.json.
 
-    public class EditMeetingDto
+    public class EditMeeting_Dto
     {
         public List<string> Sections { get; set; }
         public List<string> Topics { get; set; }
-        public List<EditMeetingTalkDto> Talks { get; set; }
+        public List<EditMeetingTalk_Dto> Talks { get; set; }
 		public long LastEdit { get; set; }  // time into transcript of last edit
 
-        public EditMeetingDto()
+        public EditMeeting_Dto()
         {
-            Talks = new List<EditMeetingTalkDto>();
+            Talks = new List<EditMeetingTalk_Dto>();
         }
     }
 
-    public class EditMeetingTalkDto
+    public class EditMeetingTalk_Dto
     {
         public string Transcript { get; set; }
         public double Confidence { get; set; }
@@ -47,17 +45,17 @@ namespace GM.Application.DTOs.Meetings
         public string TopicName { get; set; }
         public bool ShowSetTopic { get; set; }
         // whether to show "SetTopic" at this location during editing
-        public List<EditMeetingWordDto> Words { get; set; }
+        public List<EditMeetingWord_Dto> Words { get; set; }
 		
-		public EditMeetingTalkDto(string _transcript, double _confidence) 
+		public EditMeetingTalk_Dto(string _transcript, double _confidence) 
 		{
 			Transcript = _transcript;
 			Confidence = _confidence;
-            Words = new List<EditMeetingWordDto>();
+            Words = new List<EditMeetingWord_Dto>();
 		}
     }
 
-    public class EditMeetingWordDto
+    public class EditMeetingWord_Dto
     {
         public string Word { get; set; }
         public double Confidence { get; set; }
@@ -66,7 +64,7 @@ namespace GM.Application.DTOs.Meetings
         public int WordNum { get; set; }
         public int SpeakerTag { get; set; }
 
-        public EditMeetingWordDto( string _word, double _confidence, long _starttime,
+        public EditMeetingWord_Dto( string _word, double _confidence, long _starttime,
 			long _endtime, int _speaker, int _wordnum
 		)
 		{

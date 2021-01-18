@@ -2,7 +2,6 @@ using GM.Application.AppCore.Common;
 using GM.Application.AppCore.Interfaces;
 using GM.Application.Configuration;
 using GM.Infrastructure.InfraCore.Data;
-using GM.Infrastructure.InfraCore.Data;
 using GM.Infrastructure.InfraCore.Identity;
 using GM.Utilities;
 using GM.WebUI.WebApp.Services;
@@ -74,6 +73,9 @@ namespace GM.WebUI.WebApp
             services.AddControllersWithViews();
             logger.Info("Add services for Web API, MVC & Razor Views");
 
+            //services.AddOpenApiDocument();
+            services.AddSwaggerDocument();
+
             services.AddRazorPages();
             logger.Info("Add services for Razor Pages");
 
@@ -90,6 +92,14 @@ namespace GM.WebUI.WebApp
 
             services.AddCQR();
             logger.Info("Configure CQR Services");
+
+            logger.Info("Add email and sms");
+
+            services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            logger.Info("Add ValidateReCaptchaAttribute");
+            services.AddScoped<ValidateReCaptchaAttribute>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -146,6 +156,9 @@ namespace GM.WebUI.WebApp
                 endpoints.MapRazorPages();
                 endpoints.MapHealthChecks("/health").RequireAuthorization();
             });
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseSpa(spa =>
             {

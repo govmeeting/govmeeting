@@ -14,19 +14,19 @@ namespace GM.Application.ProcessRecording
     public class ModifyTranscriptJson
     {
 
-        public EditMeetingDto Modify(TranscribedDto transcript)
+        public EditMeeting_Dto Modify(Transcribed_Dto transcript)
         {
-            EditMeetingDto editmeeting = new EditMeetingDto();
+            EditMeeting_Dto editmeeting = new EditMeeting_Dto();
             int wordNum = 0;   // running word sequence number
 
-            foreach (TranscribedTalkDto result in transcript.Talks)
+            foreach (TranscribedTalk_Dto result in transcript.Talks)
             {
-                EditMeetingTalkDto talk = new EditMeetingTalkDto(result.Transcript, result.Confidence);
+                EditMeetingTalk_Dto talk = new EditMeetingTalk_Dto(result.Transcript, result.Confidence);
                 int speaker = -1;
 
-                foreach (TranscribedWordDto respword in result.Words)
+                foreach (TranscribedWord_Dto respword in result.Words)
                 {
-                    EditMeetingWordDto word = new EditMeetingWordDto(
+                    EditMeetingWord_Dto word = new EditMeetingWord_Dto(
                         respword.Word,
                         respword.Confidence,
                         respword.StartTime,
@@ -39,7 +39,7 @@ namespace GM.Application.ProcessRecording
                         if (speaker != -1)
                         {
                             editmeeting.Talks.Add(talk);
-                            talk = new EditMeetingTalkDto(result.Transcript, result.Confidence);
+                            talk = new EditMeetingTalk_Dto(result.Transcript, result.Confidence);
                         }
                         speaker = word.SpeakerTag;
                         talk.SpeakerName = "Speaker " + speaker.ToString();
@@ -51,19 +51,19 @@ namespace GM.Application.ProcessRecording
             return editmeeting;
         }
 
-        public EditMeetingDto Modify2(TranscribedDto transcript)
+        public EditMeeting_Dto Modify2(Transcribed_Dto transcript)
         {
-            EditMeetingDto editmeeting = new EditMeetingDto();
+            EditMeeting_Dto editmeeting = new EditMeeting_Dto();
             int wordNum = 0;   // running word sequence number
 
-            foreach (TranscribedTalkDto result in transcript.Talks)
+            foreach (TranscribedTalk_Dto result in transcript.Talks)
             {
-                EditMeetingTalkDto talk = new EditMeetingTalkDto(result.Transcript, result.Confidence);
+                EditMeetingTalk_Dto talk = new EditMeetingTalk_Dto(result.Transcript, result.Confidence);
                int speaker = -1;
                  
-               foreach (TranscribedWordDto respword in result.Words)
+               foreach (TranscribedWord_Dto respword in result.Words)
                 {
-                    EditMeetingWordDto word = new EditMeetingWordDto(
+                    EditMeetingWord_Dto word = new EditMeetingWord_Dto(
                         respword.Word,
                         respword.Confidence,
                         respword.StartTime,

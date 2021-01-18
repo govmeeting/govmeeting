@@ -15,7 +15,9 @@ export class UserDropdownComponent {
   }
 
   toggle(value: string, value1: string, value2: string) {
-    return (value = value1 ? value2 : value1);
+    // return (value = value1 ? value2 : value1);
+    value = value === value1 ? value2 : value1;
+    return value;
   }
 
   signin() {

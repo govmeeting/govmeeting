@@ -80,7 +80,7 @@ namespace GM.Application.ProcessRecording
                 // TODO Add "phrases" field: names of officers
             };
 
-            TranscribedDto transcript = transcribeAudio.TranscribeAudioFile(transParams);
+            Transcribed_Dto transcript = transcribeAudio.TranscribeAudioFile(transParams);
 
             string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
             string outputJsonFile = Path.Combine(meetingFolder, "transcribed.json");

@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningsAsErrors>NU1605</WarningsAsErrors>
+  </PropertyGroup>
+
   <ItemGroup>
     <!--https://stackoverflow.com/questions/40236194/itextsharp-any-support-for-dotnet-core-netstandard1-6-->
     <PackageReference Include="iTextSharp" Version="5.5.13.1" />

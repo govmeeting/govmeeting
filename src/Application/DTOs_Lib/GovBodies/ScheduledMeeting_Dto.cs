@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GM.Application.DTOs.Govbodies
 {
-    public class ScheduledMeetingDto
+    public class ScheduledMeeting_Dto
     {
     }
 }

@@ -7,63 +7,44 @@ using System.Threading.Tasks;
 
 namespace GM.WebUI.WebApp.Endpoints.Govbodies
 {
-
+    /// <summary>
+    /// Process Govbodies at the local location of the current user
+    /// </summary>
     //[Authorize]
     public class GovbodyController : ApiController
     {
-
+        /// <summary>
+        /// Register Govbody (or update registration)
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult<int>> Create(CreateGovbodyCommand command)
+        public async Task<ActionResult<int>> Register(RegisterGovbody_Command command)
         {
             return await Mediator.Send(command);
         }
 
-        [HttpGet("{location}")]
-        public async Task<IList<GovbodyDto>> Get(string location)
+        /// <summary>
+        /// Get Govbodies for a GovLocation
+        /// </summary>
+        /// <param name="id">Id of GovLocation</param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public async Task<IList<Govbody_Dto>> GetGovbodies(int id)
         {
-            return await Mediator.Send(new GetGovbodyQuery { Govlocation = location });
+            return await Mediator.Send(new GetGovbodies_Query());
         }
 
-
-        //[Route("api/[controller]")]
-        //    public class GovbodyController : Controller
-        //    {
-        //        IAsyncRepository<Govbody> _govbodyRepository;
-        //        IAsyncRepository<GovLocation> _govlocationRepository;
-
-        //        public GovbodyController(
-        //            IAsyncRepository<Govbody> govbodyRepository,
-        //            IAsyncRepository<GovLocation> govlocationRepository
-        //        )
-        //        {
-        //            _govbodyRepository = govbodyRepository;
-        //            _govlocationRepository = govlocationRepository;
-        //        }
-
-        // POST: /Govbody/Register
-        [HttpPost]
-        public void Register(CreateGovbodyDto model)
+        /// <summary>
+        /// Get Govbody by Id
+        /// </summary>
+        /// <param name="id">Id of Govbody</param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        public async Task<GovbodyDetails_Dto> GetGovbody(int id)
         {
-
-            //_govlocationRepository.AddAsync(govlocation);
-            //_govbodyRepository.
-            //await _basketRepository.AddAsync(userBasket);
+            return await Mediator.Send(new GetGovbody_Query());
         }
-
-
-        ////public DBOperations dbOps { get; set; }
-
-        ////public GovernmentBodyController(DBOperations _dbOps)
-        ////{
-        ////    this.dbOps = _dbOps;
-        ////}
-
-        ////[HttpGet("{meetingId}")]
-        ////public Govbody Get(int govBodyId)
-        ////{
-        ////    Govbody ret = dbOps.GetGovbody(govBodyId);
-        ////    return ret;
-        ////}
 
 
 
@@ -80,19 +61,5 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
         //{
         //}
 
-        //// PUT api/meeting/5
-        //[Authorize("PhillyEditor")]
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody]string value)
-        //{
-
-        //}
-
-        //// DELETE api/meeting/5
-        //[Authorize("PhillyEditor")]
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
-    }
+}

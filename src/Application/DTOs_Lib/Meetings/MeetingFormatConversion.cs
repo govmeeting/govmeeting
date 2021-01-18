@@ -6,24 +6,24 @@ namespace GM.Application.DTOs.Meetings
 {
     public class MeetingFormatConversion
     {
-        readonly EditMeetingDto editDto;
-        readonly ViewMeetingDto view = new ViewMeetingDto();
+        readonly EditMeeting_Dto editDto;
+        readonly ViewMeeting_Dto view = new ViewMeeting_Dto();
 
-        public MeetingFormatConversion(EditMeetingDto _editDto)
+        public MeetingFormatConversion(EditMeeting_Dto _editDto)
         {
             editDto = _editDto;
         }
 
-        public ViewMeetingDto Convert()
+        public ViewMeeting_Dto Convert()
         {
 
-            ViewMeetingDto view = new ViewMeetingDto();
+            ViewMeeting_Dto view = new ViewMeeting_Dto();
 
-            ViewMeetingSectionDto section = null;
-            ViewMeetingTopicDiscussionDto topicDisc = null;
-            ViewMeetingTalkDto talk = null;
+            ViewMeetingSection_Dto section = null;
+            ViewMeetingTopicDiscussion_Dto topicDisc = null;
+            ViewMeetingTalk_Dto talk = null;
 
-            foreach (EditMeetingTalkDto talkEdit in editDto.Talks)
+            foreach (EditMeetingTalk_Dto talkEdit in editDto.Talks)
             {
                 if (talkEdit.SectionName != "")
                 {
@@ -31,7 +31,7 @@ namespace GM.Application.DTOs.Meetings
                     {
                         view.Sections.Add(section);
                     }
-                    section = new ViewMeetingSectionDto
+                    section = new ViewMeetingSection_Dto
                     {
                         Name = talkEdit.SectionName
                     };
@@ -42,7 +42,7 @@ namespace GM.Application.DTOs.Meetings
                     {
                         section.TopicDiscussions.Add(topicDisc);
                     }
-                    topicDisc = new ViewMeetingTopicDiscussionDto
+                    topicDisc = new ViewMeetingTopicDiscussion_Dto
                     {
                         TopicId = GetOrAddToTopics(talkEdit.TopicName)
                     };
@@ -53,7 +53,7 @@ namespace GM.Application.DTOs.Meetings
                     {
                         topicDisc.Talks.Add(talk);
                     }
-                    talk = new ViewMeetingTalkDto
+                    talk = new ViewMeetingTalk_Dto
                     {
                         SpeakerId = GetOrAddToSpeakers(talkEdit.SpeakerName)
                     };
@@ -72,10 +72,10 @@ namespace GM.Application.DTOs.Meetings
         // and add it to the list of topics.
         private long GetOrAddToTopics(string topicName)
         {
-            ViewMeetingTopicDto result = view.Topics.Find(x => x.Name == topicName);
+            ViewMeetingTopic_Dto result = view.Topics.Find(x => x.Name == topicName);
             if (result == null)
             {
-                ViewMeetingTopicDto topic = new ViewMeetingTopicDto() {
+                ViewMeetingTopic_Dto topic = new ViewMeetingTopic_Dto() {
                     TopicId = view.Topics.Count + 1,
                     Name = topicName,
                     IsExisting = false };
@@ -88,10 +88,10 @@ namespace GM.Application.DTOs.Meetings
         // and add it to the list of speakers.
         private long GetOrAddToSpeakers(string speakerName)
         {
-            ViewMeetingSpeakerDto result = view.Speakers.Find(x => x.Name == speakerName);
+            ViewMeetingSpeaker_Dto result = view.Speakers.Find(x => x.Name == speakerName);
             if (result == null)
             {
-                ViewMeetingSpeakerDto speaker = new ViewMeetingSpeakerDto()
+                ViewMeetingSpeaker_Dto speaker = new ViewMeetingSpeaker_Dto()
                 {
                     SpeakerId = view.Speakers.Count + 1,
                     Name = speakerName,

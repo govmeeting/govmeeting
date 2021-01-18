@@ -2,33 +2,33 @@
 
 namespace GM.Application.DTOs.Meetings
 {
-    public class TranscribedDto
+    public class Transcribed_Dto
     {
-        public List<TranscribedTalkDto> Talks;
+        public List<TranscribedTalk_Dto> Talks;
 
-        public TranscribedDto()
+        public Transcribed_Dto()
         {
-            Talks = new List<TranscribedTalkDto>();
+            Talks = new List<TranscribedTalk_Dto>();
         }
     }
 
-    public class TranscribedTalkDto
+    public class TranscribedTalk_Dto
     {
         public string Transcript { get; set; }
         public double Confidence { get; set; }
         public int WordCount { get; set; }
 
-        public List<TranscribedWordDto> Words;
+        public List<TranscribedWord_Dto> Words;
 
-        public TranscribedTalkDto(string _transcript, double _confidence)
+        public TranscribedTalk_Dto(string _transcript, double _confidence)
         {
             Transcript = _transcript;
             Confidence = _confidence;
-            Words = new List<TranscribedWordDto>();
+            Words = new List<TranscribedWord_Dto>();
         }
     }
 
-    public class TranscribedWordDto
+    public class TranscribedWord_Dto
     {
         /* startTime and endTime are time in milliseconds since start of recording.
          * An C# int is equivalent to int32 which has a max value of 2147483647.
@@ -41,7 +41,7 @@ namespace GM.Application.DTOs.Meetings
         public int WordNum { get; set; }
         public int SpeakerTag { get; set; }
 
-        public TranscribedWordDto(string _word, double _confidence, long _startTime,
+        public TranscribedWord_Dto(string _word, double _confidence, long _startTime,
             long _endTime, int _speakerTag, int _wordNum)
         {
             Word = _word;

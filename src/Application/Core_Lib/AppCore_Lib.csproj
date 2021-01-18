@@ -5,6 +5,10 @@
 		<RootNamespace>GM.ApplicationCore</RootNamespace>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <WarningsAsErrors>NU1605</WarningsAsErrors>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Ardalis.GuardClauses" Version="1.5.0" />
 		<PackageReference Include="Ardalis.Specification" Version="4.0.0" />

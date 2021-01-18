@@ -25,15 +25,15 @@ namespace GM.WebUI.WebApp.Endpoints.Viewtranscripts
         }
 
         [HttpGet("{meetingId}")]
-        public ViewMeetingDto Get(int meetingId)
+        public ViewMeeting_Dto Get(int meetingId)
         {
             string transcript = Meetings.Get(meetingId);
-            ViewMeetingDto viewMeeting = JsonConvert.DeserializeObject<ViewMeetingDto>(transcript);
+            ViewMeeting_Dto viewMeeting = JsonConvert.DeserializeObject<ViewMeeting_Dto>(transcript);
             return viewMeeting;
         }
 
         [HttpPut("{meetingId}")]
-        public bool Put(int meetingId, ViewMeetingDto meetingDto)
+        public bool Put(int meetingId, ViewMeeting_Dto meetingDto)
         {
             string stringValue = JsonConvert.SerializeObject(meetingDto, Formatting.Indented);
             bool result = Meetings.Put(meetingId, stringValue);

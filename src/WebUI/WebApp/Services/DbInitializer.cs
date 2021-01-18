@@ -41,9 +41,9 @@ namespace GM.WebUI.WebApp.Services
             logger = _logger;
         }
 
-        ApplicationDbContext _context;
-        UserManager<ApplicationUser> _userManager;
-        RoleManager<IdentityRole> _roleManager;
+        readonly ApplicationDbContext _context;
+        readonly UserManager<ApplicationUser> _userManager;
+        readonly RoleManager<IdentityRole> _roleManager;
         //IConfiguration _configuration;
         private readonly AppSettings _config;
 
@@ -58,7 +58,7 @@ namespace GM.WebUI.WebApp.Services
                 _context.Database.Migrate();
             }
 
-            /// REMOVED PRIOR CODE 1 - See below
+            // REMOVED PRIOR CODE 1 - See below
 
             string admin_email = _config.DbAdmin.Email;
 
@@ -120,7 +120,7 @@ namespace GM.WebUI.WebApp.Services
 
 
 
-/// REMOVED PRIOR CODE 1
+// REMOVED PRIOR CODE 1
 // The following was from before we switch to using claims.
 //// Create roles. This adds them to the table dbo.AspNetRoles.
 //string[] roles = new string[] { "UserManager", "StaffManager" };
@@ -132,7 +132,7 @@ namespace GM.WebUI.WebApp.Services
 //    }
 //}
 
-/// REMOVED PRIOR CODE 2
+// REMOVED PRIOR CODE 2
 // The following was from before we switch to using claims.
 //// assign admin privileges. This adds and enty in table dbo.AspNetUserRoles
 //ApplicationUser admin = await userManager.FindByEmailAsync("info@example.com");

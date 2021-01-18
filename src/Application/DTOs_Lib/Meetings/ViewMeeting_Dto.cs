@@ -27,7 +27,7 @@ namespace GM.Application.DTOs.Meetings
     // in the correct order.
 
 
-    public class ViewMeetingDto
+    public class ViewMeeting_Dto
     {
         public int MeetingId { get; set; }
         public string GovbodyName { get; set; }
@@ -36,25 +36,25 @@ namespace GM.Application.DTOs.Meetings
 
         // Topics and Speakers are the list of topics discussed
         // at this meeting and the list of speakers.
-        public List<ViewMeetingTopicDto> Topics { get; set; }
-        public List<ViewMeetingSpeakerDto> Speakers { get; set; }
+        public List<ViewMeetingTopic_Dto> Topics { get; set; }
+        public List<ViewMeetingSpeaker_Dto> Speakers { get; set; }
 
-        public List<ViewMeetingSectionDto> Sections { get; set; }
+        public List<ViewMeetingSection_Dto> Sections { get; set; }
     }
 
-    public class ViewMeetingSectionDto
+    public class ViewMeetingSection_Dto
     {
         public string Name { get; set; }
-        public List<ViewMeetingTopicDiscussionDto> TopicDiscussions { get; set; }
+        public List<ViewMeetingTopicDiscussion_Dto> TopicDiscussions { get; set; }
     }
 
-    public class ViewMeetingTopicDiscussionDto
+    public class ViewMeetingTopicDiscussion_Dto
     {
         public long TopicId { get; set; }
-        public List<ViewMeetingTalkDto> Talks { get; set; }
+        public List<ViewMeetingTalk_Dto> Talks { get; set; }
     }
 
-    public class ViewMeetingTalkDto
+    public class ViewMeetingTalk_Dto
     {
         public long SpeakerId { get; set; }
         public string Text { get; set; }
@@ -70,7 +70,7 @@ namespace GM.Application.DTOs.Meetings
     //
     // When the data is added to the DB, the new topics will
     // be added to the Topic table and assigned thier final TopicId.
-    public class ViewMeetingTopicDto
+    public class ViewMeetingTopic_Dto
     {
         public long TopicId { get; set; }
         public string Name { get; set; }
@@ -89,7 +89,7 @@ namespace GM.Application.DTOs.Meetings
     // each of these new speakers will be added to the speaker table and assigned a SpeakerId.
     // These new SpeakerIds are used when re-constructing the transcript from the DB,
     // but they don't track the identity of the person from meeting to meeting.
-    public class ViewMeetingSpeakerDto
+    public class ViewMeetingSpeaker_Dto
     {
         public long SpeakerId { get; set; } 
         public string Name { get; set; }

@@ -2,11 +2,10 @@
 
 namespace GM.Application.DTOs.GovLocations
 {
-    public class CreateGovLocationDto
+    public class GovLocation_Dto
     {
         public string Name { get; set; }
         public GovlocTypes Type { get; set; }
-        public string Code { get; set; }
-        public CreateGovLocationDto ParentLocation { get; set; }
+        public int ParentLocationId { get; set; }
     }
 }

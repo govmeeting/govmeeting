@@ -5,6 +5,10 @@
 		<RootNamespace>GM.Infrastructure</RootNamespace>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <WarningsAsErrors>NU1605</WarningsAsErrors>
+	</PropertyGroup>
+
 	<ItemGroup>
 	  <Compile Remove="Data\Migrations\**" />
 	  <EmbeddedResource Remove="Data\Migrations\**" />

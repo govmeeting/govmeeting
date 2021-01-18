@@ -15,18 +15,19 @@ namespace GM.Application.AppCore.Entities.GovLocations
     {
         private GovLocation() { }  // for EF
 
-        public GovLocation(string name, GovlocTypes type, string code)
+        public GovLocation(string name, GovlocTypes type, string code = "")
         {
             Name = name;
             Type = type;
             Code = code;
 
             Guard.Against.NullOrEmpty(name, nameof(name));
-            Guard.Against.NullOrEmpty(code, nameof(code));
+            //Guard.Against.NullOrEmpty(code, nameof(code));
         }
         public string Name { get; private set; }
-        public GovlocTypes Type { get; set; }
+        public GovlocTypes Type { get; private set; }
         public string Code { get; private set; }
+        public string RecordingsUrl { get; set; }
 
         /// <summary>
         /// Our parent GovLocation or null if no parent

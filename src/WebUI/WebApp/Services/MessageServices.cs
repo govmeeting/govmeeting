@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
@@ -15,7 +13,7 @@ namespace GM.WebUI.WebApp.Services
     // For more details see this link http://go.microsoft.com/fwlink/?LinkID=532713
     public class AuthMessageSender : IEmailSender, ISmsSender
     {
-        IConfiguration _config;
+        readonly IConfiguration _config;
 
         public AuthMessageSender(IConfiguration config)
         {
@@ -47,24 +45,22 @@ namespace GM.WebUI.WebApp.Services
             mailMessage.Body = message;
             try
             {
-                using (var client = new SmtpClient())
-                {
-                    string username = _config["Email:Username"];
-                    string password = _config["Email:Password"];
-                    string host = _config["Email:Host"];
-                    int port = Int32.Parse(_config["Email:Port"]);
-                    string security = _config["Email:Security"];
+                using var client = new SmtpClient();
+                string username = _config["Email:Username"];
+                string password = _config["Email:Password"];
+                string host = _config["Email:Host"];
+                int port = Int32.Parse(_config["Email:Port"]);
+                string security = _config["Email:Security"];
 
-                    client.Host = host;
-                    client.Port = port;
+                client.Host = host;
+                client.Port = port;
 
-                    //client.Credentials = CredentialCache.DefaultNetworkCredentials;
-                    client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential(username, password);
-                    //client.EnableSsl = true;
+                //client.Credentials = CredentialCache.DefaultNetworkCredentials;
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential(username, password);
+                //client.EnableSsl = true;
 
-                    await client.SendMailAsync(mailMessage);
-                }
+                await client.SendMailAsync(mailMessage);
                 //return (true, null);
             }
             catch (Exception ex)
@@ -75,16 +71,6 @@ namespace GM.WebUI.WebApp.Services
             }
         }
 
-        /// <summary>
-                 /// Send email
-                 /// </summary>
-                 /// <param name="sender"></param>
-                 /// <param name="recepients"></param>
-                 /// <param name="subject"></param>
-                 /// <param name="body"></param>
-                 /// <param name="isHtml"></param>
-                 /// <param name="config"></param>
-                 /// <returns></returns>
         public async Task<(bool success, string errorMsg)> SendEmailAsync(MailAddress sender, MailAddress[] recepients, string subject, string body, bool isHtml = true, MailAddress[] bccList = null)
         {
             MailMessage message = new MailMessage

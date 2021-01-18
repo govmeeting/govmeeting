@@ -36,7 +36,7 @@ namespace GM.Application.EditTranscript
             //   2. Less video or audio data needs to be downloaded to a user at one time.
 
             string stringValue = File.ReadAllText(fixasrFile);
-            EditMeetingDto meetingEditDto = JsonConvert.DeserializeObject<EditMeetingDto>(stringValue);
+            EditMeeting_Dto meetingEditDto = JsonConvert.DeserializeObject<EditMeeting_Dto>(stringValue);
 
             // Split the recording into parts and put them each in subfolders of subfolder "parts".
             SplitRecording splitRecording = new SplitRecording();

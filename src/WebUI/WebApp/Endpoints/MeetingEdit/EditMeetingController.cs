@@ -27,10 +27,10 @@ namespace GM.WebUI.WebApp.Endpoints.MeetingEdit
         }
 
         [HttpGet("{meetingId}/{part}")]        // GET: api/fixasr
-        public EditMeetingDto Get(int meetingId, int part)
+        public EditMeeting_Dto Get(int meetingId, int part)
         {
             string meeting = EditMeetingRepo.Get(meetingId, part);
-            EditMeetingDto meetingEditDto = JsonConvert.DeserializeObject<EditMeetingDto>(meeting);
+            EditMeeting_Dto meetingEditDto = JsonConvert.DeserializeObject<EditMeeting_Dto>(meeting);
             return meetingEditDto;
         }
 
@@ -38,7 +38,7 @@ namespace GM.WebUI.WebApp.Endpoints.MeetingEdit
         // TODO Add next line back when working
         //[Authorize(Policy = "Proofreader")]
         [HttpPost("{meetingId}/{part}")]
-        public bool Post([FromBody] EditMeetingDto value, int meetingId, int part)
+        public bool Post([FromBody] EditMeeting_Dto value, int meetingId, int part)
         {
             string stringValue = JsonConvert.SerializeObject(value, Formatting.Indented);
             return EditMeetingRepo.Put(stringValue, meetingId, part);

@@ -1,7 +1,6 @@
-﻿using GM.Application.AppCore.Interfaces;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace GM.Infrastructure.InfraCore.Services
+namespace GM.WebUI.WebApp.Services
 {
     // This class is used by the application to send email for account confirmation and password reset.
     // For more details see https://go.microsoft.com/fwlink/?LinkID=532713

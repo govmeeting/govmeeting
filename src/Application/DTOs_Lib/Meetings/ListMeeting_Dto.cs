@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GM.Application.DTOs.Meetings
 {
-    public class ListMeetingDto
+    public class ListMeeting_Dto
     {
         public int MeetingId { get; set; }
         public string Date { get; set; }

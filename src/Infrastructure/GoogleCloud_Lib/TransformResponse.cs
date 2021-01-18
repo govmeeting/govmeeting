@@ -42,9 +42,9 @@ namespace GM.Infrastructure.GoogleCloud
            *      but we leave them in the final structure for possible future use.
            */
 
-        public static TranscribedDto Simpify(RepeatedField<SpeechRecognitionResult> recogResults)
+        public static Transcribed_Dto Simpify(RepeatedField<SpeechRecognitionResult> recogResults)
         {
-            TranscribedDto transcript = new TranscribedDto();
+            Transcribed_Dto transcript = new Transcribed_Dto();
             int altCount = 0;
             int wordNum = 0;
 
@@ -58,7 +58,7 @@ namespace GM.Infrastructure.GoogleCloud
 
                 SpeechRecognitionAlternative recogAlt = recogResult.Alternatives[0];
 
-                TranscribedTalkDto result = new TranscribedTalkDto(recogAlt.Transcript, recogAlt.Confidence)
+                TranscribedTalk_Dto result = new TranscribedTalk_Dto(recogAlt.Transcript, recogAlt.Confidence)
                 {
                     // The new "WordCount" field in Result is populated with the total word count.
                     WordCount = recogAlt.Words.Count,
@@ -72,7 +72,7 @@ namespace GM.Infrastructure.GoogleCloud
 
                     // The new "WordNum" field in RespWord is popluated with the sequencial "wordnum"
                     wordNum++;
-                    result.Words.Add(new TranscribedWordDto(item.Word, item.Confidence, startTime, endTime, item.SpeakerTag, wordNum));
+                    result.Words.Add(new TranscribedWord_Dto(item.Word, item.Confidence, startTime, endTime, item.SpeakerTag, wordNum));
                 }
                 transcript.Talks.Add(result);
             }
@@ -89,12 +89,12 @@ namespace GM.Infrastructure.GoogleCloud
         // FixSpeakerTags moves the SpeakerTag values from the last result in the response
         // to the corresponding words in the initial results and then removes the final result.
 
-        public static TranscribedDto FixSpeakerTags(TranscribedDto transcribed)
+        public static Transcribed_Dto FixSpeakerTags(Transcribed_Dto transcribed)
         {
 
             int resultCount = transcribed.Talks.Count;
-            TranscribedTalkDto lastResult = transcribed.Talks[resultCount - 1];
-            TranscribedTalkDto nextToLastResult = transcribed.Talks[resultCount - 2];
+            TranscribedTalk_Dto lastResult = transcribed.Talks[resultCount - 1];
+            TranscribedTalk_Dto nextToLastResult = transcribed.Talks[resultCount - 2];
 
             int lastWordnum = lastResult.Words[^1].WordNum;
             int nextToLastWordnum = nextToLastResult.Words[^1].WordNum;
@@ -115,15 +115,15 @@ namespace GM.Infrastructure.GoogleCloud
             // Now we will populate the Word objects in the prior results with
             // the SpeakerTag of the matching word in the final result.
             int i = 0;
-            List<TranscribedWordDto> words = lastResult.Words;
+            List<TranscribedWord_Dto> words = lastResult.Words;
             // "results" will be all but last
-            List<TranscribedTalkDto> results = transcribed.Talks.GetRange(0, resultCount - 1);
+            List<TranscribedTalk_Dto> results = transcribed.Talks.GetRange(0, resultCount - 1);
 
-            foreach (TranscribedTalkDto result in results)
+            foreach (TranscribedTalk_Dto result in results)
             {
-                foreach (TranscribedWordDto word in result.Words)
+                foreach (TranscribedWord_Dto word in result.Words)
                 {
-                    TranscribedWordDto w = words[i++];
+                    TranscribedWord_Dto w = words[i++];
                     if (w.Word != word.Word)
                     {
                         // TODO - throw exception

@@ -38,7 +38,7 @@ namespace GM.Tests.ProcessRecording_Tests
         {
             string fixasrFile = @"C:\GOVMEETING\_SOURCECODE\src\DATAFILES\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\R3-ToBeFixed.json";
             string stringValue = File.ReadAllText(fixasrFile);
-            EditMeetingDto meetingEditDto = JsonConvert.DeserializeObject<EditMeetingDto>(stringValue);
+            EditMeeting_Dto meetingEditDto = JsonConvert.DeserializeObject<EditMeeting_Dto>(stringValue);
             string outputFolder = @"C:\GOVMEETING\_SOURCECODE\src\DATAFILES\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en\2017-02-15\FixText";
             int sectionSize = 180;
             int overlap = 5;
@@ -76,10 +76,10 @@ namespace GM.Tests.ProcessRecording_Tests
             string outputFile = outputFolder + @"\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15.json";
 
             string stringValue = File.ReadAllText(inputFile);
-            var transcript = JsonConvert.DeserializeObject<TranscribedDto>(stringValue);
+            var transcript = JsonConvert.DeserializeObject<Transcribed_Dto>(stringValue);
 
             ModifyTranscriptJson convert = new ModifyTranscriptJson();
-            EditMeetingDto meetingEditDto = convert.Modify(transcript);
+            EditMeeting_Dto meetingEditDto = convert.Modify(transcript);
 
             stringValue = JsonConvert.SerializeObject(meetingEditDto, Formatting.Indented);
             File.WriteAllText(outputFile, stringValue);

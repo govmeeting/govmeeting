@@ -17,7 +17,7 @@ namespace GM.Infrastructure.GoogleCloud
             speechClient = SpeechClient.Create();
         }
 
-        public TranscribedDto TranscribeAudioFile(TranscribeParameters transParams, string rawResponseFile = null)
+        public Transcribed_Dto TranscribeAudioFile(TranscribeParameters transParams, string rawResponseFile = null)
         {
             LongRunningRecognizeResponse response = UploadAndTranscribeInCloud(transParams);
 
@@ -28,13 +28,13 @@ namespace GM.Infrastructure.GoogleCloud
                 File.WriteAllText(rawResponseFile, responseString);
             }
 
-            TranscribedDto resp = TransformResponse.Simpify(response.Results);
+            Transcribed_Dto resp = TransformResponse.Simpify(response.Results);
 
             return TransformResponse.FixSpeakerTags(resp);
         }
 
         // Transcribe a local audio file. We can only use this with audios up to 1 minute long.
-        public TranscribedDto TranscribeLocalFile(string fileName, string language)
+        public Transcribed_Dto TranscribeLocalFile(string fileName, string language)
         {
             //    // var speechClient = SpeechClient.Create();
             RecognitionAudio recogAudio = RecognitionAudio.FromFile(fileName);
@@ -47,7 +47,7 @@ namespace GM.Infrastructure.GoogleCloud
                 LanguageCode = language,
             }, recogAudio);
 
-            TranscribedDto resp = TransformResponse.Simpify(response.Results);
+            Transcribed_Dto resp = TransformResponse.Simpify(response.Results);
 
             return TransformResponse.FixSpeakerTags(resp);
         }

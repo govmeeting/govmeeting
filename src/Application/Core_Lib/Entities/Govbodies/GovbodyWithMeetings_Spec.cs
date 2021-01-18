@@ -2,9 +2,9 @@
 
 namespace GM.Application.AppCore.Entities.Govbodies
 {
-    public sealed class GovbodyWithMeetingsSpecification : Specification<Govbody>
+    public sealed class GovbodyWithMeetings_Spec : Specification<Govbody>
     {
-        public GovbodyWithMeetingsSpecification(int govbodyId)
+        public GovbodyWithMeetings_Spec(int govbodyId)
         {
             Query
                 .Where(b => b.Id == govbodyId)
