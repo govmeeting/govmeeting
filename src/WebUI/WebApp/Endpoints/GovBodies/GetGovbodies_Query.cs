@@ -4,6 +4,7 @@ using GM.Infrastructure.InfraCore.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,6 +12,7 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
 {
     public class GetGovbodies_Query : IRequest<IList<Govbody_Dto>>
     {
+        public int GovLocationId { get; set; }
     }
 
     public class GetGovbodies_QueryHandler : IRequestHandler<GetGovbodies_Query,
@@ -28,12 +30,13 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
         public async Task<IList<Govbody_Dto>> Handle(GetGovbodies_Query request, CancellationToken cancellationToken)
         {
             var result = new List<Govbody_Dto>();
-            var govbodies = await _context.Govbodies.Include(i => i.ScheduledMeetings).ToListAsync(); ;
+            var govbodies = await _context.Govbodies
+                .Where(g => g.ParentLocationId == request.GovLocationId)
+                .ToListAsync();
 
-            if (govbodies != null)
-            {
-                result = _mapper.Map<List<Govbody_Dto>>(govbodies);
-            }
+            if (govbodies == null || govbodies.Count == 0) return null;
+
+            result = _mapper.Map<List<Govbody_Dto>>(govbodies);
 
             return result;
         }

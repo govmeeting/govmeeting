@@ -11,9 +11,9 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
         /// Register GovLocation
         /// </summary>
         /// <param name="command"></param>
-        /// <returns></returns>
+        /// <returns>Id of new GovLocation</returns>
         [HttpPost]
-        public async Task<ActionResult<int>> Register(RegisterGovLocationCommand command)
+        public async Task<ActionResult<int>> Register(RegisterGovLocation_Cmd command)
         {
             return await Mediator.Send(command);
         }
@@ -21,32 +21,29 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
         /// <summary>
         /// Get GovLocations for current user
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of current user's GovLocations </returns>
         [HttpGet]
-        public async Task<List<GovLocation_Dto>> GetMyGovLocations()
-        {
-            return await Mediator.Send(new GetMyGovLocations_Query());
-        }
-
-        /// <summary>
-        /// Get GovLocation by Id
-        /// </summary>
-        /// <param name="id">Id of GovLocation</param>
-        /// <returns></returns>
-        [HttpGet("{id}")]
-        public async Task<GovLocationDetails_Dto> GetGovLocation(int id)
-        {
-            return await Mediator.Send(new GetGovLocation_Query());
-        }
-
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <returns></returns>
-        //[HttpGet]
-        //public async Task<GovLocationWithGovbodies_Dto> GetMyLocalLocationWithGovbodies()
+        //public async Task<List<GovLocation_Dto>> GetMyGovLocations(GetMyGovLocations_Query query)
         //{
-        //    return await Mediator.Send(new GetLocalGovLocationWithGovbodies_Query());
+        //    return await Mediator.Send(query);
+        //}
+        public async Task<IEnumerable<GovLocation_Dto>> GetMyGovLocations()
+        {
+            GetMyGovLocations_Query g = new GetMyGovLocations_Query();
+            //return await Mediator.Send(new GetMyGovLocations_Query());
+            return await Mediator.Send(g);
+        }
+
+        // TODO - This returns too much data
+        ///// <summary>
+        ///// Get GovLocation by Id
+        ///// </summary>
+        ///// <param name="id">Id of GovLocation</param>
+        ///// <returns>specified GovLocation</returns>
+        //[HttpGet("{id}")]
+        //public async Task<GovLocationDetails_Dto> GetGovLocation(int id)
+        //{
+        //    return await Mediator.Send(new GetGovLocation_Query());
         //}
 
     }

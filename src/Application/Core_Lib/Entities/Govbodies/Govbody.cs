@@ -35,17 +35,26 @@ namespace GM.Application.AppCore.Entities.Govbodies
         // Example: "USA_NJ_Essex_Nutley_TownCouncil"
         public string LongName { get; set; }
 
+        public int ParentLocationId { get; set; }
         public GovLocation ParentLocation { get; set; }
 
-        private readonly List<Meeting> _meetings = new List<Meeting>();
+        public string RecordingsUrl { get; set; }
+        public string TranscriptsUrl { get; set; }
+
         public IReadOnlyCollection<Meeting> Meetings => _meetings.AsReadOnly();
+        private readonly List<Meeting> _meetings = new List<Meeting>();
 
-        private readonly List<Topic> _topics = new List<Topic>();
+        public IReadOnlyCollection<ElectedOfficial> ElectedOfficials => _electedOfficials.AsReadOnly();
+        public List<ElectedOfficial> _electedOfficials = new List<ElectedOfficial>();
+
+        public IReadOnlyCollection<AppointedOfficial> AppointedOfficials => _appointedOfficials.AsReadOnly();
+        public List<AppointedOfficial> _appointedOfficials = new List<AppointedOfficial>();
+
         public IReadOnlyCollection<Topic> Topics => _topics.AsReadOnly();
+        private readonly List<Topic> _topics = new List<Topic>();
 
-        private readonly List<ScheduledMeeting> _scheduledMeetings = new List<ScheduledMeeting>();
         public IReadOnlyCollection<ScheduledMeeting> ScheduledMeetings => _scheduledMeetings.AsReadOnly();
-
+        private readonly List<ScheduledMeeting> _scheduledMeetings = new List<ScheduledMeeting>();
 
         public void AddMeeting(
             string name,
@@ -62,4 +71,23 @@ namespace GM.Application.AppCore.Entities.Govbodies
             _scheduledMeetings.Add(sm);
         }
     }
+
+
+    public class Official : AuditEntity
+    {
+        public string Name { get; set; }
+        public string Title { get; set; }
+        public int GovbodyId { get; set; }
+    }
+
+    public class ElectedOfficial : Official
+    {
+
+    }
+
+    public class AppointedOfficial : Official
+    {
+
+    }
+
 }

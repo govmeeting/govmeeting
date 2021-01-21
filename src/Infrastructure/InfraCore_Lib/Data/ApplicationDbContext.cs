@@ -56,6 +56,8 @@ namespace GM.Infrastructure.InfraCore.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<ElectedOfficial> ElectedOfficials { get; set; }
+        public DbSet<AppointedOfficial> AppointedOfficials { get; set; }
 
 
         //// Temporary inclusion of eshoponweb DbSets during development

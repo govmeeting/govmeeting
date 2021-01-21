@@ -11,15 +11,15 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
     /// <summary>
     /// 
     /// </summary>
-    public class RegisterGovLocationCommand : GovLocation_Dto, IRequest<int?>
+    public class RegisterGovLocation_Cmd : GovLocation_Dto, IRequest<int?>
     {
     }
 
     /// <summary>
     /// 
     /// </summary>
-    public class RegisterGovLocationCommandHandler : 
-        IRequestHandler<RegisterGovLocationCommand, int?>
+    public class RegisterGovLocation_CmdHandler : 
+        IRequestHandler<RegisterGovLocation_Cmd, int?>
 
     {
         private readonly ApplicationDbContext _context;
@@ -28,7 +28,7 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public RegisterGovLocationCommandHandler(ApplicationDbContext context)
+        public RegisterGovLocation_CmdHandler(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -39,7 +39,7 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
         /// <param name="request"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public async Task<int?> Handle(RegisterGovLocationCommand request, CancellationToken cancellationToken)
+        public async Task<int?> Handle(RegisterGovLocation_Cmd request, CancellationToken cancellationToken)
         {
             //var entity = new GovLocation(request.Name, request.Type, request.Code);
             var entity = new GovLocation(request.Name, request.Type, null);
@@ -59,7 +59,7 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
 
     }
 
-    public class CreateGovLocationValidator : AbstractValidator<RegisterGovLocationCommand>
+    public class CreateGovLocationValidator : AbstractValidator<RegisterGovLocation_Cmd>
     {
         public CreateGovLocationValidator()
         {

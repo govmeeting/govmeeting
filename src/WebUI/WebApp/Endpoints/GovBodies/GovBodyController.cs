@@ -19,7 +19,7 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult<int>> Register(RegisterGovbody_Command command)
+        public async Task<ActionResult<int>> Register(RegisterGovbody_Cmd command)
         {
             return await Mediator.Send(command);
         }
@@ -27,23 +27,23 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
         /// <summary>
         /// Get Govbodies for a GovLocation
         /// </summary>
-        /// <param name="id">Id of GovLocation</param>
+        /// <param name="id">GovLocation Id</param>
         /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IList<Govbody_Dto>> GetGovbodies(int id)
         {
-            return await Mediator.Send(new GetGovbodies_Query());
+            return await Mediator.Send(new GetGovbodies_Query() { GovLocationId = id });
         }
 
         /// <summary>
         /// Get Govbody by Id
         /// </summary>
-        /// <param name="id">Id of Govbody</param>
+        /// <param name="id">Govbody Id</param>
         /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<GovbodyDetails_Dto> GetGovbody(int id)
         {
-            return await Mediator.Send(new GetGovbody_Query());
+            return await Mediator.Send(new GetGovbody_Query() { GovbodyId = id });
         }
 
 

@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WebUI.WebApp.Endpoints.HealthCheck
+namespace GM.WebUI.WebApp.Endpoints.HealthCheck
 {
     public class HomePageHealthCheck : IHealthCheck
     {

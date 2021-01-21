@@ -13,21 +13,21 @@ using System.Threading.Tasks;
 namespace GM.WebUI.WebApp.Endpoints.Govbodies
 {
 
-    public class RegisterGovbody_Command : GovbodyDetails_Dto, IRequest<int?>
+    public class RegisterGovbody_Cmd : GovbodyDetails_Dto, IRequest<int?>
     {
     }
 
-    public class RegisterGovbody_CommandHandler : IRequestHandler<RegisterGovbody_Command, int?>
+    public class RegisterGovbody_CmdHandler : IRequestHandler<RegisterGovbody_Cmd, int?>
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
 
-        public RegisterGovbody_CommandHandler(ApplicationDbContext context, IMapper mapper)
+        public RegisterGovbody_CmdHandler(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
-        public async Task<int?> Handle(RegisterGovbody_Command request, CancellationToken cancellationToken)
+        public async Task<int?> Handle(RegisterGovbody_Cmd request, CancellationToken cancellationToken)
         {
             var entity = _mapper.Map<Govbody>(request);
 
@@ -45,7 +45,7 @@ namespace GM.WebUI.WebApp.Endpoints.Govbodies
         //}
     }
 
-    class RegisterGovbody_CommandValidator : AbstractValidator<RegisterGovbody_Command>
+    class RegisterGovbody_CommandValidator : AbstractValidator<RegisterGovbody_Cmd>
     {
         public RegisterGovbody_CommandValidator()
         {

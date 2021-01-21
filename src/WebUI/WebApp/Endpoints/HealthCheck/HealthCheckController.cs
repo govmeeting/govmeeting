@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace GM.WebUI.WebApp.Features.Meetings
+namespace GM.WebUI.WebApp.Endpoints.HealthCheck
+
 {
     /// <summary>
     /// Check if server is alive and well. 
     /// </summary>
     [Route("api/[controller]")]
-    public class HealthCheckController : Controller
+    public class HealthCheckController : ApiController
     {
         // TODO This is temporary till we implement calling ApiHealthCheck
 
@@ -22,5 +25,12 @@ namespace GM.WebUI.WebApp.Features.Meetings
             string answer = timesTwo.ToString();
             return $"{testId} times 2 = {answer}";
         }
+
+        [HttpGet]
+        public async Task<IEnumerable<WeatherForecast>> GetWeather()
+        {
+            return await Mediator.Send(new GetWeatherForecastsQuery());
+        }
+
     }
 }

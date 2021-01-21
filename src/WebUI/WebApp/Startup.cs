@@ -21,6 +21,7 @@ using NLog;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
+using System.Reflection;
 
 namespace GM.WebUI.WebApp
 {
@@ -63,6 +64,7 @@ namespace GM.WebUI.WebApp
             logger.Info("Configure Authentication");
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            logger.Info("Clear JWT ClaimTypeMap");
 
             ConfigureIdentity(services);
             logger.Info("Configure Identity");
@@ -75,6 +77,7 @@ namespace GM.WebUI.WebApp
 
             //services.AddOpenApiDocument();
             services.AddSwaggerDocument();
+            logger.Info("Add services for Swagger Document");
 
             services.AddRazorPages();
             logger.Info("Add services for Razor Pages");
@@ -90,16 +93,16 @@ namespace GM.WebUI.WebApp
             // get the current user for auditing
             services.AddScoped<ICurrentUserService, CurrentUserService>();
 
-            services.AddCQR();
+            Assembly executingAssembly = Assembly.GetExecutingAssembly();
+            services.AddCQR(executingAssembly);
             logger.Info("Configure CQR Services");
-
-            logger.Info("Add email and sms");
 
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+            logger.Info("Add email and sms");
 
-            logger.Info("Add ValidateReCaptchaAttribute");
             services.AddScoped<ValidateReCaptchaAttribute>();
+            logger.Info("Add ValidateReCaptchaAttribute");
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
