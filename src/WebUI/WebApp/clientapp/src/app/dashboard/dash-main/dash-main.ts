@@ -42,6 +42,7 @@ export class DashMainComponent implements OnInit {
   workitemsTitle: string;
   alertsTitle: string;
   workareaTitle: string;
+  registerGovBodyTitle: string;
 
   constructor(private userSettingsService: UserSettingsService, private appData: AppData) {
     this.isBeta = appData.isBeta;
@@ -91,5 +92,6 @@ export class DashMainComponent implements OnInit {
     this.workitemsTitle = GetDashboardTitle('Work Items', this.language);
     this.alertsTitle = GetDashboardTitle('Alerts', this.language);
     this.workareaTitle = 'Developer Workarea';
+    this.registerGovBodyTitle = GetDashboardTitle('Register Government Body', this.language);
   }
 }

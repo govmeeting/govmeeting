@@ -1,0 +1,29 @@
+form {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+}
+
+label,
+input {
+  margin-bottom: 1rem;
+}
+
+label {
+  grid-column: 1;
+}
+
+input {
+  grid-column: 2;
+  min-height: 1.5rem;
+}
+
+button {
+  max-width: 20rem;
+  min-height: 2rem;
+  grid-column-start: 1;
+}
+
+span.error {
+  color: red;
+}

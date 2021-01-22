@@ -18,6 +18,7 @@ const DashboardTitles: string[][] = [
     'Meeting Minutes',
     'Work Items',
     'Alerts',
+    'Register Government Body',
   ],
   [
     'German',
@@ -38,6 +39,7 @@ const DashboardTitles: string[][] = [
     'Sitzungsprotokolle',
     'Arbeitselemente',
     'Warnungen',
+    'Regierungsstelle registrieren',
   ],
   [
     'Spanish',
@@ -58,6 +60,7 @@ const DashboardTitles: string[][] = [
     'Actas de reuniones',
     'Elementos de trabajo',
     'Alertas',
+    'Registrar organismo gubernamental',
   ],
   [
     'French',
@@ -69,8 +72,7 @@ const DashboardTitles: string[][] = [
     'Modifier la transcription',
     'Ajouter des balises à la transcription',
     'Voir la transcription',
-    'Issues',
-    'Enjeux',
+    'Problèmes',
     'Fonctionnaires',
     'Réunion virtuelle',
     'Bavarder',
@@ -79,6 +81,7 @@ const DashboardTitles: string[][] = [
     ' Procès-verbaux de réunion ',
     ' Éléments de travail ',
     ' Alertes ',
+    'Inscrire un organisme gouvernemental',
   ],
   [
     'Icelandic',
@@ -99,6 +102,7 @@ const DashboardTitles: string[][] = [
     'Fundargerðir fundargerð',
     'Vinnuatriði',
     'Viðvaranir',
+    'Skráðu ríkisstofnun',
   ],
   [
     'Italian',
@@ -119,6 +123,7 @@ const DashboardTitles: string[][] = [
     'Verbale riunione',
     'Articoli di lavoro',
     'Avvisi',
+    "Registro dell'ente governativo",
   ],
   [
     'Finish',
@@ -139,6 +144,7 @@ const DashboardTitles: string[][] = [
     'Kokouspöytäkirjat',
     'Työesineet',
     'Hälytykset',
+    'Rekisteröi hallituksen elin',
   ],
   [
     'Arabic',
@@ -159,6 +165,7 @@ const DashboardTitles: string[][] = [
     'محضر الاجتماع',
     'عناصر العمل',
     'التنبيهات',
+    'تسجيل هيئة حكومية',
   ],
   [
     'Swahili',
@@ -179,6 +186,7 @@ const DashboardTitles: string[][] = [
     'Dakika za Mkutano',
     'Vitu vya Kazi',
     'Taadhari',
+    'Kusajili Mwili wa Serikali',
   ],
   [
     'Mandarin',
@@ -199,6 +207,7 @@ const DashboardTitles: string[][] = [
     '会议记录',
     '工作项',
     '警报',
+    '注册政府机构',
   ],
   [
     'Portuguese',
@@ -219,6 +228,7 @@ const DashboardTitles: string[][] = [
     'Atas da reunião',
     'Itens de trabalho',
     'Alertas',
+    'Registrar Órgão Governamental',
   ],
   [
     'Bengali',
@@ -239,6 +249,7 @@ const DashboardTitles: string[][] = [
     'মিটিং মিনিট',
     'কাজের আইটেম',
     'সতর্কতা',
+    'সরকারী সংস্থা নিবন্ধন করুন',
   ],
   [
     'Hindi',
@@ -259,6 +270,7 @@ const DashboardTitles: string[][] = [
     'मीटिंग मिनट',
     'कार्य आइटम',
     'अलर्ट',
+    'रजिस्टर सरकारी निकाय',
   ],
   [
     'Greek',
@@ -279,6 +291,7 @@ const DashboardTitles: string[][] = [
     'Συνοπτικά πρακτικά',
     'Αντικείμενα εργασίας',
     'Ειδοποιήσεις',
+    'Εγγραφή κυβερνητικού φορέα',
   ],
   [
     'Japanese',
@@ -299,6 +312,7 @@ const DashboardTitles: string[][] = [
     '「議事録」',
     '「作業項目」',
     '「アラート」',
+    '政府機関の登録',
   ],
   [
     'Korean',
@@ -319,6 +333,7 @@ const DashboardTitles: string[][] = [
     '회의록',
     '작업 항목',
     '경고',
+    '정부 기관 등록',
   ],
   [
     'Vietnamese',
@@ -339,6 +354,7 @@ const DashboardTitles: string[][] = [
     'Biên bản cuộc họp',
     'Mục công việc',
     'Cảnh báo',
+    'Đăng ký cơ quan chính phủ',
   ],
   [
     'Polish',
@@ -359,6 +375,7 @@ const DashboardTitles: string[][] = [
     'Protokół spotkania',
     'Elementy pracy',
     'Alerty',
+    'Zarejestruj organ rządowy',
   ],
   [
     'Icelandic',
@@ -379,6 +396,7 @@ const DashboardTitles: string[][] = [
     'Fundargerðir fundargerð',
     'Vinnuatriði',
     'Viðvaranir',
+    'Skráðu ríkisstofnun',
   ],
   [
     'Serbian',
@@ -399,6 +417,7 @@ const DashboardTitles: string[][] = [
     'Записници састанка',
     'Радне ставке',
     'Упозорења',
+    'Региструјте државни орган',
   ],
   [
     'Hebrew',
@@ -419,6 +438,7 @@ const DashboardTitles: string[][] = [
     'דקות פגישה',
     'פריטי עבודה',
     'התראות',
+    'רשום גוף ממשלתי',
   ],
   [
     'Hungarian',
@@ -439,6 +459,7 @@ const DashboardTitles: string[][] = [
     'Találkozói jegyzőkönyv',
     'Munkaelemek',
     'Figyelmeztetések',
+    'Nyilvántartásba vett kormányzati szerv',
   ], // ADD_HERE - do not remove this comment
 ];
 
