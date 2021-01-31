@@ -106,7 +106,7 @@ But to contribute, it's better to fork the project at https://github.com/govmeet
 
 - Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
 - Leave Angular client running, but close browser.
-- > cd govmeeting/BackEnd/WebApp
+- > cd govmeeting/src/WebUI/WebApp
 - > dotnet build
 - > dotnet run bin\Debug\netcoreapp3.1/WebApp.dll
 - Browser will automatically open to localhost:5000.
