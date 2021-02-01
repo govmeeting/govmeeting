@@ -170,7 +170,7 @@ export class ViewMeetingClient {
   }
 
   put(
-    meetingId: number,
+    //meetingId: number,
     meetingId: number | undefined,
     govbodyName: string | null | undefined,
     locationName: string | null | undefined,
