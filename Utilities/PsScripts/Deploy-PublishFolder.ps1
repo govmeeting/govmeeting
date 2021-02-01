@@ -14,14 +14,14 @@ function GetFullPath($relativePath)
 # Main script
 function Main
 {
-    $WORKSPACE_ROOT = "C:\GOVMEETING\_SOURCECODE"
-
     [CmdletBinding()]
     param (
         [Parameter(Position = 1)] [string] $publish,
         [Parameter(Position = 2)] [string] $secrets
     )
    
+    $WORKSPACE_ROOT = "C:\GOVMEETING\_SOURCECODE"
+
     # If no params passed and repo is installed in C:\GOVMEETING|_SOURCECODE
     if ($publish -eq "") { $publish = $WORKSPACE_ROOT + "\src\WebUI\WebApp\bin\release\netcoreapp2.2\publish" }
     if ($secrets -eq ""){ $secrets = $WORKSPACE_ROOT + "\SECRETS\" }

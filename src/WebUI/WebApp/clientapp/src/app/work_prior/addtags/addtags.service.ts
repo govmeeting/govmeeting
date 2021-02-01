@@ -38,9 +38,10 @@ export class AddtagsService {
     let url: string = this.addtagsUrl;
     url = url + '/' + this.meetingId;
     // TODO - handle null return. Here we just cast to the correct object type.
-    this.observable = this.http.get<Addtags>(url).pipe(catchError(this.errHandling.handleError)).share() as Observable<
-      Addtags
-    >; // make it shared so more than one subscriber can get the same result.
+    this.observable = this.http
+      .get<Addtags>(url)
+      .pipe(catchError(this.errHandling.handleError))
+      .share() as Observable<Addtags>; // make it shared so more than one subscriber can get the same result.
     return this.observable;
   }
 

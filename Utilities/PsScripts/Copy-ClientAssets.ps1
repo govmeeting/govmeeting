@@ -2,8 +2,6 @@
 
 Function Main
 {
-    $WORKSPACE_ROOT = "C:\GOVMEETING\_SOURCECODE"
-
     [CmdletBinding()]
     param (
         [Parameter(Position = 1)] [string] $clientapp,
@@ -13,6 +11,8 @@ Function Main
     $me = "Copy-ClientAssets: "
     Write-Host "$me Running pre-build script Copy-ClientAssets.ps1 " -NoNewline
     Write-Host @args
+
+    $WORKSPACE_ROOT = "C:\GOVMEETING\_SOURCECODE"
 
     # If no params passed and repo is installed in C:\GOVMEETING|_SOURCECODE
     if ($clientapp -eq "") { $clientapp = $WORKSPACE_ROOT + "\src\WebUI\WebApp\clientapp" }

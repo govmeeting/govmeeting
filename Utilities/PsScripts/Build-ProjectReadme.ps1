@@ -3,14 +3,14 @@
 
 Function BuildReadme
 {
-    $WORKSPACE_ROOT = "C:\GOVMEETING\_SOURCECODE"
-
   [CmdletBinding()]
   param (
       [Parameter(Position = 1)] [string] $clientapp,
       [Parameter(Position = 2)] [string] $readme
   )
   Write-Host "############################ Build-ProjectReadme.ps1 ############################"
+
+  $WORKSPACE_ROOT = "C:\GOVMEETING\_SOURCECODE"
 
   # If no params passed and repo is installed in $WORKSPACE_ROOT
   if ($clientapp -eq "") { $clientapp = $WORKSPACE_ROOT + "\src\WebUI\WebApp\clientapp" }

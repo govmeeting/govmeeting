@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GM.Utilities;
 using Microsoft.Extensions.Configuration;
-using GM.Utilities;
 using System.IO;
 
 namespace GM.Application.Configuration
@@ -27,9 +24,11 @@ namespace GM.Application.Configuration
 
                 config
                 .AddJsonFile(Path.Combine(solutionFolder, "appsettings.Development.json"), optional: true)
-                .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Secrets.json"), optional: true);
+                .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Secrets.json"), optional: true)
+                .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Custom.json"), optional: true);
 
-            } else {
+            }
+            else {
                 // Otherwise, assume that the appsettings files are in the deployment folder.
                 config
                 .AddJsonFile("appsettings.Secrets.json", optional: true)

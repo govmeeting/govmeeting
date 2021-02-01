@@ -103,9 +103,11 @@ namespace GM.WebUI.WebApp
 
             services.AddScoped<ValidateReCaptchaAttribute>();
             logger.Info("Add ValidateReCaptchaAttribute");
+
+            services.AddTransient<ISeedDatabase, SeedDatabase>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedDatabase seedDatabase)
         {
             /*  NOTE: 
              *  For Visual Studio, the URL's used during development are in
@@ -177,7 +179,7 @@ namespace GM.WebUI.WebApp
                 }
             });
 
-            SeedDatabase.Seed();
+            seedDatabase.Seed();
 
         }
 
