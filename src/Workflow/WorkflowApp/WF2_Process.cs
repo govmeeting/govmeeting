@@ -1,25 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using ChinhDo.Transactions;
+using GM.Application.AppCore.Entities.Meetings;
+using GM.Application.Configuration;
 //using GM.Application.ProcessRecording;
 using GM.Application.ProcessTranscript;
-using Microsoft.Extensions.Options;
-using GM.Application.Configuration;
 //using GM.Infrastructure.FileDataRepositories;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using GM.Utilities;
-using ChinhDo.Transactions;
+using Microsoft.Extensions.Options;
+using System.Collections.Generic;
+using System.IO;
 using System.Transactions;
-using GM.Infrastructure.FileDataRepositories;
-using GM.Infrastructure.InfraCore.Data;
 
-using GM.Application.AppCore.Entities.Govbodies;
-using GM.Application.AppCore.Entities.Meetings;
-using GM.Application.AppCore.Entities.Speakers;
-using GM.Application.AppCore.Entities.Topics;
-
+#pragma warning disable CS0219
 
 namespace GM.WorkflowApp
 {

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Parsers.Markdown;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Toolkit.Parsers.Markdown;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 #pragma warning disable IDE0059
 #pragma warning disable IDE0051
@@ -22,46 +22,11 @@ namespace GM.Utilities.TranslateText
             translateInCloud = _translateInCloud;
         }
 
-        // Note: If we add a new language, we also need to change:
-        //   frontend\clientapp\src\app\dashboard\dashboard-titles.ts
-        //   frontend\clientapp\src\app\about-project\document-pages.ts
-        //   frontend\clientapp\src\app\sidenav\sidenav-header\sidenav-header.ts
-        public void Run(string[] args)
+        public void TranslateDocuments(string[] documentsArray, string[] languagesArray, bool update)
         {
-            // Setting update to true attempts to only re-translate files that were edited.
-            // But it is not working yet.
-            bool update = true;
+            List<string> documents = documentsArray.ToList();
+            List<string> languages = languagesArray.ToList();
 
-            // All current documents.
-            List<string> allDocuments = new List<string>()
-                { "overview1", "overview2", "workflow", "project-status", "setup", "sys-design", "dev-notes", "database"};
-
-            // All languages that we currently support
-            List<string> allLanguages = new List<string>()
-                { "de", "es", "fr", "it", "fi", "ar", "sw", "zh", "pt" , "bn", "hi" };
-
-            // Documents that change often.
-            List<string> someDocuments = new List<string>()
-                { "sys-design"};
-
-            // We may do some languages at a time.
-            List<string> someLanguages = new List<string>()
-                { "hu" };
-
-            // No documents have yet to be translated into these languages 
-            List<string> moreLanguages = new List<string>()
-                { "ic", "sw", "no" };
-
-            // uncomment one of the following lines.
-            // TranslateDocumentsLanguages(allDocuments, allLanguages, update);
-            TranslateDocumentsLanguages(allDocuments, someLanguages, update);
-            // TranslateDocumentsLanguages(allDocuments, moreLanguages, update);
-
-            AddToArrays("hu", "Hungarian");
-        }
-
-        private void TranslateDocumentsLanguages(List<string> documents, List<string> languages, bool update)
-        {
             foreach (string language in languages)
             {
                 string languageFolder = Path.Combine(docsFolder, "TRANS", language.ToUpper());
@@ -100,26 +65,29 @@ namespace GM.Utilities.TranslateText
             }
         }
 
-        private void AddToArrays(string language, string languageName)
+        public void AddNewLanguageToArrays(string language, string languageName)
         {
-            string docpages = @"""Overview"", ""Workflow"", ""Project status"", ""Setup"", ""Developer notes"", ""Database"", ""Design""";
-            string dashtitles = @"""Politics"", ""Legislation"", ""Meetings"", ""Govmeeting News"", ""Edit Transcript"", ""Add Tags to Transcript"", ""View Transcript"", ""Issues"", ""Officials"", ""Virtual Meeting"", ""Chat"", ""Charts"", ""Notes"", ""Meeting Minutes"", ""Work Items"", ""Alerts""";
-            string docpagesFile = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\app\about-project\document-pages.ts");
-            string dashtitlesFile = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\app\dashboard\dashboard-titles.ts");
-            string sidenavheaderFile = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\app\sidenav\sidenav-header\sidenav-header.ts");
 
+            // Document page titles in sidebar
+            string docpagesFile = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\app\about-project\document-pages.ts");
+            string docpages = @"""Overview"", ""Workflow"", ""Project status"", ""Setup"", ""Developer notes"", ""Database"", ""Design""";
             string translated = translateInCloud.TranslateText(docpages, language);  // translate
             translated = Regex.Replace(translated, @"„|”|“", @"""");        // replace other version of double quotes.
             string text = File.ReadAllText(docpagesFile);
             string newtext = text.Replace(@"]//ADD_HERE", @"]," + Environment.NewLine + @"    [""" + languageName + @""", """ + language + @""", " + translated + @"]//ADD_HERE");
             File.WriteAllText(docpagesFile, newtext);
 
+            // Dashboard card titles in header
+            string dashtitlesFile = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\app\dashboard\dashboard-titles.ts");
+            string dashtitles = @"""Politics"", ""Legislation"", ""Meetings"", ""Govmeeting News"", ""Edit Transcript"", ""Add Tags to Transcript"", ""View Transcript"", ""Issues"", ""Officials"", ""Virtual Meeting"", ""Chat"", ""Charts"", ""Notes"", ""Meeting Minutes"", ""Work Items"", ""Alerts""";
             translated = translateInCloud.TranslateText(dashtitles, language);  // translate
             translated = Regex.Replace(translated, @"„|”|“", @"""");        // replace other version of double quotes.
             text = File.ReadAllText(dashtitlesFile);
             newtext = text.Replace(@"]//ADD_HERE", @"]," + Environment.NewLine + @"    [""" + languageName + @""", """ + language + @""", " + translated + @"]//ADD_HERE");
             File.WriteAllText(dashtitlesFile, newtext);
 
+            // Language choices in dropdown box in sidenav header
+            string sidenavheaderFile = Path.Combine(GMFileAccess.GetClientAppFolder(), @"src\app\sidenav\sidenav-header\sidenav-header.ts");
             // {enname: 'English', value: 'en', viewValue: 'English'}
             translated = translateInCloud.TranslateText(languageName, language);  // translate
             text = File.ReadAllText(sidenavheaderFile);

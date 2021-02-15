@@ -51,6 +51,9 @@ import { ViewTranscriptServiceStub } from './features/viewtranscript/viewtranscr
 import { ChatService } from './features/chat/chat.service';
 import { DataFactoryService } from './work_experiments/datafake/data-factory.service';
 
+// Swagger API
+import { ViewMeetingClient, EditMeetingClient, GovLocationClient, GovbodyClient } from './apis/swagger-api';
+
 // EXPERIMENTS
 import { PopupComponent } from './work_experiments/popup/popup.component';
 import { DataFakeService } from './work_experiments/datafake/data-fake.service';
@@ -146,6 +149,12 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
     DataFactoryService,
     DataFakeService,
     UserSettingsService,
+
+    // Swagger API
+    ViewMeetingClient,
+    EditMeetingClient,
+    GovLocationClient,
+    GovbodyClient,
   ],
   bootstrap: [AppComponent],
 })

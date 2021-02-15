@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.Options;
+﻿using GM.Application.AppCore.Entities.Meetings;
 using GM.Application.Configuration;
-using Newtonsoft.Json;
-using GM.Infrastructure.FileDataRepositories;
-using GM.Application.EditTranscript;
+using Microsoft.Extensions.Options;
+using System.Collections.Generic;
 
-using GM.Application.AppCore.Entities.Govbodies;
-using GM.Application.AppCore.Entities.Meetings;
-using GM.Application.AppCore.Entities.Speakers;
-using GM.Application.AppCore.Entities.Topics;
-
+#pragma warning disable CS0219
 
 namespace GM.WorkflowApp
 {

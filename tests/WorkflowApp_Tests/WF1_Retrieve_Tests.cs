@@ -1,34 +1,22 @@
 ﻿using Xunit;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.Logging;
-using GM.Application.Configuration;
 //using GM.DatabaseRepositories;
-using GM.Application.ProcessTranscript;
-using GM.Utilities;
-using Moq;
-using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Extensions.Options;
-using GM.Infrastructure.FileDataRepositories;
-using GM.Infrastructure.InfraCore.Data;
-using System.IO;
-using System.Globalization;
-using GM.Infrastructure.GetOnlineFiles;
-using NLog.Filters;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-using System.Runtime.CompilerServices;
-
-using GM.Application.AppCore.Entities.Govbodies;
-using GM.Application.AppCore.Entities.Meetings;
-using GM.Application.AppCore.Entities.Speakers;
-using GM.Application.AppCore.Entities.Topics;
 
 namespace GM.Tests.WorkflowApp_Tests
 {
 
     public class WF1_Retrieve_Tests
     {
+        /*   These tests need to be re-written. The modifications for implementing Clean Artitecture design
+         *   invalidated them. 
+         */
+
+        [Fact()]
+        public void Placeholder_Test()
+        {
+            Assert.True(1 + 1 == 2);
+        }
+
+
         //WF1_Retrieve wf1;
         //NullLogger<WF1_Retrieve> logger;
         //readonly IOptions<AppSettings> config;

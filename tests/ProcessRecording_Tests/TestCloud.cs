@@ -1,109 +1,117 @@
-﻿using GM.Application.Configuration;
-using GM.Application.DTOs.Meetings;
-using GM.Application.ProcessRecording;
-using GM.Infrastructure.GoogleCloud;
-using GM.Utilities;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using System.IO;
+﻿//using GM.Application.DTOs.Meetings;
+//using GM.Application.ProcessRecording;
+//using GM.Utilities;
+//using Newtonsoft.Json;
+using Xunit;
 
 namespace GM.Tests.ProcessRecording_Tests
 
 {
     public class TestCloud
     {
-        private readonly string language = "en";
-        private readonly AppSettings config;
-        readonly TranscribeAudio transcribe;
+        /*   These tests were originally written not using any testing framework and also
+         *   before changes were made to replace the Fixasr & Addtags components with
+         *   an EditTranscript component which performs both their functions. 
+         */
 
-        public TestCloud(
-            IOptions<AppSettings> _config,
-            TranscribeAudio _transcribe
-        )
+        [Fact()]
+        public void Placeholder_Test()
         {
-            config = _config.Value;
-            transcribe = _transcribe;
+            Assert.True(1 + 1 == 2);
         }
 
-        public void TestAll()
-        {
-            TestMoveToCloudAndTranscribe(language);
-            TestTranscriptionOfFileInCloud(language);
-            TestTranscriptionOfLocalFile(language);
-        }
+        //private readonly string language = "en";
+        //private readonly AppSettings config;
+        //readonly TranscribeAudio transcribe;
 
-        public void TestMoveToCloudAndTranscribe(string language)
-        {
-            AudioProcessing audioProcessing = new AudioProcessing();
+        //public TestCloud(
+        //    IOptions<AppSettings> _config,
+        //    TranscribeAudio _transcribe
+        //)
+        //{
+        //    config = _config.Value;
+        //    transcribe = _transcribe;
+        //}
 
-            string baseName = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15";
-            string videoFile = Path.Combine(config.TestdataPath, baseName + ".mp4");
-            string outputFolder = Path.Combine(config.TestdataPath, "TestMoveToCloudAndTranscribe");
+        //public void TestAll()
+        //{
+        //    TestMoveToCloudAndTranscribe(language);
+        //    TestTranscriptionOfFileInCloud(language);
+        //    TestTranscriptionOfLocalFile(language);
+        //}
 
-            GMFileAccess.DeleteAndCreateDirectory(outputFolder);
+        //public void TestMoveToCloudAndTranscribe(string language)
+        //{
+        //    AudioProcessing audioProcessing = new AudioProcessing();
 
-            string outputBasePath = Path.Combine(outputFolder, baseName);
-            string shortFile = outputBasePath + ".mp4";
-            string audioFile = outputBasePath + ".flac";
-            string jsonFile = outputBasePath + ".json";
+        //    string baseName = "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15";
+        //    string videoFile = Path.Combine(config.TestdataPath, baseName + ".mp4");
+        //    string outputFolder = Path.Combine(config.TestdataPath, "TestMoveToCloudAndTranscribe");
+
+        //    GMFileAccess.DeleteAndCreateDirectory(outputFolder);
+
+        //    string outputBasePath = Path.Combine(outputFolder, baseName);
+        //    string shortFile = outputBasePath + ".mp4";
+        //    string audioFile = outputBasePath + ".flac";
+        //    string jsonFile = outputBasePath + ".json";
 
 
-            // Extract short version
-            //SplitRecording splitRecording = new SplitRecording();
-            audioProcessing.ExtractPart(videoFile, shortFile, 60, 4 * 60);
+        //    // Extract short version
+        //    //SplitRecording splitRecording = new SplitRecording();
+        //    audioProcessing.ExtractPart(videoFile, shortFile, 60, 4 * 60);
 
-            // Extract audio.
-            audioProcessing.Extract(shortFile, audioFile);
+        //    // Extract audio.
+        //    audioProcessing.Extract(shortFile, audioFile);
 
-            // Transcribe
-            //TranscribeAudio ta = new TranscribeAudio(_config);
+        //    // Transcribe
+        //    //TranscribeAudio ta = new TranscribeAudio(_config);
 
-            //TranscribeResultOrig response = new TranscribeResultOrig();
-            Transcribed_Dto response = new Transcribed_Dto();
+        //    //TranscribeResultOrig response = new TranscribeResultOrig();
+        //    Transcribed_Dto response = new Transcribed_Dto();
 
-            // TODO - signature of TranscribeInCloud has changed.
-            // response = transcribe.MoveToCloudAndTranscribe(audioFile, baseName + ".flac", config.GoogleCloudBucketName, config.UseAudioFileAlreadyInCloud, language);
+        //    // TODO - signature of TranscribeInCloud has changed.
+        //    // response = transcribe.MoveToCloudAndTranscribe(audioFile, baseName + ".flac", config.GoogleCloudBucketName, config.UseAudioFileAlreadyInCloud, language);
 
-            string stringValue = JsonConvert.SerializeObject(response, Formatting.Indented);
-            File.WriteAllText(outputBasePath + "-rsp.json", stringValue);
+        //    string stringValue = JsonConvert.SerializeObject(response, Formatting.Indented);
+        //    File.WriteAllText(outputBasePath + "-rsp.json", stringValue);
 
-            // Modify Transcript json format
-            //ModifyTranscriptJson_1 mt = new ModifyTranscriptJson_1();
-            ModifyTranscriptJson mt = new ModifyTranscriptJson();
-            //FixasrViewModel fixasr = mt.Modify(response);
-            EditMeeting_Dto meetingEditDto = mt.Modify(response);
+        //    // Modify Transcript json format
+        //    //ModifyTranscriptJson_1 mt = new ModifyTranscriptJson_1();
+        //    ModifyTranscriptJson mt = new ModifyTranscriptJson();
+        //    //FixasrViewModel fixasr = mt.Modify(response);
+        //    EditMeeting_Dto meetingEditDto = mt.Modify(response);
 
-            // Create JSON file
-            //stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);
-            stringValue = JsonConvert.SerializeObject(meetingEditDto, Formatting.Indented);
-            File.WriteAllText(jsonFile, stringValue);
-        }
+        //    // Create JSON file
+        //    //stringValue = JsonConvert.SerializeObject(fixasr, Formatting.Indented);
+        //    stringValue = JsonConvert.SerializeObject(meetingEditDto, Formatting.Indented);
+        //    File.WriteAllText(jsonFile, stringValue);
+        //}
 
-        public void TestTranscriptionOfFileInCloud(string language)
-        {
-            //TranscribeAudio ta = new TranscribeAudio(_config);
+        //public void TestTranscriptionOfFileInCloud(string language)
+        //{
+        //    //TranscribeAudio ta = new TranscribeAudio(_config);
 
-            // Test transcription of a file already in the cloud storage bucket
+        //    // Test transcription of a file already in the cloud storage bucket
 
-            TranscribeResultOrig transcript = new TranscribeResultOrig();
+        //    TranscribeResultOrig transcript = new TranscribeResultOrig();
 
-            // TODO - signature of TranscribeInCloud has changed.
-            // transcript = transcribe.TranscribeInCloud("USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09_00-01-40.flac", language);
-            //TranscribeResponse transcript = ta.TranscribeInCloud("Step 0 original#00-06-40.flac", language);
+        //    // TODO - signature of TranscribeInCloud has changed.
+        //    // transcript = transcribe.TranscribeInCloud("USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09_00-01-40.flac", language);
+        //    //TranscribeResponse transcript = ta.TranscribeInCloud("Step 0 original#00-06-40.flac", language);
 
-            string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
-        }
+        //    string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
+        //}
 
-        public void TestTranscriptionOfLocalFile(string language)
-        {
-            //TranscribeAudio ta = new TranscribeAudio(_config);
+        //public void TestTranscriptionOfLocalFile(string language)
+        //{
+        //    //TranscribeAudio ta = new TranscribeAudio(_config);
 
-            // Test transcription on a local file. We will use sychronous calls to the Google Speech API. These allow a max of 1 minute per request.
-            string folder = config.TestdataPath + @"..\testdata\BBH Selectmen\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen\2017-01-09\step 2 extract\";
-            //TranscribeResultOrig transcript = transcribe.TranscribeFile(folder + "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09#00-01-40.flac", language);
-            Transcribed_Dto transcript = transcribe.TranscribeLocalFile(folder + "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09#00-01-40.flac", language);
+        //    // Test transcription on a local file. We will use sychronous calls to the Google Speech API. These allow a max of 1 minute per request.
+        //    string folder = config.TestdataPath + @"..\testdata\BBH Selectmen\USA_ME_LincolnCounty_BoothbayHarbor_Selectmen\2017-01-09\step 2 extract\";
+        //    //TranscribeResultOrig transcript = transcribe.TranscribeFile(folder + "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09#00-01-40.flac", language);
+        //    Transcribed_Dto transcript = transcribe.TranscribeLocalFile(folder + "USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-01-09#00-01-40.flac", language);
 
-            string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
-        }
+        //    string stringValue = JsonConvert.SerializeObject(transcript, Formatting.Indented);
+        //}
     }
 }

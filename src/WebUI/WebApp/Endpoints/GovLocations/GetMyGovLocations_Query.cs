@@ -42,7 +42,6 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
             //var userId = _currentUserService.UserId ?? string.Empty;
 
             // TODO Get current user's GovLocation ID - these are temporary for development
-            int myloc_id = 13; 
             string mylocCity = "City of Whittlesea";
 
             //var result = new List<GovLocation_Dto>();
@@ -50,7 +49,6 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
             IEnumerable<GovLocation> govlocs = _context.GovLocations.AsEnumerable();
 
             var govLocations = await _context.GovLocations.ToListAsync();
-            //GovLocation myloc = govlocs.Where(l => l.Id == myloc_id).FirstOrDefault();
             GovLocation myloc = govlocs.Where(l => l.Name == mylocCity).FirstOrDefault();
 
             IEnumerable<GovLocation> ancestors = GetAncestors(myloc);

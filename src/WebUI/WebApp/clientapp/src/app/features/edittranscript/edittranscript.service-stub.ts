@@ -7,7 +7,9 @@ import { EditTranscriptSample } from '../../models/sample-data/edittranscript-sa
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { AppData } from '../../appdata';
 
-const UseFileData = false; // If true, get data from sample in EditTranscriptSample.ts, else from assets folder
+import { EditMeetingClient } from '../../apis/swagger-api';
+
+const UseImportData = false; // If true, get data from sample in EditTranscriptSample.ts, else from assets folder
 const urlTest = 'assets/stubdata/ToEdit.json';
 const urlTestLarge = 'assets/stubdata/LARGE/USA_NJ_Passaic_LittleFalls_TownshipCouncil_en_2020-06-20.json';
 const addtagsUrl = 'https://jsonplaceholder.typicode.com/posts'; // Use  jsonplaceholder service to test post requests
@@ -22,13 +24,18 @@ export class EdittranscriptServiceStub {
   isLargeEditData: boolean;
   url: string;
 
-  public constructor(private appData: AppData, private http: HttpClient, private errHandling: ErrorHandlingService) {
+  public constructor(
+    private appData: AppData,
+    private http: HttpClient,
+    private errHandling: ErrorHandlingService,
+    private editTranscript: EditMeetingClient
+  ) {
     NoLog || console.log(this.ClassName + 'constructor');
     this.isLargeEditData = appData.isLargeEditData;
   }
 
   public getTalks(): Observable<EditTranscript> {
-    if (UseFileData) {
+    if (UseImportData) {
       NoLog || console.log(this.ClassName + 'get from memory');
       return of(EditTranscriptSample);
     }

@@ -1,29 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using GM.Application.Configuration;
-//using GM.DatabaseRepositories;
-using GM.Application.ProcessTranscript;
-using GM.Utilities;
+﻿//using GM.DatabaseRepositories;
 using Xunit;
-using Moq;
-using Microsoft.Extensions.Options;
-using GM.Infrastructure.FileDataRepositories;
-using GM.Infrastructure.InfraCore.Data;
-using System.IO;
-using System.Globalization;
-
-using GM.Application.AppCore.Entities.Govbodies;
-using GM.Application.AppCore.Entities.Meetings;
-using GM.Application.AppCore.Entities.Speakers;
-using GM.Application.AppCore.Entities.Topics;
 
 namespace GM.Tests.WorkflowApp_Tests
 {
     public class WF2_Process_Tests
     {
+        /*   These tests need to be re-written. The modifications for implementing Clean Artitecture design
+         *   invalidated them. 
+         */
+
+        [Fact()]
+        public void Placeholder_Test()
+        {
+            Assert.True(1 + 1 == 2);
+        }
+
+
         //WF2_Process wf2;
         //readonly ILogger<WF2_Process> logger;
         //readonly IOptions<AppSettings> config;

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Example.Api.Client.Typescript</AssemblyName>
+    <RootNamespace>Example.Api.Client.Typescript</RootNamespace>
+    <GenerateCode>True</GenerateCode>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <Compile Remove="node_modules\**" />
+    <EmbeddedResource Remove="node_modules\**" />
+    <None Remove="node_modules\**" />
+    <TypeScriptCompile Remove="node_modules\**" />
+  </ItemGroup>-->
+
+  <Target Name="NSwag" BeforeTargets="AfterBuild">
+    <ItemGroup>
+      <APIFILES Include=".\*.ts" />
+    </ItemGroup>
+    <Copy SourceFiles="@(APIFILES)" DestinationFolder="..\WebApp\clientapp\src\app\apis" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

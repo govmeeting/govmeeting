@@ -1,3 +1,5 @@
+// import { AutoMap } from '@automapper/classes';
+
 // This is the JSON format of the text to be tagged
 
 export class EditTranscript {

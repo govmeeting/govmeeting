@@ -76,7 +76,15 @@ namespace GM.WebUI.WebApp
             logger.Info("Add services for Web API, MVC & Razor Views");
 
             //services.AddOpenApiDocument();
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(settings =>
+            {
+                settings.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "WebApp API";
+                    document.Info.Description = "REST API for WebApp.";
+                };
+            });
             logger.Info("Add services for Swagger Document");
 
             services.AddRazorPages();
