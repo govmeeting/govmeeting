@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VirtualMeetingComponent } from './virtual-meeting';
 
@@ -6,11 +6,13 @@ describe('VirtualMeetingComponent', () => {
   let component: VirtualMeetingComponent;
   let fixture: ComponentFixture<VirtualMeetingComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [VirtualMeetingComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [VirtualMeetingComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(VirtualMeetingComponent);

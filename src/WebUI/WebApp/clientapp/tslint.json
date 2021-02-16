@@ -17,6 +17,12 @@
     "directive-selector": [true, "attribute", "gm", "camelCase"],
     "component-selector": [true, "element", "gm", "kebab-case"],
     "eofline": true,
+    "import-spacing": true,
+    "indent": {
+      "options": [
+        "spaces"
+      ]
+    },
     "import-blacklist": [true, "rxjs/Rx"],
     "max-classes-per-file": false,
     "member-ordering": [
@@ -53,9 +59,32 @@
     "no-input-rename": true,
     "no-inputs-metadata-property": true,
     "no-output-native": true,
+    "semicolon": {
+      "options": [
+        "always"
+      ]
+    },
     "no-output-on-prefix": true,
     "no-output-rename": true,
     "no-outputs-metadata-property": true,
+    "typedef-whitespace": {
+      "options": [
+        {
+          "call-signature": "nospace",
+          "index-signature": "nospace",
+          "parameter": "nospace",
+          "property-declaration": "nospace",
+          "variable-declaration": "nospace"
+        },
+        {
+          "call-signature": "onespace",
+          "index-signature": "onespace",
+          "parameter": "onespace",
+          "property-declaration": "onespace",
+          "variable-declaration": "onespace"
+        }
+      ]
+    },
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,

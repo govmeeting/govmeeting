@@ -39,8 +39,8 @@ jobs:
       - name: Clean Install
         run: npm ci
 
-      - name: Prettier & Lint checks
-        run: npm run ci:lint
+      - name: Prettier & Format checks
+        run: npm run ci:format
 
       - name: Unit Tests
         run: npm run ci:test

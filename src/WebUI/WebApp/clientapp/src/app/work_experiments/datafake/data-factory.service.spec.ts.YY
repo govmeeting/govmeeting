@@ -6,7 +6,7 @@ describe('DataFactoryService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DataFactoryService = TestBed.get(DataFactoryService);
+    const service: DataFactoryService = TestBed.inject(DataFactoryService);
     expect(service).toBeTruthy();
   });
 });

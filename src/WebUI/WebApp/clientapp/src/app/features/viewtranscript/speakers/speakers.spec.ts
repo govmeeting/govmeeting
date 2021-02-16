@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 
 import { SpeakersComponent } from './speakers';
@@ -25,15 +25,17 @@ describe('SpeakersComponent', () => {
   let component: SpeakersComponent;
   let fixture: ComponentFixture<SpeakersComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [SpeakersComponent],
-      providers: [
-        { provide: ViewTranscriptService, useClass: ServiceStub },
-        { provide: UserchoiceService, useClass: UserchoiceStub },
-      ],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SpeakersComponent],
+        providers: [
+          { provide: ViewTranscriptService, useClass: ServiceStub },
+          { provide: UserchoiceService, useClass: UserchoiceStub },
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SpeakersComponent);

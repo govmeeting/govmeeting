@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 
 import { BrowseComponent } from './browse';
@@ -24,15 +24,17 @@ describe('BrowseComponent', () => {
   let component: BrowseComponent;
   let fixture: ComponentFixture<BrowseComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [BrowseComponent],
-      providers: [
-        { provide: ViewTranscriptService, useClass: ServiceStub },
-        { provide: UserchoiceService, useClass: UserchoiceStub },
-      ],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [BrowseComponent],
+        providers: [
+          { provide: ViewTranscriptService, useClass: ServiceStub },
+          { provide: UserchoiceService, useClass: UserchoiceStub },
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BrowseComponent);

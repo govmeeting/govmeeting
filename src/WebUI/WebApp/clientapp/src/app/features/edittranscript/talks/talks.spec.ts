@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
@@ -26,12 +26,14 @@ describe('TalksComponent', () => {
   let component: TalksComponent;
   let fixture: ComponentFixture<TalksComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [TalksComponent, TopicsComponent],
-      providers: [{ provide: EdittranscriptService, useClass: ServiceStub }],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [TalksComponent, TopicsComponent],
+        providers: [{ provide: EdittranscriptService, useClass: ServiceStub }],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TalksComponent);
