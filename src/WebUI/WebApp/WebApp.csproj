@@ -62,6 +62,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="clientapp\src\app\models\govbody-mapper.ts" />
+    <None Remove="clientapp\src\app\models\mapper.ts" />
+    <None Remove="clientapp\src\app\models\sample-data\govbody-view.ts" />
+    <None Remove="clientapp\src\app\models\sample-mapper.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="..\..\..\appsettings.development.json" Link="appsettings.development.json" />
   </ItemGroup>
 
@@ -79,6 +86,13 @@
     <Folder Include="Endpoints\Video\" />
     <Folder Include="Endpoints\Topic\" />
     <Folder Include="Endpoints\Speaker\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="clientapp\src\app\models\govbody-mapper.ts" />
+    <TypeScriptCompile Include="clientapp\src\app\models\govbody-view.ts" />
+    <TypeScriptCompile Include="clientapp\src\app\models\mapper.ts" />
+    <TypeScriptCompile Include="clientapp\src\app\models\sample-mapper.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

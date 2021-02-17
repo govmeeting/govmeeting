@@ -1,13 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { sample } from 'rxjs/operators';
+import { IGovbodyDetails } from '../../models/govbody-view';
 
-export interface GovBody {
-  name: string;
-  officials: string;
-  officers: string;
-  recordingsUrl: string;
-  transcriptsUrl: string;
-}
+import { SampleMapper } from '../../models/sample-mapper';
 
 @Component({
   selector: 'gm-register-gov-body',
@@ -15,11 +11,15 @@ export interface GovBody {
   styleUrls: ['./register-gov-body.component.scss'],
 })
 export class RegisterGovBodyComponent {
-  @Output() register = new EventEmitter<GovBody>();
+  @Output() register = new EventEmitter<IGovbodyDetails>();
 
   form: FormGroup;
+  sampleMapper = new SampleMapper;
 
   constructor(fb: FormBuilder) {
+
+    this.sampleMapper.useMapper();
+    
     this.form = fb.group({
       name: [null, [Validators.required]],
       officials: [null, [Validators.required]],
@@ -29,7 +29,7 @@ export class RegisterGovBodyComponent {
     });
   }
 
-  submit(form: GovBody, valid: boolean) {
+  submit(form: IGovbodyDetails, valid: boolean) {
     this.form.markAllAsTouched();
     if (valid) {
       this.register.emit(form);
