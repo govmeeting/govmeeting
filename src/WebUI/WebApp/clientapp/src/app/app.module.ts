@@ -10,6 +10,8 @@ import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
+import { FetchDataComponent } from './fetch-data/fetch-data.component';
+
 // APP
 import { AppRoutingModule } from './app-routing.module';
 import { AboutProjectModule } from './about-project/about-project.module';
@@ -52,7 +54,8 @@ import { ChatService } from './features/chat/chat.service';
 import { DataFactoryService } from './work_experiments/datafake/data-factory.service';
 
 // Swagger API
-import { ViewMeetingClient, EditMeetingClient, GovLocationClient, GovbodyClient } from './apis/swagger-api';
+//import { ViewMeetingClient, EditMeetingClient, GovLocationClient, GovbodyClient } from './apis/swagger-api';
+import { GovLocationClient, GovbodyClient } from './apis/api.generated.clients';
 
 // EXPERIMENTS
 import { PopupComponent } from './work_experiments/popup/popup.component';
@@ -70,7 +73,7 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
   imports: [
     // /////////////// external //////////////
     RouterModule.forRoot([]),
-    RouterModule,
+    //RouterModule,
     CommonModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
@@ -97,7 +100,14 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
     AmchartsModule,
     FeaturesModule,
   ],
-  declarations: [AppComponent, DashMainComponent, ShoutoutsComponent, RegisterComponent, PopupComponent],
+  declarations: [
+    AppComponent,
+    DashMainComponent,
+    ShoutoutsComponent,
+    RegisterComponent,
+    PopupComponent,
+    FetchDataComponent,
+  ],
   exports: [
     DemoMaterialModule,
 
@@ -142,6 +152,7 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
     {
       provide: ViewTranscriptService,
       useClass: isAspServerRunning ? ViewTranscriptService : ViewTranscriptServiceStub,
+    //  useClass: ViewTranscriptService,
     },
     // { provide: ViewTranscriptService, useClass: ViewTranscriptServiceStub },
 
@@ -151,8 +162,8 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
     UserSettingsService,
 
     // Swagger API
-    ViewMeetingClient,
-    EditMeetingClient,
+    //ViewMeetingClient,
+    //EditMeetingClient,
     GovLocationClient,
     GovbodyClient,
   ],

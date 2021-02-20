@@ -62,13 +62,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="clientapp\src\app\models\govbody-mapper.ts" />
-    <None Remove="clientapp\src\app\models\mapper.ts" />
-    <None Remove="clientapp\src\app\models\sample-data\govbody-view.ts" />
-    <None Remove="clientapp\src\app\models\sample-mapper.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="..\..\..\appsettings.development.json" Link="appsettings.development.json" />
   </ItemGroup>
 
@@ -86,13 +79,6 @@
     <Folder Include="Endpoints\Video\" />
     <Folder Include="Endpoints\Topic\" />
     <Folder Include="Endpoints\Speaker\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="clientapp\src\app\models\govbody-mapper.ts" />
-    <TypeScriptCompile Include="clientapp\src\app\models\govbody-view.ts" />
-    <TypeScriptCompile Include="clientapp\src\app\models\mapper.ts" />
-    <TypeScriptCompile Include="clientapp\src\app\models\sample-mapper.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
@@ -123,7 +109,8 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="NSwag" BeforeTargets="AfterBuild" Condition="'$(GITHUB_ACTIONS)'!='True'">
+  <!-- Use   NSwag to build code if not Azure or Github build -->
+  <!--<Target Name="NSwag" BeforeTargets="AfterBuild" Condition="'$(GITHUB_ACTIONS)'!='True' And  '$(TF_BUILD)'!='True'">
     <Message Text="Run NSwag to generate C# and Typescript APIs" Importance="high" />
     <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Core31) run nswag.json /variables:Configuration=$(Configuration),CSharpOutputPath=$(MSBuildThisFileDirectory)..\Client.CSharp,TypescriptOutputPath=$(MSBuildThisFileDirectory)..\Client.Typescript">
       <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
@@ -131,6 +118,6 @@
     </Exec>
     <Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />
     <Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />
-  </Target>
+  </Target>-->
 
 </Project>

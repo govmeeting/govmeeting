@@ -1,6 +1,8 @@
 using GM.Application.AppCore.Common;
 using GM.Application.AppCore.Interfaces;
 using GM.Application.Configuration;
+using GM.Infrastructure.FileDataRepositories.EditMeetings;
+using GM.Infrastructure.FileDataRepositories.ViewMeetings;
 using GM.Infrastructure.InfraCore.Data;
 using GM.Infrastructure.InfraCore.Identity;
 using GM.Utilities;
@@ -113,6 +115,9 @@ namespace GM.WebUI.WebApp
             logger.Info("Add ValidateReCaptchaAttribute");
 
             services.AddTransient<ISeedDatabase, SeedDatabase>();
+
+            services.AddTransient<IViewMeetingRepository, ViewMeetingRepository>();
+            services.AddTransient<IEditMeetingRepository, EditMeetingRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedDatabase seedDatabase)

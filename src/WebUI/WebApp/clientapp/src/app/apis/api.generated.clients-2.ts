@@ -125,8 +125,7 @@ export class ViewMeetingClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = ViewMeeting_Dto.fromJS(resultData200);
+            result200 = _responseText === "" ? null : <ViewMeeting_Dto>JSON.parse(_responseText, this.jsonParseReviver);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -204,8 +203,7 @@ export class ViewMeetingClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            result200 = _responseText === "" ? null : <boolean>JSON.parse(_responseText, this.jsonParseReviver);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -270,8 +268,7 @@ export class EditMeetingClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = EditMeeting_Dto.fromJS(resultData200);
+            result200 = _responseText === "" ? null : <EditMeeting_Dto>JSON.parse(_responseText, this.jsonParseReviver);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -328,8 +325,7 @@ export class EditMeetingClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            result200 = _responseText === "" ? null : <boolean>JSON.parse(_responseText, this.jsonParseReviver);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -396,8 +392,7 @@ export class GovLocationClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            result200 = _responseText === "" ? null : <number>JSON.parse(_responseText, this.jsonParseReviver);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -448,12 +443,7 @@ export class GovLocationClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200!.push(GovLocation_Dto.fromJS(item));
-            }
+            result200 = _responseText === "" ? null : <GovLocation_Dto[]>JSON.parse(_responseText, this.jsonParseReviver);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -519,8 +509,7 @@ export class GovbodyClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            result200 = _responseText === "" ? null : <number>JSON.parse(_responseText, this.jsonParseReviver);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -574,12 +563,7 @@ export class GovbodyClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200!.push(Govbody_Dto.fromJS(item));
-            }
+            result200 = _responseText === "" ? null : <Govbody_Dto[]>JSON.parse(_responseText, this.jsonParseReviver);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -633,8 +617,7 @@ export class GovbodyClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = GovbodyDetails_Dto.fromJS(resultData200);
+            result200 = _responseText === "" ? null : <GovbodyDetails_Dto>JSON.parse(_responseText, this.jsonParseReviver);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -693,12 +676,7 @@ export class WeatherForecastClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (Array.isArray(resultData200)) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200!.push(WeatherForecast.fromJS(item));
-            }
+            result200 = _responseText === "" ? null : <WeatherForecast[]>JSON.parse(_responseText, this.jsonParseReviver);
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -710,81 +688,7 @@ export class WeatherForecastClient {
     }
 }
 
-export class ViewMeeting_Dto implements IViewMeeting_Dto {
-    meetingId!: number;
-    govbodyName?: string | undefined;
-    locationName?: string | undefined;
-    date?: string | undefined;
-    topics?: ViewMeetingTopic_Dto[] | undefined;
-    speakers?: ViewMeetingSpeaker_Dto[] | undefined;
-    sections?: ViewMeetingSection_Dto[] | undefined;
-
-    constructor(data?: IViewMeeting_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.meetingId = _data["meetingId"];
-            this.govbodyName = _data["govbodyName"];
-            this.locationName = _data["locationName"];
-            this.date = _data["date"];
-            if (Array.isArray(_data["topics"])) {
-                this.topics = [] as any;
-                for (let item of _data["topics"])
-                    this.topics!.push(ViewMeetingTopic_Dto.fromJS(item));
-            }
-            if (Array.isArray(_data["speakers"])) {
-                this.speakers = [] as any;
-                for (let item of _data["speakers"])
-                    this.speakers!.push(ViewMeetingSpeaker_Dto.fromJS(item));
-            }
-            if (Array.isArray(_data["sections"])) {
-                this.sections = [] as any;
-                for (let item of _data["sections"])
-                    this.sections!.push(ViewMeetingSection_Dto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): ViewMeeting_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ViewMeeting_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["meetingId"] = this.meetingId;
-        data["govbodyName"] = this.govbodyName;
-        data["locationName"] = this.locationName;
-        data["date"] = this.date;
-        if (Array.isArray(this.topics)) {
-            data["topics"] = [];
-            for (let item of this.topics)
-                data["topics"].push(item.toJSON());
-        }
-        if (Array.isArray(this.speakers)) {
-            data["speakers"] = [];
-            for (let item of this.speakers)
-                data["speakers"].push(item.toJSON());
-        }
-        if (Array.isArray(this.sections)) {
-            data["sections"] = [];
-            for (let item of this.sections)
-                data["sections"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IViewMeeting_Dto {
+export interface ViewMeeting_Dto {
     meetingId: number;
     govbodyName?: string | undefined;
     locationName?: string | undefined;
@@ -794,364 +698,41 @@ export interface IViewMeeting_Dto {
     sections?: ViewMeetingSection_Dto[] | undefined;
 }
 
-export class ViewMeetingTopic_Dto implements IViewMeetingTopic_Dto {
-    topicId!: number;
-    name?: string | undefined;
-    isExisting!: boolean;
-
-    constructor(data?: IViewMeetingTopic_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.topicId = _data["topicId"];
-            this.name = _data["name"];
-            this.isExisting = _data["isExisting"];
-        }
-    }
-
-    static fromJS(data: any): ViewMeetingTopic_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ViewMeetingTopic_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["topicId"] = this.topicId;
-        data["name"] = this.name;
-        data["isExisting"] = this.isExisting;
-        return data; 
-    }
-}
-
-export interface IViewMeetingTopic_Dto {
+export interface ViewMeetingTopic_Dto {
     topicId: number;
     name?: string | undefined;
     isExisting: boolean;
 }
 
-export class ViewMeetingSpeaker_Dto implements IViewMeetingSpeaker_Dto {
-    speakerId!: number;
-    name?: string | undefined;
-    isExisting!: boolean;
-
-    constructor(data?: IViewMeetingSpeaker_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.speakerId = _data["speakerId"];
-            this.name = _data["name"];
-            this.isExisting = _data["isExisting"];
-        }
-    }
-
-    static fromJS(data: any): ViewMeetingSpeaker_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ViewMeetingSpeaker_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["speakerId"] = this.speakerId;
-        data["name"] = this.name;
-        data["isExisting"] = this.isExisting;
-        return data; 
-    }
-}
-
-export interface IViewMeetingSpeaker_Dto {
+export interface ViewMeetingSpeaker_Dto {
     speakerId: number;
     name?: string | undefined;
     isExisting: boolean;
 }
 
-export class ViewMeetingSection_Dto implements IViewMeetingSection_Dto {
-    name?: string | undefined;
-    topicDiscussions?: ViewMeetingTopicDiscussion_Dto[] | undefined;
-
-    constructor(data?: IViewMeetingSection_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            if (Array.isArray(_data["topicDiscussions"])) {
-                this.topicDiscussions = [] as any;
-                for (let item of _data["topicDiscussions"])
-                    this.topicDiscussions!.push(ViewMeetingTopicDiscussion_Dto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): ViewMeetingSection_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ViewMeetingSection_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        if (Array.isArray(this.topicDiscussions)) {
-            data["topicDiscussions"] = [];
-            for (let item of this.topicDiscussions)
-                data["topicDiscussions"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IViewMeetingSection_Dto {
+export interface ViewMeetingSection_Dto {
     name?: string | undefined;
     topicDiscussions?: ViewMeetingTopicDiscussion_Dto[] | undefined;
 }
 
-export class ViewMeetingTopicDiscussion_Dto implements IViewMeetingTopicDiscussion_Dto {
-    topicId!: number;
-    talks?: ViewMeetingTalk_Dto[] | undefined;
-
-    constructor(data?: IViewMeetingTopicDiscussion_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.topicId = _data["topicId"];
-            if (Array.isArray(_data["talks"])) {
-                this.talks = [] as any;
-                for (let item of _data["talks"])
-                    this.talks!.push(ViewMeetingTalk_Dto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): ViewMeetingTopicDiscussion_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ViewMeetingTopicDiscussion_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["topicId"] = this.topicId;
-        if (Array.isArray(this.talks)) {
-            data["talks"] = [];
-            for (let item of this.talks)
-                data["talks"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IViewMeetingTopicDiscussion_Dto {
+export interface ViewMeetingTopicDiscussion_Dto {
     topicId: number;
     talks?: ViewMeetingTalk_Dto[] | undefined;
 }
 
-export class ViewMeetingTalk_Dto implements IViewMeetingTalk_Dto {
-    speakerId!: number;
-    text?: string | undefined;
-
-    constructor(data?: IViewMeetingTalk_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.speakerId = _data["speakerId"];
-            this.text = _data["text"];
-        }
-    }
-
-    static fromJS(data: any): ViewMeetingTalk_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ViewMeetingTalk_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["speakerId"] = this.speakerId;
-        data["text"] = this.text;
-        return data; 
-    }
-}
-
-export interface IViewMeetingTalk_Dto {
+export interface ViewMeetingTalk_Dto {
     speakerId: number;
     text?: string | undefined;
 }
 
-export class EditMeeting_Dto implements IEditMeeting_Dto {
-    sections?: string[] | undefined;
-    topics?: string[] | undefined;
-    talks?: EditMeetingTalk_Dto[] | undefined;
-    lastEdit!: number;
-
-    constructor(data?: IEditMeeting_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            if (Array.isArray(_data["sections"])) {
-                this.sections = [] as any;
-                for (let item of _data["sections"])
-                    this.sections!.push(item);
-            }
-            if (Array.isArray(_data["topics"])) {
-                this.topics = [] as any;
-                for (let item of _data["topics"])
-                    this.topics!.push(item);
-            }
-            if (Array.isArray(_data["talks"])) {
-                this.talks = [] as any;
-                for (let item of _data["talks"])
-                    this.talks!.push(EditMeetingTalk_Dto.fromJS(item));
-            }
-            this.lastEdit = _data["lastEdit"];
-        }
-    }
-
-    static fromJS(data: any): EditMeeting_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new EditMeeting_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        if (Array.isArray(this.sections)) {
-            data["sections"] = [];
-            for (let item of this.sections)
-                data["sections"].push(item);
-        }
-        if (Array.isArray(this.topics)) {
-            data["topics"] = [];
-            for (let item of this.topics)
-                data["topics"].push(item);
-        }
-        if (Array.isArray(this.talks)) {
-            data["talks"] = [];
-            for (let item of this.talks)
-                data["talks"].push(item.toJSON());
-        }
-        data["lastEdit"] = this.lastEdit;
-        return data; 
-    }
-}
-
-export interface IEditMeeting_Dto {
+export interface EditMeeting_Dto {
     sections?: string[] | undefined;
     topics?: string[] | undefined;
     talks?: EditMeetingTalk_Dto[] | undefined;
     lastEdit: number;
 }
 
-export class EditMeetingTalk_Dto implements IEditMeetingTalk_Dto {
-    transcript?: string | undefined;
-    confidence!: number;
-    wordCount!: number;
-    speakerName?: string | undefined;
-    sectionName?: string | undefined;
-    topicName?: string | undefined;
-    showSetTopic!: boolean;
-    words?: EditMeetingWord_Dto[] | undefined;
-
-    constructor(data?: IEditMeetingTalk_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.transcript = _data["transcript"];
-            this.confidence = _data["confidence"];
-            this.wordCount = _data["wordCount"];
-            this.speakerName = _data["speakerName"];
-            this.sectionName = _data["sectionName"];
-            this.topicName = _data["topicName"];
-            this.showSetTopic = _data["showSetTopic"];
-            if (Array.isArray(_data["words"])) {
-                this.words = [] as any;
-                for (let item of _data["words"])
-                    this.words!.push(EditMeetingWord_Dto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): EditMeetingTalk_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new EditMeetingTalk_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["transcript"] = this.transcript;
-        data["confidence"] = this.confidence;
-        data["wordCount"] = this.wordCount;
-        data["speakerName"] = this.speakerName;
-        data["sectionName"] = this.sectionName;
-        data["topicName"] = this.topicName;
-        data["showSetTopic"] = this.showSetTopic;
-        if (Array.isArray(this.words)) {
-            data["words"] = [];
-            for (let item of this.words)
-                data["words"].push(item.toJSON());
-        }
-        return data; 
-    }
-}
-
-export interface IEditMeetingTalk_Dto {
+export interface EditMeetingTalk_Dto {
     transcript?: string | undefined;
     confidence: number;
     wordCount: number;
@@ -1162,54 +743,7 @@ export interface IEditMeetingTalk_Dto {
     words?: EditMeetingWord_Dto[] | undefined;
 }
 
-export class EditMeetingWord_Dto implements IEditMeetingWord_Dto {
-    word?: string | undefined;
-    confidence!: number;
-    startTime!: number;
-    endTime!: number;
-    wordNum!: number;
-    speakerTag!: number;
-
-    constructor(data?: IEditMeetingWord_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.word = _data["word"];
-            this.confidence = _data["confidence"];
-            this.startTime = _data["startTime"];
-            this.endTime = _data["endTime"];
-            this.wordNum = _data["wordNum"];
-            this.speakerTag = _data["speakerTag"];
-        }
-    }
-
-    static fromJS(data: any): EditMeetingWord_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new EditMeetingWord_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["word"] = this.word;
-        data["confidence"] = this.confidence;
-        data["startTime"] = this.startTime;
-        data["endTime"] = this.endTime;
-        data["wordNum"] = this.wordNum;
-        data["speakerTag"] = this.speakerTag;
-        return data; 
-    }
-}
-
-export interface IEditMeetingWord_Dto {
+export interface EditMeetingWord_Dto {
     word?: string | undefined;
     confidence: number;
     startTime: number;
@@ -1218,79 +752,14 @@ export interface IEditMeetingWord_Dto {
     speakerTag: number;
 }
 
-export class GovLocation_Dto implements IGovLocation_Dto {
-    id!: number;
-    name?: string | undefined;
-    type!: GovlocTypes;
-    parentLocationId!: number;
-
-    constructor(data?: IGovLocation_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.id = _data["id"];
-            this.name = _data["name"];
-            this.type = _data["type"];
-            this.parentLocationId = _data["parentLocationId"];
-        }
-    }
-
-    static fromJS(data: any): GovLocation_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new GovLocation_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
-        data["name"] = this.name;
-        data["type"] = this.type;
-        data["parentLocationId"] = this.parentLocationId;
-        return data; 
-    }
-}
-
-export interface IGovLocation_Dto {
+export interface GovLocation_Dto {
     id: number;
     name?: string | undefined;
     type: GovlocTypes;
     parentLocationId: number;
 }
 
-export class RegisterGovLocation_Cmd extends GovLocation_Dto implements IRegisterGovLocation_Cmd {
-
-    constructor(data?: IRegisterGovLocation_Cmd) {
-        super(data);
-    }
-
-    init(_data?: any) {
-        super.init(_data);
-    }
-
-    static fromJS(data: any): RegisterGovLocation_Cmd {
-        data = typeof data === 'object' ? data : {};
-        let result = new RegisterGovLocation_Cmd();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        super.toJSON(data);
-        return data; 
-    }
-}
-
-export interface IRegisterGovLocation_Cmd extends IGovLocation_Dto {
+export interface RegisterGovLocation_Cmd extends GovLocation_Dto {
 }
 
 export enum GovlocTypes {
@@ -1304,70 +773,7 @@ export enum GovlocTypes {
     Country = 7,
 }
 
-export class GovbodyDetails_Dto implements IGovbodyDetails_Dto {
-    name?: string | undefined;
-    parentLocationId!: number;
-    electedOfficials?: ElectedOfficial_Dto[] | undefined;
-    appointedOfficials?: AppointedOfficial_Dto[] | undefined;
-    recordingsUrl?: string | undefined;
-    transcriptsUrl?: string | undefined;
-
-    constructor(data?: IGovbodyDetails_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.parentLocationId = _data["parentLocationId"];
-            if (Array.isArray(_data["electedOfficials"])) {
-                this.electedOfficials = [] as any;
-                for (let item of _data["electedOfficials"])
-                    this.electedOfficials!.push(ElectedOfficial_Dto.fromJS(item));
-            }
-            if (Array.isArray(_data["appointedOfficials"])) {
-                this.appointedOfficials = [] as any;
-                for (let item of _data["appointedOfficials"])
-                    this.appointedOfficials!.push(AppointedOfficial_Dto.fromJS(item));
-            }
-            this.recordingsUrl = _data["recordingsUrl"];
-            this.transcriptsUrl = _data["transcriptsUrl"];
-        }
-    }
-
-    static fromJS(data: any): GovbodyDetails_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new GovbodyDetails_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["parentLocationId"] = this.parentLocationId;
-        if (Array.isArray(this.electedOfficials)) {
-            data["electedOfficials"] = [];
-            for (let item of this.electedOfficials)
-                data["electedOfficials"].push(item.toJSON());
-        }
-        if (Array.isArray(this.appointedOfficials)) {
-            data["appointedOfficials"] = [];
-            for (let item of this.appointedOfficials)
-                data["appointedOfficials"].push(item.toJSON());
-        }
-        data["recordingsUrl"] = this.recordingsUrl;
-        data["transcriptsUrl"] = this.transcriptsUrl;
-        return data; 
-    }
-}
-
-export interface IGovbodyDetails_Dto {
+export interface GovbodyDetails_Dto {
     name?: string | undefined;
     parentLocationId: number;
     electedOfficials?: ElectedOfficial_Dto[] | undefined;
@@ -1376,209 +782,26 @@ export interface IGovbodyDetails_Dto {
     transcriptsUrl?: string | undefined;
 }
 
-export class RegisterGovbody_Cmd extends GovbodyDetails_Dto implements IRegisterGovbody_Cmd {
-
-    constructor(data?: IRegisterGovbody_Cmd) {
-        super(data);
-    }
-
-    init(_data?: any) {
-        super.init(_data);
-    }
-
-    static fromJS(data: any): RegisterGovbody_Cmd {
-        data = typeof data === 'object' ? data : {};
-        let result = new RegisterGovbody_Cmd();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        super.toJSON(data);
-        return data; 
-    }
+export interface RegisterGovbody_Cmd extends GovbodyDetails_Dto {
 }
 
-export interface IRegisterGovbody_Cmd extends IGovbodyDetails_Dto {
-}
-
-export class Official_Dto implements IOfficial_Dto {
-    name?: string | undefined;
-    title?: string | undefined;
-
-    constructor(data?: IOfficial_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.title = _data["title"];
-        }
-    }
-
-    static fromJS(data: any): Official_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new Official_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["title"] = this.title;
-        return data; 
-    }
-}
-
-export interface IOfficial_Dto {
+export interface Official_Dto {
     name?: string | undefined;
     title?: string | undefined;
 }
 
-export class ElectedOfficial_Dto extends Official_Dto implements IElectedOfficial_Dto {
-
-    constructor(data?: IElectedOfficial_Dto) {
-        super(data);
-    }
-
-    init(_data?: any) {
-        super.init(_data);
-    }
-
-    static fromJS(data: any): ElectedOfficial_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new ElectedOfficial_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        super.toJSON(data);
-        return data; 
-    }
+export interface ElectedOfficial_Dto extends Official_Dto {
 }
 
-export interface IElectedOfficial_Dto extends IOfficial_Dto {
+export interface AppointedOfficial_Dto extends Official_Dto {
 }
 
-export class AppointedOfficial_Dto extends Official_Dto implements IAppointedOfficial_Dto {
-
-    constructor(data?: IAppointedOfficial_Dto) {
-        super(data);
-    }
-
-    init(_data?: any) {
-        super.init(_data);
-    }
-
-    static fromJS(data: any): AppointedOfficial_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new AppointedOfficial_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        super.toJSON(data);
-        return data; 
-    }
-}
-
-export interface IAppointedOfficial_Dto extends IOfficial_Dto {
-}
-
-export class Govbody_Dto implements IGovbody_Dto {
-    name?: string | undefined;
-    parentLocationId!: number;
-
-    constructor(data?: IGovbody_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.parentLocationId = _data["parentLocationId"];
-        }
-    }
-
-    static fromJS(data: any): Govbody_Dto {
-        data = typeof data === 'object' ? data : {};
-        let result = new Govbody_Dto();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["parentLocationId"] = this.parentLocationId;
-        return data; 
-    }
-}
-
-export interface IGovbody_Dto {
+export interface Govbody_Dto {
     name?: string | undefined;
     parentLocationId: number;
 }
 
-export class WeatherForecast implements IWeatherForecast {
-    date!: Date;
-    temperatureC!: number;
-    temperatureF!: number;
-    summary?: string | undefined;
-
-    constructor(data?: IWeatherForecast) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.date = _data["date"] ? new Date(_data["date"].toString()) : <any>undefined;
-            this.temperatureC = _data["temperatureC"];
-            this.temperatureF = _data["temperatureF"];
-            this.summary = _data["summary"];
-        }
-    }
-
-    static fromJS(data: any): WeatherForecast {
-        data = typeof data === 'object' ? data : {};
-        let result = new WeatherForecast();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
-        data["temperatureC"] = this.temperatureC;
-        data["temperatureF"] = this.temperatureF;
-        data["summary"] = this.summary;
-        return data; 
-    }
-}
-
-export interface IWeatherForecast {
+export interface WeatherForecast {
     date: Date;
     temperatureC: number;
     temperatureF: number;
