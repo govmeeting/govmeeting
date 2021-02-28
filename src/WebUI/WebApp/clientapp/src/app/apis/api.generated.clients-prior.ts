@@ -797,7 +797,6 @@ export interface AppointedOfficial_Dto extends Official_Dto {
 }
 
 export interface Govbody_Dto {
-    id: number;
     name?: string | undefined;
     parentLocationId: number;
 }

@@ -3,6 +3,7 @@ import {
 } from '../apis/api.generated.clients'
 
 export interface IGovbody_Vm {
+  id: number
   name: string;
   parentLocationId: number;
 }

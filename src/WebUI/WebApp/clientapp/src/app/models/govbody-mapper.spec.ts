@@ -17,8 +17,12 @@ describe('GovbodyMapper', () => {
     expect(service.testGovLocationMapper()).toBeTruthy();
   });
 
-  //it('testGovbodyDetailsMapper should equal true', () => {
-  //  expect(service.testGovbodyDetailsMapper()).toBeTruthy();
-  //});
+  it('testGovbodyDetailsMapper should equal true', () => {
+    expect(service.testGovbodyDetailsMapper()).toBeTruthy();
+  });
 
+
+  it('testGovbodyMapper should equal true', () => {
+    expect(service.testGovbodyMapper()).toBeTruthy();
+  });
 });
