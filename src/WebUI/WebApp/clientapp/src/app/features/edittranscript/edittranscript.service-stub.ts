@@ -7,7 +7,7 @@ import { EditTranscriptSample } from '../../models/sample-data/edittranscript-sa
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { AppData } from '../../appdata';
 
-//import { EditMeetingClient } from '../../apis/api.generated.clients';
+// import { EditMeetingClient } from '../../apis/api.generated.clients';
 
 const UseImportData = false; // If true, get data from sample in EditTranscriptSample.ts, else from assets folder
 const urlTest = 'assets/stubdata/ToEdit.json';
@@ -27,8 +27,7 @@ export class EdittranscriptServiceStub {
   public constructor(
     private appData: AppData,
     private http: HttpClient,
-    private errHandling: ErrorHandlingService
-  //  private editTranscript: EditMeetingClient
+    private errHandling: ErrorHandlingService //  private editTranscript: EditMeetingClient
   ) {
     NoLog || console.log(this.ClassName + 'constructor');
     this.isLargeEditData = appData.isLargeEditData;

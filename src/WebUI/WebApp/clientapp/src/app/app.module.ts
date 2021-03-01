@@ -54,7 +54,7 @@ import { ChatService } from './features/chat/chat.service';
 import { DataFactoryService } from './work_experiments/datafake/data-factory.service';
 
 // Swagger API
-//import { ViewMeetingClient, EditMeetingClient, GovLocationClient, GovbodyClient } from './apis/swagger-api';
+// import { ViewMeetingClient, EditMeetingClient, GovLocationClient, GovbodyClient } from './apis/swagger-api';
 import { GovLocationClient, GovbodyClient } from './apis/api.generated.clients';
 
 // EXPERIMENTS
@@ -73,7 +73,7 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
   imports: [
     // /////////////// external //////////////
     RouterModule.forRoot([]),
-    //RouterModule,
+    // RouterModule,
     CommonModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
@@ -152,7 +152,7 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
     {
       provide: ViewTranscriptService,
       useClass: isAspServerRunning ? ViewTranscriptService : ViewTranscriptServiceStub,
-    //  useClass: ViewTranscriptService,
+      //  useClass: ViewTranscriptService,
     },
     // { provide: ViewTranscriptService, useClass: ViewTranscriptServiceStub },
 
@@ -162,8 +162,8 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
     UserSettingsService,
 
     // Swagger API
-    //ViewMeetingClient,
-    //EditMeetingClient,
+    // ViewMeetingClient,
+    // EditMeetingClient,
     GovLocationClient,
     GovbodyClient,
   ],

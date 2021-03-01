@@ -27,7 +27,7 @@ namespace GM.Application.AppCore.Entities.GovLocations
         public string Name { get; private set; }
         public GovlocTypes Type { get; private set; }
         public string Code { get; private set; }
-        public string RecordingsUrl { get; set; }
+        public string WebsiteUrl { get; set; }
 
         /// <summary>
         /// Our parent GovLocation or null if no parent

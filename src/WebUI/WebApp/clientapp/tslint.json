@@ -2,6 +2,8 @@
   "extends": "tslint:recommended",
   "rules": {
     "no-unused-expression": false,
+    "no-empty-interface": false,
+    "class-name": false,
     "align": {
       "options": ["parameters", "statements"]
     },

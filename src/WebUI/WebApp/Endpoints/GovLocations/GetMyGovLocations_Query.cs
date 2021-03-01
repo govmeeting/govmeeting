@@ -42,7 +42,9 @@ namespace GM.WebUI.WebApp.Endpoints.GovLocations
             //var userId = _currentUserService.UserId ?? string.Empty;
 
             // TODO Get current user's GovLocation ID - these are temporary for development
-            string mylocCity = "City of Whittlesea";
+            //string mylocCity = "City of Whittlesea";
+            string mylocCity = "Boothbay Harbor";
+            //string mylocCity = "Little Falls";
 
             //var result = new List<GovLocation_Dto>();
 

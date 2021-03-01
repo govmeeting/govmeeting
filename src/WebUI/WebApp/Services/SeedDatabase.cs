@@ -48,8 +48,8 @@ namespace GM.WebUI.WebApp.Services
             county = AddLocation("Passaic County", GovlocTypes.County, state);
 
             AddGovbody("Board of Freeholders", county);
-            local = AddLocation("Little Falls", GovlocTypes.Township, county, "https://www.youtube.com/channel/UCnXmZfXIxB9n_b6PMoh0kmA/videos");
-            council = AddGovbody("City Council", local);
+            local = AddLocation("Little Falls", GovlocTypes.Township, county, "https://www.lfnj.com/");
+            council = AddGovbody("City Council", local, "https://www.youtube.com/channel/UCnXmZfXIxB9n_b6PMoh0kmA/videos");
 
             electedOfficials = new List<ElectedOfficial>()
             {
@@ -77,8 +77,38 @@ namespace GM.WebUI.WebApp.Services
 
             AddGovbody("Zoning Board", local);
 
+            ////////////////// Boothbay Harbor, ME USA ////////////////////////////
+
+            country = AddLocation("United States", GovlocTypes.Country, null);
+            state = AddLocation("Maine", GovlocTypes.StateOrProvince, country);
+            county = AddLocation("Lincoln County", GovlocTypes.County, state);
+
+            local = AddLocation("Boothbay Harbor", GovlocTypes.Township, county, "https://www.boothbayharbor.org/");
+            council = AddGovbody("Board of Selectmen", local, "https://www.boothbaytv.com/on-demand");
+
+            electedOfficials = new List<ElectedOfficial>()
+            {
+                new ElectedOfficial() { Name = "Wendy Wolf", Title = "Selectperson"},
+                new ElectedOfficial() { Name = "Michael Tomko", Title = "Chair"},
+                new ElectedOfficial() { Name = "Denise Griffin ", Title = "Councilman"},
+                new ElectedOfficial() { Name = "Tricia Warren ", Title = "Vice Chair"}
+            };
+            AddElectedOfficials(electedOfficials, council);
+
+            appointedOfficials = new List<AppointedOfficial>()
+            {
+                new AppointedOfficial() { Name = "Michelle Farnham", Title = "Town Clerk"},
+                new AppointedOfficial() { Name = "Robert Hasch", Title = "Police Chief"},
+                new AppointedOfficial() { Name = "Julia Latter", Title = "Town Manager"},
+                new AppointedOfficial() { Name = "Jeff Lowell", Title = "Harbor Master"},
+                new AppointedOfficial() { Name = "Geoff Smith", Title = "Code Enforcement Officer"}
+            };
+            AddAppointedOfficials(appointedOfficials, council);
+
+            AddGovbody("Planning Board", local);
+
             /////////////////// City of Whittlesea & City of Greater Bebdingo, Victoria, AU ///////////////////
-                
+
             state = AddLocation("Pennsylvania", GovlocTypes.StateOrProvince, country);
             county = AddLocation("Philadelphia County", GovlocTypes.County, state);
             local = AddLocation("Philadelphia", GovlocTypes.City, county);
@@ -88,8 +118,8 @@ namespace GM.WebUI.WebApp.Services
             state = AddLocation("Victoria", GovlocTypes.StateOrProvince, country);
             local = AddLocation("City of Whittlesea", GovlocTypes.City, state);
             AddGovbody("City Council", local);
-            local = AddLocation("City of Greater Bebdingo", GovlocTypes.City, state, "https://www.youtube.com/user/CityOfGreaterBendigo/videos");
-            AddGovbody("City Council", local);
+            local = AddLocation("City of Greater Bebdingo", GovlocTypes.City, state, "https://www.bendigo.vic.gov.au/");
+            AddGovbody("City Council", local, "https://www.youtube.com/user/CityOfGreaterBendigo/videos");
         }
 
         private GovLocation AddLocation(string name, GovlocTypes type, GovLocation parent, string recordingsUrl = null)
@@ -97,16 +127,19 @@ namespace GM.WebUI.WebApp.Services
             GovLocation loc = new GovLocation(name, type, null)
             {
                 ParentLocation = parent,
-                RecordingsUrl = recordingsUrl
+                WebsiteUrl = recordingsUrl
             };
             _context.GovLocations.Add(loc);
             _context.SaveChanges();
             return loc;
         }
 
-        private Govbody AddGovbody(string name, GovLocation loc)
+        private Govbody AddGovbody(string name, GovLocation loc, string recordingsUrl = null)
         {
-            Govbody gov = new Govbody(name, loc);
+            Govbody gov = new Govbody(name, loc)
+            {
+                RecordingsUrl = recordingsUrl
+            };
             _context.Govbodies.Add(gov);
             _context.SaveChanges();
             return gov;

@@ -5,7 +5,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { EdittranscriptService } from '../edittranscript.service';
 import { EditTranscript, EditTranscriptSample } from '../../../models/sample-data/edittranscript-sample';
 import { TalksComponent } from './talks';
-import { Talk } from '../../../models/addtags-view';
 
 // Create a stub for EdittranscriptService
 class ServiceStub {

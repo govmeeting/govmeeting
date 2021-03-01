@@ -1,9 +1,7 @@
-import {
-  GovlocTypes,
-} from '../apis/api.generated.clients'
+import { GovlocTypes } from '../apis/api.generated.clients';
 
 export interface IGovbody_Vm {
-  id: number
+  id: number;
   name: string;
   parentLocationId: number;
 }
@@ -29,8 +27,6 @@ export interface IOfficial_Vm {
   title: string | undefined;
 }
 
-export interface IElectedOfficial_Vm extends IOfficial_Vm {
-}
+export interface IElectedOfficial_Vm extends IOfficial_Vm {}
 
-export interface IAppointedOfficial_Vm extends IOfficial_Vm {
-}
+export interface IAppointedOfficial_Vm extends IOfficial_Vm {}
