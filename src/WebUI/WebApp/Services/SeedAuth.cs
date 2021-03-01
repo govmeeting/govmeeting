@@ -11,26 +11,22 @@ using System.Threading.Tasks;
 
 namespace GM.WebUI.WebApp.Services
 {
-    public interface IDbInitializer
+    public interface ISeedAuth
     {
-        //Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
-        //    RoleManager<IdentityRole> roleManager, IConfiguration configuration);
-        Task<bool> Initialize(bool migrateDatabase);
+        Task<bool> Seed();
     }
 
-    // Class to inialize the database with the first admin user. See:
-    // https://stackoverflow.com/questions/40027388/cannot-get-the-usermanager-class/40046290#40046290
-    public class DbInitializer : IDbInitializer
+    public class SeedAuth : ISeedAuth
     {
-        private readonly ILogger<DbInitializer> logger;
+        private readonly ILogger<SeedAuth> logger;
 
-        public DbInitializer(
+        public SeedAuth(
             ApplicationDbContext context,
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
             //IConfiguration configuration,
             IOptions<AppSettings> config,
-            ILogger<DbInitializer> _logger
+            ILogger<SeedAuth> _logger
             )
         {
             _context = context;
@@ -47,16 +43,8 @@ namespace GM.WebUI.WebApp.Services
         //IConfiguration _configuration;
         private readonly AppSettings _config;
 
-        //public async Task Initialize(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
-        //    RoleManager<IdentityRole> roleManager, IConfiguration configuration)
-        public async Task<bool> Initialize(bool migrateDatabase)
+        public async Task<bool> Seed()
         {
-            // Ensure that the database exists and all pending migrations are applied.
-            if (migrateDatabase)
-            {
-                logger.LogInformation("Migrate Database");
-                _context.Database.Migrate();
-            }
 
             // REMOVED PRIOR CODE 1 - See below
 
@@ -103,19 +91,6 @@ namespace GM.WebUI.WebApp.Services
         }
     }
 
-
-    public class DbInitializer_Stub : IDbInitializer
-    {
-        public DbInitializer_Stub()
-        {
-        }
-
-        public async Task<bool> Initialize(bool migrateDatabase)
-        {
-            await Task.Delay(1);
-            return true;
-        }
-    }
 }
 
 

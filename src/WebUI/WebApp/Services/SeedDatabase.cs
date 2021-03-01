@@ -1,7 +1,6 @@
 ﻿using GM.Application.AppCore.Entities.Govbodies;
 using GM.Application.AppCore.Entities.GovLocations;
 using GM.Infrastructure.InfraCore.Data;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -165,15 +164,15 @@ namespace GM.WebUI.WebApp.Services
             _context.SaveChanges();
         }
 
-        private ApplicationDbContext GetLocalDbProvider()
-        {
-            string connection = "Server=(localdb)\\mssqllocaldb;Database=Govmeeting;Trusted_Connection=True;MultipleActiveResultSets=true";
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            optionsBuilder.UseSqlServer(connection);
-            // optionsBuilder.UseInMemoryDatabase(connection)
-            ApplicationDbContext _context = new ApplicationDbContext(null, optionsBuilder.Options);
-            return _context;
-        }
+        //private ApplicationDbContext GetLocalDbProvider()
+        //{
+        //    string connection = "Server=(localdb)\\mssqllocaldb;Database=Govmeeting;Trusted_Connection=True;MultipleActiveResultSets=true";
+        //    var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+        //    optionsBuilder.UseSqlServer(connection);
+        //    // optionsBuilder.UseInMemoryDatabase(connection)
+        //    ApplicationDbContext _context = new ApplicationDbContext(null, optionsBuilder.Options);
+        //    return _context;
+        //}
 
     }
 }

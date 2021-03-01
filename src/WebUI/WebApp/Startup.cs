@@ -192,7 +192,7 @@ namespace GM.WebUI.WebApp
                 }
             });
 
-            seedDatabase.Seed();
+            //seedDatabase.Seed();
 
         }
 
@@ -251,6 +251,9 @@ namespace GM.WebUI.WebApp
                 o.CallbackPath = "/signin-google"; // Or register the default "/sigin-oidc"
                 o.Scope.Add("email");
             });
+
+            services.AddTransient<ISeedAuth, SeedAuth>();
+
         }
 
         private void ConfigureIdentity(IServiceCollection services)
