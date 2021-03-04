@@ -7,8 +7,6 @@ import { EditTranscriptSample } from '../../models/sample-data/edittranscript-sa
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { AppData } from '../../appdata';
 
-// import { EditMeetingClient } from '../../apis/api.generated.clients';
-
 const UseImportData = false; // If true, get data from sample in EditTranscriptSample.ts, else from assets folder
 const urlTest = 'assets/stubdata/ToEdit.json';
 const urlTestLarge = 'assets/stubdata/LARGE/USA_NJ_Passaic_LittleFalls_TownshipCouncil_en_2020-06-20.json';
@@ -17,7 +15,7 @@ const addtagsUrl = 'https://jsonplaceholder.typicode.com/posts'; // Use  jsonpla
 const NoLog = true; // set to false for console logging
 
 @Injectable()
-export class EdittranscriptServiceStub {
+export class EditTranscriptServiceStub {
   private ClassName: string = this.constructor.name + ': ';
   postId;
   observable: Observable<EditTranscript>;
@@ -29,6 +27,7 @@ export class EdittranscriptServiceStub {
     private http: HttpClient,
     private errHandling: ErrorHandlingService //  private editTranscript: EditMeetingClient
   ) {
+    console.log("EditTranscriptServiceStub:constructor");
     NoLog || console.log(this.ClassName + 'constructor');
     this.isLargeEditData = appData.isLargeEditData;
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EdittranscriptService } from '../edittranscript.service';
+import { EditTranscriptService } from '../edittranscript.service';
 import { EditTranscript, Talk, Word } from '../../../models/edittranscript-view';
 
 const NoLog = true; // set to false for console logging
@@ -40,7 +40,7 @@ export class TalksComponent implements OnInit {
     }
   }
 
-  constructor(private _edittranscriptService: EdittranscriptService) {
+  constructor(private _edittranscriptService: EditTranscriptService) {
     // this.talks = addtagsService.getTalks();
   }
 

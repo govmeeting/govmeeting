@@ -9,13 +9,13 @@ import { API_BASE_URL } from './app/apis/api.generated.clients';
 // export function getBaseUrl() {
 //  return document.getElementsByTagName('base')[0].href;
 // }
-export function getBaseUrl() {
-  return 'https://localhost:44333';
+export function getApiUrl() {
+  return environment.apiUrl;
 }
 
 const providers = [
-  { provide: 'API_BASE_URL', useFactory: getBaseUrl, deps: [] },
-  { provide: API_BASE_URL, useFactory: getBaseUrl },
+  { provide: 'API_BASE_URL', useFactory: getApiUrl, deps: [] },
+  { provide: API_BASE_URL, useFactory: getApiUrl },
 ];
 
 if (environment.production) {

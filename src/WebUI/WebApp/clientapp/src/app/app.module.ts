@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
@@ -44,14 +45,16 @@ import { SharedModule } from './common/common.module';
 import { ErrorHandlingService } from './common/error-handling/error-handling.service';
 import { UserSettingsService, UserSettings, LocationType } from './common/user-settings.service';
 import { DemoMaterialModule } from './common/material';
+//import { AppInitModule } from './appinit/appinit.module';
 
 // services
-import { EdittranscriptService } from './features/edittranscript/edittranscript.service';
-import { EdittranscriptServiceStub } from './features/edittranscript/edittranscript.service-stub';
+import { EditTranscriptService } from './features/edittranscript/edittranscript.service';
+import { EditTranscriptServiceStub } from './features/edittranscript/edittranscript.service-stub';
 import { ViewTranscriptService } from './features/viewtranscript/viewtranscript.service';
 import { ViewTranscriptServiceStub } from './features/viewtranscript/viewtranscript.service-stub';
 import { ChatService } from './features/chat/chat.service';
 import { DataFactoryService } from './work_experiments/datafake/data-factory.service';
+import { RegisterGovBodyService } from './features/register-gov-body/register-gov-body.service';
 
 // Swagger API
 // import { ViewMeetingClient, EditMeetingClient, GovLocationClient, GovbodyClient } from './apis/swagger-api';
@@ -60,20 +63,59 @@ import { GovLocationClient, GovbodyClient } from './apis/api.generated.clients';
 // EXPERIMENTS
 import { PopupComponent } from './work_experiments/popup/popup.component';
 import { DataFakeService } from './work_experiments/datafake/data-fake.service';
-import { loadConfiguration } from './work_experiments/configuration/loadConfiguration';
-import { ConfigService } from './work_experiments/configuration/config.service';
+// import { loadConfiguration } from './work_experiments/configuration/loadConfiguration';
+// import { ConfigService } from './work_experiments/configuration/config.service';
 import { ShoutoutsComponent } from './work_experiments/shoutouts/shoutouts';
-import { RegisterComponent } from './work_experiments/register/register';
 
-const isAspServerRunning = false; // Is the Asp.Nnet server running?
+////////////////////////////////////
+import { AppInitService } from './appinit/appinit.service';
+import { MyServiceManagerModule } from "./appinit/my-service-manager.module";
+export function pingFactory(appInitService: AppInitService) {
+  return () => appInitService.pingServer();
+}
+////////////////////////////////////
+
+// const isAspServerRunning = AppInitService.isWebServerRunning();
+let isAspServerRunning = false; // Is the Asp.Net server running?
 const isBeta = false; // Is this the beta release version?
 const isLargeEditData = false; // Are we using the large data for EditTranscript? (Little Falls, etc.)
+
+//function useServer() {
+//  // Use value if specified in environment file.
+//  if (environment.useServer != null) {
+//    return environment.useServer;
+//  }
+//  // Otherwise use server if it is running.
+//  let x = AppInitService.isWebServerRunning();
+
+//  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+//  function failureCallback() {
+//    console.log('This is failure callback');
+//  }
+
+//  wait(4 * 1000)
+//    .then(() => {
+//      console.log('waited for 4 seconds');
+//      throw new Error('error occurred');
+//    })
+//    .catch(() => {
+//      failureCallback();
+//    });
+
+//  wait(2 * 1000).then(() => console.log('waited for 2 seconds'));
+
+//  isAspServerRunning = !!x;
+//  //let y = !x;
+//  //isAspServerRunning = !y;
+//  console.log('useServer=' + isAspServerRunning);
+//  return isAspServerRunning;
+//}
 
 @NgModule({
   imports: [
     // /////////////// external //////////////
     RouterModule.forRoot([]),
-    // RouterModule,
     CommonModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
@@ -82,6 +124,9 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
     ReactiveFormsModule,
     NgMaterialMultilevelMenuModule,
     HttpClientModule,
+    //////////////////////////////////////////
+    MyServiceManagerModule.forRoot(),
+    //////////////////////////////////////////
 
     // /////////////// internal //////////////
     ViewTranscriptModule,
@@ -98,16 +143,10 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
     VirtualMeetingModule,
     HeaderModule,
     AmchartsModule,
-    FeaturesModule,
+    FeaturesModule
+  //  AppInitModule,
   ],
-  declarations: [
-    AppComponent,
-    DashMainComponent,
-    ShoutoutsComponent,
-    RegisterComponent,
-    PopupComponent,
-    FetchDataComponent,
-  ],
+  declarations: [AppComponent, DashMainComponent, ShoutoutsComponent, PopupComponent, FetchDataComponent],
   exports: [
     DemoMaterialModule,
 
@@ -121,41 +160,44 @@ const isLargeEditData = false; // Are we using the large data for EditTranscript
     // BarChartComponent
   ],
   providers: [
-    // {
-    // EXPERIMENTAL - trying to find a way to load config from a file and use
-    //   the settings here in app.module.ts
-    // This loads the ConfigureService with the contents of assets/config.json
-    // Using APP_INITIALIZER forces the app to wait until the loading is complete.
-    //   provide: APP_INITIALIZER,
-    //   useFactory: loadConfiguration,
-    //   deps: [
-    //     HttpClient,
-    //     ConfigService
-    //   ],
-    //   multi: true
-    // },
     ErrorHandlingService,
     AppData,
+    ////////////////////////////////////////////////////
+    // our APP_INITIALIZER must be imported on our root module too
+    {
+      provide: APP_INITIALIZER,
+      useFactory: pingFactory,
+      deps: [AppInitService],
+      multi: true
+    },
+    //////////////////////////////////////////////////////
     {
       provide: AppData,
-      // This method works for reading config setting from index.html. We can define APP_DATA in index.html.
-      // useValue: window['APP_DATA']    // Get settings from html
       useValue: { isAspServerRunning, isBeta, isLargeEditData },
-    },
-    {
-      provide: EdittranscriptService,
-      useClass: isAspServerRunning ? EdittranscriptService : EdittranscriptServiceStub,
+      // The window method works for reading config setting from index.html. We can define APP_DATA in index.html.
+      // useValue: window['APP_DATA']    // Get settings from html
     },
 
-    // If you use the stubs for these services, they will not call the Asp.Net server,
+    // If you use the stubs for the following services, they will not call the Asp.Net server,
     // but will instead return static data.
+
+    {
+      provide: EditTranscriptService,
+      useClass: isAspServerRunning ? EditTranscriptService : EditTranscriptServiceStub,
+      // useClass: useServer() ? EditTranscriptService : EditTranscriptServiceStub,
+      //  useClass: EditTranscriptServiceStub,
+    },
     {
       provide: ViewTranscriptService,
-      useClass: isAspServerRunning ? ViewTranscriptService : ViewTranscriptServiceStub,
-      //  useClass: ViewTranscriptService,
+      useClass: isAspServerRunning ? ViewTranscriptService: ViewTranscriptServiceStub
+      // useClass: useServer() ? ViewTranscriptService: ViewTranscriptServiceStub
+      //  useClass: ViewTranscriptServiceStub,
     },
-    // { provide: ViewTranscriptService, useClass: ViewTranscriptServiceStub },
-
+    {
+      provide: RegisterGovBodyService,
+      useClass: RegisterGovBodyService,
+      deps: [GovbodyClient, GovLocationClient],
+    },
     ChatService,
     DataFactoryService,
     DataFakeService,

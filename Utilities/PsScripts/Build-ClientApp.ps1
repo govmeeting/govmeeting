@@ -22,7 +22,7 @@ Function Main
     }
 
     npm install
-    npm run build
+    npm run build:prod
 
     if ($clientapp -ne "") {
       Pop-Location

@@ -12,6 +12,10 @@ import { NavService } from './sidenav/nav.service';
 import { Router } from '@angular/router';
 import { UserSettingsService, UserSettings, LocationType } from './common/user-settings.service';
 
+///////////////////////////////////////////////////////////////
+import { MyServiceLoader } from "./appinit/my-service-loader";
+////////////////////////////////////////////////////////////////
+
 const NoLog = true; // set to false for console logging
 
 @Component({
@@ -32,6 +36,9 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   private mediaQueryListener: () => void;
 
   constructor(
+    //////////////////////////////////////////////
+    private myService: MyServiceLoader,
+    /////////////////////////////////////////////
     private userSettingsService: UserSettingsService,
     private router: Router,
     public navService: NavService,
@@ -55,7 +62,22 @@ export class AppComponent implements AfterViewInit, OnDestroy {
       // this.checkDeviceType();
     };
     this.mediaQueryList.addEventListener('change', this.mediaQueryListener);
+
+    /////////////////////////////////////////////////////
+    console.log("AppComponent:ngOnInit", this.getNow());
+    this.myService.printTime();
+    /////////////////////////////////////////////////////
+
   }
+
+  ///////////////////////////////////////////
+  getNow(): string {
+    let now = Date.now();
+    let sec = Math.floor(now / 1000) % 100;
+    let ms = now % 1000;
+    return sec.toString() + ":" + ms.toString();
+  }
+  ////////////////////////////////////////////
 
   ngAfterViewInit() {
     this.navService.sidenav = this.sidenav;
