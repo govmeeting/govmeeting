@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EditTranscriptService } from '../edittranscript.service';
+import { EditTranscriptServiceReal } from '../edittranscript.service-real';
 
 const NoLog = true; // set to false for console logging
 
@@ -14,7 +14,7 @@ export class SectionsComponent implements OnInit {
   sections: string[];
   gotSections = false;
 
-  constructor(private _edittranscriptService: EditTranscriptService) {}
+  constructor(private _edittranscriptService: EditTranscriptServiceReal) {}
 
   ngOnInit() {
     this.getSections();

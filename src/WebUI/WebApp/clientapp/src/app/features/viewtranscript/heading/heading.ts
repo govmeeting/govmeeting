@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewTranscriptService } from '../viewtranscript.service';
+import { ViewTranscriptServiceReal } from '../viewtranscript.service-real';
 
 const NoLog = true; // set to false for console logging
 
@@ -21,7 +21,7 @@ export class HeadingComponent implements OnInit {
 
   errorMessage: string;
 
-  constructor(private _viewMeetingService: ViewTranscriptService) {}
+  constructor(private _viewMeetingService: ViewTranscriptServiceReal) {}
 
   ngOnInit() {
     this.getMeeting();

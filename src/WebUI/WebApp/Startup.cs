@@ -59,8 +59,8 @@ namespace GM.WebUI.WebApp
                 Configuration["AppSettings:DatabaseType"], Configuration["AppSettings:ConnectionString"]);
             logger.Info("Configure Database");
 
-            services.AddHealthChecks();
-            logger.Info("AddHealthChecks");
+            //services.AddHealthChecks();
+            //logger.Info("AddHealthChecks");
 
             ConfigureAuthentication(services);
             logger.Info("Configure Authentication");
@@ -172,7 +172,7 @@ namespace GM.WebUI.WebApp
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
-                endpoints.MapHealthChecks("/health").RequireAuthorization();
+                //endpoints.MapHealthChecks("/health").RequireAuthorization();
             });
 
             app.UseOpenApi();

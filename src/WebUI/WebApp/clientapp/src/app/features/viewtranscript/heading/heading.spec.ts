@@ -2,7 +2,7 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 
 import { HeadingComponent } from './heading';
-import { ViewTranscriptService } from '../viewtranscript.service';
+import { ViewTranscriptServiceReal } from '../viewtranscript.service';
 import { ViewTranscript, ViewTranscriptSample } from '../../../models/sample-data/viewtranscript-sample';
 
 // Create a stub for ViewTranscriptService
@@ -20,7 +20,7 @@ describe('HeadingComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [HeadingComponent],
-        providers: [{ provide: ViewTranscriptService, useClass: ServiceStub }],
+        providers: [{ provide: ViewTranscriptServiceReal, useClass: ServiceStub }],
       }).compileComponents();
     })
   );

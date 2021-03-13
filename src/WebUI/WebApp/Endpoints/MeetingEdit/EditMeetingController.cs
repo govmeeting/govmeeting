@@ -20,13 +20,13 @@ namespace GM.WebUI.WebApp.Endpoints.MeetingEdit
         private readonly IAuthorizationService authz;
         private IEditMeetingRepository EditMeetingRepo { get; set; }
 
-        public EditMeetingController(IAuthorizationService _authz, IEditMeetingRepository _fixasr)
+        public EditMeetingController(IAuthorizationService _authz, IEditMeetingRepository _editMeetingRepo)
         {
             authz = _authz;
-            EditMeetingRepo = _fixasr;
+            EditMeetingRepo = _editMeetingRepo;
         }
 
-        [HttpGet("{meetingId}/{part}")]        // GET: api/fixasr
+        [HttpGet("{meetingId}/{part}")]        // GET: api/EditMeeting
         public EditMeeting_Dto Get(int meetingId, int part)
         {
             string meeting = EditMeetingRepo.Get(meetingId, part);

@@ -7,6 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { ViewTranscript } from '../../models/viewtranscript-view';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { ViewTranscriptSample } from '../../models/sample-data/viewtranscript-sample';
+import { ViewTranscriptService } from './viewtranscript.service';
 
 const fromFile = true;
 const url = 'assets/stubdata/ToView.json';
@@ -15,7 +16,7 @@ const viewtranscriptUrl = 'https://jsonplaceholder.typicode.com/posts';
 const NoLog = true; // set to false for console logging
 
 @Injectable()
-export class ViewTranscriptServiceStub {
+export class ViewTranscriptServiceStub implements ViewTranscriptService {
   private ClassName: string = this.constructor.name + ': ';
   viewMeeting: ViewTranscript = ViewTranscriptSample;
   private observable: Observable<ViewTranscript>;

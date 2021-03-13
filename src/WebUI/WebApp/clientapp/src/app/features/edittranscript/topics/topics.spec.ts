@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 
 import { TopicsComponent } from './topics';
-import { EditTranscriptService } from '../edittranscript.service';
+import { EditTranscriptServiceReal } from '../edittranscript.service-real';
 import { EditTranscript, EditTranscriptSample } from '../../../models/sample-data/edittranscript-sample';
 
 // Create a stub for EdittranscriptService
@@ -22,7 +22,7 @@ describe('TopicsComponent', () => {
       TestBed.configureTestingModule({
         imports: [FormsModule],
         declarations: [TopicsComponent],
-        providers: [{ provide: EditTranscriptService, useClass: ServiceStub }],
+        providers: [{ provide: EditTranscriptServiceReal, useClass: ServiceStub }],
       }).compileComponents();
     })
   );

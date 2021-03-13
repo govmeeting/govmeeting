@@ -1,12 +1,9 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { sample } from 'rxjs/operators';
 import { RegisterGovBodyService } from './register-gov-body.service';
 import { IGovbody_Vm, IGovbodyDetails_Vm, IGovLocation_Vm, IOfficial_Vm } from '../../models/govbody-view';
 import { Observable, of } from 'rxjs';
-
-import { GovLocation_Dto } from '../../apis/api.generated.clients';
-import { filter, map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'gm-register-gov-body',
@@ -50,13 +47,8 @@ export class RegisterGovBodyComponent implements OnInit {
   }
 
   selectBody(filterVal: any) {
-    const x = 0;
     console.log('selectBody');
     this.bodyDetails$ = this.gBService.getGovbody(this.selectedBody.id).pipe(tap((bod) => this.form.patchValue(bod)));
-
-    //  this.gBService.getGovbody(this.selectedBody.id).subscribe((data) => {
-    //    this.bodyDetails = data;
-    //  });
   }
 
   submit(form: IGovbodyDetails_Vm, valid: boolean) {

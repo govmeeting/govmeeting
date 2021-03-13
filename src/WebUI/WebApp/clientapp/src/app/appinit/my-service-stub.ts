@@ -1,12 +1,15 @@
 import { Injectable } from "@angular/core";
-import { MyServiceLoader } from "./my-service-loader";
+import { MyService } from "./my-service";
+import { replaySubjectLog } from '../logger-service';
 
-// must extend MyServiceLoader which is an abstract class
+
+// must extend MyService which is an abstract class
 @Injectable()
-export class MyServiceStub extends MyServiceLoader {
+export class MyServiceStub extends MyService {
   printTime(): void {
     let time = this.getNow();
     console.log("MyServiceStub:printTime ", time);
+    replaySubjectLog.next("MyServiceStub:printTime " + time);
   }
 
   getNow(): string {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 // import { MeetingService } from '../meeting.service-stub';
-import { ViewTranscriptService } from '../viewtranscript.service';
+import { ViewTranscriptServiceReal } from '../viewtranscript.service-real';
 import { UserchoiceService } from '../userchoice.service';
 import { TopicDiscussion } from '../../../models/viewtranscript-view';
 
@@ -27,7 +27,7 @@ export class BrowseComponent implements OnInit {
    * <param name="_meetingService">       The meeting service. </param>
    * <param name="_userChoiceSrv"> The user choice service. </param>
    */
-  constructor(private _viewMeetingService: ViewTranscriptService, private _userChoice: UserchoiceService) {}
+  constructor(private _viewMeetingService: ViewTranscriptServiceReal, private _userChoice: UserchoiceService) {}
 
   ngOnInit() {
     this.getTopicDiscussions();

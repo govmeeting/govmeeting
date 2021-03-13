@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GM.WebUI.WebApp.Endpoints;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace WebAppNew.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    //[ApiController]
+    //[Route("[controller]")]
+    public class WeatherForecastController : ApiController
     {
         private static readonly string[] Summaries = new[]
         {

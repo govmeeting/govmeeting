@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { SpeakersComponent } from './speakers';
 
-import { ViewTranscriptService } from '../viewtranscript.service';
+import { ViewTranscriptServiceReal } from '../viewtranscript.service';
 import { ViewTranscript, ViewTranscriptSample } from '../../../models/sample-data/viewtranscript-sample';
 import { UserchoiceService } from '../userchoice.service';
 
@@ -30,7 +30,7 @@ describe('SpeakersComponent', () => {
       TestBed.configureTestingModule({
         declarations: [SpeakersComponent],
         providers: [
-          { provide: ViewTranscriptService, useClass: ServiceStub },
+          { provide: ViewTranscriptServiceReal, useClass: ServiceStub },
           { provide: UserchoiceService, useClass: UserchoiceStub },
         ],
       }).compileComponents();

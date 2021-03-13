@@ -6,33 +6,40 @@ import { EditTranscript, Talk, Word } from '../../models/edittranscript-view';
 import { EditTranscriptSample } from '../../models/sample-data/edittranscript-sample';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { AppData } from '../../appdata';
+import { EditTranscriptService } from './edittranscript.service';
 
 const UseImportData = false; // If true, get data from sample in EditTranscriptSample.ts, else from assets folder
 const urlTest = 'assets/stubdata/ToEdit.json';
 const urlTestLarge = 'assets/stubdata/LARGE/USA_NJ_Passaic_LittleFalls_TownshipCouncil_en_2020-06-20.json';
 const addtagsUrl = 'https://jsonplaceholder.typicode.com/posts'; // Use  jsonplaceholder service to test post requests
 
-const NoLog = true; // set to false for console logging
+const NoLog = false; // set to false for console logging
 
 @Injectable()
-export class EditTranscriptServiceStub {
+export class EditTranscriptServiceStub implements EditTranscriptService {
   private ClassName: string = this.constructor.name + ': ';
   postId;
-  observable: Observable<EditTranscript>;
+  observable: Observable<EditTranscript> = null;
   isLargeEditData: boolean;
   url: string;
+  http: HttpClient;
 
   public constructor(
     private appData: AppData,
-    private http: HttpClient,
+    private _http: HttpClient,
     private errHandling: ErrorHandlingService //  private editTranscript: EditMeetingClient
   ) {
-    console.log("EditTranscriptServiceStub:constructor");
     NoLog || console.log(this.ClassName + 'constructor');
+    this.http = _http;
     this.isLargeEditData = appData.isLargeEditData;
+    NoLog || console.log(this.ClassName, appData);
   }
 
   public getTalks(): Observable<EditTranscript> {
+    NoLog || console.log(this.ClassName + 'getTalks');
+   if (this.observable !== null) {
+      return this.observable;
+    }
     if (UseImportData) {
       NoLog || console.log(this.ClassName + 'get from memory');
       return of(EditTranscriptSample);

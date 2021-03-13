@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RegisterGovBodyService } from './register-gov-body.service';
+import { RegisterGovBodyServiceReal } from './register-gov-body.service-real';
 import { GovbodyClient, GovLocationClient } from '../../apis/api.generated.clients';
 
 class MockGovbodyClient {}
 class MockGovLocationClient {}
 
 describe('RegisterGovBodyService', () => {
-  let service: RegisterGovBodyService;
+  let service: RegisterGovBodyServiceReal;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -16,7 +16,7 @@ describe('RegisterGovBodyService', () => {
         { provide: GovLocationClient, useClass: MockGovLocationClient },
       ],
     });
-    service = TestBed.inject(RegisterGovBodyService);
+    service = TestBed.inject(RegisterGovBodyServiceReal);
   });
 
   it('should be created', () => {

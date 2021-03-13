@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserchoiceService } from './userchoice.service';
-import { ViewTranscriptService } from './viewtranscript.service';
+import { ViewTranscriptServiceReal } from './viewtranscript.service-real';
 import { TopicDiscussion } from '../../models/viewtranscript-view';
 
 const NoLog = true; // set to false for console logging
@@ -18,7 +18,7 @@ export class ViewTranscriptComponent implements OnInit {
   topicDiscussions: TopicDiscussion[];
   errorMessage: string;
 
-  constructor(private _viewMeetingService: ViewTranscriptService) {}
+  constructor(private _viewMeetingService: ViewTranscriptServiceReal) {}
   // Normally the meetingId will be passed to the getMeeting method.
   // But we did not yet write the component for the user to select a meeting.
   // We will use id "1" for now. This maps to a meeting of BBH on the server.
