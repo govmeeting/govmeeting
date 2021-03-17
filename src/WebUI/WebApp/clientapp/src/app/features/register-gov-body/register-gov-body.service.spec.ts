@@ -14,6 +14,7 @@ describe('RegisterGovBodyService', () => {
       providers: [
         { provide: GovbodyClient, useClass: MockGovbodyClient },
         { provide: GovLocationClient, useClass: MockGovLocationClient },
+        { provide: RegisterGovBodyServiceReal, useClass: RegisterGovBodyServiceReal },
       ],
     });
     service = TestBed.inject(RegisterGovBodyServiceReal);

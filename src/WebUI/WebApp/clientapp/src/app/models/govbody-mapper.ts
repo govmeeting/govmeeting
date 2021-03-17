@@ -123,36 +123,36 @@ export class GovbodyMapper {
   //  this.mapper.createMap<IGovLocationArray_Dto, IGovLocationArray_Vm>('IGovLocationArray_Dto', 'IGovLocationArray_Vm');
   // }
 
-  /////////////////////////// TESTS CALLED FROM govbody-mapper.spec.tx ///////////////////
+  /////////////////////////// TESTS CALLED FROM govbody-mapper.spec.ts ///////////////////
 
-  testGovLocationMapper(): boolean {
-    const g1: GovLocation_Dto = { id: 1, name: 'me', type: 0, parentLocationId: 2 };
-    const g2: IGovLocation_Vm = this.mapper.map(g1, 'IGovLocation_Vm', 'GovLocation_Dto');
-    return true;
-  }
+  //  testGovLocationMapper(): boolean {
+  //    const g1: GovLocation_Dto = { id: 1, name: 'me', type: 0, parentLocationId: 2 };
+  //    const g2: IGovLocation_Vm = this.mapper.map(g1, 'IGovLocation_Vm', 'GovLocation_Dto');
+  //    return true;
+  //  }
 
-  testGovbodyDetailsMapper(): boolean {
-    const g1: GovbodyDetails_Dto = {
-      name: 'me',
-      parentLocationId: 1,
-      electedOfficials: [
-        { name: 'Joe', title: 'Mayor' },
-        { name: 'Sam', title: 'Councilman' },
-      ],
-      appointedOfficials: [
-        { name: 'Sally', title: 'Manager' },
-        { name: 'Jake', title: 'Clerk' },
-      ],
-      recordingsUrl: 'http://us.org',
-      transcriptsUrl: 'http://them.org',
-    };
-    const g2: IGovbodyDetails_Vm = this.mapper.map(g1, 'IGovbodyDetails_Vm', 'GovbodyDetails_Dto');
-    return true;
-  }
+  //  testGovbodyDetailsMapper(): boolean {
+  //    const g1: GovbodyDetails_Dto = {
+  //      name: 'me',
+  //      parentLocationId: 1,
+  //      electedOfficials: [
+  //        { name: 'Joe', title: 'Mayor' },
+  //        { name: 'Sam', title: 'Councilman' },
+  //      ],
+  //      appointedOfficials: [
+  //        { name: 'Sally', title: 'Manager' },
+  //        { name: 'Jake', title: 'Clerk' },
+  //      ],
+  //      recordingsUrl: 'http://us.org',
+  //      transcriptsUrl: 'http://them.org',
+  //    };
+  //    const g2: IGovbodyDetails_Vm = this.mapper.map(g1, 'IGovbodyDetails_Vm', 'GovbodyDetails_Dto');
+  //    return true;
+  //  }
 
-  testGovbodyMapper(): boolean {
-    const g1: Govbody_Dto = { id: 1, name: 'me', parentLocationId: 2 };
-    const g2: IGovbody_Vm = this.mapper.map(g1, 'IGovbody_Vm', 'Govbody_Dto');
-    return true;
-  }
+  //  testGovbodyMapper(): boolean {
+  //    const g1: Govbody_Dto = { id: 1, name: 'me', parentLocationId: 2 };
+  //    const g2: IGovbody_Vm = this.mapper.map(g1, 'IGovbody_Vm', 'Govbody_Dto');
+  //    return true;
+  //  }
 }

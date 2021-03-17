@@ -2,7 +2,7 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { EditTranscriptServiceReal } from '../edittranscript.service-real';
+import { EditTranscriptService } from '../edittranscript.service';
 import { EditTranscript, EditTranscriptSample } from '../../../models/sample-data/edittranscript-sample';
 import { TalksComponent } from './talks';
 
@@ -29,7 +29,7 @@ describe('TalksComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [TalksComponent, TopicsComponent],
-        providers: [{ provide: EditTranscriptServiceReal, useClass: ServiceStub }],
+        providers: [{ provide: EditTranscriptService, useClass: ServiceStub }],
       }).compileComponents();
     })
   );

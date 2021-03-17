@@ -1,76 +1,73 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { replaySubjectLog } from '../logger-service';
 
-let server = "https://localhost:44333/api/HealthCheck/Get";
-//let server = "http://no-such-web-server.org";
-//let server = "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=perl&site=stackoverflow";
+const server = 'https://localhost:44333/api/HealthCheck/Get';
+// let server = "http://no-such-web-server.org";
+// let server = "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=perl&site=stackoverflow";
 
 interface HealthCheck {
-  status: string
+  status: string;
 }
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class AppInitService {
   constructor(private httpClient: HttpClient) {}
 
   isRunning: boolean | null = null;
-  pingNumber: number = 2;
+  pingNumber = 2;
 
   pingServer(): Promise<any> {
-    logMsg("pingServer. Enter");
+    logMsg('pingServer. Enter');
 
     const promise = this.httpClient
       .get(server)
       .toPromise()
       .then((healthy: HealthCheck) => {
-        if (healthy.status !== "healthy") {
-          throw new Error("Server not healthy.")
+        if (healthy.status !== 'healthy') {
+          throw new Error('Server not healthy.');
         }
-        logMsg("pingServer Got server response");
+        logMsg('pingServer Got server response');
         this.isRunning = true;
         return true;
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
-        logMsg("pingServer No server Response");
+        logMsg('pingServer No server Response');
         this.isRunning = false;
-        //this.startAnotherPing();
+        // this.startAnotherPing();
         err;
       });
     return promise;
   }
 
   startAnotherPing() {
-    logMsg("pingServer" + this.pingNumber++ + ". Enter");
+    logMsg('pingServer' + this.pingNumber++ + '. Enter');
     const promise = this.httpClient
       .get(server)
       .toPromise()
-      .then(settings => {
-        logMsg("pingServer" + this.pingNumber + " Got server response");
+      .then((settings) => {
+        logMsg('pingServer' + this.pingNumber + ' Got server response');
         return true;
       })
-      .catch(err => {
-        logMsg("pingServer" + this.pingNumber + " No server Response");
-        //this.startAnotherPing();
+      .catch((err) => {
+        logMsg('pingServer' + this.pingNumber + ' No server Response');
+        // this.startAnotherPing();
         err;
       });
   }
-
 }
 
 function logMsg(msg: string) {
-  //console.log("AppInitService:", msg, getNow());
-  let fullmsg = "AppInitService:" + msg + " " + getNow();
+  // console.log("AppInitService:", msg, getNow());
+  const fullmsg = 'AppInitService:' + msg + ' ' + getNow();
   console.log(fullmsg);
   replaySubjectLog.next(fullmsg);
 }
 
 function getNow() {
-  let now = Date.now();
-  let sec = Math.floor(now / 1000) % 100;
-  let ms = now % 1000;
-  return sec.toString() + ":" + ms.toString();
+  const now = Date.now();
+  const sec = Math.floor(now / 1000) % 100;
+  const ms = now % 1000;
+  return sec.toString() + ':' + ms.toString();
 }
-
-

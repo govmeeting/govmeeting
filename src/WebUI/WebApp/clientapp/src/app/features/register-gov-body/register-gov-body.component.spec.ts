@@ -2,7 +2,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
 import { RegisterGovBodyComponent } from './register-gov-body.component';
-import { RegisterGovBodyService } from './register-gov-body.service-real';
+import { RegisterGovBodyService } from './register-gov-body.service';
 
 class MockRegisterGovBodyService {
   getMyGovLocations() {}

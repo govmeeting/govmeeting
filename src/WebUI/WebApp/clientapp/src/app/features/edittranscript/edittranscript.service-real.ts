@@ -27,7 +27,7 @@ export class EditTranscriptServiceReal implements EditTranscriptService {
   private meetingId = 2;
 
   constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
-    console.log("EditTranscriptService:constructor");
+    console.log('EditTranscriptService:constructor');
     NoLog || console.log(this.ClassName + 'constructor');
   }
 

@@ -13,7 +13,7 @@ import { RegisterGovBodyService } from './register-gov-body.service';
 //  providedIn: 'root',
 // })
 @Injectable()
-export class RegisterGovBodyServiceReal implements RegisterGovBodyService{
+export class RegisterGovBodyServiceReal implements RegisterGovBodyService {
   mapper: GovbodyMapper;
   govbodyClient: GovbodyClient;
   govLocationClient: GovLocationClient;

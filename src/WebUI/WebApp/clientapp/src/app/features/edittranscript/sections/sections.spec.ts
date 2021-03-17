@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { SectionsComponent } from './sections';
 import { EditTranscriptServiceReal } from '../edittranscript.service-real';
 import { EditTranscript, EditTranscriptSample } from '../../../models/sample-data/edittranscript-sample';
+import { EditTranscriptService } from '../edittranscript.service';
 
 // Create a stub for EdittranscriptService
 class ServiceStub {
@@ -20,7 +21,7 @@ describe('SectionsComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [SectionsComponent],
-        providers: [{ provide: EditTranscriptServiceReal, useClass: ServiceStub }],
+        providers: [{ provide: EditTranscriptService, useClass: ServiceStub }],
       }).compileComponents();
     })
   );

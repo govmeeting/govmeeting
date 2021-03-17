@@ -37,7 +37,7 @@ export class EditTranscriptServiceStub implements EditTranscriptService {
 
   public getTalks(): Observable<EditTranscript> {
     NoLog || console.log(this.ClassName + 'getTalks');
-   if (this.observable !== null) {
+    if (this.observable !== null) {
       return this.observable;
     }
     if (UseImportData) {

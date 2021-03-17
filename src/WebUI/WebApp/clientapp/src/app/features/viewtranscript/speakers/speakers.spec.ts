@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { SpeakersComponent } from './speakers';
 
-import { ViewTranscriptServiceReal } from '../viewtranscript.service';
+import { ViewTranscriptServiceReal } from '../viewtranscript.service-real';
 import { ViewTranscript, ViewTranscriptSample } from '../../../models/sample-data/viewtranscript-sample';
 import { UserchoiceService } from '../userchoice.service';
 

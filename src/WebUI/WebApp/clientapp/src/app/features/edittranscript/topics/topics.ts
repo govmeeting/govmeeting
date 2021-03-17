@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 // import { TopicsService } from './topics.service';
-import { EditTranscriptServiceReal } from '../edittranscript.service-real';
+import { EditTranscriptService } from '../edittranscript.service';
 
 const NoLog = true; // set to false for console logging
 
@@ -19,7 +19,7 @@ export class TopicsComponent implements OnInit {
   @Output() topicSelect: EventEmitter<string>;
   @Output() topicEnter: EventEmitter<string>;
 
-  constructor(private _edittranscriptService: EditTranscriptServiceReal) {
+  constructor(private _edittranscriptService: EditTranscriptService) {
     this.topicSelect = new EventEmitter<string>();
     this.topicEnter = new EventEmitter<string>();
     this.newTopicName = undefined;

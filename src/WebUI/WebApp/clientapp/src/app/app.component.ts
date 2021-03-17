@@ -113,28 +113,28 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
   // in order to see console output messages.
 
   ngOnInit() {
-  //  let msg = 'AppComponent:ngOnInit. Enter';
-  //  this.addFullItem(msg);
-  //  replaySubjectLog.subscribe((data) => this.addFullItem('' + data));
-  //  replaySubjectLog.next('AppComponent:ngOnInit. Talking to myself after subscribing.');
+    //  let msg = 'AppComponent:ngOnInit. Enter';
+    //  this.addFullItem(msg);
+    //  replaySubjectLog.subscribe((data) => this.addFullItem('' + data));
+    //  replaySubjectLog.next('AppComponent:ngOnInit. Talking to myself after subscribing.');
   }
 
   addFullItem(msg: string) {
-    let fullmsg = msg + ' ' + this.getNow();
+    const fullmsg = msg + ' ' + this.getNow();
     this.addItem(fullmsg);
   }
 
   addItem(val: any) {
-    var node = document.createElement('li');
-    var textnode = document.createTextNode(val);
+    const node = document.createElement('li');
+    const textnode = document.createTextNode(val);
     node.appendChild(textnode);
     document.getElementById('output').appendChild(node);
   }
 
   getNow(): string {
-    let now = Date.now();
-    let sec = Math.floor(now / 1000) % 100;
-    let ms = now % 1000;
+    const now = Date.now();
+    const sec = Math.floor(now / 1000) % 100;
+    const ms = now % 1000;
     return sec.toString() + ':' + ms.toString();
   }
   ////////////////////////////////////////////
@@ -143,8 +143,8 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
 ////////////////////////////////////////////
 //// This code is also for debugging timing issues.
 function addItem(val: any) {
-  var node = document.createElement('li');
-  var textnode = document.createTextNode(val);
+  const node = document.createElement('li');
+  const textnode = document.createTextNode(val);
   node.appendChild(textnode);
   document.getElementById('output').appendChild(node);
 }

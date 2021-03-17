@@ -13,7 +13,7 @@ import { ViewTranscriptService } from './viewtranscript.service';
 const NoLog = true; // set to false for console logging
 
 @Injectable()
-export class ViewTranscriptServiceReal implements ViewTranscriptService  {
+export class ViewTranscriptServiceReal implements ViewTranscriptService {
   private ClassName: string = this.constructor.name + ': ';
   private meetingUrl = 'api/viewtranscript';
   private observable: Observable<ViewTranscript>;

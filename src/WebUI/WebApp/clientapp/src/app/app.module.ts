@@ -62,9 +62,11 @@ import { ShoutoutsComponent } from './work_experiments/shoutouts/shoutouts';
 ///// Initialization service and ServiceManager Module
 import { AppInitService } from './appinit/appinit.service';
 import { ServiceManagerModule } from './appinit/service-manager.module';
+import { VideoService } from './common/video/video.service';
+import { VideoServiceStub } from './common/video/video.service-stub';
+import { VideoServiceReal } from './common/video/video.service-real';
 export function pingFactory(appInitService: AppInitService) {
   return () => appInitService.pingServer();
-
 }
 
 @NgModule({
@@ -116,7 +118,7 @@ export function pingFactory(appInitService: AppInitService) {
   ],
   providers: [
     ErrorHandlingService,
-    //AppData,
+    // AppData,
     // The APP_INITIALIZER runs before application start.
     // It checks if the server is running. ServiceManager uses its result
     // to decide whether to provide real or stub API services.
