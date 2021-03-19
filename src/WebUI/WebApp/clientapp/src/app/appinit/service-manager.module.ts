@@ -19,16 +19,17 @@ import { VideoService } from '../common/video/video.service';
 import { VideoServiceReal } from '../common/video/video.service-real';
 import { VideoServiceStub } from '../common/video/video.service-stub';
 import { EditTranscriptService } from '../features/edittranscript/edittranscript.service';
+import { ViewTranscriptService } from '../features/viewtranscript/viewtranscript.service';
 
-// The factories need AppInitService to know if our web server is running
-// in order to select our services.
+// The factories need AppInitService to know if the web server is running
+// in order to select services.
 
 // This is a sample service factory for developing this module
 function myServiceFactory(appInitService: AppInitService, httpClient: HttpClient): MyServiceReal | MyServiceStub {
   return appInitService.isRunning ? new MyServiceReal(httpClient) : new MyServiceStub();
 }
 
-export function editMeetingServiceFactory(
+export function editTranscriptServiceFactory(
   appInitService: AppInitService,
   appData: AppData,
   httpClient: HttpClient,
@@ -37,6 +38,16 @@ export function editMeetingServiceFactory(
   return appInitService.isRunning
     ? new EditTranscriptServiceReal(httpClient, errHandling)
     : new EditTranscriptServiceStub(appData, httpClient, errHandling);
+}
+
+export function viewTranscriptServiceFactory(
+  appInitService: AppInitService,
+  httpClient: HttpClient,
+  errHandling: ErrorHandlingService
+): ViewTranscriptService {
+  return appInitService.isRunning
+    ? new ViewTranscriptServiceReal(httpClient, errHandling)
+    : new ViewTranscriptServiceStub(httpClient, errHandling);
 }
 
 export function RegisterGovBodyServiceFactory(
@@ -53,8 +64,6 @@ export function VideoServiceFactory(appInitService: AppInitService): VideoServic
   return appInitService.isRunning ? new VideoServiceReal() : new VideoServiceStub();
 }
 
-// TODO "isAspServerRunning" should be removed and we should reley only on what AppInitService finds.
-const isAspServerRunning = false; // Is the Asp.Net server running?
 const isBeta = false; // Is this the beta release version?
 const isLargeEditData = false; // Are we using the large data for EditTranscript? (Little Falls, etc.)
 
@@ -72,16 +81,17 @@ export class ServiceManagerModule {
         },
         {
           provide: AppData,
-          useValue: { isAspServerRunning, isBeta, isLargeEditData },
+          useValue: { isBeta, isLargeEditData },
         },
         {
           provide: EditTranscriptService,
-          useFactory: editMeetingServiceFactory,
+          useFactory: editTranscriptServiceFactory,
           deps: [AppInitService, AppData, HttpClient, ErrorHandlingService],
         },
         {
-          provide: ViewTranscriptServiceReal,
-          useClass: isAspServerRunning ? ViewTranscriptServiceReal : ViewTranscriptServiceStub,
+          provide: ViewTranscriptService,
+          useFactory: viewTranscriptServiceFactory,
+          deps: [AppInitService, HttpClient, ErrorHandlingService],
         },
         {
           provide: RegisterGovBodyService,

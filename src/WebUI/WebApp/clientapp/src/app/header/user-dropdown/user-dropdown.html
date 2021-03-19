@@ -1,4 +1,4 @@
-<div class="dropdown__avatar" (click)="setDropdownActive()">
+<div class="dropdown__avatar" [ngStyle]="backgroundStyle" (click)="setDropdownActive()">
   <div class="dropdown {{dropdownActive}}">
     <ul class="dropdown__list">
       <li class="dropdown__list-item" *ngIf="!isLoggedIn">

@@ -10,7 +10,7 @@ import { EditTranscriptService } from './edittranscript.service';
 
 const UseImportData = false; // If true, get data from sample in EditTranscriptSample.ts, else from assets folder
 const urlTest = 'assets/stubdata/ToEdit.json';
-const urlTestLarge = 'assets/stubdata/LARGE/USA_NJ_Passaic_LittleFalls_TownshipCouncil_en_2020-06-20.json';
+const urlTestLarge = 'assets/DATA_IGNORED_BY_GIT/USA_NJ_Passaic_LittleFalls_TownshipCouncil_en_2020-06-20.json';
 const addtagsUrl = 'https://jsonplaceholder.typicode.com/posts'; // Use  jsonplaceholder service to test post requests
 
 const NoLog = false; // set to false for console logging

@@ -4,6 +4,8 @@
     "start": "cd src\\WebUI\\WebApp\\clientapp && npm start",
     "build": "cd src\\WebUI\\WebApp\\clientapp && npm run build",
     "restart": "cd src\\WebUI\\WebApp\\clientapp && npm restart",
-    "update": "cd src\\WebUI\\WebApp\\clientapp && npm update"
+    "update": "cd src\\WebUI\\WebApp\\clientapp && npm update",
+	"test": "cd src\\WebUI\\WebApp\\clientapp && npm run test",
+    "testOnce": "cd src\\WebUI\\WebApp\\cd clientapp && npm run test:once"
   }
 }

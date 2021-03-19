@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { MeetingService } from '../meeting.service-stub';
-import { ViewTranscriptServiceReal } from '../viewtranscript.service-real';
+import { ViewTranscriptService } from '../viewtranscript.service';
 import { UserchoiceService } from '../userchoice.service';
 
 const NoLog = true; // set to false for console logging
@@ -17,7 +17,7 @@ export class TopicsComponent implements OnInit {
   errorMessage: string;
   selected = 0;
 
-  constructor(private _meetingService: ViewTranscriptServiceReal, private _userChoice: UserchoiceService) {}
+  constructor(private _meetingService: ViewTranscriptService, private _userChoice: UserchoiceService) {}
 
   ngOnInit() {
     this.getNames();

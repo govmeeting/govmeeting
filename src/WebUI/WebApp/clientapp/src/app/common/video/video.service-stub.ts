@@ -13,7 +13,7 @@ export class VideoServiceStub implements VideoService {
     const location = 'assets/stubdata/';
 
     // if (appData.isLargeEditData) {
-    //  location = 'assets/stubdata/LARGE/';
+    //  location = 'assets/DATA_IGNORED_BY_GIT/';
     // }
 
     NoLog || console.log(this.ClassName + 'location=' + location);

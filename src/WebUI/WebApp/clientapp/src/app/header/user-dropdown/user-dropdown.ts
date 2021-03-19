@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'gm-user-dropdown',
   templateUrl: './user-dropdown.html',
   styleUrls: ['./user-dropdown.scss'],
 })
-export class UserDropdownComponent {
+export class UserDropdownComponent implements OnInit {
   dropdownActive = '';
   isLoggedIn = false;
   isAdmin = false;
+  backgroundStyle: any;
+
+  ngOnInit() {
+    this.setBackground("url('assets/images/female-no-facial-features.png')");
+  }
 
   setDropdownActive() {
     this.dropdownActive = this.toggle(this.dropdownActive, 'dropdown--active', '');
@@ -37,4 +42,8 @@ export class UserDropdownComponent {
   myaccount() {}
 
   signout() {}
+
+  private setBackground(background: string) {
+    this.backgroundStyle = { 'background-image': background };
+  }
 }

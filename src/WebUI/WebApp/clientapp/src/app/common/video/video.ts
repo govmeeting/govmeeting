@@ -45,7 +45,7 @@ export class VideoComponent {
     let fileBasename = _videoService.getFileBasename();
 
     if (appData.isLargeEditData) {
-      location = 'assets/stubdata/LARGE/';
+      location = 'assets/DATA_IGNORED_BY_GIT/';
       fileBasename = 'USA_NJ_Passaic_LittleFalls_TownshipCouncil_en_2020-06-20';
     }
 

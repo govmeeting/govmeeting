@@ -2,9 +2,11 @@ name: Build frontend
 
 on:
   push:
-    paths: ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yaml"]
+    paths:
+      ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yaml"]
   pull_request:
-    paths: ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yaml"]
+    paths:
+      ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yaml"]
 
 defaults:
   run:
@@ -13,8 +15,13 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Build master for Govmeeting owner. But all but master for others.
-    if: (github.repository_owner == 'Govmeeting' && github.ref == 'refs/heads/master') || (github.repository_owner != 'Govmeeting' && github.ref != 'refs/heads/master') 
+    # Build master branch for Govmeeting owner. Build all but master for the forks.
+    # The purpose of this setting is to cut down on unnecesary workflow builds.
+    # Normally (or at least in my case) the developer pushes changes to their fork on branches other than master.
+    # These should be checked by the workflow.
+    # But when the developer pushes the master branch, it is usually just an update of the master branch
+    # that they fetched from upstream, which needn't be checked.
+    if: (github.repository_owner == 'Govmeeting' && github.ref == 'refs/heads/master') || (github.repository_owner != 'Govmeeting' && github.ref != 'refs/heads/master')
 
     strategy:
       matrix:
@@ -50,3 +57,9 @@ jobs:
 
       - name: Cypress Tests
         run: npm run ci:cypress
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: src/WebUI/WebApp/clientapp/dist # The folder the action should deploy.
