@@ -36,7 +36,7 @@ $postOverview =
 Enough with the jibber-jabber, fool!
 Show me how it works!
 
-Well, the work is in progress. But click here for:  [Demos of some working code](https://govmeeting.org/dashboard) and more documentation.
+Well, the work is in progress. But click here for:  [Demos of some working code](https://govmeeting.github.io/govmeeting/dashboard) and more documentation.
 
 <h4>
 <div  style="float:left;">  

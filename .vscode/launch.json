@@ -23,7 +23,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build-webapp",
-      "program": "${workspaceFolder}/Backend/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
+      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/netcoreapp3.1/WebApp.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/WebUI/WebApp",
       "stopAtEntry": false,
@@ -40,8 +40,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build-webapp",
-      // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/netcoreapp2.2/WebApp.dll",
+      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/netcoreapp3.1/WebApp.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/WebUI/WebApp",
       "stopAtEntry": false,
@@ -72,11 +71,9 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build-workflowapp",
-      // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/src/Workflow/WorkflowApp/bin/Debug/netcoreapp2.2/WorkflowApp.dll",
+      "program": "${workspaceFolder}/src/Workflow/WorkflowApp/bin/Debug/netcoreapp3.1/WorkflowApp.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/Workflow/WorkflowApp",
-      // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
       "console": "internalConsole",
       "stopAtEntry": false,
       "internalConsoleOptions": "openOnSessionStart",
@@ -127,6 +124,15 @@
       "type": "PowerShell",
       "request": "launch",
       "cwd": "${workspaceRoot}"
+    },
+    {
+      "name": "Docker .NET Core Launch",
+      "type": "docker",
+      "request": "launch",
+      "preLaunchTask": "docker-run: debug",
+      "netCore": {
+        "appProject": "${workspaceFolder}/src/WebUI/WebApp/WebApp.csproj"
+      }
     }
   ],
   "compounds": [
