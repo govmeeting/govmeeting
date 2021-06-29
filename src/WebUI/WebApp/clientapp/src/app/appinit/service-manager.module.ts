@@ -21,13 +21,15 @@ import { VideoServiceStub } from '../common/video/video.service-stub';
 import { EditTranscriptService } from '../features/edittranscript/edittranscript.service';
 import { ViewTranscriptService } from '../features/viewtranscript/viewtranscript.service';
 
-// The factories need AppInitService to know if the web server is running
-// in order to select services.
+// The code in this module is called when the Angular app starts up,
+// It calls AppInitService (in appinit\appinit.service.ts) to see if the web server is running.
+// If the web server is NOT running, it provides stubs for services that call the web server.
+// Otherwise, it provides the real services to DI.
 
-// This is a sample service factory for developing this module
-function myServiceFactory(appInitService: AppInitService, httpClient: HttpClient): MyServiceReal | MyServiceStub {
-  return appInitService.isRunning ? new MyServiceReal(httpClient) : new MyServiceStub();
-}
+// // myServiceFactory is a sample factory for developing & debugging this module
+// function myServiceFactory(appInitService: AppInitService, httpClient: HttpClient): MyServiceReal | MyServiceStub {
+//   return appInitService.isRunning ? new MyServiceReal(httpClient) : new MyServiceStub();
+// }
 
 export function editTranscriptServiceFactory(
   appInitService: AppInitService,
@@ -74,11 +76,12 @@ export class ServiceManagerModule {
       ngModule: ServiceManagerModule,
 
       providers: [
-        {
-          provide: MyService,
-          useFactory: myServiceFactory,
-          deps: [AppInitService, HttpClient],
-        },
+        // // This is sample code for developing & debugging this module
+        // {
+        //   provide: MyService,
+        //   useFactory: myServiceFactory,
+        //   deps: [AppInitService, HttpClient],
+        // },
         {
           provide: AppData,
           useValue: { isBeta, isLargeEditData },

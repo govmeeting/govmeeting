@@ -1,29 +1,24 @@
-﻿using System;
-using System.IO;
-using Microsoft.Extensions.Options;
-using GM.Application.Configuration;
-using GM.Infrastructure.FileDataRepositories;
-//using GM.DatabaseRepositories;
-using System.Collections.Generic;
-using System.ComponentModel;
-////using GM.Infrastructure.InfraCore.Data;
-using Microsoft.Extensions.Logging;
-using System.Linq;
-using GM.Infrastructure.GetOnlineFiles;
-using System.Transactions;
-using ChinhDo.Transactions;
-
+﻿using ChinhDo.Transactions;
 using GM.Application.AppCore.Entities.Govbodies;
 using GM.Application.AppCore.Entities.Meetings;
-using GM.Application.AppCore.Entities.Speakers;
-using GM.Application.AppCore.Entities.Topics;
+using GM.Application.Configuration;
+using GM.Infrastructure.GetOnlineFiles;
+////using GM.Infrastructure.InfraCore.Data;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using System;
+//using GM.DatabaseRepositories;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Transactions;
 
 
 namespace GM.WorkflowApp
 {
     public class WF1_Retrieve
     {
-        // TODO - IMPLEMENT THIS CLASS
+        // TODO - Complete Implementation of this class
 
         /*   ===== RetrieveOnlineFiles will:
          * Read the meeting schedules of each Govbody in the database.

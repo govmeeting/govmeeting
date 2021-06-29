@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MyService } from './my-service';
 import { replaySubjectLog } from '../logger-service';
 
-// must extend MyService which is an abstract class
+// This was used temporarily while debugging appinit\service-manager.module.ts
 @Injectable()
 export class MyServiceStub extends MyService {
   printTime(): void {

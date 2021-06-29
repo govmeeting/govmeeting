@@ -16,26 +16,33 @@ namespace GM.Application.Configuration
             // Appsettings that are set later will override earlier ones.
             // https://andrewlock.net/including-linked-files-from-outside-the-project-directory-in-asp-net-core/
 
-            if (environment == "Development")
+            if (environment == "Production")
             {
-                // For development, get the appsettings files from the SECRETS and solution folders.
-                string solutionFolder = GMFileAccess.GetSolutionFolder();
-                string secretsFolder = GMFileAccess.GetSecretsFolder();
-
-                config
-                .AddJsonFile(Path.Combine(solutionFolder, "appsettings.Development.json"), optional: true)
-                .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Secrets.json"), optional: true)
-                .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Custom.json"), optional: true);
-
-            }
-            else {
-                // Otherwise, assume that the appsettings files are in the deployment folder.
+                // Assume that the appsettings files are in the deployment folder.
                 config
                 .AddJsonFile("appsettings.Secrets.json", optional: true)
                 .AddJsonFile($"appsettings.{environment}.json", optional: true);
             }
+            else
+            {
+                // For development & staging, get the appsettings files from the SECRETS and solution folders.
+                string solutionFolder = GMFileAccess.GetSolutionFolder();
+                string secretsFolder = GMFileAccess.GetSecretsFolder();
 
-            // Allow appsettings to be overidden by an optional "appsettings.json" file in the project folder.
+                config
+                    .AddJsonFile(Path.Combine(solutionFolder, "appsettings.Development.json"), optional: true)
+                    .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Secrets.json"), optional: true)
+                    .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Custom.json"), optional: true);
+
+                if (environment == "Staging")
+                {
+                    // Todo - We don't yet have a process script that runs a staging test.
+                    // We need to test a production build locally before pushing to production.
+                    config.AddJsonFile(Path.Combine(solutionFolder, "appsettings.Staging.json"), optional: true);
+                }
+            }
+
+            // Allow appsettings to be overidden by an optional "appsettings.json" file in the project or deployment folder.
             // Currently, neither WebApp nor WorkflowApp have one.
             config.AddJsonFile("appsettings.json", optional: true);
 

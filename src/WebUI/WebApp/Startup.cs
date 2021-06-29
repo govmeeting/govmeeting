@@ -122,6 +122,7 @@ namespace GM.WebUI.WebApp
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedDatabase seedDatabase)
         {
+            logger.Info("Entering startup -> Configure");
             /*  NOTE: 
              *  For Visual Studio, the URL's used during development are in
              *      (WebApp) Project -> Properties -> Debug. Currently:
@@ -139,30 +140,41 @@ namespace GM.WebUI.WebApp
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                logger.Info("Is Development - use dev exception page & database error page");
             }
             else
             {
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+                logger.Info("Is not Development - use exception handler & HSTS");
             }
 
             app.UseHttpsRedirection();
+            logger.Info("UseHttpsRedirection");
+
             app.UseStaticFiles();
+            logger.Info("UseStaticFiles");
 
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
+                logger.Info("If not dev, UseSpaStaticFiles");
             }
 
             app.UseRouting();
+            logger.Info("UseRouting");
 
             // START OF ENDPOINT ZONE
 
             app.UseAuthentication();
+            logger.Info("UseAuthentication");
+
             app.UseAuthorization();
+            logger.Info("UseAuthorization");
 
             DebugCurrentEndpoint(app);
+            logger.Info("DebugCurrentEndpoint");
 
             // END OF ENDPOINT ZONE
 
@@ -170,13 +182,18 @@ namespace GM.WebUI.WebApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                    pattern: "{controller}/{action=Index}/{id?}"
+                );
+                logger.Info("endpoints.MapControllerRoute");
+
                 endpoints.MapRazorPages();
+                logger.Info("endpoints.MapRazorPages");
                 //endpoints.MapHealthChecks("/health").RequireAuthorization();
             });
 
             app.UseOpenApi();
             app.UseSwaggerUi3();
+            logger.Info("UseOpenApi & UseSwaggerUi3");
 
             app.UseSpa(spa =>
             {
@@ -184,11 +201,13 @@ namespace GM.WebUI.WebApp
                 // see https://go.microsoft.com/fwlink/?linkid=864501
 
                 spa.Options.SourcePath = "clientapp";
+                logger.Info("spa.Options.SourcePath");
 
                 if (env.IsDevelopment())
                 {
                     // spa.UseAngularCliServer(npmScript: "start");
                     spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+                    logger.Info("Is dev, spa.UseProxyToSpaDevelopmentServer");
                 }
             });
 

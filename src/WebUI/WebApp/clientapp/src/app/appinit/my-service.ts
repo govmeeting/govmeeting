@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-// our abstract class
+// This was used temporarily while debugging appinit\service-manager.module.ts
+
 @Injectable()
 export abstract class MyService {
   abstract printTime(): void;

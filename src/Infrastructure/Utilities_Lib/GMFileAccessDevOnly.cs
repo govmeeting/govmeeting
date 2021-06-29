@@ -36,13 +36,13 @@ namespace GM.Utilities
         public static string GetSolutionFolder() =>
             FindParentFolderContaining("govmeeting.sln");
 
-        public static string GetWebAppFolder() =>
+        private static string GetWebAppFolder() =>
             Path.Combine(GetSolutionFolder(), "src", "WebUI", "WebApp");
 
         public static string GetClientAppFolder() =>
             Path.Combine(GetWebAppFolder(), "clientapp");
 
-        public static string GetWorkflowAppFolder() =>
+        private static string GetWorkflowAppFolder() =>
             Path.Combine(GetSolutionFolder(), "src", "Workflow", "WorkflowApp");
 
         public static void SetGoogleCredentialsEnvironmentVariable()
@@ -65,9 +65,6 @@ namespace GM.Utilities
             // to authenticate to Google Cloud. Here we set this variable to the path of the credentials file,
             // which is defined in appsettings.json in the SECRETS folder
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
-
         }
-
-
     }
 }

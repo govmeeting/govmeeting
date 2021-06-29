@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { MyService } from './my-service';
 import { HttpClient } from '@angular/common/http';
 
-// must extend MyService which is an abstract class
+// This was used temporarily while debugging appinit\service-manager.module.ts
+
 @Injectable()
 export class MyServiceReal extends MyService {
   http: HttpClient;
