@@ -1,16 +1,15 @@
+# import utility functions for dealing with directory paths:
+#    Find-ParentFolderContaining, CombinePaths & GetFullPath
+Import-Module ./DirectoryUtils.psm1
+
 # Load WinSCP .NET assembly
-# Also see: https://winscp.net/eng/docs/library_powershell#example
 Add-Type -Path "./WinSCP/WinSCPnet.dll"
+# The WinSCP .NET assembly winscpnet.dll is a .NET wrapper around WinSCP’s scripting interface
+# that allows your code to connect to a remote machine and manipulate remote files over SFTP, FTP,
+# WebDAV, S3 and SCP sessions from .NET languages, such as C#, VB.NET, and others, or from environments
+# supporting .NET, such as PowerShell, SQL Server Integration Services (SSIS), ASP.NET and Microsoft Azure WebSite. 
+# Also see: https://winscp.net/eng/docs/library_powershell#example
  
-
-function GetFullPath($relativePath)
-{
-    $location = Get-Location
-    $p = [IO.Path]::Combine($location, $relativePath)
-    $q = [IO.Path]::GetFullPath($p)
-    return $q
-}
-
 # Main script
 function Main
 {
@@ -19,11 +18,11 @@ function Main
         [Parameter(Position = 1)] [string] $publish,
         [Parameter(Position = 2)] [string] $secrets
     )
-   
-    $WORKSPACE_ROOT = "C:\GOVMEETING\_SOURCECODE"
+	
+	$WORKSPACE_ROOT = Find-ParentFolderContaining "Govmeeting.sln"
 
-    # If no params passed and repo is installed in C:\GOVMEETING|_SOURCECODE
-    if ($publish -eq "") { $publish = $WORKSPACE_ROOT + "\src\WebUI\WebApp\bin\release\netcoreapp2.2\publish" }
+    # If no params passed
+    if ($publish -eq "") { $publish = $WORKSPACE_ROOT + "\src\WebUI\WebApp\bin\release\netcoreapp3.1\publish" }
     if ($secrets -eq ""){ $secrets = $WORKSPACE_ROOT + "\SECRETS\" }
 
     $devSettings = GetFullPath ($secrets + "\appsettings.Development.json")

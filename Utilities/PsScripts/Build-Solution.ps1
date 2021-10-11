@@ -1,3 +1,5 @@
+# NOTE: The folder structure has changed since this was written.
+
 # This is the start of a script to build the projects and solution
 # from scratch using the dotnet commands.
 # The solution and projects were originally built using the UI of Visual Studio.
@@ -9,8 +11,6 @@
 # The problem came and went by just removing the project from VS and re-adding it.
 # Another weird problem emerged of a library working in one app but not another.
 # Problems like these are easier to solve when using the command line to build projects.
-
-# NOTE: The folder structure has changed since this was written.
 
 function Main
 {

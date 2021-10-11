@@ -1,5 +1,8 @@
 ﻿# Copy-ClientAssets.ps1
 
+# import utility functions for dealing with directory paths:
+#    Find-ParentFolderContaining, CombinePaths & GetFullPath
+Import-Module ./DirectoryUtils.psm1
 Function Main
 {
     [CmdletBinding()]
@@ -12,7 +15,7 @@ Function Main
     Write-Host "$me Running pre-build script Copy-ClientAssets.ps1 " -NoNewline
     Write-Host @args
 
-    $WORKSPACE_ROOT = "C:\GOVMEETING\_SOURCECODE"
+    $WORKSPACE_ROOT = Find-ParentFolderContaining "Govmeeting.sln"
 
     # If no params passed and repo is installed in C:\GOVMEETING|_SOURCECODE
     if ($clientapp -eq "") { $clientapp = $WORKSPACE_ROOT + "\src\WebUI\WebApp\clientapp" }

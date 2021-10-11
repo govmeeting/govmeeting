@@ -1,6 +1,10 @@
 # BuildProjectReadme.ps1
 # Build the project's Readme.md from overview.md and setup.md in ClientApp/src/assets/docs.
 
+# import utility functions for dealing with directory paths:
+#    Find-ParentFolderContaining, CombinePaths & GetFullPath
+Import-Module ./DirectoryUtils.psm1
+
 Function BuildReadme
 {
   [CmdletBinding()]
@@ -10,7 +14,7 @@ Function BuildReadme
   )
   Write-Host "############################ Build-ProjectReadme.ps1 ############################"
 
-  $WORKSPACE_ROOT = "C:\GOVMEETING\_SOURCECODE"
+  $WORKSPACE_ROOT = Find-ParentFolderContaining "Govmeeting.sln"
 
   # If no params passed and repo is installed in $WORKSPACE_ROOT
   if ($clientapp -eq "") { $clientapp = $WORKSPACE_ROOT + "\src\WebUI\WebApp\clientapp" }

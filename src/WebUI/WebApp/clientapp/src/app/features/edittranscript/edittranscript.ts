@@ -9,7 +9,7 @@ import { VideoComponent } from '../../common/video/video';
   styleUrls: ['./edittranscript.css'],
 })
 export class EditTranscriptComponent implements OnInit {
-  showhelp = true;
+  showhelp = true; // if true, shows the help box to the user
   showhidehelp = 'Hide';
 
   @ViewChild('myInput', { static: false }) input: ElementRef;
