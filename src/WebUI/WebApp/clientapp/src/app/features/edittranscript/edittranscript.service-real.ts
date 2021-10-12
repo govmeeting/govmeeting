@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 // import { Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/share';
+// import 'rxjs/add/operator/share';
+import { share } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
 // import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
@@ -42,7 +43,7 @@ export class EditTranscriptServiceReal implements EditTranscriptService {
     this.observable = this.http
       .get<EditTranscript>(url)
       .pipe(catchError(this.errHandling.handleError))
-      .share() as Observable<EditTranscript>; // make it shared so more than one subscriber can get the same result.
+      .pipe(share()) as Observable<EditTranscript>; // make it shared so more than one subscriber can get the same result.
     return this.observable;
   }
 

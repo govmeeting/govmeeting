@@ -31,7 +31,8 @@
     <div>
       <div [hidden]="talk.showSetTopic"><br /></div>
       <!-- {{i}} -->
-      <div class="gmspeaker">{{ talk.speaker }}:</div>
+      <!-- <div class="gmspeaker">{{ talk.speaker }}:</div> -->
+      <button class="gmspeaker" (click)="onplayVideo(talk, i)">{{ talk.speaker }}:</button>
       <div (click)="showTopicSelection(talk,i)" gmHighlight (textSelected)="handleTextSelected($event)">
         <!-- <div class="gmsaid"> {{talk.said}} </div> -->
         <span [style.backgroundColor]="getWordColor(word.speaker)" *ngFor="let word of talk.words; let i = index">

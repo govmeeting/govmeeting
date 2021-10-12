@@ -8,8 +8,11 @@
 </style>
 
 <gm-video></gm-video>
-
-<button md-raised-button class="show-help-button" (click)="ToggleHelp()">{{showhidehelp}} Help</button>
+<br />
+<button i18n="@@togglehelp" md-raised-button class="show-help-button" (click)="ToggleHelp()">
+  {showhelp, select, true {Hide Help} false {Show Help} }
+</button>
+<br />
 <div class="edit-help" [hidden]="!CheckShowHelp()" (click)="ToggleHelp()">
   [This code is under development.] It will have the following functions:
   <ul>
@@ -22,4 +25,7 @@
 </div>
 
 <br />
-<gm-talks></gm-talks>
+
+<!-- The playVideo event is sent by TalksComponent to play from a starting position. -->
+<!-- <gm-talks></gm-talks> -->
+<gm-talks (playVideo)="onplayVideo($event)"></gm-talks>

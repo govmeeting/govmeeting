@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EditTranscriptService } from '../edittranscript.service';
-import { EditTranscript, Talk, Word } from '../../../models/edittranscript-view';
+import { EditTranscript, Talk, Word, PlayPhraseData } from '../../../models/edittranscript-view';
 
 const NoLog = true; // set to false for console logging
 
@@ -11,6 +11,9 @@ const NoLog = true; // set to false for console logging
 })
 export class TalksComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
+
+  @Output() playVideo: EventEmitter<PlayPhraseData>;
+
   errorMessage: string;
   talks: Talk[] | null;
   gotTalks = false;
@@ -41,6 +44,7 @@ export class TalksComponent implements OnInit {
   }
 
   constructor(private _edittranscriptService: EditTranscriptService) {
+    this.playVideo = new EventEmitter<PlayPhraseData>();
     // this.talks = addtagsService.getTalks();
   }
 
@@ -155,5 +159,35 @@ export class TalksComponent implements OnInit {
         this.shownTopicSelection = -1;
       }
     }
+  }
+
+  ///////////////////////////////////////////////////////////////
+  //  Handle video play
+  ///////////////////////////////////////////////////////////////
+
+  // #####################  Play selected part of video ####################################
+
+  onplayVideo(talk: Talk, i: number) {
+    // we pass "i", the index into the talks array. But we don't use it as of now.
+    // get the start time for this talk
+    let starttime = talk.words[0].starttime;
+    // get end time
+    let endtime = talk.words[talk.words.length - 1].endtime;
+    let data: PlayPhraseData = { start: starttime, duration: endtime - starttime };
+
+    // this.playVideo.emit(starttime, endtime - starttime); // we should also send duration
+    this.playVideo.emit(data);
+  }
+
+  convertToSeconds(time: string) {
+    const array = time.split(':');
+    let count = array.length;
+    let seconds = 0;
+    while (count > 0) {
+      seconds = seconds + Number(array[count - 1]) * Math.pow(60, array.length - count);
+      NoLog || console.log(this.ClassName + 'In convertToSeconds, seconds=' + seconds);
+      count--;
+    }
+    return seconds;
   }
 }

@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
+import { PlayPhraseData } from '../../models/edittranscript-view';
 
 import { VideoComponent } from '../../common/video/video';
+
+const NoLog = true; // set to false for console logging
 
 @Component({
   selector: 'gm-edittranscript',
@@ -9,8 +12,9 @@ import { VideoComponent } from '../../common/video/video';
   styleUrls: ['./edittranscript.css'],
 })
 export class EditTranscriptComponent implements OnInit {
+  private ClassName: string = this.constructor.name + ': ';
+
   showhelp = true; // if true, shows the help box to the user
-  showhidehelp = 'Hide';
 
   @ViewChild('myInput', { static: false }) input: ElementRef;
 
@@ -25,7 +29,12 @@ export class EditTranscriptComponent implements OnInit {
     return this.showhelp;
   }
   ToggleHelp() {
-    this.showhidehelp = this.showhelp ? 'Show' : 'Hide';
     this.showhelp = !this.showhelp;
+  }
+
+  // Capture the "playVideo" event and play the talk.
+  onplayVideo(data: PlayPhraseData) {
+    NoLog || console.log(this.ClassName + 'onplayVideo ', data.start);
+    this.videoComponent.playPhrase(data.start, data.duration);
   }
 }

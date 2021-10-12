@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { IGovbody_Vm, IGovbodyDetails_Vm, IGovLocation_Vm, IOfficial_Vm } from '../../models/govbody-view';
 import { RegisterGovBodyService } from './register-gov-body.service';
 
@@ -81,26 +81,26 @@ export class RegisterGovBodyServiceStub implements RegisterGovBodyService {
 
   // get my locations
   public getMyGovLocations(): Observable<IGovLocation_Vm[]> {
-    return Observable.of(this.locations);
+    return of(this.locations);
   }
 
   // Only location 8 has some govbodies
   public getGovbodies(govLocationId: number): Observable<IGovbody_Vm[]> {
     if (govLocationId !== 8) {
-      return Observable.of([]);
+      return of([]);
     }
-    return Observable.of(this.govbodies);
+    return of(this.govbodies);
   }
 
   // get GovBody details
   public getGovbody(govbodyId: number): Observable<IGovbodyDetails_Vm> {
     switch (govbodyId) {
       case 4:
-        return Observable.of(this.govbody[0]);
+        return of(this.govbody[0]);
       case 5:
-        return Observable.of(this.govbody[1]);
+        return of(this.govbody[1]);
       default:
-        return Observable.of(null);
+        return of(null);
     }
   }
 }

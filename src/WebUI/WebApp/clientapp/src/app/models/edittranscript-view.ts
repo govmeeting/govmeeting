@@ -27,3 +27,8 @@ export class Word {
   speaker: number;
   wordnum: number;
 }
+
+export class PlayPhraseData {
+  start: number;
+  duration: number;
+}
