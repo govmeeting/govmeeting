@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { share } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
 import { EditTranscript, Talk, Word } from '../../models/edittranscript-view';
 import { EditTranscriptSample } from '../../models/sample-data/edittranscript-sample';
@@ -13,7 +14,7 @@ const urlTest = 'assets/stubdata/ToEdit.json';
 const urlTestLarge = 'assets/DATA_IGNORED_BY_GIT/USA_NJ_Passaic_LittleFalls_TownshipCouncil_en_2020-06-20.json';
 const addtagsUrl = 'https://jsonplaceholder.typicode.com/posts'; // Use  jsonplaceholder service to test post requests
 
-const NoLog = false; // set to false for console logging
+const NoLog = true; // set to false for console logging
 
 @Injectable()
 export class EditTranscriptServiceStub implements EditTranscriptService {
@@ -50,7 +51,7 @@ export class EditTranscriptServiceStub implements EditTranscriptService {
     this.observable = this.http
       .get<EditTranscript>(this.url)
       .pipe(catchError(this.errHandling.handleError))
-      .share() as Observable<EditTranscript>; // make it shared so more than one subscriber can get the same result.
+      .pipe(share()) as Observable<EditTranscript>; // make it shared so more than one subscriber can get the same result.
     return this.observable;
   }
 

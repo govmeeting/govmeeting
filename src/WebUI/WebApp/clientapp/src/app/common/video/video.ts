@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 // import { VgAPI } from 'videogular2/core';
 import { VgApiService } from '@videogular/ngx-videogular/core';
 
-import { Observable } from 'rxjs';
-import { timer } from 'rxjs/observable/timer';
+import { Observable, timer } from 'rxjs';
+// import { timer } from 'rxjs/observable/timer';
 import { AppData } from '../../appdata';
 import { VideoService } from './video.service';
 
@@ -34,6 +34,7 @@ export class VideoComponent {
   onPlayerReady(api: VgApiService) {
     this.api = api;
     NoLog || console.log(this.ClassName + 'OnPlayerReady');
+    // api.currentTime = 15;
     // api.play();
   }
 
@@ -74,12 +75,14 @@ export class VideoComponent {
 
   playPhrase(start: number, duration: number) {
     NoLog || console.log(this.ClassName + 'playPhrase, start=' + start + ' duration=' + duration);
-    // const timer = Observable.timer(duration * 1000);
-    const timerx = timer(100); // yield for 100 milliseconds
-    timerx.subscribe((t) => this.api.pause());
-    // timer.subscribe(t=>NoLog || console.log(this.ClassName + 'done with timeout'));
-    this.api.seekTime(start);
+    start = start / 1000;
+    const timerxx = timer(duration);
+    // const timerxx = timer(6000);
+
+    this.api.currentTime = start;
     this.api.play();
+    timerxx.subscribe((t) => this.api.pause());
+
     NoLog || console.log(this.ClassName + 'exiting playPhrase');
   }
 }

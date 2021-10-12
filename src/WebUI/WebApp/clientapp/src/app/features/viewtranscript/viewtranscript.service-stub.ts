@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import 'rxjs/add/observable/of';
+// import 'rxjs/add/observable/of';
+import { of } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { catchError } from 'rxjs/operators';
+import { catchError, share } from 'rxjs/operators';
 import { ViewTranscript } from '../../models/viewtranscript-view';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { ViewTranscriptSample } from '../../models/sample-data/viewtranscript-sample';
@@ -38,7 +39,8 @@ export class ViewTranscriptServiceStub implements ViewTranscriptService {
     }
     if (this.http == null) {
       NoLog || console.log(this.ClassName + 'getMeeting http null');
-      this.observable = Observable.of(this.viewMeeting);
+      // this.observable = Observable.of(this.viewMeeting);
+      this.observable = of(this.viewMeeting);
       return this.observable;
     }
     // else get data from file.
@@ -55,11 +57,12 @@ export class ViewTranscriptServiceStub implements ViewTranscriptService {
       this.observable = this.http
         .get<ViewTranscript>(url)
         .pipe(catchError(this.errHandling.handleError))
-        .share() as Observable<ViewTranscript>; // make it shared so more than one subscriber can get the same result.
+        .pipe(share()) as Observable<ViewTranscript>; // make it shared so more than one subscriber can get the same result.
       return this.observable;
     } else {
       NoLog || console.log(this.ClassName + 'get from memory');
-      return Observable.of(this.viewMeeting);
+      // return Observable.of(this.viewMeeting);
+      return of(this.viewMeeting);
     }
   }
 

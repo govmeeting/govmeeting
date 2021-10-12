@@ -6,12 +6,15 @@ const server = 'https://localhost:44333/api/HealthCheck/Get';
 // let server = "http://no-such-web-server.org";
 // let server = "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&intitle=perl&site=stackoverflow";
 
+const NoLog = true; // set to false for console logging
+
 interface HealthCheck {
   status: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class AppInitService {
+  private ClassName: string = this.constructor.name + ': ';
   constructor(private httpClient: HttpClient) {}
 
   isRunning: boolean | null = null;
@@ -27,6 +30,7 @@ export class AppInitService {
         if (healthy.status !== 'healthy') {
           throw new Error('Server not healthy.');
         }
+        NoLog || console.log(this.ClassName + 'pingServer. Enter');
         logMsg('pingServer Got server response');
         this.isRunning = true;
         return true;
@@ -61,7 +65,8 @@ export class AppInitService {
 function logMsg(msg: string) {
   // console.log("AppInitService:", msg, getNow());
   const fullmsg = 'AppInitService:' + msg + ' ' + getNow();
-  console.log(fullmsg);
+  // console.log(fullmsg);
+  NoLog || console.log(fullmsg);
   replaySubjectLog.next(fullmsg);
 }
 

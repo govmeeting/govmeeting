@@ -14,7 +14,6 @@ const NoLog = true; // set to false for console logging
 export class ViewTranscriptComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   showhelp = true;
-  showhidehelp = 'Hide';
   topicDiscussions: TopicDiscussion[];
   errorMessage: string;
 
@@ -46,7 +45,6 @@ export class ViewTranscriptComponent implements OnInit {
     return this.showhelp;
   }
   ToggleHelp() {
-    this.showhidehelp = this.showhelp ? 'Show' : 'Hide';
     this.showhelp = !this.showhelp;
   }
 }

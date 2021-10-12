@@ -1,6 +1,6 @@
 /////////////////// Modules - external ///////////////////////////////////
 import { APP_INITIALIZER } from '@angular/core';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -128,6 +128,7 @@ export function pingFactory(appInitService: AppInitService) {
       deps: [AppInitService],
       multi: true,
     },
+    // { provide: LOCALE_ID, useValue: 'hi' },
     ChatService,
     DataFactoryService,
     DataFakeService,
