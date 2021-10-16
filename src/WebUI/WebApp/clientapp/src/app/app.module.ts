@@ -72,7 +72,8 @@ export function pingFactory(appInitService: AppInitService) {
 @NgModule({
   imports: [
     // /////////////// external //////////////
-    RouterModule.forRoot([]),
+    // /////////////// external //////////////
+RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
     CommonModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
