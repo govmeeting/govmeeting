@@ -1,12 +1,12 @@
 Select Location:
-<select [(ngModel)]="selectedLocation" (change)="selectLocation($event.target.value)">
+<select [(ngModel)]="selectedLocation" (change)="selectLocation($any($event.target).value)">
   <option [ngValue]="loc" *ngFor="let loc of locations$ | async">{{ loc.name }}</option>
 </select>
 <br />
 
 <span *ngIf="bodies$">
   Select Govbody:
-  <select [(ngModel)]="selectedBody" (change)="selectBody($event.target.value)">
+  <select [(ngModel)]="selectedBody" (change)="selectBody($any($event.target).value)">
     <option [ngValue]="bod" *ngFor="let bod of bodies$ | async">{{ bod.name }}</option>
   </select>
 </span>

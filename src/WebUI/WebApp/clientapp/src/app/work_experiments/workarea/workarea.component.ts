@@ -136,8 +136,8 @@ export class WorkareaComponent implements OnInit {
     this.gnewST = this.itemTop - this.listTop;
   }
 
-  scrollToValue(value: number) {
-    this.list.scrollTop = value;
+  scrollToValue(value: string) {
+    this.list.scrollTop = parseInt(value, 10);
   }
 
   scrollToTarget(item: Section) {

@@ -1,4 +1,4 @@
-<select name="example" (change)="onSelectChange($event.target.value)">
+<select name="example" (change)="onSelectChange($any($event.target).value)">
   <option></option>
   <option *ngFor="let v of values;let i=index" value="{{i}}">{{v.option}}</option>
 </select>
