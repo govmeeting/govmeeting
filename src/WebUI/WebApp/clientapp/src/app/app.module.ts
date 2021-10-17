@@ -73,7 +73,7 @@ export function pingFactory(appInitService: AppInitService) {
   imports: [
     // /////////////// external //////////////
     // /////////////// external //////////////
-RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
     CommonModule,
     BrowserAnimationsModule,
     DemoMaterialModule,

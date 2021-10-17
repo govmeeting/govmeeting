@@ -24,4 +24,4 @@ export const environment: IEnvironment = {
  * because it will have performance impact when throw error.
  * https://stackoverflow.com/questions/49873128/how-to-stop-errors-generated-by-zone-js-in-browser-console/49953454
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

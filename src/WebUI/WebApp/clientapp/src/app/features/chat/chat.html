@@ -32,7 +32,7 @@
                 type="text"
                 class="write_msg"
                 [value]="txtMessage"
-                (input)="txtMessage=$event.target.value"
+                (input)="txtMessage=$any($event.target).value"
                 (keydown.enter)="sendMessage()"
                 placeholder="Type a message"
               />
