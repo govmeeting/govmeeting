@@ -44,6 +44,7 @@ import { SharedModule } from './common/common.module';
 import { ErrorHandlingService } from './common/error-handling/error-handling.service';
 import { UserSettingsService, UserSettings, LocationType } from './common/user-settings.service';
 import { DemoMaterialModule } from './common/material';
+// import { VideojsComponent } from './common/videojs-player/videojs.component';
 
 // services
 import { ChatService } from './features/chat/chat.service';
@@ -104,7 +105,14 @@ export function pingFactory(appInitService: AppInitService) {
     FeaturesModule,
     //  AppInitModule,
   ],
-  declarations: [AppComponent, DashMainComponent, ShoutoutsComponent, PopupComponent, FetchDataComponent],
+  declarations: [
+    AppComponent,
+    DashMainComponent,
+    ShoutoutsComponent,
+    PopupComponent,
+    FetchDataComponent,
+    // VideojsComponent,
+  ],
   exports: [
     DemoMaterialModule,
 

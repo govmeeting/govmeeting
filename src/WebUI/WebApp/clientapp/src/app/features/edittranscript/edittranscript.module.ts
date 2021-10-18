@@ -10,6 +10,9 @@ import { TopicsComponent } from './topics/topics';
 import { SectionsComponent } from './sections/sections';
 import { SharedModule } from '../../common/common.module';
 import { VideoModule } from '../../common/video/video.module';
+import { VideojsModule } from '../../common/videojs/videojs.module';
+
+// import { VideojsComponent } from '../../common/videojs-player/videojs';
 
 @NgModule({
   declarations: [EditTranscriptComponent, TalksComponent, TopicsComponent, SectionsComponent],
@@ -21,6 +24,7 @@ import { VideoModule } from '../../common/video/video.module';
     // ReactiveFormsModule
     VideoModule,
     SharedModule,
+    VideojsModule,
   ],
 
   exports: [EditTranscriptComponent],

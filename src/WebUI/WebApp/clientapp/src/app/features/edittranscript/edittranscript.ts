@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { PlayPhraseData } from '../../models/edittranscript-view';
 
-import { VideoComponent } from '../../common/video/video';
+// import { VideoComponent } from '../../common/video/video';
+import { VideojsComponent } from '../../common/videojs/videojs';
 
 const NoLog = true; // set to false for console logging
 
@@ -18,8 +19,11 @@ export class EditTranscriptComponent implements OnInit {
 
   @ViewChild('myInput', { static: false }) input: ElementRef;
 
-  @ViewChild(VideoComponent, { static: false })
-  private videoComponent: VideoComponent;
+  // @ViewChild(VideoComponent, { static: false })
+  // private videoComponent: VideoComponent;
+
+  @ViewChild(VideojsComponent, { static: false })
+  private videojsComponent: VideojsComponent;
 
   constructor() {}
 
@@ -35,6 +39,7 @@ export class EditTranscriptComponent implements OnInit {
   // Capture the "playVideo" event and play the talk.
   onplayVideo(data: PlayPhraseData) {
     NoLog || console.log(this.ClassName + 'onplayVideo ', data.start);
-    this.videoComponent.playPhrase(data.start, data.duration);
+    // this.videoComponent.playPhrase(data.start, data.duration);
+    this.videojsComponent.playPhrase(data.start, data.duration);
   }
 }

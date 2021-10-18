@@ -7,7 +7,20 @@
   }
 </style>
 
-<gm-video></gm-video>
+<!-- <gm-video></gm-video> -->
+
+<gm-videojs
+  [options]="{
+    fluid: true,
+    autoplay: false,
+    controls: true,
+    muted: false,
+    playsinline: true,
+    sources: [
+      { src: 'assets/stubdata/ToEdit.mp4', type: 'video/mp4' }
+    ] }"
+></gm-videojs>
+
 <br />
 <button i18n="@@togglehelp" md-raised-button class="show-help-button" (click)="ToggleHelp()">
   {showhelp, select, true {Hide Help} false {Show Help} }
