@@ -167,6 +167,7 @@ export class TalksComponent implements OnInit {
 
   // #####################  Play selected part of video ####################################
 
+  // The EditTranscriptComponent captures the playVideo event.
   onplayVideo(talk: Talk, i: number) {
     // we pass "i", the index into the talks array. But we don't use it as of now.
     // get the start time for this talk
@@ -175,7 +176,6 @@ export class TalksComponent implements OnInit {
     const endtime = talk.words[talk.words.length - 1].endtime;
     const data: PlayPhraseData = { start: starttime, duration: endtime - starttime };
 
-    // this.playVideo.emit(starttime, endtime - starttime); // we should also send duration
     this.playVideo.emit(data);
   }
 
