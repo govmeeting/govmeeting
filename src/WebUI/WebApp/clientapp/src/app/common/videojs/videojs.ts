@@ -2,6 +2,7 @@
 import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import videojs from 'video.js';
 import { timer } from 'rxjs';
+import * as Hotkeys from 'videojs-hotkeys';
 
 const NoLog = false; // set to false for console logging
 
@@ -18,11 +19,15 @@ export class VideojsComponent implements OnInit, OnDestroy {
   // see options: https://github.com/videojs/video.js/blob/maintutorial-options.html
   @Input() options: {
     fluid: boolean;
-    // aspectRatio: string;
+    aspectRatio: string;
     autoplay: boolean;
     controls: boolean;
     muted: boolean;
     playsinline: boolean;
+    playbackRates: number[];
+    plugins: {
+      hotkeys: {};
+    };
     sources: {
       src: string;
       type: string;
@@ -30,7 +35,11 @@ export class VideojsComponent implements OnInit, OnDestroy {
   };
   player: videojs.Player;
 
-  constructor(private elementRef: ElementRef) {}
+  private plugin: any;
+
+  constructor(private elementRef: ElementRef) {
+    this.plugin = Hotkeys;
+  }
 
   ngOnInit() {
     // instantiate Video.js

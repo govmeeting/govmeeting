@@ -12,14 +12,27 @@
 <gm-videojs
   [options]="{
     fluid: true,
+    aspectRatio: '16:9',
     autoplay: false,
     controls: true,
     muted: false,
     playsinline: true,
+    playbackRates: [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4],
+    plugins: {
+      hotkeys: {
+      volumeStep: 0.1,
+      seekStep: 5,
+      enableModifiersForNumbers: false
+      }
+    },
     sources: [
       { src: 'assets/stubdata/ToEdit.mp4', type: 'video/mp4' }
     ] }"
 ></gm-videojs>
+
+<!-- plugins: {
+      hotkeys: {}
+    }, -->
 
 <br />
 <button i18n="@@togglehelp" md-raised-button class="show-help-button" (click)="ToggleHelp()">
