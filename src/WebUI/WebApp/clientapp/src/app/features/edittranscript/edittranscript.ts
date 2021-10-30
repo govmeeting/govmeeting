@@ -42,4 +42,8 @@ export class EditTranscriptComponent implements OnInit {
     // this.videoComponent.playPhrase(data.start, data.duration);
     this.videojsComponent.playPhrase(data.start, data.duration);
   }
+
+  onGetTracks() {
+    this.videojsComponent.getTracks();
+  }
 }

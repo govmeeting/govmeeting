@@ -71,4 +71,27 @@ export class VideojsComponent implements OnInit, OnDestroy {
 
     NoLog || console.log(this.ClassName + 'exiting playPhrase');
   }
+
+  getTracks() {
+    var validTracks: TextTrack[] = [];
+    var tracks: TextTrackList;
+    var track: TextTrack;
+    tracks = this.player.textTracks();
+    for (var i = 0, L = tracks.length; i < L; i++) {
+      track = tracks[i];
+      if (track.kind === 'captions' || track.kind === 'subtitles') {
+        validTracks.push(track);
+      }
+
+      if (track.language == 'en') {
+        console.dir(tracks[i]);
+      }
+    }
+    // tracks.forEach(function (track) {
+    //   if (track.kind() === 'captions' || track.kind() === 'subtitles') {
+    //     validTracks.push(track);
+    //   }
+    // });
+    return validTracks;
+  }
 }
