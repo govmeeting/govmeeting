@@ -37,7 +37,7 @@ export class VideojsComponent implements OnInit, OnDestroy {
       kind: TextTrackKind;
       srclang: string;
       label: string;
-      // default: string;
+      default?: boolean;
     }[];
   };
   player: videojs.Player;
@@ -101,5 +101,17 @@ export class VideojsComponent implements OnInit, OnDestroy {
     //   }
     // });
     return validTracks;
+  }
+
+  getActiveTrack(tracks: TextTrackList): TextTrack {
+    var track: TextTrack;
+    for (var i = 0, L = tracks.length; i < L; i++) {
+      track = tracks[i];
+      if (track.mode === 'showing') {
+        return track;
+      }
+    }
+    // fallback to first track
+    return tracks[0];
   }
 }
