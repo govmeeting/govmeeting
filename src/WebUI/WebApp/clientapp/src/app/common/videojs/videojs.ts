@@ -32,6 +32,13 @@ export class VideojsComponent implements OnInit, OnDestroy {
       src: string;
       type: string;
     }[];
+    tracks: {
+      src: string;
+      kind: TextTrackKind;
+      srclang: string;
+      label: string;
+      // default: string;
+    }[];
   };
   player: videojs.Player;
 
@@ -43,9 +50,10 @@ export class VideojsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // instantiate Video.js
-    this.player = videojs(this.target.nativeElement, this.options, function onPlayerReady() {
-      console.log('onPlayerReady', this);
-    });
+    this.player = videojs(this.target.nativeElement);
+    // this.player = videojs(this.target.nativeElement, this.options, function onPlayerReady() {
+    //   console.log('onPlayerReady', this);
+    // });
   }
 
   ngOnDestroy() {

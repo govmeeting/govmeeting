@@ -26,9 +26,27 @@
       }
     },
     sources: [
-      { src: 'assets/stubdata/ToEdit.mp4', type: 'video/mp4' }
-    ] }"
+      { src: 'http://www.openbeelden.nl/files/92/104101.ed_hd.mp4', type: 'video/mp4' }
+    ],
+    tracks: [
+    {src: 'assets/stubdata/captions/captions.en.srt', kind:'captions', srclang: 'en', label: 'English'},
+    {src: 'assets/stubdata/captions/captions.sv.srt', kind:'captions', srclang: 'sv', label: 'Swedish'},
+    {src: 'assets/stubdata/captions/captions.ru.srt', kind:'captions', srclang: 'ru', label: 'Russian'},
+    {src: 'assets/stubdata/captions/captions.ja.srt', kind:'captions', srclang: 'ja', label: 'Japanese'},
+    {src: 'assets/stubdata/captions/captions.ar.srt', kind:'captions', srclang: 'ar', label: 'Arabic'}
+    ]
+  }"
 ></gm-videojs>
+
+<!-- { src: 'assets/stubdata/DATA_IGNORED_BY_GIT/BigBuckBunny-1280x720.mp4', type: 'video/mp4' } -->
+
+<!-- <track kind="assets/stubdata/captions" src="captions/captions.en.srt" srclang="en" label="English" default>
+      <track kind="assets/stubdata/captions" src="captions/captions.sv.srt" srclang="sv" label="Swedish">
+      <track kind="assets/stubdata/captions" src="captions/captions.ru.srt" srclang="ru" label="Russian">
+      <track kind="assets/stubdata/captions" src="captions/captions.ja.srt" srclang="ja" label="Japanese">
+      <track kind="assets/stubdata/captions" src="captions/captions.ar.srt" srclang="ar" label="Arabic"> -->
+
+<!-- { src: 'assets/stubdata/ToEdit.mp4', type: 'video/mp4' } -->
 
 <br />
 <button (click)="onGetTracks()">Get Tracks</button>
