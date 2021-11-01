@@ -114,4 +114,16 @@ export class VideojsComponent implements OnInit, OnDestroy {
     // fallback to first track
     return tracks[0];
   }
+
+  secondsToTime(timeInSeconds: number) {
+    var hour: number = Math.floor(timeInSeconds / 3600);
+    var min: number = Math.floor((timeInSeconds % 3600) / 60);
+    var sec: number = Math.floor(timeInSeconds % 60);
+    sec = sec < 10 ? 0 + sec : sec;
+    min = hour > 0 && min < 10 ? 0 + min : min;
+    if (hour > 0) {
+      return hour + ':' + min + ':' + sec;
+    }
+    return min + ':' + sec;
+  }
 }
