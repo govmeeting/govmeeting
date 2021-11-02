@@ -1,5 +1,14 @@
 // videojs.component.ts
-import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import videojs from 'video.js';
 import { timer } from 'rxjs';
 import * as Hotkeys from 'videojs-hotkeys';
@@ -12,10 +21,20 @@ const NoLog = false; // set to false for console logging
   styleUrls: ['./videojs.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class VideojsComponent implements OnInit, OnDestroy {
+export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   private ClassName: string = this.constructor.name + ': ';
 
   @ViewChild('target', { static: true }) target: ElementRef;
+  @ViewChild('target', { read: ElementRef }) targetElement: ElementRef;
+
+  // <gm-videojs _ngcontent-tpj-c384="" ...
+  //     <div id="vjs_video_3" ...
+  //        ...
+  //        <div class ="vjs-playback-rate ...
+  //          <div class="vjs-playback-rate-value ...
+  //            <button class=vjs-playback-rate vjs-menu-button ...
+  // @ViewChild('vjs_video_3') vjs_video_3: ElementRef;
+
   // see options: https://github.com/videojs/video.js/blob/maintutorial-options.html
   @Input() options: {
     fluid: boolean;
@@ -54,6 +73,13 @@ export class VideojsComponent implements OnInit, OnDestroy {
     this.player = videojs(this.target.nativeElement, this.options, function onPlayerReady() {
       console.log('onPlayerReady', this);
     });
+  }
+
+  ngAfterViewInit() {
+    console.log('---ngAfterViewInit() Demo---');
+    var x = this.targetElement;
+    var y = this.targetElement.nativeElement;
+    var z = 1;
   }
 
   ngOnDestroy() {
@@ -125,5 +151,58 @@ export class VideojsComponent implements OnInit, OnDestroy {
       return hour + ':' + min + ':' + sec;
     }
     return min + ':' + sec;
+  }
+
+  createButton(icon: string) {
+    var button = document.createElement('button');
+    button.classList.add('vjs-menu-button');
+    // create "rotate" icon. [ When I pasted the code sequence below into
+    // a Google search, it displayed a roatate icon. ]
+    button.innerHTML = icon;
+    button.style.fontSize = '1.8em';
+    return button;
+  }
+
+  insertAfter(newEl, element) {
+    element.parentNode.insertBefore(newEl, element.nextSibling);
+  }
+
+  // Create buttons, attach click handlers and add them to the video element.
+  // rotate(player) {
+  rotate(gmVideojs: ElementRef) {
+    var dimension = 0;
+    var rotateLeftIcon = '&#8635;';
+    var rotateRightIcon = '&#8634;';
+
+    var rotateLeftButton = this.createButton(rotateLeftIcon);
+    var rotateRightButton = this.createButton(rotateRightIcon);
+
+    rotateLeftButton.onclick = function () {
+      dimension += 90;
+      dimension %= 360;
+      // player.zoomrotate({ rotate: dimension });
+    };
+
+    rotateRightButton.onclick = function () {
+      dimension -= 90;
+      if (Math.abs(dimension) == 360) {
+        dimension = 0;
+      }
+      // player.zoomrotate({ rotate: dimension });
+    };
+
+    // Add the buttons after the playbackRate button
+    // var playbackRate = document.querySelector('vjs-playback-rate');
+    // var pbr = this.vjs_video_3;
+    // var playbackRate = this.vjs_video_3.nativeElement.querySelector('vjs-playback-rate');
+    // var t: ElementRef = this.target;
+    // var te: ElementRef = this.targetElement;
+    // var vv3 = gmVideojs.nativeElement.querySelector('#vjs_video_3');
+    // var playbackRate = gmVideojs.nativeElement.querySelector(
+    //   '#vjs-playback-rate-value-label-vjs_video_3_component_262'
+    // );
+    var playbackRate = gmVideojs.nativeElement.querySelector('.vjs-playback-rate');
+    this.insertAfter(rotateLeftButton, playbackRate);
+    this.insertAfter(rotateRightButton, rotateLeftButton);
   }
 }

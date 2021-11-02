@@ -10,6 +10,7 @@
 <!-- <gm-video></gm-video> -->
 
 <gm-videojs
+  #gmvideojs
   [options]="{
     fluid: true,
     aspectRatio: '16:9',
@@ -48,6 +49,7 @@
 
 <br />
 <button (click)="onGetTracks()">Get Tracks</button>
+<button (click)="onRotate()">Rotate</button>
 
 <br />
 <button i18n="@@togglehelp" md-raised-button class="show-help-button" (click)="ToggleHelp()">

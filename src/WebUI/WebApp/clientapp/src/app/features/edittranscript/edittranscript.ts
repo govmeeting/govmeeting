@@ -25,6 +25,8 @@ export class EditTranscriptComponent implements OnInit {
   @ViewChild(VideojsComponent, { static: false })
   private videojsComponent: VideojsComponent;
 
+  @ViewChild('gmvideojs', { read: ElementRef }) gmVideojs: ElementRef;
+
   constructor() {}
 
   ngOnInit() {}
@@ -45,5 +47,11 @@ export class EditTranscriptComponent implements OnInit {
 
   onGetTracks() {
     this.videojsComponent.getTracks();
+  }
+
+  onRotate() {
+    // var gmv: ElementRef = this.gmVideojs;
+    // var gmvn = gmv.nativeElement;
+    this.videojsComponent.rotate(this.gmVideojs);
   }
 }
