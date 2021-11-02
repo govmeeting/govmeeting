@@ -1,4 +1,9 @@
-/* "rotate" plugin for videojs
+/* I copied this code from the video:
+ *    HTML Video Programming #5 Make your own videojs plugin
+ *    https://www.youtube.com/watch?v=ITPdp6kw-B0
+ * It is not directly called anywhere, but I used most of the code in:
+ *    src\WebUI\WebApp\clientapp\src\app\common\videojs\vjsutils\AddButtons.ts
+ * "rotate" plugin for videojs
  * We need to first install the plugin "zoomrotate".
  *   CMD: npm i videojs-rotatezoom
  *   HTML: <script src='videojs.zoomrotate.js'></script>

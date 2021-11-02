@@ -22,7 +22,7 @@
     plugins: {
       hotkeys: {
       volumeStep: 0.1,
-      seekStep: 5,
+      seekStep: 25,
       enableModifiersForNumbers: false
       }
     },
@@ -38,18 +38,13 @@
 ></gm-videojs>
 
 <!-- { src: 'assets/stubdata/DATA_IGNORED_BY_GIT/BigBuckBunny-1280x720.mp4', type: 'video/mp4' } -->
-
-<!-- <track kind="assets/stubdata/captions" src="captions/captions.en.srt" srclang="en" label="English" default>
-      <track kind="assets/stubdata/captions" src="captions/captions.sv.srt" srclang="sv" label="Swedish">
-      <track kind="assets/stubdata/captions" src="captions/captions.ru.srt" srclang="ru" label="Russian">
-      <track kind="assets/stubdata/captions" src="captions/captions.ja.srt" srclang="ja" label="Japanese">
-      <track kind="assets/stubdata/captions" src="captions/captions.ar.srt" srclang="ar" label="Arabic"> -->
-
 <!-- { src: 'assets/stubdata/ToEdit.mp4', type: 'video/mp4' } -->
 
 <br />
+
+<!-- buttons for debugging new features -->
 <button (click)="onGetTracks()">Get Tracks</button>
-<button (click)="onRotate()">Rotate</button>
+<!-- <button (click)="onRotate()">Rotate</button> -->
 
 <br />
 <button i18n="@@togglehelp" md-raised-button class="show-help-button" (click)="ToggleHelp()">

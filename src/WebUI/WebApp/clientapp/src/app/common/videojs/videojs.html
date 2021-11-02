@@ -4,12 +4,14 @@
 <!-- <script src="https://cdn.sc.gl/videojs-hotkeys/0.2/videojs.hotkeys.min.js"></script> -->
 <script src="videojs-hotkeys/videojs.hotkeys.js"></script>
 
-<video #target class="video-js vjs-big-play-centered vjs-default-skin" preload="none">
-  <p class="vjs-no-js">
-    To view this video please enable JavaScript, and consider upgrading to a web browser that
-    <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-  </p>
-</video>
+<div #vjscontainer>
+  <video #target class="video-js vjs-big-play-centered vjs-default-skin" preload="none">
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a web browser that
+      <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+  </video>
+</div>
 
 <!-- <video #target class="video-js vjs-default-skin" height="300" width="600" controls>
   <source src="http://www.openbeelden.nl/files/92/104101.ed_hd.mp4" type="video/mp4" />
