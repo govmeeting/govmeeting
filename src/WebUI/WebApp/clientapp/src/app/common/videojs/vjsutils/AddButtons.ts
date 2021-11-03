@@ -3,6 +3,14 @@ import { ElementRef } from '@angular/core';
 const NoLog = true; // set to false for console logging
 const ClassName = 'Videojs-util: ';
 
+var angle = 0;
+export function RotateVideo(vjscontainer: ElementRef) {
+  angle += 90;
+  angle = angle % 360;
+  var transform = 'rotate(' + angle.toString() + 'deg)';
+  vjscontainer.nativeElement.style.transform = transform;
+}
+
 // Create buttons, attach click handlers and add them to the video player control bar.
 export function AddRotateButtons(vjscontainer: ElementRef) {
   var dimension = 0;
@@ -16,16 +24,22 @@ export function AddRotateButtons(vjscontainer: ElementRef) {
   var rotateRightButton = createButton(rotateRightIcon);
 
   rotateLeftButton.onclick = function () {
-    dimension += 90;
+    dimension += 180;
     dimension %= 360;
+    var transform = 'rotate(' + dimension.toString() + 'deg)';
+    vjscontainer.nativeElement.style.transform = transform;
+
     // player.zoomrotate({ rotate: dimension });
   };
 
   rotateRightButton.onclick = function () {
-    dimension -= 90;
+    dimension -= 180;
     if (Math.abs(dimension) == 360) {
       dimension = 0;
     }
+    var transform = 'rotate(' + dimension.toString() + 'deg)';
+    vjscontainer.nativeElement.style.transform = transform;
+
     // player.zoomrotate({ rotate: dimension });
   };
 

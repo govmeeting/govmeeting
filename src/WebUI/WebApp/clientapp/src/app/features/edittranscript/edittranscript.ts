@@ -50,8 +50,6 @@ export class EditTranscriptComponent implements OnInit {
   }
 
   onRotate() {
-    // var gmv: ElementRef = this.gmVideojs;
-    // var gmvn = gmv.nativeElement;
-    // this.videojsComponent.rotate(this.gmVideojs);
+    this.videojsComponent.rotateVideo();
   }
 }

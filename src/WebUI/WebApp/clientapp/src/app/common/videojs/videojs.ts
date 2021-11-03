@@ -13,7 +13,7 @@ import videojs from 'video.js';
 import { timer } from 'rxjs';
 import * as Hotkeys from 'videojs-hotkeys';
 import * as ZoomRotate from 'videojs-rotatezoom';
-import { AddRotateButtons } from './vjsutils/AddButtons';
+import { AddRotateButtons, RotateVideo } from './vjsutils/AddButtons';
 
 const NoLog = true; // set to false for console logging
 
@@ -81,6 +81,10 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.player) {
       this.player.dispose();
     }
+  }
+
+  rotateVideo() {
+    RotateVideo(this.vjscontainer);
   }
 
   playPhrase(start: number, duration: number) {
