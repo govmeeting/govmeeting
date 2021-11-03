@@ -12,6 +12,7 @@ import {
 import videojs from 'video.js';
 import { timer } from 'rxjs';
 import * as Hotkeys from 'videojs-hotkeys';
+// import * as ZoomRotate from 'videojs-rotatezoom';
 import { AddRotateButtons } from './vjsutils/AddButtons';
 
 const NoLog = true; // set to false for console logging
@@ -24,7 +25,9 @@ const NoLog = true; // set to false for console logging
 })
 export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   private ClassName: string = this.constructor.name + ': ';
-
+  player: videojs.Player;
+  private hotkeysPlugin: any; // used in constructor and needed but why??
+  // private zoomrotatePlugin: any;
   @ViewChild('target', { static: true }) target: ElementRef;
   @ViewChild('vjscontainer') vjscontainer: ElementRef;
 
@@ -52,12 +55,12 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
       default?: boolean;
     }[];
   };
-  player: videojs.Player;
 
-  private plugin: any;
+  // zoomrotate: {};
 
   constructor(private elementRef: ElementRef) {
-    this.plugin = Hotkeys;
+    this.hotkeysPlugin = Hotkeys;
+    // this.zoomrotatePlugin = ZoomRotate;
   }
 
   ngOnInit() {
