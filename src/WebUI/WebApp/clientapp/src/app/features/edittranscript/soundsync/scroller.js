@@ -1,19 +1,16 @@
 /*
  *  Scroller object to handle scrolling.
  */
-var scrollerProto = function(plugin) {
-
+var scrollerProto = (function (plugin) {
   var initHandlers = function (el) {
     var self = this;
     // The scroll event. We want to keep track of when the user is scrolling the transcript.
     el.addEventListener('scroll', function () {
       if (self.isAutoScrolling) {
-
         // If isAutoScrolling was set to true, we can set it to false and then ignore this event.
         // It wasn't the user.
         self.isAutoScrolling = false; // event handled
       } else {
-
         // We only care about when the user scrolls. Set userIsScrolling to true and add a nice class.
         self.userIsScrolling = true;
         el.classList.add('is-inuse');
@@ -29,7 +26,6 @@ var scrollerProto = function(plugin) {
 
       // Have a small delay before deciding user as done interacting.
       setTimeout(function () {
-
         // Make sure the user didn't move the pointer back in.
         if (!self.mouseIsOverTranscript) {
           self.userIsScrolling = false;
@@ -87,7 +83,7 @@ var scrollerProto = function(plugin) {
       var parentOffsetBottom = parent.offsetTop + parent.clientHeight;
       var elementOffsetBottom = element.offsetTop + element.clientHeight;
       var relTop = element.offsetTop - parent.offsetTop;
-      var relBottom = (element.offsetTop + element.clientHeight) - parent.offsetTop;
+      var relBottom = element.offsetTop + element.clientHeight - parent.offsetTop;
       var newPos;
 
       // If the top of the line is above the top of the parent view, were scrolling up,
@@ -95,9 +91,9 @@ var scrollerProto = function(plugin) {
       if (relTop < parent.scrollTop) {
         newPos = element.offsetTop - parent.offsetTop;
 
-      // If the bottom of the line is below the parent view, we're scrolling down, so we want the
-      // bottom edge of the line to move up to meet the bottom edge of the parent.
-      } else if (relBottom > (parent.scrollTop + parent.clientHeight)) {
+        // If the bottom of the line is below the parent view, we're scrolling down, so we want the
+        // bottom edge of the line to move up to meet the bottom edge of the parent.
+      } else if (relBottom > parent.scrollTop + parent.clientHeight) {
         newPos = elementOffsetBottom - parentOffsetBottom;
       }
 
@@ -124,13 +120,12 @@ var scrollerProto = function(plugin) {
 
   return {
     init: init,
-    to : scrollToElement,
-    canScroll : canScroll,
-    inUse : inUse
-  }
-}(my);
+    to: scrollToElement,
+    canScroll: canScroll,
+    inUse: inUse,
+  };
+})(my);
 
-var scroller = function(element) {
+var scroller = function (element) {
   return Object.create(scrollerProto).init(element);
 };
-

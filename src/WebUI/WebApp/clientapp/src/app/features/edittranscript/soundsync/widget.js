@@ -4,7 +4,7 @@
 
 /*globals utils, eventEmitter, my, scrollable*/
 
-var widget = function (plugin) {
+var widget = (function (plugin) {
   var my = {};
   my.element = {};
   my.body = {};
@@ -19,9 +19,9 @@ var widget = function (plugin) {
     header.textContent = utils.localize('Transcript');
     return header;
   };
-  var createSelector = function (){
+  var createSelector = function () {
     var selector = utils.createEl('select', '-selector');
-      plugin.validTracks.forEach(function (track, i) {
+    plugin.validTracks.forEach(function (track, i) {
       var option = document.createElement('option');
       option.value = i;
       option.textContent = track.label() + ' (' + track.language() + ')';
@@ -36,10 +36,13 @@ var widget = function (plugin) {
   var clickToSeekHandler = function (event) {
     var clickedClasses = event.target.classList;
     var clickedTime = event.target.getAttribute('data-begin') || event.target.parentElement.getAttribute('data-begin');
-    if (clickedTime !== undefined && clickedTime !== null) { // can be zero
-      if ((plugin.settings.clickArea === 'line') || // clickArea: 'line' activates on all elements
+    if (clickedTime !== undefined && clickedTime !== null) {
+      // can be zero
+      if (
+        plugin.settings.clickArea === 'line' || // clickArea: 'line' activates on all elements
         (plugin.settings.clickArea === 'timestamp' && clickedClasses.contains(plugin.prefix + '-timestamp')) ||
-        (plugin.settings.clickArea === 'text' && clickedClasses.contains(plugin.prefix + '-text'))) {
+        (plugin.settings.clickArea === 'text' && clickedClasses.contains(plugin.prefix + '-text'))
+      ) {
         plugin.player.currentTime(clickedTime);
       }
     }
@@ -72,7 +75,7 @@ var widget = function (plugin) {
       body.appendChild(fragment);
       body.setAttribute('lang', track.language());
     };
-    if (track.readyState() !==2) {
+    if (track.readyState() !== 2) {
       track.load();
       track.on('loaded', createTranscript);
     } else {
@@ -116,10 +119,11 @@ var widget = function (plugin) {
         end = plugin.player.duration() || Infinity;
       }
       if (time > begin && time < end) {
-        if (!line.classList.contains('is-active')) { // don't update if it hasn't changed
+        if (!line.classList.contains('is-active')) {
+          // don't update if it hasn't changed
           line.classList.add('is-active');
           if (plugin.settings.autoscroll && !(plugin.settings.stopScrollWhenInUse && my.body.scroll.inUse())) {
-              my.body.scroll.to(line);
+            my.body.scroll.to(line);
           }
         }
       } else {
@@ -134,9 +138,8 @@ var widget = function (plugin) {
     create: create,
     setTrack: setTrack,
     setCue: setCue,
-    el : el,
+    el: el,
     on: on,
     trigger: trigger,
   };
-
-}(my);
+})(my);

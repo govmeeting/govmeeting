@@ -3,55 +3,55 @@ import { ElementRef } from '@angular/core';
 const NoLog = true; // set to false for console logging
 const ClassName = 'Videojs-util: ';
 
-var angle = 0;
+let angle = 0;
 export function RotateVideo(vjscontainer: ElementRef) {
   angle += 90;
   angle = angle % 360;
-  var transform = 'rotate(' + angle.toString() + 'deg)';
+  const transform = 'rotate(' + angle.toString() + 'deg)';
   vjscontainer.nativeElement.style.transform = transform;
 }
 
 // Create buttons, attach click handlers and add them to the video player control bar.
 export function AddRotateButtons(vjscontainer: ElementRef) {
-  var dimension = 0;
+  let dimension = 0;
   // I you paste either of these code sequences into a Google search box and hit
   //   search, you will see the symbol it represents.
-  var rotateLeftIcon = '&#8635;';
-  var rotateRightIcon = '&#8634;';
+  const rotateLeftIcon = '&#8635;';
+  const rotateRightIcon = '&#8634;';
 
   NoLog || console.log(ClassName + 'about to create button');
-  var rotateLeftButton = createButton(rotateLeftIcon);
-  var rotateRightButton = createButton(rotateRightIcon);
+  const rotateLeftButton = createButton(rotateLeftIcon);
+  const rotateRightButton = createButton(rotateRightIcon);
 
-  rotateLeftButton.onclick = function () {
+  rotateLeftButton.onclick = () => {
     dimension += 180;
     dimension %= 360;
-    var transform = 'rotate(' + dimension.toString() + 'deg)';
+    const transform = 'rotate(' + dimension.toString() + 'deg)';
     vjscontainer.nativeElement.style.transform = transform;
 
     // player.zoomrotate({ rotate: dimension });
   };
 
-  rotateRightButton.onclick = function () {
+  rotateRightButton.onclick = () => {
     dimension -= 180;
-    if (Math.abs(dimension) == 360) {
+    if (Math.abs(dimension) === 360) {
       dimension = 0;
     }
-    var transform = 'rotate(' + dimension.toString() + 'deg)';
+    const transform = 'rotate(' + dimension.toString() + 'deg)';
     vjscontainer.nativeElement.style.transform = transform;
 
     // player.zoomrotate({ rotate: dimension });
   };
 
   // Add the buttons after the playbackRate button
-  var playbackRate = vjscontainer.nativeElement.querySelector('.vjs-playback-rate');
+  const playbackRate = vjscontainer.nativeElement.querySelector('.vjs-playback-rate');
   insertAfter(rotateLeftButton, playbackRate);
   insertAfter(rotateRightButton, rotateLeftButton);
 }
 
 function createButton(icon: string) {
   NoLog || console.log(ClassName + 'inside createButton');
-  var button = document.createElement('button');
+  const button = document.createElement('button');
   button.classList.add('vjs-menu-button');
   // create "rotate" icon. [ When I pasted the code sequence below into
   // a Google search, it displayed a roatate icon. ]

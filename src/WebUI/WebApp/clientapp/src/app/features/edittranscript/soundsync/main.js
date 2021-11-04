@@ -26,7 +26,7 @@ var transcript = function (options) {
     el: function () {
       return my.widget.el();
     },
-    setTrack: my.widget.setTrack
+    setTrack: my.widget.setTrack,
   };
 };
 videojs.plugin('transcript', transcript);

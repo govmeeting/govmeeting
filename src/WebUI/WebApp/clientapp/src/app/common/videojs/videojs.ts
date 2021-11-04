@@ -73,7 +73,8 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit() {
     NoLog || console.log(this.ClassName + '---ngAfterViewInit() Demo---');
-    AddRotateButtons(this.vjscontainer);
+    // Experimenting with adding buttons to the video's control bar
+    // AddRotateButtons(this.vjscontainer);
   }
 
   ngOnDestroy() {
@@ -98,16 +99,16 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getTracks() {
-    var validTracks: TextTrack[] = [];
-    var tracks: TextTrackList;
-    var track: TextTrack;
+    const validTracks: TextTrack[] = [];
+    let tracks: TextTrackList;
+    let track: TextTrack;
     tracks = this.player.textTracks();
-    for (var i = 0, L = tracks.length; i < L; i++) {
+    for (let i = 0, L = tracks.length; i < L; i++) {
       track = tracks[i];
       if (track.kind === 'captions' || track.kind === 'subtitles') {
         validTracks.push(track);
       }
-      if (track.language == 'en') {
+      if (track.language === 'en') {
         console.dir(tracks[i]);
       }
     }
@@ -115,8 +116,8 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getActiveTrack(tracks: TextTrackList): TextTrack {
-    var track: TextTrack;
-    for (var i = 0, L = tracks.length; i < L; i++) {
+    let track: TextTrack;
+    for (let i = 0, L = tracks.length; i < L; i++) {
       track = tracks[i];
       if (track.mode === 'showing') {
         return track;
@@ -127,9 +128,9 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   secondsToTime(timeInSeconds: number) {
-    var hour: number = Math.floor(timeInSeconds / 3600);
-    var min: number = Math.floor((timeInSeconds % 3600) / 60);
-    var sec: number = Math.floor(timeInSeconds % 60);
+    const hour: number = Math.floor(timeInSeconds / 3600);
+    let min: number = Math.floor((timeInSeconds % 3600) / 60);
+    let sec: number = Math.floor(timeInSeconds % 60);
     sec = sec < 10 ? 0 + sec : sec;
     min = hour > 0 && min < 10 ? 0 + min : min;
     if (hour > 0) {

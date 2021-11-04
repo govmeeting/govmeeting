@@ -3,7 +3,7 @@
  */
 
 /*global my*/
-var trackList = function (plugin) {
+var trackList = (function (plugin) {
   var activeTrack;
   return {
     get: function () {
@@ -27,4 +27,4 @@ var trackList = function (plugin) {
       return activeTrack || tracks[0];
     },
   };
-}(my);
+})(my);

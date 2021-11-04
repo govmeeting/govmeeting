@@ -15,7 +15,7 @@ const NoLog = true; // set to false for console logging
 export class EditTranscriptComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
 
-  showhelp = true; // if true, shows the help box to the user
+  showhelp = false; // if true, shows the help box to the user
 
   @ViewChild('myInput', { static: false }) input: ElementRef;
 

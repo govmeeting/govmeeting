@@ -1,3 +1,2 @@
-(function (window, videojs) {
-  'use strict';
-
+// (function (window, videojs) {
+//   'use strict';
