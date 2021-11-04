@@ -5,6 +5,17 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "MakeVttSubtitles .NET Core Launch (console)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-makevttsubtitles",
+      "program": "${workspaceFolder}/Utilities/MakeVttSubtitles/bin/Debug/netcoreapp3.1/MakeVttSubtitles.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "console": "integratedTerminal"
+    },
+    {
       "name": "ClientApp Standalone",
       "type": "chrome",
       "request": "launch",

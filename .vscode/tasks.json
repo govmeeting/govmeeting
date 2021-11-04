@@ -2,10 +2,10 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build-dotnet",
+      "label": "build-makevttsubtitles",
       "command": "dotnet",
       "type": "process",
-      "args": ["build", "${workspaceFolder}/govmeeting.sln"],
+      "args": ["build", "${workspaceFolder}/Utilities/MakeVttSubtitles"],
       "problemMatcher": "$msCompile"
     },
     {

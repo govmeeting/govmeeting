@@ -118,6 +118,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Typescript", "src\We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppMin", "src\WebUI\WebAppMin\WebAppMin.csproj", "{FD1CC212-1943-4AF0-A221-C9D37DB849FB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MakeVttSubtitles", "Utilities\MakeVttSubtitles\MakeVttSubtitles.csproj", "{17F77C5B-3883-4254-8F34-CEA17EA9E961}"
+	ProjectSection(ProjectDependencies) = postProject
+		{142E029C-64EA-4972-957E-89A9F378CC79} = {142E029C-64EA-4972-957E-89A9F378CC79}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -228,6 +233,10 @@ Global
 		{FD1CC212-1943-4AF0-A221-C9D37DB849FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD1CC212-1943-4AF0-A221-C9D37DB849FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD1CC212-1943-4AF0-A221-C9D37DB849FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17F77C5B-3883-4254-8F34-CEA17EA9E961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F77C5B-3883-4254-8F34-CEA17EA9E961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F77C5B-3883-4254-8F34-CEA17EA9E961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F77C5B-3883-4254-8F34-CEA17EA9E961}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -267,6 +276,7 @@ Global
 		{5D733A0C-3B71-4E82-8A3E-2B0A63FE9A57} = {A26AF765-5899-45A7-97D0-F8C989FE4A8F}
 		{C4D00B11-09EE-4C6A-860A-9A476D10E11B} = {A26AF765-5899-45A7-97D0-F8C989FE4A8F}
 		{FD1CC212-1943-4AF0-A221-C9D37DB849FB} = {A26AF765-5899-45A7-97D0-F8C989FE4A8F}
+		{17F77C5B-3883-4254-8F34-CEA17EA9E961} = {907914CC-D84D-4F11-8DB6-7CAD049305F5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F267E5D-0E3E-4AD3-A33A-27D6D658BB1F}

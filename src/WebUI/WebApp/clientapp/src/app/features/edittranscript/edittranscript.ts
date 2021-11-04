@@ -15,7 +15,7 @@ const NoLog = true; // set to false for console logging
 export class EditTranscriptComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
 
-  showhelp = true; // if true, shows the help box to the user
+  showhelp = false; // if true, shows the help box to the user
 
   @ViewChild('myInput', { static: false }) input: ElementRef;
 
@@ -24,6 +24,8 @@ export class EditTranscriptComponent implements OnInit {
 
   @ViewChild(VideojsComponent, { static: false })
   private videojsComponent: VideojsComponent;
+
+  @ViewChild('gmvideojs', { read: ElementRef }) gmVideojs: ElementRef;
 
   constructor() {}
 
@@ -41,5 +43,13 @@ export class EditTranscriptComponent implements OnInit {
     NoLog || console.log(this.ClassName + 'onplayVideo ', data.start);
     // this.videoComponent.playPhrase(data.start, data.duration);
     this.videojsComponent.playPhrase(data.start, data.duration);
+  }
+
+  onGetTracks() {
+    this.videojsComponent.getTracks();
+  }
+
+  onRotate() {
+    this.videojsComponent.rotateVideo();
   }
 }

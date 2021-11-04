@@ -10,16 +10,50 @@
 <!-- <gm-video></gm-video> -->
 
 <gm-videojs
+  #gmvideojs
   [options]="{
     fluid: true,
+    aspectRatio: '16:9',
     autoplay: false,
     controls: true,
     muted: false,
     playsinline: true,
+    playbackRates: [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4],
+    plugins: {
+      hotkeys: {
+      volumeStep: 0.1,
+      seekStep: 25,
+      enableModifiersForNumbers: false
+      }
+    },
     sources: [
       { src: 'assets/stubdata/ToEdit.mp4', type: 'video/mp4' }
-    ] }"
+    ],
+    tracks: [
+      { src: 'assets/stubdata/ToEdit.vtt', kind:'captions', srclang: 'en', label: 'English', default: true },
+    ]
+  }"
 ></gm-videojs>
+
+<!-- ,
+      zoomrotate: {
+        rotate: 90,
+        zoom: 1.5
+      } -->
+
+<!-- { src: 'assets/stubdata/ToEdit.vtt', kind:'captions', srclang: 'en', label: 'English', default: true }, -->
+<!-- { src: 'http://www.openbeelden.nl/files/92/104101.ed_hd.mp4', type: 'video/mp4' } -->
+<!-- { src: 'assets/stubdata/DATA_IGNORED_BY_GIT/BigBuckBunny-1280x720.mp4', type: 'video/mp4' } -->
+<!-- { src: 'assets/stubdata/ToEdit.mp4', type: 'video/mp4' } -->
+<!-- {src: 'assets/stubdata/captions/captions.en.vtt', kind:'captions', srclang: 'en', label: 'English', default: true},
+    {src: 'assets/stubdata/captions/captions.sv.vtt', kind:'captions', srclang: 'sv', label: 'Swedish'},
+    {src: 'assets/stubdata/captions/captions.ru.vtt', kind:'captions', srclang: 'ru', label: 'Russian'} -->
+
+<br />
+
+<!-- buttons for debugging new features -->
+<!-- <button (click)="onGetTracks()">Get Tracks</button> -->
+<!-- <button (click)="onRotate()">Rotate</button> -->
 
 <br />
 <button i18n="@@togglehelp" md-raised-button class="show-help-button" (click)="ToggleHelp()">
