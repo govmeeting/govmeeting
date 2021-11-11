@@ -14,7 +14,7 @@
   [options]="{
     fluid: true,
     aspectRatio: '16:9',
-    autoplay: false,
+    preload: 'auto',
     controls: true,
     muted: false,
     playsinline: true,
@@ -27,13 +27,15 @@
       }
     },
     sources: [
-      { src: 'assets/stubdata/ToEdit.mp4', type: 'video/mp4' }
+      { src: 'assets/stubdata/ToEdit.mp4#t=0.3', type: 'video/mp4' }
     ],
     tracks: [
       { src: 'assets/stubdata/ToEdit.vtt', kind:'captions', srclang: 'en', label: 'English', default: true },
     ]
   }"
 ></gm-videojs>
+
+<!-- autoplay: false, --><!-- preload is ignored if autoplay defined -->
 
 <!-- ,
       zoomrotate: {
@@ -54,6 +56,8 @@
 <!-- buttons for debugging new features -->
 <!-- <button (click)="onGetTracks()">Get Tracks</button> -->
 <!-- <button (click)="onRotate()">Rotate</button> -->
+<button (click)="onGetCues()">Highlight Spoken Text</button>
+<!-- <button (click)="onSendCaptionId(5)">Send Caption Id</button> -->
 
 <br />
 <button i18n="@@togglehelp" md-raised-button class="show-help-button" (click)="ToggleHelp()">

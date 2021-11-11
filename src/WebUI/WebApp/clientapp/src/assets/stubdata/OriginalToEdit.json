@@ -7,7 +7,8 @@
       "said": "Okay.",
       "section": null,
       "topic": null,
-      "confidence": 0.8984096050262451,
+      "showSetTopic": false,
+      "confidence": 0.89840960502624512,
       "wordcount": 0,
       "words": [
         {
@@ -19,20 +20,15 @@
           "wordnum": 1
         }
       ],
-      "captions": [
-        {
-          "Id": 1,
-          "text": "Okay.",
-          "hilite": false
-        }
-      ]
+      "captions": []
     },
     {
       "speaker": "Speaker 4",
       "said": "Good evening, everybody.",
       "section": null,
       "topic": null,
-      "confidence": 0.9907218217849731,
+      "showSetTopic": false,
+      "confidence": 0.99072182178497314,
       "wordcount": 0,
       "words": [
         {
@@ -60,25 +56,15 @@
           "wordnum": 4
         }
       ],
-      "captions": [
-        {
-          "Id": 2,
-          "text": "Good evening,",
-          "hilite": false
-        },
-        {
-          "Id": 3,
-          "text": "everybody.",
-          "hilite": false
-        }
-      ]
+      "captions": []
     },
     {
       "speaker": "Speaker 4",
       "said": " Today is our rescheduled Board of selectmen's meeting that was supposed to be held Monday, February 13th, but because of the snow storm were meeting today, which is Wednesday, February 15th. So, please join me in the Pledge of Allegiance.",
       "section": null,
       "topic": null,
-      "confidence": 0.9669448137283325,
+      "showSetTopic": false,
+      "confidence": 0.96694481372833252,
       "wordcount": 0,
       "words": [
         {
@@ -402,50 +388,15 @@
           "wordnum": 44
         }
       ],
-      "captions": [
-        {
-          "Id": 4,
-          "text": "Today is our rescheduled Board of selectmen's meeting",
-          "hilite": false
-        },
-        {
-          "Id": 5,
-          "text": "that was supposed to be held Monday,",
-          "hilite": false
-        },
-        {
-          "Id": 6,
-          "text": "February 13th,",
-          "hilite": false
-        },
-        {
-          "Id": 7,
-          "text": "but because of the snow storm were meeting today,",
-          "hilite": false
-        },
-        {
-          "Id": 8,
-          "text": "which is Wednesday,",
-          "hilite": false
-        },
-        {
-          "Id": 9,
-          "text": "February 15th.",
-          "hilite": false
-        },
-        {
-          "Id": 10,
-          "text": "So, please join me in the Pledge of Allegiance.",
-          "hilite": false
-        }
-      ]
+      "captions": []
     },
     {
       "speaker": "DIFFERENT",
       "said": " I pledge allegiance to the flag of the United States of America and to the Republic for which it stands one nation under God indivisible with liberty and justice for all.",
       "section": null,
       "topic": null,
-      "confidence": 0.9753730893135071,
+      "showSetTopic": false,
+      "confidence": 0.97537308931350708,
       "wordcount": 0,
       "words": [
         {
@@ -697,34 +648,14 @@
           "wordnum": 75
         }
       ],
-      "captions": [
-        {
-          "Id": 11,
-          "text": "I pledge allegiance to the flag of the United States of America",
-          "hilite": false
-        },
-        {
-          "Id": 12,
-          "text": "and to the Republic for",
-          "hilite": false
-        },
-        {
-          "Id": 13,
-          "text": "which it stands one nation under God indivisible with liberty",
-          "hilite": false
-        },
-        {
-          "Id": 14,
-          "text": "and justice for all.",
-          "hilite": false
-        }
-      ]
+      "captions": []
     },
     {
       "speaker": "DIFFERENT",
       "said": " So we'll do some introductions and so for a change I'll start at the other end of the room. So we have with us tonight like Ali Russell Hoffman like Tomko myself Denise Griffin Wendy Wolf.",
       "section": null,
       "topic": null,
+      "showSetTopic": false,
       "confidence": 0.9153892993927002,
       "wordcount": 0,
       "words": [
@@ -1017,40 +948,15 @@
           "wordnum": 111
         }
       ],
-      "captions": [
-        {
-          "Id": 15,
-          "text": "So we'll do some introductions",
-          "hilite": false
-        },
-        {
-          "Id": 16,
-          "text": "and so for a change I'll start at",
-          "hilite": false
-        },
-        {
-          "Id": 17,
-          "text": "the other end of the room.",
-          "hilite": false
-        },
-        {
-          "Id": 18,
-          "text": "So we have with us tonight like Ali Russell",
-          "hilite": false
-        },
-        {
-          "Id": 19,
-          "text": "Hoffman like Tomko myself Denise Griffin Wendy Wolf.",
-          "hilite": false
-        }
-      ]
+      "captions": []
     },
     {
       "speaker": "Speaker 4",
       "said": " Tricia Warren Town manager Tom Woodin and Kellie Bigos",
       "section": null,
       "topic": null,
-      "confidence": 0.8819481730461121,
+      "showSetTopic": false,
+      "confidence": 0.88194817304611206,
       "wordcount": 0,
       "words": [
         {
@@ -1126,25 +1032,15 @@
           "wordnum": 120
         }
       ],
-      "captions": [
-        {
-          "Id": 20,
-          "text": "Tricia Warren Town manager Tom Woodin",
-          "hilite": false
-        },
-        {
-          "Id": 21,
-          "text": "and Kellie Bigos",
-          "hilite": false
-        }
-      ]
+      "captions": []
     },
     {
       "speaker": "DIFFERENT",
       "said": " So let's see. We will move on to town manager reports or tell manager announcement stomp. Next meeting. I think she's going to want to do an executive session to discuss possibly upcoming Union negotiations and possibly other things. I'm not sure also Gary Stone from First Investors has asked to come to that meeting as well to explain. How are investments have been doing? I think I sent out the Investments a few weeks back. They have been doing very well, and he wanted to explain them in layman's terms better than I could so you'll be at the next meeting.",
       "section": null,
       "topic": null,
-      "confidence": 0.9625598192214966,
+      "showSetTopic": false,
+      "confidence": 0.96255981922149658,
       "wordcount": 0,
       "words": [
         {
@@ -1964,90 +1860,15 @@
           "wordnum": 222
         }
       ],
-      "captions": [
-        {
-          "Id": 22,
-          "text": "So let's see.",
-          "hilite": false
-        },
-        {
-          "Id": 23,
-          "text": "We will move on to town manager reports",
-          "hilite": false
-        },
-        {
-          "Id": 24,
-          "text": "or tell manager announcement stomp.",
-          "hilite": false
-        },
-        {
-          "Id": 25,
-          "text": "Next meeting.",
-          "hilite": false
-        },
-        {
-          "Id": 26,
-          "text": "I think she's going to want to do an",
-          "hilite": false
-        },
-        {
-          "Id": 27,
-          "text": "executive session to discuss possibly upcoming Union negotiations",
-          "hilite": false
-        },
-        {
-          "Id": 28,
-          "text": "and possibly other things.",
-          "hilite": false
-        },
-        {
-          "Id": 29,
-          "text": "I'm not sure also Gary Stone from First",
-          "hilite": false
-        },
-        {
-          "Id": 30,
-          "text": "Investors has asked to come to",
-          "hilite": false
-        },
-        {
-          "Id": 31,
-          "text": "that meeting as well to explain.",
-          "hilite": false
-        },
-        {
-          "Id": 32,
-          "text": "How are investments have been doing?",
-          "hilite": false
-        },
-        {
-          "Id": 33,
-          "text": "I think I sent out the Investments a few weeks back.",
-          "hilite": false
-        },
-        {
-          "Id": 34,
-          "text": "They have been doing very well,",
-          "hilite": false
-        },
-        {
-          "Id": 35,
-          "text": "and he wanted to explain them in layman's terms better than",
-          "hilite": false
-        },
-        {
-          "Id": 36,
-          "text": "I could so you'll be at the next meeting.",
-          "hilite": false
-        }
-      ]
+      "captions": []
     },
     {
       "speaker": "DIFFERENT",
       "said": " Also, I received in the mail just recently a bunch of papers from Department of Transportation informing me that they're going to be doing some construction in the downtown. We already knew it's basically in front of the Popcorn Shop. They're going to be fixing some drainage down there. That's why the Sewer District left the road somewhat opened still so that when they go back in it fit on a to go through payment again, but in this notification they have asked for the Selectmen to sign off on them bringing over weight limit trucks down on their road which strikes me as kind of license. Is there road anyway, but I wouldn't have any problem with signing that off to say they could bring their trucks down. So that's going to be hopefully at the end of the meeting.",
       "section": null,
       "topic": null,
-      "confidence": 0.9615033864974976,
+      "showSetTopic": false,
+      "confidence": 0.96150338649749756,
       "wordcount": 0,
       "words": [
         {
@@ -3179,90 +3000,15 @@
           "wordnum": 363
         }
       ],
-      "captions": [
-        {
-          "Id": 37,
-          "text": "Also, I received in the mail just recently a bunch",
-          "hilite": false
-        },
-        {
-          "Id": 38,
-          "text": "of papers from Department of Transportation informing me",
-          "hilite": false
-        },
-        {
-          "Id": 39,
-          "text": "that they're going to be doing some construction in the downtown.",
-          "hilite": false
-        },
-        {
-          "Id": 40,
-          "text": "We already knew it's basically in front of the Popcorn Shop.",
-          "hilite": false
-        },
-        {
-          "Id": 41,
-          "text": "They're going to be fixing some drainage down there.",
-          "hilite": false
-        },
-        {
-          "Id": 42,
-          "text": "That's why the Sewer District left the road somewhat opened still so",
-          "hilite": false
-        },
-        {
-          "Id": 43,
-          "text": "that when they go back in it fit",
-          "hilite": false
-        },
-        {
-          "Id": 44,
-          "text": "on a to go through payment again,",
-          "hilite": false
-        },
-        {
-          "Id": 45,
-          "text": "but in this notification they have asked for the Selectmen to sign off",
-          "hilite": false
-        },
-        {
-          "Id": 46,
-          "text": "on them bringing over weight limit trucks down on their road",
-          "hilite": false
-        },
-        {
-          "Id": 47,
-          "text": "which strikes me as kind of license.",
-          "hilite": false
-        },
-        {
-          "Id": 48,
-          "text": "Is there road anyway,",
-          "hilite": false
-        },
-        {
-          "Id": 49,
-          "text": "but I wouldn't have any problem with signing",
-          "hilite": false
-        },
-        {
-          "Id": 50,
-          "text": "that off to say they could bring their trucks down.",
-          "hilite": false
-        },
-        {
-          "Id": 51,
-          "text": "So that's going to be hopefully at the end of the meeting.",
-          "hilite": false
-        }
-      ]
+      "captions": []
     },
     {
       "speaker": "DIFFERENT",
       "said": " And last but not least. I just wanted to do a shout-out for Public Works that only for Boothbay Harbor but Boothbay as well from then to snow storm. We just had and everybody's working round the Round the Clock to dig out and hopefully tomorrow this evening tomorrow will be too bad. But just thank you to all of them for their hard work and they do a lot to keep us safe.",
       "section": null,
       "topic": null,
-      "confidence": 0.9492047429084778,
+      "showSetTopic": false,
+      "confidence": 0.94920474290847778,
       "wordcount": 0,
       "words": [
         {
@@ -3858,65 +3604,15 @@
           "wordnum": 437
         }
       ],
-      "captions": [
-        {
-          "Id": 52,
-          "text": "And last",
-          "hilite": false
-        },
-        {
-          "Id": 53,
-          "text": "but not least.",
-          "hilite": false
-        },
-        {
-          "Id": 54,
-          "text": "I just wanted to do a shout-out for Public Works",
-          "hilite": false
-        },
-        {
-          "Id": 55,
-          "text": "that only for Boothbay Harbor",
-          "hilite": false
-        },
-        {
-          "Id": 56,
-          "text": "but Boothbay as well from then to snow storm.",
-          "hilite": false
-        },
-        {
-          "Id": 57,
-          "text": "We just had",
-          "hilite": false
-        },
-        {
-          "Id": 58,
-          "text": "and everybody's working round the Round the Clock to dig out",
-          "hilite": false
-        },
-        {
-          "Id": 59,
-          "text": "and hopefully tomorrow this evening tomorrow will be too bad.",
-          "hilite": false
-        },
-        {
-          "Id": 60,
-          "text": "But just thank you to all of them for their hard work",
-          "hilite": false
-        },
-        {
-          "Id": 61,
-          "text": "and they do a lot to keep us safe.",
-          "hilite": false
-        }
-      ]
+      "captions": []
     },
     {
       "speaker": "Speaker 1",
       "said": " Got done a great job.",
       "section": null,
       "topic": null,
-      "confidence": 0.8909590840339661,
+      "showSetTopic": false,
+      "confidence": 0.89095908403396606,
       "wordcount": 0,
       "words": [
         {
@@ -3960,13 +3656,8 @@
           "wordnum": 442
         }
       ],
-      "captions": [
-        {
-          "Id": 62,
-          "text": "Got done a great job.",
-          "hilite": false
-        }
-      ]
+      "captions": []
     }
-  ]
+  ],
+  "lastedit": 0
 }

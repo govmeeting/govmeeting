@@ -21,6 +21,7 @@
         public double confidence;
         public int wordcount;
         public WordModel[] words;
+        public CaptionModel[] captions;
     }
 
     public class WordModel
@@ -33,6 +34,11 @@
         public int wordnum;
     }
 
-
+    public class CaptionModel
+    {
+        public int Id;
+        public string text;
+        public bool hilite;
+    }
 
 }

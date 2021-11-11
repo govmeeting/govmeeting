@@ -35,7 +35,8 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() options: {
     fluid: boolean;
     aspectRatio: string;
-    autoplay: boolean;
+    // autoplay: boolean;
+    preload: string;
     controls: boolean;
     muted: boolean;
     playsinline: boolean;
@@ -75,6 +76,7 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
     NoLog || console.log(this.ClassName + '---ngAfterViewInit() Demo---');
     // Experimenting with adding buttons to the video's control bar
     // AddRotateButtons(this.vjscontainer);
+    // this.getCueChanges();
   }
 
   ngOnDestroy() {
@@ -137,5 +139,19 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
       return hour + ':' + min + ':' + sec;
     }
     return min + ':' + sec;
+  }
+
+  getCueChanges() {
+    const textTrack = this.player.textTracks()[0];
+    textTrack.addEventListener('cuechange', (event) => {
+      const activeCue = textTrack.activeCues[0];
+      console.log(activeCue.startTime, activeCue.endTime);
+      // @ts-ignore
+      console.log(activeCue.text);
+    });
+  }
+
+  getTextTrack(): TextTrack {
+    return this.player.textTracks()[0];
   }
 }

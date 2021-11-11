@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EditTranscriptService } from '../edittranscript.service';
-import { EditTranscript, Talk, Word, PlayPhraseData } from '../../../models/edittranscript-view';
+import { EditTranscript, Talk, Word, Caption, PlayPhraseData } from '../../../models/edittranscript-view';
 
 const NoLog = true; // set to false for console logging
 
@@ -24,6 +24,8 @@ export class TalksComponent implements OnInit {
 
   wordColor = 'lightgreen';
 
+  priorCaption: Caption = null;
+
   getWordColor(speaker: number): string {
     switch (speaker) {
       case 1: {
@@ -41,6 +43,14 @@ export class TalksComponent implements OnInit {
         }
         return 'brown';
     }
+  }
+
+  // getCaptionColor(caption: Caption) {
+  //   return 'lightgreen';
+  // }
+
+  getCaptionColor(hilite: boolean) {
+    return hilite ? 'lightgreen' : '';
   }
 
   constructor(private _edittranscriptService: EditTranscriptService) {
@@ -67,7 +77,9 @@ export class TalksComponent implements OnInit {
       this.gotTalks = true;
       NoLog || console.log(this.ClassName + 'getTalks');
       this._edittranscriptService.getTalks().subscribe(
-        (edittranscript) => ((this.edittranscript = edittranscript), (this.talks = edittranscript.talks)),
+        (edittranscript) => {
+          (this.edittranscript = edittranscript), (this.talks = edittranscript.talks);
+        },
         (error) => (this.errorMessage = error as any)
       );
     }
@@ -189,5 +201,32 @@ export class TalksComponent implements OnInit {
       count--;
     }
     return seconds;
+  }
+
+  scrollToElement($element): void {
+    console.log($element);
+    // $element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    $element.scrollIntoView({ block: 'start', inline: 'nearest' });
+    // $element.scrollIntoView({ block: 'end', inline: 'nearest' });
+  }
+
+  sendCaptionId(Id: number) {
+    const x = Id;
+    const caption: Caption = this.findCaption(Id);
+    if (this.priorCaption !== null) {
+      this.priorCaption.hilite = false;
+    }
+    caption.hilite = true;
+    this.priorCaption = caption;
+  }
+
+  findCaption(Id: number): Caption {
+    for (const talk of this.talks) {
+      for (const caption of talk.captions) {
+        if (caption.Id === Id) {
+          return caption;
+        }
+      }
+    }
   }
 }
