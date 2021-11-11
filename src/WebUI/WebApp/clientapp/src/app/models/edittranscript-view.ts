@@ -17,6 +17,7 @@ export class Talk {
   confidence: number;
   wordcount: number;
   words: Word[];
+  captions: [Caption];
 }
 
 export class Word {
@@ -26,6 +27,12 @@ export class Word {
   endtime: number;
   speaker: number;
   wordnum: number;
+}
+
+export class Caption {
+  Id: number;
+  text: string;
+  hilite: boolean;
 }
 
 export class PlayPhraseData {

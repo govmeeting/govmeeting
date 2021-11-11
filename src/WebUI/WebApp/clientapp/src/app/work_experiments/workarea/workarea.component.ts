@@ -83,50 +83,53 @@ export class WorkareaComponent implements OnInit {
 
   ngOnInit() {
     this.list = document.getElementById('scrolltext') as HTMLElement;
+
     const rect = this.list.getBoundingClientRect();
+    // 8 properties: top, left, right, bottom, x, y, width, height
+    // left + width == right
+    // top + height == bottom
+    // x == left; y == top;
+
+    // Box Model: https://www.w3schools.com/css/css_boxmodel.asp
+
     this.listTop = Math.round(rect.top);
+    // The top property sets or returns the top position of a positioned element.
+    // The top property includes padding, scrollbar, border and margin.
+
     this.listScrollTop = Math.round(this.list.scrollTop);
+    // gets or sets the number of pixels that an element's content is scrolled vertically.
+
     this.listOffsetTop = Math.round(this.list.offsetTop);
+    // offsetTop = # of pixels from top of closest relatively positioned parent element.
+    // It's a read-only property, the distance of the outer border of the
+    //    current element relative to the inner border of the top of the
+    //    offsetParent node.
+
+    // offsetParent: nearest ancestor that has a position other than static.
+
+    // Static positioned elements are not affected by the top, bottom, left, and right properties.
+    // An element with position static is not positioned in any special way.
+    // It is always positioned according to the normal flow of the page:
+
     this.listOffsetHeight = this.list.offsetHeight;
   }
 
-  passEl(elem: Element) {
-    const sTop: number = Math.round(elem.scrollTop);
-    const x = elem.getAttribute('id');
-    const y: string = elem.innerHTML;
-  }
+  ///////// button click handlers ////////////////////////////////
 
-  scroll(amount: number) {
-    this.list.scrollTop = amount;
-    this.showPositions();
-  }
-
-  scrollMyDiv(item: Section) {
-    const section = 'section' + item.id;
-
-    window.scroll(0, 0); // reset window to top
-
-    // const elem: HTMLElement = document.getElementById('#' + section);
-    const elem: Element = document.querySelector('#' + section);
-    const elemTop: number = Math.round(elem.getBoundingClientRect().top);
-
-    const totalscroll = elemTop - this.listTop;
-    this.list.scrollTop = elemTop - this.listTop;
-    // window.scroll(0, offsetTop);
-  }
-
-  getListInfo() {
+  onGetListInfo() {
     this.listScrollTop = Math.round(this.list.scrollTop);
     this.listOffsetTop = Math.round(this.list.offsetTop);
     const rect = this.list.getBoundingClientRect();
     this.listTop = Math.round(rect.top);
     this.listOffsetTop = this.list.offsetHeight;
   }
-  setScrollTop() {
+
+  onSetScrollTop() {
     this.list.scrollTop = this.listScrollTop;
   }
+
   getItemInfo(item: Section) {
-    this.getListInfo();
+    this.onGetListInfo();
     const section = 'section' + item.id;
     const elem: Element = document.querySelector('#' + section);
     const helem: HTMLElement = document.querySelector('#' + section) as HTMLElement;
@@ -134,10 +137,6 @@ export class WorkareaComponent implements OnInit {
     this.itemOffsetTop = Math.round(helem.offsetTop);
     this.itemTop = Math.round(elem.getBoundingClientRect().top);
     this.gnewST = this.itemTop - this.listTop;
-  }
-
-  scrollToValue(value: string) {
-    this.list.scrollTop = parseInt(value, 10);
   }
 
   scrollToTarget(item: Section) {
@@ -155,18 +154,51 @@ export class WorkareaComponent implements OnInit {
     // elem.scrollIntoView();
   }
 
-  showPositions() {
-    this.pos01 = this.getPosition('#section1');
-    this.pos25 = this.getPosition('#section25');
-    this.pos50 = this.getPosition('#section50');
-    this.listTop = this.getPosition('#scrolltext');
-    this.listBot = Math.round(this.list.getBoundingClientRect().bottom);
+  scrollToValue(value: string) {
+    this.list.scrollTop = parseInt(value, 10);
   }
 
+  ////////////////// unused    //////////////////////////
+
   // Get top of bounding rectangle of specified element with id.
-  getPosition(id: string) {
-    const elem: Element = document.querySelector(id);
-    const rect = elem.getBoundingClientRect();
-    return Math.round(rect.top);
-  }
+  // getPosition(id: string) {
+  //   const elem: Element = document.querySelector(id);
+  //   const rect = elem.getBoundingClientRect();
+  //   return Math.round(rect.top);
+  // }
+
+  /////////////////  unused /////////////////////////////////////////////
+
+  // showPositions() {
+  //   this.pos01 = this.getPosition('#section1');
+  //   this.pos25 = this.getPosition('#section25');
+  //   this.pos50 = this.getPosition('#section50');
+  //   this.listTop = this.getPosition('#scrolltext');
+  //   this.listBot = Math.round(this.list.getBoundingClientRect().bottom);
+  // }
+
+  // scrollMyDiv(item: Section) {
+  //   const section = 'section' + item.id;
+
+  //   window.scroll(0, 0); // reset window to top
+
+  //   // const elem: HTMLElement = document.getElementById('#' + section);
+  //   const elem: Element = document.querySelector('#' + section);
+  //   const elemTop: number = Math.round(elem.getBoundingClientRect().top);
+
+  //   const totalscroll = elemTop - this.listTop;
+  //   this.list.scrollTop = elemTop - this.listTop;
+  //   // window.scroll(0, offsetTop);
+  // }
+
+  // passEl(elem: Element) {
+  //   const sTop: number = Math.round(elem.scrollTop);
+  //   const x = elem.getAttribute('id');
+  //   const y: string = elem.innerHTML;
+  // }
+
+  // scroll(amount: number) {
+  //   this.list.scrollTop = amount;
+  //   this.showPositions();
+  // }
 }

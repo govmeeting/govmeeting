@@ -1,6 +1,7 @@
 ﻿//using GM.Application.DTOs.Meetings;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace MakeVttSubtitles
@@ -9,13 +10,13 @@ namespace MakeVttSubtitles
     {
         static void Main(string[] args)
         {
-            int MAX_SUBTITLE = 40;
-            int MIN_SPLIT = 20;
+            //int MAX_SUBTITLE = 40;
+            //int MIN_SPLIT = 20;
 
             Console.WriteLine("Start of MakeVttSubtitles");
 
             string workFolder = @"C:\GOVMEETING\_SOURCECODE\src\WebUI\WebApp\clientapp\src\assets\stubdata";
-            string editFile = workFolder + @"\ToEdit.json";
+            string editFile = workFolder + @"\OriginalToEdit.json";
             string vttFile = workFolder + @"\ToEdit.vtt";
 
             using FileStream fs = File.Create(vttFile);
@@ -26,26 +27,27 @@ namespace MakeVttSubtitles
             string editMeetingDto = File.ReadAllText(editFile);
             EditMeetingModel editMeeting = JsonConvert.DeserializeObject<EditMeetingModel>(editMeetingDto);
 
+            // This is the new EditMeeting JSON file, that we will create.
+            EditMeetingModel newEditMeeting = JsonConvert.DeserializeObject<EditMeetingModel>(editMeetingDto);
+            TalkModel newTalk;
+            int newTalkIndex = 0;
+            List<CaptionModel> listCaptions;
+            int captionId = 1; // all captionIds are numbered sequentially
+
+
+
             //string firstWord = editMeeting.Talks[0].Words[0].Word;
 
             foreach (TalkModel talk in editMeeting.talks)
             {
+                newTalk = newEditMeeting.talks[newTalkIndex++];
+                listCaptions = new List<CaptionModel>();
+
                 int start;
                 int next;
                 int lastword = talk.words.Length - 1;
                 string speaker = talk.speaker;
                 string said = talk.said;
-                //if (said.Length <= MAX_SUBTITLE)
-                //{
-                //    start = talk.words[0].starttime;
-                //    next = talk.words[lastword].endtime;
-
-                //    vtt.WriteLine(FormatVttTimeLine(start, next));
-                //    vtt.WriteLine(said);
-                //    vtt.WriteLine();
-                //}
-                //else
-                //{
                     string word;
                     start = 0;
                     next = -1;
@@ -54,7 +56,7 @@ namespace MakeVttSubtitles
                         // Are we on last word in talk?
                         if (next == lastword)
                         {
-                            WriteSubtitles(vtt, talk.words, start, next);
+                            WriteSubtitles(newTalk, listCaptions, ref captionId, vtt, talk.words, start, next);
                             break;
                         }
 
@@ -62,7 +64,7 @@ namespace MakeVttSubtitles
                         word = talk.words[next].word;
                         if (HasPunctuation(word) && (start != next))
                         {
-                            WriteSubtitles(vtt, talk.words, start, next);
+                            WriteSubtitles(newTalk, listCaptions, ref captionId, vtt, talk.words, start, next);
                             start = next +1;
                             continue;
                         }
@@ -71,13 +73,19 @@ namespace MakeVttSubtitles
                         word = talk.words[next + 1].word;
                         if (IsBreakWord(word))
                         {
-                            WriteSubtitles(vtt, talk.words, start, next);
+                            WriteSubtitles(newTalk, listCaptions, ref captionId, vtt, talk.words, start, next);
                             start = next + 1;
                             continue;
                         }
-                    //}
                 }
+
+                newTalk.captions = listCaptions.ToArray();
             }
+            string stringValue = JsonConvert.SerializeObject(newEditMeeting, Formatting.Indented);
+            string outputJsonFile = Path.Combine(workFolder, "ToEdit.json");
+            File.WriteAllText(outputJsonFile, stringValue);
+
+
             vtt.Flush();
             vtt.Close();
         }
@@ -109,7 +117,7 @@ namespace MakeVttSubtitles
             return false;
         }
 
-        static void WriteSubtitles(StreamWriter vtt, WordModel[] words, int start, int end)
+        static void WriteSubtitles(TalkModel newTalk, List<CaptionModel> listCaptions, ref int captionId, StreamWriter vtt, WordModel[] words, int start, int end)
         {
             int MAX_WORDS_IN_SUBTITLE = 12;
 
@@ -117,23 +125,30 @@ namespace MakeVttSubtitles
 
             if (wordcount <= MAX_WORDS_IN_SUBTITLE)
             {
-                WriteSubtitle(vtt, words, start, end);
+                WriteSubtitle(newTalk, listCaptions, ref captionId, vtt, words, start, end);
             }
             else
             {
                 int halfcount = wordcount / 2;
-                WriteSubtitle(vtt, words, start, start + halfcount);
-                WriteSubtitle(vtt, words, start + halfcount + 1, end);
+                WriteSubtitle(newTalk, listCaptions, ref captionId, vtt, words, start, start + halfcount);
+                WriteSubtitle(newTalk, listCaptions, ref captionId, vtt, words, start + halfcount + 1, end);
             }
         }
 
-        static void WriteSubtitle(StreamWriter vtt, WordModel[] words, int start, int end)
+        static void WriteSubtitle(TalkModel newTalk, List<CaptionModel> listCaptions, ref int captionId, StreamWriter vtt, WordModel[] words, int start, int end)
         {
             string subtitle;
             subtitle = GetSubtitle(words, start, end);
+            vtt.WriteLine($"{captionId}");
             vtt.WriteLine(FormatVttTimeLine(words[start].starttime, words[end].endtime));
             vtt.WriteLine(subtitle);
             vtt.WriteLine();
+
+            CaptionModel cap = new CaptionModel();
+            cap.text = subtitle;
+            cap.hilite = false;
+            cap.Id = captionId++;
+            listCaptions.Add(cap);            
         }
 
         static string GetSubtitle(WordModel[] words, int start, int end)

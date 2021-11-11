@@ -1,0 +1,7 @@
+.speakertext {
+  margin-bottom: 10px;
+}
+.scrolldiv {
+  height: 400px;
+  overflow: scroll;
+}

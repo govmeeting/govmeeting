@@ -37,6 +37,13 @@ export let EditTranscriptSample: EditTranscript = {
           wordnum: 1,
         },
       ],
+      captions: [
+        {
+          Id: 1,
+          text: 'Okay.',
+          hilite: false,
+        },
+      ],
     },
     {
       speaker: 'UNKOWN',
@@ -70,6 +77,13 @@ export let EditTranscriptSample: EditTranscript = {
           endtime: 7100,
           speaker: 0,
           wordnum: 4,
+        },
+      ],
+      captions: [
+        {
+          Id: 2,
+          text: 'Good evening, everybody..',
+          hilite: true,
         },
       ],
     },
