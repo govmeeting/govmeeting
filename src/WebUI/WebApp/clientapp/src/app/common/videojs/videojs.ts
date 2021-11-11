@@ -35,7 +35,8 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() options: {
     fluid: boolean;
     aspectRatio: string;
-    autoplay: boolean;
+    // autoplay: boolean;
+    preload: string;
     controls: boolean;
     muted: boolean;
     playsinline: boolean;
