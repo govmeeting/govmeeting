@@ -1,26 +1,18 @@
-﻿# Build-ClientApp.ps1 clientapp
-# The location of the ClientApp relative to the WebApp can be passed as 1st arg.
-# If not, it defaults to $WORKSPACE_ROOT + "\src\WebUI\WebApp\clientapp\dist"
-
-# import utility functions for dealing with directory paths:
-#    Find-ParentFolderContaining, CombinePaths & GetFullPath
-Import-Module ./DirectoryUtils.psm1
+﻿# Build-ClientApp.ps1
+# The location of the ClientApp relative to the WebApp is passed as "$source".
 
 Function Main
 {
     [CmdletBinding()]
     param (
-        [Parameter(Position = 1)] [string] $clientapp
+        [Parameter(Mandatory = $true, Position = 1)] [string] $clientapp
     )
-
-      # If no params passed
-    if ($clientapp -eq "") {
-      $WORKSPACE_ROOT = Find-ParentFolderContaining "Govmeeting.sln"
-      $clientapp = $WORKSPACE_ROOT + "\src\WebUI\WebApp\clientapp" 
-    }
 
     Write-Host "############################ Build-ClientApp.ps1 ############################"
 
+    $usage = "@
+    Usage: Build-ClientApp <CLientApp folder>
+@"
     $me = "Build-ClientApp: "
     Write-Host "$me Running build script Build-ClientApp.ps1 " -NoNewline
     Write-Host @args
