@@ -1,10 +1,23 @@
+# This PS script was updated to work with Google Cloud Platform. Except that:
+#  1. It only so far is working for uploading a test file, C:\TMP\x.txt.
+#  2. It logs in to GCP as the user "johnpankowicz".
+#
+#  It uses "johnpankowicz" because it follows what was shown in the Chris Titus Tech tutorial.
+#  Chris Titus seemed to believe that it was necessary to use the same user name as the user in
+#  my Google account that GCP is tied to.
+#  The gcloud SDK created a user "johnp" based on who I was logged in as locally when I first
+#  ran gcloud. I should probably stay with just the user "johnp" and remove the "johnpankowicz""user."
+#
+# Also, there is a newer PS script, DeployClientToGcp.ps1, that uses only the gcloud CLI. It does not
+# use WinSCPnet.dll.
+
 # import utility functions for dealing with directory paths:
 #    Find-ParentFolderContaining, CombinePaths & GetFullPath
 Import-Module ./DirectoryUtils.psm1
 
 # Load WinSCP .NET assembly
 Add-Type -Path "./WinSCP/WinSCPnet.dll"
-# The WinSCP .NET assembly winscpnet.dll is a .NET wrapper around WinSCP’s scripting interface
+# The WinSCP .NET assembly winscpnet.dll is a .NET wrapper around WinSCPâ€™s scripting interface
 # that allows your code to connect to a remote machine and manipulate remote files over SFTP, FTP,
 # WebDAV, S3 and SCP sessions from .NET languages, such as C#, VB.NET, and others, or from environments
 # supporting .NET, such as PowerShell, SQL Server Integration Services (SSIS), ASP.NET and Microsoft Azure WebSite. 
@@ -44,15 +57,19 @@ function Main
     $user = $appsettings.Ftp.username
     $pass = $appsettings.Ftp.password
     $domain = $appsettings.Ftp.domain
+    $passphrase = $appsettings.Ftp.$passphrase
+    $hostfingerprint = $appsettings.Ftp.$hostfingerprint
 
     try
     {
         $sessionOptions = New-Object WinSCP.SessionOptions -Property @{
-            # Protocol = [WinSCP.Protocol]::Sftp
-            Protocol = [WinSCP.Protocol]::ftp
+            Protocol = [WinSCP.Protocol]::Sftp
+            # Protocol = [WinSCP.Protocol]::ftp
             HostName = $domain
             UserName = $user
             Password = $pass
+            PrivateKeyPassphrase = $passphrase
+            SshHostKeyFingerprint = $hostfingerprint
             # SshHostKeyFingerprint = "ssh-rsa 2048 xxxxxxxxxxx...="
         }
     
@@ -65,21 +82,23 @@ function Main
             # Connect
             $session.Open($sessionOptions)
     
-            # Removing web.config stops WebApp
-            try {
-            $session.MoveFile($webConfig, $webConfig + "XX")
-            # $session.RemoveFile($webConfig)
-            } catch {}
-            Start-Sleep -s 3        # give it time to stop
+            $putfilesResult = $session.PutFiles("C:\TMP\x.txt", "/var/user/johnpankowicz")
 
-            # Delete all files in remote folder
-            $session.RemoveFiles($remoteFolder + "*.*")
+            # # Removing web.config stops WebApp
+            # try {
+            # $session.MoveFile($webConfig, $webConfig + "XX")
+            # # $session.RemoveFile($webConfig)
+            # } catch {}
+            # Start-Sleep -s 3        # give it time to stop
 
-            # Upload all files in publish folder
-            $putfilesResult = $session.PutFiles($localFolder + "\*", $remoteFolder)
+            # # Delete all files in remote folder
+            # $session.RemoveFiles($remoteFolder + "*.*")
+
+            # # Upload all files in publish folder
+            # $putfilesResult = $session.PutFiles($localFolder + "\*", $remoteFolder)
    
-            # Put back web.config
-            $session.MoveFile($webConfig + "XX", $webConfig)
+            # # Put back web.config
+            # $session.MoveFile($webConfig + "XX", $webConfig)
 
             # Throw on any error
             $putfilesResult.Check()
