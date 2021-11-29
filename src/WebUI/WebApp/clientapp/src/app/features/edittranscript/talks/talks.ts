@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, AfterViewInit } from '@angular/core';
 import { EditTranscriptService } from '../edittranscript.service';
 import { EditTranscript, Talk, Word, Caption, PlayPhraseData } from '../../../models/edittranscript-view';
 
@@ -9,7 +9,7 @@ const NoLog = true; // set to false for console logging
   templateUrl: './talks.html',
   styleUrls: ['./talks.css'],
 })
-export class TalksComponent implements OnInit {
+export class TalksComponent implements OnInit, AfterViewInit {
   private ClassName: string = this.constructor.name + ': ';
 
   @Output() playVideo: EventEmitter<PlayPhraseData>;
@@ -26,23 +26,14 @@ export class TalksComponent implements OnInit {
 
   priorCaption: Caption = null;
 
+  scroller: any;
+  scrollerHeight: number;
+  output: any;
+  toX: any;
+
+  wordColors = ['ligntblue', 'lightgreen', 'yellow', 'pink'];
   getWordColor(speaker: number): string {
-    switch (speaker) {
-      case 1: {
-        return 'lightblue';
-      }
-      case 2: {
-        return 'lightgreen';
-      }
-      case 3: {
-        return 'yellow';
-      }
-      case 4:
-        {
-          return 'pink';
-        }
-        return 'brown';
-    }
+    return speaker <= this.wordColors.length ? this.wordColors[speaker - 1] : 'brown';
   }
 
   // getCaptionColor(caption: Caption) {
@@ -72,6 +63,22 @@ export class TalksComponent implements OnInit {
     // this.getTopics();
   }
 
+  ngAfterViewInit() {
+    this.scroller = document.querySelector('#scrolling_div');
+    this.scrollerHeight = Math.round(this.scroller.clientHeight);
+
+    // For debugging. This gets element to which we will output info.
+    // this.output = document.querySelector('#output');
+    // this.toX = document.querySelector('#toX');
+
+    // For debugging. This displays the current scrollTop of #scrolling_div.
+    // this.scroller.addEventListener('scroll', (event) => {
+    //   let x = this.scroller.scrollTop;
+    //   x = Math.round(x);
+    //   this.output.textContent = `scrollTop: ${x}`;
+    // });
+  }
+
   getTalks() {
     if (!this.gotTalks) {
       this.gotTalks = true;
@@ -84,6 +91,10 @@ export class TalksComponent implements OnInit {
       );
     }
   }
+
+  ///////////////////////////////////////////////////////////////
+  //  Save changed data.
+  ///////////////////////////////////////////////////////////////
 
   // TODO activate Save button only if changes were made.
   saveChanges() {
@@ -177,8 +188,6 @@ export class TalksComponent implements OnInit {
   //  Handle video play
   ///////////////////////////////////////////////////////////////
 
-  // #####################  Play selected part of video ####################################
-
   // The EditTranscriptComponent captures the playVideo event.
   onplayVideo(talk: Talk, i: number) {
     // we pass "i", the index into the talks array. But we don't use it as of now.
@@ -191,6 +200,121 @@ export class TalksComponent implements OnInit {
     this.playVideo.emit(data);
   }
 
+  ///////////////////////////////////////////////////////////////
+  //  Scroll video
+  ///////////////////////////////////////////////////////////////
+
+  scrollToElement(elementId: string): void {
+    const itemToScrollTo = document.getElementById(elementId);
+    // null check to ensure that the element actually exists
+    if (itemToScrollTo) {
+      // itemToScrollTo.scrollIntoView(true);
+      // itemToScrollTo.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+      // itemToScrollTo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      const topPos = itemToScrollTo.offsetTop;
+      // console.log('topPos of ' + elementId + ' = ' + topPos);
+      // this.toX.innerText = 'To: ' + topPos;
+
+      // let xx = document.getElementById('scrolling_div');
+      // console.log('divTop = ' + xx.offsetTop);
+      // let yy = document.getElementById('btnSave');
+      // console.log('btnTop = ' + yy.offsetTop);
+      // let zz = document.getElementById('0-0');
+      // console.log('0-0Top = ' + zz.offsetTop);
+
+      // The variable topPos is now set to the distance between the top of the scrolling div
+      // and the element you wish to have visible (in pixels).
+
+      // Now we tell the div to scroll to that position using scrollTop:
+      // console.log('scroller scrollTop before: ' + this.scroller.scrollTop);
+
+      // let zz = document.getElementById('0-0');
+      // console.log('0-0 offsetTop: ' + zz.offsetTop);
+      // zz = document.getElementById('1-0');
+      // console.log('1-0 offsetTop: ' + zz.offsetTop);
+      // zz = document.getElementById('2-0');
+      // console.log('2-0 offsetTop: ' + zz.offsetTop);
+      // console.log('div scrollTop before: ' + this.scroller.scrollTop);
+
+      // Scroll text to middle of div, not top
+      const scrollPos = topPos - this.scrollerHeight / 2;
+      // let scrollPos = topPos;
+      // console.log('scrollPos=', scrollPos);
+
+      document.getElementById('scrolling_div').scrollTop = scrollPos;
+
+      // console.log('div scrollTop after: ' + this.scroller.scrollTop);
+
+      // let aa = 'To: ' + topPos;
+
+      // itemToScrollTo.parentNode.scrollTop = itemToScrollTo.offsetTop;
+      // } else {
+      // let xx = 1;
+    }
+  }
+
+  // For debugging. Scroll up 10
+  // scrollup() {
+  //   let $el = document.getElementById('scrolling_div');
+  //   console.log('b sTop=' + $el.scrollTop);
+  //   $el.scrollTop += 10;
+  //   console.log('a sTop=' + $el.scrollTop);
+  // }
+
+  // For debugging. Scroll down 10
+  // scrolldown() {
+  //   let $el = document.getElementById('scrolling_div');
+  //   console.log('b sTop=' + $el.scrollTop);
+  //   $el.scrollTop -= 10;
+  //   console.log('a sTop=' + $el.scrollTop);
+  // }
+
+  ///////////////////////////////////////////////////////////////
+  //  Hilite text when spoken
+  ///////////////////////////////////////////////////////////////
+
+  hiliteCaptionText(captionId: number) {
+    // The <video> element captionIds are sequential from the start of the video.
+    // But the Ids on the caption text are not. They are created as "x-y" where
+    // "x" = the index of the talk in the talks[] array and
+    // "y" = the index of the phrase in the specific talk.
+    const [caption, elId] = this.findCaption(captionId);
+    if (this.priorCaption !== null) {
+      this.priorCaption.hilite = false;
+    }
+    caption.hilite = true;
+    this.priorCaption = caption;
+    this.scrollToElement(elId);
+    // console.log('hilite ' + elId);
+  }
+
+  // find the caption with specific Id in talks array.
+  findCaption(Id: number): [Caption, string] {
+    let i = 0;
+    for (const talk of this.talks) {
+      let j = 0;
+      for (const caption of talk.captions) {
+        if (caption.Id === Id) {
+          const elementId: string = i.toString(10) + '-' + j.toString(10);
+          return [caption, elementId];
+        }
+        j++;
+      }
+      i++;
+    }
+  }
+
+  removePriorHilite() {
+    if (this.priorCaption !== null) {
+      this.priorCaption.hilite = false;
+    }
+  }
+
+  ///////////////////////////////////////////////////////////////
+  //  Utilities
+  ///////////////////////////////////////////////////////////////
+
   convertToSeconds(time: string) {
     const array = time.split(':');
     let count = array.length;
@@ -202,31 +326,98 @@ export class TalksComponent implements OnInit {
     }
     return seconds;
   }
-
-  scrollToElement($element): void {
-    console.log($element);
-    // $element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-    $element.scrollIntoView({ block: 'start', inline: 'nearest' });
-    // $element.scrollIntoView({ block: 'end', inline: 'nearest' });
-  }
-
-  sendCaptionId(Id: number) {
-    const x = Id;
-    const caption: Caption = this.findCaption(Id);
-    if (this.priorCaption !== null) {
-      this.priorCaption.hilite = false;
-    }
-    caption.hilite = true;
-    this.priorCaption = caption;
-  }
-
-  findCaption(Id: number): Caption {
-    for (const talk of this.talks) {
-      for (const caption of talk.captions) {
-        if (caption.Id === Id) {
-          return caption;
-        }
-      }
-    }
-  }
 }
+/*  ======  Smooth scrolling to an element inside an element  ===============
+https://newbedev.com/how-to-scroll-to-an-element-inside-a-div
+
+========  Method 1 ====================
+
+var box = document.querySelector('.box'),
+    targetElm = document.querySelector('.boxChild'); // <-- Scroll to here within ".box"
+
+document.querySelector('button').addEventListener('click', function(){
+   scrollToElm( box, targetElm , 600 );
+});
+
+
+/////////////
+
+function scrollToElm(container, elm, duration){
+  var pos = getRelativePos(elm);
+  scrollTo( container, pos.top , 2);  // duration in seconds
+}
+
+function getRelativePos(elm){
+  var pPos = elm.parentNode.getBoundingClientRect(), // parent pos
+      cPos = elm.getBoundingClientRect(), // target pos
+      pos = {};
+
+  pos.top    = cPos.top    - pPos.top + elm.parentNode.scrollTop,
+  pos.right  = cPos.right  - pPos.right,
+  pos.bottom = cPos.bottom - pPos.bottom,
+  pos.left   = cPos.left   - pPos.left;
+
+  return pos;
+}
+
+function scrollTo(element, to, duration, onDone) {
+    var start = element.scrollTop,
+        change = to - start,
+        startTime = performance.now(),
+        val, now, elapsed, t;
+
+    function animateScroll(){
+        now = performance.now();
+        elapsed = (now - startTime)/1000;
+        t = (elapsed/duration);
+
+        element.scrollTop = start + change * easeInOutQuad(t);
+
+        if( t < 1 )
+            window.requestAnimationFrame(animateScroll);
+        else
+            onDone && onDone();
+    };
+
+    animateScroll();
+}
+
+function easeInOutQuad(t){ return t<.5 ? 2*t*t : -1+(4-2*t)*t };
+
+
+.box{ width:80%; border:2px dashed; height:180px; overflow:auto; }
+.boxChild{
+  margin:600px 0 300px;
+  width: 40px;
+  height:40px;
+  background:green;
+}
+
+<button>Scroll to element</button>
+<div class='box'>
+  <div class='boxChild'></div>
+</div>
+
+===========   Method 3 - Using CSS scroll-behavior =================
+
+.box {
+  width: 80%;
+  border: 2px dashed;
+  height: 180px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+#boxChild {
+  margin: 600px 0 300px;
+  width: 40px;
+  height: 40px;
+  background: green;
+}
+
+<a href='#boxChild'>Scroll to element</a>
+<div class='box'>
+  <div id='boxChild'></div>
+</div>
+
+*/

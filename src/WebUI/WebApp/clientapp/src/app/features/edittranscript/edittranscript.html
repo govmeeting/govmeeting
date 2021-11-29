@@ -51,19 +51,22 @@
     {src: 'assets/stubdata/captions/captions.sv.vtt', kind:'captions', srclang: 'sv', label: 'Swedish'},
     {src: 'assets/stubdata/captions/captions.ru.vtt', kind:'captions', srclang: 'ru', label: 'Russian'} -->
 
-<br />
+<!-- <br /> -->
 
-<!-- buttons for debugging new features -->
-<!-- <button (click)="onGetTracks()">Get Tracks</button> -->
-<!-- <button (click)="onRotate()">Rotate</button> -->
-<button (click)="onGetCues()">Highlight Spoken Text</button>
-<!-- <button (click)="onSendCaptionId(5)">Send Caption Id</button> -->
+<button id="btnHiliteSpeech" (click)="onHiliteSpeech()">
+  {hiliteSpeech, select, true {Highlight off} false {Highlight on} }
+</button>
 
-<br />
 <button i18n="@@togglehelp" md-raised-button class="show-help-button" (click)="ToggleHelp()">
   {showhelp, select, true {Hide Help} false {Show Help} }
 </button>
-<br />
+
+<!-- buttons for debugging features -->
+<!-- <button (click)="onGetTracks()">Get Tracks</button> -->
+<!-- <button (click)="onRotate()">Rotate</button> -->
+<!-- <button (click)="hiliteSpecificCaption(5)">Send Caption Id</button> -->
+
+<!-- <br /> -->
 <div class="edit-help" [hidden]="!CheckShowHelp()" (click)="ToggleHelp()">
   [This code is under development.] It will have the following functions:
   <ul>
