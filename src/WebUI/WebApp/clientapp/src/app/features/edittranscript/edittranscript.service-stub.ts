@@ -58,14 +58,12 @@ export class EditTranscriptServiceStub implements EditTranscriptService {
   public postChanges(addtags: EditTranscript) {
     NoLog || console.log(this.ClassName + 'postChanges');
     const headers = { 'Content-Type': 'application/json' };
-    this.http
-      .post<any>(addtagsUrl, addtags, { headers })
-      .subscribe({
-        next: (data) => {
-          this.postId = data.id;
-          NoLog || console.log(this.ClassName + data);
-        },
-        error: (error) => console.error('There was an error!', error),
-      });
+    this.http.post<any>(addtagsUrl, addtags, { headers }).subscribe({
+      next: (data) => {
+        this.postId = data.id;
+        NoLog || console.log(this.ClassName + data);
+      },
+      error: (error) => console.error('There was an error!', error),
+    });
   }
 }

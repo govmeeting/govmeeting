@@ -1,55 +1,62 @@
-<div class="scrolldiv">
-  <div class="scrolldiv">
-    <button (click)="saveChanges()">Save Changes</button>
-    <ul #target style="list-style: none">
-      <li *ngFor="let talk of talks; let i = index">
-        <!-- Display the section name and up/down arrows if start of new section -->
-        <div [hidden]="talk.section==null">
-          <br />
-          <button (click)="moveSectionUp(talk, i)">^</button>
-          <button (click)="moveSectionDown(talk, i)">v</button>
-          <span class="gmsection"> SECTION: {{talk.section}} </span><br /><br />
-        </div>
+<div id="scrolling_div" class="scrolldiv">
+  <ul #target style="list-style: none">
+    <li *ngFor="let talk of talks; let i = index">
+      <!-- Display the section name and up/down arrows if start of new section -->
+      <div [hidden]="talk.section==null">
+        <br />
+        <button (click)="moveSectionUp(talk, i)">^</button>
+        <button (click)="moveSectionDown(talk, i)">v</button>
+        <span class="gmsection"> SECTION: {{talk.section}} </span><br /><br />
+      </div>
 
-        <!-- Display the topic name and up/down arrows if start of new topic -->
-        <div [hidden]="talk.topic==null">
-          <br />
-          <button (click)="moveTopicUp(talk, i)">^</button>
-          <button (click)="moveTopicDown(talk, i)">v</button>
-          <span class="gmtopic"> TOPIC: {{talk.topic}} </span><br /><br />
-        </div>
+      <!-- Display the topic name and up/down arrows if start of new topic -->
+      <div [hidden]="talk.topic==null">
+        <br />
+        <button (click)="moveTopicUp(talk, i)">^</button>
+        <button (click)="moveTopicDown(talk, i)">v</button>
+        <span class="gmtopic"> TOPIC: {{talk.topic}} </span><br /><br />
+      </div>
 
-        <!-- Display the topic input line.
+      <!-- Display the topic input line.
          When the user selects or enters a topic, it triggers the event "topicSelect" and
          we then call "OnTopicSelect"" in TalksComponent, passing it the topic selected.
          When the user highlights some spoken text, "highlightedTopic" is set in TalksComponent and
          and this is used to set "newTopicName" in TopicsComponent. Thus the input box gets populated.-->
-        <div [hidden]="!talk.showSetTopic">
-          TOPIC:
-          <gm-topicset (topicSelect)="onTopicSelect($event, talk)" [newTopicName]="highlightedTopic"> </gm-topicset>
-        </div>
+      <div [hidden]="!talk.showSetTopic">
+        TOPIC:
+        <gm-topicset (topicSelect)="onTopicSelect($event, talk)" [newTopicName]="highlightedTopic"> </gm-topicset>
+      </div>
 
-        <!-- Display the speaker and spoken text. -->
-        <div class="speakertext">
-          <div [hidden]="talk.showSetTopic"></div>
-          <!-- {{i}} -->
-          <!-- <div class="gmspeaker">{{ talk.speaker }}:</div> -->
-          <button class="gmspeaker" (click)="onplayVideo(talk, i)">{{ talk.speaker }}:</button>
-          <span (click)="showTopicSelection(talk,i)" gmHighlight (textSelected)="handleTextSelected($event)">
-            <!-- <div class="gmsaid"> {{talk.said}} </div> -->
+      <!-- Display the speaker and spoken text. -->
+      <div class="speakertext">
+        <div [hidden]="talk.showSetTopic"></div>
+        <!-- {{i}} -->
+        <!-- <div class="gmspeaker">{{ talk.speaker }}:</div> -->
+        <button class="gmspeaker" (click)="onplayVideo(talk, i)">{{ talk.speaker }}:</button>
+        <span (click)="showTopicSelection(talk,i)" gmHighlight (textSelected)="handleTextSelected($event)">
+          <!-- <div class="gmsaid"> {{talk.said}} </div> -->
 
-            <!-- <span [style.backgroundColor]="getWordColor(word.speaker)" *ngFor="let word of talk.words; let i = index">
+          <!-- <span [style.backgroundColor]="getWordColor(word.speaker)" *ngFor="let word of talk.words; let i = index">
               {{word.word}}
             </span> -->
 
-            <span *ngFor="let caption of talk.captions; let i = index">
-              <span [style.backgroundColor]="getCaptionColor(caption.hilite)">{{caption.text}} </span>
+          <span *ngFor="let caption of talk.captions; let j = index">
+            <span [style.backgroundColor]="getCaptionColor(caption.hilite)" id="{{i}}-{{j}}">
+              <!-- {{caption.text}} ({{i}}-{{j}}) -->
+              {{caption.text}}
             </span>
           </span>
-        </div>
-      </li>
-    </ul>
-  </div>
+        </span>
+      </div>
+    </li>
+  </ul>
 </div>
 
-<button (click)="scrollToElement(target)">ScrollToElement</button>
+<button id="btnSave" (click)="saveChanges()">Save Changes</button>
+<!-- <button (click)="scrollToElement('2-0')">2-0</button>
+<button (click)="scrollToElement('5-0')">5-0</button>
+<button (click)="scrollToElement('7-0')">7-0</button>
+<button (click)="scrollup()">Up 10</button>
+<button (click)="scrolldown()">Down 10</button>
+<span id="output">scrollTop: 0</span>
+<span id="toX">To: 0</span> -->

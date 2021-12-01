@@ -52,18 +52,16 @@ export class EditTranscriptServiceReal implements EditTranscriptService {
     const url = this.addtagsUrl + '/' + this.meetingId;
 
     const headers = { 'Content-Type': 'application/json' };
-    this.http
-      .post<any>(url, addtags, { headers })
-      .subscribe({
-        // next: data => this.postId = data.id,
-        next: (success) => {
-          NoLog || console.log(this.ClassName, success);
-          if (!success) {
-            // TODO handle errs here and below - tell user their save did not succeed.
-            NoLog || console.log(this.ClassName, 'false was returned from Post');
-          }
-        },
-        error: (error) => console.error('There was an error!', error),
-      });
+    this.http.post<any>(url, addtags, { headers }).subscribe({
+      // next: data => this.postId = data.id,
+      next: (success) => {
+        NoLog || console.log(this.ClassName, success);
+        if (!success) {
+          // TODO handle errs here and below - tell user their save did not succeed.
+          NoLog || console.log(this.ClassName, 'false was returned from Post');
+        }
+      },
+      error: (error) => console.error('There was an error!', error),
+    });
   }
 }

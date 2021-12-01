@@ -100,23 +100,6 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
     NoLog || console.log(this.ClassName + 'exiting playPhrase');
   }
 
-  getTracks() {
-    const validTracks: TextTrack[] = [];
-    let tracks: TextTrackList;
-    let track: TextTrack;
-    tracks = this.player.textTracks();
-    for (let i = 0, L = tracks.length; i < L; i++) {
-      track = tracks[i];
-      if (track.kind === 'captions' || track.kind === 'subtitles') {
-        validTracks.push(track);
-      }
-      if (track.language === 'en') {
-        console.dir(tracks[i]);
-      }
-    }
-    return validTracks;
-  }
-
   getActiveTrack(tracks: TextTrackList): TextTrack {
     let track: TextTrack;
     for (let i = 0, L = tracks.length; i < L; i++) {
@@ -153,5 +136,23 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   getTextTrack(): TextTrack {
     return this.player.textTracks()[0];
+  }
+
+  // (for debugging) returns array of all tracks on video
+  getTracks() {
+    const validTracks: TextTrack[] = [];
+    let tracks: TextTrackList;
+    let track: TextTrack;
+    tracks = this.player.textTracks();
+    for (let i = 0, L = tracks.length; i < L; i++) {
+      track = tracks[i];
+      if (track.kind === 'captions' || track.kind === 'subtitles') {
+        validTracks.push(track);
+      }
+      if (track.language === 'en') {
+        console.dir(tracks[i]);
+      }
+    }
+    return validTracks;
   }
 }

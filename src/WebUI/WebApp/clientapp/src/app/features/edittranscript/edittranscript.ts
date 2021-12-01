@@ -17,26 +17,21 @@ export class EditTranscriptComponent implements OnInit, AfterViewInit {
   private ClassName: string = this.constructor.name + ': ';
 
   showhelp = false; // if true, shows the help box to the user
-
-  // @ViewChild('myInput', { static: false }) input: ElementRef;
-
-  // Prior component based on Videogular
-  // @ViewChild(VideoComponent, { static: false })
-  // private videoComponent: VideoComponent;
+  hiliteSpeech = false; // if true, hilite spoken text
 
   @ViewChild(VideojsComponent, { static: false })
   private videojsComponent: VideojsComponent;
 
   @ViewChild(TalksComponent, { static: true }) talksComp: TalksComponent;
-
   @ViewChild('gmvideojs', { read: ElementRef }) gmVideojs: ElementRef;
 
   constructor() {}
 
   ngOnInit() {}
 
+  // We may decide to turn on speech hiliting by default.
   ngAfterViewInit() {
-    // this.onGetCues();
+    // this.onHiliteSpeech();
   }
 
   CheckShowHelp(): boolean {
@@ -53,27 +48,51 @@ export class EditTranscriptComponent implements OnInit, AfterViewInit {
     this.videojsComponent.playPhrase(data.start, data.duration);
   }
 
-  onGetCues() {
-    // this.videojsComponent.getCueChanges();
-
+  handleCueChange = () => {
     const textTrack = this.videojsComponent.getTextTrack();
-    textTrack.addEventListener('cuechange', (event) => {
-      const activeCue = textTrack.activeCues[0];
-      console.log(activeCue.id, activeCue.startTime, activeCue.endTime);
-      this.onSendCaptionId(parseInt(activeCue.id, 10));
+    const activeCue = textTrack.activeCues[0];
+    // We were sometimes getting two cuechange events for the same cue.
+    // The first event had activeCue undefined. So we check for that here.
+    // TODO: Why does this only happen when the speaker changes?
+    if (activeCue !== undefined && activeCue.id !== undefined) {
+      this.hiliteSpecificCaption(parseInt(activeCue.id, 10));
       // @ts-ignore
-      console.log(activeCue.text);
-    });
+      // console.log(activeCue.text);
+    }
+    // NOTE: prettier keeps putting the semicolon back on the next line if it's removed.
+    //       But tslint keeps conplaining that it's there.
+    //       The solution is to add "ignore-bound-class-methods" in tslint.json to the
+    //       semicolon:options.
+  };
+
+  onHiliteSpeech() {
+    const textTrack = this.videojsComponent.getTextTrack();
+    if (this.hiliteSpeech) {
+      textTrack.removeEventListener('cuechange', this.handleCueChange);
+      this.talksComp.removePriorHilite();
+    } else {
+      textTrack.addEventListener('cuechange', this.handleCueChange);
+    }
+    this.toggleHiliteSpeech();
   }
 
-  onSendCaptionId(captionId: number) {
-    this.talksComp.sendCaptionId(captionId);
+  // Hilite specific caption.
+  // The captionIds are sequential with the 1st caption being "1".
+  hiliteSpecificCaption(captionId: number) {
+    // Call a method on the TalksComponent
+    this.talksComp.hiliteCaptionText(captionId);
   }
 
+  toggleHiliteSpeech() {
+    this.hiliteSpeech = !this.hiliteSpeech;
+  }
+
+  // (for debugging)
   onGetTracks() {
     this.videojsComponent.getTracks();
   }
 
+  // (experiment) This rotates the video
   onRotate() {
     this.videojsComponent.rotateVideo();
   }

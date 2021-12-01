@@ -43,8 +43,7 @@ export let ViewTranscriptSample: ViewTranscript = {
         // tslint:disable-next-line:max-line-length
         {
           Speaker: 'Denise Griffin',
-          Text:
-            'Meeting to order. Today is Monday, Sept. 8th. Welcome to the selectmen�s meeting, the first meeting in September. On my left is Kellie Bigos, Recording Secretary and Tom Woodin, our town manager, selectmens Jay Warren, Russ Hoffman, myself Denise Griffin, Will Hamblen and Wendy Wolf. And in the audience, we have our financial treasurer, Julia Latter. Okay, Tom, town manager announcements?',
+          Text: 'Meeting to order. Today is Monday, Sept. 8th. Welcome to the selectmen�s meeting, the first meeting in September. On my left is Kellie Bigos, Recording Secretary and Tom Woodin, our town manager, selectmens Jay Warren, Russ Hoffman, myself Denise Griffin, Will Hamblen and Wendy Wolf. And in the audience, we have our financial treasurer, Julia Latter. Okay, Tom, town manager announcements?',
         },
       ],
     },
@@ -54,8 +53,7 @@ export let ViewTranscriptSample: ViewTranscript = {
         // tslint:disable-next-line:max-line-length
         {
           Speaker: 'Thomas Woodin',
-          Text:
-            'Thank You. The only one I have right off is just that Bike Maine is coming up. As of Wednesday morning there will be support vehicles showing up with all their gear. The riders will start to come into town between 1 and 4 on Wednesday. There is about 300 riders coming into town and about 50 volunteers. And they�ll be staying through Thursday. There is going to be a lobster bake for them at the footbridge parking lot at 5 to 7. After that there�s live music at the Opera House, that�s open to the public. ',
+          Text: 'Thank You. The only one I have right off is just that Bike Maine is coming up. As of Wednesday morning there will be support vehicles showing up with all their gear. The riders will start to come into town between 1 and 4 on Wednesday. There is about 300 riders coming into town and about 50 volunteers. And they�ll be staying through Thursday. There is going to be a lobster bake for them at the footbridge parking lot at 5 to 7. After that there�s live music at the Opera House, that�s open to the public. ',
         },
       ],
     },
@@ -66,8 +64,7 @@ export let ViewTranscriptSample: ViewTranscript = {
         // tslint:disable-next-line:max-line-length
         {
           Speaker: 'Julia Latter',
-          Text:
-            '?? Total revenue is 82 million, ?? thousand, 868 dollars and 75 cents. Total expenses year to date are ??? Does anyone have any questions on ?? ?? ??? You do not have your graph sheet again. ??? issues with scheduling. Hopefully, ??? copies for you guys before the next selectmen�s meeting.?? presentation then. They assured me they will be bringing the ?? accounts payable is 296 thousand, 156 dollars and 32 cents. And the bank balance is 2 million, 631 thousand, 175 dollars and 95 cents.   (Julia Latter was not using a mic.)',
+          Text: '?? Total revenue is 82 million, ?? thousand, 868 dollars and 75 cents. Total expenses year to date are ??? Does anyone have any questions on ?? ?? ??? You do not have your graph sheet again. ??? issues with scheduling. Hopefully, ??? copies for you guys before the next selectmen�s meeting.?? presentation then. They assured me they will be bringing the ?? accounts payable is 296 thousand, 156 dollars and 32 cents. And the bank balance is 2 million, 631 thousand, 175 dollars and 95 cents.   (Julia Latter was not using a mic.)',
         },
         { Speaker: 'Denise Griffin', Text: 'Questions?' },
         { Speaker: 'Wendy Wolf', Text: 'Julia, maybe you can tell me: what�s the last time we competed the audit?' },
@@ -83,8 +80,7 @@ export let ViewTranscriptSample: ViewTranscript = {
         // tslint:disable-next-line:max-line-length
         {
           Speaker: 'Man 1',
-          Text:
-            'Yeah, we plan to do that anyway for the next audit season. There was a change in personnel at the audit company. It was late in the process so we didn�t have time to requite it out, so we will do that for the next one.',
+          Text: 'Yeah, we plan to do that anyway for the next audit season. There was a change in personnel at the audit company. It was late in the process so we didn�t have time to requite it out, so we will do that for the next one.',
         },
         { Speaker: 'Wendy Wolf', Text: 'OK, great.' },
         { Speaker: 'Denise Griffin', Text: 'You�re thinking that every 5 years, we should put it out for bid?' },

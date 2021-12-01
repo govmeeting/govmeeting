@@ -16,3 +16,8 @@
     font-size: 150%;
   }
 }
+
+#btnHiliteSpeech,
+.show-help-button {
+  background: lightblue;
+}

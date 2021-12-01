@@ -2,6 +2,19 @@
   margin-bottom: 10px;
 }
 .scrolldiv {
-  height: 400px;
-  overflow: scroll;
+  position: relative;
+  height: 300px;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-y: scroll; /* Add vertical scrollbar */
+  scroll-behavior: smooth;
 }
+
+#btnSave {
+  background: lightblue;
+}
+
+/* #toX,
+#output {
+  display: inline-block;
+  border: 1px solid black;
+} */

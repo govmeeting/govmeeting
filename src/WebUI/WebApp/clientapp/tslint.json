@@ -21,9 +21,7 @@
     "eofline": true,
     "import-spacing": true,
     "indent": {
-      "options": [
-        "spaces"
-      ]
+      "options": ["spaces"]
     },
     "import-blacklist": [true, "rxjs/Rx"],
     "max-classes-per-file": false,
@@ -62,9 +60,7 @@
     "no-inputs-metadata-property": true,
     "no-output-native": true,
     "semicolon": {
-      "options": [
-        "always"
-      ]
+      "options": ["always", "ignore-bound-class-methods"]
     },
     "no-output-on-prefix": true,
     "no-output-rename": true,
