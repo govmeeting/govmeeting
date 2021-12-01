@@ -17,16 +17,14 @@ export function loadConfiguration(http: HttpClient, config: ConfigService): () =
             // console.log("baseUrl=" + config.baseUrl);
             resolve(true);
           }),
-          catchError(
-            (x: { status: number }, caught: Observable<void>): ObservableInput<{}> => {
-              if (x.status !== 404) {
-                resolve(false);
-              }
-              config.baseUrl = 'http://localhost:8080/api';
-              resolve(true);
-              return of({});
+          catchError((x: { status: number }, caught: Observable<void>): ObservableInput<{}> => {
+            if (x.status !== 404) {
+              resolve(false);
             }
-          )
+            config.baseUrl = 'http://localhost:8080/api';
+            resolve(true);
+            return of({});
+          })
         )
         .subscribe();
     });

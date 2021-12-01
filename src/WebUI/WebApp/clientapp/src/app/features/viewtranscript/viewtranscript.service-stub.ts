@@ -69,14 +69,12 @@ export class ViewTranscriptServiceStub implements ViewTranscriptService {
   public postChanges(viewtranscript: ViewTranscript) {
     NoLog || console.log(this.ClassName + 'postChanges');
     const headers = { 'Content-Type': 'application/json' };
-    this.http
-      .post<any>(viewtranscriptUrl, viewtranscript, { headers })
-      .subscribe({
-        next: (data) => {
-          this.postId = data.id;
-          NoLog || console.log(this.ClassName, data);
-        },
-        error: (error) => console.error('There was an error!', error),
-      });
+    this.http.post<any>(viewtranscriptUrl, viewtranscript, { headers }).subscribe({
+      next: (data) => {
+        this.postId = data.id;
+        NoLog || console.log(this.ClassName, data);
+      },
+      error: (error) => console.error('There was an error!', error),
+    });
   }
 }
