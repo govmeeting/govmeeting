@@ -219,7 +219,7 @@ namespace GM.WebUI.WebApp
         {
             // Set a variable in the gdc which is be used in NLog.config for the
             // base path of our app: ${gdc:item=appbasepath} 
-            string logfilesPath = GMFileAccess.GetSolutionSiblingFolder(Configuration["Logging:LogfilesPath"]);
+            string logfilesPath = GMFileAccess.GetFullPathOnEitherDevOrProdSystem(Configuration["Logging:LogfilesPath"]);
             //string logfilesPath = GMFileAccess.GetFullPath(Configuration["AppSettings:LogfilesPath"]);
             GlobalDiagnosticsContext.Set("logfilesPath", logfilesPath);
 
@@ -245,8 +245,8 @@ namespace GM.WebUI.WebApp
             {
                 logger.Info("Modify the configuration path options to be full paths.");
                 // Modify the configuration path options to be full paths.
-                myOptions.DatafilesPath = GMFileAccess.GetSolutionSiblingFolder(myOptions.DatafilesPath);
-                myOptions.TestdataPath = GMFileAccess.GetSolutionSiblingFolder(myOptions.TestdataPath);
+                myOptions.DatafilesPath = GMFileAccess.GetFullPathOnEitherDevOrProdSystem(myOptions.DatafilesPath);
+                myOptions.TestdataPath = GMFileAccess.GetFullPathOnEitherDevOrProdSystem(myOptions.TestdataPath);
                 logger.Info("DatafilesPath: {0}, TestdataPath: {2}",
                     myOptions.DatafilesPath, myOptions.TestdataPath);
             });

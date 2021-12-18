@@ -9,6 +9,23 @@ namespace GM.Utilities
 {
     public static partial class GMFileAccess
     {
+        /* GetFullPathOnEitherDevOrProdSystem is for creating/finding sibling folders to the project.
+        * These include: TESTDATA, DATAFILES, SECRETS.
+        * These folders must be outside the project folder so that they are not 
+        * included in the code repository.
+        * The names come from appsettings.json. In Development, this name is a
+        * sibling of the solution folder. But in production, it will be a rooted path.
+        * In production, we just return the path.
+        */
+        public static string GetFullPathOnEitherDevOrProdSystem(string folder)
+        {
+            if (Path.IsPathRooted(folder))
+            {
+                return folder;
+            }
+            return GetSolutionSiblingFolder(folder);
+        }
+
         public static void CopyFilesRecursively(DirectoryInfo source, DirectoryInfo target)
         {
             foreach (DirectoryInfo dir in source.GetDirectories())

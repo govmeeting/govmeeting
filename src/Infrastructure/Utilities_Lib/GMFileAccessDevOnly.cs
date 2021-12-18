@@ -9,22 +9,10 @@ namespace GM.Utilities
 {
     public static partial class GMFileAccess
     {
-        /* GetSolutionSiblingFolder is for creating/finding sibling folders to the project.
-        * These include: TESTDATA, DATAFILES, SECRETS.
-        * These folders must be outside the project folder so that they are not 
-        * included in the code repository.
-        * The names come from appsettings.json. In Development, this name is a
-        * sibling of the solution folder. But in production, it will be a rooted path.
-        * In production, we just return the path.
-        */
-        public static string GetSolutionSiblingFolder(string folder)
+        private static string GetSolutionSiblingFolder(string childPath)
         {
-            if (Path.IsPathRooted(folder))
-            {
-                return folder;
-            }
             string parentOfSolution = Directory.GetParent(GetSolutionFolder()).FullName;
-            return Path.Combine(parentOfSolution, folder);
+            return Path.Combine(parentOfSolution, childPath);
         }
 
         public static string GetTestdataFolder() =>
@@ -53,6 +41,9 @@ namespace GM.Utilities
             // If it exists look there for Google Application Credentials.
             if (secrets != null)
             {
+                // TODO These credentials are now used for both transcribing and translating text.
+                // They may also be used for other purposes. We should rename the file and also
+                // the GCP project "TranscribeAudio" to something more general.
                 credentialsFilePath = Path.Combine(secrets, "TranscribeAudio.json");
             }
             else
