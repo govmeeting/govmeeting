@@ -30,13 +30,9 @@ namespace GM.WorkflowApp
         {
             // https://pioneercode.com/post/dependency-injection-logging-and-configuration-in-a-dot-net-core-console-app
 
-            string secrets = GMFileAccess.GetSolutionSiblingFolder("SECRETS");
-            string credentialsFilePath = Path.Combine(secrets, "TranscribeAudio.json");
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
-
-            //StorageClient storageClient = StorageClient.Create();
-            //string secrets = GMFileAccess.FindParentFolderWithName("SECRETS");
-
+            // Google Cloud libraries automatically use the environment variable GOOGLE_APPLICATION_CREDENTIALS
+            // to authenticate to Google Cloud. Here we set this variable to the path of the credentials file,
+            GMFileAccess.SetGoogleCredentialsEnvironmentVariable();
 
             // create service collection
             var services = new ServiceCollection();
@@ -52,15 +48,6 @@ namespace GM.WorkflowApp
             string datafilesPath = config.DatafilesPath;
 
             var logger = serviceProvider.GetService<ILogger<Program>>();
-
-            // Google Cloud libraries automatically use the environment variable GOOGLE_APPLICATION_CREDENTIALS
-            // to authenticate to Google Cloud. Here we set this variable to the path of the credentials file,
-            // which is defined in app.settings.json.
-            //string credentialsFilePath = config.GoogleApplicationCredentials;
-            //if (!File.Exists(credentialsFilePath)){
-            //    logger.LogError("Credentials File does not exists: ${credentialsFilePath}");
-            //}
-            //Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
 
             //StorageClient storageClient = StorageClient.Create();
 
@@ -102,7 +89,7 @@ namespace GM.WorkflowApp
 
             //string devSettingFile = $"appsettings.{environmentName}.json";
             //// Find path to the SECRETS folder
-            //string secrets = GMFileAccess.GetSolutionSiblingFolder("SECRETS");
+            //string secrets = GMFileAccess.GetFullPathOnEitherDevOrProdSystem("SECRETS");
             //// If it exists look there for environment settings file.
             //if (secrets != null)
             //{
@@ -124,9 +111,9 @@ namespace GM.WorkflowApp
             services.Configure<AppSettings>(myOptions =>
             {
                 // Modify paths to be full paths.
-                myOptions.DatafilesPath = GMFileAccess.GetSolutionSiblingFolder(myOptions.DatafilesPath);
-                myOptions.TestdataPath = GMFileAccess.GetSolutionSiblingFolder(myOptions.TestdataPath);
-                myOptions.GoogleApplicationCredentials = GMFileAccess.GetSolutionSiblingFolder(myOptions.GoogleApplicationCredentials);
+                myOptions.DatafilesPath = GMFileAccess.GetFullPathOnEitherDevOrProdSystem(myOptions.DatafilesPath);
+                myOptions.TestdataPath = GMFileAccess.GetFullPathOnEitherDevOrProdSystem(myOptions.TestdataPath);
+                myOptions.GoogleApplicationCredentials = GMFileAccess.GetFullPathOnEitherDevOrProdSystem(myOptions.GoogleApplicationCredentials);
             });
 
             // add services
