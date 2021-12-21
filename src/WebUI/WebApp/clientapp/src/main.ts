@@ -22,7 +22,7 @@ const providers = [
   //   constructor(@Inject(APP_BASE_HREF) public baseHref:string) { ...
   // and then use it in the HTML:
   //   <img [src]="baseHref + '/assets/img/myimage.jpg'"
-  // PS: We are currently only doing this in a sample component.
+  // PS: We are currently only doing this in the sample FetchDataComponent.
   { provide: 'API_BASE_URL', useFactory: getApiUrl, deps: [] },
   { provide: API_BASE_URL, useFactory: getApiUrl },
 ];

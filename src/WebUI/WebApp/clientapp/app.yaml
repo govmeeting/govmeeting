@@ -1,13 +1,17 @@
-# This is for deploying to Google App Engine
+# This file was for experimenting with deploying to Google App Engine.
+# We are not using this method of deployment
+
+# See the following link for how to do this.
+# https://medium.com/@karthiksagar/how-to-deploy-angular-8-app-on-google-cloud-platform-gcp-cdd79e5cc5cf
 
 runtime: python27
 api_version: 1
 threadsafe: true
 
 handlers:
-- url: /
-  static_files: clientapp/index.html
-  upload: clientapp/index.html
-   
-- url: /
-  static_dir: clientapp
+  - url: /
+    static_files: clientapp/index.html
+    upload: clientapp/index.html
+
+  - url: /
+    static_dir: clientapp
