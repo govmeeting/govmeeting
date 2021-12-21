@@ -1,6 +1,8 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+// A good description of this method of using the environment.x.ts files is here:
+//   https://stackoverflow.com/a/46059937/1978840
 
 import { IEnvironment } from './ienvironment';
 
