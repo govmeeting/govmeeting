@@ -7,7 +7,6 @@ import { IEnvironment } from './ienvironment';
 
 const apiHost = 'localhost:6578';
 const apiUrl = `https://${apiHost}`;
-const useServer = null;
 
 export const environment: IEnvironment = {
   production: false,
@@ -15,5 +14,7 @@ export const environment: IEnvironment = {
   logLevel: 'debug',
   apiHost,
   apiUrl,
-  useServer,
+  useServer: false, // Todo: switch to true when docker implemented
+  isBeta: false,
+  isLargeEditData: false,
 };

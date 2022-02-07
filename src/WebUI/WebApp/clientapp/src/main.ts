@@ -19,12 +19,12 @@ export function getApiUrl() {
 
 const providers = [
   // Providing API_BASE_URL allows us to inject the base href into our components:
-  //   constructor(@Inject(APP_BASE_HREF) public baseHref:string) { ...
+  //   constructor(@Inject(APP_BASE_HREF) public apiBaseUrl:string) { ...
   // and then use it in the HTML:
-  //   <img [src]="baseHref + '/assets/img/myimage.jpg'"
+  //   <img [src]="apiBaseUrl + '/assets/img/myimage.jpg'"
   // PS: We are currently only doing this in the sample FetchDataComponent.
   { provide: 'API_BASE_URL', useFactory: getApiUrl, deps: [] },
-  { provide: API_BASE_URL, useFactory: getApiUrl },
+  // { provide: API_BASE_URL, useFactory: getApiUrl },
 ];
 
 if (environment.production) {
