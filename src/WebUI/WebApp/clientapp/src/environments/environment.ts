@@ -8,7 +8,6 @@ import { IEnvironment } from './ienvironment';
 
 const apiHost = 'localhost:44333';
 const apiUrl = `https://${apiHost}`;
-const useServer = null;
 
 export const environment: IEnvironment = {
   production: false,
@@ -16,7 +15,9 @@ export const environment: IEnvironment = {
   logLevel: 'debug',
   apiHost,
   apiUrl,
-  useServer,
+  useServer: false, // ToDo - this is temporary
+  isBeta: false,
+  isLargeEditData: false,
 };
 
 /*

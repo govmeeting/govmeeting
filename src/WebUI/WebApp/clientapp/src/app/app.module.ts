@@ -1,5 +1,4 @@
 /////////////////// Modules - external ///////////////////////////////////
-import { APP_INITIALIZER } from '@angular/core';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -17,6 +16,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AboutProjectModule } from './about-project/about-project.module';
 import { AppComponent } from './app.component';
+import { AppData } from './appdata';
 
 // dashboard
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -44,11 +44,22 @@ import { SharedModule } from './common/common.module';
 import { ErrorHandlingService } from './common/error-handling/error-handling.service';
 import { UserSettingsService, UserSettings, LocationType } from './common/user-settings.service';
 import { DemoMaterialModule } from './common/material';
-// import { VideojsComponent } from './common/videojs-player/videojs.component';
 
 // services
 import { ChatService } from './features/chat/chat.service';
 import { DataFactoryService } from './work_experiments/datafake/data-factory.service';
+import { VideoService } from './common/video/video.service';
+import { VideoServiceStub } from './common/video/video.service-stub';
+import { VideoServiceReal } from './common/video/video.service-real';
+import { EditTranscriptServiceReal } from './features/edittranscript/edittranscript.service-real';
+import { EditTranscriptServiceStub } from './features/edittranscript/edittranscript.service-stub';
+import { EditTranscriptService } from './features/edittranscript/edittranscript.service';
+import { ViewTranscriptServiceReal } from './features/viewtranscript/viewtranscript.service-real';
+import { ViewTranscriptServiceStub } from './features/viewtranscript/viewtranscript.service-stub';
+import { ViewTranscriptService } from './features/viewtranscript/viewtranscript.service';
+import { RegisterGovBodyService } from './features/register-gov-body/register-gov-body.service';
+import { RegisterGovBodyServiceStub } from './features/register-gov-body/register-gov-body.service-stub';
+import { RegisterGovBodyServiceReal } from './features/register-gov-body/register-gov-body.service-real';
 
 // Swagger API
 import { GovLocationClient, GovbodyClient } from './apis/api.generated.clients';
@@ -60,19 +71,12 @@ import { DataFakeService } from './work_experiments/datafake/data-fake.service';
 // import { ConfigService } from './work_experiments/configuration/config.service';
 import { ShoutoutsComponent } from './work_experiments/shoutouts/shoutouts';
 
-///// Initialization service and ServiceManager Module
-import { AppInitService } from './appinit/appinit.service';
-import { ServiceManagerModule } from './appinit/service-manager.module';
-import { VideoService } from './common/video/video.service';
-import { VideoServiceStub } from './common/video/video.service-stub';
-import { VideoServiceReal } from './common/video/video.service-real';
-export function pingFactory(appInitService: AppInitService) {
-  return () => appInitService.pingServer();
-}
+const isAspServerRunning = environment.useServer; // Is the Asp.Net server running?
+const isBeta = environment.isBeta; // Use only beta release features?
+const isLargeEditData = environment.isLargeEditData; // Are we using the large data (full length videos & transcripts)
 
 @NgModule({
   imports: [
-    // /////////////// external //////////////
     // /////////////// external //////////////
     RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
     CommonModule,
@@ -83,9 +87,6 @@ export function pingFactory(appInitService: AppInitService) {
     ReactiveFormsModule,
     NgMaterialMultilevelMenuModule,
     HttpClientModule,
-    //////////////////////////////////////////
-    ServiceManagerModule.forRoot(),
-    //////////////////////////////////////////
 
     // /////////////// internal //////////////
     ViewTranscriptModule,
@@ -103,7 +104,6 @@ export function pingFactory(appInitService: AppInitService) {
     HeaderModule,
     AmchartsModule,
     FeaturesModule,
-    //  AppInitModule,
   ],
   declarations: [
     AppComponent,
@@ -127,15 +127,25 @@ export function pingFactory(appInitService: AppInitService) {
   ],
   providers: [
     ErrorHandlingService,
-    // AppData,
-    // The APP_INITIALIZER runs before application start.
-    // It checks if the server is running. ServiceManager uses its result
-    // to decide whether to provide real or stub API services.
     {
-      provide: APP_INITIALIZER,
-      useFactory: pingFactory,
-      deps: [AppInitService],
-      multi: true,
+      provide: EditTranscriptService,
+      useClass: isAspServerRunning ? EditTranscriptServiceReal : EditTranscriptServiceStub,
+    },
+    {
+      provide: ViewTranscriptService,
+      useClass: isAspServerRunning ? ViewTranscriptServiceReal : ViewTranscriptServiceStub,
+    },
+    {
+      provide: RegisterGovBodyService,
+      useClass: isAspServerRunning ? RegisterGovBodyServiceReal : RegisterGovBodyServiceStub,
+    },
+    {
+      provide: VideoService,
+      useClass: isAspServerRunning ? VideoServiceReal : VideoServiceStub,
+    },
+    {
+      provide: AppData,
+      useValue: { isBeta, isLargeEditData },
     },
     // { provide: LOCALE_ID, useValue: 'hi' },
     ChatService,
