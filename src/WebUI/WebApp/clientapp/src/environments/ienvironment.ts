@@ -8,7 +8,7 @@ export interface IEnvironment {
   logLevel: LogLevel;
   apiHost: string;
   apiUrl: string;
-  useServer: boolean;
+  useServer: boolean; // If false we will use stubs for data received from server.
   isBeta: boolean; // Use only beta features
-  isLargeEditData: boolean; // use the large data (full length videos and transcripts)
+  useLargeData: boolean; // use the large data (full length videos and transcripts)
 }

@@ -17,7 +17,7 @@ export const environment: IEnvironment = {
   apiUrl,
   useServer: false, // ToDo - this is temporary
   isBeta: false,
-  isLargeEditData: false,
+  useLargeData: false,
 };
 
 /*

@@ -12,7 +12,7 @@ export class VideoServiceStub implements VideoService {
 
     const location = 'assets/stubdata/';
 
-    // if (appData.isLargeEditData) {
+    // if (appData.useLargeData) {
     //  location = 'assets/DATA_IGNORED_BY_GIT/';
     // }
 
@@ -21,7 +21,7 @@ export class VideoServiceStub implements VideoService {
   }
 
   getFileBasename() {
-    // if (appData.isLargeEditData) {
+    // if (appData.useLargeData) {
     //  fileBasename = 'USA_NJ_Passaic_LittleFalls_TownshipCouncil_en_2020-06-20';
     // }
 

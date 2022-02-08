@@ -1,0 +1,38 @@
+FROM mcr.microsoft.com/dotnet/aspnet:3.1
+WORKDIR /app
+COPY bin/Release/netcoreapp3.1/publish .
+COPY appsettings.Staging.json .
+# ENTRYPOINT ["dotnet", "webapp.dll"]
+CMD sh
+
+# Run in powershell in root of solution:
+#   cd src/WebUI/WebApp
+#   dotnet publish -c Release --no-build -nowarn:CS1591 -p:Docker=true
+#   docker build -f Dockerfile-slim -t govmeeting/api .
+
+
+# WORKDIR /app/src/WebUI/WebApp
+# RUN dotnet build -c Release -nowarn:CS1591 -p:Docker=true
+# RUN dotnet publish -c Release --no-build -nowarn:CS1591 -p:Docker=true -o /app/out
+
+# FROM mcr.microsoft.com/dotnet/aspnet:3.1
+# WORKDIR /app
+# COPY --from=build /app/out .
+# COPY WebUI/WebApp/appsettings.Staging.json ./appsettings.Staging.json
+# ENTRYPOINT ["dotnet", "webapp.dll"]
+
+
+# == Testing locally ==
+# cd <root of source code>
+# Build image
+#    docker build . -t govmeeting/server -f Dockerfile-server
+# Build & run container
+#    docker create -p 8080:80 --name serverbox govmeeting/server
+#    docker start serverbox
+# OR
+#    docker create --name serverbox govmeeting/server
+#    docker start -p 8080:80 serverbox
+# OR
+#    docker run -it -p 8080:80 --name serverbox govmeeting/server
+# Stop container
+#    docker stop serverbox

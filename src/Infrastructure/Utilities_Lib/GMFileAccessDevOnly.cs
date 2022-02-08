@@ -9,7 +9,7 @@ namespace GM.Utilities
 {
     public static partial class GMFileAccess
     {
-        private static string GetSolutionSiblingFolder(string childPath)
+        public static string GetSolutionSiblingFolder(string childPath)
         {
             string parentOfSolution = Directory.GetParent(GetSolutionFolder()).FullName;
             return Path.Combine(parentOfSolution, childPath);

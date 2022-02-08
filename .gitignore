@@ -39,6 +39,7 @@ TranscribeAudio.json
 DATAFILES/
 **/wwwroot/dist/
 **/clientapp/dist/
+**/clientapp/coverage
 src/logs/
 # Cypress
 **/cypress/screenshots/
