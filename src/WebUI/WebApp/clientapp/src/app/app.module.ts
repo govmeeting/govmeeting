@@ -73,7 +73,7 @@ import { ShoutoutsComponent } from './work_experiments/shoutouts/shoutouts';
 
 const isAspServerRunning = environment.useServer; // Is the Asp.Net server running?
 const isBeta = environment.isBeta; // Use only beta release features?
-const isLargeEditData = environment.isLargeEditData; // Are we using the large data (full length videos & transcripts)
+const useLargeData = environment.useLargeData; // Are we using the large data (full length videos & transcripts)
 
 @NgModule({
   imports: [
@@ -145,7 +145,7 @@ const isLargeEditData = environment.isLargeEditData; // Are we using the large d
     },
     {
       provide: AppData,
-      useValue: { isBeta, isLargeEditData },
+      useValue: { isBeta, useLargeData },
     },
     // { provide: LOCALE_ID, useValue: 'hi' },
     ChatService,

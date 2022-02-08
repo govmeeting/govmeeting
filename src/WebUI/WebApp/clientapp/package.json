@@ -7,7 +7,7 @@
     "clean": "rimraf ./dist",
     "start": "ng serve",
     "build": "ng build",
-    "localdocker": "ng build --configuration=localdocker",
+    "build:staging": "rimraf dist && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --configuration=staging",
     "build:prod": "rimraf dist && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --configuration production",
     "build:ghp": "ng build --configuration production --base-href /govmeeting/",
     "deploy": "ng deploy --base-href=/govmeeting/ --no-silent",

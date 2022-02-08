@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  database:
+    container_name: gmdatabase
+    image: postgres
+    restart: unless-stopped
+    env_file:
+      - src/WebUI/WebApp/database.env
+    ports:
+      - "5439:5432"
+  api:
+    container_name: gmapi
+    restart: unless-stopped
+    image: govmeeting/api
+    # build:
+    #   context: src/WebUI/WebApp
+    #   dockerfile: Dockerfile-slim
+    ports:
+      - 6578:8800
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Staging
+      - ASPNETCORE_URLS=http://+:8800
+    depends_on:
+      - database
+  web:
+    container_name: gmweb
+    restart: unless-stopped
+    image: govmeeting/web
+    # build:
+    #   context: src/WebUI/WebApp/clientapp
+    ports:
+      - "8080:80"
+    depends_on:
+      - api

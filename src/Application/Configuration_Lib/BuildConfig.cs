@@ -11,14 +11,14 @@ namespace GM.Application.Configuration
             // The SECRETS" folder is outside of our Github repo. In this folder is:
             //    appsettings.Secrets.json - secrets used in both production and development.
             //    appsettings.Production.json - production-only settings
-            // At the solution root is stored appsettings.Development.json. This file is read by
-            // both WebApp & WorkflowApp.
-            // Appsettings that are set later will override earlier ones.
+            // appsettings.Development.json and appsettings.Staging.jaon are stored in solution root.
+            // They are read by both WebApp & WorkflowApp.
+            // Appsettings that are set later override earlier ones.
             // https://andrewlock.net/including-linked-files-from-outside-the-project-directory-in-asp-net-core/
 
             if (environment == "Production")
             {
-                // Assume that the appsettings files are in the deployment folder.
+                // For production, the appsettings files are in the deployment folder.
                 config
                 .AddJsonFile("appsettings.Secrets.json", optional: true)
                 .AddJsonFile($"appsettings.{environment}.json", optional: true);
@@ -31,13 +31,11 @@ namespace GM.Application.Configuration
 
                 config
                     .AddJsonFile(Path.Combine(solutionFolder, "appsettings.Development.json"), optional: true)
-                    .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Secrets.json"), optional: true)
-                    .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Custom.json"), optional: true);
+                    .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Secrets.json"), optional: true);
 
                 if (environment == "Staging")
                 {
-                    // Todo - We don't yet have a process script that runs a staging test.
-                    // We need to test a production build locally before pushing to production.
+                    // The Staging build run WebApp, clientapp and the database in separate docker containers.
                     config.AddJsonFile(Path.Combine(solutionFolder, "appsettings.Staging.json"), optional: true);
                 }
             }

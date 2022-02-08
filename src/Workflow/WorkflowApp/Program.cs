@@ -80,40 +80,15 @@ namespace GM.WorkflowApp
             var config = new ConfigurationBuilder();
             BuildConfig.Build(config, environmentName);
 
-            //// appsettings.json is copied to the output folder during the build.
-            //// Otherwise, we would need to set appsettingsdir as follows:
-            //// string appsettingsdir = Directory.GetCurrentDirectory() + @"\..\..\..";
-
-            //// Location of appsettings.json
-            //string appsettingsdir = Directory.GetCurrentDirectory();
-
-            //string devSettingFile = $"appsettings.{environmentName}.json";
-            //// Find path to the SECRETS folder
-            //string secrets = GMFileAccess.GetFullPathOnEitherDevOrProdSystem("SECRETS");
-            //// If it exists look there for environment settings file.
-            //if (secrets != null)
-            //{
-            //    devSettingFile = Path.Combine(secrets, $"appsettings.{environmentName}.json");
-            //}
-
-            //var configuration = new ConfigurationBuilder()
-            //    // TODO - The following path will only work in development.
-            //    // It isn't yet decided how WorkflowApp will run in production.
-            //    // Will it be a separate .EXE or a .LIB loaded by WebApp?
-            //    .SetBasePath(appsettingsdir)
-            //    .AddJsonFile("appsettings.json", false)
-            //    .AddJsonFile(devSettingFile, optional: true)
-            //    .Build();
-
             var configuration = config.Build();
             services.AddOptions();
             services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
             services.Configure<AppSettings>(myOptions =>
             {
                 // Modify paths to be full paths.
-                myOptions.DatafilesPath = GMFileAccess.GetFullPathOnEitherDevOrProdSystem(myOptions.DatafilesPath);
-                myOptions.TestdataPath = GMFileAccess.GetFullPathOnEitherDevOrProdSystem(myOptions.TestdataPath);
-                myOptions.GoogleApplicationCredentials = GMFileAccess.GetFullPathOnEitherDevOrProdSystem(myOptions.GoogleApplicationCredentials);
+                myOptions.DatafilesPath = GetFullPathOnEitherDevOrProdSystem(myOptions.DatafilesPath);
+                myOptions.TestdataPath = GetFullPathOnEitherDevOrProdSystem(myOptions.TestdataPath);
+                myOptions.GoogleApplicationCredentials = GetFullPathOnEitherDevOrProdSystem(myOptions.GoogleApplicationCredentials);
             });
 
             // add services
@@ -148,5 +123,15 @@ namespace GM.WorkflowApp
             // add app
             services.AddTransient<WorkflowController>();
         }
+        
+        private static string GetFullPathOnEitherDevOrProdSystem(string folder)
+        {
+            if (Path.IsPathRooted(folder))
+            {
+                return folder;
+            }
+            return GMFileAccess.GetSolutionSiblingFolder(folder);
+        }
+
     }
 }

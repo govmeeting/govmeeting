@@ -39,6 +39,12 @@ namespace GM.WebUI.WebApp
             host.Run();
         }
 
+        /*
+        CreateDefaultBuilder automatically includes the appropriate appsettings.Environment.json.
+        Set the ASPNETCORE_ENVIRONMENT environment variable to "Development", "Production", etc.
+        For VsCode this can be set in Properties/launchSettings.json.
+        For Visual Studio, use: Project > Properties > Debug > Environment Variables.
+        */
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>

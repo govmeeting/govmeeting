@@ -21,7 +21,7 @@ export class EditTranscriptServiceStub implements EditTranscriptService {
   private ClassName: string = this.constructor.name + ': ';
   postId;
   observable: Observable<EditTranscript> = null;
-  isLargeEditData: boolean;
+  useLargeData: boolean;
   url: string;
   http: HttpClient;
 
@@ -32,7 +32,7 @@ export class EditTranscriptServiceStub implements EditTranscriptService {
   ) {
     NoLog || console.log(this.ClassName + 'constructor');
     this.http = _http;
-    this.isLargeEditData = appData.isLargeEditData;
+    this.useLargeData = appData.useLargeData;
     NoLog || console.log(this.ClassName, appData);
   }
 
@@ -46,7 +46,7 @@ export class EditTranscriptServiceStub implements EditTranscriptService {
       return of(EditTranscriptSample);
     }
     NoLog || console.log(this.ClassName + 'get from file');
-    this.url = this.isLargeEditData ? urlTestLarge : urlTest;
+    this.url = this.useLargeData ? urlTestLarge : urlTest;
     // TODO - handle null return. Here we just cast to the correct object type.
     this.observable = this.http
       .get<EditTranscript>(this.url)

@@ -16,5 +16,5 @@ export const environment: IEnvironment = {
   apiUrl,
   useServer: false, // Todo: switch to true when docker implemented
   isBeta: false,
-  isLargeEditData: false,
+  useLargeData: false,
 };

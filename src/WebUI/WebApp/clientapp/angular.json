@@ -53,11 +53,11 @@
               "vendorChunk": false,
               "buildOptimizer": true
             },
-            "localdocker": {
+            "staging": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.localdocker.ts"
+                  "with": "src/environments/environment.staging.ts"
                 }
               ]
             }
@@ -73,8 +73,8 @@
             "production": {
               "browserTarget": "clientapp:build:production"
             },
-            "localdocker": {
-              "browserTarget": "clientapp:build:localdocker"
+            "staging": {
+              "browserTarget": "clientapp:build:staging"
             }
           }
         },

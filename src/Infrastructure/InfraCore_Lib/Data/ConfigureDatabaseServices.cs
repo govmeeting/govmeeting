@@ -17,10 +17,19 @@ namespace GM.Infrastructure.InfraCore.Data
                 case "Production":
                     ConfigureDatabaseUsingAppsettingsConnectionString(services, connectionString);
                     break;
+                case "Staging":
+                    ConfigureStaging(services, connectionString);
+                    break;
                 case "Testing":
                     ConfigureInMemoryDatabase(services);
                     break;
             }
+        }
+
+        private static void ConfigureStaging(IServiceCollection services, string connectionString)
+        {
+            // For staging, we are building a container and connecting to a Postgres database container
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
         }
 
         private static void ConfigureDevelopmentDatabase(IServiceCollection services, string dbType, string connectionString)

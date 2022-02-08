@@ -11,5 +11,5 @@ export const environment: IEnvironment = {
   apiUrl,
   useServer: false, // In production, we will run without server for now.
   isBeta: false,
-  isLargeEditData: false,
+  useLargeData: false,
 };
