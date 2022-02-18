@@ -16,7 +16,7 @@ namespace GM.Application.Configuration
             // Appsettings that are set later override earlier ones.
             // https://andrewlock.net/including-linked-files-from-outside-the-project-directory-in-asp-net-core/
 
-            if (environment == "Production")
+            if (environment != "Development")  // Production and Staging
             {
                 // For production, the appsettings files are in the deployment folder.
                 config
@@ -26,18 +26,19 @@ namespace GM.Application.Configuration
             else
             {
                 // For development & staging, get the appsettings files from the SECRETS and solution folders.
-                string solutionFolder = GMFileAccess.GetSolutionFolder();
+                // string solutionFolder = GMFileAccess.GetSolutionFolder();
                 string secretsFolder = GMFileAccess.GetSecretsFolder();
 
                 config
-                    .AddJsonFile(Path.Combine(solutionFolder, "appsettings.Development.json"), optional: true)
+                    // .AddJsonFile(Path.Combine(solutionFolder, "appsettings.Development.json"), optional: true)
+                    .AddJsonFile("appsettings.Development.json", optional: true)
                     .AddJsonFile(Path.Combine(secretsFolder, "appsettings.Secrets.json"), optional: true);
 
-                if (environment == "Staging")
-                {
-                    // The Staging build run WebApp, clientapp and the database in separate docker containers.
-                    config.AddJsonFile(Path.Combine(solutionFolder, "appsettings.Staging.json"), optional: true);
-                }
+                // if (environment == "Staging")
+                // {
+                //     // The Staging build run WebApp, clientapp and the database in separate docker containers.
+                //     config.AddJsonFile(Path.Combine(solutionFolder, "appsettings.Staging.json"), optional: true);
+                // }
             }
 
             // Allow appsettings to be overidden by an optional "appsettings.json" file in the project or deployment folder.

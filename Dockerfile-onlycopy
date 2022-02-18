@@ -1,0 +1,32 @@
+# context is src
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine as build
+WORKDIR /app
+COPY WebUI/WebApp/WebApp.csproj ./WebUI/WebApp/WebApp.csproj
+COPY Application/Configuration_Lib/Configuration_Lib.csproj ./Application/Configuration_Lib/Configuration_Lib.csproj
+COPY Application/EditTranscript_Lib/EditTranscript_Lib.csproj ./Application/EditTranscript_Lib/EditTranscript_Lib.csproj
+COPY Application/ProcessRecording_Lib/ProcessRecording_Lib.csproj ./Application/ProcessRecording_Lib/ProcessRecording_Lib.csproj
+COPY Application/ProcessTranscript_Lib/ProcessTranscript_Lib.csproj ./Application/ProcessTranscript_Lib/ProcessTranscript_Lib.csproj
+COPY Infrastructure/FileDataRepositories_Lib/FileDataRepositories_Lib.csproj ./Infrastructure/FileDataRepositories_Lib/FileDataRepositories_Lib.csproj
+COPY Infrastructure/GetOnlineFiles_Lib/GetOnlineFiles_Lib.csproj ./Infrastructure/GetOnlineFiles_Lib/GetOnlineFiles_Lib.csproj
+COPY Infrastructure/GoogleCloud_Lib/GoogleCloud_Lib.csproj ./Infrastructure/GoogleCloud_Lib/GoogleCloud_Lib.csproj
+COPY Infrastructure/OnlineAccess_Lib/OnlineAccess_Lib.csproj ./Infrastructure/OnlineAccess_Lib/OnlineAccess_Lib.csproj
+COPY Infrastructure/Utilities_Lib/Utilities_Lib.csproj ./Infrastructure/Utilities_Lib/Utilities_Lib.csproj
+COPY Infrastructure/InfraCore_Lib/InfraCore_Lib.csproj ./Infrastructure/InfraCore_Lib/InfraCore_Lib.csproj
+COPY Application/Core_Lib/AppCore_Lib.csproj ./Application/Core_Lib/AppCore_Lib.csproj
+COPY Application/DTOs_Lib/DTOs_Lib.csproj ./Application/DTOs_Lib/DTOs_Lib.csproj
+COPY WebUI/Client.CSharp/Client.CSharp.csproj ./WebUI/Client.CSharp/Client.CSharp.csproj
+COPY WebUI/Client.Typescript/Client.Typescript.csproj ./WebUI/Client.Typescript/Client.Typescript.csproj
+WORKDIR /app/WebUI/WebApp
+RUN dotnet restore
+WORKDIR /app
+COPY . .
+
+WORKDIR /app/WebUI/WebApp
+RUN dotnet build -c Release -nowarn:CS1591
+RUN dotnet publish -c Release --no-build -nowarn:CS1591 -o /app/out
+FROM mcr.microsoft.com/dotnet/aspnet:3.1-alpine
+WORKDIR /app
+COPY --from=build /app/out .
+#COPY appsettings.Staging.json ./appsettings.Staging.json
+# ENTRYPOINT ["dotnet", "webapp.dll"]
+CMD sh

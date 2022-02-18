@@ -47,6 +47,23 @@
       }
     },
     {
+      "name": "WebAppStagingLocal",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-webapp",
+      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/netcoreapp3.1/WebApp.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/WebUI/WebApp",
+      "stopAtEntry": false,
+      "internalConsoleOptions": "openOnSessionStart",
+      "launchBrowser": {
+        "enabled": false
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "StagingLocal"
+      }
+    },
+    {
       "name": "WebApp & Launch",
       "type": "coreclr",
       "request": "launch",

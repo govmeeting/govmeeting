@@ -24,6 +24,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 
 namespace GM.WebUI.WebApp
 {
@@ -35,6 +36,8 @@ namespace GM.WebUI.WebApp
             Environment = environment;
         }
 
+        // NLog will set logger.Name to "GM.WebUI.WebApp.Startup"
+        // This is the logger "name" that we can refer to in NLog.config
         NLog.Logger logger;
         public IConfiguration Configuration { get; }
         public IHostEnvironment Environment { get; }
@@ -56,11 +59,11 @@ namespace GM.WebUI.WebApp
             ConfigureAppsettings(services);
             logger.Info("Configure Appsettings");
 
-            string connect_string = Configuration["AppSettings:ConnectionString"];
+            string connectionString = Configuration["AppSettings:ConnectionString"];
             ConfigureDatabaseServices.Configure(services, Environment.EnvironmentName,
-                Configuration["AppSettings:DatabaseType"], connect_string);
-            logger.Info($"Configure Database. Connection={connect_string}");
-            // services.AddDbContext<Context>(options => options.UseNpgsql(Configuration.GetConnectionString("GcpBlog")));
+                Configuration["AppSettings:DatabaseType"], connectionString);
+            logger.Info($"Configure Database. Connection={connectionString}");
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 
             //services.AddHealthChecks();
             //logger.Info("AddHealthChecks");

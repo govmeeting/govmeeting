@@ -16,3 +16,15 @@ dotnet ef migrations remove
 * drop database
 * delete "src\Infrastructure\InfrastructureCore_Lib\Migrations" folder"
 
+== test staging environment locally
+* Install and run Postgres locally
+    admin username = postgres
+    admin password = Adm1nPass
+* Run psql (Postgress SQL shell)
+    postgres=# create database Govmeeting
+    postgres-# create user GmUser with password GmPassword
+    postgres-# grant all privileges on database Govmeeting to GmUser
+    postgres-# ALTER USER GmUser CREATEDB
+* Set environment variable
+    ASPNETCORE_ENVIRONMENT=Staging
+
