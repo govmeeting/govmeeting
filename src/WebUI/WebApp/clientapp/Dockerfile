@@ -1,3 +1,5 @@
+# The context must be src/WebUi/WebApp/clientapp
+
 # Stage 1
 FROM node:14-alpine AS build
 WORKDIR /usr/src/app

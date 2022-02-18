@@ -1,7 +1,9 @@
+# The context must be src/WebUi/WebApp
+
 FROM mcr.microsoft.com/dotnet/aspnet:3.1
 WORKDIR /app
-COPY bin/Release/netcoreapp3.1/publish .
-COPY appsettings.Staging.json .
+# COPY bin/Release/netcoreapp3.1/publish .
+# COPY appsettings.Staging.json .
 # ENTRYPOINT ["dotnet", "webapp.dll"]
 CMD sh
 

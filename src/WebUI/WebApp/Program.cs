@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Web;
+using System;
 
 namespace GM.WebUI.WebApp
 {
@@ -16,11 +17,12 @@ namespace GM.WebUI.WebApp
 
         public static void Main(string[] args)
         {
+            Console.WriteLine("=====================In Main====================");
             var host = CreateHostBuilder(args).Build();
 
             // If development, migrate and seed the database.
             // Migrate() also creates the database if it does not exist.
-            if (_Env.IsDevelopment())
+            if (_Env.IsDevelopment() || _Env.IsStaging() || _Env.EnvironmentName == "StagingLocal")
             {
                 using (var scope = host.Services.CreateScope())
                 {

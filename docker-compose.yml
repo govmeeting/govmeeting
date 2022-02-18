@@ -11,10 +11,10 @@ services:
   api:
     container_name: gmapi
     restart: unless-stopped
+    build:
+      context: src
+      dockerfile: WebUI/WebApp/Dockerfile
     image: govmeeting/api
-    # build:
-    #   context: src/WebUI/WebApp
-    #   dockerfile: Dockerfile-slim
     ports:
       - 6578:8800
     environment:
@@ -25,9 +25,9 @@ services:
   web:
     container_name: gmweb
     restart: unless-stopped
+    build:
+      context: src/WebUI/WebApp/clientapp
     image: govmeeting/web
-    # build:
-    #   context: src/WebUI/WebApp/clientapp
     ports:
       - "8080:80"
     depends_on:
