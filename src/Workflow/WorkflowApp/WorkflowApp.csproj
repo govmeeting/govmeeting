@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\..\..\appsettings.Development.json" Link="appsettings.Development.json">
+    <Content Include="..\..\..\src\WebUI\WebApp\appsettings.Development.json" Link="appsettings.Development.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
