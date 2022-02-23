@@ -63,7 +63,7 @@ namespace GM.WebUI.WebApp
                 o.Scope.Add("email");
             });
 
-            services.AddTransient<ISeedAuth, SeedAuth>();
+            //AUTH// services.AddTransient<ISeedAuth, SeedAuth>();
 
         }
 

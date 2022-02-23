@@ -5,8 +5,6 @@ using GM.Application.AppCore.Entities.Meetings;
 using GM.Application.AppCore.Entities.Speakers;
 using GM.Application.AppCore.Entities.Topics;
 using GM.Application.AppCore.Interfaces;
-using GM.Infrastructure.InfraCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
@@ -16,7 +14,8 @@ namespace GM.Infrastructure.InfraCore.Data
 {
     // See here for extending this class:
     //   https://stackoverflow.com/a/40579369/1978840
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    //public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext
     {
         private readonly ICurrentUserService _currentUserService;
 
@@ -31,7 +30,7 @@ namespace GM.Infrastructure.InfraCore.Data
         // TODO: OnModelCreating should be disabled for production 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
+            //AUTH// base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);

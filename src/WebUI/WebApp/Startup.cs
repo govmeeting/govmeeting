@@ -68,8 +68,8 @@ namespace GM.WebUI.WebApp
             //services.AddHealthChecks();
             //logger.Info("AddHealthChecks");
 
-            StartupAuth.ConfigureIdentity(services, Configuration, logger);
-            logger.Info("ConfigureIdentity");
+            //AUTH// StartupAuth.ConfigureIdentity(services, Configuration, logger);
+            // logger.Info("ConfigureIdentity");
            
             services.AddControllersWithViews();
             logger.Info("Add services for Web API, MVC & Razor Views");
