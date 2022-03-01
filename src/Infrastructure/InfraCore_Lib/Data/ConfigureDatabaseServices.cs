@@ -15,10 +15,8 @@ namespace GM.Infrastructure.InfraCore.Data
                     ConfigureDevelopmentDatabase(services, dbType, connectionString);
                     break;
                 case "Production":
-                    ConfigureDatabaseUsingAppsettingsConnectionString(services, connectionString);
-                    break;
                 case "Staging":
-                    ConfigureStaging(services, connectionString);
+                    ConfigurePostgresDatabase(services, connectionString);
                     break;
                 case "Testing":
                     ConfigureInMemoryDatabase(services);
@@ -26,36 +24,44 @@ namespace GM.Infrastructure.InfraCore.Data
             }
         }
 
-        private static void ConfigureStaging(IServiceCollection services, string connectionString)
-        {
-            // For staging, we are building a container and connecting to a Postgres database container
-            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
-        }
-
         private static void ConfigureDevelopmentDatabase(IServiceCollection services, string dbType, string connectionString)
         {
-            switch (dbType)
+            switch (dbType.ToLower())
             {
-                case "InMemory":
+                case "inmemory":
                     ConfigureInMemoryDatabase(services);
                     break;
-                case "SQLite":
+                case "sqlite":
                     ConfigureSQLiteInMemoryDatabase(services);
                     break;
-                case "UseConnectionString":
+                case "postgres":
+                    ConfigurePostgresDatabase(services, connectionString);
+                    break;
+                case "iisexpress":
                 default:
-                    ConfigureDatabaseUsingAppsettingsConnectionString(services, connectionString);
+                    ConfigureIisExpressDatabase(services, connectionString);
                     break;
             }
         }
 
-        private static void ConfigureDatabaseUsingAppsettingsConnectionString(IServiceCollection services, string connectionString)
+        private static void ConfigureIisExpressDatabase(IServiceCollection services, string connectionString)
         {
             // For development, LocalDB which can be installed with SQL Server Express 2016
             // https://www.microsoft.com/en-us/download/details.aspx?id=54284
             services.AddDbContext<ApplicationDbContext>(c =>
-                c.UseSqlServer(connectionString));
-            //c => c.MigrationsAssembly("Infrastructure_Lib")
+                c.UseSqlServer(connectionString,
+                x => x.MigrationsAssembly("WebApp")));
+        }
+
+        private static void ConfigurePostgresDatabase(IServiceCollection services, string connectionString)
+        {
+            // For staging, we are building a container and connecting to a Postgres database container
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
+
+            // Specifying the MigrationsAssemply for the IisExpress provider allows us to run
+            // simpler "dotnet ef" commands. But doing it for the UseNpgsql provider causes migrations to fail.
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString,
+            //    x => x.MigrationsAssembly("WebApp")));
         }
 
         private static void ConfigureInMemoryDatabase(IServiceCollection services)
