@@ -4,7 +4,6 @@ using GM.Application.Configuration;
 using GM.Infrastructure.FileDataRepositories.EditMeetings;
 using GM.Infrastructure.FileDataRepositories.ViewMeetings;
 using GM.Infrastructure.InfraCore.Data;
-using GM.Infrastructure.InfraCore.Identity;
 using GM.Utilities;
 using GM.WebUI.WebApp.Services;
 using GM.WebUI.WebApp.StartupCustomizations;
@@ -12,19 +11,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using NLog;
-using System;
-using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Reflection;
-using Microsoft.EntityFrameworkCore;
 
 namespace GM.WebUI.WebApp
 {
@@ -59,18 +53,28 @@ namespace GM.WebUI.WebApp
             ConfigureAppsettings(services);
             logger.Info("Configure Appsettings");
 
-            string connectionString = Configuration["AppSettings:ConnectionString"];
+            // We can choose to develop with a Postgres DB instead of the default IisExpress.
+            // Note that if you switch, you need delete the Migrations folder in Infra_Core_Lib
+            // and run "dotnet ef migrations --project ../../InfraCore_Lib Initial" from the WebApp folder.
+            string dbType = Configuration["AppSettings:DatabaseType"];
+            string connectionString = (dbType == "postgres") ?
+                Configuration["AppSettings:PgConnectionString"] :
+                Configuration["AppSettings:ConnectionString"];
+
             ConfigureDatabaseServices.Configure(services, Environment.EnvironmentName,
-                Configuration["AppSettings:DatabaseType"], connectionString);
+                dbType, connectionString);
             logger.Info($"Configure Database. Connection={connectionString}");
-            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
+
+            // Hard code postgress - replace above code for degugging startup issues
+            //string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=Adm1nPa33;Database=Govmeeting2";
+            //ConfigureDatabaseServices.Configure(services, Environment.EnvironmentName, "postgres", connectionString);
 
             //services.AddHealthChecks();
             //logger.Info("AddHealthChecks");
 
             //AUTH// StartupAuth.ConfigureIdentity(services, Configuration, logger);
             // logger.Info("ConfigureIdentity");
-           
+
             services.AddControllersWithViews();
             logger.Info("Add services for Web API, MVC & Razor Views");
 
