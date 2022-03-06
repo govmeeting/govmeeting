@@ -30,7 +30,7 @@ import { EditTranscriptModule } from './features/edittranscript/edittranscript.m
 import { ViewTranscriptModule } from './features/viewtranscript/viewtranscript.module';
 import { VirtualMeetingModule } from './features/virtual-meeting/virtual-meeting-module';
 import { ChatModule } from './features/chat/chat.module';
-import { AmchartsModule } from './features/charts/charts.module';
+// import { AmchartsModule } from './features/charts/charts.module';
 import { DatafakeModule } from './work_experiments/datafake/datafake.module';
 
 // sidenav
@@ -48,9 +48,9 @@ import { DemoMaterialModule } from './common/material';
 // services
 import { ChatService } from './features/chat/chat.service';
 import { DataFactoryService } from './work_experiments/datafake/data-factory.service';
-import { VideoService } from './common/video/video.service';
-import { VideoServiceStub } from './common/video/video.service-stub';
-import { VideoServiceReal } from './common/video/video.service-real';
+// import { VideoService } from './common/video/video.service';
+// import { VideoServiceStub } from './common/video/video.service-stub';
+// import { VideoServiceReal } from './common/video/video.service-real';
 import { EditTranscriptServiceReal } from './features/edittranscript/edittranscript.service-real';
 import { EditTranscriptServiceStub } from './features/edittranscript/edittranscript.service-stub';
 import { EditTranscriptService } from './features/edittranscript/edittranscript.service';
@@ -102,7 +102,7 @@ const useLargeData = environment.useLargeData; // Are we using the large data (f
     SidenavMenuModule,
     VirtualMeetingModule,
     HeaderModule,
-    AmchartsModule,
+    // AmchartsModule,
     FeaturesModule,
   ],
   declarations: [
@@ -139,10 +139,10 @@ const useLargeData = environment.useLargeData; // Are we using the large data (f
       provide: RegisterGovBodyService,
       useClass: isAspServerRunning ? RegisterGovBodyServiceReal : RegisterGovBodyServiceStub,
     },
-    {
-      provide: VideoService,
-      useClass: isAspServerRunning ? VideoServiceReal : VideoServiceStub,
-    },
+    // {
+    //   provide: VideoService,
+    //   useClass: isAspServerRunning ? VideoServiceReal : VideoServiceStub,
+    // },
     {
       provide: AppData,
       useValue: { isBeta, useLargeData },

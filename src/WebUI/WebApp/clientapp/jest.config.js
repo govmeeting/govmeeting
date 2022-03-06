@@ -12,6 +12,6 @@ module.exports = {
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths || {}, {
     prefix: '<rootDir>/',
   }),
-  transformIgnorePatterns: ['node_modules[/\\\\](?!@amcharts[/\\\\]amcharts4)'],
-  testPathIgnorePatterns: ['/node_modules/', 'src/app/features/charts/'],
+  // transformIgnorePatterns: ['node_modules[/\\\\](?!@amcharts[/\\\\]amcharts4)'],
+  // testPathIgnorePatterns: ['/node_modules/', 'src/app/features/charts/'],
 };

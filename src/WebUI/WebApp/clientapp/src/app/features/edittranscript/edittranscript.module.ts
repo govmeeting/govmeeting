@@ -9,7 +9,7 @@ import { TalksComponent } from './talks/talks';
 import { TopicsComponent } from './topics/topics';
 import { SectionsComponent } from './sections/sections';
 import { SharedModule } from '../../common/common.module';
-import { VideoModule } from '../../common/video/video.module';
+// import { VideoModule } from '../../common/video/video.module';
 import { VideojsModule } from '../../common/videojs/videojs.module';
 
 // import { VideojsComponent } from '../../common/videojs-player/videojs';
@@ -22,7 +22,7 @@ import { VideojsModule } from '../../common/videojs/videojs.module';
     FormsModule,
     RouterModule,
     // ReactiveFormsModule
-    VideoModule,
+    // VideoModule,
     SharedModule,
     VideojsModule,
   ],
