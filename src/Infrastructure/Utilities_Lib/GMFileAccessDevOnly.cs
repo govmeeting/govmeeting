@@ -55,6 +55,10 @@ namespace GM.Utilities
             // Google Cloud libraries automatically use the environment variable GOOGLE_APPLICATION_CREDENTIALS
             // to authenticate to Google Cloud. Here we set this variable to the path of the credentials file,
             // which is defined in appsettings.json in the SECRETS folder
+
+            // Here is an alternate way of setting the credentials:
+            //    https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login
+
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialsFilePath);
         }
     }

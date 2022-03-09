@@ -22,8 +22,10 @@ import { DashFooterComponent } from './dash-footer/dash-footer';
     // DashMainComponent,
     DashFooterComponent,
   ],
-  imports: [CommonModule, DemoMaterialModule],
-
+  imports: [
+    CommonModule,
+    DemoMaterialModule
+  ],
   exports: [
     SmallCardsComponent,
     SmallCardComponent,

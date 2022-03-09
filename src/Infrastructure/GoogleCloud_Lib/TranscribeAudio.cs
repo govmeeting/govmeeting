@@ -125,6 +125,9 @@ namespace GM.Infrastructure.GoogleCloud
         // "GOOGLE_APPLICATION_CREDENTIALS" in a higher level routine. The Google Cloud libraries then
         // automatically use that value.
 
+        // Here is an alternate way of setting the credentials:
+        //    https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login
+
         // SpeechClient GetSpeechClient()
         // {
         //     string credentialsFilePath = config.GoogleApplicationCredentials;

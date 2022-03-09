@@ -1,0 +1,179 @@
+{
+  "meeting": {
+    "meetingId": 1,
+    "locationId": 1,
+    "governmentBody": "Selectmen",
+    "language": "en",
+    "date": "3/6/2018",
+    "meetingLength": 1800
+  },
+  "topicNames": [
+    "SHOW ALL",
+    "Introductions",
+    "Anouncements",
+    "Treasurer Report",
+    "Prior Minutes",
+    "Public Works",
+    "Wharves & Wiers",
+    "Public Restrooms",
+    "Music",
+    "Executive Session"
+  ],
+  "speakerNames": [
+    "SHOW ALL",
+    "Denise Griffin",
+    "Jay Warren",
+    "Wendy Wolf",
+    "Russell Hoffman",
+    "William Hamblen",
+    "Thomas Woodin",
+    "Kellie Bigos",
+    "Julia Latter",
+    "Man 1",
+    "Mike"
+  ],
+  "topicDiscussions": [
+    {
+      "name": "Introductions",
+      "talks": [
+        {
+          "Speaker": "Denise Griffin",
+          "Text": "Meeting to order. Today is Monday, Sept. 8th. Welcome to the selectmen’s meeting, the first meeting in September. On my left is Kellie Bigos, Recording Secretary and Tom Woodin, our town manager, selectmens Jay Warren, Russ Hoffman, myself Denise Griffin, Will Hamblen and Wendy Wolf. And in the audience, we have our financial treasurer, Julia Latter. Okay, Tom, town manager announcements?"
+        }
+      ]
+    },
+    {
+      "name": "Anouncements",
+      "talks": [
+        {
+          "Speaker": "Thomas Woodin",
+          "Text": "Thank You. The only one I have right off is just that Bike Maine is coming up. As of Wednesday morning there will be support vehicles showing up with all their gear. The riders will start to come into town between 1 and 4 on Wednesday. There is about 300 riders coming into town and about 50 volunteers. And they’ll be staying through Thursday. There is going to be a lobster bake for them at the footbridge parking lot at 5 to 7. After that there’s live music at the Opera House, that’s open to the public. The next day, they wake up, they have a full breakfast at the elementary school and then they start to pack up and ride on to the next destination which is Bath. So you will be seeing a lot of cyclists coming Wednesday afternoon. That’s all I’ve got."
+        }
+      ]
+    },
+    {
+      "name": "Treasurer Report",
+      "talks": [
+        { "Speaker": "Denise Griffin", "Text": "Good. Julia, financials." },
+        {
+          "Speaker": "Julia Latter",
+          "Text": "?? Total revenue is 82 million, ?? thousand, 868 dollars and 75 cents. Total expenses year to date are ??? Does anyone have any questions on ?? ?? ??? You do not have your graph sheet again. ??? issues with scheduling. Hopefully, ??? copies for you guys before the next selectmen’s meeting.?? presentation then. They assured me they will be bringing the ?? accounts payable is 296 thousand, 156 dollars and 32 cents. And the bank balance is 2 million, 631 thousand, 175 dollars and 95 cents.   (Julia Latter was not using a mic.)"
+        },
+        { "Speaker": "Denise Griffin", "Text": "Questions?" },
+        {
+          "Speaker": "Wendy Wolf",
+          "Text": "Julia, maybe you can tell me: what’s the last time we competed the audit?"
+        },
+        { "Speaker": "Julia Latter", "Text": "Completed it?" },
+        { "Speaker": "Wendy Wolf", "Text": "No, competed it for change of auditor or new audit?" },
+        { "Speaker": "Man 1", "Text": "This is my fifth year so it’s been at least 5 years." },
+        { "Speaker": "Julia Latter", "Text": "Yeah, so it’s been about 5 years." },
+        {
+          "Speaker": "Wendy Wolf:",
+          "Text": "Yeah, that’s something we should look at. That’s a long time to have the same audit firm."
+        },
+        {
+          "Speaker": "Man 1",
+          "Text": "Yeah, we plan to do that anyway for the next audit season. There was a change in personnel at the audit company. It was late in the process so we didn’t have time to requite it out, so we will do that for the next one."
+        },
+        { "Speaker": "Wendy Wolf", "Text": "OK, great." },
+        { "Speaker": "Denise Griffin", "Text": "You’re thinking that every 5 years, we should put it out for bid?" },
+        { "Speaker": "Wendy Wolf", "Text": "Yes" },
+        { "Speaker": "Julia Latter", "Text": "??" }
+      ]
+    },
+    {
+      "name": "Prior Minutes",
+      "talks": [
+        { "Speaker": "Denise Griffin", "Text": "OK. Consent agenda. Do we have a motion to approve the minutes?" },
+        { "Speaker": "Wendy Wolf", "Text": "Can you ask if any item needs to be removed?" },
+        { "Speaker": "all", "Text": "(short comments)" },
+        { "Speaker": "Wendy Wolf", "Text": "Yeah, I just corrected the name of Tom Widdle instead of Charles Widdle." },
+        {
+          "Speaker": "Denise Griffin",
+          "Text": "Yeah, I’d like to offer 2 corrections to the minutes. (jabber) Do we need a motion for that?"
+        },
+        { "Speaker": "Wendy Wolf", "Text": "No, you can just remove it for discussion." },
+        { "Speaker": "Man 1", "Text": "??" },
+        { "Speaker": "Russ Hoffman", "Text": "I move that we approve the minutes of the Aug. 25 meeting." },
+        { "Speaker": "Wendy Wolf", "Text": "I’ll second." },
+        {
+          "Speaker": "Denise Griffin",
+          "Text": "Under item 2, I just want to add “because her husband was the attorney for the developer of the Times associaton, not the attorney for the Times. Just a slight difference there. And then, under 8, the fifth paragraph, …….. put a period after … and delete that phrase, because I don’t thing that phrase had to do with the summary. (jabber – someones asks where on the document – jabber]"
+        },
+        {
+          "Speaker": "William Hamblen",
+          "Text": "On …. it says Selectman Hamblen seconded Vice Chairman’s Warren’ motion. It wasn’t a motion. It was simply a statement. And I agree with him. It should say: Selectman Hamblen agree with Vice Chairman’s statement."
+        },
+        { "Speaker": "Denise Griffin", "Text": "Can we vote on approving the minutes as amended?" },
+        {
+          "Speaker": "Wendy Wolf",
+          "Text": "I think we have to accept them as amended and as a seconder, I accept them."
+        },
+        {
+          "Speaker": "Denise Griffin",
+          "Text": "Are we all in favor of accepting the minutes as amended? (All five selectmen raised their hands to indicate “Yes”.)"
+        }
+      ]
+    },
+    {
+      "name": "Public Works",
+      "talks": [
+        {
+          "Speaker": "Denise Griffin",
+          "Text": "Ok so we are good with that. The next item on the agenda is approve signing P.O.s for the formally approved public works employee vehicles. …. OK, so we will just sign them afterwards? Oh so that is all that that is on there for."
+        }
+      ]
+    },
+    {
+      "name": "Wharves & Wiers",
+      "talks": [
+        {
+          "Speaker": "Denise Griffin",
+          "Text": "Ok, old business. I don’t think there is any old business because of at the request of the applicant, the Wharves & Wiers topic has been tabled. Indefinitely, till we hear again. Which as my understanding, .. pull the prerogative as the chair here.. the Wharves & Wiers applicant is trying to work things out with their neighbor. Which if I was to summarize, the sense and the tone of the last selectmen’s meeting is that selectmen really hope that neighbors whether they residents or businesses, really work together to solve their neighborly issues and disputes. So I am really glad to see that that is happening or appears to be happening on the Wharves & Wiers side. Just for the record, along those lines, relative to the noise issue, I’m going to give you the name of an engineer in Brunswick, who does do noise testing, for future reference in case we ever need it. Charles Wallace does do noise testing. And he is an expert witness and does it in such a way that he can be used as an expert witness in court if the need should ever arise in the future."
+        }
+      ]
+    },
+    {
+      "name": "Public Restrooms",
+      "talks": [
+        {
+          "Speaker": "Mike",
+          "Text": "I’m Mike .., .. Road’s End. Can anyone tell me what are the hours of the public restrooms at the fish pier? I only ask because, this evening, on the way over here around 6:30, I went to stop in and it was locked. Over Labor Day weekend, I stopped by in the evening, 5 or 6 o'clock, and also found them to be locked. There's no signage or anything posting. So knowing that there is traffic on the ramp, I was just wondering, do we have regular set hours and could it be posted?"
+        },
+        {
+          "Speaker": "Thomas Woodin",
+          "Text": "Yes we can certainly post them. The hours though are the hours of operation for harbor base. We can certainly post them. But the volunteers, who do the cleaning of them, do the opening and closing."
+        },
+        { "Speaker": "Mike", "Text": "What's the harbor base hours, 8 to 5?" },
+        { "Speaker": "William Hamblen", "Text": "It's 4:30 AM to something" },
+        {
+          "Speaker": "Thomas Woodin",
+          "Text": "It depends on the day. It is probably not a set schedule. They work different hours all the time."
+        },
+        {
+          "Speaker": "Mike",
+          "Text": "I leave that as your decision if you think that's appropriate or if we need longer hours or nt. With all the traffic that was in town, with all the people travelling up and down Atlantic Ave, I knew it was a good place for people to stop."
+        }
+      ]
+    },
+    {
+      "name": "Music",
+      "talks": [
+        {
+          "Speaker": "Mike",
+          "Text": "The other thing I want to mention is two weekends ago I went to the Rocktide, there was a band. I also went to the Boothbay Lobster Wharf. I went to (Capers?). I went to Robinsons .. a number of places that were featureing music. I found places packed with people, laughing dancing, all ages, having a wonderful time and everyone being respectful of themselves. I think there was a lot of positive that went on, for the whole Harborfest weekend but especially in respect to the music. I hope some of you had the opportunity to partake in the music and the excitement and economic development that took place that weekend. Thanks."
+        }
+      ]
+    },
+    {
+      "name": "Executive Session",
+      "talks": [
+        {
+          "Speaker": "Denise Griffin",
+          "Text": "Anyone else? ... Seeing none, we will move on to our executimve session. We are having an executive session tonight under title 1, section 405, chapter 13, 6A - personnel issues. So I would ask you all - vacate the room. (12:23 of recording)"
+        }
+      ]
+    }
+  ]
+}

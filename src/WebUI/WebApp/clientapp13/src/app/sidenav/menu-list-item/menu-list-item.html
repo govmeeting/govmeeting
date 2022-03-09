@@ -1,0 +1,19 @@
+<a
+  mat-list-item
+  class="{{grayout}}"
+  [ngStyle]="{'padding-left': (item.depth * 10) + 'px'}"
+  (click)="onItemSelected(item)"
+  [ngClass]="'x'"
+>
+  <!-- Why does removing the ngClass from above remove the ngStyle settings ???!!!-->
+  <mat-icon class="routeIcon">{{item.iconName}}</mat-icon>
+  <span class="{{displayNameClass}}">{{item.displayName}}</span>
+  <span fxFlex *ngIf="item.children && item.children.length">
+    <span fxFlex></span>
+    <mat-icon [@indicatorRotate]="item.expanded ? 'expanded': 'collapsed'"> expand_more </mat-icon>
+  </span>
+</a>
+
+<div *ngIf="item.expanded">
+  <gm-menu-list-item *ngFor="let child of item.children" [item]="child"> </gm-menu-list-item>
+</div>
