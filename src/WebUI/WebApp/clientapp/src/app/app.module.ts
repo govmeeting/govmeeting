@@ -97,7 +97,6 @@ const useLargeData = environment.useLargeData; // Are we using the large data (f
     AppRoutingModule,
     DashboardModule,
     ChatModule,
-    AboutProjectModule,
     DatafakeModule,
     SidenavMenuModule,
     VirtualMeetingModule,
@@ -114,8 +113,6 @@ const useLargeData = environment.useLargeData; // Are we using the large data (f
     // VideojsComponent,
   ],
   exports: [
-    DemoMaterialModule,
-
     // The exports below are for testing the component standalone in app.component.html
     // SmallCardsComponent,
     // SmallCardComponent,

@@ -6,6 +6,7 @@
     "ng": "ng",
     "clean": "rimraf ./dist",
     "start": "ng serve",
+    "start4201": "ng serve --port 4201",
     "build": "ng build",
     "build:staging": "rimraf dist && node --max_old_space_size=32768 ./node_modules/@angular/cli/bin/ng build --configuration=staging --verbose",
     "build:prod": "rimraf dist && node --max_old_space_size=32768 ./node_modules/@angular/cli/bin/ng build --configuration production",

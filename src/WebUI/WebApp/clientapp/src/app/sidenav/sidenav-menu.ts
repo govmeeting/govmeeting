@@ -27,7 +27,7 @@ export class SidenavMenuComponent implements OnInit {
   isBeta: boolean;
   @ViewChild('appDrawer', { static: false })
   subscription: Subscription;
-  sidenav: ElementRef;
+  // sidenav: ElementRef;
   navigationItems: NavItem[];
   menuTreeArray: MenuTreeArray;
 
@@ -53,7 +53,7 @@ export class SidenavMenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.navService.sidenav = this.sidenav;
+    // this.navService.sidenav = this.sidenav;
     this.navService.navigationItems = this.navigationItems;
     this.navService.openFirstMenuLevels(); // set default view of menu.
   }

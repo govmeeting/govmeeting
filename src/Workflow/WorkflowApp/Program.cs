@@ -34,6 +34,10 @@ namespace GM.WorkflowApp
             // to authenticate to Google Cloud. Here we set this variable to the path of the credentials file,
             GMFileAccess.SetGoogleCredentialsEnvironmentVariable();
 
+
+            // Here is an alternate way of setting the credentials:
+            //    https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login
+
             // create service collection
             var services = new ServiceCollection();
             ConfigureServices(services);
