@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './common/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenavMenuModule } from './sidenav/sidenav-menu-module';
+import { HeaderModule } from './header/header.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SidenavMenuModule } from './sidenav/sidenav-menu-module';
     DemoMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    SidenavMenuModule
+    SidenavMenuModule,
+    HeaderModule
 ],
   providers: [],
   bootstrap: [AppComponent]

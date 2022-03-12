@@ -1,0 +1,28 @@
+// Named Colors Sorted by HEX Value
+// https://www.w3schools.com/colors/colors_hex.asp
+
+$color-deep-blue: #3a4464; // sidenav bg & dark text
+$color-white: #fff; // card bg
+$color-abbey: #777; // gray text
+$color-header-items: #dadae3;
+$color-java: #1bbae1; // blue text
+$color-green: #27ae60; // calendar icon #=$
+$color-red: #e74c3c; // main icon bg, red
+$color-purple: #af64cc; // main photo icon bg
+$color-transparent: rgba(255, 255, 255, 0.5);
+$color-orange: #e67e22; // document icon bg
+
+// We pass the icon colors as @input in dash-main.html.
+// Since we can't pass an scss variable this way, we pass a css class
+.icon-color-green {
+  background-color: $color-green;
+}
+.icon-color-red {
+  background-color: $color-red;
+}
+.icon-color-purple {
+  background-color: $color-purple;
+}
+.icon-color-orange {
+  background-color: $color-orange;
+}
