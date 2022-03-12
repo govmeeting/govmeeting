@@ -8,25 +8,22 @@ export enum LocationType {
 }
 
 export class UserSettings {
-  language?: string;
-  location?: string;
-  locationType?: LocationType;
+  language: string;
+  location: string;
+  locationType: LocationType;
   agency?: string;
 
-  constructor(_language?: string, _location?: string, _agency?: string) {
+  constructor(_language: string, _location: string, _agency?: string) {
     this.language = _language;
     this.location = _location;
     this.locationType = this.getLocationType(_location);
     this.agency = _agency;
   }
 
-  // This routine is a kludge. We need to have a location type that includes the
+  // ToDo - This routine is a kludge. We need a location type that includes the
   // displayName, locationType, etc. This should be used in the menu items
   // and user settings.
   private getLocationType(location?: string): LocationType {
-    if (location == undefined) {
-      return LocationType.notdefined;
-    }
     switch (location) {
       case 'Boothbay Harbor': {
         return LocationType.municipal;
