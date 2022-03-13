@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { NavService } from '../sidenav/nav.service';
+// import { NavService } from '../sidenav/nav.service';
 import { UserSettingsService, UserSettings } from '../common/user-settings.service';
 import { getBackgroundUrl } from './background.service-stub';
 
@@ -19,7 +19,8 @@ export class HeaderComponent implements OnInit {
   location: string = '';
   backgroundStyle: any;
 
-  constructor(private navService: NavService, private userSettingsService: UserSettingsService) {}
+  // constructor(private navService: NavService, private userSettingsService: UserSettingsService) {}
+  constructor(private userSettingsService: UserSettingsService) {}
 
   ngOnInit() {
     this.userSettingsService.subscribeSettings(() => {
@@ -31,7 +32,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openNav() {
-    this.navService.openNav();
+    // this.navService.openNav();
   }
 
   private changeLocation(item: UserSettings) {

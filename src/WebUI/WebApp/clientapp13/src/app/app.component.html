@@ -1,5 +1,7 @@
 <!--<h1> Hello World </h1>-->
 
+<div class="header-box"> <gm-header></gm-header> </div>
+
 <mat-sidenav-container class="sidenav-container" [hasBackdrop]="options.value.hasBackdrop">
   <mat-sidenav
     class="sidenav"
@@ -10,28 +12,33 @@
     [fixedTopGap]="options.value.top"
     [fixedBottomGap]="options.value.bottom"
   >
-    <!-- <gm-sidenav-menu defaultLocation="Boothbay Harbor"></gm-sidenav-menu> -->
-    <gm-sidenav-menu></gm-sidenav-menu>
+
+  <!-- <gm-sidenav-menu></gm-sidenav-menu> -->
+
+  Mat-sidenav - A user may make a selection from left to right (in document order) or right to left (reverse of
+  Mat-sidenav - A user may make a selection from left to right (in document order) or right to left (reverse of
+  Mat-sidenav - A user may make a selection from left to right (in document order) or right to left (reverse of
+
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <!-- <button (click)="sendSettings()"> Send Settings</button><br/>
-  <button (click)="setLanguage()"> Set Language </button><br/>
-  <button (click)="routeAbout()"> Route About </button>
-  <button (click)="routeDash()"> Route Dash </button><br/> -->
 
-    <router-outlet></router-outlet>
-    This is the content
 
-    <gm-header></gm-header>
+    <!-- <router-outlet></router-outlet> -->
+    <gm-dash-main></gm-dash-main>
+
+    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
+    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
+    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
+    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
+    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
+
   </mat-sidenav-content>
 </mat-sidenav-container>
 
 <!-- <mat-toolbar class="main-footer">
-  <gm-dash-footer>
-    This is the footer.
-  </gm-dash-footer>
+  <gm-dash-footer></gm-dash-footer>
 </mat-toolbar> -->
-<!-- partial -->
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="../../../script.js"></script>
