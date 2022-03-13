@@ -17,7 +17,7 @@ const NoLog = true; // set to false for console logging
 export class DropdownComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   @Input()
-  values: DropdownValue[];
+  values: DropdownValue[] = [];
 
   @Output()
   SelectValue: EventEmitter<number>;

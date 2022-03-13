@@ -8,32 +8,16 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
 //@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-html,
-body {
-  overflow: hidden;
-  // height: 100%;
-  // width: 100%;
-  // margin: 0;
-  // padding: 0;
-  // box-sizing: border-box;
-  // font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  ////font-family: 'Times New Roman';
-}
-
-// this was in style.css
-// /* Provide sufficient contrast against white background */
-// a {
-//   color: #0366d6;
-// }
-
-// code {
-//   color: #e01a76;
-// }
-
-// .btn-primary {
-//   color: #fff;
-//   background-color: #1b6ec2;
-//   border-color: #1861ac;
+// html,
+// body {
+//   overflow: hidden;
+//   height: 100%;
+//   width: 100%;
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+//   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+//   //font-family: 'Times New Roman';
 // }
 
 a {

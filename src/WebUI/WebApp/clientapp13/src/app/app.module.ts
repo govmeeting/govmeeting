@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // from gm
+// import { FlexLayoutModule } from '@angular/flex-layout';
 import { DemoMaterialModule } from './common/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SidenavMenuModule } from './sidenav/sidenav-menu-module';
+// import { SidenavMenuModule } from './sidenav/sidenav-menu-module';
 import { HeaderModule } from './header/header.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 @NgModule({
@@ -18,14 +20,16 @@ import { HeaderModule } from './header/header.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     BrowserAnimationsModule,
     // from gm
+    // FlexLayoutModule,
     DemoMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    SidenavMenuModule,
-    HeaderModule
+    // SidenavMenuModule,
+    HeaderModule,
+    DashboardModule
 ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,9 +11,9 @@ export class UserSettings {
   language: string;
   location: string;
   locationType: LocationType;
-  agency?: string;
+  agency: string;
 
-  constructor(_language: string, _location: string, _agency?: string) {
+  constructor(_language: string, _location: string, _agency: string) {
     this.language = _language;
     this.location = _location;
     this.locationType = this.getLocationType(_location);
@@ -23,7 +23,7 @@ export class UserSettings {
   // ToDo - This routine is a kludge. We need a location type that includes the
   // displayName, locationType, etc. This should be used in the menu items
   // and user settings.
-  private getLocationType(location?: string): LocationType {
+  private getLocationType(location: string): LocationType {
     switch (location) {
       case 'Boothbay Harbor': {
         return LocationType.municipal;

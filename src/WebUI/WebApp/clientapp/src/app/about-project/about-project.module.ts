@@ -18,9 +18,9 @@ import { OverviewComponent } from './overview/overview';
   imports: [
     CommonModule,
     RouterModule,
-    // DemoMaterialModule,
+    DemoMaterialModule,
     HttpClientModule,
-    MarkdownModule.forRoot()]
-  // exports: [DemoMaterialModule],
+    MarkdownModule.forRoot()],
+  exports: [DemoMaterialModule],
 })
 export class AboutProjectModule {}

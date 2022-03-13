@@ -1,0 +1,33 @@
+// for debug
+.footer {
+  border: 3px dashed Fuchsia;
+}
+
+$color-white: #fff; // card bg
+$color-abbey: #777; // gray text                // used many places
+$color-java: #1bbae1; // blue text            // used many places
+$color-cinnabar: #e74c3c; // main icon bg, red //used also elsewhere
+
+.footer {
+  //grid-area: footer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  color: $color-abbey;
+  background-color: $color-white;
+
+  &__copyright {
+    color: $color-java;
+  }
+
+  &__icon {
+    color: $color-cinnabar;
+  }
+
+  &__signature {
+    color: $color-java;
+    cursor: pointer;
+    font-weight: bold;
+  }
+}
