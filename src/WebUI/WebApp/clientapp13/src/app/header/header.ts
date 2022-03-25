@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
       NoLog || console.log(this.ClassName + 'SCAO ', newSettings);
       this.changeLocation(newSettings);
     });
-    this.changeBackground('generic');
+    // this.changeBackground('generic');
   }
 
   openNav() {
