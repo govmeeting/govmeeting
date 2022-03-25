@@ -19,6 +19,7 @@ export class NavService {
   }
 
   public openNav() {
+    NoLog || console.log(this.ClassName + ' In openNav');
     this.sidenav.open();
   }
 

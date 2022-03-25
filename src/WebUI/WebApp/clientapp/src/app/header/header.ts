@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+// import { Subscription } from 'rxjs';
 
 import { NavService } from '../sidenav/nav.service';
 import { UserSettingsService, UserSettings } from '../common/user-settings.service';
@@ -15,7 +15,7 @@ const NoLog = true; // set to false for console logging
 export class HeaderComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   messages: any[] = [];
-  usSubscription: Subscription;
+  // usSubscription: Subscription;
   location: string;
   backgroundStyle: any;
 
@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
       NoLog || console.log(this.ClassName + 'SCAO ', newSettings);
       this.changeLocation(newSettings);
     });
-    this.changeBackground('generic');
+    // this.changeBackground('generic');
   }
 
   openNav() {

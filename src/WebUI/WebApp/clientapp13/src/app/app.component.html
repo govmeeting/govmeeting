@@ -2,22 +2,16 @@
 
 <div class="header-box"> <gm-header></gm-header> </div>
 
-<mat-sidenav-container class="sidenav-container" [hasBackdrop]="options.value.hasBackdrop">
-  <mat-sidenav
-    class="sidenav"
-    #sidenav
-    [mode]="options.value.mode"
-    [opened]="!mediaQueryList.matches"
-    [fixedInViewport]="options.value.fixed"
-    [fixedTopGap]="options.value.top"
-    [fixedBottomGap]="options.value.bottom"
-  >
+<mat-sidenav-container class="sidenav-container" hasBackdrop=false>
 
-  <!-- <gm-sidenav-menu></gm-sidenav-menu> -->
+  <mat-sidenav class="sidenav" #sidenav [opened]="!mediaQueryList.matches"
+    mode=side fixedInViewport=true fixedTopGap=0 fixedBottomGap=0>
 
+  <gm-sidenav-menu></gm-sidenav-menu>
+
+  <!-- Mat-sidenav - A user may make a selection from left to right (in document order) or right to left (reverse of
   Mat-sidenav - A user may make a selection from left to right (in document order) or right to left (reverse of
-  Mat-sidenav - A user may make a selection from left to right (in document order) or right to left (reverse of
-  Mat-sidenav - A user may make a selection from left to right (in document order) or right to left (reverse of
+  Mat-sidenav - A user may make a selection from left to right (in document order) or right to left (reverse of -->
 
   </mat-sidenav>
 
@@ -27,11 +21,11 @@
     <!-- <router-outlet></router-outlet> -->
     <gm-dash-main></gm-dash-main>
 
+    <!-- Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
     Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
     Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
     Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
-    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
-    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
+    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of -->
 
   </mat-sidenav-content>
 </mat-sidenav-container>
