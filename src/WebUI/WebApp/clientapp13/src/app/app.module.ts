@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidenavMenuModule } from './sidenav/sidenav-menu-module';
 import { HeaderModule } from './header/header.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AboutProjectModule } from './about-project/about-project.module';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     ReactiveFormsModule,
     SidenavMenuModule,
     HeaderModule,
-    DashboardModule
+    DashboardModule,
+    AboutProjectModule
 ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,7 @@
+<mat-card>
+  <mat-card-title class="cardtitle"> {{title}} </mat-card-title>
+
+  <markdown [src]="document" (error)="errorHandler($event)" (loaded)="loadedHandler($event)"> </markdown>
+
+  <p *ngIf="language !='en'"><img src="assets/images/google-translate-color-regular.png" /></p>
+</mat-card>

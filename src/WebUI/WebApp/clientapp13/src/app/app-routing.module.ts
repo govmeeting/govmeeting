@@ -7,8 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 // import { FixasrComponent } from './fixasr/fixasr'
 // import { EdittranscriptComponent } from './fixasr/fixasr'
 
-// import { AboutComponent } from './about-project/about-project';
-// import { OverviewComponent } from './about-project/overview/overview';
+import { AboutComponent } from './about-project/about-project';
+import { OverviewComponent } from './about-project/overview/overview';
 // import { SysDesignComponent } from './about-project/sys-design/sys-design';
 // import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DashMainComponent } from './dashboard/dash-main/dash-main';
@@ -25,8 +25,8 @@ const routes: Routes = [
   // { path: 'addtags', component: AddtagsComponent },
   // { path: 'fixasr', component: FixasrComponent },
   { path: 'dashboard', component: DashMainComponent },
-  // { path: 'about', component: AboutComponent },
-  // { path: 'overview', component: OverviewComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'overview', component: OverviewComponent },
   // { path: 'fetch-data', component: FetchDataComponent },
   // { path: '**', redirectTo: 'overview' }
   { path: '**', redirectTo: 'dashboard' },
