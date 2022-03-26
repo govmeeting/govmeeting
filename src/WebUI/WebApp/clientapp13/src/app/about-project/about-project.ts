@@ -17,8 +17,8 @@ export class AboutComponent implements OnInit {
   isBeta: boolean;
   // subscription: Subscription;
   // userSettingsService: UserSettingsService;
-  title: string; // page title obtained from GetPageTitle(...)
-  document: string; // The path of the document. EG: "assets/docs/TRANS/overview.md"
+  title: string = ''; // page title obtained from GetPageTitle(...)
+  document: string = ''; // The path of the document. EG: "assets/docs/TRANS/overview.md"
   pageid = 'overview'; // the filename of the document minus ".md". EG: "overview"
   language = 'en';
 
@@ -33,20 +33,22 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     // We subscribe to changes in user settings language.
-    this.userSettingsService.subscribeLanguage((language) => {
+    this.userSettingsService.subscribeLanguage((language: string) => {
       this.language = language;
       this.setDocument(this.pageid, this.language);
     });
 
     // We subscribe to changes in the about page displayed.
+    // https://www.angularjswiki.com/angular/get-query-parameters-in-angular/
     // https://stackblitz.com/edit/angular-3fkg6e?file=src%2Fapp%2Fcomponent-a.component.ts
     this.activeRoute.queryParams.subscribe((params) => {
-      this.pageid = params.id;
+      this.pageid = params['id'];
       this.setDocument(this.pageid, this.language);
     });
   }
 
-  setDocument(pageid, language) {
+  setDocument(pageid: string, language: string) {
+    NoLog || console.log(this.ClassName + ' in setDocument');
     this.title = GetPageTitle(pageid, language, this.isBeta);
     if (language === 'en') {
       this.document = 'assets/docs/' + pageid + '.md';
@@ -55,10 +57,10 @@ export class AboutComponent implements OnInit {
     }
   }
 
-  errorHandler(ev) {
-    console.log('in errorHandler');
+  errorHandler(ev: any) {
+    NoLog || console.log(this.ClassName + ' in errorHandler');
   }
-  loadedHandler(ev) {
-    console.log('in loadedHandler');
+  loadedHandler(ev: any) {
+    NoLog || console.log(this.ClassName + ' in loadedHandler');
   }
 }
