@@ -1,0 +1,85 @@
+<div class="subhead">Council Meeting - Jan. 15, 2018</div>
+
+<style>
+  .edit-help {
+    border: 2px solid red;
+    padding: 4px;
+  }
+</style>
+
+<!-- <gm-video></gm-video> -->
+
+<gm-videojs
+  #gmvideojs
+  [options]="{
+    fluid: true,
+    aspectRatio: '16:9',
+    preload: 'auto',
+    controls: true,
+    muted: false,
+    playsinline: true,
+    playbackRates: [0.25, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4],
+    plugins: {
+      hotkeys: {
+      volumeStep: 0.1,
+      seekStep: 25,
+      enableModifiersForNumbers: false
+      }
+    },
+    sources: [
+      { src: 'assets/stubdata/ToEdit.mp4#t=0.3', type: 'video/mp4' }
+    ],
+    tracks: [
+      { src: 'assets/stubdata/ToEdit.vtt', kind:'captions', srclang: 'en', label: 'English', default: true },
+    ]
+  }"
+></gm-videojs>
+
+<!-- autoplay: false, --><!-- preload is ignored if autoplay defined -->
+
+<!-- ,
+      zoomrotate: {
+        rotate: 90,
+        zoom: 1.5
+      } -->
+
+<!-- { src: 'assets/stubdata/ToEdit.vtt', kind:'captions', srclang: 'en', label: 'English', default: true }, -->
+<!-- { src: 'http://www.openbeelden.nl/files/92/104101.ed_hd.mp4', type: 'video/mp4' } -->
+<!-- { src: 'assets/stubdata/DATA_IGNORED_BY_GIT/BigBuckBunny-1280x720.mp4', type: 'video/mp4' } -->
+<!-- { src: 'assets/stubdata/ToEdit.mp4', type: 'video/mp4' } -->
+<!-- {src: 'assets/stubdata/captions/captions.en.vtt', kind:'captions', srclang: 'en', label: 'English', default: true},
+    {src: 'assets/stubdata/captions/captions.sv.vtt', kind:'captions', srclang: 'sv', label: 'Swedish'},
+    {src: 'assets/stubdata/captions/captions.ru.vtt', kind:'captions', srclang: 'ru', label: 'Russian'} -->
+
+<!-- <br /> -->
+
+<button id="btnHiliteSpeech" (click)="onHiliteSpeech()">
+  {hiliteSpeech, select, true {Highlight off} false {Highlight on} }
+</button>
+
+<button i18n="@@togglehelp" md-raised-button class="show-help-button" (click)="ToggleHelp()">
+  {showhelp, select, true {Hide Help} false {Show Help} }
+</button>
+
+<!-- buttons for debugging features -->
+<!-- <button (click)="onGetTracks()">Get Tracks</button> -->
+<!-- <button (click)="onRotate()">Rotate</button> -->
+<!-- <button (click)="hiliteSpecificCaption(5)">Send Caption Id</button> -->
+
+<!-- <br /> -->
+<div class="edit-help" [hidden]="!CheckShowHelp()" (click)="ToggleHelp()">
+  [This code is under development.] It will have the following functions:
+  <ul>
+    <li>Edit the text for transcription errors.</li>
+    <li>Add/change speaker, topic or section names.</li>
+    <li>Move speaker, topic or section names.</li>
+  </ul>
+  Click in a text area to enter a topic name. Or first highlight any text to create a default name. Use arrows to move
+  topic.
+</div>
+
+<br />
+
+<!-- The playVideo event is sent by TalksComponent to play from a starting position. -->
+<!-- <gm-talks></gm-talks> -->
+<gm-talks (playVideo)="onplayVideo($event)"></gm-talks>

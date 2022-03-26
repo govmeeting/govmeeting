@@ -1,0 +1,44 @@
+<div class="subhead">Board of Selectmen - Sept. 8</div>
+
+<br />
+<button md-raised-button class="show-help-button" (click)="ToggleHelp()">{{showhidehelp}} Help</button>
+<div class="edit-help" [hidden]="!CheckShowHelp()" (click)="ToggleHelp()">
+  [Under Development]
+  <ul>
+    <li>Click a topic to see what was said on that topic.</li>
+    <li>Click a speaker name to see what that person said.</li>
+  </ul>
+</div>
+
+<div id="wrap" class="row">
+  <!-- <div class="col-sm-12"> -->
+
+  <div class="row">
+    <!-- <div class="col-sm-12" style="padding:1px"> -->
+    <div id="header" style="background: #ddd">
+      <gm-heading></gm-heading>
+    </div>
+    <!-- </div> -->
+  </div>
+
+  <!-- The sidebar contains the options for choosing a topic or a speaker.  Only what is chosen
+        will be displayed in the main content. -->
+  <div style="padding: 10px">
+    <!-- <div class="col-md-12 col-sm-3 col-xs-6" style="padding:1px"> -->
+    <div id="sidebar">
+      <!-- [Select topic/speaker] <br><br> -->
+      <gm-topics></gm-topics> <br />
+      <gm-speakers></gm-speakers>
+    </div>
+  </div>
+</div>
+
+<div class="row gutter-0.row">
+  <!-- <div class="col-md-12 col-sm-9 col-xs-6"> -->
+  <div id="main" style="background: #fff; padding: 1px">
+    <!-- <button (click)="postMeeting()">Post Meeting</button> -->
+    <gm-browse></gm-browse>
+  </div>
+  <!-- </div> -->
+  <!-- </div> -->
+</div>

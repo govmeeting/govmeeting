@@ -1,0 +1,86 @@
+<mat-card>
+  <mat-card-content [style.overflow]="'auto'" [style.height.px]="'300'">
+    [ Under Development ]
+
+    <!-- <div class="container"> -->
+    <h3 class="text-center chat_header">Chat Application</h3>
+    <div class="messaging">
+      <div class="inbox_msg">
+        <div class="mesgs">
+          <div class="msg_history">
+            <div *ngFor="let msg of messages">
+              <div class="incoming_msg" *ngIf="msg.type == 'received'">
+                <div class="incoming_msg_img"></div>
+                <div class="received_msg">
+                  <div class="received_withd_msg">
+                    <p>{{msg.message}}</p>
+                    <span class="time_date"> {{msg.date | date:'medium'}} </span>
+                  </div>
+                </div>
+              </div>
+              <div class="outgoing_msg" *ngIf="msg.type == 'sent'">
+                <div class="sent_msg">
+                  <p>{{msg.message}}</p>
+                  <span class="time_date"> {{msg.date | date:'medium'}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="type_msg">
+            <div class="input_msg_write">
+              <input
+                type="text"
+                class="write_msg"
+                [value]="txtMessage"
+                (input)="txtMessage=$any($event.target).value"
+                (keydown.enter)="sendMessage()"
+                placeholder="Type a message"
+              />
+              <button class="msg_send_btn" type="button" (click)="sendMessage()">
+                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        [ NOTE: There will likely be separate chat rooms for different issues being discussed -- and a separate one for
+        volunteers on the project. ]
+      </div>
+    </div>
+
+    <!-- </div> -->
+
+    <!-- <h3 class=" text-center chat_header">Chat Application</h3>
+    <div class="msg_history">
+      <div *ngFor="let msg of messages">
+      <div class="incoming_msg" *ngIf="msg.type == 'received'">
+        <div class="incoming_msg_img"> </div>
+        <div class="received_msg">
+          <div class="received_withd_msg">
+            <p>
+              {{msg.message}}
+            </p>
+            <span class="time_date"> {{msg.date | date:'medium'}} </span>
+          </div>
+        </div>
+      </div>
+      <div class="outgoing_msg" *ngIf="msg.type == 'sent'">
+        <div class="sent_msg">
+          <p>
+              {{msg.message}}
+          </p>
+          <span class="time_date"> {{msg.date | date:'medium'}}</span>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="type_msg">
+      <div class="input_msg_write">
+        <input type="text" class="write_msg" [value]="txtMessage"
+        (input)="txtMessage=$event.target.value" (keydown.enter)="sendMessage()" placeholder="Type a message" />
+        <button class="msg_send_btn" type="button"  (click)="sendMessage()"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+      </div>
+    </div> -->
+  </mat-card-content>
+</mat-card>

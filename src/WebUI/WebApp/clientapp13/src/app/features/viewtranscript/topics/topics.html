@@ -1,0 +1,8 @@
+<div>
+  <span> <strong> Select a Topic: </strong> </span>
+  <span *ngFor="let name of Names; let i = index">
+    <span [class.chosen]="IsSelected(i)" gmHighlight [hidden]="i==0" (click)="Filter(i)"> {{name}} &#x2022; </span>
+    <span [class.chosen]="IsSelected(i)" gmHighlight [hidden]="i!=0" (click)="Filter(i)"> All Topics &#x2022; </span>
+  </span>
+  <br />
+</div>
