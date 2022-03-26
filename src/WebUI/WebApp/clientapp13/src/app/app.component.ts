@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { NavService } from './sidenav/nav.service';
 // import {ApplicationRef} from '@angular/core';
 
 // TEMP // import { NavService } from './sidenav/nav.service';
@@ -39,7 +40,8 @@ export class AppComponent implements AfterViewInit, OnDestroy {
     // private router: Router,
     // TEMP //public navService: NavService,
     // public mediaQueryService: MediaQueryService,
-    fb: FormBuilder,
+    // fb: FormBuilder,
+    public navService: NavService,
     changeDetectorRef: ChangeDetectorRef,
     // changeDetectorRef: ApplicationRef,
     media: MediaMatcher
@@ -54,7 +56,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    // TEMP // this.navService.sidenav = this.sidenav;
+    this.navService.sidenav = this.sidenav;
   }
 
   ngOnDestroy(): void {
