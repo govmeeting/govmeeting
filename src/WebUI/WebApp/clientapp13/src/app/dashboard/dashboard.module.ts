@@ -13,6 +13,8 @@ import { LargeCardComponent } from './large-cards/large-card/large-card';
 import { DashMainComponent } from './dash-main/dash-main';
 import { DashFooterComponent } from './dash-footer/dash-footer';
 
+import { FeaturesModule } from '../features/features.module';
+
 @NgModule({
   declarations: [
     SmallCardsComponent,
@@ -24,15 +26,16 @@ import { DashFooterComponent } from './dash-footer/dash-footer';
   ],
   imports: [
     CommonModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    FeaturesModule
   ],
   exports: [
-    SmallCardsComponent,
-    SmallCardComponent,
-    LargeCardsComponent,
-    LargeCardComponent,
-    DashMainComponent,
-    DashFooterComponent,
+    // SmallCardsComponent,
+    // SmallCardComponent,
+    // LargeCardsComponent,
+    // LargeCardComponent,
+    // DashMainComponent,
+    // DashFooterComponent,
   ],
 })
 export class DashboardModule {}

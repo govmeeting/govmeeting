@@ -1,0 +1,40 @@
+Select Location:
+<select [(ngModel)]="selectedLocation" (change)="selectLocation($any($event.target).value)">
+  <option [ngValue]="loc" *ngFor="let loc of locations$ | async">{{ loc.name }}</option>
+</select>
+<br />
+
+<span *ngIf="bodies$">
+  Select Govbody:
+  <select [(ngModel)]="selectedBody" (change)="selectBody($any($event.target).value)">
+    <option [ngValue]="bod" *ngFor="let bod of bodies$ | async">{{ bod.name }}</option>
+  </select>
+</span>
+<br />
+
+<form *ngIf="bodyDetails$ | async; else loading" [formGroup]="form" (ngSubmit)="submit(form.value, form.valid)">
+  <label for="name">
+    Name*
+    <span class="error" *ngIf="hasError('name', 'required')">Required</span>
+  </label>
+  <input id="name" formControlName="name" required type="text" />
+  <label for="officials">
+    Officials*
+    <span class="error" *ngIf="hasError('officials', 'required')">Required</span>
+  </label>
+  <input id="officials" formControlName="officials" required type="text" />
+  <label for="officers">
+    Officers*
+    <span class="error" *ngIf="hasError('officers', 'required')">Required</span>
+  </label>
+  <input id="officers" formControlName="officers" required type="text" />
+  <label for="recordingsUrl">Recordings URL (e.g. YouTube or Government website)</label>
+  <input id="recordingsUrl" formControlName="recordingsUrl" required type="text" />
+  <label for="transcriptsUrl">Transcripts URL</label>
+  <input id="transcriptsUrl" formControlName="transcriptsUrl" required type="text" />
+  <button type="submit">Save</button>
+</form>
+
+<ng-template #loading>
+  <!--Loading Govbody...-->
+</ng-template>

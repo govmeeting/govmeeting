@@ -17,7 +17,7 @@ import { AboutProjectModule } from './about-project/about-project.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +25,7 @@ import { AboutProjectModule } from './about-project/about-project.module';
     // AppRoutingModule.forRoot([]),
     // RouterModule.forRoot([], { relativeLinkResolution: 'legacy' }),
     BrowserAnimationsModule,
-    // from gm
+    //// from gm
     // FlexLayoutModule,
     DemoMaterialModule,
     FormsModule,
@@ -33,7 +33,7 @@ import { AboutProjectModule } from './about-project/about-project.module';
     SidenavMenuModule,
     HeaderModule,
     DashboardModule,
-    AboutProjectModule
+    AboutProjectModule,
 ],
   providers: [],
   bootstrap: [AppComponent]

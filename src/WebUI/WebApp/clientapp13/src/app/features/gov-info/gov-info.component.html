@@ -1,0 +1,212 @@
+<!-- This page is hard coded with example text.
+   In real life, it will get its content via data binding  -->
+
+<div class="container">
+  <div [hidden]="location" class="subhead">(Select Location) <br /><br /></div>
+
+  <span *ngIf="location == 'Boothbay Harbor'">
+    <div class="subhead">BBH Boards and Committees</div>
+    <ul>
+      <li>Board of Appeals</li>
+      <li>Board of Selectmen</li>
+      <li>Boothbay Harbor Sewer District</li>
+      <li>Boothbay Region Water District</li>
+      <li>Budget Committee</li>
+      <li>Cemetery District Trustees-BBH</li>
+      <li>Planning Board</li>
+      <li>Port Committee</li>
+      <li>Refuse District</li>
+      <li>School Committee Members -BBH</li>
+      <li>School District Trustees-BBH</li>
+      <li>Shellfish Committee</li>
+    </ul>
+
+    <div class="subhead">Board of Selectmen</div>
+    <table>
+      <tr>
+        <td>Till year</td>
+        <td>Name</td>
+        <td>Position</td>
+      </tr>
+      <tr>
+        <td>2020</td>
+        <td>Denise Griffin</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2020</td>
+        <td>Tricia Warren</td>
+        <td>Vice Chair</td>
+      </tr>
+      <tr>
+        <td>2021</td>
+        <td>Wendy Wolf</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2022</td>
+        <td>Kenneth Fitch</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2022</td>
+        <td>Michael Tomko</td>
+        <td>Chair</td>
+      </tr>
+    </table>
+
+    [ From town website ]
+  </span>
+
+  <div *ngIf="location == 'Lincoln County'">
+    <div class="subhead">Board of Commissioners</div>
+    <span>
+      The Board of Commissioners meets on the first and third Tuesdays of each Month starting at 9:00 A.M. in the
+      Hearing Room at the Courthouse in Wiscasset. Additional Meetings are held when needed and during the preparation
+      of the Budget. </span
+    ><br /><br />
+    ​ District One: Commissioner Hamilton Meserve<br />
+    (Term Expires 12-31-2020)<br />
+    Boothbay, Boothbay Harbor, Edgecomb, Southport, Westport Island, Wiscasset<br />
+    <br />
+    District Two: Commissioner William B. Blodget<br />
+    (Term Expires 12-31-2022)<br />
+    Bremen, Bristol, Monhegan Plantation, Nobleboro, South Bristol, Waldoboro<br />
+    <br />
+    District Three: Commissioner Mary Trescot (chair)<br />
+    (Term Expires 12-31-2020)<br />
+    Alna, Damariscotta, Dresden, Jefferson, Newcastle, Somerville, Whitefield and Hibberts Gore<br /><br />
+    [From Lincoln County website]
+  </div>
+
+  <div *ngIf="location == 'State of Maine'">
+    <div class="subhead">{{ location }} Political Structure</div>
+    <p>
+      The Maine Constitution structures Maine's state government, composed of three co-equal branches—the executive,
+      legislative, and judicial branches. The state of Maine also has three Constitutional Officers (the Secretary of
+      State, the State Treasurer, and the State Attorney General) and one Statutory Officer (the State Auditor).
+    </p>
+    <p>
+      The legislative branch is the Maine Legislature, a bicameral body composed of the Maine House of Representatives,
+      with 151 members, and the Maine Senate, with 35 members. The Legislature is charged with introducing and passing
+      laws.
+    </p>
+    <p>
+      The executive branch is responsible for the execution of the laws created by the Legislature and is headed by the
+      Governor of Maine (currently Janet Mills). The Governor is elected every four years; no individual may serve more
+      than two consecutive terms in this office. The current attorney general of Maine is Aaron Frey. As with other
+      state legislatures, the Maine Legislature can by a two-thirds majority vote from both the House and Senate
+      override a gubernatorial veto. Maine is one of seven states that do not have a lieutenant governor.
+    </p>
+    <p>
+      The judicial branch is responsible for interpreting state laws. The highest court of the state is the Maine
+      Supreme Judicial Court. The lower courts are the District Court, Superior Court and Probate Court. All judges
+      except for probate judges serve full-time, are nominated by the Governor and confirmed by the Legislature for
+      terms of seven years. Probate judges serve part-time and are elected by the voters of each county for four-year
+      terms. [From Wikipedia]
+    </p>
+  </div>
+
+  <div *ngIf="location == 'Austin'">
+    [From Wikipedia] Austin is administered by an 11-member city council (10 council members elected by geographic
+    district plus a mayor elected at large). The council is accompanied by a hired city manager under the
+    manager-council system of municipal governance. Council and mayoral elections are non-partisan, with a runoff in
+    case there is no majority winner. A referendum approved by voters on November 6, 2012 changed the council
+    composition from six council members plus a mayor elected at large to the current "10+1" district system. November
+    2014 marked the first election under the new system. The Federal government had forced San Antonio and Dallas to
+    abandon at-large systems before 1987; however, the court could not show a racist pattern in Austin and upheld the
+    city's at-large system during a 1984 lawsuit. In five elections between 1973 and 1994 Austin voters rejected
+    single-member districts.[240]
+  </div>
+
+  <div *ngIf="location == 'Travis County'">
+    [From Wikipedia] Like other Texas counties, Travis County is governed by a Commissioners' Court composed of the
+    county judge and four county commissioners. The court levies county taxes and sets the budgets for county officials
+    and agencies. The judge and commissioners are elected for four-year terms (the judge at-large, and the commissioners
+    from geographic precincts). The other major county-wide official is the county clerk, who maintains the county's
+    records, administers elections, and oversees legal documentation (such as property deeds, marriage licenses and
+    assumed name certificates). The clerk is also elected at-large for a four-year term.
+    <p>
+      The Heman Marion Sweatt Travis County Courthouse is located in downtown Austin. The county courthouse holds civil
+      and criminal trial courts and other functions of county government. As of 2017, the county's probate courts are in
+      the process of being moved from the county courthouse into Austin's 1936 United States Courthouse, which was
+      acquired by the county in 2016.[19]
+    </p>
+  </div>
+
+  <div *ngIf="location == 'State of Texas'">
+    [From Wikipedia] Texas has a plural executive branch system limiting the power of the governor, which is a weak
+    executive compared to some other states. Except for the Secretary of State, voters elect executive officers
+    independently; thus candidates are directly answerable to the public, not the governor.[140] This election system
+    has led to some executive branches split between parties and reduced the ability of the governor to carry out a
+    program. When Republican President George W. Bush served as Texas's governor, the state had a Democratic lieutenant
+    governor, Bob Bullock. The executive branch positions consist of the Governor, Lieutenant Governor, Comptroller of
+    Public Accounts, Land Commissioner, Attorney General, Agriculture Commissioner, the three-member Texas Railroad
+    Commission, the State Board of Education, and the Secretary of State.[140]
+    <p>
+      The bicameral Texas Legislature consists of the House of Representatives, with 150 members, and a Senate, with 31
+      members. The Speaker of the House leads the House, and the lieutenant governor, the Senate.[141] The Legislature
+      meets in regular session biennially for just over 100 days, but the governor can call for special sessions as
+      often as desired (notably, the Legislature cannot call itself into session).[142] The state's fiscal year spans
+      from the previous calendar year's September 1 to the current year's August 31. Thus, the FY 2015 dates from
+      September 1, 2014 through August 31, 2015.
+    </p>
+  </div>
+
+  <div *ngIf="location == 'United States'">
+    The United States is the world's oldest surviving federation. It is a representative democracy, "in which majority
+    rule is tempered by minority rights protected by law".[374] The government is regulated by a system of checks and
+    balances defined by the U.S. Constitution, which serves as the country's supreme legal document.[375] For 2018, the
+    U.S. ranked 25th on the Democracy Index[376] and 22nd on the Corruption Perceptions Index.[377]
+    <p>
+      In the American federalist system, citizens are usually subject to three levels of government: federal, state, and
+      local. The local government's duties are commonly split between county and municipal governments. In almost all
+      cases, executive and legislative officials are elected by a plurality vote of citizens by district. There is no
+      proportional representation at the federal level, and it is rare at lower levels.[378]
+    </p>
+    The federal government comprises three branches:
+    <ul>
+      <li>
+        Legislative: The bicameral Congress, made up of the Senate and the House of Representatives, makes federal law,
+        declares war, approves treaties, has the power of the purse,[379] and has the power of impeachment, by which it
+        can remove sitting members of the government.[380]
+      </li>
+      <li>
+        Executive: The president is the commander-in-chief of the military, can veto legislative bills before they
+        become law (subject to Congressional override), and appoints the members of the Cabinet (subject to Senate
+        approval) and other officers, who administer and enforce federal laws and policies.[381] Judicial: The Supreme
+        Court and lower federal courts, whose judges are appointed by the president with Senate approval, interpret laws
+        and overturn those they find unconstitutional.[382]
+      </li>
+    </ul>
+    [From Wikipedia]
+  </div>
+
+  <div *ngIf="agency == 'Glendale HOA'">
+    <h3>Board of Directors</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor arcu mi, eu mattis magna posuere
+      pulvinar. Nulla lacinia facilisis ipsum, ut ornare urna fermentum et. Aliquam sit amet ipsum ac eros mattis
+      interdum. Nunc diam purus, tempus et eleifend quis, sagittis sed nunc. Vivamus rutrum lacinia ipsum nec molestie.
+      Donec eu ex sed lectus semper congue. Sed non volutpat eros. Curabitur eu porta augue. Nulla dictum risus ut
+      molestie semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ante elit, imperdiet eu venenatis
+      id, mattis vel odio. Ut id fermentum nisl, et mattis ante. Vivamus posuere suscipit lobortis. Fusce et sem eget
+      neque elementum ullamcorper. Nulla ligula felis, vestibulum id nulla rhoncus, mollis malesuada eros.
+    </p>
+    <h3>Covenance Committee</h3>
+    <p>
+      Curabitur consequat egestas sapien non fringilla. Vestibulum at vestibulum lacus. Pellentesque tempus purus
+      sollicitudin, scelerisque elit suscipit, cursus metus. Aenean vestibulum erat ex. In viverra sapien quis felis
+      mollis, sed porttitor mauris venenatis. Maecenas sit amet condimentum tortor, nec interdum sapien. Duis
+      scelerisque, purus eget accumsan placerat, magna orci ultrices augue, eget pretium quam risus quis ante
+    </p>
+    <h3>Governing Documents</h3>
+    <p>
+      Nullam vehicula lectus vel urna elementum dapibus. Proin pulvinar enim orci, ut consectetur turpis congue quis.
+      Sed id malesuada mi. Cras a risus purus. Vivamus accumsan sollicitudin purus in lobortis. Nam dapibus eget neque
+      in tempor. Cras tristique pellentesque iaculis. Phasellus non mi ipsum. Maecenas at pulvinar dolor. Sed pretium
+      diam nec lacus consectetur feugiat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+      ridiculus mus. Vivamus quis magna suscipit, imperdiet orci ac, luctus quam.
+    </p>
+  </div>
+</div>
