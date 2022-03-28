@@ -1,7 +1,5 @@
 <!--<h1> Hello World </h1>-->
 
-<div class="header-box"> <gm-header></gm-header> </div>
-
 <mat-sidenav-container class="sidenav-container" hasBackdrop=false>
 
   <mat-sidenav class="sidenav" #sidenav [opened]="!mediaQueryList.matches"
@@ -15,8 +13,9 @@
 
   </mat-sidenav>
 
-  <mat-sidenav-content>
+  <mat-sidenav-content class="sidenav-content">
 
+    <div class="header-container"> <gm-header></gm-header> </div>
 
     <router-outlet></router-outlet>
     <!-- <gm-dash-main></gm-dash-main> -->

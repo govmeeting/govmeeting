@@ -1,6 +1,6 @@
 @import '../colors.scss';
 
-.header-box {
+.header-container {
   position: fixed;
   top: 0px;
   left: 0;
@@ -8,6 +8,7 @@
   height: 100px;
   width: 100%;
   // border: 2px solid red; // If needed for debugging.
+  z-index: 1;
 }
 
 .sidenav-container {
@@ -18,6 +19,7 @@
   bottom: 0px;
   width: 100%;
   // border: 2px solid green; // If needed for debugging.
+  z-index: 1;
 }
 
 .sidenav {
