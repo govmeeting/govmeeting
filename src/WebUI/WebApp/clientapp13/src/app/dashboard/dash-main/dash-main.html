@@ -1,45 +1,41 @@
 <main class="main">
-  <!-- <button (click)="CallBills()">Call Bills</button><br/> -->
-
-  <!-- <gm-ab>
-</gm-ab> -->
 
   <gm-small-cards>
-    <!-- <gm-small-card
-      icon="far fa-envelope"
+
+    <gm-small-card
+      class="top1"
+      icon="info"
       iconcolor="icon-color-red"
-      title="Configure"
-      tooltip="This is the help for ConfigService.">
-      <app-config></app-config>
-    </gm-small-card>
- -->
-    <gm-small-card class="top1" icon="fas fa-sitemap" iconcolor="icon-color-red" title="{{govinfoTitle}}">
+      title="{{govinfoTitle}}">
       <gm-gov-info> </gm-gov-info>
     </gm-small-card>
 
     <gm-small-card
       *ngIf="(!isCounty && !isBeta)"
       class="top2"
-      icon="far fa-file-alt"
+      icon="rule"
       iconcolor="icon-color-orange"
-      title="{{billsTitle}}"
-    >
-      <!-- <gm-bills> </gm-bills> -->
+      title="{{billsTitle}}">
+      <gm-bills> </gm-bills>
     </gm-small-card>
 
-    <gm-small-card class="top3" icon="fas fa-users" iconcolor="icon-color-green" title="{{meetingsTitle}}">
-      <!-- <gm-meetings> </gm-meetings> -->
+    <gm-small-card
+      class="top3"
+      icon="group"
+      iconcolor="icon-color-green"
+      title="{{meetingsTitle}}">
+      <gm-meetings> </gm-meetings>
     </gm-small-card>
 
     <gm-small-card
       *ngIf="!isBeta"
       class="top4"
-      icon="far fa-newspaper"
+      icon="view_headline"
       iconcolor="icon-color-purple"
-      title="{{newsTitle}}"
-    >
-      <!-- <gm-news> </gm-news> -->
+      title="{{newsTitle}}">
+      <gm-news> </gm-news>
     </gm-small-card>
+
   </gm-small-cards>
 
 </main>
