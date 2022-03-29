@@ -14,24 +14,24 @@ export class TalksComponent implements OnInit, AfterViewInit {
 
   @Output() playVideo: EventEmitter<PlayPhraseData>;
 
-  errorMessage: string;
-  talks: Talk[] | null;
+  errorMessage: string ='';
+  talks: Talk[] | null = null;
   gotTalks = false;
-  edittranscript: EditTranscript = { sections: [''], topics: [''], talks: null };
-  topics: string[];
-  highlightedTopic: string;
+  edittranscript: EditTranscript = { sections: [''], topics: [''], talks: [] };
+  topics: string[] = [];
+  highlightedTopic: string = '';
   shownTopicSelection = -1; // index of where we are displaying topic choice.
 
   wordColor = 'lightgreen';
 
-  priorCaption: Caption = null;
+  priorCaption: Caption | null = null;
 
   scroller: any;
-  scrollerHeight: number;
+  scrollerHeight: number = 0;
   output: any;
   toX: any;
 
-  wordColors = ['ligntblue', 'lightgreen', 'yellow', 'pink'];
+  wordColors = ['lightblue', 'lightgreen', 'yellow', 'pink'];
   getWordColor(speaker: number): string {
     return speaker <= this.wordColors.length ? this.wordColors[speaker - 1] : 'brown';
   }
@@ -84,10 +84,10 @@ export class TalksComponent implements OnInit, AfterViewInit {
       this.gotTalks = true;
       NoLog || console.log(this.ClassName + 'getTalks');
       this._edittranscriptService.getTalks().subscribe(
-        (edittranscript) => {
+        (edittranscript : any) => {
           (this.edittranscript = edittranscript), (this.talks = edittranscript.talks);
         },
-        (error) => (this.errorMessage = error as any)
+        (error: any) => (this.errorMessage = error as any)
       );
     }
   }
@@ -115,7 +115,7 @@ export class TalksComponent implements OnInit, AfterViewInit {
   onTopicSelect(newTopic: string, talk: Talk) {
     NoLog || console.log(this.ClassName + 'OnTopicSelect ', newTopic);
     if (newTopic === '') {
-      talk.topic = null;
+      talk.topic = '';
     } else {
       talk.topic = newTopic;
       talk.showSetTopic = false;
@@ -136,7 +136,7 @@ export class TalksComponent implements OnInit, AfterViewInit {
     this.clearShownTopicSelection();
     if (this.talks && i > 0) {
       this.talks[i - 1].section = talk.section;
-      talk.section = null;
+      talk.section = '';
     }
   }
 
@@ -144,7 +144,7 @@ export class TalksComponent implements OnInit, AfterViewInit {
     this.clearShownTopicSelection();
     if (this.talks && i < this.talks.length - 1) {
       this.talks[i + 1].section = talk.section;
-      talk.section = null;
+      talk.section = '';
     }
   }
 
@@ -156,7 +156,7 @@ export class TalksComponent implements OnInit, AfterViewInit {
     this.clearShownTopicSelection();
     if (this.talks && i > 0) {
       this.talks[i - 1].topic = talk.topic;
-      talk.topic = null;
+      talk.topic = '';
     }
   }
 
@@ -164,7 +164,7 @@ export class TalksComponent implements OnInit, AfterViewInit {
     this.clearShownTopicSelection();
     if (this.talks && i < this.talks.length - 1) {
       this.talks[i + 1].topic = talk.topic;
-      talk.topic = null;
+      talk.topic = '';
     }
   }
 
@@ -242,6 +242,7 @@ export class TalksComponent implements OnInit, AfterViewInit {
       // let scrollPos = topPos;
       // console.log('scrollPos=', scrollPos);
 
+      // @ts-ignore
       document.getElementById('scrolling_div').scrollTop = scrollPos;
 
       // console.log('div scrollTop after: ' + this.scroller.scrollTop);
@@ -290,11 +291,14 @@ export class TalksComponent implements OnInit, AfterViewInit {
   }
 
   // find the caption with specific Id in talks array.
-  findCaption(Id: number): [Caption, string] {
+        // @ts-ignore
+        findCaption(Id: number): [Caption, string] {
     let i = 0;
-    for (const talk of this.talks) {
+        // @ts-ignore
+        for (const talk of this.talks) {
       let j = 0;
-      for (const caption of talk.captions) {
+        // @ts-ignore
+        for (const caption of talk.captions) {
         if (caption.Id === Id) {
           const elementId: string = i.toString(10) + '-' + j.toString(10);
           return [caption, elementId];

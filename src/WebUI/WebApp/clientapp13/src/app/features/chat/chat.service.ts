@@ -11,7 +11,7 @@ export class ChatService {
   connectionEstablished = new EventEmitter<boolean>();
 
   private connectionIsEstablished = false;
-  private _hubConnection: HubConnection;
+  private _hubConnection: HubConnection | undefined;
 
   constructor() {
     this.createConnection();
@@ -20,7 +20,9 @@ export class ChatService {
   }
 
   sendMessage(message: Message) {
-    this._hubConnection.invoke('NewMessage', message);
+    if (this._hubConnection !== undefined) {
+      this._hubConnection.invoke('NewMessage', message);
+    }
   }
 
   private createConnection() {
@@ -28,7 +30,10 @@ export class ChatService {
   }
 
   private startConnection(): void {
-    this._hubConnection
+    if (this._hubConnection === undefined) {
+      return;
+    }
+      this._hubConnection
       .start()
       .then(() => {
         this.connectionIsEstablished = true;
@@ -42,6 +47,9 @@ export class ChatService {
   }
 
   private registerOnServerEvents(): void {
+    if (this._hubConnection === undefined) {
+      return;
+    }
     this._hubConnection.on('MessageReceived', (data: any) => {
       this.messageReceived.emit(data);
     });

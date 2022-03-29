@@ -12,8 +12,8 @@ import {
 import videojs from 'video.js';
 import { timer } from 'rxjs';
 import * as Hotkeys from 'videojs-hotkeys';
-import * as ZoomRotate from 'videojs-rotatezoom';
-import { AddRotateButtons, RotateVideo } from './vjsutils/AddButtons';
+// import * as ZoomRotate from 'videojs-rotatezoom';
+// import { AddRotateButtons, RotateVideo } from './vjsutils/AddButtons';
 
 const NoLog = true; // set to false for console logging
 
@@ -25,14 +25,14 @@ const NoLog = true; // set to false for console logging
 })
 export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   private ClassName: string = this.constructor.name + ': ';
-  player: videojs.Player;
+  player: videojs.Player | null = null;
   private hotkeysPlugin: any; // used in constructor and needed but why??
-  private zoomrotatePlugin: any;
-  @ViewChild('target', { static: true }) target: ElementRef;
-  @ViewChild('vjscontainer') vjscontainer: ElementRef;
+  // private zoomrotatePlugin: any;
+  @ViewChild('target', { static: true }) target: ElementRef | null = null;
+  @ViewChild('vjscontainer') vjscontainer: ElementRef | null = null;
 
   // see options: https://github.com/videojs/video.js/blob/maintutorial-options.html
-  @Input() options: {
+  @Input() options: undefined |{
     fluid: boolean;
     aspectRatio: string;
     // autoplay: boolean;
@@ -67,6 +67,10 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     // instantiate Video.js
     // this.player = videojs(this.target.nativeElement);
+    if (this.target === null)
+    {
+      return
+    }
     this.player = videojs(this.target.nativeElement, this.options, function onPlayerReady() {
       NoLog || console.log('VideojsComponent: ' + 'onPlayerReady', this);
     });
@@ -86,17 +90,22 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  rotateVideo() {
-    RotateVideo(this.vjscontainer);
-  }
+  // rotateVideo() {
+  //   RotateVideo(this.vjscontainer);
+  // }
 
   playPhrase(start: number, duration: number) {
+    if (this.player === null) {
+      return;
+    }
     NoLog || console.log(this.ClassName + 'playPhrase, start=' + start + ' duration=' + duration);
     start = start / 1000;
     const pauseTimer = timer(duration);
     this.player.currentTime(start);
     this.player.play();
-    pauseTimer.subscribe((t) => this.player.pause());
+    pauseTimer.subscribe((t) =>
+      {if (this.player !== null) this.player.pause()}
+      );
     NoLog || console.log(this.ClassName + 'exiting playPhrase');
   }
 
@@ -125,9 +134,13 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getCueChanges() {
+    if (this.player === null) {
+      return;
+    }
     const textTrack = this.player.textTracks()[0];
     textTrack.addEventListener('cuechange', (event) => {
-      const activeCue = textTrack.activeCues[0];
+        // @ts-ignore
+        const activeCue = textTrack.activeCues[0];
       console.log(activeCue.startTime, activeCue.endTime);
       // @ts-ignore
       console.log(activeCue.text);
@@ -135,11 +148,15 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getTextTrack(): TextTrack {
-    return this.player.textTracks()[0];
+        // @ts-ignore
+        return this.player.textTracks()[0];
   }
 
   // (for debugging) returns array of all tracks on video
   getTracks() {
+    if (this.player === null) {
+      return;
+    }
     const validTracks: TextTrack[] = [];
     let tracks: TextTrackList;
     let track: TextTrack;

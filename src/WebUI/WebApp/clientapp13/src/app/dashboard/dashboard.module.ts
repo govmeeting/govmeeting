@@ -14,6 +14,10 @@ import { DashMainComponent } from './dash-main/dash-main';
 import { DashFooterComponent } from './dash-footer/dash-footer';
 
 import { FeaturesModule } from '../features/features.module';
+import { VirtualMeetingModule } from '../features/virtual-meeting/virtual-meeting-module';
+import { ChatModule } from '../features/chat/chat.module';
+import { EditTranscriptModule } from '../features/edittranscript/edittranscript.module';
+// import { ViewTranscriptModule } from '../features/viewtranscript/viewtranscript.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,10 @@ import { FeaturesModule } from '../features/features.module';
   imports: [
     CommonModule,
     DemoMaterialModule,
-    FeaturesModule
+    FeaturesModule,
+    VirtualMeetingModule,
+    ChatModule,
+    EditTranscriptModule
   ],
   exports: [
     // SmallCardsComponent,

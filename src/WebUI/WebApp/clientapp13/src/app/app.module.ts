@@ -14,6 +14,15 @@ import { HeaderModule } from './header/header.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AboutProjectModule } from './about-project/about-project.module';
 
+import { ChatService } from './features/chat/chat.service';
+import { EditTranscriptServiceReal } from './features/edittranscript/edittranscript.service-real';
+import { EditTranscriptServiceStub } from './features/edittranscript/edittranscript.service-stub';
+import { EditTranscriptService } from './features/edittranscript/edittranscript.service';
+import { ErrorHandlingService } from './common/error-handling/error-handling.service';
+
+
+// const isAspServerRunning = environment.useServer; // Is the Asp.Net server running?
+const isAspServerRunning = false;
 
 @NgModule({
   declarations: [
@@ -35,7 +44,14 @@ import { AboutProjectModule } from './about-project/about-project.module';
     DashboardModule,
     AboutProjectModule,
 ],
-  providers: [],
+  providers: [
+    ChatService,
+    ErrorHandlingService,
+    {
+      provide: EditTranscriptService,
+      useClass: isAspServerRunning ? EditTranscriptServiceReal : EditTranscriptServiceStub,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
