@@ -17,10 +17,10 @@ export class EditTranscriptServiceReal implements EditTranscriptService {
   private ClassName: string = this.constructor.name + ': ';
 
   private addtagsUrl = 'api/edittranscript';
-  private postId;
+  // private postId;
 
-  private addtags: EditTranscript;
-  private observable: Observable<EditTranscript>;
+  // private addtags: EditTranscript;
+  private observable: Observable<EditTranscript> | null = null;
 
   // Normally the meetingId will be passed to the getTalks method.
   // But we did not yet write the component for the user to select a meeting.

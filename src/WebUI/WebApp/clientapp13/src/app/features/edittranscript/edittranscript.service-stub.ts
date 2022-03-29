@@ -19,10 +19,10 @@ const NoLog = true; // set to false for console logging
 @Injectable()
 export class EditTranscriptServiceStub implements EditTranscriptService {
   private ClassName: string = this.constructor.name + ': ';
-  postId;
-  observable: Observable<EditTranscript> = null;
+  postId : any;
+  observable: Observable<EditTranscript> | null = null;
   useLargeData: boolean;
-  url: string;
+  url: string = '';
   http: HttpClient;
 
   public constructor(

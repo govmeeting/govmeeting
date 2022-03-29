@@ -37,7 +37,7 @@
                 placeholder="Type a message"
               />
               <button class="msg_send_btn" type="button" (click)="sendMessage()">
-                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                <mat-icon class="routeIcon" aria-hidden="true">send</mat-icon>
               </button>
             </div>
           </div>
@@ -79,7 +79,9 @@
       <div class="input_msg_write">
         <input type="text" class="write_msg" [value]="txtMessage"
         (input)="txtMessage=$event.target.value" (keydown.enter)="sendMessage()" placeholder="Type a message" />
-        <button class="msg_send_btn" type="button"  (click)="sendMessage()"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        <button class="msg_send_btn" type="button"  (click)="sendMessage()">
+          <mat-icon class="routeIcon" aria-hidden="true">send</mat-icon>
+        </button>
       </div>
     </div> -->
   </mat-card-content>

@@ -22,23 +22,30 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "@aspnet/signalr": "^1.0.27",
+    "@types/video.js": "^7.3.32",
     "ngx-markdown": "^13.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "videojs-hotkeys": "^0.2.27",
+    "videojs-rotatezoom": "^0.0.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.2.5",
     "@angular/cli": "~13.2.5",
     "@angular/compiler-cli": "~13.2.0",
+    "@angular/localize": "^13.2.6",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "@types/videojs-hotkeys": "^0.2.1",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.5.2"
+    "typescript": "~4.5.2",
+    "video.js": "^7.18.1"
   }
 }
