@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 // import { Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+// import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, share } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { ViewTranscript } from '../../models/viewtranscript-view';
@@ -16,17 +16,17 @@ const NoLog = true; // set to false for console logging
 export class ViewTranscriptServiceReal implements ViewTranscriptService {
   private ClassName: string = this.constructor.name + ': ';
   private meetingUrl = 'api/viewtranscript';
-  private observable: Observable<ViewTranscript>;
+  private observable: Observable<ViewTranscript> | null = null;
   // private requestInProgress = false;
   // private requestComplete = false;
-  private errorMessage: string;
+  // private errorMessage: string;
   viewMeeting: ViewTranscript = ViewTranscriptSample;
 
   constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
     NoLog || console.log(this.ClassName + 'constructor');
   }
 
-  getMeeting(meetingId: number): Observable<ViewTranscript> {
+  getMeeting(meetingId: number): Observable<ViewTranscript> | null {
     if (this.observable != null) {
       return this.observable;
     }

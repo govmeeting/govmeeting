@@ -14,9 +14,9 @@ const NoLog = true; // set to false for console logging
 })
 export class BrowseComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
-  topicDiscussions: TopicDiscussion[];
-  topics: string[];
-  errorMessage: string;
+  topicDiscussions: TopicDiscussion[] = [];
+  topics: string[] = [];
+  errorMessage: string = '';
 
   // TODO Add option to show context surounding what a specific person said
 
@@ -34,13 +34,16 @@ export class BrowseComponent implements OnInit {
   }
 
   getTopicDiscussions() {
-    this._viewMeetingService.getMeeting(null).subscribe(
-      (t) => {
-        this.topicDiscussions = t.topicDiscussions;
-        NoLog || console.log(this.ClassName + this.topicDiscussions);
-      },
-      (error) => (this.errorMessage = error as any)
-    );
+    if (this._viewMeetingService) {
+        // @ts-ignore
+        this._viewMeetingService.getMeeting(null).subscribe(
+        (t) => {
+          this.topicDiscussions = t.topicDiscussions;
+          NoLog || console.log(this.ClassName + this.topicDiscussions);
+        },
+        (error) => (this.errorMessage = error as any)
+      );
+    }
   }
 
   /*

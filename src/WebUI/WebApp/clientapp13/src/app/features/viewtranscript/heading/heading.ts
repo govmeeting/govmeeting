@@ -19,7 +19,7 @@ export class HeadingComponent implements OnInit {
     meetingLength: 0,
   };
 
-  errorMessage: string;
+  errorMessage: string = '';
 
   constructor(private _viewMeetingService: ViewTranscriptService) {}
 
@@ -28,12 +28,15 @@ export class HeadingComponent implements OnInit {
   }
 
   getMeeting() {
-    this._viewMeetingService.getMeeting(null).subscribe(
-      (viewMeeting: any) => {
-        this.meeting = viewMeeting.meeting;
-        NoLog || console.log(this.ClassName, this.meeting);
-      },
-      (error: any) => (this.errorMessage = error as any)
-    );
+    if (this._viewMeetingService) {
+      // @ts-ignore
+      this._viewMeetingService.getMeeting(null).subscribe(
+        (viewMeeting: any) => {
+          this.meeting = viewMeeting.meeting;
+          NoLog || console.log(this.ClassName, this.meeting);
+        },
+        (error: any) => (this.errorMessage = error as any)
+      );
+    }
   }
 }

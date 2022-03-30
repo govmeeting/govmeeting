@@ -66,6 +66,14 @@
     </gm-large-card>
 
     <gm-large-card
+      *ngIf="!isCounty"
+      icon="book"
+      iconcolor="icon-color-green"
+      title="{{viewtranscriptTitle}}">
+    <gm-viewtranscript></gm-viewtranscript>
+  </gm-large-card>
+
+    <gm-large-card
         *ngIf="(!isCounty && !isBeta)"
         icon="check"
         iconcolor="icon-color-green"

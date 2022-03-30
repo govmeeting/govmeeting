@@ -19,6 +19,9 @@ import { EditTranscriptServiceReal } from './features/edittranscript/edittranscr
 import { EditTranscriptServiceStub } from './features/edittranscript/edittranscript.service-stub';
 import { EditTranscriptService } from './features/edittranscript/edittranscript.service';
 import { ErrorHandlingService } from './common/error-handling/error-handling.service';
+import { ViewTranscriptServiceReal } from './features/viewtranscript/viewtranscript.service-real';
+import { ViewTranscriptServiceStub } from './features/viewtranscript/viewtranscript.service-stub';
+import { ViewTranscriptService } from './features/viewtranscript/viewtranscript.service';
 
 
 // const isAspServerRunning = environment.useServer; // Is the Asp.Net server running?
@@ -50,6 +53,10 @@ const isAspServerRunning = false;
     {
       provide: EditTranscriptService,
       useClass: isAspServerRunning ? EditTranscriptServiceReal : EditTranscriptServiceStub,
+    },
+    {
+      provide: ViewTranscriptService,
+      useClass: isAspServerRunning ? ViewTranscriptServiceReal : ViewTranscriptServiceStub,
     }
   ],
   bootstrap: [AppComponent]
