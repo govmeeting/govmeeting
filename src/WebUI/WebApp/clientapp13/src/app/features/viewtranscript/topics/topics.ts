@@ -13,11 +13,11 @@ const NoLog = true; // set to false for console logging
 export class TopicsComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   nameType = 'topicNames';
-  Names: string[];
-  errorMessage: string;
+  Names: string[] = [];
+  errorMessage: string = '';
   selected = 0;
 
-  constructor(private _meetingService: ViewTranscriptService, private _userChoice: UserchoiceService) {}
+  constructor(private _viewMeetingService: ViewTranscriptService, private _userChoice: UserchoiceService) {}
 
   ngOnInit() {
     this.getNames();
@@ -25,13 +25,16 @@ export class TopicsComponent implements OnInit {
   }
 
   getNames() {
-    this._meetingService.getMeeting(null).subscribe(
-      (t) => {
-        this.Names = t.topicNames;
-        NoLog || console.log(this.ClassName, this.Names);
-      },
-      (error) => (this.errorMessage = error as any)
-    );
+    if (this._viewMeetingService) {
+      // @ts-ignore
+      this._viewMeetingService.getMeeting(null).subscribe(
+        (t) => {
+          this.Names = t.topicNames;
+          NoLog || console.log(this.ClassName, this.Names);
+        },
+        (error) => (this.errorMessage = error as any)
+      );
+    }
   }
 
   IsSelected(i: number): boolean {

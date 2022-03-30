@@ -14,8 +14,8 @@ const NoLog = true; // set to false for console logging
 export class ViewTranscriptComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   showhelp = true;
-  topicDiscussions: TopicDiscussion[];
-  errorMessage: string;
+  topicDiscussions: TopicDiscussion[] = [];
+  errorMessage: string = '';
 
   constructor(private _viewMeetingService: ViewTranscriptService) {}
   // Normally the meetingId will be passed to the getMeeting method.
@@ -32,13 +32,16 @@ export class ViewTranscriptComponent implements OnInit {
   }
 
   getTopicDiscussions() {
-    this._viewMeetingService.getMeeting(this.meetingId).subscribe(
-      (t) => {
-        this.topicDiscussions = t.topicDiscussions;
-        NoLog || console.log(this.ClassName + this.topicDiscussions);
-      },
-      (error) => (this.errorMessage = error as any)
-    );
+    if (this._viewMeetingService) {
+      // @ts-ignore
+      this._viewMeetingService.getMeeting(this.meetingId).subscribe(
+        (t) => {
+          this.topicDiscussions = t.topicDiscussions;
+          NoLog || console.log(this.ClassName + this.topicDiscussions);
+        },
+        (error) => (this.errorMessage = error as any)
+      );
+    }
   }
 
   CheckShowHelp(): boolean {

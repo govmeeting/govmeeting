@@ -17,7 +17,7 @@ import { FeaturesModule } from '../features/features.module';
 import { VirtualMeetingModule } from '../features/virtual-meeting/virtual-meeting-module';
 import { ChatModule } from '../features/chat/chat.module';
 import { EditTranscriptModule } from '../features/edittranscript/edittranscript.module';
-// import { ViewTranscriptModule } from '../features/viewtranscript/viewtranscript.module';
+import { ViewTranscriptModule } from '../features/viewtranscript/viewtranscript.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { EditTranscriptModule } from '../features/edittranscript/edittranscript.
     FeaturesModule,
     VirtualMeetingModule,
     ChatModule,
-    EditTranscriptModule
+    EditTranscriptModule,
+    ViewTranscriptModule
   ],
   exports: [
     // SmallCardsComponent,

@@ -15,8 +15,8 @@ export interface IUserChoiceSrv {
 
 @Injectable()
 export class UserchoiceService implements IUserChoiceSrv {
-  _speaker: string;
-  _topic: string;
+  _speaker: string = '';
+  _topic: string = '';
 
   getSpeaker(): string {
     return this._speaker;
