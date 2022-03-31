@@ -45,7 +45,7 @@ export class RegisterGovBodyServiceReal implements RegisterGovBodyService {
     return this.govLocationClient.getMyGovLocations().pipe(map((n) => this.mapMyGovLocations(n)));
   }
 
-  mapMyGovLocations(n): IGovLocation_Vm[] {
+  mapMyGovLocations(n: any[]): IGovLocation_Vm[] {
     const vms: IGovLocation_Vm[] = [];
     n.forEach((value, index) => {
       vms.push(this.mapper.mapper.map(value, 'IGovLocation_Vm', 'GovLocation_Dto'));
@@ -57,9 +57,9 @@ export class RegisterGovBodyServiceReal implements RegisterGovBodyService {
     return this.govbodyClient.getGovbodies(govLocationId).pipe(map((n) => this.mapGovbodies(n)));
   }
 
-  mapGovbodies(n): IGovbody_Vm[] {
+  mapGovbodies(n: any[]): IGovbody_Vm[] {
     const vms: IGovbody_Vm[] = [];
-    n.forEach((value, index) => {
+    n.forEach((value: any, index: any) => {
       vms.push(this.mapper.mapper.map(value, 'IGovbody_Vm', 'Govbody_Dto'));
     });
     return vms;
@@ -69,7 +69,7 @@ export class RegisterGovBodyServiceReal implements RegisterGovBodyService {
     return this.govbodyClient.getGovbody(govbodyId).pipe(map((n) => this.mapGovbodyDetails(n)));
   }
 
-  mapGovbodyDetails(n): IGovbodyDetails_Vm {
+  mapGovbodyDetails(n: GovbodyDetails_Dto): IGovbodyDetails_Vm {
     return this.mapper.mapper.map(n, 'IGovbodyDetails_Vm', 'GovbodyDetails_Dto');
   }
 

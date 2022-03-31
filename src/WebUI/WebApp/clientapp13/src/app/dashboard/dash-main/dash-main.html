@@ -73,7 +73,14 @@
     <gm-viewtranscript></gm-viewtranscript>
   </gm-large-card>
 
-    <gm-large-card
+  <gm-large-card
+      icon="manage_accounts"
+      iconcolor="icon-color-green"
+      title="{{registerGovBodyTitle}}">
+    <gm-register-gov-body></gm-register-gov-body>
+  </gm-large-card>
+
+  <gm-large-card
         *ngIf="(!isCounty && !isBeta)"
         icon="check"
         iconcolor="icon-color-green"

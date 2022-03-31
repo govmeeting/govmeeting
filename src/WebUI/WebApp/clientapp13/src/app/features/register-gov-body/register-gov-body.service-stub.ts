@@ -93,7 +93,7 @@ export class RegisterGovBodyServiceStub implements RegisterGovBodyService {
   }
 
   // get GovBody details
-  public getGovbody(govbodyId: number): Observable<IGovbodyDetails_Vm> {
+  public getGovbody(govbodyId: number): Observable<IGovbodyDetails_Vm | null> {
     switch (govbodyId) {
       case 4:
         return of(this.govbody[0]);
