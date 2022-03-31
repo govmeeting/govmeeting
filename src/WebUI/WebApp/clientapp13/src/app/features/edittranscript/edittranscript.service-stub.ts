@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
-import { EditTranscript, Talk, Word } from '../../models/edittranscript-view';
+import { EditTranscript } from '../../models/edittranscript-view';
 import { EditTranscriptSample } from '../../models/sample-data/edittranscript-sample';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { AppData } from '../../appdata';

@@ -13,7 +13,7 @@ import { NotesComponent } from '../features/notes/notes.component';
 import { MinutesComponent } from '../features/minutes/minutes.component';
 import { AlertsComponent } from '../features/alerts/alerts.component';
 // import { WorkareaComponent } from '../work_experiments/workarea/workarea.component';
-// import { RegisterGovBodyComponent } from './register-gov-body/register-gov-body.component';
+import { RegisterGovBodyComponent } from './register-gov-body/register-gov-body.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -37,7 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     OfficialsComponent,
     AlertsComponent,
     // WorkareaComponent,
-    // RegisterGovBodyComponent,
+    RegisterGovBodyComponent,
 
     // For counties
     NotesComponent,
@@ -55,7 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     OfficialsComponent,
     AlertsComponent,
     // WorkareaComponent,
-    // RegisterGovBodyComponent,
+    RegisterGovBodyComponent,
 
     // For counties
     NotesComponent,

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* tslint:disable */
 /* eslint-disable */
 //----------------------
@@ -12,7 +13,8 @@ import { Observable, throwError as _observableThrow, of as _observableOf } from 
 import { Injectable, Inject, Optional, InjectionToken } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angular/common/http';
 
-import * as moment from 'moment';
+// import * as moment from 'moment';
+import moment from 'moment';
 
 export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 
@@ -338,76 +340,6 @@ export class ApiClient implements IApiClient {
             }));
         }
         return _observableOf<boolean>(<any>null);
-    }
-}
-
-export interface IHealthCheckClient {
-    /**
-     * Get Health Check
-     * @return { status = "healthy"}
-     */
-    get(): Observable<FileResponse>;
-}
-
-@Injectable()
-export class HealthCheckClient implements IHealthCheckClient {
-    private http: HttpClient;
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http;
-        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
-    }
-
-    /**
-     * Get Health Check
-     * @return { status = "healthy"}
-     */
-    get(): Observable<FileResponse> {
-        let url_ = this.baseUrl + "/api/HealthCheck/Get";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_ : any = {
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Accept": "application/octet-stream"
-            })
-        };
-
-        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGet(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processGet(<any>response_);
-                } catch (e) {
-                    return <Observable<FileResponse>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<FileResponse>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processGet(response: HttpResponseBase): Observable<FileResponse> {
-        const status = response.status;
-        const responseBlob =
-            response instanceof HttpResponse ? response.body :
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
-        if (status === 200 || status === 206) {
-            const contentDisposition = response.headers ? response.headers.get("content-disposition") : undefined;
-            const fileNameMatch = contentDisposition ? /filename="?([^"]*?)"?(;|$)/g.exec(contentDisposition) : undefined;
-            const fileName = fileNameMatch && fileNameMatch.length > 1 ? fileNameMatch[1] : undefined;
-            return _observableOf({ fileName: fileName, data: <any>responseBlob, status: status, headers: _headers });
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<FileResponse>(<any>null);
     }
 }
 
@@ -749,12 +681,12 @@ export class GovbodyClient implements IGovbodyClient {
     }
 }
 
-export interface IWeatherForecastClient {
-    get(): Observable<WeatherForecast[]>;
+export interface IClient {
+    weatherForecast(): Observable<WeatherForecast[]>;
 }
 
 @Injectable()
-export class WeatherForecastClient implements IWeatherForecastClient {
+export class Client implements IClient {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -764,8 +696,8 @@ export class WeatherForecastClient implements IWeatherForecastClient {
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
     }
 
-    get(): Observable<WeatherForecast[]> {
-        let url_ = this.baseUrl + "/api/WeatherForecast/Get";
+    weatherForecast(): Observable<WeatherForecast[]> {
+        let url_ = this.baseUrl + "/WeatherForecast";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -777,11 +709,11 @@ export class WeatherForecastClient implements IWeatherForecastClient {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGet(response_);
+            return this.processWeatherForecast(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGet(<any>response_);
+                    return this.processWeatherForecast(<any>response_);
                 } catch (e) {
                     return <Observable<WeatherForecast[]>><any>_observableThrow(e);
                 }
@@ -790,7 +722,7 @@ export class WeatherForecastClient implements IWeatherForecastClient {
         }));
     }
 
-    protected processGet(response: HttpResponseBase): Observable<WeatherForecast[]> {
+    protected processWeatherForecast(response: HttpResponseBase): Observable<WeatherForecast[]> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -886,7 +818,7 @@ export class ViewMeeting_Dto implements IViewMeeting_Dto {
             for (let item of this.sections)
                 data["sections"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -932,7 +864,7 @@ export class ViewMeetingTopic_Dto implements IViewMeetingTopic_Dto {
         data["topicId"] = this.topicId;
         data["name"] = this.name;
         data["isExisting"] = this.isExisting;
-        return data; 
+        return data;
     }
 }
 
@@ -974,7 +906,7 @@ export class ViewMeetingSpeaker_Dto implements IViewMeetingSpeaker_Dto {
         data["speakerId"] = this.speakerId;
         data["name"] = this.name;
         data["isExisting"] = this.isExisting;
-        return data; 
+        return data;
     }
 }
 
@@ -1021,7 +953,7 @@ export class ViewMeetingSection_Dto implements IViewMeetingSection_Dto {
             for (let item of this.topicDiscussions)
                 data["topicDiscussions"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -1067,7 +999,7 @@ export class ViewMeetingTopicDiscussion_Dto implements IViewMeetingTopicDiscussi
             for (let item of this.talks)
                 data["talks"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -1105,7 +1037,7 @@ export class ViewMeetingTalk_Dto implements IViewMeetingTalk_Dto {
         data = typeof data === 'object' ? data : {};
         data["speakerId"] = this.speakerId;
         data["text"] = this.text;
-        return data; 
+        return data;
     }
 }
 
@@ -1173,7 +1105,7 @@ export class EditMeeting_Dto implements IEditMeeting_Dto {
                 data["talks"].push(item.toJSON());
         }
         data["lastEdit"] = this.lastEdit;
-        return data; 
+        return data;
     }
 }
 
@@ -1239,7 +1171,7 @@ export class EditMeetingTalk_Dto implements IEditMeetingTalk_Dto {
             for (let item of this.words)
                 data["words"].push(item.toJSON());
         }
-        return data; 
+        return data;
     }
 }
 
@@ -1295,7 +1227,7 @@ export class EditMeetingWord_Dto implements IEditMeetingWord_Dto {
         data["endTime"] = this.endTime;
         data["wordNum"] = this.wordNum;
         data["speakerTag"] = this.speakerTag;
-        return data; 
+        return data;
     }
 }
 
@@ -1343,7 +1275,7 @@ export class GovLocation_Dto implements IGovLocation_Dto {
         data["name"] = this.name;
         data["type"] = this.type;
         data["parentLocationId"] = this.parentLocationId;
-        return data; 
+        return data;
     }
 }
 
@@ -1372,7 +1304,7 @@ export class RegisterGovLocation_Cmd extends GovLocation_Dto implements IRegiste
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         super.toJSON(data);
-        return data; 
+        return data;
     }
 }
 
@@ -1447,7 +1379,7 @@ export class GovbodyDetails_Dto implements IGovbodyDetails_Dto {
         }
         data["recordingsUrl"] = this.recordingsUrl;
         data["transcriptsUrl"] = this.transcriptsUrl;
-        return data; 
+        return data;
     }
 }
 
@@ -1478,7 +1410,7 @@ export class RegisterGovbody_Cmd extends GovbodyDetails_Dto implements IRegister
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         super.toJSON(data);
-        return data; 
+        return data;
     }
 }
 
@@ -1514,7 +1446,7 @@ export class Official_Dto implements IOfficial_Dto {
         data = typeof data === 'object' ? data : {};
         data["name"] = this.name;
         data["title"] = this.title;
-        return data; 
+        return data;
     }
 }
 
@@ -1541,7 +1473,7 @@ export class ElectedOfficial_Dto extends Official_Dto implements IElectedOfficia
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         super.toJSON(data);
-        return data; 
+        return data;
     }
 }
 
@@ -1566,7 +1498,7 @@ export class AppointedOfficial_Dto extends Official_Dto implements IAppointedOff
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         super.toJSON(data);
-        return data; 
+        return data;
     }
 }
 
@@ -1574,7 +1506,6 @@ export interface IAppointedOfficial_Dto extends IOfficial_Dto {
 }
 
 export class Govbody_Dto implements IGovbody_Dto {
-    id!: number;
     name!: string | undefined;
     parentLocationId!: number;
 
@@ -1589,7 +1520,6 @@ export class Govbody_Dto implements IGovbody_Dto {
 
     init(_data?: any, _mappings?: any) {
         if (_data) {
-            this.id = _data["id"];
             this.name = _data["name"];
             this.parentLocationId = _data["parentLocationId"];
         }
@@ -1602,15 +1532,13 @@ export class Govbody_Dto implements IGovbody_Dto {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
-        data["id"] = this.id;
         data["name"] = this.name;
         data["parentLocationId"] = this.parentLocationId;
-        return data; 
+        return data;
     }
 }
 
 export interface IGovbody_Dto {
-    id: number;
     name: string | undefined;
     parentLocationId: number;
 }
@@ -1650,7 +1578,7 @@ export class WeatherForecast implements IWeatherForecast {
         data["temperatureC"] = this.temperatureC;
         data["temperatureF"] = this.temperatureF;
         data["summary"] = this.summary;
-        return data; 
+        return data;
     }
 }
 
@@ -1669,7 +1597,7 @@ function jsonParse(json: any, reviver?: any) {
     json = (function recurse(obj: any, prop?: any, parent?: any) {
         if (typeof obj !== 'object' || !obj)
             return obj;
-        
+
         if ("$ref" in obj) {
             let ref = obj.$ref;
             if (ref in byid)
@@ -1683,7 +1611,7 @@ function jsonParse(json: any, reviver?: any) {
                 obj = obj.$values;
             byid[id] = obj;
         }
-        
+
         if (Array.isArray(obj)) {
             obj = obj.map((v, i) => recurse(v, i, obj));
         } else {

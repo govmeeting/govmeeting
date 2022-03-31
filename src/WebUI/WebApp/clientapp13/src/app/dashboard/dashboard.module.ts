@@ -26,7 +26,7 @@ import { ViewTranscriptModule } from '../features/viewtranscript/viewtranscript.
     LargeCardsComponent,
     LargeCardComponent,
     DashMainComponent,
-    DashFooterComponent,
+    DashFooterComponent
   ],
   imports: [
     CommonModule,

@@ -15,13 +15,19 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { AboutProjectModule } from './about-project/about-project.module';
 
 import { ChatService } from './features/chat/chat.service';
+import { ErrorHandlingService } from './common/error-handling/error-handling.service';
+
 import { EditTranscriptServiceReal } from './features/edittranscript/edittranscript.service-real';
 import { EditTranscriptServiceStub } from './features/edittranscript/edittranscript.service-stub';
 import { EditTranscriptService } from './features/edittranscript/edittranscript.service';
-import { ErrorHandlingService } from './common/error-handling/error-handling.service';
+
 import { ViewTranscriptServiceReal } from './features/viewtranscript/viewtranscript.service-real';
 import { ViewTranscriptServiceStub } from './features/viewtranscript/viewtranscript.service-stub';
 import { ViewTranscriptService } from './features/viewtranscript/viewtranscript.service';
+
+import { RegisterGovBodyService } from './features/register-gov-body/register-gov-body.service';
+import { RegisterGovBodyServiceStub } from './features/register-gov-body/register-gov-body.service-stub';
+import { RegisterGovBodyServiceReal } from './features/register-gov-body/register-gov-body.service-real';
 
 
 // const isAspServerRunning = environment.useServer; // Is the Asp.Net server running?
@@ -57,6 +63,10 @@ const isAspServerRunning = false;
     {
       provide: ViewTranscriptService,
       useClass: isAspServerRunning ? ViewTranscriptServiceReal : ViewTranscriptServiceStub,
+    },
+    {
+      provide: RegisterGovBodyService,
+      useClass: isAspServerRunning ? RegisterGovBodyServiceReal : RegisterGovBodyServiceStub,
     }
   ],
   bootstrap: [AppComponent]

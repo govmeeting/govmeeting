@@ -16,14 +16,14 @@ export class RegisterGovBodyComponent implements OnInit {
   form: FormGroup;
   gBService: RegisterGovBodyService;
 
-  locations$: Observable<IGovLocation_Vm[]> = null;
-  bodies$: Observable<IGovbody_Vm[]> = null;
-  bodyDetails$: Observable<IGovbodyDetails_Vm> = null;
+  locations$: Observable<IGovLocation_Vm[]> | null = null;
+  bodies$: Observable<IGovbody_Vm[]> | null = null;
+  bodyDetails$: Observable<IGovbodyDetails_Vm> | null = null;
 
-  bodyDetails: IGovbodyDetails_Vm;
+  bodyDetails: IGovbodyDetails_Vm | null = null;
 
-  selectedLocation: IGovLocation_Vm;
-  selectedBody: IGovbody_Vm;
+  selectedLocation: IGovLocation_Vm | null = null;
+  selectedBody: IGovbody_Vm | null = null;
 
   constructor(fb: FormBuilder, _gBService: RegisterGovBodyService) {
     this.form = fb.group({
@@ -43,12 +43,17 @@ export class RegisterGovBodyComponent implements OnInit {
   selectLocation(filterVal: any) {
     const x = 0;
     console.log('selectLocation');
-    this.bodies$ = this.gBService.getGovbodies(this.selectedLocation.id);
+    if (this.selectedLocation) {
+      this.bodies$ = this.gBService.getGovbodies(this.selectedLocation.id);
+    }
   }
 
   selectBody(filterVal: any) {
     console.log('selectBody');
-    this.bodyDetails$ = this.gBService.getGovbody(this.selectedBody.id).pipe(tap((bod) => this.form.patchValue(bod)));
+    if (this.selectedBody) {
+    this.bodyDetails$ = this.gBService.getGovbody(this.selectedBody.id).pipe(tap((bod: any) =>
+      this.form.patchValue(bod)));
+    }
   }
 
   submit(form: IGovbodyDetails_Vm, valid: boolean) {
@@ -60,6 +65,10 @@ export class RegisterGovBodyComponent implements OnInit {
 
   hasError(controlName: string, error: string) {
     const control = this.form.get(controlName);
-    return control.touched && control.hasError(error);
+    if (control) {
+      return control.touched && control.hasError(error);
+    } else {
+      return true;
+    }
   }
 }

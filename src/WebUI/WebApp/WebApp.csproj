@@ -112,15 +112,20 @@
     </ItemGroup>
   </Target>
 
-  <!-- Use   NSwag to build code if not Azure or Github build -->
-  <!--<Target Name="NSwag" BeforeTargets="AfterBuild" Condition="'$(GITHUB_ACTIONS)'!='True' And  '$(TF_BUILD)'!='True'">
+    <!-- Use   NSwag to build code if not an Azure or Github build -->
+  <Target Name="NSwag" BeforeTargets="AfterBuild" Condition="'$(GITHUB_ACTIONS)'!='True' And  '$(TF_BUILD)'!='True'">
     <Message Text="Run NSwag to generate C# and Typescript APIs" Importance="high" />
+    <Message Text="Command=$(NSwagExe_Core31) Configuration=$(Configuration)" Importance="high" />
+    <!--
+      NSwagExe_Core31 = "dotnet ~/.nuget/packages/nswag.msbuild/<nswag_version>/tools/<dotnet_version>/dotnet-nswag.dll"
+      CSharpOutputPath & TypescriptOutputPath are variables used within nswag.json.
+    -->
     <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Core31) run nswag.json /variables:Configuration=$(Configuration),CSharpOutputPath=$(MSBuildThisFileDirectory)..\Client.CSharp,TypescriptOutputPath=$(MSBuildThisFileDirectory)..\Client.Typescript">
       <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
       <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
     </Exec>
     <Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />
     <Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />
-  </Target>-->
+  </Target>
 
 </Project>

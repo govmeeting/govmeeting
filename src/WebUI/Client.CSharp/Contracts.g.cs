@@ -66,6 +66,22 @@ namespace Example.Api.Client.CSharp.Contracts
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.10.2.0 (NJsonSchema v10.3.4.0 (Newtonsoft.Json v12.0.0.0))")]
+    public partial interface IHealthCheckClient
+    {
+        /// <summary>Get Health Check</summary>
+        /// <returns>{ status = "healthy"}</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FileResponse> GetAsync();
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Get Health Check</summary>
+        /// <returns>{ status = "healthy"}</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FileResponse> GetAsync(System.Threading.CancellationToken cancellationToken);
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.10.2.0 (NJsonSchema v10.3.4.0 (Newtonsoft.Json v12.0.0.0))")]
     public partial interface IGovLocationClient
     {
         /// <summary>Register GovLocation</summary>
@@ -551,6 +567,9 @@ namespace Example.Api.Client.CSharp.Contracts
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.3.4.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class Govbody_Dto 
     {
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Name { get; set; }
     
