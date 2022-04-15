@@ -15,8 +15,8 @@
     {
         public string speaker;
         public string said;
-        public string? section;
-        public string? topic;
+        public string section;
+        public string topic;
         bool showSetTopoc;
         public double confidence;
         public int wordcount;
