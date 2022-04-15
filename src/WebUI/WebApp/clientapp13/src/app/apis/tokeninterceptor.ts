@@ -1,4 +1,6 @@
-/* This code is from: https://blog.sanderaernouts.com/autogenerate-typescript-api-client-with-nswag
+/* This code is not currently being used, but may be needed. I copied the code from the tutorial that
+  I was using when working on NSwag to generate the Typescript client code for the backend API.
+ See: https://blog.sanderaernouts.com/autogenerate-typescript-api-client-with-nswag
 "When the clients are generated you still have to add a way for them to authenticate.
  In Angular you can do this with an HttpInterceptor: "
  https://angular.io/api/common/http/HttpInterceptor
