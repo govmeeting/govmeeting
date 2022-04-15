@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { GovbodyMapper } from '../../models/govbody-mapper';
 import { GovbodyClient, GovLocationClient } from '../../apis/api.generated.clients';
 import { GovbodyDetails_Dto, GovLocation_Dto, Official_Dto } from '../../apis/api.generated.clients';
-import { RegisterGovbody_Cmd } from '../../apis/api.generated.clients';
+// import { RegisterGovbody_Cmd } from '../../apis/api.generated.clients';
 import { IGovbody_Vm, IGovbodyDetails_Vm, IGovLocation_Vm, IOfficial_Vm } from '../../models/govbody-view';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angular/common/http';
