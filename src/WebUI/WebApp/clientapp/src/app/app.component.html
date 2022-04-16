@@ -1,30 +1,32 @@
 <!--<h1> Hello World </h1>-->
 
-<mat-sidenav-container class="sidenav-container" [hasBackdrop]="options.value.hasBackdrop">
-  <mat-sidenav
-    class="sidenav"
-    #sidenav
-    [mode]="options.value.mode"
-    [opened]="!mediaQueryList.matches"
-    [fixedInViewport]="options.value.fixed"
-    [fixedTopGap]="options.value.top"
-    [fixedBottomGap]="options.value.bottom"
-  >
-    <!-- <gm-sidenav-menu defaultLocation="Boothbay Harbor"></gm-sidenav-menu> -->
-    <gm-sidenav-menu></gm-sidenav-menu>
+<div class="header-container"> <gm-header></gm-header> </div>
+
+<mat-sidenav-container class="sidenav-container" hasBackdrop=false>
+
+  <mat-sidenav class="sidenav" #sidenav [opened]="!mediaQueryList.matches"
+    mode=side fixedInViewport=true fixedTopGap=0 fixedBottomGap=0>
+
+  <gm-sidenav-menu></gm-sidenav-menu>
+
+  <!-- Mat-sidenav - A user may make a selection from left to right (in document order) or right to left (reverse of
+  Mat-sidenav - A user may make a selection from left to right (in document order) or right to left (reverse of
+  Mat-sidenav - A user may make a selection from left to right (in document order) or right to left (reverse of -->
+
   </mat-sidenav>
 
-  <mat-sidenav-content>
-    <!-- <button (click)="sendSettings()"> Send Settings</button><br/>
-  <button (click)="setLanguage()"> Set Language </button><br/>
-  <button (click)="routeAbout()"> Route About </button>
-  <button (click)="routeDash()"> Route Dash </button><br/> -->
+  <mat-sidenav-content class="sidenav-content">
 
-    <!-- This is for debugging timing issues with services. See bottom of app.component.ts -->
-    <!--<ul id="replaySubjectLogOutput"></ul>-->
+    <!-- <div class="header-container"> <gm-header></gm-header> </div> -->
 
-    <gm-header></gm-header>
     <router-outlet></router-outlet>
+    <!-- <gm-dash-main></gm-dash-main> -->
+
+    <!-- Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
+    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
+    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
+    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of
+    Mat-sidenav-context - A user may make a selection from left to right (in document order) or right to left (reverse of -->
 
   </mat-sidenav-content>
 </mat-sidenav-container>
@@ -32,9 +34,6 @@
 <!-- <mat-toolbar class="main-footer">
   <gm-dash-footer></gm-dash-footer>
 </mat-toolbar> -->
-<!-- partial -->
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script src="https://www.amcharts.com/lib/3/serial.js"></script>
-<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 <script src="../../../script.js"></script>

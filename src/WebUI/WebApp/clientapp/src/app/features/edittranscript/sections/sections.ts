@@ -10,8 +10,8 @@ const NoLog = true; // set to false for console logging
 })
 export class SectionsComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
-  errorMessage: string;
-  sections: string[];
+  errorMessage: string = '';
+  sections: string[] = [];
   gotSections = false;
 
   constructor(private _edittranscriptService: EditTranscriptService) {}
@@ -25,11 +25,11 @@ export class SectionsComponent implements OnInit {
       this.gotSections = true;
       NoLog || console.log(this.ClassName + 'getSections');
       this._edittranscriptService.getTalks().subscribe(
-        (addtags) => {
+        (addtags: any) => {
           this.sections = addtags.sections;
           NoLog || console.log(this.ClassName, this.sections);
         },
-        (error) => (this.errorMessage = error as any)
+        (error: any) => (this.errorMessage = error as any)
       );
     }
   }
@@ -38,7 +38,7 @@ export class SectionsComponent implements OnInit {
     NoLog || console.log(this.ClassName, newValue);
   }
 
-  isEmptyObject(obj) {
+  isEmptyObject(obj: any) {
     let prop;
     for (prop in obj) {
       if (obj.hasOwnProperty(prop)) {

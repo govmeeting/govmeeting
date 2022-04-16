@@ -3,39 +3,39 @@
 // This is the JSON format of the text to be tagged
 
 export class EditTranscript {
-  sections: string[];
-  topics: string[];
-  talks: Talk[] | null;
+  sections: string[] = [];
+  topics: string[] = [];
+  talks: Talk[] = [];
 }
 
 export class Talk {
-  speaker: string | null;
-  said: string;
-  section: string | null;
-  topic: string | null;
-  showSetTopic: boolean;
-  confidence: number;
-  wordcount: number;
-  words: Word[];
-  captions: [Caption];
+  speaker: string = '';
+  said: string = '';
+  section: string = '';
+  topic: string = '';
+  showSetTopic: boolean = false;
+  confidence: number = 0;
+  wordcount: number = 0;
+  words: Word[] = [];
+  captions: [Caption] | null = null;
 }
 
 export class Word {
-  word: string;
-  confidence: number;
-  starttime: number;
-  endtime: number;
-  speaker: number;
-  wordnum: number;
+  word: string = '';
+  confidence: number = 0;
+  starttime: number = 0;
+  endtime: number = 0;
+  speaker: number = 0;
+  wordnum: number = 0;
 }
 
 export class Caption {
-  Id: number;
-  text: string;
-  hilite: boolean;
+  Id: number = 0;
+  text: string = '';
+  hilite: boolean = false;
 }
 
 export class PlayPhraseData {
-  start: number;
-  duration: number;
+  start: number = 0;
+  duration: number = 0;
 }

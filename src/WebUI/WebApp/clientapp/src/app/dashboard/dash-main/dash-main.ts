@@ -16,33 +16,33 @@ export class DashMainComponent implements OnInit {
   isBeta: boolean;
   isDevMode: boolean;
   language = 'en';
-  location: string;
-  agency: string;
-  isMunicipal: boolean;
-  isCounty: boolean;
-  isState: boolean;
-  isCountry: boolean;
+  location: string = '';
+  agency: string = '';
+  isMunicipal: boolean = false;
+  isCounty: boolean = false;
+  isState: boolean = false;
+  isCountry: boolean = false;
 
   // page titles
-  govinfoTitle: string;
-  billsTitle: string;
-  meetingsTitle: string;
-  newsTitle: string;
-  edittranscriptTitle: string;
-  fixasrTitle: string;
-  addtagsTitle: string;
-  viewtranscriptTitle: string;
-  issuesTitle: string;
-  officialsTitle: string;
-  virtualMeetingTitle: string;
-  chatTitle: string;
-  chartsTitle: string;
-  notesTitle: string;
-  minutesTitle: string;
-  workitemsTitle: string;
-  alertsTitle: string;
-  workareaTitle: string;
-  registerGovBodyTitle: string;
+  govinfoTitle: string = '';
+  billsTitle: string = '';
+  meetingsTitle: string = '';
+  newsTitle: string = '';
+  edittranscriptTitle: string = '';
+  fixasrTitle: string = '';
+  addtagsTitle: string = '';
+  viewtranscriptTitle: string = '';
+  issuesTitle: string = '';
+  officialsTitle: string = '';
+  virtualMeetingTitle: string = '';
+  chatTitle: string = '';
+  chartsTitle: string = '';
+  notesTitle: string = '';
+  minutesTitle: string = '';
+  workitemsTitle: string = '';
+  alertsTitle: string = '';
+  workareaTitle: string = '';
+  registerGovBodyTitle: string = '';
 
   constructor(private userSettingsService: UserSettingsService, private appData: AppData) {
     this.isBeta = appData.isBeta;
@@ -50,14 +50,14 @@ export class DashMainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userSettingsService.subscribeSettings((message) => {
+    this.userSettingsService.subscribeSettings(() => {
       // NoLog || console.log(this.ClassName + "receive message: " + message)
       const newSettings = this.userSettingsService.settings;
       NoLog || console.log(this.ClassName + 'SCAO ', newSettings);
       this.changeLocation(newSettings);
     });
 
-    this.userSettingsService.subscribeLanguage((language) => {
+    this.userSettingsService.subscribeLanguage((language: string) => {
       this.language = language;
       this.changeTitles();
     });

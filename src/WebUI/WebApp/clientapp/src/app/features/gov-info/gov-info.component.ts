@@ -16,7 +16,7 @@ export class GovInfoComponent implements OnInit {
   constructor(private userSettingsService: UserSettingsService) {}
 
   ngOnInit() {
-    this.userSettingsService.subscribeSettings((message) => {
+    this.userSettingsService.subscribeSettings((message: any) => {
       // NoLog || console.log(this.ClassName + "receive message: " + message)
       const newSettings = this.userSettingsService.settings;
       NoLog || console.log(this.ClassName + 'SCAO ', newSettings);

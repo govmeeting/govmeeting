@@ -4,6 +4,7 @@ export enum LocationType {
   state,
   federal,
   nongovernment,
+  notdefined
 }
 
 export class UserSettings {
@@ -12,14 +13,14 @@ export class UserSettings {
   locationType: LocationType;
   agency: string;
 
-  constructor(_language?: string, _location?: string, _agency?: string) {
+  constructor(_language: string, _location: string, _agency: string) {
     this.language = _language;
     this.location = _location;
     this.locationType = this.getLocationType(_location);
     this.agency = _agency;
   }
 
-  // This routine is a kludge. We need to have a location type that includes the
+  // ToDo - This routine is a kludge. We need a location type that includes the
   // displayName, locationType, etc. This should be used in the menu items
   // and user settings.
   private getLocationType(location: string): LocationType {
@@ -40,6 +41,6 @@ export class UserSettings {
         return LocationType.nongovernment;
       }
     }
-    return null;
+    return LocationType.notdefined;
   }
 }

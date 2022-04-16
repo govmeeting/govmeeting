@@ -24,7 +24,7 @@ const NoLog = true; // set to false for console logging
 // export class SidenavMenuComponent implements AfterViewInit {
 export class SidenavMenuComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
-  isBeta: boolean;
+  isBeta: boolean = false;
   @ViewChild('appDrawer', { static: false })
   subscription: Subscription;
   // sidenav: ElementRef;
@@ -67,7 +67,7 @@ export class SidenavMenuComponent implements OnInit {
         NoLog || console.log(this.ClassName + 'Selected location. Navigate to dashboard and set settings');
         this.router.navigate(['dashboard']);
         location = item.displayName;
-        const userSettings: UserSettings = new UserSettings('en', location, null);
+        const userSettings: UserSettings = new UserSettings('en', location, 'null');
         this.userSettingsService.settings = userSettings;
 
         break;

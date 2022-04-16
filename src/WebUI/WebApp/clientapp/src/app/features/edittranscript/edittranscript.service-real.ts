@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-// import { Headers, RequestOptions } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import 'rxjs/add/operator/share';
 import { share } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
-// import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { EditTranscript } from '../../models/edittranscript-view';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
-import { EditTranscript, Talk, Word } from '../../models/edittranscript-view';
 import { EditTranscriptService } from './edittranscript.service';
 
 const NoLog = true; // set to false for console logging
@@ -17,10 +14,10 @@ export class EditTranscriptServiceReal implements EditTranscriptService {
   private ClassName: string = this.constructor.name + ': ';
 
   private addtagsUrl = 'api/edittranscript';
-  private postId;
+  // private postId;
 
-  private addtags: EditTranscript;
-  private observable: Observable<EditTranscript>;
+  // private addtags: EditTranscript;
+  private observable: Observable<EditTranscript> | null = null;
 
   // Normally the meetingId will be passed to the getTalks method.
   // But we did not yet write the component for the user to select a meeting.

@@ -1,8 +1,19 @@
+/*  NavItem is a navigation item in the sidebar menu.
+  Each NavItem can be either:
+    1. a route to go to, or
+    2. an array of NavItems that expands, when the user click on it.
+  There are two kind of "routes"
+    1. a documentation page - those in the top half of the menu, under "About".
+    2. a government entity - those in the bottom half, under "Select Location"
+ */
+
 export enum EntryType {
   location,
   agency,
   link,
   docId,
+  parent,
+  unknown
 }
 export class NavItem {
   entryType: EntryType;
@@ -20,6 +31,8 @@ export class NavItem {
     this.displayName = displayName;
     this.iconName = iconName;
     this.expanded = false;
+    this.route = '';
+    this.depth = 0;
     if (childrenOrRoute !== undefined) {
       if (typeof childrenOrRoute === 'string') {
         this.route = childrenOrRoute;
@@ -28,5 +41,9 @@ export class NavItem {
       }
     }
     this.position = [];
+  }
+
+  nullItem() : NavItem {
+    return new NavItem(EntryType.unknown, '','','');
   }
 }

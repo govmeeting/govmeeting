@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, OnInit, EventEmitter, Output } from '@angular/core';
-import { NavItem } from '../nav-item';
+import { EntryType, NavItem } from '../nav-item';
 import { Router } from '@angular/router';
 import { NavService } from '../nav.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -21,10 +21,10 @@ const NoLog = true; // set to false for console logging
 })
 export class MenuListItemComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
-  @Input() item: NavItem;
+  @Input() item: NavItem = new NavItem(EntryType.unknown, '','','');
   // @HostBinding('attr.aria-expanded') ariaExpanded = this.item.expanded;
-  @Input() depth: number;
-  displayNameClass: string;
+  @Input() depth: number = 0;
+  displayNameClass: string = '';
   disabled = false;
   grayout = '';
 

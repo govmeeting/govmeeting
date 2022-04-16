@@ -10,8 +10,14 @@ import { SmallCardComponent } from './small-cards/small-card/small-card';
 import { LargeCardsComponent } from './large-cards/large-cards';
 import { LargeCardComponent } from './large-cards/large-card/large-card';
 
-// import { DashMainComponent } from './dash-main/dash-main';
+import { DashMainComponent } from './dash-main/dash-main';
 import { DashFooterComponent } from './dash-footer/dash-footer';
+
+import { FeaturesModule } from '../features/features.module';
+import { VirtualMeetingModule } from '../features/virtual-meeting/virtual-meeting-module';
+import { ChatModule } from '../features/chat/chat.module';
+import { EditTranscriptModule } from '../features/edittranscript/edittranscript.module';
+import { ViewTranscriptModule } from '../features/viewtranscript/viewtranscript.module';
 
 @NgModule({
   declarations: [
@@ -19,20 +25,25 @@ import { DashFooterComponent } from './dash-footer/dash-footer';
     SmallCardComponent,
     LargeCardsComponent,
     LargeCardComponent,
-    // DashMainComponent,
-    DashFooterComponent,
+    DashMainComponent,
+    DashFooterComponent
   ],
   imports: [
     CommonModule,
-    DemoMaterialModule
+    DemoMaterialModule,
+    FeaturesModule,
+    VirtualMeetingModule,
+    ChatModule,
+    EditTranscriptModule,
+    ViewTranscriptModule
   ],
   exports: [
-    SmallCardsComponent,
-    SmallCardComponent,
-    LargeCardsComponent,
-    LargeCardComponent,
+    // SmallCardsComponent,
+    // SmallCardComponent,
+    // LargeCardsComponent,
+    // LargeCardComponent,
     // DashMainComponent,
-    DashFooterComponent,
+    // DashFooterComponent,
   ],
 })
 export class DashboardModule {}
