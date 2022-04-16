@@ -10,7 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about-project/about-project';
 import { OverviewComponent } from './about-project/overview/overview';
 // import { SysDesignComponent } from './about-project/sys-design/sys-design';
-// import { FetchDataComponent } from './fetch-data/fetch-data.component';
+// import { FetchDataComponent } from './work_experiments/fetch-data/fetch-data.component';
 import { DashMainComponent } from './dashboard/dash-main/dash-main';
 
 // "Routing in Angular using Routerlink, Navigate and NavigateByUrl"
