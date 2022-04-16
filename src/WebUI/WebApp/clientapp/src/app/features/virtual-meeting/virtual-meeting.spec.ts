@@ -6,13 +6,11 @@ describe('VirtualMeetingComponent', () => {
   let component: VirtualMeetingComponent;
   let fixture: ComponentFixture<VirtualMeetingComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [VirtualMeetingComponent],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [VirtualMeetingComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(VirtualMeetingComponent);

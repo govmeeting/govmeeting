@@ -13,7 +13,7 @@ export enum EntryType {
   link,
   docId,
   parent,
-  unknown
+  unknown,
 }
 export class NavItem {
   entryType: EntryType;
@@ -43,7 +43,7 @@ export class NavItem {
     this.position = [];
   }
 
-  nullItem() : NavItem {
-    return new NavItem(EntryType.unknown, '','','');
+  nullItem(): NavItem {
+    return new NavItem(EntryType.unknown, '', '', '');
   }
 }

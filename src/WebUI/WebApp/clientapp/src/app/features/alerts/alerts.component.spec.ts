@@ -6,13 +6,11 @@ describe('AlertsComponent', () => {
   let component: AlertsComponent;
   let fixture: ComponentFixture<AlertsComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [AlertsComponent],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [AlertsComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AlertsComponent);

@@ -33,7 +33,7 @@ export class ChatService {
     if (this._hubConnection === undefined) {
       return;
     }
-      this._hubConnection
+    this._hubConnection
       .start()
       .then(() => {
         this.connectionIsEstablished = true;

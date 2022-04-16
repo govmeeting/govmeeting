@@ -1,137 +1,90 @@
 <main class="main">
-
   <gm-small-cards>
-
-    <gm-small-card
-        class="top1"
-        icon="info"
-        iconcolor="icon-color-red"
-        title="{{govinfoTitle}}">
+    <gm-small-card class="top1" icon="info" iconcolor="icon-color-red" title="{{govinfoTitle}}">
       <gm-gov-info> </gm-gov-info>
     </gm-small-card>
 
     <gm-small-card
-        *ngIf="(!isCounty && !isBeta)"
-        class="top2"
-        icon="rule"
-        iconcolor="icon-color-orange"
-        title="{{billsTitle}}">
+      *ngIf="(!isCounty && !isBeta)"
+      class="top2"
+      icon="rule"
+      iconcolor="icon-color-orange"
+      title="{{billsTitle}}"
+    >
       <gm-bills> </gm-bills>
     </gm-small-card>
 
-    <gm-small-card
-        class="top3"
-        icon="group"
-        iconcolor="icon-color-green"
-        title="{{meetingsTitle}}">
+    <gm-small-card class="top3" icon="group" iconcolor="icon-color-green" title="{{meetingsTitle}}">
       <gm-meetings> </gm-meetings>
     </gm-small-card>
 
     <gm-small-card
-        *ngIf="!isBeta"
-        class="top4"
-        icon="announcements"
-        iconcolor="icon-color-purple"
-        title="{{newsTitle}}">
+      *ngIf="!isBeta"
+      class="top4"
+      icon="announcements"
+      iconcolor="icon-color-purple"
+      title="{{newsTitle}}"
+    >
       <gm-news> </gm-news>
     </gm-small-card>
-
   </gm-small-cards>
 
-
   <gm-large-cards>
-
-    <gm-large-card
-        *ngIf="(isCounty && !isBeta)"
-        icon="notes"
-        iconcolor="icon-color-green"
-        title="{{notesTitle}}">
+    <gm-large-card *ngIf="(isCounty && !isBeta)" icon="notes" iconcolor="icon-color-green" title="{{notesTitle}}">
       <gm-notes></gm-notes>
     </gm-large-card>
 
     <gm-large-card
-        *ngIf="(isCounty && !isBeta)"
-        icon="content_copy"
-        iconcolor="icon-color-green"
-        title="{{minutesTitle}}">
+      *ngIf="(isCounty && !isBeta)"
+      icon="content_copy"
+      iconcolor="icon-color-green"
+      title="{{minutesTitle}}"
+    >
       <gm-minutes></gm-minutes>
     </gm-large-card>
 
-    <gm-large-card
-        *ngIf="!isCounty"
-        icon="spellcheck"
-        iconcolor="icon-color-green"
-        title="{{edittranscriptTitle}}">
+    <gm-large-card *ngIf="!isCounty" icon="spellcheck" iconcolor="icon-color-green" title="{{edittranscriptTitle}}">
       <gm-edittranscript></gm-edittranscript>
     </gm-large-card>
 
-    <gm-large-card
-      *ngIf="!isCounty"
-      icon="book"
-      iconcolor="icon-color-green"
-      title="{{viewtranscriptTitle}}">
-    <gm-viewtranscript></gm-viewtranscript>
-  </gm-large-card>
+    <gm-large-card *ngIf="!isCounty" icon="book" iconcolor="icon-color-green" title="{{viewtranscriptTitle}}">
+      <gm-viewtranscript></gm-viewtranscript>
+    </gm-large-card>
 
-  <gm-large-card
-      icon="manage_accounts"
-      iconcolor="icon-color-green"
-      title="{{registerGovBodyTitle}}">
-    <gm-register-gov-body></gm-register-gov-body>
-  </gm-large-card>
+    <gm-large-card icon="manage_accounts" iconcolor="icon-color-green" title="{{registerGovBodyTitle}}">
+      <gm-register-gov-body></gm-register-gov-body>
+    </gm-large-card>
 
-  <gm-large-card
-        *ngIf="(!isCounty && !isBeta)"
-        icon="check"
-        iconcolor="icon-color-green"
-        title="{{workitemsTitle}}">
+    <gm-large-card *ngIf="(!isCounty && !isBeta)" icon="check" iconcolor="icon-color-green" title="{{workitemsTitle}}">
       <gm-workitems></gm-workitems>
     </gm-large-card>
 
-    <gm-large-card
-        *ngIf="!isBeta"
-        icon="work"
-        iconcolor="icon-color-green"
-        title="{{issuesTitle}}">
+    <gm-large-card *ngIf="!isBeta" icon="work" iconcolor="icon-color-green" title="{{issuesTitle}}">
       <gm-issues></gm-issues>
     </gm-large-card>
 
-    <gm-large-card
-        *ngIf="!isBeta"
-        icon="people"
-        iconcolor="icon-color-green"
-        title="{{officialsTitle}}">
+    <gm-large-card *ngIf="!isBeta" icon="people" iconcolor="icon-color-green" title="{{officialsTitle}}">
       <gm-officials></gm-officials>
     </gm-large-card>
 
-    <gm-large-card
-        *ngIf="!isBeta"
-        icon="meeting_room"
-        iconcolor="icon-color-red"
-        title="{{virtualMeetingTitle}}">
+    <gm-large-card *ngIf="!isBeta" icon="meeting_room" iconcolor="icon-color-red" title="{{virtualMeetingTitle}}">
       <gm-virtual-meeting></gm-virtual-meeting>
     </gm-large-card>
 
     <gm-large-card
-        *ngIf="(!isCounty && !isBeta)"
-        icon="notifications"
-        iconcolor="icon-color-green"
-        title="{{alertsTitle}}">
+      *ngIf="(!isCounty && !isBeta)"
+      icon="notifications"
+      iconcolor="icon-color-green"
+      title="{{alertsTitle}}"
+    >
       <gm-alerts></gm-alerts>
     </gm-large-card>
 
-    <gm-large-card
-        *ngIf="!isBeta"
-        icon="chat_bubble"
-        iconcolor="icon-color-red"
-        title="{{chatTitle}}">
+    <gm-large-card *ngIf="!isBeta" icon="chat_bubble" iconcolor="icon-color-red" title="{{chatTitle}}">
       <gm-chat></gm-chat>
     </gm-large-card>
 
-    <gm-large-card
-        icon="bar_chart"
-        iconcolor="icon-color-green"
-        title="{{chartsTitle}}">
+    <gm-large-card icon="bar_chart" iconcolor="icon-color-green" title="{{chartsTitle}}">
       [ Under Development ] <br />
       This component will allow data to be compared with pie, bar and line charts.
       <!-- We removed the amcharts components and will replace them with charts.js ones. -->
@@ -142,8 +95,5 @@
       <!-- <gm-bar-chart></gm-bar-chart> -->
       <!-- <gm-gauge></gm-gauge> -->
     </gm-large-card>
-
-
   </gm-large-cards>
-
 </main>

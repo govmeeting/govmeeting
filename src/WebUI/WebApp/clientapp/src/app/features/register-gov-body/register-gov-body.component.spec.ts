@@ -12,15 +12,13 @@ describe('RegisterGovBodyComponent', () => {
   let component: RegisterGovBodyComponent;
   let fixture: ComponentFixture<RegisterGovBodyComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [RegisterGovBodyComponent],
-        providers: [FormBuilder, { provide: RegisterGovBodyService, useClass: MockRegisterGovBodyService }],
-        schemas: [NO_ERRORS_SCHEMA],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [RegisterGovBodyComponent],
+      providers: [FormBuilder, { provide: RegisterGovBodyService, useClass: MockRegisterGovBodyService }],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterGovBodyComponent);

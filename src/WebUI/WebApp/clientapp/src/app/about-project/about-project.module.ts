@@ -15,12 +15,7 @@ import { OverviewComponent } from './overview/overview';
     OverviewComponent,
     // SysDesignComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    DemoMaterialModule,
-    HttpClientModule,
-    MarkdownModule.forRoot()],
+  imports: [CommonModule, RouterModule, DemoMaterialModule, HttpClientModule, MarkdownModule.forRoot()],
   exports: [DemoMaterialModule],
 })
 export class AboutProjectModule {}

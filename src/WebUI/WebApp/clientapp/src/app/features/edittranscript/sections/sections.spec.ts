@@ -17,14 +17,12 @@ describe('SectionsComponent', () => {
   let component: SectionsComponent;
   let fixture: ComponentFixture<SectionsComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [SectionsComponent],
-        providers: [{ provide: EditTranscriptService, useClass: ServiceStub }],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [SectionsComponent],
+      providers: [{ provide: EditTranscriptService, useClass: ServiceStub }],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SectionsComponent);

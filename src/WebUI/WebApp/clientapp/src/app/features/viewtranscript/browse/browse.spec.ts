@@ -24,17 +24,15 @@ describe('BrowseComponent', () => {
   let component: BrowseComponent;
   let fixture: ComponentFixture<BrowseComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [BrowseComponent],
-        providers: [
-          { provide: ViewTranscriptService, useClass: ServiceStub },
-          { provide: UserchoiceService, useClass: UserchoiceStub },
-        ],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [BrowseComponent],
+      providers: [
+        { provide: ViewTranscriptService, useClass: ServiceStub },
+        { provide: UserchoiceService, useClass: UserchoiceStub },
+      ],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BrowseComponent);

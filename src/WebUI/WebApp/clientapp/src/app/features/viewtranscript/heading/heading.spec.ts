@@ -16,14 +16,12 @@ describe('HeadingComponent', () => {
   let component: HeadingComponent;
   let fixture: ComponentFixture<HeadingComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [HeadingComponent],
-        providers: [{ provide: ViewTranscriptService, useClass: ServiceStub }],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [HeadingComponent],
+      providers: [{ provide: ViewTranscriptService, useClass: ServiceStub }],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HeadingComponent);

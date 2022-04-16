@@ -17,15 +17,13 @@ describe('TopicsComponent', () => {
   let component: TopicsComponent;
   let fixture: ComponentFixture<TopicsComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [FormsModule],
-        declarations: [TopicsComponent],
-        providers: [{ provide: EditTranscriptService, useClass: ServiceStub }],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [FormsModule],
+      declarations: [TopicsComponent],
+      providers: [{ provide: EditTranscriptService, useClass: ServiceStub }],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TopicsComponent);

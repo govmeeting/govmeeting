@@ -6,14 +6,12 @@ describe('DropdownComponent', () => {
   let component: DropdownComponent;
   let fixture: ComponentFixture<DropdownComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [DropdownComponent],
-        imports: [FormsModule, ReactiveFormsModule],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [DropdownComponent],
+      imports: [FormsModule, ReactiveFormsModule],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DropdownComponent);

@@ -1,4 +1,4 @@
-import { Component, HostListener} from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -95,5 +95,4 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   // routeDash() {
   //   this.router.navigateByUrl('dash');
   // }
-
 }

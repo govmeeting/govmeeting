@@ -6,7 +6,7 @@ export class DashCardsService {
   private subject = new Subject<string>();
 
   clearMessages() {
-    this.subject.next("");
+    this.subject.next('');
   }
 
   sendMessage(message: string) {

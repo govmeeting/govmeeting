@@ -41,7 +41,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
     // For counties
     NotesComponent,
-    MinutesComponent
+    MinutesComponent,
   ],
   exports: [
     // ViewTranscriptModule,

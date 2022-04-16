@@ -6,13 +6,11 @@ describe('SmallCardComponent', () => {
   let component: SmallCardComponent;
   let fixture: ComponentFixture<SmallCardComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [SmallCardComponent],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [SmallCardComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SmallCardComponent);
