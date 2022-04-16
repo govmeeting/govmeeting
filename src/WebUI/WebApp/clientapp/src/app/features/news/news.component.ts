@@ -9,7 +9,7 @@ const NoLog = true; // set to false for console logging
 })
 export class NewsComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
-  public datetime;
+  public datetime: Date | undefined;
 
   constructor() {}
 

@@ -1,28 +1,25 @@
 @import '../colors.scss';
 
-.main-header {
-  position: absolute;
+.header-container {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
   height: 100px;
   width: 100%;
-  border: 1px solid red;
+  // border: 2px solid red; // If needed for debugging.
+  z-index: 1;
 }
 
 .sidenav-container {
-  position: absolute;
-  top: 103px;
-  // bottom: 60px;
-  bottom: 0px;
-  width: 100%;
-  border: 1px solid green;
-}
-
-.sidenav-containerX {
-  position: absolute;
-  top: 3px;
-  bottom: 0;
+  position: fixed;
   left: 0;
   right: 0;
-  border: 1px solid green;
+  top: 104px;
+  bottom: 0px;
+  width: 100%;
+  // border: 2px solid green; // If needed for debugging.
+  z-index: 1;
 }
 
 .sidenav {
@@ -30,6 +27,8 @@
   align-items: center;
   justify-content: center;
   width: 300px;
+  // padding: 0px;
+  // margin: 0px;
   //background: rgba(255, 0, 0, 0.5);
   background: rgb(105, 144, 202);
 }
@@ -39,5 +38,5 @@
   bottom: 0;
   height: 60px;
   width: 100%;
-  border: 1px solid red;
+  // border: 1px solid red; // If needed for debugging.
 }

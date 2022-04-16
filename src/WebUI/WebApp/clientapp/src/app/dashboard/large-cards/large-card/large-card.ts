@@ -10,10 +10,10 @@ const NoLog = true; // set to false for console logging
 export class LargeCardComponent {
   private ClassName: string = this.constructor.name + ': ';
 
-  @Input() title: string;
-  @Input() icon: string;
-  @Input() iconcolor: string;
-  @Input() tooltip: string;
+  @Input() title: string = '';
+  @Input() icon: string = '';
+  @Input() iconcolor: string = '';
+  @Input() tooltip: string = '';
   panelOpenState = false;
 
   togglePanel() {

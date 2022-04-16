@@ -21,15 +21,15 @@ const NoLog = true; // set to false for console logging
 export class HighlightDirective {
   private ClassName: string = this.constructor.name + ': ';
   // @Input('highlight') highlightColor: string;
-  @Input() highlightColor: string;
+  @Input() highlightColor: string = '';
 
   @Output() textSelected: EventEmitter<string>;
 
-  selectedText: string;
+  selectedText: string = '';
   private _el: HTMLElement;
   private _defaultColor = 'yellow';
   // private fullText: string;
-  private selection: Selection;
+  private selection: Selection | null = null;
 
   constructor(el: ElementRef) {
     NoLog || console.log(this.ClassName + 'constructor');
@@ -54,6 +54,10 @@ export class HighlightDirective {
     NoLog || console.log(this.ClassName, window.getSelection());
     this.selection = window.getSelection();
 
+    if (this.selection === null)
+    {
+      return;
+    }
     const sel = {
       range: this.selection.getRangeAt(0),
       text: '',

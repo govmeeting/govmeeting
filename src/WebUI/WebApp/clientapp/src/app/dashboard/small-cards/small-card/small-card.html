@@ -1,13 +1,13 @@
 <div class="card" [ngStyle]="currentStyles">
   <div class="card__header" (click)="toggleCollapsed()">
     <div class="card__header-icon {{iconcolor}}">
-      <i class="{{icon}}"></i>
+      <mat-icon class="routeIcon">{{icon}}</mat-icon>
     </div>
 
     <div class="card__header-title text-light">
       <span><strong> {{title}} </strong></span>
-      <i *ngIf="collapsed" class="fa fa-angle-down custom"></i>
-      <i *ngIf="!collapsed" class="fa fa-angle-up custom"></i>
+      <mat-icon *ngIf="collapsed" class="expandIcon">expand_more</mat-icon>
+      <mat-icon *ngIf="!collapsed" class="expandIcon">expand_less</mat-icon>
     </div>
 
     <div></div>

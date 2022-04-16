@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { IGovbodyDetails_Vm, IGovbody_Vm, IGovLocation_Vm } from '../../models/govbody-view';
 
 // our abstract class
@@ -7,5 +7,5 @@ import { IGovbodyDetails_Vm, IGovbody_Vm, IGovLocation_Vm } from '../../models/g
 export abstract class RegisterGovBodyService {
   abstract getMyGovLocations(): Observable<IGovLocation_Vm[]>;
   abstract getGovbodies(govLocationId: number): Observable<IGovbody_Vm[]>;
-  abstract getGovbody(govbodyId: number): Observable<IGovbodyDetails_Vm>;
+  abstract getGovbody(govbodyId: number): Observable<IGovbodyDetails_Vm | null>;
 }

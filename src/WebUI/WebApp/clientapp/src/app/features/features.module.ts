@@ -12,7 +12,7 @@ import { OfficialsComponent } from '../features/officials/officials.component';
 import { NotesComponent } from '../features/notes/notes.component';
 import { MinutesComponent } from '../features/minutes/minutes.component';
 import { AlertsComponent } from '../features/alerts/alerts.component';
-import { WorkareaComponent } from '../work_experiments/workarea/workarea.component';
+// import { WorkareaComponent } from '../work_experiments/workarea/workarea.component';
 import { RegisterGovBodyComponent } from './register-gov-body/register-gov-body.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -26,37 +26,37 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   declarations: [
+    // ViewTranscriptModule,
+    // EditTranscriptModule
     GovInfoComponent,
     BillsComponent,
     MeetingsComponent,
     NewsComponent,
-    // ViewTranscriptModule,
-    // EditTranscriptModule
     WorkitemsComponent,
     IssuesComponent,
     OfficialsComponent,
     AlertsComponent,
-    WorkareaComponent,
+    // WorkareaComponent,
+    RegisterGovBodyComponent,
 
     // For counties
     NotesComponent,
-    MinutesComponent,
-
-    RegisterGovBodyComponent,
+    MinutesComponent
   ],
   exports: [
+    // ViewTranscriptModule,
+    // EditTranscriptModule
     GovInfoComponent,
     BillsComponent,
     MeetingsComponent,
     NewsComponent,
-    // ViewTranscriptModule,
-    // EditTranscriptModule
     WorkitemsComponent,
     IssuesComponent,
     OfficialsComponent,
     AlertsComponent,
-    WorkareaComponent,
+    // WorkareaComponent,
     RegisterGovBodyComponent,
+
     // For counties
     NotesComponent,
     MinutesComponent,

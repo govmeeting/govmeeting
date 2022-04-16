@@ -22,8 +22,8 @@ export let EditTranscriptSample: EditTranscript = {
     {
       speaker: 'UNKOWN',
       said: 'Okay.',
-      section: null,
-      topic: null,
+      section: '',
+      topic: '',
       showSetTopic: false,
       confidence: 0.89840960502624512,
       wordcount: 0,
@@ -48,8 +48,8 @@ export let EditTranscriptSample: EditTranscript = {
     {
       speaker: 'UNKOWN',
       said: ' Good evening, everybody.',
-      section: null,
-      topic: null,
+      section: '',
+      topic: '',
       showSetTopic: false,
       confidence: 0.99072182178497314,
       wordcount: 0,

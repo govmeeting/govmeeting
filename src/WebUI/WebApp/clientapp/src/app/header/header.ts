@@ -16,13 +16,13 @@ export class HeaderComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
   messages: any[] = [];
   // usSubscription: Subscription;
-  location: string;
+  location: string = '';
   backgroundStyle: any;
 
   constructor(private navService: NavService, private userSettingsService: UserSettingsService) {}
 
   ngOnInit() {
-    this.userSettingsService.subscribeSettings((message) => {
+    this.userSettingsService.subscribeSettings(() => {
       const newSettings = this.userSettingsService.settings;
       NoLog || console.log(this.ClassName + 'SCAO ', newSettings);
       this.changeLocation(newSettings);

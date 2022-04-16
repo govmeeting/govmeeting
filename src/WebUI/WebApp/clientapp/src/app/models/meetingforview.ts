@@ -1,8 +1,8 @@
 ﻿export class MeetingForView {
-  meetingId: number;
-  locationId: number;
-  governmentBody: string;
-  language: string;
-  date: string;
-  meetingLength: number;
+  meetingId: number = 0;
+  locationId: number = 0;
+  governmentBody: string = '';
+  language: string = '';
+  date: string = '';
+  meetingLength: number = 0;
 }

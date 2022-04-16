@@ -10,9 +10,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about-project/about-project';
 import { OverviewComponent } from './about-project/overview/overview';
 // import { SysDesignComponent } from './about-project/sys-design/sys-design';
+// import { FetchDataComponent } from './work_experiments/fetch-data/fetch-data.component';
 import { DashMainComponent } from './dashboard/dash-main/dash-main';
-
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 // "Routing in Angular using Routerlink, Navigate and NavigateByUrl"
 // https://www.codecompiled.com/angular/routing-in-angular-using-routerlink-navigate-and-navigatebyurl/
@@ -28,13 +27,13 @@ const routes: Routes = [
   { path: 'dashboard', component: DashMainComponent },
   { path: 'about', component: AboutComponent },
   { path: 'overview', component: OverviewComponent },
-  { path: 'fetch-data', component: FetchDataComponent },
+  // { path: 'fetch-data', component: FetchDataComponent },
   // { path: '**', redirectTo: 'overview' }
   { path: '**', redirectTo: 'dashboard' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   declarations: [],
 })

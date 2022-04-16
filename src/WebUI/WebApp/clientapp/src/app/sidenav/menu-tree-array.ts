@@ -65,8 +65,9 @@ export class MenuTreeArray {
       return item;
     }
     if (!item.children) {
-      // TOTO - write to log
+      // TODO - write to log
       console.log(this.ClassName + 'ERROR Invalid call to getItem');
+      return item;
     }
     const newPosition: number[] = position.slice(1);
     return this.getItem(newPosition, item.children);

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 // import 'rxjs/add/observable/of';
 import { of } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+// import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, share } from 'rxjs/operators';
 import { ViewTranscript } from '../../models/viewtranscript-view';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
@@ -20,15 +20,15 @@ const NoLog = true; // set to false for console logging
 export class ViewTranscriptServiceStub implements ViewTranscriptService {
   private ClassName: string = this.constructor.name + ': ';
   viewMeeting: ViewTranscript = ViewTranscriptSample;
-  private observable: Observable<ViewTranscript>;
+  private observable: Observable<ViewTranscript> | null = null;
   // Use the jsonplaceholder service to test post requests
-  private postId;
+  private postId: any;
 
   constructor(private http: HttpClient, private errHandling: ErrorHandlingService) {
     NoLog || console.log(this.ClassName + 'constructor');
   }
 
-  public getMeeting(meetingId: number): Observable<ViewTranscript> {
+  public getMeeting(meetingId: number): Observable<ViewTranscript> | null {
     if (this.observable != null) {
       NoLog || console.log(this.ClassName + 'getMeeting observable not null');
       return this.observable;

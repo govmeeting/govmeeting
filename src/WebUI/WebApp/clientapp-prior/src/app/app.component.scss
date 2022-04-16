@@ -1,0 +1,43 @@
+@import '../colors.scss';
+
+.main-header {
+  position: absolute;
+  height: 100px;
+  width: 100%;
+  border: 1px solid red;
+}
+
+.sidenav-container {
+  position: absolute;
+  top: 103px;
+  // bottom: 60px;
+  bottom: 0px;
+  width: 100%;
+  border: 1px solid green;
+}
+
+.sidenav-containerX {
+  position: absolute;
+  top: 3px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid green;
+}
+
+.sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  //background: rgba(255, 0, 0, 0.5);
+  background: rgb(105, 144, 202);
+}
+
+.main-footer {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  border: 1px solid red;
+}

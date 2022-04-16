@@ -1,24 +1,24 @@
 import { NavItem, EntryType } from './nav-item';
 
 const unitedStates = new NavItem(EntryType.location, 'United States', 'flag', [
-  new NavItem(EntryType.agency, 'Senate', null),
-  new NavItem(EntryType.agency, 'House', null),
+  new NavItem(EntryType.agency, 'Senate', ''),
+  new NavItem(EntryType.agency, 'House', ''),
 ]);
 
 const maine = new NavItem(EntryType.location, 'State of Maine', 'star', [
-  new NavItem(EntryType.agency, 'Senate', null),
-  new NavItem(EntryType.agency, 'House', null),
+  new NavItem(EntryType.agency, 'Senate', ''),
+  new NavItem(EntryType.agency, 'House', ''),
 ]);
 
-const lincolnCounty = new NavItem(EntryType.location, 'Lincoln County', 'landscape', null);
+const lincolnCounty = new NavItem(EntryType.location, 'Lincoln County', 'landscape', '');
 
-const boothbayHarbor = new NavItem(EntryType.location, 'Boothbay Harbor', 'location_city', null);
+const boothbayHarbor = new NavItem(EntryType.location, 'Boothbay Harbor', 'location_city', '');
 
-const nonGovernment = new NavItem(null, 'Non-Government', 'group', [
+const nonGovernment = new NavItem(EntryType.parent, 'Non-Government', 'group', [
   new NavItem(EntryType.location, 'Glendale HOA', 'group'),
 ]);
 
-export let MenuItemsGov = new NavItem(null, 'Select Location', null, [
+export let MenuItemsGov = new NavItem(EntryType.parent, 'Select Location', '', [
   boothbayHarbor,
   lincolnCounty,
   maine,
@@ -29,7 +29,7 @@ export let MenuItemsGov = new NavItem(null, 'Select Location', null, [
 //////////////////////////////////////////////////////////////////////////
 
 // For beta release, we will just have city/town and county.
-export let MenuItemsGovBeta = new NavItem(null, 'Select Location', null, [boothbayHarbor, lincolnCounty]);
+export let MenuItemsGovBeta = new NavItem(EntryType.parent, 'Select Location', '', [boothbayHarbor, lincolnCounty]);
 
 //////////////////////  For development/testing ////////////////////
 

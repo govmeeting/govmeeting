@@ -11,8 +11,8 @@ const NoLog = true; // set to false for console logging
 })
 export class SpeakersComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
-  speakerNames: string[];
-  errorMessage: string;
+  speakerNames: string[] = [];
+  errorMessage: string = '';
   selectedSpeaker = 0;
 
   constructor(private _viewMeetingService: ViewTranscriptService, private _userChoice: UserchoiceService) {}
@@ -23,13 +23,16 @@ export class SpeakersComponent implements OnInit {
   }
 
   getSpeakerNames() {
-    this._viewMeetingService.getMeeting(null).subscribe(
-      (meeting) => {
-        this.speakerNames = meeting.speakerNames;
-        NoLog || console.log(this.ClassName, this.speakerNames);
-      },
-      (error) => (this.errorMessage = error as any)
-    );
+    if (this._viewMeetingService) {
+      // @ts-ignore
+      this._viewMeetingService.getMeeting(null).subscribe(
+        (meeting) => {
+          this.speakerNames = meeting.speakerNames;
+          NoLog || console.log(this.ClassName, this.speakerNames);
+        },
+        (error) => (this.errorMessage = error as any)
+      );
+    }
   }
 
   IsSelectedSpeaker(i: number): boolean {

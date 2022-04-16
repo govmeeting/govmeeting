@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
-import { EditTranscript, Talk, Word } from '../../models/edittranscript-view';
+import { EditTranscript } from '../../models/edittranscript-view';
 import { EditTranscriptSample } from '../../models/sample-data/edittranscript-sample';
 import { ErrorHandlingService } from '../../common/error-handling/error-handling.service';
 import { AppData } from '../../appdata';
@@ -19,10 +19,10 @@ const NoLog = true; // set to false for console logging
 @Injectable()
 export class EditTranscriptServiceStub implements EditTranscriptService {
   private ClassName: string = this.constructor.name + ': ';
-  postId;
-  observable: Observable<EditTranscript> = null;
+  postId : any;
+  observable: Observable<EditTranscript> | null = null;
   useLargeData: boolean;
-  url: string;
+  url: string = '';
   http: HttpClient;
 
   public constructor(

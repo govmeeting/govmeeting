@@ -11,8 +11,8 @@ const NoLog = true; // set to false for console logging
 })
 export class TopicsComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
-  topics: string[];
-  errorMessage: string;
+  topics: string[] = [];
+  errorMessage: string = '';
 
   @Input() newTopicName: string | undefined;
 
@@ -32,11 +32,11 @@ export class TopicsComponent implements OnInit {
 
   getTopics() {
     this._edittranscriptService.getTalks().subscribe(
-      (addtags) => {
+      (addtags: any) => {
         this.topics = addtags.topics;
         NoLog || console.log(this.ClassName, this.topics);
       },
-      (error) => (this.errorMessage = error as any)
+      (error: any) => (this.errorMessage = error as any)
     );
   }
 

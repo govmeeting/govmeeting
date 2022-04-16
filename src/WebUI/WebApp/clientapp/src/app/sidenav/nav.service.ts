@@ -9,7 +9,7 @@ export class NavService {
   private ClassName: string = this.constructor.name + ': ';
 
   public sidenav: any;
-  public navigationItems: NavItem[];
+  public navigationItems: NavItem[] = [];
   private subject = new Subject<NavItem>();
 
   constructor() {}
@@ -19,7 +19,6 @@ export class NavService {
   }
 
   public openNav() {
-    NoLog || console.log(this.ClassName + ' In openNav');
     this.sidenav.open();
   }
 
@@ -46,9 +45,9 @@ export class NavService {
     this.navigationItems[1].expanded = true;
   }
 
-  clearMenuSelections() {
-    this.subject.next();
-  }
+  // clearMenuSelections() {
+  //   this.subject.next();
+  // }
 
   private _closeMenu(items: NavItem[], startDepth: number, maxDepth: number) {
     NoLog || console.log(this.ClassName + '_closeMenu startDepth=' + startDepth + ' maxDepth=' + maxDepth);

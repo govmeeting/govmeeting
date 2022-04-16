@@ -1,0 +1,71 @@
+@import '../../common/theme';
+
+:host {
+  display: block;
+  outline: none;
+
+  // &.active {
+  //   background-color: green;
+  // }
+
+  // .mat-list-item.active {
+  //   background-color: green;
+  //   // background-color: lightgoldenrodyellow;
+  //   // background-color: mat-color($app-primary, 50);
+  // }
+  // &:hover,
+  // &:focus {
+  // .mat-list-item:not(.expanded) {
+  //   // background-color: lightgreen;
+  //   background-color: mat-color($app-primary, 100) !important;
+  // }
+  // .mat-list-item.expanded {
+  //   // background-color: lightblue;
+  //   background-color: mat-color($app-primary, 200) !important;
+  // }
+  // }
+}
+
+// .active {
+//   background-color: green;
+// }
+
+.mat-list-item {
+  height: 32px;
+  padding: 2px 0;
+
+  .routeIcon {
+    margin-right: 10px;
+  }
+}
+
+.depth0 {
+  font-weight: bold;
+  font-size: 130%;
+  transform: translateX(-40px);
+}
+.depth1 {
+  font-weight: bold;
+  font-size: 110%;
+  // text-decoration: underline;
+}
+.depth2 {
+  font-weight: bold;
+  text-decoration: underline;
+  // font-style:oblique;
+}
+
+.grayed-out {
+  opacity: 0.4;
+  -webkit-opacity: 0.4;
+  -khtml-opacity: 0.4;
+  pointer-events: none;
+}
+
+.blur-me {
+  filter: blur(20px);
+}
+
+// .blurplus {
+//   filter: blur(20px) grayscale(20%);
+// }

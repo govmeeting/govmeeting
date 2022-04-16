@@ -4,10 +4,11 @@ export enum DeviceType {
   desktop,
   tablet,
   mobile,
+  unknown
 }
 
 export class GetDeviceType {
-  deviceType: DeviceType;
+  deviceType: DeviceType = DeviceType.unknown;
 
   static checkDeviceType() {
     const width = window.innerWidth;

@@ -12,11 +12,11 @@ const NoLog = true; // set to false for console logging
 })
 export class SmallCardComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
-  @Input() icon: string;
-  @Input() iconcolor: string;
-  @Input() title: string;
-  @Input() subtitle: string;
-  @Input() tooltip: string;
+  @Input() icon: string = '';
+  @Input() iconcolor: string = '';
+  @Input() title: string = '';
+  @Input() subtitle: string = '';
+  @Input() tooltip: string = '';
   collapsed = true;
   currentStyles: any;
   subscription: Subscription;
