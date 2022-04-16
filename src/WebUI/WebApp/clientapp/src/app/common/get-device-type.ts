@@ -4,7 +4,7 @@ export enum DeviceType {
   desktop,
   tablet,
   mobile,
-  unknown
+  unknown,
 }
 
 export class GetDeviceType {

@@ -54,8 +54,7 @@ export class HighlightDirective {
     NoLog || console.log(this.ClassName, window.getSelection());
     this.selection = window.getSelection();
 
-    if (this.selection === null)
-    {
+    if (this.selection === null) {
       return;
     }
     const sel = {

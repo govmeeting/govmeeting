@@ -26,7 +26,7 @@ import { ViewTranscriptModule } from '../features/viewtranscript/viewtranscript.
     LargeCardsComponent,
     LargeCardComponent,
     DashMainComponent,
-    DashFooterComponent
+    DashFooterComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +35,7 @@ import { ViewTranscriptModule } from '../features/viewtranscript/viewtranscript.
     VirtualMeetingModule,
     ChatModule,
     EditTranscriptModule,
-    ViewTranscriptModule
+    ViewTranscriptModule,
   ],
   exports: [
     // SmallCardsComponent,

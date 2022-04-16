@@ -29,14 +29,11 @@ import { RegisterGovBodyService } from './features/register-gov-body/register-go
 import { RegisterGovBodyServiceStub } from './features/register-gov-body/register-gov-body.service-stub';
 import { RegisterGovBodyServiceReal } from './features/register-gov-body/register-gov-body.service-real';
 
-
 // const isAspServerRunning = environment.useServer; // Is the Asp.Net server running?
 const isAspServerRunning = false;
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -52,7 +49,7 @@ const isAspServerRunning = false;
     HeaderModule,
     DashboardModule,
     AboutProjectModule,
-],
+  ],
   providers: [
     ChatService,
     ErrorHandlingService,
@@ -67,8 +64,8 @@ const isAspServerRunning = false;
     {
       provide: RegisterGovBodyService,
       useClass: isAspServerRunning ? RegisterGovBodyServiceReal : RegisterGovBodyServiceStub,
-    }
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

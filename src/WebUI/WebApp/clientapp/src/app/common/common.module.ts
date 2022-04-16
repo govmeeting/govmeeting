@@ -14,7 +14,7 @@ import { HighlightDirective } from './myhighlight/myhighlight.directive';
   ],
   exports: [
     // DropdownComponent,
-    HighlightDirective
-  ]
+    HighlightDirective,
+  ],
 })
 export class SharedModule {}

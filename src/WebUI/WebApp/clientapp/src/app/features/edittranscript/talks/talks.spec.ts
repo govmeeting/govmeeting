@@ -25,14 +25,12 @@ describe('TalksComponent', () => {
   let component: TalksComponent;
   let fixture: ComponentFixture<TalksComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [TalksComponent, TopicsComponent],
-        providers: [{ provide: EditTranscriptService, useClass: ServiceStub }],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [TalksComponent, TopicsComponent],
+      providers: [{ provide: EditTranscriptService, useClass: ServiceStub }],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TalksComponent);

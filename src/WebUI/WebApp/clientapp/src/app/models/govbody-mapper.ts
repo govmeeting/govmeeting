@@ -2,7 +2,7 @@ import { PojosMetadataMap, pojos } from '@automapper/pojos';
 import {
   createMap,
   createMapper,
-  Mapper
+  Mapper,
   //  CamelCaseNamingConvention,
   //  mapFrom
 } from '@automapper/core';
@@ -45,7 +45,7 @@ export class GovbodyMapper {
     this.mapper = createMapper({
       // name: 'GovbodyMapper',
       // pluginInitializer: pojos,
-      strategyInitializer: pojos()
+      strategyInitializer: pojos(),
     });
 
     this.mapOfficial();
@@ -67,14 +67,14 @@ export class GovbodyMapper {
     });
 
     // Add metadata to members of Official_Dto. Currently the members are the same as IOfficial_Vm.
-    PojosMetadataMap.create<Official_Dto>('Official_Dto',  {
+    PojosMetadataMap.create<Official_Dto>('Official_Dto', {
       name: String,
       title: String,
     });
 
     // Create the mapping.
     // this.mapper.createMap<Official_Dto, IOfficial_Vm>('GovOfficial_Dto', 'IGovOfficial_Vm');
-    createMap<Official_Dto, IOfficial_Vm>(this.mapper,'GovOfficial_Dto', 'IGovOfficial_Vm');
+    createMap<Official_Dto, IOfficial_Vm>(this.mapper, 'GovOfficial_Dto', 'IGovOfficial_Vm');
   }
 
   mapGovLocation() {
@@ -93,7 +93,7 @@ export class GovbodyMapper {
       parentLocationId: Number,
     });
 
-    createMap<GovLocation_Dto, IGovLocation_Vm>(this.mapper,'GovLocation_Dto', 'IGovLocation_Vm');
+    createMap<GovLocation_Dto, IGovLocation_Vm>(this.mapper, 'GovLocation_Dto', 'IGovLocation_Vm');
   }
 
   mapGovbodyDetails() {
@@ -115,7 +115,7 @@ export class GovbodyMapper {
       transcriptsUrl: String,
     });
 
-    createMap<GovbodyDetails_Dto, IGovbodyDetails_Vm>(this.mapper,'GovbodyDetails_Dto', 'IGovbodyDetails_Vm');
+    createMap<GovbodyDetails_Dto, IGovbodyDetails_Vm>(this.mapper, 'GovbodyDetails_Dto', 'IGovbodyDetails_Vm');
   }
 
   mapGovbody() {
@@ -125,13 +125,13 @@ export class GovbodyMapper {
       parentLocationId: Number,
     });
 
-    PojosMetadataMap.create<GovbodyDetails_Dto>('Govbody_Dto',  {
+    PojosMetadataMap.create<GovbodyDetails_Dto>('Govbody_Dto', {
       // id: Number,
       name: String,
       parentLocationId: Number,
     });
 
-    createMap<Govbody_Dto, IGovbody_Vm>(this.mapper,'Govbody_Dto', 'IGovbody_Vm');
+    createMap<Govbody_Dto, IGovbody_Vm>(this.mapper, 'Govbody_Dto', 'IGovbody_Vm');
   }
 
   // mapGovLocationArray() {

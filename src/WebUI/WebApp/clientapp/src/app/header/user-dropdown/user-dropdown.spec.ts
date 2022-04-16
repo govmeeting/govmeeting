@@ -6,13 +6,11 @@ describe('UserDropdownComponent', () => {
   let component: UserDropdownComponent;
   let fixture: ComponentFixture<UserDropdownComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [UserDropdownComponent],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [UserDropdownComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UserDropdownComponent);

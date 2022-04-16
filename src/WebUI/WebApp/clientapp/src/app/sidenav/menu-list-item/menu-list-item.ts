@@ -21,7 +21,7 @@ const NoLog = true; // set to false for console logging
 })
 export class MenuListItemComponent implements OnInit {
   private ClassName: string = this.constructor.name + ': ';
-  @Input() item: NavItem = new NavItem(EntryType.unknown, '','','');
+  @Input() item: NavItem = new NavItem(EntryType.unknown, '', '', '');
   // @HostBinding('attr.aria-expanded') ariaExpanded = this.item.expanded;
   @Input() depth: number = 0;
   displayNameClass: string = '';

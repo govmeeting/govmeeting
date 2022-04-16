@@ -14,7 +14,7 @@ export class TalksComponent implements OnInit, AfterViewInit {
 
   @Output() playVideo: EventEmitter<PlayPhraseData>;
 
-  errorMessage: string ='';
+  errorMessage: string = '';
   talks: Talk[] | null = null;
   gotTalks = false;
   edittranscript: EditTranscript = { sections: [''], topics: [''], talks: [] };
@@ -84,7 +84,7 @@ export class TalksComponent implements OnInit, AfterViewInit {
       this.gotTalks = true;
       NoLog || console.log(this.ClassName + 'getTalks');
       this._edittranscriptService.getTalks().subscribe(
-        (edittranscript : any) => {
+        (edittranscript: any) => {
           (this.edittranscript = edittranscript), (this.talks = edittranscript.talks);
         },
         (error: any) => (this.errorMessage = error as any)
@@ -291,14 +291,14 @@ export class TalksComponent implements OnInit, AfterViewInit {
   }
 
   // find the caption with specific Id in talks array.
-        // @ts-ignore
-        findCaption(Id: number): [Caption, string] {
+  // @ts-ignore
+  findCaption(Id: number): [Caption, string] {
     let i = 0;
-        // @ts-ignore
-        for (const talk of this.talks) {
+    // @ts-ignore
+    for (const talk of this.talks) {
       let j = 0;
-        // @ts-ignore
-        for (const caption of talk.captions) {
+      // @ts-ignore
+      for (const caption of talk.captions) {
         if (caption.Id === Id) {
           const elementId: string = i.toString(10) + '-' + j.toString(10);
           return [caption, elementId];

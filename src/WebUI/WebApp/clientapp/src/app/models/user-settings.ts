@@ -4,7 +4,7 @@ export enum LocationType {
   state,
   federal,
   nongovernment,
-  notdefined
+  notdefined,
 }
 
 export class UserSettings {

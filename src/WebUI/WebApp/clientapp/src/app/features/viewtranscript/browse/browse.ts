@@ -35,8 +35,8 @@ export class BrowseComponent implements OnInit {
 
   getTopicDiscussions() {
     if (this._viewMeetingService) {
-        // @ts-ignore
-        this._viewMeetingService.getMeeting(null).subscribe(
+      // @ts-ignore
+      this._viewMeetingService.getMeeting(null).subscribe(
         (t) => {
           this.topicDiscussions = t.topicDiscussions;
           NoLog || console.log(this.ClassName + this.topicDiscussions);

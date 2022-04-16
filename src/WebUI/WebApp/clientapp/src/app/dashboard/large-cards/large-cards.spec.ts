@@ -6,13 +6,11 @@ describe('MainCardsComponent', () => {
   let component: LargeCardsComponent;
   let fixture: ComponentFixture<LargeCardsComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [LargeCardsComponent],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [LargeCardsComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LargeCardsComponent);

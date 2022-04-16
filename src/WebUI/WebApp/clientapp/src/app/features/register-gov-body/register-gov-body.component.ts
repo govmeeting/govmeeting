@@ -51,8 +51,9 @@ export class RegisterGovBodyComponent implements OnInit {
   selectBody(filterVal: any) {
     console.log('selectBody');
     if (this.selectedBody) {
-    this.bodyDetails$ = this.gBService.getGovbody(this.selectedBody.id).pipe(tap((bod: any) =>
-      this.form.patchValue(bod)));
+      this.bodyDetails$ = this.gBService
+        .getGovbody(this.selectedBody.id)
+        .pipe(tap((bod: any) => this.form.patchValue(bod)));
     }
   }
 

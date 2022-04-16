@@ -15,7 +15,7 @@ interface Language {
 })
 export class TopNavComponent implements OnInit {
   // userSettingsService: UserSettingsService;
-  language: string = "";
+  language: string = '';
   isBeta: boolean;
 
   languages: Language[] = [

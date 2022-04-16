@@ -4,7 +4,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-
 // export function getBaseUrl() {
 //  return document.getElementsByTagName('base')[0].href;
 // }
@@ -23,10 +22,10 @@ import { environment } from './environments/environment';
 //   // { provide: API_BASE_URL, useFactory: getApiUrl },
 // ];
 
-
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));

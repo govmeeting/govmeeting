@@ -25,17 +25,15 @@ describe('SpeakersComponent', () => {
   let component: SpeakersComponent;
   let fixture: ComponentFixture<SpeakersComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [SpeakersComponent],
-        providers: [
-          { provide: ViewTranscriptService, useClass: ServiceStub },
-          { provide: UserchoiceService, useClass: UserchoiceStub },
-        ],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [SpeakersComponent],
+      providers: [
+        { provide: ViewTranscriptService, useClass: ServiceStub },
+        { provide: UserchoiceService, useClass: UserchoiceStub },
+      ],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SpeakersComponent);

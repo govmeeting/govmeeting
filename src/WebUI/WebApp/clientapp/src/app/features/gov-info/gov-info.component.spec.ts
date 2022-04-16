@@ -6,13 +6,11 @@ describe('GovInfoComponent', () => {
   let component: GovInfoComponent;
   let fixture: ComponentFixture<GovInfoComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [GovInfoComponent],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [GovInfoComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GovInfoComponent);

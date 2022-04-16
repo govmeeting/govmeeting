@@ -32,30 +32,32 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('vjscontainer') vjscontainer: ElementRef | null = null;
 
   // see options: https://github.com/videojs/video.js/blob/maintutorial-options.html
-  @Input() options: undefined |{
-    fluid: boolean;
-    aspectRatio: string;
-    // autoplay: boolean;
-    preload: string;
-    controls: boolean;
-    muted: boolean;
-    playsinline: boolean;
-    playbackRates: number[];
-    plugins: {
-      hotkeys: {};
-    };
-    sources: {
-      src: string;
-      type: string;
-    }[];
-    tracks: {
-      src: string;
-      kind: TextTrackKind;
-      srclang: string;
-      label: string;
-      default?: boolean;
-    }[];
-  };
+  @Input() options:
+    | undefined
+    | {
+        fluid: boolean;
+        aspectRatio: string;
+        // autoplay: boolean;
+        preload: string;
+        controls: boolean;
+        muted: boolean;
+        playsinline: boolean;
+        playbackRates: number[];
+        plugins: {
+          hotkeys: {};
+        };
+        sources: {
+          src: string;
+          type: string;
+        }[];
+        tracks: {
+          src: string;
+          kind: TextTrackKind;
+          srclang: string;
+          label: string;
+          default?: boolean;
+        }[];
+      };
 
   // zoomrotate: {};
 
@@ -67,9 +69,8 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     // instantiate Video.js
     // this.player = videojs(this.target.nativeElement);
-    if (this.target === null)
-    {
-      return
+    if (this.target === null) {
+      return;
     }
     this.player = videojs(this.target.nativeElement, this.options, function onPlayerReady() {
       NoLog || console.log('VideojsComponent: ' + 'onPlayerReady', this);
@@ -103,9 +104,9 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
     const pauseTimer = timer(duration);
     this.player.currentTime(start);
     this.player.play();
-    pauseTimer.subscribe((t) =>
-      {if (this.player !== null) this.player.pause()}
-      );
+    pauseTimer.subscribe((t) => {
+      if (this.player !== null) this.player.pause();
+    });
     NoLog || console.log(this.ClassName + 'exiting playPhrase');
   }
 
@@ -139,8 +140,8 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
     }
     const textTrack = this.player.textTracks()[0];
     textTrack.addEventListener('cuechange', (event) => {
-        // @ts-ignore
-        const activeCue = textTrack.activeCues[0];
+      // @ts-ignore
+      const activeCue = textTrack.activeCues[0];
       console.log(activeCue.startTime, activeCue.endTime);
       // @ts-ignore
       console.log(activeCue.text);
@@ -148,8 +149,8 @@ export class VideojsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getTextTrack(): TextTrack {
-        // @ts-ignore
-        return this.player.textTracks()[0];
+    // @ts-ignore
+    return this.player.textTracks()[0];
   }
 
   // (for debugging) returns array of all tracks on video
