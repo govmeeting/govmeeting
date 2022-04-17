@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
     </div>
   `,
 })
-export class LargeCardsComponent implements OnInit {
+export class LargeCardsComponent {
   constructor() {}
 
-  ngOnInit() {}
 }

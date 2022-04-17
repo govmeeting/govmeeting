@@ -2,7 +2,7 @@
   <ul #target style="list-style: none">
     <li *ngFor="let talk of talks; let i = index">
       <!-- Display the section name and up/down arrows if start of new section -->
-      <div [hidden]="talk.section==null">
+      <div [hidden]="talk.section===null">
         <br />
         <button (click)="moveSectionUp(talk, i)">^</button>
         <button (click)="moveSectionDown(talk, i)">v</button>
@@ -10,7 +10,7 @@
       </div>
 
       <!-- Display the topic name and up/down arrows if start of new topic -->
-      <div [hidden]="talk.topic==null">
+      <div [hidden]="talk.topic===null">
         <br />
         <button (click)="moveTopicUp(talk, i)">^</button>
         <button (click)="moveTopicDown(talk, i)">v</button>

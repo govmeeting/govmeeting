@@ -5,8 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './virtual-meeting.html',
   styleUrls: ['./virtual-meeting.scss'],
 })
-export class VirtualMeetingComponent implements OnInit {
+export class VirtualMeetingComponent {
   constructor() {}
 
-  ngOnInit() {}
 }

@@ -51,13 +51,13 @@
         [dir]="event.from === selectedConversation.me.id ? 'rtl' : 'ltr'"
       >
         <img
-          *ngIf="event.type == 'text'"
+          *ngIf="event.type === 'text'"
           matListAvatar
           matTooltip="{{selectedConversation.members[event.from].user.name}}"
           src="https://randomuser.me/api/portraits/thumb/lego/{{i}}.jpg"
         />
-        <p *ngIf="event.type == 'text'" [dir]="'ltr'">{{event.body.text}}</p>
-        <p *ngIf="event.type == 'member:joined'" class="text-center">
+        <p *ngIf="event.type === 'text'" [dir]="'ltr'">{{event.body.text}}</p>
+        <p *ngIf="event.type === 'member:joined'" class="text-center">
           <b>{{selectedConversation.members[event.from].user.name}}</b> has joined the conversation
         </p>
       </mat-list-item>

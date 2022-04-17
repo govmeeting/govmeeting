@@ -7,28 +7,27 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 //    https://medium.com/@dhormale/use-google-places-api-autocomplete-using-angular-for-resident-and-office-address-23cc33078e8
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'AutocompleteComponent',
   template: `
-    <input
+    <!-- <input
       class="input"
       type="text"
       [(ngModel)]="autocompleteInput"
       #addresstext
       style="padding: 12px 20px; border: 1px solid #ccc; width: 400px"
-    />
+    /> -->
   `,
 })
-export class AutocompleteComponent implements OnInit, AfterViewInit {
-  @Input() adressType: string;
+export class AutocompleteComponent implements  AfterViewInit {
+  @Input() adressType: string = '';
   @Output() setAddress: EventEmitter<any> = new EventEmitter();
   @ViewChild('addresstext') addresstext: any;
 
-  autocompleteInput: string;
-  queryWait: boolean;
+  autocompleteInput: string = '';
+  queryWait: boolean = false;
 
   constructor() {}
-
-  ngOnInit() {}
 
   ngAfterViewInit() {
     this.getPlaceAutocomplete();

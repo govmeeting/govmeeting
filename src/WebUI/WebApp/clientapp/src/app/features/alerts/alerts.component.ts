@@ -5,8 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './alerts.component.html',
   styleUrls: ['./alerts.component.scss'],
 })
-export class AlertsComponent implements OnInit {
+export class AlertsComponent {
   constructor() {}
 
-  ngOnInit() {}
 }

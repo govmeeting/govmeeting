@@ -8,7 +8,7 @@
   </div>
 </ng-template>
 
-<span *ngIf="location == 'Boothbay Harbor'; else ShowCounty">
+<span *ngIf="location === 'Boothbay Harbor'; else ShowCounty">
   <div class="subhead">BBH Meetings</div>
 
   <table style="width: 100%">
@@ -48,7 +48,7 @@
 </span>
 
 <ng-template #ShowCounty>
-  <span *ngIf="location == 'Lincoln County'; else notShow">
+  <span *ngIf="location === 'Lincoln County'; else notShow">
     <div class="subhead">Lincoln Cty. Meetings</div>
 
     <table style="width: 100%">
