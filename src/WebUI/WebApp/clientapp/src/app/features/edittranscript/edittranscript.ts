@@ -27,7 +27,6 @@ export class EditTranscriptComponent {
 
   constructor() {}
 
-
   // TODO - We may decide to turn on speech hiliting by default.
   // ngAfterViewInit() {
   //   this.onHiliteSpeech();

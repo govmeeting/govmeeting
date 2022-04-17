@@ -19,7 +19,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
     /> -->
   `,
 })
-export class AutocompleteComponent implements  AfterViewInit {
+export class AutocompleteComponent implements AfterViewInit {
   @Input() adressType: string = '';
   @Output() setAddress: EventEmitter<any> = new EventEmitter();
   @ViewChild('addresstext') addresstext: any;
