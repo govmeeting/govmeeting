@@ -44,6 +44,7 @@ src/logs/
 # Cypress
 **/cypress/screenshots/
 **/cypress/videos/
+**/GIT_IGNORE/
 
 .synkron.syncdb
 desktop.ini
