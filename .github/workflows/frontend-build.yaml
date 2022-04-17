@@ -21,7 +21,7 @@ jobs:
     # These should be checked by the workflow.
     # But when the developer pushes the master branch, it is usually just an update of the master branch
     # that they fetched from upstream, which needn't be checked.
-    if: (github.repository_owner == 'Govmeeting' && github.ref == 'refs/heads/master') || (github.repository_owner != 'Govmeeting' && github.ref != 'refs/heads/master')
+    if: ('1' == '1') && (github.repository_owner == 'Govmeeting' && github.ref == 'refs/heads/master') || (github.repository_owner != 'Govmeeting' && github.ref != 'refs/heads/master')
 
     strategy:
       matrix:
