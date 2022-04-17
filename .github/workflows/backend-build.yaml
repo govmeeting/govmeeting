@@ -2,25 +2,27 @@ name: Build Backend
 
 on:
   push:
-    paths-ignore: ['src/WebUI/WebApp/clientapp/**', '.github/workflows/frontend-build.yaml']
+    paths-ignore:
+      ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yaml"]
   pull_request:
-    paths-ignore: ['src/WebUI/WebApp/clientapp/**', '.github/workflows/frontend-build.yaml']
+    paths-ignore:
+      ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yaml"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     # Build master for Govmeeting owner. But all but master for others.
-    if: (github.repository_owner == 'Govmeeting' && github.ref == 'refs/heads/master') || (github.repository_owner != 'Govmeeting' && github.ref != 'refs/heads/master') 
+    if: (false && github.repository_owner == 'Govmeeting' && github.ref == 'refs/heads/master') || (github.repository_owner != 'Govmeeting' && github.ref != 'refs/heads/master')
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '3.1.x'
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "3.1.x"
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
