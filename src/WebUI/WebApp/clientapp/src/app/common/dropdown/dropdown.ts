@@ -14,7 +14,7 @@ const NoLog = true; // set to false for console logging
   templateUrl: 'dropdown.html',
   styleUrls: ['./dropdown.css'],
 })
-export class DropdownComponent implements OnInit {
+export class DropdownComponent {
   private ClassName: string = this.constructor.name + ': ';
   @Input()
   values: DropdownValue[] = [];
@@ -33,8 +33,6 @@ export class DropdownComponent implements OnInit {
     this.SelectValue = new EventEmitter();
     this.AddValue = new EventEmitter();
   }
-
-  ngOnInit() {}
 
   onSelectChange(i: number) {
     NoLog || console.log(this.ClassName + 'selected index=' + i);

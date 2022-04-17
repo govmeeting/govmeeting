@@ -13,7 +13,7 @@ const NoLog = true; // set to false for console logging
   templateUrl: './edittranscript.html',
   styleUrls: ['./edittranscript.css'],
 })
-export class EditTranscriptComponent implements OnInit, AfterViewInit {
+export class EditTranscriptComponent {
   private ClassName: string = this.constructor.name + ': ';
 
   showhelp = false; // if true, shows the help box to the user
@@ -27,12 +27,11 @@ export class EditTranscriptComponent implements OnInit, AfterViewInit {
 
   constructor() {}
 
-  ngOnInit() {}
 
-  // We may decide to turn on speech hiliting by default.
-  ngAfterViewInit() {
-    // this.onHiliteSpeech();
-  }
+  // TODO - We may decide to turn on speech hiliting by default.
+  // ngAfterViewInit() {
+  //   this.onHiliteSpeech();
+  // }
 
   CheckShowHelp(): boolean {
     return this.showhelp;

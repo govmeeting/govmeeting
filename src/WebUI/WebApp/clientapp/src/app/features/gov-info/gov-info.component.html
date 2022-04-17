@@ -4,7 +4,7 @@
 <div class="container">
   <div [hidden]="location" class="subhead">(Select Location) <br /><br /></div>
 
-  <span *ngIf="location == 'Boothbay Harbor'">
+  <span *ngIf="location === 'Boothbay Harbor'">
     <div class="subhead">BBH Boards and Committees</div>
     <ul>
       <li>Board of Appeals</li>
@@ -58,7 +58,7 @@
     [ From town website ]
   </span>
 
-  <div *ngIf="location == 'Lincoln County'">
+  <div *ngIf="location === 'Lincoln County'">
     <div class="subhead">Board of Commissioners</div>
     <span>
       The Board of Commissioners meets on the first and third Tuesdays of each Month starting at 9:00 A.M. in the
@@ -79,7 +79,7 @@
     [From Lincoln County website]
   </div>
 
-  <div *ngIf="location == 'State of Maine'">
+  <div *ngIf="location === 'State of Maine'">
     <div class="subhead">{{ location }} Political Structure</div>
     <p>
       The Maine Constitution structures Maine's state government, composed of three co-equal branches—the executive,
@@ -107,7 +107,7 @@
     </p>
   </div>
 
-  <div *ngIf="location == 'Austin'">
+  <div *ngIf="location === 'Austin'">
     [From Wikipedia] Austin is administered by an 11-member city council (10 council members elected by geographic
     district plus a mayor elected at large). The council is accompanied by a hired city manager under the
     manager-council system of municipal governance. Council and mayoral elections are non-partisan, with a runoff in
@@ -119,7 +119,7 @@
     single-member districts.[240]
   </div>
 
-  <div *ngIf="location == 'Travis County'">
+  <div *ngIf="location === 'Travis County'">
     [From Wikipedia] Like other Texas counties, Travis County is governed by a Commissioners' Court composed of the
     county judge and four county commissioners. The court levies county taxes and sets the budgets for county officials
     and agencies. The judge and commissioners are elected for four-year terms (the judge at-large, and the commissioners
@@ -134,7 +134,7 @@
     </p>
   </div>
 
-  <div *ngIf="location == 'State of Texas'">
+  <div *ngIf="location === 'State of Texas'">
     [From Wikipedia] Texas has a plural executive branch system limiting the power of the governor, which is a weak
     executive compared to some other states. Except for the Secretary of State, voters elect executive officers
     independently; thus candidates are directly answerable to the public, not the governor.[140] This election system
@@ -153,7 +153,7 @@
     </p>
   </div>
 
-  <div *ngIf="location == 'United States'">
+  <div *ngIf="location === 'United States'">
     The United States is the world's oldest surviving federation. It is a representative democracy, "in which majority
     rule is tempered by minority rights protected by law".[374] The government is regulated by a system of checks and
     balances defined by the U.S. Constitution, which serves as the country's supreme legal document.[375] For 2018, the
@@ -182,7 +182,7 @@
     [From Wikipedia]
   </div>
 
-  <div *ngIf="agency == 'Glendale HOA'">
+  <div *ngIf="agency === 'Glendale HOA'">
     <h3>Board of Directors</h3>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse porttitor arcu mi, eu mattis magna posuere

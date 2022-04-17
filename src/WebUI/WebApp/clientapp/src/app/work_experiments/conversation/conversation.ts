@@ -13,7 +13,7 @@ const NoLog = true; // set to false for console logging
   templateUrl: './conversation.html',
   styleUrls: ['./conversation.scss'],
 })
-export class ConversationComponent implements OnInit {
+export class ConversationComponent {
   constructor(private ms: ConversationService, private router: Router) {}
   private ClassName: string = this.constructor.name + ': ';
 
@@ -24,7 +24,7 @@ export class ConversationComponent implements OnInit {
   ];
 
   selectedConversation: any;
-  text: string;
+  text: string = '';
   events: Array<any> = [];
 
   // buildConversationsArray(conversations) {
@@ -37,15 +37,15 @@ export class ConversationComponent implements OnInit {
   //   return array
   // }
 
-  ngOnInit() {
-    // if (!this.ms.app) {
-    //   this.router.navigate(['/']);
-    // } else {
-    //   this.ms.app.getConversations().then(conversations => {
-    //     this.conversations = this.buildConversationsArray(conversations)
-    //   })
-    // }
-  }
+  // ngOnInit() {
+  //   if (!this.ms.app) {
+  //     this.router.navigate(['/']);
+  //   } else {
+  //     this.ms.app.getConversations().then(conversations => {
+  //       this.conversations = this.buildConversationsArray(conversations)
+  //     })
+  //   }
+  // }
 
   // selectConversation(conversationId: string) {
   //   this.ms.app.getConversation(conversationId).then(conversation => {
