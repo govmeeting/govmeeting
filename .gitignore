@@ -31,7 +31,6 @@ bld/
 #!**/WebApp/wwwroot/js/
 #!**/WebApp/wwwroot/lib/
 #!**/WebApp/wwwroot/assets/
-**/DATA_IGNORED_BY_GIT/
 # SECRETS files. Just in case they get copied by accident into repo folder.
 appsettings.Production.json
 appsettings.Secrets.json

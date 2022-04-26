@@ -16,7 +16,7 @@ class ServiceStub {
 
 // Create a stub for UserChoiceService
 class UserchoiceStub {
-  Names: string[];
+  Names: string[] = [];
   setSpeaker(topic: string) {}
   getSpeaker() {}
 }
