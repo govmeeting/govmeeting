@@ -17,7 +17,9 @@ function Main
     )
 	
 	$WORKSPACE_ROOT = Find-ParentFolderContaining "Govmeeting.sln"
-    $CLOUD_VM = "govmeeting-clientapp2"
+    $PROJECT = "deploy-dotnet-angular-02"
+    $VM = "govmeeting-clientapp2"
+    $ZONE = "us-east1-b"
 
       # If no params passed
     if ($clientapp -eq "") {
@@ -33,33 +35,40 @@ function Main
     Set-Location $CloudSdk
 
     # for debugging:
-    # gcloud compute scp --zone us-east1-b c:\TMP\y.txt $CLOUD_VM + ":y.txt"
+    # gcloud compute scp --zone us-east1-b c:\TMP\y.txt $VM + ":y.txt"
 
+    gcloud config set project $PROJECT
     # Copy the client distribution files to the "staging" folder in the VM.
     # create staging folder if it does not exist.
-    gcloud compute ssh --zone us-east1-b $CLOUD_VM --command "mkdir staging"
+    gcloud compute ssh --zone $ZONE $VM --command "mkdir -p staging"
     # Delete any prior contents of "staging".
-    gcloud compute ssh --zone us-east1-b $CLOUD_VM --command "sudo rm -r staging/*"
-    $clientdist = "C:\GOVMEETING\_SOURCECODE\src\WebUI\WebApp\clientapp\dist"
-    $clientdestination = $CLOUD_VM + ":staging/"
-    gcloud compute scp --zone us-east1-b --recurse $clientdist/* $clientdestination
+    gcloud compute ssh --zone $ZONE $VM --command "sudo rm -r -f staging/*"
+    # create prior folder if it does not exist.
+    gcloud compute ssh --zone $ZONE $VM --command "mkdir -p prior"
+    # Delete any prior contents of "prior".
+    gcloud compute ssh --zone $ZONE $VM --command "sudo rm -r -f prior/*"
+    $clientdist = $clientapp + "/dist"
+    $clientdestination = $VM + ":staging/"
+    gcloud compute scp --zone $ZONE --recurse $clientdist/* $clientdestination
     # Change the ownership of the files to "www-data" for the server.
-    gcloud compute ssh --zone us-east1-b $CLOUD_VM --command "sudo chown -R www-data:www-data staging/*"
+    gcloud compute ssh --zone $ZONE $VM --command "sudo chown -R www-data:www-data staging/*"
 
     # Deploy code to GCP
+    # Copy old contents to /prior
+    gcloud compute ssh --zone $ZONE $VM --command "sudo cp -r /var/www/html/* /prior"
     # Remove the old
-    gcloud compute ssh --zone us-east1-b $CLOUD_VM --command "sudo rm -r /var/www/html/*"
+    gcloud compute ssh --zone $ZONE $VM --command "sudo rm -r /var/www/html/*"
     # install the new
-    gcloud compute ssh --zone us-east1-b $CLOUD_VM --command "sudo cp -r staging/* /var/www/html"
+    gcloud compute ssh --zone $ZONE $VM --command "sudo cp -r staging/* /var/www/html"
     # Change ownership
-    gcloud compute ssh --zone us-east1-b $CLOUD_VM --command "sudo chown -R www-data:www-data /var/www/html/*"
+    gcloud compute ssh --zone $ZONE $VM --command "sudo chown -R www-data:www-data /var/www/html/*"
 
     # We originally tried using Apache, but then switched to Nginx.
     # restart the Apache server
-    # gcloud compute ssh --zone us-east1-b $CLOUD_VM --command "sudo systemctl reload apache2"
+    # gcloud compute ssh --zone $ZONE $VM --command "sudo systemctl reload apache2"
 
     # restart the Nginx server
-    gcloud compute ssh --zone us-east1-b $CLOUD_VM --command "sudo systemctl reload nginx"
+    gcloud compute ssh --zone $ZONE $VM --command "sudo systemctl reload nginx"
    }
 
 function Get-ParentPath($path, [int]$gen) {

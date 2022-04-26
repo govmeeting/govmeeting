@@ -7,11 +7,18 @@
 # @see http://stubbisms.wordpress.com/2009/07/10/git-script-to-show-largest-pack-objects-and-trim-your-waist-line/
 # @author Antony Stubbs
 
+# Object database is in ".git" unless specified in $1
+if [ ! $@ ]; then
+  repo='.git'
+else
+  repo=$1
+fi
+
 # set the internal field spereator to line break, so that we can iterate easily over the verify-pack output
 IFS=$'\n';
 
 # list all objects including their size, sort by size, take top 10
-objects=`git verify-pack -v .git/objects/pack/pack-*.idx | grep -Ev "non delta|chain length|git/objects" | tr -s " " | sort -k3gr | head -n60`
+objects=`git verify-pack -v $repo/objects/pack/pack-*.idx | grep -Ev "non delta|chain length|git/objects" | tr -s " " | sort -k3gr | head -n60`
 
 echo "All sizes are in kB's. The pack column is the size of the object, compressed, inside the pack file."
 
