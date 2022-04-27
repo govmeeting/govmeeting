@@ -4,7 +4,6 @@
 // </auto-generated>
 //----------------------
 
-// @ts-nocheck
 /* tslint:disable */
 /* eslint-disable */
 // ReSharper disable InconsistentNaming
@@ -219,7 +218,7 @@ export class ApiClient implements IApiClient {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : jsonParse(_responseText, this.jsonParseReviver);
                 result200 = resultData200 !== undefined ? resultData200 : <any>null;
-
+    
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -333,7 +332,7 @@ export class ApiClient implements IApiClient {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : jsonParse(_responseText, this.jsonParseReviver);
                 result200 = resultData200 !== undefined ? resultData200 : <any>null;
-
+    
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -420,7 +419,7 @@ export interface IGovLocationClient {
      * Register GovLocation
      * @return Id of new GovLocation
      */
-    register(id: number, name: string | null, type: GovlocTypes, parentLocationId: number): Observable<number>;
+    register(command: RegisterGovLocation_Cmd): Observable<number>;
     /**
      * Get GovLocations for current user
      * @return List of current user's GovLocations
@@ -443,30 +442,18 @@ export class GovLocationClient implements IGovLocationClient {
      * Register GovLocation
      * @return Id of new GovLocation
      */
-    register(id: number, name: string | null, type: GovlocTypes, parentLocationId: number): Observable<number> {
-        let url_ = this.baseUrl + "/api/GovLocation/Register?";
-        if (id === undefined || id === null)
-            throw new Error("The parameter 'id' must be defined and cannot be null.");
-        else
-            url_ += "Id=" + encodeURIComponent("" + id) + "&";
-        if (name === undefined)
-            throw new Error("The parameter 'name' must be defined.");
-        else if(name !== null)
-            url_ += "Name=" + encodeURIComponent("" + name) + "&";
-        if (type === undefined || type === null)
-            throw new Error("The parameter 'type' must be defined and cannot be null.");
-        else
-            url_ += "Type=" + encodeURIComponent("" + type) + "&";
-        if (parentLocationId === undefined || parentLocationId === null)
-            throw new Error("The parameter 'parentLocationId' must be defined and cannot be null.");
-        else
-            url_ += "ParentLocationId=" + encodeURIComponent("" + parentLocationId) + "&";
+    register(command: RegisterGovLocation_Cmd): Observable<number> {
+        let url_ = this.baseUrl + "/api/GovLocation/Register";
         url_ = url_.replace(/[?&]$/, "");
 
+        const content_ = JSON.stringify(command);
+
         let options_ : any = {
+            body: content_,
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -497,7 +484,7 @@ export class GovLocationClient implements IGovLocationClient {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : jsonParse(_responseText, this.jsonParseReviver);
                 result200 = resultData200 !== undefined ? resultData200 : <any>null;
-
+    
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -573,7 +560,7 @@ export interface IGovbodyClient {
     /**
      * Register Govbody (or update registration)
      */
-    register(name: string | null, parentLocationId: number, electedOfficials: ElectedOfficial_Dto[] | null, appointedOfficials: AppointedOfficial_Dto[] | null, recordingsUrl: string | null, transcriptsUrl: string | null): Observable<number>;
+    register(command: RegisterGovbody_Cmd): Observable<number>;
     /**
      * Get Govbodies for a GovLocation
      * @param id GovLocation Id
@@ -600,38 +587,18 @@ export class GovbodyClient implements IGovbodyClient {
     /**
      * Register Govbody (or update registration)
      */
-    register(name: string | null, parentLocationId: number, electedOfficials: ElectedOfficial_Dto[] | null, appointedOfficials: AppointedOfficial_Dto[] | null, recordingsUrl: string | null, transcriptsUrl: string | null): Observable<number> {
-        let url_ = this.baseUrl + "/api/Govbody/Register?";
-        if (name === undefined)
-            throw new Error("The parameter 'name' must be defined.");
-        else if(name !== null)
-            url_ += "Name=" + encodeURIComponent("" + name) + "&";
-        if (parentLocationId === undefined || parentLocationId === null)
-            throw new Error("The parameter 'parentLocationId' must be defined and cannot be null.");
-        else
-            url_ += "ParentLocationId=" + encodeURIComponent("" + parentLocationId) + "&";
-        if (electedOfficials === undefined)
-            throw new Error("The parameter 'electedOfficials' must be defined.");
-        else if(electedOfficials !== null)
-            electedOfficials && electedOfficials.forEach(item => { url_ += "ElectedOfficials=" + encodeURIComponent("" + item) + "&"; });
-        if (appointedOfficials === undefined)
-            throw new Error("The parameter 'appointedOfficials' must be defined.");
-        else if(appointedOfficials !== null)
-            appointedOfficials && appointedOfficials.forEach(item => { url_ += "AppointedOfficials=" + encodeURIComponent("" + item) + "&"; });
-        if (recordingsUrl === undefined)
-            throw new Error("The parameter 'recordingsUrl' must be defined.");
-        else if(recordingsUrl !== null)
-            url_ += "RecordingsUrl=" + encodeURIComponent("" + recordingsUrl) + "&";
-        if (transcriptsUrl === undefined)
-            throw new Error("The parameter 'transcriptsUrl' must be defined.");
-        else if(transcriptsUrl !== null)
-            url_ += "TranscriptsUrl=" + encodeURIComponent("" + transcriptsUrl) + "&";
+    register(command: RegisterGovbody_Cmd): Observable<number> {
+        let url_ = this.baseUrl + "/api/Govbody/Register";
         url_ = url_.replace(/[?&]$/, "");
 
+        const content_ = JSON.stringify(command);
+
         let options_ : any = {
+            body: content_,
             observe: "response",
             responseType: "blob",
             headers: new HttpHeaders({
+                "Content-Type": "application/json",
                 "Accept": "application/json"
             })
         };
@@ -662,7 +629,7 @@ export class GovbodyClient implements IGovbodyClient {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : jsonParse(_responseText, this.jsonParseReviver);
                 result200 = resultData200 !== undefined ? resultData200 : <any>null;
-
+    
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1355,17 +1322,6 @@ export interface IEditMeetingWord_Dto {
     speakerTag: number;
 }
 
-export enum GovlocTypes {
-    City = 0,
-    Town = 1,
-    Borough = 2,
-    Township = 3,
-    County = 4,
-    StateOrProvince = 5,
-    Territory = 6,
-    Country = 7,
-}
-
 export class GovLocation_Dto implements IGovLocation_Dto {
     id!: number;
     name!: string | undefined;
@@ -1410,6 +1366,137 @@ export interface IGovLocation_Dto {
     name: string | undefined;
     type: GovlocTypes;
     parentLocationId: number;
+}
+
+export class RegisterGovLocation_Cmd extends GovLocation_Dto implements IRegisterGovLocation_Cmd {
+
+    constructor(data?: IRegisterGovLocation_Cmd) {
+        super(data);
+    }
+
+    init(_data?: any, _mappings?: any) {
+        super.init(_data);
+    }
+
+    static fromJS(data: any, _mappings?: any): RegisterGovLocation_Cmd | null {
+        data = typeof data === 'object' ? data : {};
+        return createInstance<RegisterGovLocation_Cmd>(data, _mappings, RegisterGovLocation_Cmd);
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IRegisterGovLocation_Cmd extends IGovLocation_Dto {
+}
+
+export enum GovlocTypes {
+    City = 0,
+    Town = 1,
+    Borough = 2,
+    Township = 3,
+    County = 4,
+    StateOrProvince = 5,
+    Territory = 6,
+    Country = 7,
+}
+
+export class GovbodyDetails_Dto implements IGovbodyDetails_Dto {
+    name!: string | undefined;
+    parentLocationId!: number;
+    electedOfficials!: ElectedOfficial_Dto[] | undefined;
+    appointedOfficials!: AppointedOfficial_Dto[] | undefined;
+    recordingsUrl!: string | undefined;
+    transcriptsUrl!: string | undefined;
+
+    constructor(data?: IGovbodyDetails_Dto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any, _mappings?: any) {
+        if (_data) {
+            this.name = _data["name"];
+            this.parentLocationId = _data["parentLocationId"];
+            if (Array.isArray(_data["electedOfficials"])) {
+                this.electedOfficials = [] as any;
+                for (let item of _data["electedOfficials"])
+                    this.electedOfficials!.push(ElectedOfficial_Dto.fromJS(item, _mappings));
+            }
+            if (Array.isArray(_data["appointedOfficials"])) {
+                this.appointedOfficials = [] as any;
+                for (let item of _data["appointedOfficials"])
+                    this.appointedOfficials!.push(AppointedOfficial_Dto.fromJS(item, _mappings));
+            }
+            this.recordingsUrl = _data["recordingsUrl"];
+            this.transcriptsUrl = _data["transcriptsUrl"];
+        }
+    }
+
+    static fromJS(data: any, _mappings?: any): GovbodyDetails_Dto | null {
+        data = typeof data === 'object' ? data : {};
+        return createInstance<GovbodyDetails_Dto>(data, _mappings, GovbodyDetails_Dto);
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["parentLocationId"] = this.parentLocationId;
+        if (Array.isArray(this.electedOfficials)) {
+            data["electedOfficials"] = [];
+            for (let item of this.electedOfficials)
+                data["electedOfficials"].push(item.toJSON());
+        }
+        if (Array.isArray(this.appointedOfficials)) {
+            data["appointedOfficials"] = [];
+            for (let item of this.appointedOfficials)
+                data["appointedOfficials"].push(item.toJSON());
+        }
+        data["recordingsUrl"] = this.recordingsUrl;
+        data["transcriptsUrl"] = this.transcriptsUrl;
+        return data;
+    }
+}
+
+export interface IGovbodyDetails_Dto {
+    name: string | undefined;
+    parentLocationId: number;
+    electedOfficials: ElectedOfficial_Dto[] | undefined;
+    appointedOfficials: AppointedOfficial_Dto[] | undefined;
+    recordingsUrl: string | undefined;
+    transcriptsUrl: string | undefined;
+}
+
+export class RegisterGovbody_Cmd extends GovbodyDetails_Dto implements IRegisterGovbody_Cmd {
+
+    constructor(data?: IRegisterGovbody_Cmd) {
+        super(data);
+    }
+
+    init(_data?: any, _mappings?: any) {
+        super.init(_data);
+    }
+
+    static fromJS(data: any, _mappings?: any): RegisterGovbody_Cmd | null {
+        data = typeof data === 'object' ? data : {};
+        return createInstance<RegisterGovbody_Cmd>(data, _mappings, RegisterGovbody_Cmd);
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        super.toJSON(data);
+        return data;
+    }
+}
+
+export interface IRegisterGovbody_Cmd extends IGovbodyDetails_Dto {
 }
 
 export class Official_Dto implements IOfficial_Dto {
@@ -1542,76 +1629,6 @@ export interface IGovbody_Dto {
     parentLocationId: number;
 }
 
-export class GovbodyDetails_Dto implements IGovbodyDetails_Dto {
-    name!: string | undefined;
-    parentLocationId!: number;
-    electedOfficials!: ElectedOfficial_Dto[] | undefined;
-    appointedOfficials!: AppointedOfficial_Dto[] | undefined;
-    recordingsUrl!: string | undefined;
-    transcriptsUrl!: string | undefined;
-
-    constructor(data?: IGovbodyDetails_Dto) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any, _mappings?: any) {
-        if (_data) {
-            this.name = _data["name"];
-            this.parentLocationId = _data["parentLocationId"];
-            if (Array.isArray(_data["electedOfficials"])) {
-                this.electedOfficials = [] as any;
-                for (let item of _data["electedOfficials"])
-                    this.electedOfficials!.push(ElectedOfficial_Dto.fromJS(item, _mappings));
-            }
-            if (Array.isArray(_data["appointedOfficials"])) {
-                this.appointedOfficials = [] as any;
-                for (let item of _data["appointedOfficials"])
-                    this.appointedOfficials!.push(AppointedOfficial_Dto.fromJS(item, _mappings));
-            }
-            this.recordingsUrl = _data["recordingsUrl"];
-            this.transcriptsUrl = _data["transcriptsUrl"];
-        }
-    }
-
-    static fromJS(data: any, _mappings?: any): GovbodyDetails_Dto | null {
-        data = typeof data === 'object' ? data : {};
-        return createInstance<GovbodyDetails_Dto>(data, _mappings, GovbodyDetails_Dto);
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["name"] = this.name;
-        data["parentLocationId"] = this.parentLocationId;
-        if (Array.isArray(this.electedOfficials)) {
-            data["electedOfficials"] = [];
-            for (let item of this.electedOfficials)
-                data["electedOfficials"].push(item.toJSON());
-        }
-        if (Array.isArray(this.appointedOfficials)) {
-            data["appointedOfficials"] = [];
-            for (let item of this.appointedOfficials)
-                data["appointedOfficials"].push(item.toJSON());
-        }
-        data["recordingsUrl"] = this.recordingsUrl;
-        data["transcriptsUrl"] = this.transcriptsUrl;
-        return data;
-    }
-}
-
-export interface IGovbodyDetails_Dto {
-    name: string | undefined;
-    parentLocationId: number;
-    electedOfficials: ElectedOfficial_Dto[] | undefined;
-    appointedOfficials: AppointedOfficial_Dto[] | undefined;
-    recordingsUrl: string | undefined;
-    transcriptsUrl: string | undefined;
-}
-
 export class WeatherForecast implements IWeatherForecast {
     date!: moment.Moment;
     temperatureC!: number;
@@ -1666,7 +1683,7 @@ function jsonParse(json: any, reviver?: any) {
     json = (function recurse(obj: any, prop?: any, parent?: any) {
         if (typeof obj !== 'object' || !obj)
             return obj;
-
+        
         if ("$ref" in obj) {
             let ref = obj.$ref;
             if (ref in byid)
@@ -1680,7 +1697,7 @@ function jsonParse(json: any, reviver?: any) {
                 obj = obj.$values;
             byid[id] = obj;
         }
-
+        
         if (Array.isArray(obj)) {
             obj = obj.map((v, i) => recurse(v, i, obj));
         } else {
