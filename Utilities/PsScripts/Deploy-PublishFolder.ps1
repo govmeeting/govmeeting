@@ -1,3 +1,7 @@
+# NOTE: This code is obsolete. It was used to deploy to AspHostPortal.
+# Also it used WinSCP.dll, which was removed from the repository. If this
+# code is needed in the future, WinSCP needs to be installed in Utilities\PsScripts\WinSCP.
+
 # import utility functions for dealing with directory paths:
 #    Find-ParentFolderContaining, CombinePaths & GetFullPath
 Import-Module ./DirectoryUtils.psm1

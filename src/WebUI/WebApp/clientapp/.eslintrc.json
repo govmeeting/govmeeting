@@ -5,7 +5,8 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["tsconfig.json"],
+        "project": ["**/tsconfig.json"],
+        "tsconfigRootDir": "src/WebUI/WebApp/clientapp",
         "createDefaultProgram": true
       },
       "extends": ["plugin:@angular-eslint/recommended", "plugin:@angular-eslint/template/process-inline-templates"],

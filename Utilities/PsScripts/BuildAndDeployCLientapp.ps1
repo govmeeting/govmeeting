@@ -1,3 +1,7 @@
+# NOTE: This code is obsolete. It was used to deploy to AspHostPortal.
+# Also it used WinSCP.dll, which was removed from the repository. If this
+# code is needed in the future, WinSCP needs to be installed in Utilities\PsScripts\WinSCP.
+
 # This PS script was updated to work with Google Cloud Platform. Except that:
 #  1. It only so far is working for uploading a test file, C:\TMP\x.txt.
 #  2. It logs in to GCP as the user "johnpankowicz".

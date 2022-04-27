@@ -121,7 +121,7 @@
       NSwagExe_Core31 = "dotnet ~/.nuget/packages/nswag.msbuild/<nswag_version>/tools/<dotnet_version>/dotnet-nswag.dll"
       CSharpOutputPath & TypescriptOutputPath are variables used within nswag.json.
     -->
-    <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Core31) run nswag.json /variables:Configuration=$(Configuration),TypescriptOutputPath=$(MSBuildThisFileDirectory).\clientapp13\src\app\apis">
+    <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Core31) run nswag.json /variables:Configuration=$(Configuration),TypescriptOutputPath=$(MSBuildThisFileDirectory).\clientapp\src\app\apis">
       <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
       <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
     </Exec>

@@ -1,6 +1,6 @@
 {
   "runtime": "NetCore31",
-  "defaultVariables": "TypescriptOutputPath=.\\clientapp13x\\src\\app\\apis",
+  "defaultVariables": "TypescriptOutputPath=.\\clientapp\\src\\app\\apis",
   "documentGenerator": {
     "aspNetCoreToOpenApi": {
       "project": "WebApp.csproj",
