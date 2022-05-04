@@ -49,14 +49,16 @@ jobs:
       - name: Prettier & Format checks
         run: npm run ci:format
 
-      - name: Unit Tests
-        run: npm run ci:test
+      # Temporarily disable unit tests.
+      # - name: Unit Tests
+      #   run: npm run ci:test
 
       - name: Clean Build
         run: npm run ci:build
 
-      - name: Cypress Tests
-        run: npm run ci:cypress
+      # Temporarily disable cypress tests.
+      # - name: Cypress Tests
+      #   run: npm run ci:cypress
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.0
