@@ -1,5 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
+  <!-- This is needed for running a Powershell script defined in this build file.
+    See: https://gist.github.com/fearthecowboy/9e06ad9d92c5d939582147a35c049693 -->
+  <PropertyGroup><PowerShell># 2>nul || type %~df0|find /v "setlocal"|find /v "errorlevel"|powershell.exe -noninteractive -&amp; exit %errorlevel% || #</PowerShell></PropertyGroup>
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
@@ -127,6 +131,24 @@
     </Exec>
     <Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />
     <Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />
+
+    <PropertyGroup> <!-- Prefix your powershell script with the $(PowerShell) variable, then code as normal! -->
+      <myscript>$(PowerShell)
+        # Add "// @ts-nocheck" to the top of the generated NSwag file,
+        #   so that we ignore compile errors in that code.
+        $file="clientapp\src\app\apis\api.generated.clients.ts"
+        $tmpfile="clientapp\src\app\apis\api.generated.clients.tmp.ts"
+        Remove-Item -Path $tempfile --force
+        Add-Content -Path $tmpfile -Value "// @ts-nocheck`r`n"
+        Add-Content -Path $tmpfile -Value (Get-Content -Path $file)
+        Remove-Item -Path $file
+        Move-Item -Path $tmpfile -Destination $file
+      </myscript>
+    </PropertyGroup>
+  
+    <!-- Execute the script -->
+    <Exec Command="$(myscript)" EchoOff="true" /> 
+
   </Target>
 
 </Project>
