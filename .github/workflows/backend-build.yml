@@ -3,10 +3,10 @@ name: Build Backend
 on:
   push:
     paths-ignore:
-      ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yaml"]
+      ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yml"]
   pull_request:
     paths-ignore:
-      ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yaml"]
+      ["src/WebUI/WebApp/clientapp/**", ".github/workflows/frontend-build.yml"]
 
 jobs:
   build:
