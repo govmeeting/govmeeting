@@ -28,3 +28,23 @@ dotnet ef migrations remove
 * Set environment variable
     ASPNETCORE_ENVIRONMENT=Staging
 
+
+=== GITHUB SETTINGS & CHANGES ===
+Settings -> Code Security and analysis -> Enable:
+  Dependency graph, Dependabot alerts and Dependabot security updates
+Settings -> Actions -> General -> 
+   check "Allow GitHub Actions to create and approve pull requests"
+Settings -> General -> "Pull Requests" -> check "Allow auto-merge"
+Settings -> Branches
+  Default branch = "master"
+  Click "Add Rule" -> Branch name pattern = "master" -> hit Enter
+      "master" is now defined a a protected branch.
+  Edit rules.
+    Click "Edit" to right of "master" -> Rules options appear below. Click:
+      "Require a pull request before merging"
+      "Require approvals"
+      "Require status checks to pass before merging"
+      "Require branches to be up to date before merging"
+      "Allow force pushes"
+    NOTE: we wll require approvals later when the project members grow.
+		
