@@ -1,8 +1,0 @@
-.smallCards {
-  display: grid;
-  // All items will have a minium width of 265 px and a maximum of 1 fr unit.
-  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-  grid-auto-rows: 94px;
-  grid-gap: 10px;
-  margin: 10px;
-}
