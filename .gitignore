@@ -44,6 +44,7 @@ src/logs/
 **/cypress/screenshots/
 **/cypress/videos/
 **/GIT_IGNORE/
+*.js.map
 
 .synkron.syncdb
 desktop.ini
