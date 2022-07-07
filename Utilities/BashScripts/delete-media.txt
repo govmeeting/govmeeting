@@ -1,0 +1,29 @@
+# This list was obtained by running Utilities\BashScripts\find-gitobjects.sh
+#   and extracting all .mp4 & .flac files.
+#  We also include the extra large Maine_Acadia_National_Park.png file. Ther is a smaller version, that we use.
+99907488598b	4.0MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part03/ToFix.mp4			
+0b40f35efc54	4.3MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part02/ToFix.mp4			
+e66f3d9c3dfd	4.4MiB	src/WebUI/WebApp/clientapp-prior/dist/assets/stubdata/GIT_IGNORE/BigBuckBunny-256x144.mp4			
+ce6c93a3389b	4.4MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part01/ToFix.mp4			
+9e4e794829e1	7.8MiB	src/Server/WebApp/wwwroot/assets/2016-10-11 Boothbay Harbor Selectmen (3 minutes).mp4			
+7c7346ae6402	12MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Transcribe/R0-Video.mp4			
+698a54faba9c	13MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part03/ToFix.mp4
+# Keep "ToEdit.mp4" which is a short meeting video for demo-ing EditTranscript.			
+# 51b3f3d06dbd	14MiB	src/WebUI/WebApp/clientapp-prior/dist/assets/stubdata/ToEdit.mp4			
+51f5ac09abe9	14MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part02/ToFix.mp4			
+b814a2bf602e	19MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part04/ToFix.mp4			
+2cf4fa018843	19MiB	testdata/TestMoveToCloudAndTranscribe - Copy/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15.mp4			
+78d5768c1465	58MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-01-09.mp4			
+144a75a60dda	59MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en_2017-02-15.mp4			
+e7895588defa	67MiB	src/WebUI/WebApp/clientapp-prior/dist/assets/stubdata/GIT_IGNORE/BigBuckBunny-1280x720.mp4			
+3cf7cff4e087	5.7MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part03/ToFix.flac			
+ea3fa8f8dc9a	6.0MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part01/ToFix.flac			
+4425f849dbc0	6.1MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part02/ToFix.flac			
+0f057138cf4d	16MiB	Utilities/TranslateText/ToFix.flac			
+be08f02a4dfd	16MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part03/ToFix.flac			
+a0ef8df1aacb	17MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part02/ToFix.flac			
+8a2ddc31670d	17MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Transcribe/R1-Audio.flac			
+3cd336ae8e70	21MiB	testdata/TestMoveToCloudAndTranscribe - Copy/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_EN_2017-02-15.flac			
+d2c373080173	23MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/Fixasr/part04/ToFix.flac			
+8c0409cc6b58	70MiB	testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-02-15/R1-Audio.flac			
+8942cb2c55d1	8.3MiB	BackEnd/WebApp/wwwroot/assets/images/Maine_Acadia_National_Park.png
