@@ -25,4 +25,4 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore -nowarn:CS1591
       - name: Test
-        run: dotnet test --no-restore --no-build --verbosity normal
+        run: dotnet test --no-restore
