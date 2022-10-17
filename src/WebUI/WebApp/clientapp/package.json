@@ -52,7 +52,7 @@
     "@automapper/pojos": "^8.3.2",
     "@types/googlemaps": "^3.43.3",
     "@types/video.js": "^7.3.32",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "ngx-markdown": "^13.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
