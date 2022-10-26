@@ -1,7 +1,8 @@
 # Temporary code for removing large files from repo
-# Run inside a Git Bash shell
+# It uses BFG.
+# Run this inside a Git Bash shell
 
-# examples
+# examples of using BFG
 # java -jar bfg.jar --no-blob-protection --delete-files "*.{pdf,cdr,eps,jpg}" "${name}.git" &&
 # java -jar bfg.jar --no-blob-protection --delete-files "{ui-settings.xml,libkrtp.so}" "${name}.git" &&
 # java -jar bfg.jar -- delete-files {*.config,*.xml} your-git-repo.git
@@ -21,7 +22,8 @@ alias bfg="java -jar /c/govmeeting/bfg-1.14.0.jar"
 # bfg -D $DELETE2
 # git reflog expire --expire=now --all && git gc --prune=now --aggressive
 
-DELETE="{*.mp4,*.flac,*.css.map,*.js.map,*.ogg,*.webm,app.js,BigBuck*.mp4,bootstrap*.css,bootstrap*.js,canvg*.js,jquery*.js,jquery*.map,jquery*.ts,main.bundle.js,main-es*.js,pdfmake-es*.js,polyfills-es*.js,shims.js,styles-es*.js,vendor-bundle.js,vendor-es*.js,WinSCP.exe,WinSCPnet.dll,google-translate-attribution.zip,itextsharp.dll,iTextSharp.xml}"
+# Combination of DELETE1 & DELETE2
+DELETE="{*0.mp4,*4.mp4,*s.mp4,*x.mp4,*).mp4,*o.mp4,*5.mp4,*9.mp4,*.flac,*.css.map,*.js.map,*.ogg,*.webm,app.js,bootstrap*.css,bootstrap*.js,canvg*.js,jquery*.js,jquery*.map,jquery*.ts,main.bundle.js,main-es*.js,pdfmake-es*.js,polyfills-es*.js,shims.js,styles-es*.js,vendor-bundle.js,vendor-es*.js,WinSCP.exe,WinSCPnet.dll,google-translate-attribution.zip,itextsharp.dll,iTextSharp.xml}"
 cd /c/govmeeting/SOURCECODE_MIRROR_NO_PRIVATE_REFS/tmp.seC9sJ2Jkh
 bfg -D $DELETE
 git reflog expire --expire=now --all && git gc --prune=now --aggressive

@@ -7,6 +7,9 @@
 # This avoids the problem that occurs when we try to push a mirror of a repo back to Github.
 # Github would throw an error, if we try to push back these read-only references.
 #
+# LATER NOTE: Those read-only references likely include the PRs that we want to preserve when
+#    useing BFG. The PRs contain a lot of documentation on code changes.
+#
 # This script pulls just the references that we care about: 
 #    the branches (refs/heads), tags (refs/tags) and notes (refs/notes).
 # By selecting only these sets of references, we don't clone the private, read-only references.

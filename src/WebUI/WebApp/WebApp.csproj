@@ -133,12 +133,13 @@
     <Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />
 
     <PropertyGroup> <!-- Prefix your powershell script with the $(PowerShell) variable, then code as normal! -->
-      <myscript>$(PowerShell)
+      <myscript>
+        $(PowerShell)
         # Add "// @ts-nocheck" to the top of the generated NSwag file,
         #   so that we ignore compile errors in that code.
         $file="clientapp\src\app\apis\api.generated.clients.ts"
         $tmpfile="clientapp\src\app\apis\api.generated.clients.tmp.ts"
-        Remove-Item -Path $tempfile --force
+        if (test-path $tmpfile) {Remove-Item -Path $tmpfile -Force}
         Add-Content -Path $tmpfile -Value "// @ts-nocheck`r`n"
         Add-Content -Path $tmpfile -Value (Get-Content -Path $file)
         Remove-Item -Path $file
