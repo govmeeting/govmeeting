@@ -1,6 +1,13 @@
-# This list was obtained by running Utilities\BashScripts\find-gitobjects.sh
+# This is a list of large files that we will remove from git history. We want to back them up to a separate
+# repository, just in case we need one of these files in the future. (EG: to run old code.)
+#
+# This list was obtained by running Utilities\BashScripts\git-show-objects-by-size.sh
 #   and extracting all .mp4 & .flac files.
-#  We also include the extra large Maine_Acadia_National_Park.png file. Ther is a smaller version, that we use.
+#  We also include the 8 MiB version of Maine_Acadia_National_Park.png file. There is a smaller version, that we use.
+#
+# This list will be read by "git-backup-large-files.sh" which backs up the files. It uses the file's SHA (column 1) to
+# extract the contents of the file and the relative path (column 3) in which to save the file.
+#
 99907488598b	4.0MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part03/ToFix.mp4			
 0b40f35efc54	4.3MiB	Testdata/USA_ME_LincolnCounty_BoothbayHarbor_Selectmen_en/2017-01-09/Fixasr/part02/ToFix.mp4			
 e66f3d9c3dfd	4.4MiB	src/WebUI/WebApp/clientapp-prior/dist/assets/stubdata/GIT_IGNORE/BigBuckBunny-256x144.mp4			

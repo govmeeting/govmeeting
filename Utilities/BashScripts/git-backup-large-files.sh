@@ -1,4 +1,4 @@
-# Delete the media files in "delete-media.txt"
+# Backup the media files in "git-backup-large-files.txt"
 # The "sed" command removes lines starting with "#"
 
 savemedia="/c/tmp/delete-media/"
@@ -15,3 +15,6 @@ cat delete-media.txt | sed '/^#/d' | while read sha size path; do
     echo
     git cat-file blob $sha >"$save_path"
 done
+
+
+# DELETE="{*0.mp4,*4.mp4,*s.mp4,*x.mp4,*).mp4,*o.mp4,*5.mp4,*9.mp4,*.flac}"
