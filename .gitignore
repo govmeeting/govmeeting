@@ -45,6 +45,7 @@ src/logs/
 **/cypress/videos/
 **/GIT_IGNORE/
 *.js.map
+**/clientapp/.angular/cache/
 
 .synkron.syncdb
 desktop.ini
