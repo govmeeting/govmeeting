@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using NLog;
 using System.IO;
 using System.Reflection;
@@ -78,16 +79,21 @@ namespace GM.WebUI.WebApp
             services.AddControllersWithViews();
             logger.Info("Add services for Web API, MVC & Razor Views");
 
-            //services.AddOpenApiDocument();
-            services.AddSwaggerDocument(settings =>
+            ////services.AddOpenApiDocument();
+            //services.AddSwaggerDocument(settings =>
+            //{
+            //    settings.PostProcess = document =>
+            //    {
+            //        document.Info.Version = "v1";
+            //        document.Info.Title = "WebApp API";
+            //        document.Info.Description = "REST API for WebApp.";
+            //    };
+            //});
+            services.AddSwaggerGen(c =>
             {
-                settings.PostProcess = document =>
-                {
-                    document.Info.Version = "v1";
-                    document.Info.Title = "WebApp API";
-                    document.Info.Description = "REST API for WebApp.";
-                };
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Govmeeting.api", Version = "v1" });
             });
+
             logger.Info("Add services for Swagger Document");
 
             services.AddRazorPages();
@@ -192,9 +198,14 @@ namespace GM.WebUI.WebApp
                 //endpoints.MapHealthChecks("/health").RequireAuthorization();
             });
 
-            app.UseOpenApi();
-            app.UseSwaggerUi3();
-            logger.Info("UseOpenApi & UseSwaggerUi3");
+            if (env.IsDevelopment())
+            {
+                //app.UseOpenApi();
+                //app.UseSwaggerUi3();
+                app.UseSwagger();
+                app.UseSwaggerUI();
+                logger.Info("UseOpenApi & UseSwaggerUi3");
+            }
 
             app.UseSpa(spa =>
             {
