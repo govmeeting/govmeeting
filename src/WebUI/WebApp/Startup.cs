@@ -204,7 +204,7 @@ namespace GM.WebUI.WebApp
                 //app.UseSwaggerUi3();
                 app.UseSwagger();
                 app.UseSwaggerUI();
-                logger.Info("UseOpenApi & UseSwaggerUi3");
+                logger.Info("UseSwagger & UseSwaggerUI");
             }
 
             app.UseSpa(spa =>
