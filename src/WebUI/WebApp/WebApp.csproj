@@ -113,6 +113,16 @@
     </ItemGroup>
   </Target>
 
+  <!-- Use SwashBuckle.AspNetCore.Cli to generate angular client side code. -->
+    <ItemGroup>
+      <Folder Include="wwwroot\swagger\v1" />
+    </ItemGroup>
+
+    <Target Name="OpenAPI" AfterTargets="Build" Condition="$(Configuration)=='Debug'">
+        <Exec Command="dotnet swagger tofile --output ./wwwroot/swagger/v1/swagger.yaml --yaml $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" />
+        <Exec Command="dotnet swagger tofile --output ./wwwroot/swagger/v1/swagger.json $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" />
+    </Target>
+
     <!-- Use   NSwag to build code if not an Azure or Github build -->
     <!-- NSwagExe_Core31 = "dotnet ~/.nuget/packages/nswag.msbuild/<nswag_version>/tools/<dotnet_version>/dotnet-nswag.dll"
       CSharpOutputPath & TypescriptOutputPath are variables used within nswag.json. -->
