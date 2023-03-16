@@ -344,6 +344,28 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    EditMeeting_Dto:
+      type: object
+      properties:
+        sections:
+          type: array
+          items:
+            type: string
+          nullable: true
+        topics:
+          type: array
+          items:
+            type: string
+          nullable: true
+        talks:
+          type: array
+          items:
+            $ref: '#/components/schemas/EditMeetingTalk_Dto'
+          nullable: true
+        lastEdit:
+          type: integer
+          format: int64
+      additionalProperties: false
     EditMeetingTalk_Dto:
       type: object
       properties:
@@ -395,28 +417,6 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    EditMeeting_Dto:
-      type: object
-      properties:
-        sections:
-          type: array
-          items:
-            type: string
-          nullable: true
-        topics:
-          type: array
-          items:
-            type: string
-          nullable: true
-        talks:
-          type: array
-          items:
-            $ref: '#/components/schemas/EditMeetingTalk_Dto'
-          nullable: true
-        lastEdit:
-          type: integer
-          format: int64
-      additionalProperties: false
     ElectedOfficial_Dto:
       type: object
       properties:
@@ -427,7 +427,7 @@ components:
           type: string
           nullable: true
       additionalProperties: false
-    GovLocation_Dto:
+    Govbody_Dto:
       type: object
       properties:
         id:
@@ -436,8 +436,6 @@ components:
         name:
           type: string
           nullable: true
-        type:
-          $ref: '#/components/schemas/GovlocTypes'
         parentLocationId:
           type: integer
           format: int32
@@ -468,7 +466,7 @@ components:
           type: string
           nullable: true
       additionalProperties: false
-    Govbody_Dto:
+    GovLocation_Dto:
       type: object
       properties:
         id:
@@ -477,6 +475,8 @@ components:
         name:
           type: string
           nullable: true
+        type:
+          $ref: '#/components/schemas/GovlocTypes'
         parentLocationId:
           type: integer
           format: int32
@@ -493,21 +493,6 @@ components:
         - 7
       type: integer
       format: int32
-    RegisterGovLocation_Cmd:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int32
-        name:
-          type: string
-          nullable: true
-        type:
-          $ref: '#/components/schemas/GovlocTypes'
-        parentLocationId:
-          type: integer
-          format: int32
-      additionalProperties: false
     RegisterGovbody_Cmd:
       type: object
       properties:
@@ -532,6 +517,52 @@ components:
           nullable: true
         transcriptsUrl:
           type: string
+          nullable: true
+      additionalProperties: false
+    RegisterGovLocation_Cmd:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        type:
+          $ref: '#/components/schemas/GovlocTypes'
+        parentLocationId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ViewMeeting_Dto:
+      type: object
+      properties:
+        meetingId:
+          type: integer
+          format: int32
+        govbodyName:
+          type: string
+          nullable: true
+        locationName:
+          type: string
+          nullable: true
+        date:
+          type: string
+          nullable: true
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewMeetingTopic_Dto'
+          nullable: true
+        speakers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewMeetingSpeaker_Dto'
+          nullable: true
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewMeetingSection_Dto'
           nullable: true
       additionalProperties: false
     ViewMeetingSection_Dto:
@@ -568,18 +599,6 @@ components:
           type: string
           nullable: true
       additionalProperties: false
-    ViewMeetingTopicDiscussion_Dto:
-      type: object
-      properties:
-        topicId:
-          type: integer
-          format: int64
-        talks:
-          type: array
-          items:
-            $ref: '#/components/schemas/ViewMeetingTalk_Dto'
-          nullable: true
-      additionalProperties: false
     ViewMeetingTopic_Dto:
       type: object
       properties:
@@ -592,35 +611,16 @@ components:
         isExisting:
           type: boolean
       additionalProperties: false
-    ViewMeeting_Dto:
+    ViewMeetingTopicDiscussion_Dto:
       type: object
       properties:
-        meetingId:
+        topicId:
           type: integer
-          format: int32
-        govbodyName:
-          type: string
-          nullable: true
-        locationName:
-          type: string
-          nullable: true
-        date:
-          type: string
-          nullable: true
-        topics:
+          format: int64
+        talks:
           type: array
           items:
-            $ref: '#/components/schemas/ViewMeetingTopic_Dto'
-          nullable: true
-        speakers:
-          type: array
-          items:
-            $ref: '#/components/schemas/ViewMeetingSpeaker_Dto'
-          nullable: true
-        sections:
-          type: array
-          items:
-            $ref: '#/components/schemas/ViewMeetingSection_Dto'
+            $ref: '#/components/schemas/ViewMeetingTalk_Dto'
           nullable: true
       additionalProperties: false
     WeatherForecast:
