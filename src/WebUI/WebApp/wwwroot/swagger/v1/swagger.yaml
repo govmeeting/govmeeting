@@ -309,7 +309,7 @@ paths:
             text/json:
               schema:
                 type: boolean
-  /api/WeatherForecast/Get:
+  /WeatherForecast:
     get:
       tags:
         - WeatherForecast
