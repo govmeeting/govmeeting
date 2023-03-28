@@ -2,3 +2,4 @@
 /dist/
 TRANS/
 src/app/apis/
+src/app/core/
