@@ -1,0 +1,642 @@
+openapi: 3.0.1
+info:
+  title: Govmeeting.api
+  version: v1
+paths:
+  '/api/EditMeeting/{meetingId}/{part}':
+    get:
+      tags:
+        - EditMeeting
+      parameters:
+        - name: meetingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: part
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EditMeeting_Dto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditMeeting_Dto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EditMeeting_Dto'
+    post:
+      tags:
+        - EditMeeting
+      parameters:
+        - name: meetingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: part
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditMeeting_Dto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EditMeeting_Dto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EditMeeting_Dto'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: boolean
+            application/json:
+              schema:
+                type: boolean
+            text/json:
+              schema:
+                type: boolean
+  /api/Govbody/Register:
+    post:
+      tags:
+        - Govbody
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterGovbody_Cmd'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RegisterGovbody_Cmd'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RegisterGovbody_Cmd'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: integer
+                format: int32
+            application/json:
+              schema:
+                type: integer
+                format: int32
+            text/json:
+              schema:
+                type: integer
+                format: int32
+  '/api/Govbody/GetGovbodies/{id}':
+    get:
+      tags:
+        - Govbody
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Govbody_Dto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Govbody_Dto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Govbody_Dto'
+  '/api/Govbody/GetGovbody/{id}':
+    get:
+      tags:
+        - Govbody
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GovbodyDetails_Dto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GovbodyDetails_Dto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GovbodyDetails_Dto'
+  /api/GovLocation/Register:
+    post:
+      tags:
+        - GovLocation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterGovLocation_Cmd'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RegisterGovLocation_Cmd'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RegisterGovLocation_Cmd'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: integer
+                format: int32
+            application/json:
+              schema:
+                type: integer
+                format: int32
+            text/json:
+              schema:
+                type: integer
+                format: int32
+  /api/GovLocation/GetMyGovLocations:
+    get:
+      tags:
+        - GovLocation
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GovLocation_Dto'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GovLocation_Dto'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GovLocation_Dto'
+  /api/HealthCheck/Get:
+    get:
+      tags:
+        - HealthCheck
+      responses:
+        '200':
+          description: Success
+  '/api/Video/{filename}':
+    get:
+      tags:
+        - Video
+      parameters:
+        - name: filename
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+  '/api/ViewMeeting/{meetingId}':
+    get:
+      tags:
+        - ViewMeeting
+      parameters:
+        - name: meetingId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ViewMeeting_Dto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewMeeting_Dto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ViewMeeting_Dto'
+  /api/ViewMeeting:
+    put:
+      tags:
+        - ViewMeeting
+      parameters:
+        - name: MeetingId
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: GovbodyName
+          in: query
+          schema:
+            type: string
+        - name: LocationName
+          in: query
+          schema:
+            type: string
+        - name: Date
+          in: query
+          schema:
+            type: string
+        - name: Topics
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ViewMeetingTopic_Dto'
+        - name: Speakers
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ViewMeetingSpeaker_Dto'
+        - name: Sections
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ViewMeetingSection_Dto'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: boolean
+            application/json:
+              schema:
+                type: boolean
+            text/json:
+              schema:
+                type: boolean
+  /WeatherForecast:
+    get:
+      tags:
+        - WeatherForecast
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WeatherForecast'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WeatherForecast'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WeatherForecast'
+components:
+  schemas:
+    AppointedOfficial_Dto:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EditMeeting_Dto:
+      type: object
+      properties:
+        sections:
+          type: array
+          items:
+            type: string
+          nullable: true
+        topics:
+          type: array
+          items:
+            type: string
+          nullable: true
+        talks:
+          type: array
+          items:
+            $ref: '#/components/schemas/EditMeetingTalk_Dto'
+          nullable: true
+        lastEdit:
+          type: integer
+          format: int64
+      additionalProperties: false
+    EditMeetingTalk_Dto:
+      type: object
+      properties:
+        transcript:
+          type: string
+          nullable: true
+        confidence:
+          type: number
+          format: double
+        wordCount:
+          type: integer
+          format: int32
+        speakerName:
+          type: string
+          nullable: true
+        sectionName:
+          type: string
+          nullable: true
+        topicName:
+          type: string
+          nullable: true
+        showSetTopic:
+          type: boolean
+        words:
+          type: array
+          items:
+            $ref: '#/components/schemas/EditMeetingWord_Dto'
+          nullable: true
+      additionalProperties: false
+    EditMeetingWord_Dto:
+      type: object
+      properties:
+        word:
+          type: string
+          nullable: true
+        confidence:
+          type: number
+          format: double
+        startTime:
+          type: integer
+          format: int64
+        endTime:
+          type: integer
+          format: int64
+        wordNum:
+          type: integer
+          format: int32
+        speakerTag:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ElectedOfficial_Dto:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Govbody_Dto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        parentLocationId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    GovbodyDetails_Dto:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        parentLocationId:
+          type: integer
+          format: int32
+        electedOfficials:
+          type: array
+          items:
+            $ref: '#/components/schemas/ElectedOfficial_Dto'
+          nullable: true
+        appointedOfficials:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppointedOfficial_Dto'
+          nullable: true
+        recordingsUrl:
+          type: string
+          nullable: true
+        transcriptsUrl:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GovLocation_Dto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        type:
+          $ref: '#/components/schemas/GovlocTypes'
+        parentLocationId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    GovlocTypes:
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+      type: integer
+      format: int32
+    RegisterGovbody_Cmd:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        parentLocationId:
+          type: integer
+          format: int32
+        electedOfficials:
+          type: array
+          items:
+            $ref: '#/components/schemas/ElectedOfficial_Dto'
+          nullable: true
+        appointedOfficials:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppointedOfficial_Dto'
+          nullable: true
+        recordingsUrl:
+          type: string
+          nullable: true
+        transcriptsUrl:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RegisterGovLocation_Cmd:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        type:
+          $ref: '#/components/schemas/GovlocTypes'
+        parentLocationId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ViewMeeting_Dto:
+      type: object
+      properties:
+        meetingId:
+          type: integer
+          format: int32
+        govbodyName:
+          type: string
+          nullable: true
+        locationName:
+          type: string
+          nullable: true
+        date:
+          type: string
+          nullable: true
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewMeetingTopic_Dto'
+          nullable: true
+        speakers:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewMeetingSpeaker_Dto'
+          nullable: true
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewMeetingSection_Dto'
+          nullable: true
+      additionalProperties: false
+    ViewMeetingSection_Dto:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        topicDiscussions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewMeetingTopicDiscussion_Dto'
+          nullable: true
+      additionalProperties: false
+    ViewMeetingSpeaker_Dto:
+      type: object
+      properties:
+        speakerId:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        isExisting:
+          type: boolean
+      additionalProperties: false
+    ViewMeetingTalk_Dto:
+      type: object
+      properties:
+        speakerId:
+          type: integer
+          format: int64
+        text:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ViewMeetingTopic_Dto:
+      type: object
+      properties:
+        topicId:
+          type: integer
+          format: int64
+        name:
+          type: string
+          nullable: true
+        isExisting:
+          type: boolean
+      additionalProperties: false
+    ViewMeetingTopicDiscussion_Dto:
+      type: object
+      properties:
+        topicId:
+          type: integer
+          format: int64
+        talks:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewMeetingTalk_Dto'
+          nullable: true
+      additionalProperties: false
+    WeatherForecast:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        temperatureC:
+          type: integer
+          format: int32
+        temperatureF:
+          type: integer
+          format: int32
+          readOnly: true
+        summary:
+          type: string
+          nullable: true
+      additionalProperties: false
