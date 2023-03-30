@@ -9,7 +9,7 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
-    <SpaRoot>clientapp\</SpaRoot>
+    <SpaRoot>..\clientapp\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
     
     <!-- Set true for NSwag comments -->
@@ -119,45 +119,25 @@
       <Folder Include="wwwroot\swagger\v1" />
     </ItemGroup>
 
-    <!-- We should only generate the openapi spec here and leave client code generation for clientapp. -->
     <!-- Should we do as with nswag: just not build if GITHUB_ACTIONS or TF_BUILD? -->
+    <!--<Target Name="NSwag" BeforeTargets="AfterBuild" Condition="'$(GITHUB_ACTIONS)'!='True' And  '$(TF_BUILD)'!='True'"> -->
     <!-- Should we do: <Target Name="PostBuild" AfterTargets="PostBuildEvent">? -->
+
     <Target Name="OpenAPI" AfterTargets="Build" Condition="$(Configuration)=='Debug'">
+        <Message Text="Restore dotnet tool swashbuckle.aspnetcore.cli" Importance="high" />
         <Exec Command="dotnet tool restore" />
-        <Exec Command="dotnet swagger tofile --output wwwroot/swagger/v1/swagger.yaml --yaml $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" />
-        <Exec Command="dotnet swagger tofile --output wwwroot/swagger/v1/swagger.json $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" />
+        <Message Text="Run openapi-generator to generate Typescript wep api specs (yaml + json)" Importance="high" />
+        <Exec Command="dotnet swagger tofile --output wwwroot/swagger/v1/swagger.yaml --yaml $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" >
+          <Output TaskParameter="ExitCode" PropertyName="SwagExitCode1" />
+          <Output TaskParameter="ConsoleOutput" PropertyName="SwagOutput1" />
+        </Exec>
+        <Message Text="$(SwagOutput1)" Condition="'$(SwagExitCode1)' == '0'" Importance="low" />
+        <Error Text="$(SwagOutput1)" Condition="'$(SwagExitCode1)' != '0'" />
+      <Exec Command="dotnet swagger tofile --output wwwroot/swagger/v1/swagger.json $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" >
+        <Output TaskParameter="ExitCode" PropertyName="SwagExitCode2" />
+        <Output TaskParameter="ConsoleOutput" PropertyName="SwagOutput2" />
+      </Exec>
+      <Message Text="$(SwagOutput2)" Condition="'$(SwagExitCode2)' == '0'" Importance="low" />
+      <Error Text="$(SwagOutput2)" Condition="'$(SwagExitCode2)' != '0'" />
     </Target>
-
-  <!-- OLD NSWAG CODE -->
-    <!-- Use   NSwag to build code if not an Azure or Github build -->
-    <!-- NSwagExe_Core31 = "dotnet ~/.nuget/packages/nswag.msbuild/<nswag_version>/tools/<dotnet_version>/dotnet-nswag.dll"
-      CSharpOutputPath & TypescriptOutputPath are variables used within nswag.json. -->
-  <!--<Target Name="NSwag" BeforeTargets="AfterBuild" Condition="'$(GITHUB_ACTIONS)'!='True' And  '$(TF_BUILD)'!='True'">
-    <Message Text="Run NSwag to generate C# and Typescript APIs" Importance="high" />
-    <Message Text="Command=$(NSwagExe_Core31) Configuration=$(Configuration)" Importance="high" />
-    <Exec ConsoleToMSBuild="true" ContinueOnError="true" Command="$(NSwagExe_Core31) run nswag.json /variables:Configuration=$(Configuration),TypescriptOutputPath=$(MSBuildThisFileDirectory).\clientapp\src\app\apis">
-      <Output TaskParameter="ExitCode" PropertyName="NSwagExitCode" />
-      <Output TaskParameter="ConsoleOutput" PropertyName="NSwagOutput" />
-    </Exec>
-    <Message Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' == '0'" Importance="low" />
-    <Error Text="$(NSwagOutput)" Condition="'$(NSwagExitCode)' != '0'" />-->
-
-     <!-- Prefix your powershell script with the $(PowerShell) variable, then code as normal! -->
-    <!--<PropertyGroup>
-      <myscript>
-        $(PowerShell)
-        # Add "// @ts-nocheck" to the top of the generated NSwag file,
-        #   so that we ignore compile errors in that code.
-        $file="clientapp\src\app\apis\api.generated.clients.ts"
-        $tmpfile="clientapp\src\app\apis\api.generated.clients.tmp.ts"
-        if (test-path $tmpfile) {Remove-Item -Path $tmpfile -Force}
-        Add-Content -Path $tmpfile -Value "// @ts-nocheck`r`n"
-        Add-Content -Path $tmpfile -Value (Get-Content -Path $file)
-        Remove-Item -Path $file
-        Move-Item -Path $tmpfile -Destination $file
-      </myscript>
-    </PropertyGroup>
-    <Exec Command="$(myscript)" EchoOff="true" /> 
-  </Target>-->
-
 </Project>

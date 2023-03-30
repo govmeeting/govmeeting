@@ -79,16 +79,6 @@ namespace GM.WebUI.WebApp
             services.AddControllersWithViews();
             logger.Info("Add services for Web API, MVC & Razor Views");
 
-            ////services.AddOpenApiDocument();
-            //services.AddSwaggerDocument(settings =>
-            //{
-            //    settings.PostProcess = document =>
-            //    {
-            //        document.Info.Version = "v1";
-            //        document.Info.Title = "WebApp API";
-            //        document.Info.Description = "REST API for WebApp.";
-            //    };
-            //});
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Govmeeting.api", Version = "v1" });
@@ -200,8 +190,6 @@ namespace GM.WebUI.WebApp
 
             if (env.IsDevelopment())
             {
-                //app.UseOpenApi();
-                //app.UseSwaggerUi3();
                 app.UseSwagger();
                 app.UseSwaggerUI();
                 logger.Info("UseSwagger & UseSwaggerUI");
