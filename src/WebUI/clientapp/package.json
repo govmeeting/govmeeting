@@ -32,7 +32,7 @@
     "ci:build": "run-s clean build:ghp",
     "ci:cypress": "start-server-and-test ci:start-server 4200 cypress",
     "ci:start-server": "angular-http-server --path ./dist -p 4200",
-    "generate:api": "openapi-generator-cli generate -i ../wwwroot/swagger/v1/swagger.yaml -g typescript-angular -o src/app/core/api/v1"
+    "generate:api": "openapi-generator-cli generate -i ../WebApp/wwwroot/swagger/v1/swagger.yaml -g typescript-angular -o src/app/core/api/v1"
   },
   "private": true,
   "dependencies": {
