@@ -38,6 +38,13 @@
       "webRoot": "${workspaceRoot}/src/WebUI/WebApp/clientapp"
     },
     {
+      "name": "Weather",
+      "type": "chrome",
+      "request": "launch",
+      "url": "https://localhost:5001/WeatherForecast",
+      "webRoot": "${workspaceRoot}/src/WebUI/WebApp/clientapp"
+    },
+    {
       "name": "WebApp",
       "type": "coreclr",
       "request": "launch",
