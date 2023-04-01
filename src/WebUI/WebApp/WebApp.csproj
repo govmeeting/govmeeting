@@ -6,20 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
-
   <!-- Use SwashBuckle.AspNetCore.Cli to generate angular client side code. -->
-    <ItemGroup>
-      <Folder Include="wwwroot\swagger\v1" />
-    </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(SwagFolder)" />
+  </ItemGroup>
 
-    <!-- Should we do as with nswag: just not build if GITHUB_ACTIONS or TF_BUILD? -->
-    <!-- <Target Name="NSwag" BeforeTargets="AfterBuild" Condition="'$(GITHUB_ACTIONS)'!='True' And  '$(TF_BUILD)'!='True'"> -->
-    <!-- Should we do: <Target Name="PostBuild" AfterTargets="PostBuildEvent">? -->
+  <!-- Should we do as with nswag: only not build if GITHUB_ACTIONS or TF_BUILD are true? -->
+  <!--    Condition="'$(GITHUB_ACTIONS)'!='True' And  '$(TF_BUILD)'!='True'" -->
 
-  <Target Name="OpenAPI" AfterTargets="Build" Condition="$(Configuration)=='Debug'">
+  <Target Name="OpenAPI" AfterTargets="PostBuildEvent" Condition="$(Configuration)=='Debug'">
     <Message Text="Restore dotnet tool swashbuckle.aspnetcore.cli" Importance="high" />
     <Exec Command="dotnet tool restore" />
     <Message Text="Run openapi-generator to generate Typescript wep api specs (yaml + json)" Importance="high" />
@@ -35,6 +33,5 @@
     </Exec>
     <Message Text="$(SwagOutput2)" Condition="'$(SwagExitCode2)' == '0'" Importance="low" />
     <Error Text="$(SwagOutput2)" Condition="'$(SwagExitCode2)' != '0'" />
-
   </Target>
 </Project>
