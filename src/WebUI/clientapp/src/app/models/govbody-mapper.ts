@@ -24,7 +24,8 @@ import {
   Official_Dto,
   ElectedOfficial_Dto,
   AppointedOfficial_Dto,
-} from '../apis/api.generated.clients';
+  // } from '../apis/api.generated.clients';
+} from '../core/api/v1/model/models';
 import { Injectable } from '@angular/core';
 
 // export class IGovLocationArray_Dto {
