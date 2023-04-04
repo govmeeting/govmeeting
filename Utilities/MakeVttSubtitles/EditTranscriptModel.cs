@@ -17,7 +17,7 @@
         public string said;
         public string section;
         public string topic;
-        bool showSetTopoc;
+        bool showSetTopic;
         public double confidence;
         public int wordcount;
         public WordModel[] words;

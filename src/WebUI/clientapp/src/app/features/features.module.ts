@@ -14,6 +14,7 @@ import { MinutesComponent } from '../features/minutes/minutes.component';
 import { AlertsComponent } from '../features/alerts/alerts.component';
 // import { WorkareaComponent } from '../work_experiments/workarea/workarea.component';
 import { RegisterGovBodyComponent } from './register-gov-body/register-gov-body.component';
+import { FetchDataComponent } from '../work_experiments/fetch-data/fetch-data.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -42,6 +43,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     // For counties
     NotesComponent,
     MinutesComponent,
+
+    // dev
+    FetchDataComponent,
   ],
   exports: [
     // ViewTranscriptModule,
@@ -60,6 +64,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     // For counties
     NotesComponent,
     MinutesComponent,
+
+    // dev
+    FetchDataComponent,
   ],
 })
 export class FeaturesModule {}

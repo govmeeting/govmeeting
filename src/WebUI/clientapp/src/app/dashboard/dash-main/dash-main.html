@@ -43,6 +43,10 @@
       <gm-minutes></gm-minutes>
     </gm-large-card>
 
+    <gm-large-card *ngIf="!isCounty" icon="spellcheck" iconcolor="icon-color-green" title="Fetch Data">
+      <gm-fetch-data></gm-fetch-data>
+    </gm-large-card>
+
     <gm-large-card *ngIf="!isCounty" icon="spellcheck" iconcolor="icon-color-green" title="{{edittranscriptTitle}}">
       <gm-edittranscript></gm-edittranscript>
     </gm-large-card>

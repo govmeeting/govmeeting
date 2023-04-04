@@ -8,7 +8,7 @@ namespace MakeVttSubtitles
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             //int MAX_SUBTITLE = 40;
             //int MIN_SPLIT = 20;
@@ -144,10 +144,12 @@ namespace MakeVttSubtitles
             vtt.WriteLine(subtitle);
             vtt.WriteLine();
 
-            CaptionModel cap = new CaptionModel();
-            cap.text = subtitle;
-            cap.hilite = false;
-            cap.Id = captionId++;
+            CaptionModel cap = new CaptionModel
+            {
+                text = subtitle,
+                hilite = false,
+                Id = captionId++
+            };
             listCaptions.Add(cap);            
         }
 
@@ -158,9 +160,9 @@ namespace MakeVttSubtitles
             {
                 if (i != start)
                 {
-                    subtitle = subtitle + " ";
+                    subtitle += " ";
                 }
-                subtitle = subtitle + words[i].word;
+                subtitle += words[i].word;
             }
             return subtitle;
         }

@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './fetch-data.component.html',
 })
 export class FetchDataComponent {
-  public forecasts: WeatherForecast[];
+  public forecasts: WeatherForecast[] | undefined;
   apistring = '/weatherforecast';
 
   constructor(http: HttpClient, @Inject('API_BASE_URL') apiBaseUrl: string) {
