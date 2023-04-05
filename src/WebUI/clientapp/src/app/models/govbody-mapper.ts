@@ -17,19 +17,24 @@ import {
 } from './govbody-view';
 
 import {
-  GovLocation_Dto,
-  Govbody_Dto,
-  GovbodyDetails_Dto,
+  GovLocationDto,
+  GovbodyDto,
+  GovbodyDetailsDto,
   GovlocTypes,
-  Official_Dto,
-  ElectedOfficial_Dto,
-  AppointedOfficial_Dto,
+  // OfficialDto,    // TODO - why isn't openapi-generator defining this.
+  ElectedOfficialDto,
+  AppointedOfficialDto,
   // } from '../apis/api.generated.clients';
 } from '../core/api/v1/model/models';
 import { Injectable } from '@angular/core';
 
+// copied from prior nswag generated code
+class OfficialDto {
+  name!: string | undefined; // "!" means whenever we use 'name' it will NOT be null.
+  title!: string | undefined;
+}
 // export class IGovLocationArray_Dto {
-//  locations: GovLocation_Dto[];
+//  locations: GovLocationDto[];
 // }
 
 // export class IGovLocationArray_Vm {
@@ -67,15 +72,15 @@ export class GovbodyMapper {
       title: String,
     });
 
-    // Add metadata to members of Official_Dto. Currently the members are the same as IOfficial_Vm.
-    PojosMetadataMap.create<Official_Dto>('Official_Dto', {
+    // Add metadata to members of OfficialDto. Currently the members are the same as IOfficial_Vm.
+    PojosMetadataMap.create<OfficialDto>('OfficialDto', {
       name: String,
       title: String,
     });
 
     // Create the mapping.
-    // this.mapper.createMap<Official_Dto, IOfficial_Vm>('GovOfficial_Dto', 'IGovOfficial_Vm');
-    createMap<Official_Dto, IOfficial_Vm>(this.mapper, 'GovOfficial_Dto', 'IGovOfficial_Vm');
+    // this.mapper.createMap<OfficialDto, IOfficial_Vm>('GovOfficialDto', 'IGovOfficial_Vm');
+    createMap<OfficialDto, IOfficial_Vm>(this.mapper, 'GovOfficialDto', 'IGovOfficial_Vm');
   }
 
   mapGovLocation() {
@@ -86,15 +91,15 @@ export class GovbodyMapper {
       parentLocationId: Number,
     });
 
-    // PojosMetadataMap.create<GovLocation_Dto>('GovLocation_Dto', 'IGovLocation_Vm');
-    PojosMetadataMap.create<GovLocation_Dto>('GovLocation_Dto', {
+    // PojosMetadataMap.create<GovLocationDto>('GovLocationDto', 'IGovLocation_Vm');
+    PojosMetadataMap.create<GovLocationDto>('GovLocationDto', {
       id: Number,
       name: String,
       type: Number,
       parentLocationId: Number,
     });
 
-    createMap<GovLocation_Dto, IGovLocation_Vm>(this.mapper, 'GovLocation_Dto', 'IGovLocation_Vm');
+    createMap<GovLocationDto, IGovLocation_Vm>(this.mapper, 'GovLocationDto', 'IGovLocation_Vm');
   }
 
   mapGovbodyDetails() {
@@ -107,16 +112,16 @@ export class GovbodyMapper {
       transcriptsUrl: String,
     });
 
-    PojosMetadataMap.create<GovbodyDetails_Dto>('IGovbodyDetails_Dto', {
+    PojosMetadataMap.create<GovbodyDetailsDto>('IGovbodyDetailsDto', {
       name: String,
       parentLocationId: Number,
-      electedOfficials: 'IOfficial_Dto',
-      appointedOfficials: 'IOfficial_Dto',
+      electedOfficials: 'IOfficialDto',
+      appointedOfficials: 'IOfficialDto',
       recordingsUrl: String,
       transcriptsUrl: String,
     });
 
-    createMap<GovbodyDetails_Dto, IGovbodyDetails_Vm>(this.mapper, 'GovbodyDetails_Dto', 'IGovbodyDetails_Vm');
+    createMap<GovbodyDetailsDto, IGovbodyDetails_Vm>(this.mapper, 'GovbodyDetailsDto', 'IGovbodyDetails_Vm');
   }
 
   mapGovbody() {
@@ -126,18 +131,18 @@ export class GovbodyMapper {
       parentLocationId: Number,
     });
 
-    PojosMetadataMap.create<GovbodyDetails_Dto>('Govbody_Dto', {
+    PojosMetadataMap.create<GovbodyDetailsDto>('GovbodyDto', {
       // id: Number,
       name: String,
       parentLocationId: Number,
     });
 
-    createMap<Govbody_Dto, IGovbody_Vm>(this.mapper, 'Govbody_Dto', 'IGovbody_Vm');
+    createMap<GovbodyDto, IGovbody_Vm>(this.mapper, 'GovbodyDto', 'IGovbody_Vm');
   }
 
   // mapGovLocationArray() {
   //  createMetadataMap<IGovLocationArray_Dto>('IGovLocationArray_Dto', {
-  //    locations: 'GovLocation_Dto',
+  //    locations: 'GovLocationDto',
   //  });
 
   //  createMetadataMap<IGovLocationArray_Vm>('IGovLocationArray_Vm', {
@@ -150,13 +155,13 @@ export class GovbodyMapper {
   /////////////////////////// TESTS CALLED FROM govbody-mapper.spec.ts ///////////////////
 
   //  testGovLocationMapper(): boolean {
-  //    const g1: GovLocation_Dto = { id: 1, name: 'me', type: 0, parentLocationId: 2 };
-  //    const g2: IGovLocation_Vm = this.mapper.map(g1, 'IGovLocation_Vm', 'GovLocation_Dto');
+  //    const g1: GovLocationDto = { id: 1, name: 'me', type: 0, parentLocationId: 2 };
+  //    const g2: IGovLocation_Vm = this.mapper.map(g1, 'IGovLocation_Vm', 'GovLocationDto');
   //    return true;
   //  }
 
   //  testGovbodyDetailsMapper(): boolean {
-  //    const g1: GovbodyDetails_Dto = {
+  //    const g1: GovbodyDetailsDto = {
   //      name: 'me',
   //      parentLocationId: 1,
   //      electedOfficials: [
@@ -170,13 +175,13 @@ export class GovbodyMapper {
   //      recordingsUrl: 'http://us.org',
   //      transcriptsUrl: 'http://them.org',
   //    };
-  //    const g2: IGovbodyDetails_Vm = this.mapper.map(g1, 'IGovbodyDetails_Vm', 'GovbodyDetails_Dto');
+  //    const g2: IGovbodyDetails_Vm = this.mapper.map(g1, 'IGovbodyDetails_Vm', 'GovbodyDetailsDto');
   //    return true;
   //  }
 
   //  testGovbodyMapper(): boolean {
-  //    const g1: Govbody_Dto = { id: 1, name: 'me', parentLocationId: 2 };
-  //    const g2: IGovbody_Vm = this.mapper.map(g1, 'IGovbody_Vm', 'Govbody_Dto');
+  //    const g1: GovbodyDto = { id: 1, name: 'me', parentLocationId: 2 };
+  //    const g2: IGovbody_Vm = this.mapper.map(g1, 'IGovbody_Vm', 'GovbodyDto');
   //    return true;
   //  }
 }

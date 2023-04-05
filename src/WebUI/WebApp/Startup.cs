@@ -32,6 +32,17 @@ namespace webapp
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Govmeeting.api", Version = "v1" });
             });
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +57,8 @@ namespace webapp
 
             app.UseRouting();
 
+            app.UseCors();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -58,6 +71,7 @@ namespace webapp
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
         }
     }
 }

@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// import { IGovbodyDetails_Dto, GovLocation_Dto, IOfficial_Dto } from '../apis/api.generated.clients'
+// import { IGovbodyDetailsDto, GovLocationDto, IOfficialDto } from '../apis/api.generated.clients'
 
 @Component({
   selector: 'gm-fetch-data',
@@ -11,8 +11,17 @@ export class FetchDataComponent {
   public forecasts: WeatherForecast[] | undefined;
   apistring = '/weatherforecast';
 
-  constructor(http: HttpClient, @Inject('API_BASE_URL') apiBaseUrl: string) {
-    http.get<WeatherForecast[]>(apiBaseUrl + this.apistring).subscribe(
+  // constructor(http: HttpClient, @Inject('API_BASE_URL') apiBaseUrl: string) {
+  //   http.get<WeatherForecast[]>(apiBaseUrl + this.apistring).subscribe(
+  //     (result) => {
+  //       this.forecasts = result;
+  //     },
+  //     (error) => console.error(error)
+  //   );
+  // }
+
+  constructor(http: HttpClient) {
+    http.get<WeatherForecast[]>('http://localhost:5000' + this.apistring).subscribe(
       (result) => {
         this.forecasts = result;
       },
@@ -21,10 +30,10 @@ export class FetchDataComponent {
   }
 
   // For debugging GetMyGovLocations call.
-  // public govlocations: GovLocation_Dto[];
+  // public govlocations: GovLocationDto[];
   // apistring: string = "/api/GovLocation/GetMyGovLocations";
   // constructor(http: HttpClient, @Inject('API_BASE_URL') apiBaseUrl: string) {
-  //  http.get<GovLocation_Dto[]>(apiBaseUrl + this.apistring).subscribe(
+  //  http.get<GovLocationDto[]>(apiBaseUrl + this.apistring).subscribe(
   //    (result) => {
   //      this.govlocations = result;
   //    },
