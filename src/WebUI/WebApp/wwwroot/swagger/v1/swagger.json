@@ -1,15 +1,16 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Govmeeting.api",
-    "version": "v1"
+    "title": "webapp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "version": "1.0"
   },
   "paths": {
-    "/WeatherForecast": {
+    "/api/WeatherForecast": {
       "get": {
         "tags": [
           "WeatherForecast"
         ],
+        "operationId": "GetWeatherForecast",
         "responses": {
           "200": {
             "description": "Success",
