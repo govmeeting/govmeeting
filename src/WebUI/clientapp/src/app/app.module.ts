@@ -29,6 +29,8 @@ import { RegisterGovBodyService } from './features/register-gov-body/register-go
 import { RegisterGovBodyServiceStub } from './features/register-gov-body/register-gov-body.service-stub';
 import { RegisterGovBodyServiceReal } from './features/register-gov-body/register-gov-body.service-real';
 
+import { BASE_PATH } from './core/api/v1/variables';
+
 // const isAspServerRunning = environment.useServer; // Is the Asp.Net server running?
 const isAspServerRunning = false;
 
@@ -64,6 +66,10 @@ const isAspServerRunning = false;
     {
       provide: RegisterGovBodyService,
       useClass: isAspServerRunning ? RegisterGovBodyServiceReal : RegisterGovBodyServiceStub,
+    },
+    {
+      provide: BASE_PATH,
+      useValue: 'https://localhost:7103',
     },
   ],
   bootstrap: [AppComponent],

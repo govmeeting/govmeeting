@@ -1,7 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <SwagFolder>.\wwwroot\swagger\v1</SwagFolder>
   </PropertyGroup>
 
@@ -9,11 +11,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
-  <!-- Use SwashBuckle.AspNetCore.Cli to generate angular client side code. -->
   <ItemGroup>
+    <Folder Include="wwwroot\swagger\v1" />
     <Folder Include="$(SwagFolder)" />
   </ItemGroup>
-
+  
   <!-- Should we do as with nswag: only not build if GITHUB_ACTIONS or TF_BUILD are true? -->
   <!--    Condition="'$(GITHUB_ACTIONS)'!='True' And  '$(TF_BUILD)'!='True'" -->
 
@@ -34,4 +36,5 @@
     <Message Text="$(SwagOutput2)" Condition="'$(SwagExitCode2)' == '0'" Importance="low" />
     <Error Text="$(SwagOutput2)" Condition="'$(SwagExitCode2)' != '0'" />
   </Target>
+
 </Project>
