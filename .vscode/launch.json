@@ -5,6 +5,15 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceRoot}/src/WebUI/clientapp",
+      "preLaunchTask": "start-dev-server"
+    },
+
+    {
       "type": "bashdb",
       "request": "launch",
       "name": "Bash-Debug (select script from list of sh files)",
@@ -27,6 +36,7 @@
       "name": "ClientApp Standalone",
       "type": "chrome",
       "request": "launch",
+      "preLaunchTask": "build-clientapp",
       "url": "http://localhost:4200",
       "webRoot": "${workspaceRoot}/src/WebUI/WebApp/clientapp"
     },
@@ -49,7 +59,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build-webapp",
-      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/netcoreapp3.1/WebApp.dll",
+      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/net6.0/WebApp.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/WebUI/WebApp",
       "stopAtEntry": false,
@@ -66,7 +76,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build-webapp",
-      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/netcoreapp3.1/WebApp.dll",
+      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/net6.0/WebApp.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/WebUI/WebApp",
       "stopAtEntry": false,
@@ -83,7 +93,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build-webapp",
-      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/netcoreapp3.1/WebApp.dll",
+      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/net6.0/WebApp.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/WebUI/WebApp",
       "stopAtEntry": false,
