@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "webapp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "title": "WebApp",
     "version": "1.0"
   },
   "paths": {

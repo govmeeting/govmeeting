@@ -2,6 +2,23 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "start-dev-server",
+      "type": "npm",
+      "script": "start",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "npm",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*",
+          "endsPattern": "Finished.+"
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    },
+    {
       "label": "build-makevttsubtitles",
       "command": "dotnet",
       "type": "process",
@@ -14,6 +31,13 @@
       "type": "process",
       "args": ["build", "${workspaceFolder}/src/WebUI/WebApp/WebApp.csproj"],
       "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-clientapp",
+      "type": "shell",
+      "group": "build",
+      "command": "cd ${workspaceFolder}/src/WebUI/clientapp; npm start",
+      "problemMatcher": ["$tsc"]
     },
     {
       "label": "build-workflowapp",

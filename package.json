@@ -1,11 +1,11 @@
 {
   "scripts": {
-    "install": "cd src\\WebUI\\WebApp\\clientapp && npm install",
-    "start": "cd src\\WebUI\\WebApp\\clientapp && npm start",
-    "build": "cd src\\WebUI\\WebApp\\clientapp && npm run build",
-    "restart": "cd src\\WebUI\\WebApp\\clientapp && npm restart",
-    "update": "cd src\\WebUI\\WebApp\\clientapp && npm update",
-    "test": "cd src\\WebUI\\WebApp\\clientapp && npm run test",
-    "testOnce": "cd src\\WebUI\\WebApp\\cd clientapp && npm run test:once"
+    "install": "cd src\\WebUI\\clientapp && npm install",
+    "start": "cd src\\WebUI\\clientapp && npm start",
+    "build": "cd src\\WebUI\\clientapp && npm run build",
+    "restart": "cd src\\WebUI\\clientapp && npm restart",
+    "update": "cd src\\WebUI\\clientapp && npm update",
+    "test": "cd src\\WebUI\\clientapp && npm run test",
+    "testOnce": "cd src\\WebUI\\clientapp && npm run test:once"
   }
 }
