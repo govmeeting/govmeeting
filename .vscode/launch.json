@@ -5,14 +5,30 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "ClientApp",
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Chrome against localhost",
+      "preLaunchTask": "build-clientapp",
       "url": "http://localhost:4200",
-      "webRoot": "${workspaceRoot}/src/WebUI/clientapp",
-      "preLaunchTask": "start-dev-server"
+      "webRoot": "${workspaceRoot}/src/WebUI/clientapp"
     },
-
+    {
+      "name": "WebApp",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-webapp",
+      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/net6.0/WebApp.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/WebUI/WebApp",
+      "stopAtEntry": false,
+      "internalConsoleOptions": "openOnSessionStart",
+      "launchBrowser": {
+        "enabled": false
+      },
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
     {
       "type": "bashdb",
       "request": "launch",
@@ -33,43 +49,11 @@
       "console": "integratedTerminal"
     },
     {
-      "name": "ClientApp Standalone",
-      "type": "chrome",
-      "request": "launch",
-      "preLaunchTask": "build-clientapp",
-      "url": "http://localhost:4200",
-      "webRoot": "${workspaceRoot}/src/WebUI/WebApp/clientapp"
-    },
-    {
-      "name": "ClientApp",
-      "type": "chrome",
-      "request": "launch",
-      "url": "http://localhost:5000",
-      "webRoot": "${workspaceRoot}/src/WebUI/WebApp/clientapp"
-    },
-    {
       "name": "Weather",
       "type": "chrome",
       "request": "launch",
       "url": "https://localhost:5001/WeatherForecast",
       "webRoot": "${workspaceRoot}/src/WebUI/WebApp/clientapp"
-    },
-    {
-      "name": "WebApp",
-      "type": "coreclr",
-      "request": "launch",
-      "preLaunchTask": "build-webapp",
-      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/net6.0/WebApp.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}/src/WebUI/WebApp",
-      "stopAtEntry": false,
-      "internalConsoleOptions": "openOnSessionStart",
-      "launchBrowser": {
-        "enabled": false
-      },
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
     },
     {
       "name": "WebAppStagingLocal",

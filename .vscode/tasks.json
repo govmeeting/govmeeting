@@ -2,28 +2,26 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "start-dev-server",
+      "label": "build-clientapp",
       "type": "npm",
       "script": "start",
       "isBackground": true,
+      "options": {
+        "cwd": "${workspaceFolder}/src/WebUI/clientapp"
+      },
       "problemMatcher": {
-        "owner": "npm",
+        "owner": "typescript",
+        "pattern": "$tsc",
         "background": {
           "activeOnStart": true,
-          "beginsPattern": ".*",
-          "endsPattern": "Finished.+"
-        },
-        "pattern": {
-          "regexp": ""
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "bundle generation complete"
+          }
         }
       }
-    },
-    {
-      "label": "build-makevttsubtitles",
-      "command": "dotnet",
-      "type": "process",
-      "args": ["build", "${workspaceFolder}/Utilities/MakeVttSubtitles"],
-      "problemMatcher": "$msCompile"
     },
     {
       "label": "build-webapp",
@@ -33,11 +31,11 @@
       "problemMatcher": "$msCompile"
     },
     {
-      "label": "build-clientapp",
-      "type": "shell",
-      "group": "build",
-      "command": "cd ${workspaceFolder}/src/WebUI/clientapp; npm start",
-      "problemMatcher": ["$tsc"]
+      "label": "build-makevttsubtitles",
+      "command": "dotnet",
+      "type": "process",
+      "args": ["build", "${workspaceFolder}/Utilities/MakeVttSubtitles"],
+      "problemMatcher": "$msCompile"
     },
     {
       "label": "build-workflowapp",
