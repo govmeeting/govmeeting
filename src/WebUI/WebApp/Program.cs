@@ -6,7 +6,7 @@ startup.ConfigureServices(builder.Services);
 
 var app = builder.Build();
 
-        app.MapControllers();
+app.MapControllers();
 
 startup.Configure(app, app.Environment);
 

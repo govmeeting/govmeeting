@@ -25,8 +25,7 @@ public class Startup
             });
     }
 
-        //public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-public void Configure(WebApplication app, IWebHostEnvironment env)
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (!env.IsDevelopment())
         {
@@ -38,11 +37,9 @@ public void Configure(WebApplication app, IWebHostEnvironment env)
         app.UseCors();
         app.UseStaticFiles();
         app.UseRouting();
-
-        app.MapControllers();
-        // app.UseEndpoints(endpoints =>
-        // {
-        //     endpoints.MapRazorPages();
-        // });
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
     }
 }
