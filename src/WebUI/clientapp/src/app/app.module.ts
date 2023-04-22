@@ -29,6 +29,9 @@ import { RegisterGovBodyService } from './features/register-gov-body/register-go
 import { RegisterGovBodyServiceStub } from './features/register-gov-body/register-gov-body.service-stub';
 import { RegisterGovBodyServiceReal } from './features/register-gov-body/register-gov-body.service-real';
 
+// BASE_PATH is an InjectionToken defined in the openapi generated client code.
+// It is used by the services in the generated code as the base url for all webapi calls.
+// We define a value for it below in the providers array for AppModule.
 import { BASE_PATH } from './core/api/v1/variables';
 
 // const isAspServerRunning = environment.useServer; // Is the Asp.Net server running?
@@ -69,7 +72,7 @@ const isAspServerRunning = false;
     },
     {
       provide: BASE_PATH,
-      useValue: 'https://localhost:7103',
+      useValue: 'https://localhost:7103', // base url of the webapi server.
     },
   ],
   bootstrap: [AppComponent],
