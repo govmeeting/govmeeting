@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\swagger\v1" />
+    <!-- <Folder Include="wwwroot\swagger\v1" /> -->
     <Folder Include="$(SwagFolder)" />
   </ItemGroup>
   

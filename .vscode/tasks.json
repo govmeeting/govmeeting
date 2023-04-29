@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build-clientapp",
+      "label": "clientapp-build",
       "type": "npm",
       "script": "start",
       "isBackground": true,
@@ -24,27 +24,27 @@
       }
     },
     {
-      "label": "build-webapp",
+      "label": "webapp-build",
       "command": "dotnet",
       "type": "process",
       "args": ["build", "${workspaceFolder}/src/WebUI/WebApp/WebApp.csproj"],
       "problemMatcher": "$msCompile"
     },
     {
-      "label": "build-makevttsubtitles",
-      "command": "dotnet",
-      "type": "process",
-      "args": ["build", "${workspaceFolder}/Utilities/MakeVttSubtitles"],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build-workflowapp",
+      "label": "workflowapp-build",
       "command": "dotnet",
       "type": "process",
       "args": [
         "build",
         "${workspaceFolder}/src/Workflow/WorkflowApp/WorkflowApp.csproj"
       ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "makevttsubtitles-build",
+      "command": "dotnet",
+      "type": "process",
+      "args": ["build", "${workspaceFolder}/Utilities/MakeVttSubtitles"],
       "problemMatcher": "$msCompile"
     }
   ]

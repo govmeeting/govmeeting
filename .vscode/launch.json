@@ -8,7 +8,7 @@
       "name": "ClientApp",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "build-clientapp",
+      "preLaunchTask": "clientapp-build",
       "url": "http://localhost:4200",
       "webRoot": "${workspaceRoot}/src/WebUI/clientapp"
     },
@@ -16,7 +16,7 @@
       "name": "WebApp",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build-webapp",
+      "preLaunchTask": "webapp-build",
       "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/net6.0/WebApp.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/WebUI/WebApp",
@@ -28,6 +28,34 @@
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    {
+      "name": "WorkflowApp",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "workflowapp-build",
+      "program": "${workspaceFolder}/src/Workflow/WorkflowApp/bin/Debug/netcoreapp3.1/WorkflowApp.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/Workflow/WorkflowApp",
+      "console": "internalConsole",
+      "stopAtEntry": false,
+      "internalConsoleOptions": "openOnSessionStart",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    {
+      "name": "WebAppWatch",
+      "type": "coreclr",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/src/WebUI/WebApp",
+      "program": "dotnet",
+      "args": [
+        "watch",
+        "--project",
+        ".",
+        "--verbose" // Let's us confirm browser connects with hot reload capabilities
+      ]
     },
     {
       "type": "bashdb",
@@ -41,7 +69,7 @@
       "name": "MakeVttSubtitles .NET Core Launch (console)",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build-makevttsubtitles",
+      "preLaunchTask": "makevttsubtitles-build",
       "program": "${workspaceFolder}/Utilities/MakeVttSubtitles/bin/Debug/netcoreapp3.1/MakeVttSubtitles.dll",
       "args": [],
       "cwd": "${workspaceFolder}",
@@ -49,17 +77,10 @@
       "console": "integratedTerminal"
     },
     {
-      "name": "Weather",
-      "type": "chrome",
-      "request": "launch",
-      "url": "https://localhost:5001/WeatherForecast",
-      "webRoot": "${workspaceRoot}/src/WebUI/WebApp/clientapp"
-    },
-    {
       "name": "WebAppStagingLocal",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "build-webapp",
+      "preLaunchTask": "webapp-build",
       "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/net6.0/WebApp.dll",
       "args": [],
       "cwd": "${workspaceFolder}/src/WebUI/WebApp",
@@ -70,52 +91,6 @@
       },
       "env": {
         "ASPNETCORE_ENVIRONMENT": "StagingLocal"
-      }
-    },
-    {
-      "name": "WebApp & Launch",
-      "type": "coreclr",
-      "request": "launch",
-      "preLaunchTask": "build-webapp",
-      "program": "${workspaceFolder}/src/WebUI/WebApp/bin/Debug/net6.0/WebApp.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}/src/WebUI/WebApp",
-      "stopAtEntry": false,
-      "internalConsoleOptions": "openOnSessionStart",
-      "launchBrowser": {
-        "enabled": true,
-        "args": "${auto-detect-url}",
-        "windows": {
-          "command": "cmd.exe",
-          "args": "/C start ${auto-detect-url}"
-        },
-        "osx": {
-          "command": "open"
-        },
-        "linux": {
-          "command": "xdg-open"
-        }
-      },
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "sourceFileMap": {
-        "/Views": "${workspaceFolder}/src/WebUI/WebApp/Features"
-      }
-    },
-    {
-      "name": "WorkflowApp",
-      "type": "coreclr",
-      "request": "launch",
-      "preLaunchTask": "build-workflowapp",
-      "program": "${workspaceFolder}/src/Workflow/WorkflowApp/bin/Debug/netcoreapp3.1/WorkflowApp.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}/src/Workflow/WorkflowApp",
-      "console": "internalConsole",
-      "stopAtEntry": false,
-      "internalConsoleOptions": "openOnSessionStart",
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     {
