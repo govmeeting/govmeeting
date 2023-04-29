@@ -1,4 +1,4 @@
-namespace webapiswag;
+namespace GM.WebUI.WebApp;
 
 public class WeatherForecast
 {

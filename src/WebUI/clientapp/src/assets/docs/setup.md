@@ -148,8 +148,8 @@ This is the Anglar front end SPA.
 - Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
 - Select: View Menu -> Command Palette (Ctrl-shift-P) -> "Tasks: Run Task" ->
 - Select: "build-dotnet" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (to build all projects)
-- or Select: "build-webapp" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (to build webapp)
-- or Select: "build-workflowapp" &nbsp; &nbsp; &nbsp; (to build workflowapp)
+- or Select: "webapp-build" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (to build webapp)
+- or Select: "workflowapp-build" &nbsp; &nbsp; &nbsp; (to build workflowapp)
 
 ## Run/Debug WebApp
 

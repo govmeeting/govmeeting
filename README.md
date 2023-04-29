@@ -1,6 +1,6 @@
 <!-- Do not edit README.md. This file is built by Utilities/PsScripts/Build-ProjectReadme.ps1 -->
 
-# Overview 
+# Overview
 
 ![Build frontend](https://github.com/govmeeting/govmeeting/workflows/Build%20frontend/badge.svg)
 ![Build Backend](https://github.com/govmeeting/govmeeting/workflows/Build%20Backend/badge.svg)<!-- START OF README SECTION -->
@@ -46,7 +46,7 @@ People will then be able to:
 - Search for voting results on legislation
 - See statistics, graphs and charts on issues, legislature, etc.
 
-<!-- 
+<!--
 <a href="https://www.govmeeting.org/overview#continue">Overview Continued</a>
  -->
 
@@ -56,7 +56,7 @@ People will then be able to:
 Enough with the jibber-jabber, fool!
 Show me how it works!
 
-Well, the work is in progress. But click here for:  [Demos of some working code](https://govmeeting.org) and more documentation.
+Well, the work is in progress. But click here for: [Demos of some working code](https://govmeeting.org) and more documentation.
 
 <h4>
 <div  style="float:left;">  
@@ -65,7 +65,8 @@ Well, the work is in progress. But click here for:  [Demos of some working code]
  <div style="clear: left;"/>
 </h4><br/>
 
-# Developer Setup 
+# Developer Setup
+
 <a name="Contents"></a>
 
 # Contents
@@ -216,8 +217,8 @@ This is the Anglar front end SPA.
 - Install <a href="https://dotnet.microsoft.com/download"> .Net Core SDK. </a>
 - Select: View Menu -> Command Palette (Ctrl-shift-P) -> "Tasks: Run Task" ->
 - Select: "build-dotnet" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (to build all projects)
-- or Select: "build-webapp" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (to build webapp)
-- or Select: "build-workflowapp" &nbsp; &nbsp; &nbsp; (to build workflowapp)
+- or Select: "webapp-build" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (to build webapp)
+- or Select: "workflowapp-build" &nbsp; &nbsp; &nbsp; (to build workflowapp)
 
 ## Run/Debug WebApp
 
@@ -516,4 +517,3 @@ Edit it to contain the keys that you just obtained:
 - Under "Use another service to log in", choose "Google".
 
 <a href="https://www.govmeeting.org/about?id=setup#continue">Setup Continued</a>
-

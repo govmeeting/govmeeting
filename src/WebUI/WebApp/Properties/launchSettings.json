@@ -9,11 +9,12 @@
     }
   },
   "profiles": {
-    "webapiswag": {
+    "webapp": {
       "commandName": "Project",
+      "hotReloadProfile": "aspnetcore",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "api/WeatherForecast",
       "applicationUrl": "https://localhost:7103;http://localhost:5066",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30615.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{763DEE46-3515-425C-8599-FBC5234F333E}"
 EndProject
@@ -68,8 +68,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\frontend-build.yaml = .github\workflows\frontend-build.yaml
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "src\WebUI\WebApp\WebApp.csproj", "{62C8C1BB-EF47-4EA1-84B3-36047C64747D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevelopRetrieval", "Utilities\DevelopRetrieval\DevelopRetrieval.csproj", "{B35E177D-14AB-4BF3-8C12-0664CBC2F90D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevelopLoadDatabase", "Utilities\DevelopLoadDatabase\DevelopLoadDatabase.csproj", "{4EDE3686-39B8-4102-9D03-96C24FDD7731}"
@@ -116,6 +114,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MakeVttSubtitles", "Utiliti
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SortMultithreadedMsbuildLog", "Utilities\SortMultithreadedMsbuildLog\SortMultithreadedMsbuildLog.csproj", "{08ACE1C9-90DE-4FD9-AB83-CF77F55BB942}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "src\WebUI\webapp\WebApp.csproj", "{C7AC55DE-DDAB-4FFB-8041-B5A125EF4C68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,10 +171,6 @@ Global
 		{6AABDAD6-D0A7-41DE-9854-936D4B5AA4AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AABDAD6-D0A7-41DE-9854-936D4B5AA4AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AABDAD6-D0A7-41DE-9854-936D4B5AA4AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{62C8C1BB-EF47-4EA1-84B3-36047C64747D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62C8C1BB-EF47-4EA1-84B3-36047C64747D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62C8C1BB-EF47-4EA1-84B3-36047C64747D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62C8C1BB-EF47-4EA1-84B3-36047C64747D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B35E177D-14AB-4BF3-8C12-0664CBC2F90D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B35E177D-14AB-4BF3-8C12-0664CBC2F90D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B35E177D-14AB-4BF3-8C12-0664CBC2F90D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -223,6 +219,10 @@ Global
 		{08ACE1C9-90DE-4FD9-AB83-CF77F55BB942}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08ACE1C9-90DE-4FD9-AB83-CF77F55BB942}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08ACE1C9-90DE-4FD9-AB83-CF77F55BB942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7AC55DE-DDAB-4FFB-8041-B5A125EF4C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7AC55DE-DDAB-4FFB-8041-B5A125EF4C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7AC55DE-DDAB-4FFB-8041-B5A125EF4C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7AC55DE-DDAB-4FFB-8041-B5A125EF4C68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -247,7 +247,6 @@ Global
 		{51125837-75B8-4F39-BB74-1C89AAE2D753} = {907914CC-D84D-4F11-8DB6-7CAD049305F5}
 		{3FBD0C18-A610-42C9-856F-22210FAA0E2B} = {907914CC-D84D-4F11-8DB6-7CAD049305F5}
 		{0E8A0260-E530-441E-9B17-2D7D31E47CD6} = {BFDC1AE6-F1DD-46F3-86BE-69E3B3FE24E6}
-		{62C8C1BB-EF47-4EA1-84B3-36047C64747D} = {A26AF765-5899-45A7-97D0-F8C989FE4A8F}
 		{B35E177D-14AB-4BF3-8C12-0664CBC2F90D} = {907914CC-D84D-4F11-8DB6-7CAD049305F5}
 		{4EDE3686-39B8-4102-9D03-96C24FDD7731} = {907914CC-D84D-4F11-8DB6-7CAD049305F5}
 		{BE7155DC-670B-4A62-9398-FFB2BF2E8BCD} = {907914CC-D84D-4F11-8DB6-7CAD049305F5}
@@ -261,6 +260,7 @@ Global
 		{142E029C-64EA-4972-957E-89A9F378CC79} = {166D3293-858D-4DDA-8E2E-D40866969AC9}
 		{17F77C5B-3883-4254-8F34-CEA17EA9E961} = {907914CC-D84D-4F11-8DB6-7CAD049305F5}
 		{08ACE1C9-90DE-4FD9-AB83-CF77F55BB942} = {907914CC-D84D-4F11-8DB6-7CAD049305F5}
+		{C7AC55DE-DDAB-4FFB-8041-B5A125EF4C68} = {A26AF765-5899-45A7-97D0-F8C989FE4A8F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F267E5D-0E3E-4AD3-A33A-27D6D658BB1F}
