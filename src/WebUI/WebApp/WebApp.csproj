@@ -9,6 +9,16 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="MediatR" Version="8.0.2" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\Core_Lib\AppCore_Lib.csproj" />
+    <ProjectReference Include="..\..\Application\DTOs_Lib\DTOs_Lib.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\FileDataRepositories_Lib\FileDataRepositories_Lib.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\InfraCore_Lib\InfraCore_Lib.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Utilities_Lib\Utilities_Lib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
