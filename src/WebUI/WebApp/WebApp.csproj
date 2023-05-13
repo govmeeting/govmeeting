@@ -118,26 +118,9 @@
     <ItemGroup>
       <Folder Include="wwwroot\swagger\v1" />
     </ItemGroup>
+</Project>
 
     <!-- Should we do as with nswag: just not build if GITHUB_ACTIONS or TF_BUILD? -->
     <!--<Target Name="NSwag" BeforeTargets="AfterBuild" Condition="'$(GITHUB_ACTIONS)'!='True' And  '$(TF_BUILD)'!='True'"> -->
     <!-- Should we do: <Target Name="PostBuild" AfterTargets="PostBuildEvent">? -->
 
-    <Target Name="OpenAPI" AfterTargets="Build" Condition="$(Configuration)=='Debug'">
-        <Message Text="Restore dotnet tool swashbuckle.aspnetcore.cli" Importance="high" />
-        <Exec Command="dotnet tool restore" />
-        <Message Text="Run openapi-generator to generate Typescript wep api specs (yaml + json)" Importance="high" />
-        <Exec Command="dotnet swagger tofile --output wwwroot/swagger/v1/swagger.yaml --yaml $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" >
-          <Output TaskParameter="ExitCode" PropertyName="SwagExitCode1" />
-          <Output TaskParameter="ConsoleOutput" PropertyName="SwagOutput1" />
-        </Exec>
-        <Message Text="$(SwagOutput1)" Condition="'$(SwagExitCode1)' == '0'" Importance="low" />
-        <Error Text="$(SwagOutput1)" Condition="'$(SwagExitCode1)' != '0'" />
-      <Exec Command="dotnet swagger tofile --output wwwroot/swagger/v1/swagger.json $(OutputPath)$(AssemblyName).dll v1" WorkingDirectory="$(ProjectDir)" >
-        <Output TaskParameter="ExitCode" PropertyName="SwagExitCode2" />
-        <Output TaskParameter="ConsoleOutput" PropertyName="SwagOutput2" />
-      </Exec>
-      <Message Text="$(SwagOutput2)" Condition="'$(SwagExitCode2)' == '0'" Importance="low" />
-      <Error Text="$(SwagOutput2)" Condition="'$(SwagExitCode2)' != '0'" />
-    </Target>
-</Project>
