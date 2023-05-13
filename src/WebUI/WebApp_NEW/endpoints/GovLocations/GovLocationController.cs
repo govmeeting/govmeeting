@@ -1,4 +1,5 @@
 ﻿using GM.Application.DTOs.GovLocations;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
