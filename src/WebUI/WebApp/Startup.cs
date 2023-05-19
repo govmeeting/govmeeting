@@ -21,11 +21,40 @@ using NLog;
 using System.IO;
 using System.Reflection;
 
+
+public class Startup
+{
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllers();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+        app.UseHttpsRedirection();
+        app.UseAuthorization();
+    }
+}
+
 namespace GM.WebUI.WebApp
 {
-    public class Startup
+    public class XStartup
     {
-        public Startup(IConfiguration configuration, IHostEnvironment environment)
+        public XStartup(IConfiguration configuration, IHostEnvironment environment)
         {
             Configuration = configuration;
             Environment = environment;
