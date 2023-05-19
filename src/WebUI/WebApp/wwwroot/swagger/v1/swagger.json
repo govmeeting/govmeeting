@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Govmeeting.api",
-    "version": "v1"
+    "title": "WebApp",
+    "version": "1.0"
   },
   "paths": {
     "/api/EditMeeting/{meetingId}/{part}": {
