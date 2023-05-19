@@ -19,6 +19,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using NLog;
 using System.IO;
+using System.Net;
 using System.Reflection;
 
 
@@ -46,7 +47,12 @@ public class Startup
             app.UseSwaggerUI();
         }
         app.UseHttpsRedirection();
+        app.UseRouting();
         app.UseAuthorization();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
     }
 }
 
