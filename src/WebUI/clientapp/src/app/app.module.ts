@@ -72,7 +72,8 @@ const isAspServerRunning = false;
     },
     {
       provide: BASE_PATH,
-      useValue: 'https://localhost:7103', // base url of the webapi server.
+      // TODO We should get this value from src\environments\environment.ts
+      useValue: 'https://localhost:5001', // base url of the webapi server.
     },
   ],
   bootstrap: [AppComponent],
