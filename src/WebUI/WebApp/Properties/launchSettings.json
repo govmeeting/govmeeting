@@ -23,6 +23,7 @@
     "iisExpress": {
       "applicationUrl": "http://localhost:36029",
       "sslPort": 44333
-    }
+    },
+    "launchUrl": "https://localhost:44333/swagger"
   }
 }
