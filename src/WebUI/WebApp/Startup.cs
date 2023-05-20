@@ -37,6 +37,15 @@ public class Startup
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
+        services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(builder =>
+            {
+                builder.WithOrigins("http://localhost:4200")
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod();
+            });
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,6 +56,8 @@ public class Startup
             app.UseSwaggerUI();
         }
         app.UseHttpsRedirection();
+        app.UseCors();
+        app.UseStaticFiles();
         app.UseRouting();
         app.UseAuthorization();
         app.UseEndpoints(endpoints =>
