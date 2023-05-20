@@ -6,7 +6,7 @@
 
 import { IEnvironment } from './ienvironment';
 
-const apiHost = 'localhost:44333';
+const apiHost = 'localhost:5001';
 const apiUrl = `https://${apiHost}`;
 
 export const environment: IEnvironment = {
