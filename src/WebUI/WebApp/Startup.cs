@@ -23,65 +23,100 @@ using System.Net;
 using System.Reflection;
 
 
-public class Startup
-{
-    public Startup(IConfiguration configuration)
-    {
-        Configuration = configuration;
-    }
-
-    public IConfiguration Configuration { get; }
-
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddControllers();
-        services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
-        services.AddCors(options =>
-        {
-            options.AddDefaultPolicy(builder =>
-            {
-                builder.WithOrigins("http://localhost:4200")
-                                    .AllowAnyHeader()
-                                    .AllowAnyMethod();
-            });
-        });
-    }
-
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-        if (env.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
-        app.UseHttpsRedirection();
-        app.UseCors();
-        app.UseStaticFiles();
-        app.UseRouting();
-        app.UseAuthorization();
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
-    }
-}
-
 namespace GM.WebUI.WebApp
 {
-    public class XStartup
+    public class Startup
     {
-        public XStartup(IConfiguration configuration, IHostEnvironment environment)
+        public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment;
+        private NLog.Logger logger;
+
+        public Startup(IConfiguration _conf, IWebHostEnvironment _env,  NLog.Logger _logger)
         {
-            Configuration = configuration;
-            Environment = environment;
+            Configuration = _conf;
+            Environment = _env;
+            logger = _logger;
         }
 
-        // NLog will set logger.Name to "GM.WebUI.WebApp.Startup"
-        // This is the logger "name" that we can refer to in NLog.config
-        NLog.Logger logger;
-        public IConfiguration Configuration { get; }
-        public IHostEnvironment Environment { get; }
+        public void ConfigureServices(IServiceCollection services)
+        {
+            logger.Info($"ENV={Environment.EnvironmentName}");
+
+            logger.Debug("AddControllers");
+            services.AddControllers();
+
+            logger.Debug("AddEndpointsApiExplorer");
+            services.AddEndpointsApiExplorer();
+
+            logger.Debug("AddSwaggerGen");
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Govmeeting webapp API"
+                    // Description = "An ASP.NET Core Web API for managing ToDo items",
+                    // TermsOfService = new Uri("https://example.com/terms"),
+                    // Contact = new OpenApiContact
+                    // {
+                    //     Name = "Example Contact",
+                    //     Url = new Uri("https://example.com/contact")
+                    // },
+                    // License = new OpenApiLicense
+                    // {
+                    //     Name = "Example License",
+                    //     Url = new Uri("https://example.com/license")
+                    // }
+                });
+            });
+
+            logger.Debug("AddCors");
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+                });
+            });
+
+            logger.Debug("ConfigureAppsettings");
+            //ConfigureAppsettings(services);
+
+            logger.Debug("ConfigureDatabase");
+            //ConfigureDatabase(services);
+        }
+
+        public void Configure(IApplicationBuilder app)
+        {
+            if (Environment.IsDevelopment())
+            {
+            logger.Debug("UseSwagger");
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+            logger.Debug("UseHttpsRedirection");
+            app.UseHttpsRedirection();
+
+            logger.Debug("UseCors");
+            app.UseCors();
+
+            logger.Debug("UseStaticFiles");
+            app.UseStaticFiles();
+
+            logger.Debug("UseRouting");
+            app.UseRouting();
+
+            logger.Debug("UseAuthorization");
+            app.UseAuthorization();
+
+            logger.Debug("UseEndpoints");
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
 
         public void ConfigureDockerServices(IServiceCollection services)
         {
@@ -91,15 +126,40 @@ namespace GM.WebUI.WebApp
             ConfigureServices(services);
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        private void ConfigureAppsettings(IServiceCollection services)
         {
-            ConfigureLoggingService();
-            logger.Info("Configure Logging Service");
-            logger.Info($"ENV={Environment.EnvironmentName}");
+            services.AddOptions();
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.Configure<AppSettings>(myOptions =>
+            {
+                logger.Info("Modify the configuration path options to be full paths.");
+                // Modify the configuration path options to be full paths.
+                myOptions.DatafilesPath = GetFullPathOnEitherDevOrProdSystem(myOptions.DatafilesPath);
+                myOptions.TestdataPath = GetFullPathOnEitherDevOrProdSystem(myOptions.TestdataPath);
+                logger.Info("DatafilesPath: {0}, TestdataPath: {2}",
+                    myOptions.DatafilesPath, myOptions.TestdataPath);
+            });
+        }
 
-            ConfigureAppsettings(services);
-            logger.Info("Configure Appsettings");
-
+        /* GetFullPathOnEitherDevOrProdSystem is for creating/finding sibling folders to the project.
+        * These include: TESTDATA, DATAFILES, SECRETS.
+        * These folders must be outside the project folder so that they are not 
+        * included in the code repository.
+        * The names come from appsettings.json. In Development, this name is a
+        * sibling of the solution folder. But in production, it will normally be a rooted path.
+        * In production, we just return the path.
+        */
+        private string GetFullPathOnEitherDevOrProdSystem(string folder)
+        {
+            if (Environment.IsDevelopment())
+            {
+                return GMFileAccess.GetSolutionSiblingFolder(folder);
+            } else
+            {
+                return folder;
+            }
+        }
+        private void ConfigureDatabase(IServiceCollection services) {
             // We can choose to develop with a Postgres DB instead of the default IisExpress.
             // Note that if you switch, you need delete the Migrations folder in Infra_Core_Lib
             // and run "dotnet ef migrations --project ../../InfraCore_Lib Initial" from the WebApp folder.
@@ -115,9 +175,67 @@ namespace GM.WebUI.WebApp
             // Hard code postgress - replace above code for degugging startup issues
             //string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=Adm1nPa33;Database=Govmeeting2";
             //ConfigureDatabaseServices.Configure(services, Environment.EnvironmentName, "postgres", connectionString);
+        }
 
-            //services.AddHealthChecks();
-            //logger.Info("AddHealthChecks");
+    }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// namespace GM.WebUI.WebApp
+// {
+
+
+    public class XStartup
+    {
+        public XStartup(IConfiguration configuration, IHostEnvironment environment)
+        {
+            Configuration = configuration;
+            Environment = environment;
+        }
+
+        // NLog will set logger.Name to "GM.WebUI.WebApp.Startup"
+        // This is the logger "name" that we can refer to in NLog.config
+        NLog.Logger logger;
+        public IConfiguration Configuration { get; }
+        public IHostEnvironment Environment { get; }
+
+        // public void ConfigureDockerServices(IServiceCollection services)
+        // {
+        //     services.AddDataProtection()
+        //         .SetApplicationName("govmeeting")
+        //         .PersistKeysToFileSystem(new DirectoryInfo(@"./"));
+        //     ConfigureServices(services);
+        // }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // // ConfigureLoggingService();
+            // logger.Info("Configure Logging Service");
+            // logger.Info($"ENV={Environment.EnvironmentName}");
+
+            // ConfigureAppsettings(services);
+            // logger.Info("Configure Appsettings");
+
+            // // We can choose to develop with a Postgres DB instead of the default IisExpress.
+            // // Note that if you switch, you need delete the Migrations folder in Infra_Core_Lib
+            // // and run "dotnet ef migrations --project ../../InfraCore_Lib Initial" from the WebApp folder.
+            // string dbType = Configuration["AppSettings:DatabaseType"];
+            // string connectionString = (dbType == "postgres") ?
+            //     Configuration["AppSettings:PgConnectionString"] :
+            //     Configuration["AppSettings:ConnectionString"];
+
+            // ConfigureDatabaseServices.Configure(services, Environment.EnvironmentName,
+            //     dbType, connectionString);
+            // logger.Info($"Configure Database. Connection={connectionString}");
+
+            // // Hard code postgress - replace above code for degugging startup issues
+            // //string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=Adm1nPa33;Database=Govmeeting2";
+            // //ConfigureDatabaseServices.Configure(services, Environment.EnvironmentName, "postgres", connectionString);
+
+//// LEFT OFF HERE WITH MERGING WITH NEW STARTUP
+
+            services.AddHealthChecks();
+            logger.Info("AddHealthChecks");
 
             //AUTH// StartupAuth.ConfigureIdentity(services, Configuration, logger);
             // logger.Info("ConfigureIdentity");
@@ -125,12 +243,11 @@ namespace GM.WebUI.WebApp
             services.AddControllersWithViews();
             logger.Info("Add services for Web API, MVC & Razor Views");
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Govmeeting.api", Version = "v1" });
-            });
-
-            logger.Info("Add services for Swagger Document");
+            // services.AddSwaggerGen(c =>
+            // {
+            //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Govmeeting.api", Version = "v1" });
+            // });
+            // logger.Info("Add services for Swagger Document");
 
             services.AddRazorPages();
             logger.Info("Add services for Razor Pages");
@@ -261,42 +378,20 @@ namespace GM.WebUI.WebApp
 
         }
 
-        private void ConfigureLoggingService()
-        {
-            // Set a variable in the gdc which is be used in NLog.config for the
-            // base path of our app: ${gdc:item=appbasepath} 
-            string logfilesPath = GetFullPathOnEitherDevOrProdSystem(Configuration["Logging:LogfilesPath"]);
-            //string logfilesPath = GMFileAccess.GetFullPath(Configuration["AppSettings:LogfilesPath"]);
-            GlobalDiagnosticsContext.Set("logfilesPath", logfilesPath);
-
-            // Create an instance of NLog.Logger manually here since it is not available
-            // from dependency injection yet.
-            logger = LogManager.LoadConfiguration("nlog.config").GetCurrentClassLogger();
-        }
-
-
-        //public IServiceCollection AddCQR(this IServiceCollection services)
-        //{
-        //    services.AddMediatR(Assembly.GetExecutingAssembly());
-        //    services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-        //    services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-        //    return services;
-        //}
-
-        private void ConfigureAppsettings(IServiceCollection services)
-        {
-            services.AddOptions();
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-            services.Configure<AppSettings>(myOptions =>
-            {
-                logger.Info("Modify the configuration path options to be full paths.");
-                // Modify the configuration path options to be full paths.
-                myOptions.DatafilesPath = GetFullPathOnEitherDevOrProdSystem(myOptions.DatafilesPath);
-                myOptions.TestdataPath = GetFullPathOnEitherDevOrProdSystem(myOptions.TestdataPath);
-                logger.Info("DatafilesPath: {0}, TestdataPath: {2}",
-                    myOptions.DatafilesPath, myOptions.TestdataPath);
-            });
-        }
+        // private void ConfigureAppsettings(IServiceCollection services)
+        // {
+        //     services.AddOptions();
+        //     services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+        //     services.Configure<AppSettings>(myOptions =>
+        //     {
+        //         logger.Info("Modify the configuration path options to be full paths.");
+        //         // Modify the configuration path options to be full paths.
+        //         myOptions.DatafilesPath = GetFullPathOnEitherDevOrProdSystem(myOptions.DatafilesPath);
+        //         myOptions.TestdataPath = GetFullPathOnEitherDevOrProdSystem(myOptions.TestdataPath);
+        //         logger.Info("DatafilesPath: {0}, TestdataPath: {2}",
+        //             myOptions.DatafilesPath, myOptions.TestdataPath);
+        //     });
+        // }
 
 
         // Examine contents of endpoint of current request (for debugging)
@@ -317,25 +412,24 @@ namespace GM.WebUI.WebApp
             });
         }
 
-        /* GetFullPathOnEitherDevOrProdSystem is for creating/finding sibling folders to the project.
-        * These include: TESTDATA, DATAFILES, SECRETS.
-        * These folders must be outside the project folder so that they are not 
-        * included in the code repository.
-        * The names come from appsettings.json. In Development, this name is a
-        * sibling of the solution folder. But in production, it will normally be a rooted path.
-        * In production, we just return the path.
-        */
-        public string GetFullPathOnEitherDevOrProdSystem(string folder)
-        {
-            if (Environment.IsDevelopment())
-            {
-                return GMFileAccess.GetSolutionSiblingFolder(folder);
-            } else
-            // if (Path.IsPathRooted(folder))  // originally it was, if the path was rooted, it was production.
-            {
-                return folder;
-            }
-        }
+        // /* GetFullPathOnEitherDevOrProdSystem is for creating/finding sibling folders to the project.
+        // * These include: TESTDATA, DATAFILES, SECRETS.
+        // * These folders must be outside the project folder so that they are not 
+        // * included in the code repository.
+        // * The names come from appsettings.json. In Development, this name is a
+        // * sibling of the solution folder. But in production, it will normally be a rooted path.
+        // * In production, we just return the path.
+        // */
+        // public string GetFullPathOnEitherDevOrProdSystem(string folder)
+        // {
+        //     if (Environment.IsDevelopment())
+        //     {
+        //         return GMFileAccess.GetSolutionSiblingFolder(folder);
+        //     } else
+        //     {
+        //         return folder;
+        //     }
+        // }
 
     }
 }
