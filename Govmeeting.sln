@@ -117,8 +117,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SortMultithreadedMsbuildLog
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "src\WebUI\webapp\WebApp.csproj", "{C7AC55DE-DDAB-4FFB-8041-B5A125EF4C68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppSample", "src\WebUI\WebAppSample\WebAppSample.csproj", "{825DF415-B254-4B8D-8B3E-FB79AD3F3F39}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,10 +223,6 @@ Global
 		{C7AC55DE-DDAB-4FFB-8041-B5A125EF4C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7AC55DE-DDAB-4FFB-8041-B5A125EF4C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7AC55DE-DDAB-4FFB-8041-B5A125EF4C68}.Release|Any CPU.Build.0 = Release|Any CPU
-		{825DF415-B254-4B8D-8B3E-FB79AD3F3F39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{825DF415-B254-4B8D-8B3E-FB79AD3F3F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{825DF415-B254-4B8D-8B3E-FB79AD3F3F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{825DF415-B254-4B8D-8B3E-FB79AD3F3F39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -267,7 +261,6 @@ Global
 		{17F77C5B-3883-4254-8F34-CEA17EA9E961} = {907914CC-D84D-4F11-8DB6-7CAD049305F5}
 		{08ACE1C9-90DE-4FD9-AB83-CF77F55BB942} = {907914CC-D84D-4F11-8DB6-7CAD049305F5}
 		{C7AC55DE-DDAB-4FFB-8041-B5A125EF4C68} = {A26AF765-5899-45A7-97D0-F8C989FE4A8F}
-		{825DF415-B254-4B8D-8B3E-FB79AD3F3F39} = {A26AF765-5899-45A7-97D0-F8C989FE4A8F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F267E5D-0E3E-4AD3-A33A-27D6D658BB1F}
