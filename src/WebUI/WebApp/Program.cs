@@ -19,8 +19,7 @@ namespace GM.WebUI.WebApp
     {
         public static void Main(string[] args)
         {
-            DateTime _date = DateTime.Now;
-            var dateString = _date.ToString("yyy-MM-dd");
+            var dateString = DateTime.Now.ToString("yyy-MM-dd");
             NLog.Common.InternalLogger.LogFile = string.Format("C:\\GOVMEETING\\LOGS\\nlog-internal-{0}.log", dateString);
             var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
             logger.Debug("=== Start of Main ==="); // This first log message will not appear in the log file, only in the console.

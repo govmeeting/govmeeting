@@ -90,14 +90,27 @@ namespace GM.WebUI.WebApp
 
         public void Configure(IApplicationBuilder app)
         {
+
             if (Environment.IsDevelopment())
             {
-            logger.Debug("UseSwagger");
                 app.UseSwagger();
                 app.UseSwaggerUI();
+                logger.Debug("Is Development - UseSwagger & UseSwaggerUI");
+
+                app.UseDeveloperExceptionPage();
+                app.UseMigrationsEndPoint();
+                logger.Debug("Is Development - UseDeveloperExceptionPage & UseMigrationsEndPoint");
             }
-            logger.Debug("UseHttpsRedirection");
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                // The default HSTS value is 30 days. You may want to change this for production, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+                logger.Debug("Is not Development - UseExceptionHandler & UseHsts");
+            }
+
             app.UseHttpsRedirection();
+            logger.Debug("UseHttpsRedirection");
 
             logger.Debug("UseCors");
             app.UseCors();
@@ -160,6 +173,9 @@ namespace GM.WebUI.WebApp
             }
         }
         private void ConfigureDatabase(IServiceCollection services) {
+            services.AddDatabaseDeveloperPageExceptionFilter();
+            logger.Info("AddDatabaseDeveloperPageExceptionFilter");
+            
             // We can choose to develop with a Postgres DB instead of the default IisExpress.
             // Note that if you switch, you need delete the Migrations folder in Infra_Core_Lib
             // and run "dotnet ef migrations --project ../../InfraCore_Lib Initial" from the WebApp folder.
@@ -232,6 +248,8 @@ namespace GM.WebUI.WebApp
             // //string connectionString = "Host=localhost;Port=5432;Username=postgres;Password=Adm1nPa33;Database=Govmeeting2";
             // //ConfigureDatabaseServices.Configure(services, Environment.EnvironmentName, "postgres", connectionString);
 
+            // services.AddDatabaseDeveloperPageExceptionFilter();
+
 //// LEFT OFF HERE WITH MERGING WITH NEW STARTUP
 
             services.AddHealthChecks();
@@ -299,7 +317,8 @@ namespace GM.WebUI.WebApp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                //app.UseDatabaseErrorPage();
+                app.UseMigrationsEndPoint();
                 logger.Info("Is Development - use dev exception page & database error page");
             }
             else
