@@ -82,7 +82,7 @@ namespace GM.WebUI.WebApp
             });
 
             logger.Debug("ConfigureAppsettings");
-            //ConfigureAppsettings(services);
+            ConfigureAppsettings(services);
 
             logger.Debug("ConfigureDatabase");
             //ConfigureDatabase(services);
@@ -145,33 +145,16 @@ namespace GM.WebUI.WebApp
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.Configure<AppSettings>(myOptions =>
             {
-                logger.Info("Modify the configuration path options to be full paths.");
-                // Modify the configuration path options to be full paths.
-                myOptions.DatafilesPath = GetFullPathOnEitherDevOrProdSystem(myOptions.DatafilesPath);
-                myOptions.TestdataPath = GetFullPathOnEitherDevOrProdSystem(myOptions.TestdataPath);
-                logger.Info("DatafilesPath: {0}, TestdataPath: {2}",
-                    myOptions.DatafilesPath, myOptions.TestdataPath);
+                // In development, some folders are siblings of the solution folder.
+                if (Environment.IsDevelopment())
+                {
+                    myOptions.DatafilesPath = GMFileAccess.GetSolutionSiblingFolder(myOptions.DatafilesPath);
+                    myOptions.TestdataPath = GMFileAccess.GetSolutionSiblingFolder(myOptions.TestdataPath);
+                }    
+                logger.Debug($"DatafilesPath: {myOptions.DatafilesPath}, TestdataPath: {myOptions.TestdataPath}");
             });
         }
 
-        /* GetFullPathOnEitherDevOrProdSystem is for creating/finding sibling folders to the project.
-        * These include: TESTDATA, DATAFILES, SECRETS.
-        * These folders must be outside the project folder so that they are not 
-        * included in the code repository.
-        * The names come from appsettings.json. In Development, this name is a
-        * sibling of the solution folder. But in production, it will normally be a rooted path.
-        * In production, we just return the path.
-        */
-        private string GetFullPathOnEitherDevOrProdSystem(string folder)
-        {
-            if (Environment.IsDevelopment())
-            {
-                return GMFileAccess.GetSolutionSiblingFolder(folder);
-            } else
-            {
-                return folder;
-            }
-        }
         private void ConfigureDatabase(IServiceCollection services) {
             services.AddDatabaseDeveloperPageExceptionFilter();
             logger.Info("AddDatabaseDeveloperPageExceptionFilter");
