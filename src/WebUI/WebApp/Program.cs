@@ -20,7 +20,8 @@ namespace GM.WebUI.WebApp
         public static void Main(string[] args)
         {
             var dateString = DateTime.Now.ToString("yyy-MM-dd");
-            NLog.Common.InternalLogger.LogFile = string.Format("C:\\GOVMEETING\\LOGS\\nlog-internal-{0}.log", dateString);
+            string logFolder = GMFileAccess.GetSolutionSiblingFolder("LOGS");
+            NLog.Common.InternalLogger.LogFile = $"{logFolder}\\nlog-internal-{dateString}.log";
             var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
             logger.Debug("=== Start of Main ==="); // This first log message will not appear in the log file, only in the console.
 
