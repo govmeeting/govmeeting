@@ -54,7 +54,7 @@
     "@types/googlemaps": "^3.43.3",
     "@types/video.js": "^7.3.32",
     "moment": "^2.29.4",
-    "ngx-markdown": "^13.1.0",
+    "ngx-markdown": "^17.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "videojs-hotkeys": "^0.2.27",
