@@ -68,7 +68,7 @@
     "@angular-eslint/eslint-plugin-template": "13.2.1",
     "@angular-eslint/schematics": "21.1.0",
     "@angular-eslint/template-parser": "13.2.1",
-    "@angular/cli": "~21.1.0",
+    "@angular/cli": "~21.1.4",
     "@angular/compiler-cli": "~13.2.0",
     "@angular/localize": "^13.2.6",
     "@openapitools/openapi-generator-cli": "^2.28.0",
